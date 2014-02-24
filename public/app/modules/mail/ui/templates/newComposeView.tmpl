@@ -2,15 +2,15 @@
     <div class="compose-header">
         <div class="field">
             <div class="label">{{#_i18n}}mail.composeview.to{{/_i18n}}</div>
-            <div class="inputbox"><input class="to" "type="text" value={{to}}></input></div>
+            <div class="inputbox toInputWrapper"></div>
         </div>
         <div class="field ccLine" style="display:none">
             <div class="label">{{#_i18n}}mail.composeview.cc{{/_i18n}}</div>
-            <div class="inputbox"><input  class="cc" type="text" value={{cc}}></input></div>
+            <div class="inputbox ccInputWrapper"></div>
         </div>
         <div class="field bccLine" style="display:none">
             <div class="label">{{#_i18n}}mail.composeview.bcc{{/_i18n}}</div>
-            <div class="inputbox"><input class="bcc" type="text" value={{bcc}}></input></div>
+            <div class="inputbox bccInputWrapper"></div>
         </div>
         <div class="field-options">
             <span class="link addCc">{{#_i18n}}mail.composeview.addcc{{/_i18n}}</span>

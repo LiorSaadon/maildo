@@ -20,10 +20,11 @@ define(function (require) {
                     "trash/:param": "trash",
                     "spam":"spam",
                     "spam/:param": "spam",
-                    "compose":"compose",
                     "search/:param1":"search",
                     "search/:param1/:param2":"search",
-                    "settings":"settings"
+                    "settings":"settings",
+                    "compose":"compose",
+                    "tmpcompose":"tmpcompose"
                 },
 
                 //---------------------------------------------
