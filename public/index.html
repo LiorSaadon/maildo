@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>mailbone</title>
+        <style>
+            .spinner{
+                position:absolute;
+                top:0;
+                left:0;
+                bottom:0;
+                right:0;
+                background: url('app/assets/ui/img/spinner.gif') 50% 50% no-repeat
+            }
+        </style>
+    </head>
+    <body>
+        <div class="spinner"></div>
+        <div class="mb" style="display:none"></div>
+        <script type="text/javascript">
+            var require = { baseUrl: "./" };
+        </script>
+        <!-- data-main is the entry point to the app -->
+        <script type="text/javascript" data-main="app/starter/init.js?bust=@@version" src="lib/require/require.js?bust=@@version"></script>
+    </body>
+</html>

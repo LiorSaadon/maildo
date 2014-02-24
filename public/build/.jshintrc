@@ -1,0 +1,26 @@
+{
+    "curly":false,
+    "eqeqeq":false,
+    "undef":true,
+    "unused":false,
+    "eqnull":true,
+    "noarg":true,
+    "nonew":false,
+    "browser":true,
+    "jquery":true,
+    "evil":true,
+    "laxcomma":true,
+    "devel":false,
+    "globals":{
+        "_":true,
+        "jQuery":true,
+        "require":true,
+        "requirejs":true,
+        "define":true,
+        "QUnit":true,
+        "alert":true,
+        "lpTag":true,
+        "StorageMethods":true,
+        "CookieMethods":true
+    }
+}

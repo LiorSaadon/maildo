@@ -1,0 +1,87 @@
+.mb{
+  .button {
+    text-decoration: none;
+    font-family: $font-family2;
+    font-size: $font-size3;
+    font-weight: bold;
+    color: $button-color;
+    line-height: 17px;
+    height: 18px;
+    display: inline-block;
+    float: left;
+    margin-right:15px;
+    padding-top: 5px;
+    padding-bottom:5px;
+    background: $button-background-color;
+    border: solid 1px $button-border-color;
+    min-width:$button-normal-width;
+    text-align: center;
+    @include border-radius(2px) ;
+  }
+
+  .button .caption{
+    margin-right:4px;
+  }
+
+  .button .toggle {
+    @include arrow-down(4px, $button-toggle-color, 2px);
+  }
+
+  .button.clicked,
+  .button:hover {
+    background: $button-hover-background-color;
+    border-color: $button-hover-border-color;
+    color: $button-hover-color;
+  }
+
+  .button.clicked .toggle,
+  .button:hover .toggle {
+    @include arrow-down-hover( $button-hover-toggle-color);
+  }
+
+  .button.disable:hover {
+    cursor:default;
+    background-color:$button-background-color;
+    border-color: $button-border-color;
+  }
+
+  //---------------------------------------------------
+
+  .button.left {
+    margin-right: 0px;
+    @include border-right-radius(0);
+  }
+
+  .button.middle {
+    margin-right: 0px;
+    border-left-color: $button-splitter-color;
+    @include border-radius(0) ;
+  }
+
+  .button.right {
+    border-left-color: $button-splitter-color;
+    @include border-left-radius(0);
+  }
+
+  //-------------------------------------------------------
+
+  .button.icon{
+    min-width:$button-icon-width;
+  }
+
+  .button.prime {
+    min-width:$button-prime-width;
+  }
+
+  .button.primeIcon {
+    min-width:$button-primeIcon-width;
+  }
+
+  .button.link{
+    border:0;
+    background-color:transparent;
+    font-size: $font-size2;
+    font-weight: normal;
+  }
+
+}

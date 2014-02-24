@@ -1,0 +1,109 @@
+.mb{
+
+
+  .buttonsToolbar {
+    @include abs-pos(22px, 'NaN', 'NaN', 200px);
+  }
+
+  //--------- settings ------------------
+
+  .lblSettings{
+    @include abs-pos(22px, 'NaN', 'NaN', 200px);
+    font-size: 20px;
+    color: $common-label-color;
+    font-weight: normal;
+    margin: 0;
+  }
+
+  .btnSettings{
+
+    @include abs-pos(22px, 10px, 'NaN', 'NaN');
+
+    .button .settingsIcon {
+      @include set-icon(17px,17px,'app/assets/ui/img/actions.png', 0, 0);
+    }
+
+    .button:hover .settingsIcon {
+      background: url('app/assets/ui/img/actionsHover.png') 0 0  no-repeat;
+    }
+  }
+
+  //--------- pager -------------------
+
+  .pager{
+
+    width:300px;
+    @include abs-pos(22px, 82px, 'NaN', 'NaN');
+
+    .pagerButtons{
+        float:right;
+
+        .button .nextIcon {
+          @include set-icon(17px,17px,'app/assets/ui/img/actions.png', 0, -17px);
+        }
+
+        .button:hover .nextIcon {
+          background: url('app/assets/ui/img/actionsHover.png') 0 -17px  no-repeat;
+        }
+
+        .button .nextIcon.disable {
+          background: url('app/assets/ui/img/actionsDisabled.png') 0 -17px  no-repeat;
+        }
+
+
+      .button .prevIcon {
+          @include set-icon(17px,17px,'app/assets/ui/img/actions.png', 0, -34px);
+        }
+
+        .button:hover .prevIcon {
+          background: url('app/assets/ui/img//actionsHover.png') 0 -34px  no-repeat;
+        }
+
+        .button .prevIcon.disable {
+          background: url('app/assets/ui/img/actionsDisabled.png') 0 -34px  no-repeat;
+        }
+    }
+
+    .pagerInfo{
+        float:right;
+        padding-right:10px;
+        padding-top:8px;
+        color:white;
+        font-size:$font-size2;
+        font-family: $font-family1;
+      }
+  }
+
+  //------------ buttons ----------------
+
+  .action-list-section{
+     div {
+       float:left
+     }
+
+    .ddsMove{
+      position:absolute;
+      top:30px;
+      display:none;
+    }
+
+    .ddsSelect{
+      position:absolute;
+      top:30px;
+      display:none;
+    }
+
+    .ddsMore{
+      position:absolute;
+      top:30px;
+      display:none;
+      min-width:150px;
+    }
+  }
+}
+
+
+
+
+
+

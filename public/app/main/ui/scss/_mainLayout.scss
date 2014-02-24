@@ -1,0 +1,16 @@
+.mb {
+  @include abs-pos(0,0,0,0);
+  background-color: $layout-background-color;
+  min-width:400px;
+
+   .techbar-region {
+      height: 30px;
+      border-bottom: 1px solid $layout-splitter-color;
+      background-color: red;
+      @include abs-pos(0, 0, 'NaN', 0) ;
+  }
+
+   .main-region {
+       @include abs-pos(30px, 0, 0, 0) ;
+  }
+}

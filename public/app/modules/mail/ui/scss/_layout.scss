@@ -1,0 +1,23 @@
+.mail-header-region{
+  height: 80px;
+  border-bottom: 1px solid $layout-splitter-color;
+  @include abs-pos(0, 0, 'NaN', 0) ;
+}
+
+.mail-action-region{
+  height: 70px;
+  border-bottom: 1px solid $layout-splitter-color;
+  @include abs-pos(80px, 0, 'NaN', 0);
+}
+
+.mail-nav-region{
+  width:170px;
+  padding-top:30px;
+  padding-left:30px;
+  @include abs-pos(155px, 'NaN', 0, 0);
+}
+
+.mail-data-region{
+  @include abs-pos(160px, 25px, 10px, 200px);
+}
+

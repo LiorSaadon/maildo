@@ -1,0 +1,33 @@
+.mb{
+  .unread{
+    font-weight: bold;
+  }
+  .importantIcon{
+    width: 19px;
+    height: 19px;
+    background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) -37px 0 no-repeat;
+  }
+  .importantIcon.disable {
+    background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) 0 0 no-repeat;
+  }
+  .importantIcon:hover{
+    background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) -37px 0 no-repeat;
+  }
+  .starIcon {
+    width: 19px;
+    height: 19px;
+    background: url(app/assets/ui/img/star.png);
+  }
+  .starIcon.disable {
+    background: url(app/assets/ui/img/not-star.png);
+  }
+  .starIcon:hover{
+    background: url(app/assets/ui/img/star.png);
+  }
+}
+
+
+
+
+
+
