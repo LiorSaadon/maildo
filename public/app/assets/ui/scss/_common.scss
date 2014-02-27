@@ -4,6 +4,10 @@
 @import "_data-table";
 @import "_loader";
 
+/*--------- ui-components ----------*/
+
+@import "../../../../app/assets/js/ui-components/autoComplete/scss/_autoComplete.scss";
+
 /*----------- modules -------------*/
 
 @import "../../../../app/modules/mail/ui/scss/_mail.scss";

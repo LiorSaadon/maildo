@@ -199,6 +199,11 @@ body {
   border: 1px solid #F0C36D;
 }
 
+/*--------- ui-components ----------*/
+.mb .autoComplete {
+  background-color: red;
+}
+
 /*----------- modules -------------*/
 .mb .buttonsToolbar {
   position: absolute;
@@ -304,6 +309,13 @@ body {
   right: 0;
   left: 0;
   padding: 20px;
+}
+.composeView .compose-header .tagsPlaceholder {
+  border: 1px solid red;
+  height: 25px;
+}
+.composeView .compose-header .autoCompletePlaceholder {
+  border: 1px solid blue;
 }
 .composeView .compose-header .field {
   padding-bottom: 10px;

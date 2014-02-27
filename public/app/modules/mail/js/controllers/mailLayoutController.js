@@ -96,8 +96,8 @@ define(function (require) {
                 var mailModel = mail.newMailActionsController.composeModel();
 
                 var composeView = new TmpComposeView({
-                    model:mailModel
-                    //contactsCollection:app.dataController.getContacts(),
+                    model:mailModel,
+                    contacts:app.dataController.contactsCollection
                 });
                 this.mailLayout.dataRegion.show(composeView);
             },

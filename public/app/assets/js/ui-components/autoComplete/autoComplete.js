@@ -1,55 +1,52 @@
 define(function (require) {
     "use strict";
 
-    var app = require("mbApp");
+    var Marionette = require("marionette");
+    var AutoCompleteCompositeView = require("assets-ui-component/autoComplete/views/autoCompleteCompositeView");
 
-    var AutoComplete = {};
+    var AutoComplete = Marionette.Controller.extend({
 
-    app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
+        initialize: function (options) {
 
-        AutoComplete = Marionette.Controller.extend({
+            //this.filterModel = options.filterModel || options.collection.filterModel,
+            this.collection = options.collection
+            //this.collection = new FilterDecorator(options.collection);
+            this.vent = options.vent;
+            this.el = options.el;
 
-            initialize: function (options) {
+            this.listenTo( this.vent, 'filter:change', this.onFilterChange, this);
+        },
 
-                this.filterModel = options.filterModel || options.collection.filterModel,
-                //this.collection = new FilterDecorator(options.collection);
-                this.vent = options.vent;
-                this.el = options.el;
+        //----------------------------------------------------
+        // onFilterChange
+        //----------------------------------------------------
 
-                this.listenTo( this.vent, 'filter:change', this.onFilterChange, this);
-            },
+        onFilterChange: function (_filterBy) {
+//                this.filterModel.setFilters(_filterBy);
+//                this.collection.filterBy(this.filterModel);
+        },
 
-            //----------------------------------------------------
-            // onFilterChange
-            //----------------------------------------------------
+        //----------------------------------------------------
+        // show
+        //----------------------------------------------------
 
-            onFilterChange: function (_filterBy) {
-                this.filterModel.setFilters(_filterBy);
-                this.collection.filterBy(this.filterModel);
-            },
-
-            //----------------------------------------------------
-            // show
-            //----------------------------------------------------
-
-            show:function(){
+        show:function(){
 //                this.collection.filterAll();
-//
-//                this.autoCompleteTableView = new AutoCompleteTableView({
-//                    collection: this.collection,
-//                    el:el
-//                });
-//                this.autoCompleteTableView.render();
-            },
 
-            //----------------------------------------------------
-            // show
-            //----------------------------------------------------
+            this.autoCompleteTableView = new AutoCompleteCompositeView({
+                collection: this.collection,
+                el:this.el
+            });
+            this.autoCompleteTableView.render();
+        },
 
-            close:function(){
-                //this.autoCompleteTableView.render();
-            }
-        });
+        //----------------------------------------------------
+        // show
+        //----------------------------------------------------
+
+        close:function(){
+            //this.autoCompleteTableView.render();
+        }
     });
     return AutoComplete;
 });

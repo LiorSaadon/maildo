@@ -4,6 +4,7 @@ define(function (require) {
     var app = require("mbApp");
     var Tags = require("assets-ui-component/tags/tagsView");
     var template = require("tpl!mail-templates/_addressView.tmpl");
+    var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
 
     var AddressView ={};
 
@@ -22,6 +23,7 @@ define(function (require) {
 
             initialize:function(options){
 
+                this.contacts = options.contacts;
                 this.modelAttr = options.modelAttr;
                 this.vent = new Backbone.Wreqr.EventAggregator();
 
@@ -40,12 +42,12 @@ define(function (require) {
                 });
                 this.tags.render();
 
-//                this.autoComplete = new AutoComplete({
-//                    //collection:options.contacts,
-//                    el:this.ui.autoCompletePlaceholder,
-//                    vent: this.vent
-//                });
-//                this.autoComplete.show();
+                this.autoComplete = new AutoComplete({
+                    collection:this.contacts,
+                    el:this.ui.autoCompletePlaceholder,
+                    vent: this.vent
+                });
+               this.autoComplete.show();
             },
 
             //-----------------------------------------------------------------
