@@ -200,8 +200,71 @@ body {
 }
 
 /*--------- ui-components ----------*/
-.mb .autoComplete {
-  background-color: red;
+.mb .autoComplete-size {
+  max-width: 520px;
+}
+.mb .autoComplete .menu.default-list {
+  cursor: default;
+  position: absolute;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 1000;
+  left: 90px;
+  right: 25px;
+  float: left;
+  padding: 3px;
+  margin: 0;
+  list-style: none;
+  background-color: white;
+  border: 1px solid gainsboro;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: rgba(81, 82, 84, 0.25) 0 0 3px 1px;
+  -moz-box-shadow: rgba(81, 82, 84, 0.25) 0 0 3px 1px;
+  box-shadow: rgba(81, 82, 84, 0.25) 0 0 3px 1px;
+  -webkit-background-clip: padding;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.mb .autoComplete .menu.default-list li {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  padding: 7px 9px;
+  border-top: 1px solid #e5e5e5;
+  min-height: 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #323336;
+  min-height: 15px;
+  color: gray;
+}
+.mb .autoComplete .menu.default-list li:first-child {
+  border: none;
+}
+.mb .autoComplete .menu.default-list li div.dropdown-li-value {
+  display: inline-block;
+}
+.mb .autoComplete .menu.default-list li div.dropdown-li-icon {
+  margin-right: 8px;
+}
+.mb .autoComplete .menu.default-list li.active {
+  background-color: gray;
+}
+.mb .autoComplete .menu.default-list li.active div.dropdown-li-value {
+  color: white;
+}
+.mb .autoComplete .menu.default-list li:hover {
+  background-color: lightgray;
 }
 
 /*----------- modules -------------*/
