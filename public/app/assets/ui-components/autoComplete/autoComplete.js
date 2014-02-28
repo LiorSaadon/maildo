@@ -9,8 +9,7 @@ define(function (require) {
         initialize: function (options) {
 
             //this.filterModel = options.filterModel || options.collection.filterModel,
-            this.collection = options.collection
-            //this.collection = new FilterDecorator(options.collection);
+            this.collection = options.collection //new FilterDecorator(options.collection);
             this.vent = options.vent;
             this.el = options.el;
 
@@ -22,8 +21,8 @@ define(function (require) {
         //----------------------------------------------------
 
         onFilterChange: function (_filterBy) {
-//                this.filterModel.setFilters(_filterBy);
-//                this.collection.filterBy(this.filterModel);
+//           this.filterModel.setFilters(_filterBy);
+//           this.collection.filterBy(this.filterModel);
         },
 
         //----------------------------------------------------
@@ -31,7 +30,7 @@ define(function (require) {
         //----------------------------------------------------
 
         show:function(){
-//                this.collection.filterAll();
+//          this.collection.filterAll();
 
             this.autoCompleteTableView = new AutoCompleteCompositeView({
                 collection: this.collection,
@@ -41,7 +40,7 @@ define(function (require) {
         },
 
         //----------------------------------------------------
-        // show
+        // close
         //----------------------------------------------------
 
         close:function(){
