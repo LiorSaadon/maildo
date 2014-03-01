@@ -7,7 +7,25 @@ define(function (require) {
     var AutoCompleteItemView = Marionette.ItemView.extend({
         template:template,
         tagName:'li',
-        className:'inbox_row'
+        className:'li_row',
+
+        events:{
+            "mouseenter":"_onMouseEnter"
+        },
+
+        //-------------------------------------------------------------
+
+        initialize: function (options) {
+
+            this.vent = options.vent;
+        },
+
+        //-------------------------------------------------------------
+
+        _onMouseEnter:function(){
+
+            this.vent.trigger("item:over", this)
+        }
      });
 
     return AutoCompleteItemView;

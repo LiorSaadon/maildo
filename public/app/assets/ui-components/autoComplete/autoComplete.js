@@ -33,6 +33,7 @@ define(function (require) {
 //          this.collection.filterAll();
 
             this.autoCompleteTableView = new AutoCompleteCompositeView({
+                vent:this.vent,
                 collection: this.collection,
                 el:this.el
             });
