@@ -2,126 +2,117 @@ define(function (require) {
     "use strict";
 
     var Marionette = require("marionette");
-    var template = require("tpl!assets-ui-component/autoComplete/templates/autoComplete.tmpl");
-    var AutoCompleteItemView = require("assets-ui-component/autoComplete/views/autoCompleteItemView");
-
-    var KeyCode = {
-        ENTER: 13,
-        ARROW_UP: 38,
-        ARROW_DOWN: 40
-    };
+    var template = require("tpl!assets-ui-component/tags/templates/tags.tmpl");
+    var tagSelectorTemplate = require("tpl!ui/tags-container/templates/tagSelector.tmpl");
+    var TagsItemView = require("assets-ui-component/tags/views/tagsItemView");
 
     var AutoCompleteCompositeView = Marionette.CompositeView.extend({
 
         template: template,
-        itemView: AutoCompleteItemView,
-        itemViewContainer: ".menu",
+        itemView: TagsItemView,
+        className: "tags-container",
+        itemViewContainer: ".selected-tags",
 
-        //-------------------------------------------------------------
+        events:{
+            "click":"onClick",
+            "keydown .tag-input": "onButtonKeyDown",
+            "input .tag-input": "onInputChange",
+            "blur .tags-container": "outsideClicked"
+        },
+
+        //----------------------------------------------------------
+        // initialize
+        //----------------------------------------------------------
 
         initialize: function (options) {
 
+            this.el = options.el;
             this.vent = options.vent;
-
-            this.listenTo(this.vent, "item:over", this.onHover);
-            this.listenTo(this.vent, "key:press", this.onKeyPress);
-            this.listenTo(this.vent, "closeAll", this.closeEl);
+            this.listenTo(this.vent, "item:selected", this.onItemSelect);
         },
 
-        //--------------------------------------------------------------
+        //----------------------------------------------------------
+        // onClick
+        //----------------------------------------------------------
 
-        buildItemView: function (item, ItemView) {
+        onClick: function() {
 
-            var view = new ItemView({
-                model: item,
-                vent: this.vent
-            });
-            return view;
+            this.addTagSelector();
+            this.setFocus(true);
+            this.getInput().focus();
+            this.setupErrors();
+            this.trigger(TRIGGERING.INPUT_EDIT);
         },
 
         //------------------------------------------------------------
 
-        onCompositeCollectionRendered: function () {
+        addTagSelector: function() {
+            this.ui.selectedTags.append(tagSelectorTemplate());
+        },
 
-            this.childArr = [];
+        //-------------------------------------------------------------------------------------------------------------
 
-            this.children.each(_.bind(function (view) {
-                this.childArr.push(view);
-            }, this));
+        setFocus: function(newState) {
 
-            if (this.collection.isEmpty()) {
-                this.selectedItem = -1;
-                this.closeEl();
+            if (newState) {
+                this.$el.addClass("focused");
             } else {
-                this.selectedItem = 0;
-                this.showEl();
+                this.$el.removeClass("focused");
             }
         },
 
-        //-------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------------------------
 
-        closeEl: function () {
-            this.$el.hide();
+        getInput: function() {
+            return this.$el.find(".tag-input");
         },
 
-        //-------------------------------------------------------------
+        //----------------------------------------------------------
 
-        showEl: function () {
-            this.setActive();
-            this.$el.show();
-        },
+        onButtonKeyDown: function (event) {
+            var key = event.keyCode;
 
-        //-------------------------------------------------------------
+            if (key === KeyCode.ARROW_DOWN || key === KeyCode.ARROW_UP) {
+                this.vent.trigger("key:press", key);
+            }
 
-        onKeyPress: function (key) {
+            if (key === KeyCode.ENTER) {
+                this.enterState = "unhandle"
+                this.vent.trigger("key:press", key);
 
-            switch (key) {
-                case KeyCode.ARROW_UP:
-                    this.selectedItem = Math.max(0, this.selectedItem - 1);
-                    this.setActive();
-                    break;
-                case KeyCode.ARROW_DOWN:
-                    this.selectedItem = Math.min(this.children.length - 1, this.selectedItem + 1);
-                    this.setActive();
-                    break;
-                case KeyCode.ENTER:
-                    this.selectItem();
-                    break;
+                setTimeout(_.bind(function () {
+                    this.handleEnter();
+                }, this), 100)
             }
         },
 
-        //--------------------------------------------------------------
+        //-----------------------------------------------------------
 
-        setActive: function () {
-
-            this.children.each(function (view) {
-
-                view.setActive(false);
-            });
-
-            this.childArr[this.selectedItem].setActive(true);
-        },
-
-        //-------------------------------------------------------------
-
-        selectItem: function(){
-
-            if(this.selectedItem >= 0){
-                this.vent.trigger("item:selected",{title:'gg',address:'ds'})
+        handleEnter: function () {
+            if (this.enterState === "unhandle") {
+                console.log("tags:handleEnter");
+                this.vent.trigger("closeAll");
             }
         },
 
-        //--------------------------------------------------------------
+        //-----------------------------------------------------------
 
-        onHover: function (item) {
+        onItemSelect: function () {
+            this.enterState = "handle";
+            console.log("tags:onItemSelect");
+            this.vent.trigger("closeAll");
+        },
 
-            for (var i = 0; i < this.childArr.length; i++) {
-                if (this.childArr[i].cid === item.cid) {
-                    this.selectedItem = i;
-                    break;
-                }
-            }
-            this.setActive();
+        //------------------------------------------------------------
+
+        onInputChange: function () {
+            this.vent.trigger("input:change", this.ui.tagsInput.val());
+        },
+
+        //------------------------------------------------------------
+
+        outsideClicked: function () {
+            this.vent.trigger("closeAll");
         }
     });
     return AutoCompleteCompositeView;
