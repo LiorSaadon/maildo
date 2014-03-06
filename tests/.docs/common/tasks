@@ -1,0 +1,5 @@
+1. Finish sass of dark theme
+2. Contacts modules and all the infrastructure.
+3. Add View: viewMail
+4. Add to localstroge all userInfo (pageSize, theme, lang...)
+

@@ -1,0 +1,22 @@
+first time:
+------------
+
+git init
+git add .
+git commit -m "init"
+heroku login
+heroku create
+heroku addons:add mongolab
+git push heroku master
+heroku open
+
+
+continuously:
+--------------
+
+git init
+git add .
+git commit -m "init"
+git remote add heroku git@heroku.com:mailbone.git
+git push heroku master -f
+heroku open

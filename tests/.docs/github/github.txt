@@ -1,0 +1,15 @@
+1. create empty project
+2. if you have an existing folder or file  - copy them
+3. VCS --> import into version control -->  share projects on github --> set project name --> set login and password.
+   see : http://www.youtube.com/watch?v=87LlhR-14Rw)
+4. commit and push all new files
+
+
+to set from github:
+
+close all projects
+select Check out from Version Control --> github
+git Repository URL: https://github.com/shaulmazor/mailjs.git
+parent URL: D:\smd
+directory name: D:\smd\mailjs
+
