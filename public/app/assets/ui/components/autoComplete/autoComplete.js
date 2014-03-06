@@ -2,40 +2,41 @@ define(function (require) {
     "use strict";
 
     var Marionette = require("marionette");
+    var FilterDecorator = require("assets-base-objects/collections/filterCollectionDecorator");
     var AutoCompleteCompositeView = require("assets-ui-component/autoComplete/views/autoCompleteCompositeView");
 
     var AutoComplete = Marionette.Controller.extend({
 
         initialize: function (options) {
 
-            //this.filterModel = options.filterModel || options.collection.filterModel,
-            this.collection = options.collection //new FilterDecorator(options.collection);
+            this.filterModel = options.filterModel || options.collection.filterModel;
+            this.collection = new FilterDecorator(options.collection);
             this.vent = options.vent;
             this.el = options.el;
 
-            this.listenTo( this.vent, 'filter:change', this.onFilterChange, this);
+            this.listenTo(this.vent, 'input:change', this.onInputChange, this);
         },
 
         //----------------------------------------------------
         // onFilterChange
         //----------------------------------------------------
 
-        onFilterChange: function (_filterBy) {
-//           this.filterModel.setFilters(_filterBy);
-//           this.collection.filterBy(this.filterModel);
+        onInputChange: function (_filterBy) {
+            this.filterModel.setFilters(_filterBy);
+            this.collection.filterBy(this.filterModel);
         },
 
         //----------------------------------------------------
         // show
         //----------------------------------------------------
 
-        show:function(){
-//          this.collection.filterAll();
+        show: function () {
+            this.collection.filterAll();
 
             this.autoCompleteTableView = new AutoCompleteCompositeView({
-                vent:this.vent,
+                vent: this.vent,
                 collection: this.collection,
-                el:this.el
+                el: this.el
             });
             this.autoCompleteTableView.render();
         },
@@ -44,7 +45,7 @@ define(function (require) {
         // close
         //----------------------------------------------------
 
-        close:function(){
+        close: function () {
             //this.autoCompleteTableView.render();
         }
     });

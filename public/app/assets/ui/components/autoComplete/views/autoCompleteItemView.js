@@ -25,6 +25,12 @@ define(function (require) {
         _onMouseEnter:function(){
 
             this.vent.trigger("item:over", this)
+        },
+
+        //-------------------------------------------------------------
+
+        setActive:function(isActive){
+            this.$el.toggleClass('active', isActive);
         }
      });
 

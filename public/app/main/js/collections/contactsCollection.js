@@ -3,6 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var ContactModel = require("main-models/contactModel");
+    var ContactsFilterModel = require("main-models/contactsFilterModel");
     var urlResolver = require("assets-resolvers-url/urlResolver");
     var ContactsStorage = require("main-storage/contactsStorage");
     var BaseCollection = require("assets-base-objects/collections/BaseCollection");
@@ -17,11 +18,9 @@ define(function (require) {
 
             model: ContactModel,
 
-            //filterModel: new CntanctsFilterModel(),
+            filterModel: new ContactsFilterModel(),
 
             localStorage: new ContactsStorage(),
-
-            //--------------------------------------------------
 
             url: function() {
 

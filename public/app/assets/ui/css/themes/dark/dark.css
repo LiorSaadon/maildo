@@ -258,13 +258,10 @@ body {
   margin-right: 8px;
 }
 .mb .autoComplete .menu.default-list li.active {
-  background-color: gray;
+  background-color: lightgray;
 }
 .mb .autoComplete .menu.default-list li.active div.dropdown-li-value {
   color: white;
-}
-.mb .autoComplete .menu.default-list li:hover {
-  background-color: lightgray;
 }
 
 /*----------- modules -------------*/
@@ -374,11 +371,7 @@ body {
   padding: 20px;
 }
 .composeView .compose-header .tagsPlaceholder {
-  border: 1px solid red;
   height: 25px;
-}
-.composeView .compose-header .autoCompletePlaceholder {
-  border: 1px solid blue;
 }
 .composeView .compose-header .field {
   padding-bottom: 10px;

@@ -61,15 +61,11 @@
             margin-right: 8px;
           }
           &.active {
-            background-color: gray;
+            background-color: lightgray;
             div.dropdown-li-value {
               color: white;
             }
           }
-          &:hover {
-            background-color: lightgray;
-          }
-
         }
       }
     }

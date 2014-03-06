@@ -31,7 +31,7 @@ define(function (require) {
 
             if (this.filterModel) {
                 items = _.filter(original.models, function (model) {
-                    return that.filterModel.pluck(model);
+                    return that.filterModel.filterBy(model);
                 });
             } else {
                 items = original.models;
