@@ -2,37 +2,12 @@ define(function (require) {
     "use strict";
 
     var Marionette = require("marionette");
-    var template = require("tpl!assets-ui-component/autoComplete/templates/autoCompleteItem.tmpl");
+    var template = require("tpl!assets-ui-component/tags/templates/tag.tmpl");
 
-    var AutoCompleteItemView = Marionette.ItemView.extend({
+    var TagItemView = Marionette.ItemView.extend({
         template:template,
-        tagName:'li',
-        className:'li_row',
-
-        events:{
-            "mouseenter":"_onMouseEnter"
-        },
-
-        //-------------------------------------------------------------
-
-        initialize: function (options) {
-
-            this.vent = options.vent;
-        },
-
-        //-------------------------------------------------------------
-
-        _onMouseEnter:function(){
-
-            this.vent.trigger("item:over", this)
-        },
-
-        //-------------------------------------------------------------
-
-        setActive:function(isActive){
-            this.$el.toggleClass('active', isActive);
-        }
+        className:'tag'
      });
 
-    return AutoCompleteItemView;
+    return TagItemView;
 });

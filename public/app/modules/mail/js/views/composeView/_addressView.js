@@ -2,7 +2,8 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var Tags = require("assets-ui-component/tags/tagsView");
+//    var Tags = require("assets-ui-component/tags/tagsView");
+    var Tags = require("assets-ui-component/tags/tags");
     var template = require("tpl!mail-templates/_addressView.tmpl");
     var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
 
@@ -40,7 +41,7 @@ define(function (require) {
                    el:this.ui.tagsPlaceholder,
                    vent: this.vent
                 });
-                this.tags.render();
+                this.tags.show();
 
                 this.autoComplete = new AutoComplete({
                     collection:this.contacts,

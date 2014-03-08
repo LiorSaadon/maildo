@@ -264,6 +264,63 @@ body {
   color: white;
 }
 
+.mb .tags-container {
+  width: 100%;
+  height: 25px;
+  background-color: white;
+  border: 1px solid gainsboro;
+}
+.mb .tags-container:hover {
+  border-color: #c1c2c3;
+}
+.mb .tags-container:active, .mb .tags-container:focus {
+  outline: none;
+  border-color: #4d90fe;
+  -webkit-box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 3px;
+  -moz-box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 3px;
+  box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 3px;
+}
+.mb .tag-selector {
+  position: relative;
+  display: inline-block;
+  height: auto;
+  min-height: 20px;
+  line-height: 17px;
+  max-width: 100%;
+  overflow: auto;
+  margin: 3px 0px 0px 0px;
+}
+.mb .tag-selector .tag-input {
+  float: left;
+  min-height: 17px;
+  height: auto;
+  display: inline-block;
+  outline: 0;
+  padding: 0px 3px 0 3px;
+  word-spacing: 0;
+}
+.mb .tag {
+  position: relative;
+  height: 20px;
+  max-width: 100%;
+  margin: 2px 0px 2px 0px;
+  display: inline-block;
+}
+.mb .tag .content {
+  height: 100%;
+  position: relative;
+  color: red;
+  background-color: lightgray;
+  font-size: 12px;
+  font-weight: normal;
+  padding: 3px 19px 4px 8px;
+  margin: 0px 4px 0px 0px;
+}
+.mb .tag .content:hover {
+  color: red;
+  background-color: darkslategray;
+}
+
 /*----------- modules -------------*/
 .mb .buttonsToolbar {
   position: absolute;

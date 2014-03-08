@@ -2,16 +2,26 @@ define(function (require) {
     "use strict";
 
     var Marionette = require("marionette");
-    var template = require("tpl!assets-ui-component/tags/templates/tags.tmpl");
-    var tagSelectorTemplate = require("tpl!ui/tags-container/templates/tagSelector.tmpl");
+    var template = require("tpl!assets-ui-component/tags/templates/tagsContainer.tmpl");
+    var tagSelectorTemplate = require("tpl!assets-ui-component/tags/templates/tagSelector.tmpl");
     var TagsItemView = require("assets-ui-component/tags/views/tagsItemView");
+
+    var KeyCode = {
+        ESC: 27,
+        ENTER: 13,
+        ARROW_UP: 38,
+        ARROW_DOWN: 40
+    };
 
     var AutoCompleteCompositeView = Marionette.CompositeView.extend({
 
         template: template,
         itemView: TagsItemView,
-        className: "tags-container",
-        itemViewContainer: ".selected-tags",
+        itemViewContainer: ".tags-container",
+
+        ui:{
+            container:".tags-container"
+        },
 
         events:{
             "click":"onClick",
@@ -40,14 +50,12 @@ define(function (require) {
             this.addTagSelector();
             this.setFocus(true);
             this.getInput().focus();
-            this.setupErrors();
-            this.trigger(TRIGGERING.INPUT_EDIT);
         },
 
         //------------------------------------------------------------
 
         addTagSelector: function() {
-            this.ui.selectedTags.append(tagSelectorTemplate());
+            this.ui.container.append(tagSelectorTemplate());
         },
 
         //-------------------------------------------------------------------------------------------------------------
@@ -72,17 +80,13 @@ define(function (require) {
         onButtonKeyDown: function (event) {
             var key = event.keyCode;
 
-            if (key === KeyCode.ARROW_DOWN || key === KeyCode.ARROW_UP) {
-                this.vent.trigger("key:press", key);
-            }
+//            if (key === KeyCode.ARROW_DOWN || key === KeyCode.ARROW_UP) {
+//                this.vent.trigger("key:press", key);
+//            }
 
             if (key === KeyCode.ENTER) {
-                this.enterState = "unhandle"
-                this.vent.trigger("key:press", key);
-
-                setTimeout(_.bind(function () {
-                    this.handleEnter();
-                }, this), 100)
+                this.vent.trigger("input:enter", $('.tag-input').text());
+                this.ui.container.find(".tag-selector").remove();
             }
         },
 
@@ -106,7 +110,7 @@ define(function (require) {
         //------------------------------------------------------------
 
         onInputChange: function () {
-            this.vent.trigger("input:change", this.ui.tagsInput.val());
+            this.vent.trigger("input:change", this.ui.tagInput.val());
         },
 
         //------------------------------------------------------------
