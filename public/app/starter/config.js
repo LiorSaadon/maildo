@@ -32,7 +32,7 @@ define({
         "assets-resolvers-date":"app/assets/js/resolvers/date",
         "contactsApp": "app/modules/contacts",
         "assets-ui-component":"app/assets/ui/components",
-        "assets-ui-plugins":"app/assets/ui/plugins",
+        "assets-plugins":"app/assets/js/plugins",
         "dev.mockjax":"lib/mockjax/jquery.mockjax",
         "dev.mockjson":"lib/mockjson/jquery.mockjson"
     },

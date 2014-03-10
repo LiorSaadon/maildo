@@ -106,8 +106,13 @@ define(function (require) {
 
         selectItem: function(){
 
+            this.closeEl();
+
             if(this.selectedItem >= 0){
-                this.vent.trigger("item:selected",{title:'gg',address:'ds'})
+                setTimeout(_.bind(function () {
+                    this.vent.trigger("item:selected","ennter1111111111111");
+                }, this), 50)
+
             }
         },
 

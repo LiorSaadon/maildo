@@ -6,6 +6,8 @@ define(function (require) {
     var tagSelectorTemplate = require("tpl!assets-ui-component/tags/templates/tagSelector.tmpl");
     var TagsItemView = require("assets-ui-component/tags/views/tagsItemView");
 
+    require("assets-plugins/jquery.ba-outside-events");
+
     var KeyCode = {
         ESC: 27,
         ENTER: 13,
@@ -27,7 +29,7 @@ define(function (require) {
             "click":"onClick",
             "keydown .tag-input": "onButtonKeyDown",
             "input .tag-input": "onInputChange",
-            "blur .tags-container": "outsideClicked"
+            "clickoutside": "outsideClicked"
         },
 
         //----------------------------------------------------------
@@ -38,7 +40,15 @@ define(function (require) {
 
             this.el = options.el;
             this.vent = options.vent;
-            this.listenTo(this.vent, "item:selected", this.onItemSelect);
+            this.listenTo(this.vent, "item:added", this.addItem);
+        },
+
+
+        //------------------------------------------------------------
+
+        onAfterItemAdded: function () {
+
+            this.onClick();
         },
 
         //----------------------------------------------------------
@@ -58,7 +68,7 @@ define(function (require) {
             this.ui.container.append(tagSelectorTemplate());
         },
 
-        //-------------------------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------
 
         setFocus: function(newState) {
 
@@ -69,7 +79,7 @@ define(function (require) {
             }
         },
 
-        //-------------------------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------
 
         getInput: function() {
             return this.$el.find(".tag-input");
@@ -78,11 +88,12 @@ define(function (require) {
         //----------------------------------------------------------
 
         onButtonKeyDown: function (event) {
+
             var key = event.keyCode;
 
-//            if (key === KeyCode.ARROW_DOWN || key === KeyCode.ARROW_UP) {
-//                this.vent.trigger("key:press", key);
-//            }
+            if (key === KeyCode.ARROW_DOWN || key === KeyCode.ARROW_UP) {
+                this.vent.trigger("key:press", key);
+            }
 
             if (key === KeyCode.ENTER) {
                 this.vent.trigger("input:enter", $('.tag-input').text());
@@ -92,31 +103,27 @@ define(function (require) {
 
         //-----------------------------------------------------------
 
-        handleEnter: function () {
-            if (this.enterState === "unhandle") {
-                console.log("tags:handleEnter");
-                this.vent.trigger("closeAll");
-            }
-        },
-
-        //-----------------------------------------------------------
-
-        onItemSelect: function () {
-            this.enterState = "handle";
-            console.log("tags:onItemSelect");
+        addItem: function () {
             this.vent.trigger("closeAll");
         },
 
         //------------------------------------------------------------
 
         onInputChange: function () {
-            this.vent.trigger("input:change", this.ui.tagInput.val());
+            this.vent.trigger("input:change", $('.tag-input').text());
         },
 
         //------------------------------------------------------------
 
         outsideClicked: function () {
-            this.vent.trigger("closeAll");
+
+            var input = $('.tag-input');
+
+            if(!_.isEmpty(input.text())){
+//                this.vent.trigger("input:enter", $('.tag-input').text());
+//                this.ui.container.find(".tag-selector").remove();
+                this.vent.trigger("closeAll");
+            }
         }
     });
     return AutoCompleteCompositeView;

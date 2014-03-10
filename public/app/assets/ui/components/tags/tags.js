@@ -14,7 +14,8 @@ define(function (require) {
             this.vent = options.vent;
             this.el = options.el;
 
-            this.listenTo(this.vent,"input:enter", this.onEnter)
+            this.listenTo(this.vent,"input:enter", this.onEnter);
+            this.listenTo(this.vent,"item:selected",this.onItemSelected);
         },
 
         //----------------------------------------------------
@@ -31,11 +32,32 @@ define(function (require) {
             this.tagsView.render();
         },
 
-
         //---------------------------------------------------
 
         onEnter:function(val){
-            debugger;
+
+            this.enterState = "unhandle";
+            this.vent.trigger("key:press", 13);
+
+            setTimeout(_.bind(function () {
+                if(this.enterState === "unhandle"){
+                    this.addItem(val);
+                }
+            }, this), 100)
+        },
+
+        //---------------------------------------------------
+
+        onItemSelected:function(val){
+
+            this.enterState = "handle";
+            this.addItem(val);
+        },
+
+        //---------------------------------------------------
+
+        addItem:function(val){
+
             var tag = new TagModel({value:val})
             this.collection.add(tag);
         },
