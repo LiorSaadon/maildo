@@ -24,7 +24,7 @@ define(function (require) {
 
         _onMouseEnter:function(){
 
-            this.vent.trigger("item:over", this)
+            this.vent.trigger("item:over", this);
         },
 
         //-------------------------------------------------------------

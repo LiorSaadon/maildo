@@ -39,10 +39,10 @@ IF Exist %qa% (
   rd  %qa% /S /Q
 )
 
-md %qaBE%
+::md %qaBE%
 md %qaFE%
 
-xcopy %srcBE% %qaBE%  /S  /Q
+::xcopy %srcBE% %qaBE%  /S  /Q
 xcopy %srcFE% %qaFE%  /S  /Q
 
 copy %srcApp% %qaAppTxt%
@@ -58,10 +58,10 @@ IF Exist %prod% (
   rd  %prod% /S /Q
 )
 
-md %prodBE%
+::md %prodBE%
 md %prodFE%
 
-xcopy %srcBE% %prodBE%  /S  /Q
+::xcopy %srcBE% %prodBE%  /S  /Q
 xcopy %srcFE% %prodFE%  /S  /Q
 
 copy %srcApp% %prodApp%

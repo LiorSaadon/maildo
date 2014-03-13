@@ -1,7 +1,7 @@
 define({
 
     "paths": {
-        'main-data':"app/main/data",
+        "main-data":"app/main/data",
         "main-views":  "app/main/js/views",
         "main-templates":"app/main/ui/templates",
         "main-controllers":"app/main/js/controllers",

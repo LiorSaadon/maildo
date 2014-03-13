@@ -17,7 +17,7 @@ define(function (require) {
 
             setFilters:function(filter){
                 filter = _.isString(filter) ? filter : "";
-                this.set("criteria", filter)
+                this.set("criteria", filter);
             },
 
             //-----------------------------------------------------------------------

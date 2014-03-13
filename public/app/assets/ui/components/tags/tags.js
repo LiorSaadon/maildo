@@ -44,7 +44,7 @@ define(function (require) {
                 if(this.enterState === "unhandle"){
                     this.addItem(val);
                 }
-            }, this), 100)
+            }, this), 100);
         },
 
         //---------------------------------------------------
