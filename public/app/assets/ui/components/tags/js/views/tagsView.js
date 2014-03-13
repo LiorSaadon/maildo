@@ -2,9 +2,9 @@ define(function (require) {
     "use strict";
 
     var Marionette = require("marionette");
-    var template = require("tpl!assets-ui-component/tags/templates/tagsContainer.tmpl");
-    var tagSelectorTemplate = require("tpl!assets-ui-component/tags/templates/tagSelector.tmpl");
-    var TagsItemView = require("assets-ui-component/tags/views/tagsItemView");
+    var template = require("tpl!assets-ui-component/tags/ui/templates/tagsContainer.tmpl");
+    var tagSelectorTemplate = require("tpl!assets-ui-component/tags/ui/templates/tagSelector.tmpl");
+    var TagsItemView = require("assets-ui-component/tags/js/views/tagsItemView");
 
     require("assets-plugins/jquery.ba-outside-events");
 

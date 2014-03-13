@@ -26,6 +26,6 @@ javascripts_dir = "../../app/assets/js"
 additional_import_paths = ["../../app/main/ui/scss",
                            "../../app/modules/mail/ui/scss",
                            "../../app/modules/contacts/ui/scss",
-                           "../../app/assets/ui/components/autoComplete/scss",
-                           "../../app/assets/ui/components/tags/scss",
+                           "../../app/assets/ui/components/autoComplete/ui/scss",
+                           "../../app/assets/ui/components/tags/ui/scss",
                            "../../app/assets/ui/scss"]

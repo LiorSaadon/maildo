@@ -348,6 +348,9 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.mb .tag .content.err {
+  border: 1px solid red;
+}
 .mb .tag .close-button {
   background: url("app/assets/ui/img/12x12-sprite.png?1394093108") -540px 0 no-repeat;
   content: "";

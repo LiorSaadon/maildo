@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var Marionette = require("marionette");
-    var template = require("tpl!assets-ui-component/autoComplete/templates/autoCompleteItem.tmpl");
+    var template = require("tpl!assets-ui-component/autoComplete/ui/templates/autoCompleteItem.tmpl");
 
     var AutoCompleteItemView = Marionette.ItemView.extend({
         template:template,

@@ -2,15 +2,16 @@ define(function (require) {
     "use strict";
 
     var Marionette = require("marionette");
-    var TagsView = require("assets-ui-component/tags/views/tagsView");
-    var TagModel = require("assets-ui-component/tags/models/tagModel");
-    var TagsCollection = require("assets-ui-component/tags/collections/tagCollection");
+    var TagsView = require("assets-ui-component/tags/js/views/tagsView");
+    var TagModel = require("assets-ui-component/tags/js/models/tagModel");
+    var TagsCollection = require("assets-ui-component/tags/js/collections/tagCollection");
 
     var Tags = Marionette.Controller.extend({
 
         initialize: function (options) {
 
             this.collection = new TagsCollection();
+            this.validator = options.validator;
             this.vent = options.vent;
             this.el = options.el;
 
@@ -58,9 +59,15 @@ define(function (require) {
 
         addItem:function(val){
 
-            var tag = new TagModel({value:val})
+            var isValid = false;
+
+            if(_.isFunction(this.validator)){
+                isValid = this.validator(val);
+            }
+
+            var tag = new TagModel({value:val, isValid:isValid});
             this.collection.add(tag);
-        },
+    },
 
         //----------------------------------------------------
         // close
