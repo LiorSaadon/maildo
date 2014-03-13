@@ -38,7 +38,8 @@ define(function (require) {
 
                 this.tags = new Tags({
                    el:this.ui.tagsPlaceholder,
-                   vent: this.vent
+                   vent: this.vent,
+                    validator: this.model.validateAddress
                 });
                 this.tags.show();
 

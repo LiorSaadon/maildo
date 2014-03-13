@@ -31,6 +31,7 @@ define(function (require) {
                this.set("sentTime", dateResolver.date2Str(new Date(),false));
             },
 
+
             //-------------------------------------------
 
             validate: function (attrs,options) {
@@ -40,6 +41,14 @@ define(function (require) {
                         return "Please specify at least one recipient.";
                     }
                 }
+            },
+
+            //-------------------------------------------
+
+            validateAddress: function(address){
+
+                var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+                return reg.test(address);
             },
 
             //-------------------------------------------

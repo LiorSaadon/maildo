@@ -59,7 +59,7 @@ define(function (require) {
 
         addItem:function(val){
 
-            var isValid = false;
+            var isValid = true;
 
             if(_.isFunction(this.validator)){
                 isValid = this.validator(val);
