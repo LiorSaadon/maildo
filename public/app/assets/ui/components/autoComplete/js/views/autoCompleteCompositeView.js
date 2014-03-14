@@ -110,7 +110,7 @@ define(function (require) {
 
             if(this.selectedItem >= 0){
                 setTimeout(_.bind(function () {
-                    this.vent.trigger("item:selected","ennter1111111111111");
+                    this.vent.trigger("item:selected",this.childArr[this.selectedItem].model.get("title"));
                 }, this), 50);
             }
         },

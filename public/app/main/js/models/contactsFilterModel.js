@@ -5,29 +5,22 @@ define(function (require) {
 
     var ContactsFilterModel = {};
 
-    app.module('mail', function (mail, mb,  Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
 
         ContactsFilterModel = Backbone.Model.extend({
 
-            defaults: {
-                criteria:""
+            setInput: function (input) {
+                this.input = _.isString(input) ? input : "";
             },
 
             //-----------------------------------------------------------------------
 
-            setFilters:function(filter){
-                filter = _.isString(filter) ? filter : "";
-                this.set("criteria", filter);
-            },
+            filterBy: function (contactModel) {
 
-            //-----------------------------------------------------------------------
+                var inTitle = (contactModel.get("title").substring(0, this.input.length) === this.input);
+                var inAddress = (contactModel.get("address").substring(0, this.input.length) === this.input);
 
-            filterBy:function(contactModel){
-
-               if(this.get("criteria") === ""){
-                   return false;
-               }
-               return true;
+                return inTitle || inAddress;
             }
         });
     });

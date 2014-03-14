@@ -8,6 +8,18 @@ define(function (require) {
         defaults : {
             title:'',
             address:''
+        },
+
+        parse: function(response, options) {
+           var res = {};
+
+           if(_.isString(response)){
+               res = {
+                   title:response,
+                   address: response + "@mailbone.com"
+               }
+           }
+            return res;
         }
     });
 

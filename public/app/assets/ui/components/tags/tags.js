@@ -42,7 +42,7 @@ define(function (require) {
 
             setTimeout(_.bind(function () {
                 if(this.enterState === "unhandle"){
-                    this.addItem(val);
+                    this.addItem(val, this._validate(val));
                 }
             }, this), 100);
         },
@@ -52,22 +52,28 @@ define(function (require) {
         onItemSelected:function(val){
 
             this.enterState = "handle";
-            this.addItem(val);
+            this.addItem(val,true);
         },
 
         //---------------------------------------------------
 
-        addItem:function(val){
+        addItem:function(val,isValid){
+
+            var tag = new TagModel({value:val, isValid:isValid});
+            this.collection.add(tag);
+        },
+
+        //---------------------------------------------------
+
+        _validate:function(val){
 
             var isValid = true;
 
             if(_.isFunction(this.validator)){
                 isValid = this.validator(val);
             }
-
-            var tag = new TagModel({value:val, isValid:isValid});
-            this.collection.add(tag);
-    },
+            return isValid;
+        },
 
         //----------------------------------------------------
         // close

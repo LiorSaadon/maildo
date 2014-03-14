@@ -11,6 +11,7 @@ define(function (require) {
 
             this.filterModel = options.filterModel || options.collection.filterModel;
             this.collection = new FilterDecorator(options.collection);
+            this.maxItems = options.maxItems || 5;
             this.vent = options.vent;
             this.el = options.el;
 
@@ -21,9 +22,14 @@ define(function (require) {
         // onFilterChange
         //----------------------------------------------------
 
-        onInputChange: function (_filterBy) {
-            this.filterModel.setFilters(_filterBy);
-            this.collection.filterBy(this.filterModel);
+        onInputChange: function (input) {
+
+            if(_.isEmpty(input)){
+                this.collection.filterAll();
+            }else{
+                this.filterModel.setInput(input);
+                this.collection.filterBy(this.filterModel,this.maxItems);
+            }
         },
 
         //----------------------------------------------------
@@ -46,7 +52,7 @@ define(function (require) {
         //----------------------------------------------------
 
         close: function () {
-            //this.autoCompleteTableView.render();
+
         }
     });
     return AutoComplete;

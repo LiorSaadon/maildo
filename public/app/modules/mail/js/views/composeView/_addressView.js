@@ -37,8 +37,9 @@ define(function (require) {
             onRender:function(){
 
                 this.tags = new Tags({
-                   el:this.ui.tagsPlaceholder,
-                   vent: this.vent,
+                    el:this.ui.tagsPlaceholder,
+                    vent: this.vent,
+                    maxItems: 5,
                     validator: this.model.validateAddress
                 });
                 this.tags.show();

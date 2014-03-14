@@ -61,7 +61,7 @@
 
     position: relative;
     height: 20px;
-    max-width: 100%;
+    //max-width: 100%;
     margin: 2px 4px 2px 0px;
     display: inline-block;
     vertical-align: middle;
@@ -76,9 +76,10 @@
       position: relative;
       color: #767678;
       background-color: #F5F5F5;
+      border:1px solid #D9D9D9;
       font-size: 12px;
       font-weight: normal;
-      padding: 0px 19px 4px 8px;
+      padding: 0px 10px 4px 8px;
       box-sizing: border-box;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
@@ -95,7 +96,9 @@
       }
 
       &.err{
-        border:1px solid red;
+        background-color: #ffffff;
+        border:0px;
+        border-bottom:1px dashed red;
       }
     }
 

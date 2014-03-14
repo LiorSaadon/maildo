@@ -19,7 +19,7 @@ define(function (require) {
         // filterBy
         //------------------------------------------------
 
-        filterCollection.filterBy = function (_filterModel) {
+        filterCollection.filterBy = function (_filterModel, maxItems) {
 
             var items, that = this;
 
@@ -37,6 +37,9 @@ define(function (require) {
                 items = original.models;
             }
 
+            if(_.isFinite(maxItems)){
+                items = items.slice(0,maxItems);
+            }
             filterCollection.reset(items);
         };
 
