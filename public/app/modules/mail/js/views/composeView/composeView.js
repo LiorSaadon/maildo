@@ -2,59 +2,72 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var Marionette = require("marionette");
     var template = require("tpl!mail-templates/composeView.tmpl");
+    var AddressView = require("mail-views/composeView/_addressView");
 
-    var ActionView ={};
+    var ComposeView ={};
 
     app.module('mail', function (mail, mb,  Backbone, Marionette, $, _) {
-        ActionView = Marionette.ItemView.extend({
+        ComposeView = Marionette.ItemView.extend({
             template: template,
             className: 'composeView',
 
             ui: {
-                inputTo: ".to",
-                inputCc: ".cc",
-                inputBcc: ".bcc",
+                toInputWrapper: ".toInputWrapper",
+                ccInputWrapper: ".ccInputWrapper",
+                bccInputWrapper: ".bccInputWrapper",
                 inputSubject: ".subject",
                 inputEditor: ".compose-editor",
+                header:".compose-header",
                 addCc: '.addCc',
                 addBcc: '.addBcc',
                 ccLine: '.ccLine',
-                bccLine: '.bccLine',
-                header:".compose-header"
+                bccLine: '.bccLine'
             },
 
             events: {
-                "change .to": "onToChange",
-                "change .cc": "onCcChange",
-                "change .bcc": "onBccChange",
                 "change .subject": "onSubjectChange",
                 "blur .compose-editor": "onBodyBlur",
                 "click .addCc": "showCc",
                 "click .addBcc": "showBcc"
             },
 
-            initialize:function(){
+            //----------------------------------------------------------------
 
+            initialize:function(options){
+
+                this.contacts = options.contacts;
             },
 
-            //-----------------------------------------------------------------
+            //------------------------------------------------------
+            // onRender
+            //------------------------------------------------------
 
-            onToChange: function(){
-                this.model.set('to',this.ui.inputTo.val());
-            },
+            onRender: function () {
 
-            //-----------------------------------------------------------------
+                this.toView = new AddressView({
+                    contacts:this.contacts,
+                    model:this.model,
+                    modelAttr:'to',
+                    el: this.ui.toInputWrapper
+                });
+                this.toView.render();
 
-            onCcChange: function(){
-                this.model.set('cc',this.ui.inputCc.val());
-            },
+                this.ccView = new AddressView({
+                    contacts:this.contacts,
+                    model:this.model,
+                    modelAttr:'cc',
+                    el: this.ui.ccInputWrapper
+                });
+                this.ccView.render();
 
-            //-----------------------------------------------------------------
-
-            onBccChange: function(){
-                this.model.set('bcc',this.ui.inputBcc.val());
+                this.bccView = new AddressView({
+                    contacts:this.contacts,
+                    model:this.model,
+                    modelAttr:'bcc',
+                    el: this.ui.bccInputWrapper
+                });
+                this.bccView.render();
             },
 
             //-----------------------------------------------------------------
@@ -93,5 +106,5 @@ define(function (require) {
         });
     });
 
-    return ActionView;
+    return ComposeView;
 });

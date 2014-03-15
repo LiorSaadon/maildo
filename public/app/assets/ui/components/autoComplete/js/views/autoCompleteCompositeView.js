@@ -23,6 +23,7 @@ define(function (require) {
 
             this.vent = options.vent;
 
+            this.listenTo(this.vent, "item:click", this.selectItem);
             this.listenTo(this.vent, "item:over", this.onHover);
             this.listenTo(this.vent, "key:press", this.onKeyPress);
             this.listenTo(this.vent, "closeAll", this.closeEl);
@@ -110,7 +111,8 @@ define(function (require) {
 
             if(this.selectedItem >= 0){
                 setTimeout(_.bind(function () {
-                    this.vent.trigger("item:selected",this.childArr[this.selectedItem].model.get("title"));
+                    var itemModel = this.childArr[this.selectedItem].model;
+                    this.vent.trigger("item:selected",itemModel.getText(),itemModel.getValue());
                 }, this), 50);
             }
         },

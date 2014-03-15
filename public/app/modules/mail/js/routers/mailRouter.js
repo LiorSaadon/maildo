@@ -23,8 +23,7 @@ define(function (require) {
                     "search/:param1":"search",
                     "search/:param1/:param2":"search",
                     "settings":"settings",
-                    "compose":"compose",
-                    "tmpcompose":"tmpcompose"
+                    "compose":"compose"
                 },
 
                 //---------------------------------------------

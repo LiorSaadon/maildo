@@ -20,6 +20,14 @@ define(function (require) {
                }
            }
             return res;
+        },
+
+        getText:function(){
+            return this.get("title");
+        },
+
+        getValue: function(){
+            return this.get("address");
         }
     });
 

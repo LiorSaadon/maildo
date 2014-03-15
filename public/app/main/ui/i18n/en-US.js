@@ -3,7 +3,7 @@ define(function () {
 
     var Dictionary = {
 
-        'mb.title': 'The art of MVC in a real-world WEB Application.',
+        'mb.title': 'The Art of MVC in practice!',
         'mb.techbar.about' : 'About',
         'mb.techbar.tutorial' : 'Tutorial',
         'mb.techbar.resources' : 'Resources'

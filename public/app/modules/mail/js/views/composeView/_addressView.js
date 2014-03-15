@@ -27,9 +27,8 @@ define(function (require) {
                 this.modelAttr = options.modelAttr;
                 this.vent = new Backbone.Wreqr.EventAggregator();
 
-                this.listenTo(this.vent, 'add:item', this.addItem, this);
-                this.listenTo(this.vent, 'remove:item', this.removeItem, this);
-                this.listenTo(this.vent, 'select:item', this.selectItem, this);
+                this.listenTo(this.vent, 'tag:add', this.addAddress, this);
+                this.listenTo(this.vent, 'tag:remove', this.removeAddress, this);
             },
 
             //-----------------------------------------------------------------
@@ -54,20 +53,20 @@ define(function (require) {
 
             //-----------------------------------------------------------------
 
-            addItem: function(item){
-                this.model.set(this.modelAttr,item);
+            addAddress: function(item){
+
+                var arr = this.model.get(this.modelAttr);
+                arr.push(item);
             },
 
             //-----------------------------------------------------------------
 
-            removeItem: function(){
+            removeAddress: function(_item){
 
-            },
-
-            //----------------------------------------------------------------
-
-            selectItem: function(){
-
+                var arr = _.reject(this.model.get(this.modelAttr), function(item) {
+                    return item === _item;
+                });
+                this.model.set(this.modelAttr, arr);
             }
         });
     });

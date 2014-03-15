@@ -9,11 +9,24 @@ define(function (require) {
         className:'tag',
 
         ui:{
-            content: ".content"
+            content: ".content",
+            btnClose: ".close-button"
+        },
+
+        events:{
+          "click .close-button":"_onCloseBtnClick"
+        },
+
+        initialize: function (options) {
+            this.vent = options.vent;
         },
 
         onRender:function(){
             this.ui.content.toggleClass("err", !this.model.get("isValid"));
+        },
+
+        _onCloseBtnClick:function(){
+            this.vent.trigger("item:remove", this.model.cid);
         }
      });
 

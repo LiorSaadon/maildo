@@ -10,7 +10,8 @@ define(function (require) {
         className:'li_row',
 
         events:{
-            "mouseenter":"_onMouseEnter"
+            "mouseenter":"_onMouseEnter",
+            "click":"_onClick"
         },
 
         //-------------------------------------------------------------
@@ -25,6 +26,13 @@ define(function (require) {
         _onMouseEnter:function(){
 
             this.vent.trigger("item:over", this);
+        },
+
+        //-------------------------------------------------------------
+
+        _onClick:function(){
+
+            this.vent.trigger("item:click");
         },
 
         //-------------------------------------------------------------

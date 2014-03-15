@@ -40,9 +40,25 @@ define(function (require) {
 
             this.el = options.el;
             this.vent = options.vent;
-            this.listenTo(this.vent, "item:added", this.addItem);
         },
 
+        //--------------------------------------------------------------
+
+        buildItemView: function (item, ItemView) {
+
+            var view = new ItemView({
+                model: item,
+                vent: this.vent
+            });
+            return view;
+        },
+
+        //------------------------------------------------------------
+
+        onRender: function(){
+
+            this.ui.container.append(tagSelectorTemplate());
+        },
 
         //------------------------------------------------------------
 
@@ -57,15 +73,19 @@ define(function (require) {
 
         onClick: function() {
 
-            this.addTagSelector();
+            this.resetInput();
             this.setFocus(true);
-            this.getInput().focus();
         },
 
         //------------------------------------------------------------
 
-        addTagSelector: function() {
-            this.ui.container.append(tagSelectorTemplate());
+        resetInput: function() {
+
+            var tagSelector = this.$el.find(".tag-input");
+
+            tagSelector.text("");
+            tagSelector.show();
+            tagSelector.focus();
         },
 
         //-------------------------------------------------------------
@@ -79,12 +99,6 @@ define(function (require) {
             }
         },
 
-        //-------------------------------------------------------------
-
-        getInput: function() {
-            return this.$el.find(".tag-input");
-        },
-
         //----------------------------------------------------------
 
         onButtonKeyDown: function (event) {
@@ -96,20 +110,15 @@ define(function (require) {
             }
 
             if (key === KeyCode.ENTER) {
+                $('.tag-input').hide();
                 this.vent.trigger("input:enter", $('.tag-input').text());
-                this.ui.container.find(".tag-selector").remove();
             }
-        },
-
-        //-----------------------------------------------------------
-
-        addItem: function () {
-            this.vent.trigger("closeAll");
         },
 
         //------------------------------------------------------------
 
         onInputChange: function () {
+
             this.vent.trigger("input:change", $('.tag-input').text());
         },
 
@@ -120,8 +129,6 @@ define(function (require) {
             var input = $('.tag-input');
 
             if(!_.isEmpty(input.text())){
-//                this.vent.trigger("input:enter", $('.tag-input').text());
-//                this.ui.container.find(".tag-selector").remove();
                 this.vent.trigger("closeAll");
             }
         }

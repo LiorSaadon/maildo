@@ -24,12 +24,6 @@ define(function (require) {
 
             //-------------------------------------------------
 
-            tmpcompose:function(){
-                app.context.set("router.state",{'action':'tmpcompose'});
-            },
-
-            //-------------------------------------------------
-
             settings:function(param1,param2){
                 app.context.set("router.state",{'action':'settings'});
             },

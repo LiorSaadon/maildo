@@ -16,6 +16,7 @@ define(function (require) {
             this.el = options.el;
 
             this.listenTo(this.vent,"input:enter", this.onEnter);
+            this.listenTo(this.vent,"item:remove", this.onRemoveItem)
             this.listenTo(this.vent,"item:selected",this.onItemSelected);
         },
 
@@ -42,25 +43,41 @@ define(function (require) {
 
             setTimeout(_.bind(function () {
                 if(this.enterState === "unhandle"){
-                    this.addItem(val, this._validate(val));
+                    this._addItem(val, val, this._validate(val));
                 }
             }, this), 100);
         },
 
         //---------------------------------------------------
 
-        onItemSelected:function(val){
+        onItemSelected:function(text, value){
 
             this.enterState = "handle";
-            this.addItem(val,true);
+            this._addItem(text,value,true);
         },
 
         //---------------------------------------------------
 
-        addItem:function(val,isValid){
+        onRemoveItem:function(tagId){
 
-            var tag = new TagModel({value:val, isValid:isValid});
+            var tagModel = this.collection.get(tagId);
+
+            if(_.isObject(tagModel)){
+                this.collection.remove(tagModel);
+                this.vent.trigger("tag:remove", tagModel.get("value"));
+            }
+        },
+
+        //---------------------------------------------------
+
+        _addItem:function(text, val,isValid){
+
+            text = _.isEmpty(text) ? val : text;
+
+            var tag = new TagModel({value:val, text:text, isValid:isValid});
             this.collection.add(tag);
+
+            this.vent.trigger("tag:add", val);
         },
 
         //---------------------------------------------------
@@ -73,14 +90,6 @@ define(function (require) {
                 isValid = this.validator(val);
             }
             return isValid;
-        },
-
-        //----------------------------------------------------
-        // close
-        //----------------------------------------------------
-
-        close: function () {
-
         }
     });
     return Tags;

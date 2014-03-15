@@ -8,7 +8,6 @@ define(function (require) {
     var ActionView = require("mail-views/actionView/actionView");
     var MailTableView = require("mail-views/mailTableView");
     var ComposeView = require("mail-views/composeView/composeView");
-    var TmpComposeView = require("mail-views/composeView/tmpComposeView");
     var SettingsView = require("mail-views/settingsView");
     var MailModel = require("mail-models/mailModel");
 
@@ -62,9 +61,6 @@ define(function (require) {
                     case "compose":
                         this.compose();
                         break;
-                    case "tmpcompose":
-                        this.tmpCompose();
-                        break;
                     case "settings":
                         this.showSettings();
                         break;
@@ -74,7 +70,7 @@ define(function (require) {
             },
 
             //----------------------------------------------------
-            // compose
+            // showSettings
             //----------------------------------------------------
 
             compose: function () {
@@ -82,20 +78,6 @@ define(function (require) {
                 var mailModel = mail.newMailActionsController.composeModel();
 
                 var composeView = new ComposeView({
-                    model:mailModel
-                });
-                this.mailLayout.dataRegion.show(composeView);
-            },
-
-            //----------------------------------------------------
-            // tmpCompose
-            //----------------------------------------------------
-
-            tmpCompose: function () {
-
-                var mailModel = mail.newMailActionsController.composeModel();
-
-                var composeView = new TmpComposeView({
                     model:mailModel,
                     contacts:app.dataController.contactsCollection
                 });
