@@ -3,6 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var Backbone = require("backbone");
+    var ContactModel = require("main-models/contactModel");
     var Tags = require("assets-ui-component/tags/tags");
     var template = require("tpl!mail-templates/_addressView.tmpl");
     var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
@@ -61,13 +62,27 @@ define(function (require) {
 
             renderAutoComponent:function(){
 
+                debugger;
                 this.autoComplete = new AutoComplete({
-                    collection:app.dataController.contactsCollection,
+                    collection:this.getCollection(),
                     el:this.ui.autoCompletePlaceholder,
-                    footer: {text:"333", value:"222"},
                     vent: this.vent
                 });
                 this.autoComplete.show();
+            },
+
+            //----------------------------------------------------------------
+
+            getCollection:function(){
+
+                var coll = $.extend({}, app.dataController.contactsCollection);
+
+                coll.add( new ContactModel({
+                    title:"me",
+                    address:"demo@mailbone.com"
+                }));
+
+                return coll;
             },
 
             //-----------------------------------------------------------------
