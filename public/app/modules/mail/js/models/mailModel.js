@@ -27,7 +27,7 @@ define(function (require) {
 
             initialize:function(attrs, options){
 
-               this.localStorage= new MailStorage();
+               this.localStorage = new MailStorage();
                this.set("sentTime", dateResolver.date2Str(new Date(),false));
             },
 
@@ -37,7 +37,7 @@ define(function (require) {
             validate: function (attrs,options) {
 
                 if(options.silent !== true){
-                    if (this.get("to") === '' && this.get("cc") === '' && this.get("bcc") === '') {
+                    if (this.get("to").length == 0 && this.get("cc").length == 0 && this.get("bcc").length == 0) {
                         return "Please specify at least one recipient.";
                     }
                 }

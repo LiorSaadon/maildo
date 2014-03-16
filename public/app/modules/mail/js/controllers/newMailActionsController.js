@@ -61,7 +61,7 @@ define(function (require) {
 
             //-------------------------------------------
 
-            send: function () {
+            send: function() {
 
                 var that = this;
 

@@ -5,7 +5,7 @@
   }
 
   .autoComplete{
-.menu {
+    .menu {
       &.default-list {
         cursor: default;
         position: absolute;
@@ -41,7 +41,7 @@
           -ms-border-radius: 2px;
           -o-border-radius: 2px;
           border-radius: 2px;
-          padding: 7px 9px;
+          padding: 8px 8px;
           border-top: 1px solid #e5e5e5;
           min-height: 15px;
           -webkit-box-sizing: border-box;
@@ -52,13 +52,20 @@
             border: none;
           }
           min-height: 15px;
-         // @include box-sizing(border-box);
+          // @include box-sizing(border-box);
           color: gray;
           div.dropdown-li-value {
             display: inline-block;
           }
           div.dropdown-li-icon {
             margin-right: 8px;
+          }
+          span.text{
+            font-weight: bold;
+            padding-right: 8px;
+          }
+          span.value{
+            font-size: 11px;
           }
           &.active {
             background-color: lightgray;

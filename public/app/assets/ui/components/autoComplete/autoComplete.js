@@ -45,14 +45,6 @@ define(function (require) {
                 el: this.el
             });
             this.autoCompleteTableView.render();
-        },
-
-        //----------------------------------------------------
-        // close
-        //----------------------------------------------------
-
-        close: function () {
-
         }
     });
     return AutoComplete;

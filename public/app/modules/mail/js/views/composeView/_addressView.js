@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var Backbone = require("backbone");
     var Tags = require("assets-ui-component/tags/tags");
     var template = require("tpl!mail-templates/_addressView.tmpl");
     var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
@@ -20,6 +21,8 @@ define(function (require) {
             },
 
             //----------------------------------------------------------------
+            // initialize
+            //----------------------------------------------------------------
 
             initialize:function(options){
 
@@ -31,9 +34,19 @@ define(function (require) {
                 this.listenTo(this.vent, 'tag:remove', this.removeAddress, this);
             },
 
-            //-----------------------------------------------------------------
+            //----------------------------------------------------------------
+            // onRender
+            //----------------------------------------------------------------
 
             onRender:function(){
+
+                this.renderTagComponent();
+                this.renderAutoComponent();
+            },
+
+            //----------------------------------------------------------------
+
+            renderTagComponent:function(){
 
                 this.tags = new Tags({
                     el:this.ui.tagsPlaceholder,
@@ -42,13 +55,19 @@ define(function (require) {
                     validator: this.model.validateAddress
                 });
                 this.tags.show();
+            },
+
+            //----------------------------------------------------------------
+
+            renderAutoComponent:function(){
 
                 this.autoComplete = new AutoComplete({
-                    collection:this.contacts,
+                    collection:app.dataController.contactsCollection,
                     el:this.ui.autoCompletePlaceholder,
+                    footer: {text:"333", value:"222"},
                     vent: this.vent
                 });
-               this.autoComplete.show();
+                this.autoComplete.show();
             },
 
             //-----------------------------------------------------------------

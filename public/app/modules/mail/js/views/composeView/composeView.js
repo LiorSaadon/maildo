@@ -46,7 +46,6 @@ define(function (require) {
             onRender: function () {
 
                 this.toView = new AddressView({
-                    contacts:this.contacts,
                     model:this.model,
                     modelAttr:'to',
                     el: this.ui.toInputWrapper
@@ -54,7 +53,6 @@ define(function (require) {
                 this.toView.render();
 
                 this.ccView = new AddressView({
-                    contacts:this.contacts,
                     model:this.model,
                     modelAttr:'cc',
                     el: this.ui.ccInputWrapper
@@ -62,7 +60,6 @@ define(function (require) {
                 this.ccView.render();
 
                 this.bccView = new AddressView({
-                    contacts:this.contacts,
                     model:this.model,
                     modelAttr:'bcc',
                     el: this.ui.bccInputWrapper
