@@ -70,7 +70,7 @@ define(function (require) {
 
         //---------------------------------------------------
 
-        _addItem:function(text, val,isValid){
+        _addItem:function(text, val, isValid){
 
             text = _.isEmpty(text) ? val : text;
 

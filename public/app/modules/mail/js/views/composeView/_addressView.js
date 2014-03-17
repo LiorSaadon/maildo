@@ -52,7 +52,7 @@ define(function (require) {
                 this.tags = new Tags({
                     el:this.ui.tagsPlaceholder,
                     vent: this.vent,
-                    maxItems: 5,
+                    maxItems: 500,
                     validator: this.model.validateAddress
                 });
                 this.tags.show();
@@ -62,27 +62,19 @@ define(function (require) {
 
             renderAutoComponent:function(){
 
-                debugger;
                 this.autoComplete = new AutoComplete({
-                    collection:this.getCollection(),
+                    collection:app.dataController.contactsCollection,
                     el:this.ui.autoCompletePlaceholder,
                     vent: this.vent
                 });
                 this.autoComplete.show();
             },
 
-            //----------------------------------------------------------------
+            //-----------------------------------------------------------------
 
-            getCollection:function(){
+            addDefaultAddress: function(title, address){
 
-                var coll = $.extend({}, app.dataController.contactsCollection);
-
-                coll.add( new ContactModel({
-                    title:"me",
-                    address:"demo@mailbone.com"
-                }));
-
-                return coll;
+                this.vent.trigger("item:selected",title,address);
             },
 
             //-----------------------------------------------------------------

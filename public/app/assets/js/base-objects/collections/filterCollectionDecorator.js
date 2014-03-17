@@ -5,9 +5,8 @@ define(function (require) {
 
 
     //============================================================
-    // GridViewCollectionDecorator
+    // FilterCollectionDecorator
     //============================================================
-
 
     var FilterCollectionDecorator = function (original) {
 

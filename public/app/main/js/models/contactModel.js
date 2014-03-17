@@ -11,15 +11,14 @@ define(function (require) {
         },
 
         parse: function(response, options) {
-           var res = {};
-
-           if(_.isString(response)){
-               res = {
-                   title:response,
-                   address: response + "@mailbone.com"
-               }
+           return {
+               title:response,
+               address: this._getAddress(response)
            }
-            return res;
+        },
+
+        _getAddress:function(response){
+           return response == "me" ? "demo@mailbone.com" : response + "@mailbone.com"
         },
 
         getText:function(){

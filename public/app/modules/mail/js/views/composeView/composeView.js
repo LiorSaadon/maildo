@@ -32,7 +32,7 @@ define(function (require) {
                 "click .addBcc": "showBcc"
             },
 
-            //----------------------------------------------------------------
+            //------------------------------------------------------
 
             initialize:function(options){
 
@@ -52,6 +52,8 @@ define(function (require) {
                 });
                 this.toView.render();
 
+                //-------------------------------------
+
                 this.ccView = new AddressView({
                     model:this.model,
                     modelAttr:'cc',
@@ -59,13 +61,19 @@ define(function (require) {
                 });
                 this.ccView.render();
 
+                //------------------------------------
+
                 this.bccView = new AddressView({
                     model:this.model,
                     modelAttr:'bcc',
                     el: this.ui.bccInputWrapper
                 });
                 this.bccView.render();
-            },
+
+                //-----------------------------------
+
+                this.toView.addDefaultAddress("me", "demo@mailbone.com");
+             },
 
             //-----------------------------------------------------------------
 
