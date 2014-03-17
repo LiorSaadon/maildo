@@ -1,3 +1,4 @@
 1. remove persist
 2. main --> frame
+3. remove build from public and add to gitignore
 3. bugs
