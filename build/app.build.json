@@ -1,5 +1,5 @@
 {
-    "appDir": "./public",
+    "appDir": "../public",
     "baseUrl": ".",
     "paths": {
         "underscore": "lib/lodash/lodash",
@@ -161,5 +161,5 @@
     "buildModules": [
         "*"
     ],
-    "dir": "./public/target"
+    "dir": "../public/target"
 }

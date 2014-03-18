@@ -15,7 +15,7 @@ call "node_modules/.bin/grunt"
 set srcBE=%1\backEnd
 set srcFE=%1\public\target
 set srcApp=%1\app.js
-set srcPackage=%1\package.json
+set srcPackage=%1\build\package.json
 
 set qa=%2
 set qaBE=%2\backEnd
