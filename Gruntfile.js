@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 
         jshint:{
             options:{
-                jshintrc:"./public/build/.jshintrc"
+                jshintrc:"./tools/build/.jshintrc"
             },
             uses_defaults:['./public/app/**/*.js']
         },
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 
         requirejs: {
             compile: {
-                options: grunt.file.readJSON('./public/build/app.build.json')
+                options: grunt.file.readJSON('./tools/build/app.build.json')
             }
         },
 

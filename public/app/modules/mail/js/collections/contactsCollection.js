@@ -2,10 +2,10 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var ContactModel = require("main-models/contactModel");
-    var ContactsFilterModel = require("main-models/contactsFilterModel");
+    var ContactModel = require("mail-models/contactModel");
+    var ContactsFilterModel = require("mail-models/contactsFilterModel");
     var urlResolver = require("assets-resolvers-url/urlResolver");
-    var ContactsStorage = require("main-storage/contactsStorage");
+    var ContactsStorage = require("mail-storage/contactsStorage");
     var BaseCollection = require("assets-base-objects/collections/BaseCollection");
 
     var ContactsCollection = {};

@@ -11,7 +11,6 @@ define(function (require) {
     var ThemesController = require("main-controllers/themesController");
     var SettingsController = require("main-controllers/settingsController");
     var MainLayoutController = require("main-controllers/mainLayoutController");
-    var DataController = require("main-controllers/dataController");
 
     //------------------------------------------
     // init
@@ -26,7 +25,6 @@ define(function (require) {
         app.themesController = new ThemesController();
         app.settingsController = new SettingsController();
         app.layoutController = new MainLayoutController();
-        app.dataController = new DataController();
     });
 
     //------------------------------------------

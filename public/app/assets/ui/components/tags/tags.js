@@ -16,7 +16,7 @@ define(function (require) {
             this.el = options.el;
 
             this.listenTo(this.vent,"input:enter", this.onEnter);
-            this.listenTo(this.vent,"item:remove", this.onRemoveItem)
+            this.listenTo(this.vent,"item:remove", this.onRemoveItem);
             this.listenTo(this.vent,"item:selected",this.onItemSelected);
         },
 

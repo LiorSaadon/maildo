@@ -3,7 +3,9 @@ define(function (require) {
 
     var app = require("mbApp");
     var MailCollection = require("mail-collections/mailCollection");
+    var ContactsCollection = require("mail-collections/contactsCollection");
     var SelectableDecortator = require("assets-base-objects/collections/selectableCollectionDecorator");
+    var PreliminaryDataController = require("mail-controllers/preliminaryDataController");
 
     var DataController = {};
 
@@ -13,15 +15,25 @@ define(function (require) {
 
             initialize: function () {
 
+                this.preliminaryDataController = new PreliminaryDataController();
+                this.preliminaryDataController.setData();
+
                 this.mails = new SelectableDecortator(new MailCollection());
-                //setTimeout(this.mails.persist, 15000);
 
-                //load userCollection without waiting
-
+                this.contactsCollection = new ContactsCollection();
+                this.contactsCollection.fetch();
             },
+
+            //------------------------------------------------------
 
             getMailCollection : function () {
                 return this.mails;
+            },
+
+            //------------------------------------------------------
+
+            getContactsCollection: function(){
+               return this.contactsCollection;
             }
         });
     });

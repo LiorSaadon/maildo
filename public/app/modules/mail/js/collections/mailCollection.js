@@ -4,7 +4,7 @@ define(function (require) {
     var app = require("mbApp");
     var MailModel = require("mail-models/mailModel");
     var urlResolver = require("assets-resolvers-url/urlResolver");
-    var MailStorage = require("mail-storage");
+    var MailStorage = require("mail-storage/mailStorage");
     var PersistentCollection = require("assets-base-objects/collections/PersistentCollection");
 
     var MailCollection = {};

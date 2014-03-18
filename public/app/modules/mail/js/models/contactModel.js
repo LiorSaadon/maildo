@@ -14,11 +14,11 @@ define(function (require) {
            return {
                title:response,
                address: this._getAddress(response)
-           }
+           };
         },
 
         _getAddress:function(response){
-           return response == "me" ? "demo@mailbone.com" : response + "@mailbone.com"
+           return response == "me" ? "demo@mailbone.com" : response + "@mailbone.com";
         },
 
         getText:function(){

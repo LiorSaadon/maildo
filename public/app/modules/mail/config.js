@@ -9,7 +9,7 @@ define({
         "mail-controllers":"app/modules/mail/js/controllers",
         "mail-mocks":"app/modules/mail/mocks",
         "mail-collections":"app/modules/mail/js/collections",
-        "mail-storage":"app/modules/mail/js/storage/mailStorage"
+        "mail-storage":"app/modules/mail/js/storage"
     },
     "shim": {
     }

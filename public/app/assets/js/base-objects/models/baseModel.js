@@ -3,7 +3,7 @@ define(function (require) {
 
     var Backbone = require("backbone");
     var DeepModel = require("backbone.deepmodel");
-    var MailStorage = require("mail-storage");
+    var MailStorage = require("mail-storage/mailStorage");
 
     var BaseModel = DeepModel.extend({
 

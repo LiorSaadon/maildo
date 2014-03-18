@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var Backbone = require("backbone");
-    var ContactModel = require("main-models/contactModel");
+    var ContactModel = require("mail-models/contactModel");
     var Tags = require("assets-ui-component/tags/tags");
     var template = require("tpl!mail-templates/_addressView.tmpl");
     var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
@@ -63,7 +63,7 @@ define(function (require) {
             renderAutoComponent:function(){
 
                 this.autoComplete = new AutoComplete({
-                    collection:app.dataController.contactsCollection,
+                    collection:mail.dataController.getContactsCollection(),
                     el:this.ui.autoCompletePlaceholder,
                     vent: this.vent
                 });

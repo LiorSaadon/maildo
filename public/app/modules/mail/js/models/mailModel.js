@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var BaseModel = require("assets-base-objects/models/baseModel");
-    var MailStorage = require("mail-storage");
+    var MailStorage = require("mail-storage/mailStorage");
     var dateResolver = require("assets-resolvers-date/dateResolver");
 
     var MailModel = {};
@@ -37,7 +37,7 @@ define(function (require) {
             validate: function (attrs,options) {
 
                 if(options.silent !== true){
-                    if (this.get("to").length == 0 && this.get("cc").length == 0 && this.get("bcc").length == 0) {
+                    if (this.get("to").length === 0 && this.get("cc").length === 0 && this.get("bcc").length === 0) {
                         return "Please specify at least one recipient.";
                     }
                 }
@@ -47,7 +47,7 @@ define(function (require) {
 
             validateAddress: function(address){
 
-                var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+                var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
                 return reg.test(address);
             },
 
