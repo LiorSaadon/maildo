@@ -4,7 +4,7 @@ define(function (require) {
     var app = require("mbApp");
     var MailCollection = require("mail-collections/mailCollection");
     var ContactsCollection = require("mail-collections/contactsCollection");
-    var SelectableDecortator = require("assets-base-objects/collections/selectableCollectionDecorator");
+    var SelectableDecortator = require("assets-decorators/selectableCollectionDecorator");
     var PreliminaryDataController = require("mail-controllers/preliminaryDataController");
 
     var DataController = {};

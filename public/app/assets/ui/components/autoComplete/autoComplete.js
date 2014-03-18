@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var Marionette = require("marionette");
-    var FilterDecorator = require("assets-base-objects/collections/filterCollectionDecorator");
+    var FilterDecorator = require("assets-decorators/filterCollectionDecorator");
     var AutoCompleteCompositeView = require("assets-ui-component/autoComplete/js/views/autoCompleteCompositeView");
 
     var AutoComplete = Marionette.Controller.extend({

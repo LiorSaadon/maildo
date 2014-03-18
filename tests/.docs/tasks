@@ -1,5 +1,4 @@
-1. check that save ed model inserted to inbox table.
-2. remove persist
-3. main --> frame
-4. remove build from public and add to gitignore
-5. bugs
+1. check that save add model inserted to inbox table.
+2. main --> frame
+3. remove build from public and add to gitignore  -- done
+4. bugs

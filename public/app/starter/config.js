@@ -27,6 +27,7 @@ define({
         "assets-collections":"app/assets/js/extenders/collections",
         "assets-resolvers-url":"app/assets/js/resolvers/url",
         "assets-base-objects":"app/assets/js/base-objects",
+        "assets-decorators":"app/assets/js/decorators",
         "assets-resolvers-storage":"app/assets/js/resolvers/storage",
         "assets-resolvers-ui":"app/assets/js/resolvers/ui",
         "assets-resolvers-date":"app/assets/js/resolvers/date",
