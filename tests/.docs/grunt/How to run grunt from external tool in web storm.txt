@@ -43,6 +43,8 @@ Important remarks
 
  2. if you want to see the result of cd, simple remove 'echo off'
 
+ 3. Gruntfile and package.json must be under the Working directory otherwise it will not work!!!!
+
 
 
 
