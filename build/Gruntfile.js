@@ -1,7 +1,5 @@
 module.exports = function(grunt) {
 
-    console.log("345345345");
-
     grunt.initConfig({
 
         pkg:grunt.file.readJSON('package.json'),
