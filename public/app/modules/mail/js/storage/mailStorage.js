@@ -40,7 +40,7 @@ define(function (require) {
                     model.set(model.idAttribute, model.id);
                 }
 
-                if(model.get('to') === 'me'){
+                if(_.include(model.get('to'),'demo@mailbone.com')){
                     model.set("in",'inbox');
                     labels.inbox = true;
                 }

@@ -30,7 +30,7 @@ define(function (require) {
             //----------------------------------------------------------------------
 
             onPageSizeChange:function(e){
-                app.settingsController.getSettings().set("mail.pageSize", 12);
+                app.settings.set("mail.pageSize", 12);
             },
 
             //----------------------------------------------------------------------
@@ -40,19 +40,15 @@ define(function (require) {
                 var target = $(e.currentTarget || e.srcElement);
                 var theme = target.attr("data-name");
 
-                app.settingsController.getSettings().set("selectedTheme", theme);
-                app.settingsController.update(function(){
-                    app.themesController.loadTheme(theme);
-               });
+                app.settings.set("selectedTheme", theme);
+                app.settings.save({
+                    success:function(){
+                        app.themesController.loadTheme(theme);
+                    }
+                });
             }
         });
     });
-
-
-//
-//    this.listenTo(newEngagement, "validated:invalid", function() {  //validation
-//        alert(1);
-//    });
 
     return SettingsView;
 });

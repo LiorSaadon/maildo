@@ -7,9 +7,9 @@ define(function (require) {
     var localStorage = require("backbone.localstorage");
     var Translator = require("i18n/translator");
     var Context = require("main-models/context");
+    var Settings = require("main-models/settings");
     var Modules = require("requirejs-plugins/require.loadByType!modules");
     var ThemesController = require("main-controllers/themesController");
-    var SettingsController = require("main-controllers/settingsController");
     var MainLayoutController = require("main-controllers/mainLayoutController");
 
     //------------------------------------------
@@ -22,8 +22,8 @@ define(function (require) {
 
         app.translator = Translator;
         app.context = new Context();
+        app.settings = new Settings();
         app.themesController = new ThemesController();
-        app.settingsController = new SettingsController();
         app.layoutController = new MainLayoutController();
     });
 
@@ -33,11 +33,12 @@ define(function (require) {
 
     app.on("start", function(){
 
-        app.settingsController.load(function(){
-
-            loadTheme();
-            setLayout();
-            startHistory();
+        app.settings.fetch({
+            success:function(){
+              loadTheme();
+              setLayout();
+              startHistory();
+            }
         });
     });
 
@@ -46,7 +47,7 @@ define(function (require) {
     var loadTheme = function(){
 
         app.vent.once("onCssLoaded", removeSplashScreen);
-        app.themesController.loadTheme(app.settingsController.getSettings().get("selectedTheme"));
+        app.themesController.loadTheme(app.settings.get("selectedTheme"));
     };
 
     //------------------------------------------

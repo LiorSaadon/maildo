@@ -89,9 +89,7 @@ define(function (require) {
 
             showSettings: function () {
 
-                var settings = app.settingsController.getSettings();
-
-                var settingsView = new SettingsView(settings);
+                var settingsView = new SettingsView(app.settings);
                 this.mailLayout.dataRegion.show(settingsView);
             },
 

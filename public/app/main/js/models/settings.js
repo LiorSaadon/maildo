@@ -1,7 +1,6 @@
 define(function (require) {
     "use strict";
 
-    var app = require("mbApp");
     var BaseModel = require("assets-base-objects/models/baseModel");
     var SettingsStorage = require("main-storage/settingsStorage");
 
@@ -13,7 +12,7 @@ define(function (require) {
         //-------------------------------------------
 
         initialize:function(){
-
+            this.id = _.uniqueId('_');
             this.localStorage = new SettingsStorage();
         }
     });
