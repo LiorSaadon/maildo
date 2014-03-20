@@ -72,12 +72,15 @@ define(function (require) {
 
         _addItem:function(text, val, isValid){
 
-            text = _.isEmpty(text) ? val : text;
+            if(!_.isEmpty(val)){
 
-            var tag = new TagModel({value:val, text:text, isValid:isValid});
-            this.collection.add(tag);
+                text = _.isEmpty(text) ? val : text;
 
-            this.vent.trigger("tag:add", val);
+                var tag = new TagModel({value:val, text:text, isValid:isValid});
+                this.collection.add(tag);
+
+                this.vent.trigger("tag:add", val);
+            }
         },
 
         //---------------------------------------------------

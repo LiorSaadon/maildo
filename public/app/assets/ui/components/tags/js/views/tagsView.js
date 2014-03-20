@@ -3,7 +3,6 @@ define(function (require) {
 
     var Marionette = require("marionette");
     var template = require("tpl!assets-ui-component/tags/ui/templates/tagsContainer.tmpl");
-    var tagSelectorTemplate = require("tpl!assets-ui-component/tags/ui/templates/tagSelector.tmpl");
     var TagsItemView = require("assets-ui-component/tags/js/views/tagsItemView");
 
     require("assets-plugins/jquery.ba-outside-events");
@@ -19,10 +18,11 @@ define(function (require) {
 
         template: template,
         itemView: TagsItemView,
-        itemViewContainer: ".tags-container",
+        itemViewContainer: ".selectedTags",
 
         ui:{
-            container:".tags-container"
+            container:".tags-container",
+            tagSelector:".tag-input"
         },
 
         events:{
@@ -55,13 +55,6 @@ define(function (require) {
 
         //------------------------------------------------------------
 
-        onRender: function(){
-
-            this.ui.container.append(tagSelectorTemplate());
-        },
-
-        //------------------------------------------------------------
-
         onAfterItemAdded: function () {
 
             this.onClick();
@@ -73,30 +66,16 @@ define(function (require) {
 
         onClick: function() {
 
-            this.resetInput();
-            this.setFocus(true);
+            this.resetSelector();
         },
 
         //------------------------------------------------------------
 
-        resetInput: function() {
+        resetSelector: function() {
 
-            var tagSelector = this.$el.find(".tag-input");
-
-            tagSelector.text("");
-            tagSelector.show();
-            tagSelector.focus();
-        },
-
-        //-------------------------------------------------------------
-
-        setFocus: function(newState) {
-
-            if (newState) {
-                this.$el.addClass("focused");
-            } else {
-                this.$el.removeClass("focused");
-            }
+            this.ui.tagSelector.text("");
+            this.ui.tagSelector.show();
+            this.ui.tagSelector.focus();
         },
 
         //----------------------------------------------------------
@@ -110,25 +89,22 @@ define(function (require) {
             }
 
             if (key === KeyCode.ENTER) {
-                $('.tag-input').hide();
-                this.vent.trigger("input:enter", $('.tag-input').text());
+                this.ui.tagSelector.hide();
+                this.vent.trigger("input:enter", this.ui.tagSelector.text());
             }
         },
 
         //------------------------------------------------------------
 
         onInputChange: function () {
-
-            this.vent.trigger("input:change", $('.tag-input').text());
+            this.vent.trigger("input:change", this.ui.tagSelector.text());
         },
 
         //------------------------------------------------------------
 
         outsideClicked: function () {
 
-            var input = $('.tag-input');
-
-            if(!_.isEmpty(input.text())){
+            if(!_.isEmpty(this.ui.tagSelector.text())){
                 this.vent.trigger("closeAll");
             }
         }

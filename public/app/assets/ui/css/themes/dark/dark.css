@@ -298,7 +298,10 @@ body {
   -moz-box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 3px;
   box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 3px;
 }
-.mb .tag-selector {
+.mb .tags-container .selectedTags {
+  display: inline;
+}
+.mb .tags-container .tag-selector {
   position: relative;
   display: -moz-inline-stack;
   display: inline-block;
@@ -311,7 +314,7 @@ body {
   overflow: auto;
   margin: 3px 0px 0px 0px;
 }
-.mb .tag-selector .tag-input {
+.mb .tags-container .tag-selector .tag-input {
   float: left;
   min-height: 17px;
   height: auto;
@@ -323,7 +326,7 @@ body {
   padding: 0px 3px 0 3px;
   word-spacing: 0;
 }
-.mb .tag {
+.mb .tags-container .tag {
   position: relative;
   height: 20px;
   margin: 2px 4px 2px 0px;
@@ -331,7 +334,7 @@ body {
   vertical-align: middle;
   zoom: 1;
 }
-.mb .tag .content {
+.mb .tags-container .tag .content {
   display: inline-block;
   vertical-align: middle;
   zoom: 1;
@@ -355,12 +358,12 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.mb .tag .content.err {
+.mb .tags-container .tag .content.err {
   background-color: #ffffff;
   border: 0px;
   border-bottom: 1px dashed red;
 }
-.mb .tag .close-button {
+.mb .tags-container .tag .close-button {
   background: url("app/assets/ui/img/12x12-sprite.png?1394093108") -540px 0 no-repeat;
   content: "";
   position: absolute;

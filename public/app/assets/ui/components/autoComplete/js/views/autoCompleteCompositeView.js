@@ -62,6 +62,7 @@ define(function (require) {
         //-------------------------------------------------------------
 
         closeEl: function () {
+            this.selectedItem = -1;
             this.$el.hide();
         },
 
@@ -107,14 +108,16 @@ define(function (require) {
 
         selectItem: function(){
 
-            this.closeEl();
-
             if(this.selectedItem >= 0){
+
+                var selectedItem = this.selectedItem;
+
                 setTimeout(_.bind(function () {
-                    var itemModel = this.childArr[this.selectedItem].model;
+                    var itemModel = this.childArr[selectedItem].model;
                     this.vent.trigger("item:selected",itemModel.getText(),itemModel.getValue());
                 }, this), 50);
             }
+            this.closeEl();
         },
 
         //--------------------------------------------------------------
