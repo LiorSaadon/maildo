@@ -57,6 +57,7 @@ define(function (require) {
 
         onAfterItemAdded: function () {
 
+            this.ui.tagSelector.text("");
             this.onClick();
         },
 
@@ -66,7 +67,9 @@ define(function (require) {
 
         onClick: function() {
 
-            this.resetSelector();
+            if(_.isEmpty(this.ui.tagSelector.text())){
+                this.resetSelector();
+            }
         },
 
         //------------------------------------------------------------
