@@ -88,6 +88,7 @@ define(function (require) {
             var key = event.keyCode;
 
             if (key === KeyCode.ARROW_DOWN || key === KeyCode.ARROW_UP) {
+                event.preventDefault();
                 this.vent.trigger("key:press", key);
             }
 

@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var _ = require("underscore");
-    var i18nObjects  = require("requirejs-plugins/require.loadByType!i18n");
+    var i18nObjects  = require("app/assets/js/lib-extensions/requirejs/require.loadByType!i18n");
 
     var Translator = (function () {
 

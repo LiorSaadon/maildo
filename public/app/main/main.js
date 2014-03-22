@@ -8,7 +8,7 @@ define(function (require) {
     var Translator = require("i18n/translator");
     var Context = require("main-models/context");
     var Settings = require("main-models/settings");
-    var Modules = require("requirejs-plugins/require.loadByType!modules");
+    var Modules = require("app/assets/js/lib-extensions/requirejs/require.loadByType!modules");
     var ThemesController = require("main-controllers/themesController");
     var MainLayoutController = require("main-controllers/mainLayoutController");
 
@@ -78,5 +78,5 @@ define(function (require) {
          $(".mb").show();
     };
 
-    return app;
+    return {};
 });

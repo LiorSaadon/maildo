@@ -14,7 +14,6 @@ define(function (require) {
 
         this.addInitializer(function (options) {
             this.vent = new Backbone.Wreqr.EventAggregator();
-//            this.commandStorage = new Backbone.Wreqr.CommandStorage();
             this.dataController = new DataController();
             this.actionsController = new ActionsController();
             this.newMailActionsController = new NewMailActionsController();

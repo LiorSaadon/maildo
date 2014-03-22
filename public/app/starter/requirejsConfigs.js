@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var appConfig = require("app/starter/config");
-    var configs = require("requirejs-plugins/require.loadByType!config");
+    var configs = require("app/assets/js/lib-extensions/requirejs/require.loadByType!config");
 
     var leVersion = "@@version";
 
@@ -17,6 +17,8 @@ define(function (require) {
         deps: [],
         waitSeconds: 0
     };
+
+    //---------------------------------------------------------
 
     function extendAppConfig (configs) {
 
@@ -33,13 +35,15 @@ define(function (require) {
         }
     }
 
+    //------------------------------------------------------------
+    // merge modules configs.
+    //------------------------------------------------------------
+
     for (var config in configs) {
         if (config && configs.hasOwnProperty(config) && typeof(configs[config]) !== 'function') {
             extendAppConfig(configs[config]);
         }
     }
-
-    requirejs.config(parsedConfig);
 
     return parsedConfig;
 });

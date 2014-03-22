@@ -15,7 +15,6 @@ define(function (require) {
                 paths.push(map.components[component].root + '/' + map.components[component].name);
             }
         }
-        //console.log("loadModules...");
     };
 
     var loadI18N = function (paths) {
@@ -25,7 +24,6 @@ define(function (require) {
         for (var component in map.components) {
             paths.push(map.components[component].root + '/ui/i18n/' + locale);
         }
-        //console.log("loadI18N...");
     };
 
     var loadConfigs = function (paths) {
@@ -33,7 +31,6 @@ define(function (require) {
         for (var component in map.components) {
             paths.push(map.components[component].root + '/config');
         }
-        //console.log("loadConfigs");
     };
 
     return {

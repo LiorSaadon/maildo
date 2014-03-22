@@ -41,7 +41,7 @@ define(function (require) {
                 var theme = target.attr("data-name");
 
                 app.settings.set("selectedTheme", theme);
-                app.settings.save({
+                app.settings.save(null,{
                     success:function(){
                         app.themesController.loadTheme(theme);
                     }
