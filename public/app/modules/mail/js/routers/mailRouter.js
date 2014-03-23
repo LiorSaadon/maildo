@@ -43,7 +43,7 @@ define(function (require) {
 
                 before: function(){
                     app.mail.routerController.backupState();
-                    app.layoutController.changeSubLayout("mail");
+                    app.frame.changeSubLayout("mail");
                 },
 
                 //---------------------------------------------

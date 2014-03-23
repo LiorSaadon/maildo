@@ -2,9 +2,9 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var BaseModel = require("assets-base-objects/models/baseModel");
+    var BaseModel = require("common-models/baseModel");
     var MailStorage = require("mail-storage/mailStorage");
-    var dateResolver = require("assets-resolvers-date/dateResolver");
+    var dateResolver = require("common-resolvers-date/dateResolver");
 
     var MailModel = {};
 

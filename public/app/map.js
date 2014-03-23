@@ -5,9 +5,9 @@ define({
     components:
         [
             {
-                "name": "main",
-                "type": "MAIN",
-                "root": "app/main"
+                "name": "frame",
+                "type": "FRAME",
+                "root": "app/frame"
             },
             {
                 "name": "mail",

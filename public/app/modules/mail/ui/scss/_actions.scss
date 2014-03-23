@@ -20,11 +20,11 @@
     @include abs-pos(22px, 10px, 'NaN', 'NaN');
 
     .button .settingsIcon {
-      @include set-icon(17px,17px,'app/assets/ui/img/actions.png', 0, 0);
+      @include set-icon(17px,17px,'app/common/ui/img/actions.png', 0, 0);
     }
 
     .button:hover .settingsIcon {
-      background: url('app/assets/ui/img/actionsHover.png') 0 0  no-repeat;
+      background: url('app/common/ui/img/actionsHover.png') 0 0  no-repeat;
     }
   }
 
@@ -39,28 +39,28 @@
         float:right;
 
         .button .nextIcon {
-          @include set-icon(17px,17px,'app/assets/ui/img/actions.png', 0, -17px);
+          @include set-icon(17px,17px,'app/common/ui/img/actions.png', 0, -17px);
         }
 
         .button:hover .nextIcon {
-          background: url('app/assets/ui/img/actionsHover.png') 0 -17px  no-repeat;
+          background: url('app/common/ui/img/actionsHover.png') 0 -17px  no-repeat;
         }
 
-        .button .nextIcon.disable {
+        .button .nextIcon.common {
           background: url('app/assets/ui/img/actionsDisabled.png') 0 -17px  no-repeat;
         }
 
 
       .button .prevIcon {
-          @include set-icon(17px,17px,'app/assets/ui/img/actions.png', 0, -34px);
+          @include set-icon(17px,17px,'app/common/ui/img/actions.png', 0, -34px);
         }
 
         .button:hover .prevIcon {
-          background: url('app/assets/ui/img//actionsHover.png') 0 -34px  no-repeat;
+          background: url('app/common/ui/img//actionsHover.png') 0 -34px  no-repeat;
         }
 
         .button .prevIcon.disable {
-          background: url('app/assets/ui/img/actionsDisabled.png') 0 -34px  no-repeat;
+          background: url('app/common/ui/img/actionsDisabled.png') 0 -34px  no-repeat;
         }
     }
 

@@ -1,10 +1,10 @@
 define(function (require) {
     "use strict";
 
-    var App = require("mbApp");
+    var app = require("mbApp");
     var ContactsRouter = {};
 
-    App.module('contacts', function (contacts, App, Backbone, Marionette, $, _) {
+    app.module('contacts', function (contacts, App, Backbone, Marionette, $, _) {
 
         ContactsRouter = Marionette.AppRouter.extend({
             appRoutes: {
@@ -19,7 +19,7 @@ define(function (require) {
             },
 
             before: function(){
-                App.layoutController.changeSubLayout("contacts");
+                app.frame.changeSubLayout("contacts");
             }
 
         });

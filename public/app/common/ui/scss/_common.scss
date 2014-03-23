@@ -1,0 +1,21 @@
+@import "_default";
+@import "_buttons";
+@import "_dropdown-slider";
+@import "_data-table";
+@import "_loader";
+
+/*--------- ui-components ----------*/
+
+@import "../../ui/components/autoComplete/ui/scss/_autoComplete.scss";
+@import "../../ui/components/tags/ui/scss/_tags.scss";
+
+/*----------- modules -------------*/
+
+@import "../../../../app/modules/mail/ui/scss/_mail.scss";
+@import "../../../../app/modules/contacts/ui/scss/_contacts.scss";
+
+/*------------ app ---------------*/
+
+@import "../../../../app/frame/ui/scss/_frame.scss";
+
+

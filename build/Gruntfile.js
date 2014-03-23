@@ -27,8 +27,8 @@ module.exports = function(grunt) {
             },
             i18n:{
                 files:{
-                    "../public/target/app/assets/ui/i18n/en-US.js": ["../public/app/main/ui/i18n/en-US.js","../public/app/modules/mail/ui/i18n/en-US.js","../public/app/modules/contacts/ui/i18n/en-US.js"]
-//                    "../public/target/app/assets/ui/i18n/de-DE.js": ["../public/app/main/ui/i18n/de-DE.js","../public/app/modules/mail/ui/i18n/de-DE.js","../public/app/modules/contacts/ui/i18n/de-DE.js"]
+                    "../public/target/app/common/ui/i18n/en-US.js": ["../public/app/main/ui/i18n/en-US.js","../public/app/modules/mail/ui/i18n/en-US.js","../public/app/modules/contacts/ui/i18n/en-US.js"]
+//                    "../public/target/app/common/ui/i18n/de-DE.js": ["../public/app/main/ui/i18n/de-DE.js","../public/app/modules/mail/ui/i18n/de-DE.js","../public/app/modules/contacts/ui/i18n/de-DE.js"]
                 }
             }
         },
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         uglify: {
             i18n: {
                 files: {
-                    '../public/target/app/assets/ui/i18n/de-DE.js': ['../public/target/app/assets/ui/i18n/de-DE.js']
+                    '../public/target/app/common/ui/i18n/de-DE.js': ['../public/target/app/common/ui/i18n/de-DE.js']
                 }
             }
         },
@@ -52,12 +52,12 @@ module.exports = function(grunt) {
                 force:true
             },
             output:[
-                '../public/target/app/assets/ui/css/ie.css',
-                '../public/target/app/assets/ui/css/print.css',
-                '../public/target/app/assets/ui/css/screen.css',
-                '../public/target/app/assets/js',
-                '../public/target/app/assets/ui/scss',
-                '../public/target/app/assets/ui/templates',
+                '../public/target/app/common/ui/css/ie.css',
+                '../public/target/app/common/ui/css/print.css',
+                '../public/target/app/common/ui/css/screen.css',
+                '../public/target/app/common/js',
+                '../public/target/app/common/ui/scss',
+                '../public/target/app/common/ui/templates',
                 '../public/target/app/main',
                 '../public/target/app/modules',
                 '../public/target/build',

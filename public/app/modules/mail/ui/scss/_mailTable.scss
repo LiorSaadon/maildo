@@ -16,13 +16,13 @@
   .starIcon {
     width: 19px;
     height: 19px;
-    background: url(app/assets/ui/img/star.png);
+    background: url(app/common/ui/img/star.png);
   }
   .starIcon.disable {
-    background: url(app/assets/ui/img/not-star.png);
+    background: url(app/common/ui/img/not-star.png);
   }
   .starIcon:hover{
-    background: url(app/assets/ui/img/star.png);
+    background: url(app/common/ui/img/star.png);
   }
 }
 

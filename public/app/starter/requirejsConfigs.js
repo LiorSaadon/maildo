@@ -1,16 +1,16 @@
 define(function (require) {
     "use strict";
 
-    var appConfig = require("app/starter/config");
-    var configs = require("app/assets/js/lib-extensions/requirejs/require.loadByType!config");
+    var appConfig = require("app/starter/appConfig");
+    var configs = require("app/common/js/lib-extensions/requirejs/require.loadByType!config");
 
     var leVersion = "@@version";
 
     var parsedConfig = {
         leVersion: leVersion,
         locale: "en-us",
-        paths : appConfig.paths,
-        shim : appConfig.shim,
+        paths: appConfig.paths,
+        shim: appConfig.shim,
         tpl: {
             "templateExtension": ""
         },
@@ -20,7 +20,7 @@ define(function (require) {
 
     //---------------------------------------------------------
 
-    function extendAppConfig (configs) {
+    function extendAppConfig(configs) {
 
         for (var path in configs.paths) {
             if (path && configs.paths.hasOwnProperty(path) && !parsedConfig.paths.hasOwnProperty(path) && typeof(configs.paths[path]) !== 'function') {

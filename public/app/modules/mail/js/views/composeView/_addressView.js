@@ -4,9 +4,9 @@ define(function (require) {
     var app = require("mbApp");
     var Backbone = require("backbone");
     var ContactModel = require("mail-models/contactModel");
-    var Tags = require("assets-ui-component/tags/tags");
+    var Tags = require("common-ui-component/tags/tags");
     var template = require("tpl!mail-templates/_addressView.tmpl");
-    var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
+    var AutoComplete = require("common-ui-component/autoComplete/autoComplete");
 
     var AddressView ={};
 

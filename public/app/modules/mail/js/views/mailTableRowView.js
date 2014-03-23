@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var template = require("tpl!mail-templates/mailTableRow.tmpl");
-    var dateResolver = require("assets-resolvers-date/dateResolver");
+    var dateResolver = require("common-resolvers-date/dateResolver");
 
     var MailTableRowView = {};
 

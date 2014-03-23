@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var Marionette = require('marionette');
-    var contactsList = require('json!assets-data/contacts.json');
+    var contactsList = require('json!common-data/contacts.json');
 
     var PreliminaryDataController = Marionette.Controller.extend({
 
