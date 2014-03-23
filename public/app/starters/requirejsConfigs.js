@@ -1,7 +1,7 @@
 define(function (require) {
     "use strict";
 
-    var appConfig = require("app/starters/appConfig");
+    var baseConfig = require("app/starters/baseConfig");
     var configs = require("app/common/js/lib-extensions/requirejs/require.loadByType!config");
 
     var leVersion = "@@version";
@@ -9,8 +9,8 @@ define(function (require) {
     var parsedConfig = {
         leVersion: leVersion,
         locale: "en-us",
-        paths: appConfig.paths,
-        shim: appConfig.shim,
+        paths: baseConfig.paths,
+        shim: baseConfig.shim,
         tpl: {
             "templateExtension": ""
         },

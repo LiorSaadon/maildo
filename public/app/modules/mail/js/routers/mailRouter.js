@@ -42,7 +42,7 @@ define(function (require) {
                 //---------------------------------------------
 
                 before: function(){
-                    app.mail.routerController.backupState();
+                    this.options.controller.backupState();
                     app.frame.changeSubLayout("mail");
                 },
 
@@ -51,7 +51,7 @@ define(function (require) {
                 //---------------------------------------------
 
                 previous: function() {
-                    var prevURL = app.mail.routerController.getPrevURL();
+                    var prevURL = this.options.controller.getPrevURL();
                     mail.router.navigate(prevURL,{trigger: true });
                 }
             });
