@@ -14,7 +14,7 @@ define({
         "json": "lib/require/require.json",
         "mustache": "lib/mustache/mustache",
         "modernizr": "lib/modernizr/modernizr",
-        "mbApp": "app/starter/app",
+        "mbApp": "app/starters/app",
         "tpl": "lib/require/require.tpl",
         "css": "lib/require/require.css",
         "i18n": "app/common/js/resolvers/i18n",
