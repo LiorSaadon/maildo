@@ -139,7 +139,7 @@ define(function (require) {
 
                 mailModel.fetch({
                     success: function () {
-                        mail.vent.trigger("actions", {action: 'markAs', label: 'read', target: id}, {silent: true});
+                        mail.vent.trigger("actions", {action: 'markAs', label: 'read', target: id});
                         var composeView = new ComposeView({model: mailModel});
                         that.mailLayout.dataRegion.show(composeView);
                     }

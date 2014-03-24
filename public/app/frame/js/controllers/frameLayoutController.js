@@ -7,7 +7,7 @@ define(function (require) {
     var Marionette = require('marionette');
     var FrameLayout = require('frame-views/frameLayout');
     var TechBarView = require('frame-views/techBarView');
-    var LayoutHelpers = require("common-resolvers-ui/dropdownDisplayer");
+    var LayoutHelpers = require("assets-resolvers-ui/dropdownDisplayer");
 
     var LayoutController = Marionette.Controller.extend({
 

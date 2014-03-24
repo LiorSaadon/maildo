@@ -4,9 +4,9 @@ define(function (require) {
     var app = require("mbApp");
     var ContactModel = require("mail-models/contactModel");
     var ContactsFilterModel = require("mail-models/contactsFilterModel");
-    var urlResolver = require("common-resolvers-url/urlResolver");
+    var urlResolver = require("assets-resolvers-url/urlResolver");
     var ContactsStorage = require("mail-storage/contactsStorage");
-    var BaseCollection = require("common-collections/BaseCollection");
+    var BaseCollection = require("assets-collections/BaseCollection");
 
     var ContactsCollection = {};
 

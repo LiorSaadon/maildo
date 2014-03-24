@@ -1,9 +1,9 @@
 define(function (require) {
     "use strict";
 
-    var Filterer  = require("common-resolvers-storage/localStorageFilterer");
-    var ChangesDetector  = require("common-resolvers-storage/localStorageChangesDetector");
-    var dateResolver = require("common-resolvers-date/dateResolver");
+    var Filterer  = require("assets-resolvers-storage/localStorageFilterer");
+    var ChangesDetector  = require("assets-resolvers-storage/localStorageChangesDetector");
+    var dateResolver = require("assets-resolvers-date/dateResolver");
 
 
     var MailStorage = function (_orderBy) {

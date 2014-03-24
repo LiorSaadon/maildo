@@ -106,7 +106,7 @@ define(function (require) {
                         }
                     }
                 });
-                this.updateCollection(items,options.silent);
+                this.updateCollection(items,true);
             },
 
             //----------------------------------------------------
@@ -139,7 +139,7 @@ define(function (require) {
 
                     var model = that.collection.get( item);
                     if(model){
-                        model.removeAlLabels();
+                        model.removeAllLabels({silent:true});
                         model.addLabel("trash");
                         model.set("in","trash");
                     }

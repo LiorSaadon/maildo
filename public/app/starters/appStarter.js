@@ -6,10 +6,10 @@ define(function (require) {
     var MarionetteExt = require("lib-extensions/marionette/marionette.ext");
     var localStorage = require("backbone.localstorage");
     var Translator = require("i18n/translator");
-    var Context = require("common-models/context");
-    var Settings = require("common-models/settings");
-    var Modules = require("app/common/js/lib-extensions/requirejs/require.loadByType!modules");
-    var ThemesController = require("common-controllers/themesController");
+    var Context = require("assets-models/context");
+    var Settings = require("assets-models/settings");
+    var Modules = require("app/assets/js/lib-extensions/requirejs/require.loadByType!modules");
+    var ThemesController = require("assets-controllers/themesController");
     var FrameLayoutController = require("frame-controllers/frameLayoutController");
 
     //------------------------------------------

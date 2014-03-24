@@ -2,9 +2,9 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var BaseModel = require("common-models/baseModel");
+    var BaseModel = require("assets-models/baseModel");
     var MailStorage = require("mail-storage/mailStorage");
-    var dateResolver = require("common-resolvers-date/dateResolver");
+    var dateResolver = require("assets-resolvers-date/dateResolver");
 
     var MailModel = {};
 
@@ -23,27 +23,25 @@ define(function (require) {
                 labels:{}
             },
 
-            //-------------------------------------------
+            //---------------------------------------------------
 
             initialize:function(attrs, options){
 
                this.localStorage = new MailStorage();
-               this.set("sentTime", dateResolver.date2Str(new Date(),false));
             },
 
-
-            //-------------------------------------------
+            //---------------------------------------------------
 
             validate: function (attrs,options) {
 
-                if(options.silent !== true){
+                if(!options.silent){
                     if (this.get("to").length === 0 && this.get("cc").length === 0 && this.get("bcc").length === 0) {
                         return "Please specify at least one recipient.";
                     }
                 }
             },
 
-            //-------------------------------------------
+            //---------------------------------------------------
 
             validateAddress: function(address){
 
@@ -51,43 +49,60 @@ define(function (require) {
                 return reg.test(address);
             },
 
-            //-------------------------------------------
+            //---------------------------------------------------
 
             addLabel: function(label){
 
                 this.set('labels.'+label, true);
             },
 
-            //-------------------------------------------
+            //---------------------------------------------------
 
-            removeLabel: function(label){
+            removeLabel: function(label,options){
+
+                options = options || {};
 
                 var labels = this.get('labels');
 
                 if(_.has(labels,label)){
+
                     delete labels[label];
-                    this.trigger("change:labels.*");
+
+                    if(!options.silent){
+                        this.trigger("change:labels.*");
+                    }
                 }
             },
 
-            //-------------------------------------------
+            //---------------------------------------------------
 
-            removeAlLabels: function(){
+            removeAllLabels: function(options){
+
+                options = options || {};
 
                 var labels = this.get('labels');
 
                 _.each(labels, function (value, key) {
-                    delete labels[key];
+                    removeLabel(value, options)
                 });
-
             },
 
-            //-------------------------------------------
+            //---------------------------------------------------
 
             replaceLabel:function(label1,label2){
 
                 this.removeLabel(label1);
                 this.addLabel(label2);
+            },
+
+            //---------------------------------------------------
+
+            toggleLabel:function(label1){
+
+                var labels = this.get('labels');
+                if(_.has(labels, lbl)){
+
+                }
             }
         });
     });

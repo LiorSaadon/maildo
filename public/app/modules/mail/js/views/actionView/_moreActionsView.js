@@ -51,7 +51,7 @@ define(function (require) {
             initialize: function (options) {
 
                 this.collection = mail.dataController.getMailCollection();
-                this.listenTo(this.collection, "reset", this.setDropDownItems, this);
+                this.listenTo(this.collection, "sync", this.setDropDownItems, this);
                 this.listenTo(this.collection, "change:selection", this.setDropDownItems, this);
             },
 

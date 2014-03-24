@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var template = require("tpl!mail-templates/mailTableRow.tmpl");
-    var dateResolver = require("common-resolvers-date/dateResolver");
+    var dateResolver = require("assets-resolvers-date/dateResolver");
 
     var MailTableRowView = {};
 
@@ -35,20 +35,13 @@ define(function (require) {
 
             initialize:function(){
 
-                this.listenTo(this.model, "change:labels.*" , this.updateLabels);
-            },
-
-            //------------------------------------------------
-
-            onRender:function(){
-
-                this.setSelection();
-                this.updateLabels();
+               this.listenTo(this.model, "change:labels.*" , this.setIcons);
             },
 
             //------------------------------------------------
 
             customTemplateHelpers : function () {
+
                 return {
                     sentTime : dateResolver.shortDate(this.model.get("sentTime"))
                 };
@@ -56,27 +49,21 @@ define(function (require) {
 
             //------------------------------------------------
 
-            updateLabels:function(){
+            onRender:function(){
+
+                this.setIcons();
+                this.setSelection();
+            },
+
+            //------------------------------------------------
+
+            setIcons:function(){
 
                 var labels = this.model.get("labels");
 
-                if(_.has(labels,'starred')){
-                    this.ui.starIcon.removeClass("disable");
-                }else{
-                    this.ui.starIcon.addClass("disable");
-                }
-
-                if(_.has(labels,'important')){
-                    this.ui.impIcon.removeClass("disable");
-                }else{
-                    this.ui.impIcon.addClass("disable");
-                }
-
-                if(_.has(labels,'read')){
-                    this.$el.removeClass("unread");
-                }else{
-                    this.$el.addClass("unread");
-                }
+                this.$el.toggleClass("unread",_.has(labels,'read'));
+                this.ui.starIcon.toggleClass("disable",!_.has(labels,'starred'));
+                this.ui.impIcon.toggleClass("disable",!_.has(labels,'important'));
             },
 
             //------------------------------------------------
@@ -85,7 +72,7 @@ define(function (require) {
 
                 var state = app.context.get("router.state");
                 var search = state.params.query ? "/" + state.params.query : "";
-                mail.router.navigate(state.action + search + "/" + this.model.id, { trigger: true });
+                //mail.router.navigate(state.action + search + "/" + this.model.id, { trigger: true });
             },
 
             //------------------------------------------------
@@ -94,30 +81,19 @@ define(function (require) {
 
                 var isSelected = this.model.collection.isSelected(this.model);
 
-                if(isSelected){
-                    this.$el.removeClass('selected');
-                    this.ui.checkBox.prop('checked', false);
-                    this.model.collection.unselectModel(this.model, {callerName:'itemView'});
-                }else{
-                    this.$el.addClass('selected');
-                    this.ui.checkBox.prop('checked', true);
-                    this.model.collection.selectModel(this.model, {callerName:'itemView'});
-                }
+                this.$el.toggleClass('selected',isSelected);
+                this.ui.checkBox.prop('checked',isSelected);
+                this.model.collection.toggleSelection(this.model, {callerName:'itemView'});
             },
 
             //------------------------------------------------
 
             setSelection:function() {
 
-                var selected = this.model.collection.isSelected(this.model);
+                var isSelected = this.model.collection.isSelected(this.model);
 
-                if(selected){
-                    this.$el.addClass('selected');
-                    this.ui.checkBox.prop('checked', true);
-                }else{
-                    this.$el.removeClass('selected');
-                    this.ui.checkBox.prop('checked', false);
-                }
+                this.$el.toggleClass('selected',isSelected);
+                this.ui.checkBox.prop('checked',isSelected);
             }
         });
     });

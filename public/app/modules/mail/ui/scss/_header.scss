@@ -2,7 +2,7 @@
   .logo {
     width: 145px;
     height: 40px;
-    background-image: url('app/common/ui/img/logo.png');
+    background-image: url('app/assets/ui/img/logo.png');
     @include abs-pos(14px, 'NaN', 'NaN', 22px);
   }
 
@@ -25,7 +25,7 @@
 
   .searchPanel a span {
     margin-top: -2px;
-    @include set-icon(22px, 22px, 'app/common/ui/img/search.png');
+    @include set-icon(22px, 22px, 'app/assets/ui/img/search.png');
   }
 
   .searchPanel a:hover {
