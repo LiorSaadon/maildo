@@ -14,31 +14,53 @@ define(function (require) {
             defaults : {
                 _in:'',
                 from :'me',
-                to:[],
-                cc:[],
-                bcc:[],
+                to:'',
+                cc:'',
+                bcc:'',
                 subject: '',
                 sentTime: null,
                 body:'',
                 labels:{}
             },
 
-            //---------------------------------------------------
-
             initialize:function(attrs, options){
 
                this.localStorage = new MailStorage();
             },
 
-            //---------------------------------------------------
+
+            //-----------------------------------------------------------------
+            // validate
+            //-----------------------------------------------------------------
 
             validate: function (attrs,options) {
 
-                if(!options.silent){
-                    if (this.get("to").length === 0 && this.get("cc").length === 0 && this.get("bcc").length === 0) {
-                        return "Please specify at least one recipient.";
-                    }
+                var that = this;
+
+                if (_.isEmpty(this.get("to")) && _.isEmpty(this.get("cc")) && _.isEmpty(this.get("bcc"))) {
+                    return "Please specify at least one recipient.";
                 }
+
+//                _.each(this.get("to"), function(address){
+//                    var res = that.validateAddress(address);
+//                    if(!res){
+//                        return "The email address '" + address + "' is not recognized. Please fix it and try again. ";
+//                    }
+//                });
+//
+//                _.each(this.get("cc"), function(address){
+//                    var res = that.validateAddress(address);
+//                    if(!res){
+//                        return "The email address '" + address + "' is not recognized. Please fix it and try again. ";
+//                    }
+//                });
+//
+//                _.each(this.get("bcc"), function(address){
+//                    var res = that.validateAddress(address);
+//                    if(!res){
+//                        return "The email address '" + address + "' is not recognized. Please fix it and try again. ";
+//                    }
+//                });
             },
 
             //---------------------------------------------------
@@ -49,14 +71,44 @@ define(function (require) {
                 return reg.test(address);
             },
 
-            //---------------------------------------------------
+
+            //-----------------------------------------------------------------
+            // address handling
+            //-----------------------------------------------------------------
+
+            addAddress: function(attr, address){
+
+                this.updateLastAddress(attr, address +";");
+            },
+
+            //----------------------------------------------------------------
+
+            updateLastAddress:function(attr, address){
+
+                var addrList = this.get(attr).split(";");
+                addrList[addrList.length-1] = address;
+                this.set(attr, addrList.join(";"));
+            },
+
+            //----------------------------------------------------------------
+
+            removeAddress: function(attr, address){
+
+                var addrList = this.get(attr).replace(address + ";", "");
+                this.set(attr, addrList);
+            },
+
+
+            //----------------------------------------------------------------
+            // label handling
+            //----------------------------------------------------------------
 
             addLabel: function(label){
 
                 this.set('labels.'+label, true);
             },
 
-            //---------------------------------------------------
+            //----------------------------------------------------------------
 
             removeLabel: function(label,options){
 
@@ -74,7 +126,7 @@ define(function (require) {
                 }
             },
 
-            //---------------------------------------------------
+            //----------------------------------------------------------------
 
             removeAllLabels: function(options){
 
@@ -87,22 +139,12 @@ define(function (require) {
                 });
             },
 
-            //---------------------------------------------------
+            //----------------------------------------------------------------
 
             replaceLabel:function(label1,label2){
 
                 this.removeLabel(label1);
                 this.addLabel(label2);
-            },
-
-            //---------------------------------------------------
-
-            toggleLabel:function(label1){
-
-                var labels = this.get('labels');
-                if(_.has(labels, lbl)){
-
-                }
             }
         });
     });

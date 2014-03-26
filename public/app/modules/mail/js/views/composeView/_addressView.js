@@ -33,6 +33,7 @@ define(function (require) {
 
                 this.listenTo(this.vent, 'tag:add', this.addAddress, this);
                 this.listenTo(this.vent, 'tag:remove', this.removeAddress, this);
+                this.listenTo(this.vent, 'input:change', this.updateLastAddress, this);
             },
 
             //----------------------------------------------------------------
@@ -52,7 +53,6 @@ define(function (require) {
                 this.tags = new Tags({
                     el:this.ui.tagsPlaceholder,
                     vent: this.vent,
-                    maxItems: 500,
                     validator: this.model.validateAddress
                 });
                 this.tags.show();
@@ -79,20 +79,23 @@ define(function (require) {
 
             //-----------------------------------------------------------------
 
-            addAddress: function(item){
+            addAddress: function(address){
 
-                var arr = this.model.get(this.modelAttr);
-                arr.push(item);
+                this.model.addAddress(this.modelAttr, address);
             },
 
             //-----------------------------------------------------------------
 
-            removeAddress: function(_item){
+            updateLastAddress: function(address){
 
-                var arr = _.reject(this.model.get(this.modelAttr), function(item) {
-                    return item === _item;
-                });
-                this.model.set(this.modelAttr, arr);
+                this.model.updateLastAddress(this.modelAttr, address);
+            },
+
+            //-----------------------------------------------------------------
+
+            removeAddress: function(address){
+
+                this.model.removeAddress(this.modelAttr, address);
             }
         });
     });

@@ -115,7 +115,6 @@ define(function (require) {
 
                 this.inFocus = false;
                 this.vent.trigger("closeAll");
-                this.vent.trigger("input:enter", this.ui.tagSelector.text());
             }
         }
     });

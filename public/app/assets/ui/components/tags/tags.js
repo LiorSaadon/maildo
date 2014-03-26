@@ -43,7 +43,7 @@ define(function (require) {
 
             setTimeout(_.bind(function () {
                 if(this.enterState === "unhandle"){
-                    this._addItem(val, val, this._validate(val));
+                    this.addItem(val, val);
                 }
             }, this), 30);
         },
@@ -53,7 +53,7 @@ define(function (require) {
         onItemSelected:function(text, value){
 
             this.enterState = "handle";
-            this._addItem(text,value,true);
+            this.addItem(text,value,true);
         },
 
         //---------------------------------------------------
@@ -70,13 +70,13 @@ define(function (require) {
 
         //---------------------------------------------------
 
-        _addItem:function(text, val, isValid){
+        addItem:function(text, val){
 
             if(!_.isEmpty(val)){
 
                 text = _.isEmpty(text) ? val : text;
 
-                var tag = new TagModel({value:val, text:text, isValid:isValid});
+                var tag = new TagModel({value:val, text:text, isValid:this._validate(val)});
                 this.collection.add(tag);
 
                 this.vent.trigger("tag:add", val);

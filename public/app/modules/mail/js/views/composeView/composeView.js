@@ -45,14 +45,28 @@ define(function (require) {
 
             onRender: function () {
 
+                this.renderToView();
+                this.renderCcView();
+                this.renderBccView();
+
+                this.toView.addDefaultAddress("me", "demo@mailbone.com");
+             },
+
+            //-------------------------------------------------------
+
+            renderToView:function(){
+
                 this.toView = new AddressView({
                     model:this.model,
                     modelAttr:'to',
                     el: this.ui.toInputWrapper
                 });
                 this.toView.render();
+            },
 
-                //-------------------------------------
+            //-------------------------------------------------------
+
+            renderCcView:function(){
 
                 this.ccView = new AddressView({
                     model:this.model,
@@ -60,8 +74,11 @@ define(function (require) {
                     el: this.ui.ccInputWrapper
                 });
                 this.ccView.render();
+            },
 
-                //------------------------------------
+            //-------------------------------------------------------
+
+            renderBccView:function(){
 
                 this.bccView = new AddressView({
                     model:this.model,
@@ -69,13 +86,12 @@ define(function (require) {
                     el: this.ui.bccInputWrapper
                 });
                 this.bccView.render();
+            },
 
-                //-----------------------------------
 
-                this.toView.addDefaultAddress("me", "demo@mailbone.com");
-             },
-
-            //-----------------------------------------------------------------
+            //------------------------------------------------------
+            // events handlers
+            //------------------------------------------------------
 
             onSubjectChange: function(){
                 this.model.set('subject',this.ui.inputSubject.val());
@@ -101,12 +117,6 @@ define(function (require) {
                 this.ui.bccLine.show();
                 this.ui.addBcc.hide();
                 this.ui.inputEditor.css('top', parseInt(this.ui.header.css('height'),10) + 25 + 'px') ;
-            },
-
-            //-----------------------------------------------------------------
-
-            onInvalid: function (model, errors) {
-                alert("5656");
             }
         });
     });
