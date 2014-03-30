@@ -244,9 +244,8 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  color: #323336;
   min-height: 15px;
-  color: gray;
+  color: #333333;
 }
 .mb .autoComplete .menu.default-list li:first-child {
   border: none;
@@ -265,10 +264,7 @@ body {
   font-size: 11px;
 }
 .mb .autoComplete .menu.default-list li.active {
-  background-color: lightgray;
-}
-.mb .autoComplete .menu.default-list li.active div.dropdown-li-value {
-  color: white;
+  background-color: #EEEEEE;
 }
 
 .mb .tags-container {
@@ -728,6 +724,12 @@ body {
 }
 .mb .starIcon:hover {
   background: url(app/assets/ui/img/star.png);
+}
+.mb .draft {
+  color: red;
+}
+.mb .sentTo {
+  padding-right: 7px;
 }
 
 /*------------ app ---------------*/

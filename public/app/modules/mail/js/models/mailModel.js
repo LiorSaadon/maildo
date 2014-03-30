@@ -12,7 +12,7 @@ define(function (require) {
 
         MailModel = BaseModel.extend({
             defaults: {
-                _in: '',
+                in: '',
                 from: 'me',
                 to: '',
                 cc: '',

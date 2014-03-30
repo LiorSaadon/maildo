@@ -2,3 +2,18 @@
  1. filter not working
  2. fix view of mail table: tine subject (draft..)
  3. cancel onItemClick temp
+
+
+ fix css defects
+ verify that all message taken from dic
+
+
+
+
+ sanity tests
+ --------------------
+ 1.filter is working
+ 2. persistent is working
+ 3.components are working
+ 4.table size as defines in settings.
+

@@ -1,6 +1,22 @@
 <td class="selector"><input type="checkbox" class="chkBox"></td>
 <td><div class="starIcon"></div></td>
 <td><div class="importantIcon"></div></td>
-<td><div class="from">{{from}}</div></td>
-<td><div class="subject">{{subject}}</div></td>
-<td><div class="sentTime">{{sentTime}}</div></td>
+
+{{#isInbox}}
+    <td><div class="inbox">{{from}}</div></td>
+{{/isInbox}}
+{{#isSent}}
+    <td><div class="sent"><span class="sentTo">{{#_i18n}}mail.to{{/_i18n}}:</span>{{from}}</div></td>
+{{/isSent}}
+{{#isDraft}}
+    <td><div class="draft">{{#_i18n}}mail.draft{{/_i18n}}</div></td>
+{{/isDraft}}
+{{#isTrash}}
+    <td><div class="trash">{{from}}</div></td>
+{{/isTrash}}
+{{#isSpam}}
+    <td><div class="spam">{{from}}</div></td>
+{{/isSpam}}
+
+<td><div class="content"><span class="subject"></span>-<span class="body">{{body}}</span></div></td>
+<td><div class="sentTime"></div></td>

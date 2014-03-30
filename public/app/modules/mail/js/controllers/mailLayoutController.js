@@ -123,7 +123,7 @@ define(function (require) {
                     },
                     success: function () {
                         that.mails.clearSelected();
-                        var tableView = new MailTableView({collection: that.mails});
+                        var tableView = new MailTableView({collection: that.mails, action:action});
                         that.mailLayout.dataRegion.show(tableView);
                     }
                 });

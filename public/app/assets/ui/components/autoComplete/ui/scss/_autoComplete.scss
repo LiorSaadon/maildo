@@ -47,13 +47,11 @@
           -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;
           box-sizing: border-box;
-          color: #323336;
+          min-height: 15px;
+          color: #333333;
           &:first-child {
             border: none;
           }
-          min-height: 15px;
-          // @include box-sizing(border-box);
-          color: gray;
           div.dropdown-li-value {
             display: inline-block;
           }
@@ -68,10 +66,7 @@
             font-size: 11px;
           }
           &.active {
-            background-color: lightgray;
-            div.dropdown-li-value {
-              color: white;
-            }
+            background-color: #EEEEEE;
           }
         }
       }

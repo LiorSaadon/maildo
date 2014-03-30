@@ -13,7 +13,7 @@ define(function (require) {
             filteringMap = {
                 defaultQuery: "in:inbox",
                 fields: {
-                    _in: 'tag',
+                    in: 'tag',
                     labels: 'tag',
                     to: 'data',
                     from: 'data',

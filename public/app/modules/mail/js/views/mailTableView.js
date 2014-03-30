@@ -15,7 +15,11 @@ define(function (require) {
             itemView : MailableRowView,
             itemViewContainer : "tbody",
 
-            initialize:function(){
+            initialize:function(options){
+
+                options = options || {};
+
+                this.action = options.action || "inbox";
                 this.listenTo(this.collection, "change:selection", this.onCollectionChange, this);
             },
 
@@ -42,6 +46,7 @@ define(function (require) {
             buildItemView : function (item, ItemView) {
 
                 var view = new ItemView({
+                    action: this.action,
                     model : item
                 });
                 return view;

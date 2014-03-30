@@ -19,7 +19,7 @@ define(function (require) {
                 selector: ".selector",
                 starIcon:".starIcon",
                 impIcon:".importantIcon",
-                from: ".from",
+                adress: ".address",
                 subject: ".subject",
                 sentTime: ".sentTime"
             },
@@ -33,29 +33,42 @@ define(function (require) {
 
             //------------------------------------------------
 
-            initialize:function(){
+            initialize:function(options){
 
+               options = options || {};
+
+               this.action = options.action || "inbox";
                this.listenTo(this.model, "change:labels.*" , this.setIcons);
             },
 
-            //------------------------------------------------
+            //-------------------------------------------------------------
+            // customTemplateHelpers
+            //-------------------------------------------------------------
 
             customTemplateHelpers : function () {
 
                 return {
-                    sentTime : dateResolver.shortDate(this.model.get("sentTime"))
+                    isInbox:  this.action === "inbox",
+                    isSent:   this.action === "sent",
+                    isDraft:  this.action === "draft",
+                    isTrash:  this.action === "trash",
+                    iaSpam:   this.action === "spam"
                 };
             },
 
-            //------------------------------------------------
+            //-------------------------------------------------------------
+            // onRender
+            //-------------------------------------------------------------
 
             onRender:function(){
 
                 this.setIcons();
+                this.setSubject();
+                this.setDate();
                 this.setSelection();
             },
 
-            //------------------------------------------------
+            //-------------------------------------------------------------
 
             setIcons:function(){
 
@@ -66,7 +79,38 @@ define(function (require) {
                 this.ui.impIcon.toggleClass("disable",!_.has(labels,'important'));
             },
 
-            //------------------------------------------------
+            //-------------------------------------------------------------
+
+            setSelection:function() {
+
+                var isSelected = this.model.collection.isSelected(this.model);
+
+                this.$el.toggleClass('selected',isSelected);
+                this.ui.checkBox.prop('checked',isSelected);
+            },
+
+            //-------------------------------------------------------------
+
+            setSubject:function(){
+
+                var subject = this.model.get("subject");
+
+                if(_.isEmpty(subject)){
+                    subject = "(" + app.translator.translate("mail.nosubject") + ")";
+                }
+                this.ui.subject.text(subject);
+            },
+
+            //-------------------------------------------------------------
+
+            setDate:function(){
+
+                this.ui.sentTime.text(dateResolver.shortDate(this.model.get("sentTime")));
+            },
+
+            //-------------------------------------------------------------
+            // onRowClick
+            //-------------------------------------------------------------
 
             onRowClick:function(){
 
@@ -84,16 +128,6 @@ define(function (require) {
                 this.$el.toggleClass('selected',isSelected);
                 this.ui.checkBox.prop('checked',isSelected);
                 this.model.collection.toggleSelection(this.model, {callerName:'itemView'});
-            },
-
-            //------------------------------------------------
-
-            setSelection:function() {
-
-                var isSelected = this.model.collection.isSelected(this.model);
-
-                this.$el.toggleClass('selected',isSelected);
-                this.ui.checkBox.prop('checked',isSelected);
             }
         });
     });
