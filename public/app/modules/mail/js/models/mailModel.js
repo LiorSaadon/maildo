@@ -8,64 +8,94 @@ define(function (require) {
 
     var MailModel = {};
 
-    app.module('mail', function (mail, mb,  Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
 
         MailModel = BaseModel.extend({
-            defaults : {
-                _in:'',
-                from :'me',
-                to:'',
-                cc:'',
-                bcc:'',
+            defaults: {
+                _in: '',
+                from: 'me',
+                to: '',
+                cc: '',
+                bcc: '',
                 subject: '',
                 sentTime: null,
-                body:'',
-                labels:{}
+                body: '',
+                labels: {}
             },
 
-            initialize:function(attrs, options){
+            initialize: function (attrs, options) {
 
-               this.localStorage = new MailStorage();
+                this.localStorage = new MailStorage();
             },
-
 
             //-----------------------------------------------------------------
             // validate
             //-----------------------------------------------------------------
 
-            validate: function (attrs,options) {
+            validate: function (attrs, options) {
 
-                var that = this;
+                options = options || {};
 
-                if (_.isEmpty(this.get("to")) && _.isEmpty(this.get("cc")) && _.isEmpty(this.get("bcc"))) {
+                switch (options.validateType) {
+                    case "draft":
+                        return this.validateDraft();
+                    default:
+                        return this.validateMail();
+                }
+            },
+
+            //-------------------------------------------------------------
+
+            validateDraft: function () {
+
+                var error = false;
+
+                if (_.isEmpty(this.getAllAddresses()) && _.isEmpty(this.get('subject')) && _.isEmpty(this.get('body'))) {
+                    error = true;
+                }
+
+                return error;
+            },
+
+            //-------------------------------------------------------------
+
+            validateMail: function () {
+
+                var allAddresses = this.getAllAddresses();
+
+                if (_.isEmpty(allAddresses)) {
                     return "Please specify at least one recipient.";
                 }
 
-//                _.each(this.get("to"), function(address){
-//                    var res = that.validateAddress(address);
-//                    if(!res){
-//                        return "The email address '" + address + "' is not recognized. Please fix it and try again. ";
-//                    }
-//                });
-//
-//                _.each(this.get("cc"), function(address){
-//                    var res = that.validateAddress(address);
-//                    if(!res){
-//                        return "The email address '" + address + "' is not recognized. Please fix it and try again. ";
-//                    }
-//                });
-//
-//                _.each(this.get("bcc"), function(address){
-//                    var res = that.validateAddress(address);
-//                    if(!res){
-//                        return "The email address '" + address + "' is not recognized. Please fix it and try again. ";
-//                    }
-//                });
+                for (var i = 0; i < allAddresses.length; i++) {
+                    if (!this.validateAddress(allAddresses[i])) {
+                        return "The email address '" + allAddresses[i] + "' is not recognized. Please fix it and try again.";
+                    }
+                }
             },
 
-            //---------------------------------------------------
+            //-------------------------------------------------------------
 
-            validateAddress: function(address){
+            getAllAddresses: function () {
+
+                return this.getAddresses('to').concat(this.getAddresses('cc'), this.getAddresses('bcc'));
+            },
+
+            //-------------------------------------------------------------
+
+            getAddresses: function (attr) {
+
+                var addresses = this.get(attr).split(";");
+
+                if (_.isEmpty(_.last(addresses))) {
+                    addresses = _.first(addresses, addresses.length - 1);
+                }
+                return addresses;
+            },
+
+            //-------------------------------------------------------------
+
+            validateAddress: function (address) {
 
                 var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
                 return reg.test(address);
@@ -73,26 +103,26 @@ define(function (require) {
 
 
             //-----------------------------------------------------------------
-            // address handling
+            // add\remove address
             //-----------------------------------------------------------------
 
-            addAddress: function(attr, address){
+            addAddress: function (attr, address) {
 
-                this.updateLastAddress(attr, address +";");
+                this.updateLastAddress(attr, address + ";");
             },
 
             //----------------------------------------------------------------
 
-            updateLastAddress:function(attr, address){
+            updateLastAddress: function (attr, address) {
 
                 var addrList = this.get(attr).split(";");
-                addrList[addrList.length-1] = address;
+                addrList[addrList.length - 1] = address;
                 this.set(attr, addrList.join(";"));
             },
 
             //----------------------------------------------------------------
 
-            removeAddress: function(attr, address){
+            removeAddress: function (attr, address) {
 
                 var addrList = this.get(attr).replace(address + ";", "");
                 this.set(attr, addrList);
@@ -103,24 +133,24 @@ define(function (require) {
             // label handling
             //----------------------------------------------------------------
 
-            addLabel: function(label){
+            addLabel: function (label) {
 
-                this.set('labels.'+label, true);
+                this.set('labels.' + label, true);
             },
 
             //----------------------------------------------------------------
 
-            removeLabel: function(label,options){
+            removeLabel: function (label, options) {
 
                 options = options || {};
 
                 var labels = this.get('labels');
 
-                if(_.has(labels,label)){
+                if (_.has(labels, label)) {
 
                     delete labels[label];
 
-                    if(!options.silent){
+                    if (!options.silent) {
                         this.trigger("change:labels.*");
                     }
                 }
@@ -128,7 +158,7 @@ define(function (require) {
 
             //----------------------------------------------------------------
 
-            removeAllLabels: function(options){
+            removeAllLabels: function (options) {
 
                 options = options || {};
 
@@ -141,10 +171,23 @@ define(function (require) {
 
             //----------------------------------------------------------------
 
-            replaceLabel:function(label1,label2){
+            replaceLabel: function (label1, label2) {
 
                 this.removeLabel(label1);
                 this.addLabel(label2);
+            },
+
+            //-----------------------------------------------------------------
+            // saveAsDraft
+            //-----------------------------------------------------------------
+
+            saveAsDraft: function (options) {
+
+                options = options || {};
+
+                this.addLabel("draft");
+                this.set("in", "draft");
+                this.save(null, $.extend({}, options, {validateType: "draft"}));
             }
         });
     });

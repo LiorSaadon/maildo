@@ -40,9 +40,6 @@ define(function (require) {
                 },
                 "click .removeStar": function () {
                     mail.vent.trigger("actions", {actionType: 'markAs', label: 'notStarred'});
-                },
-                "click .btnDiscard": function () {
-                    mail.vent.trigger("newMail", {actionType: 'discard'});
                 }
             },
 

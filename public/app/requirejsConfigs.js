@@ -1,7 +1,7 @@
 define(function (require) {
     "use strict";
 
-    var baseConfig = require("app/kick-starters/baseConfig");
+    var baseConfig = require("app/baseConfig");
     var configs = require("app/assets/js/lib-extensions/requirejs/require.loadByType!config");
 
     var leVersion = "@@version";

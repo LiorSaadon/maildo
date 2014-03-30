@@ -25,7 +25,7 @@ define(function (require) {
                 var action = app.context.get("router.state.action");
 
                 if(action !== "compose"){
-                    this.saveToDraft();
+                    this.saveAsDraft();
                 }
             },
 
@@ -35,8 +35,18 @@ define(function (require) {
 
             composeModel: function () {
 
+                this.deleteModel();
+
                 this.mailModel = new MailModel();
                 return this.mailModel;
+            },
+
+            //----------------------------------------------------
+
+            deleteModel: function(){
+                if(_.isObject(this.mailModel)){
+                    delete this.mailModel;
+                }
             },
 
             //----------------------------------------------------
@@ -53,8 +63,8 @@ define(function (require) {
                     case "discard":
                         this.discard();
                         break;
-                    case "saveToDraft":
-                        this.saveToDraft();
+                    case "saveAsDraft":
+                        this.saveAsDraft();
                         break;
                 }
             },
@@ -73,7 +83,7 @@ define(function (require) {
                             alert(error);
                         },
                         success: function () {
-                            delete that.mailModel;
+                            that.deleteModel();
                             mail.router.previous();
                         }
                     });
@@ -84,30 +94,23 @@ define(function (require) {
 
             discard:function(){
 
-                delete this.mailModel;
+                this.deleteModel();
                 mail.router.previous();
             },
 
             //-------------------------------------------
 
-            saveToDraft: function () {
+            saveAsDraft: function () {
 
                 var that = this;
 
                 if (_.isObject(this.mailModel)) {
 
-                    if(this.mailModel.get('to') !== '' || this.mailModel.get('bcc') !== '' || this.mailModel.get('cc') !== ''){
-
-                        this.mailModel.addLabel("draft");
-                        this.mailModel.set("in","draft");
-
-                        this.mailModel.save(null, {
-                            silent: true,
-                            success: function(){
-                                delete that.mailModel;
-                            }
-                        });
-                    }
+                    this.mailModel.saveAsDraft({
+                        success: function(){
+                            that.deleteModel();
+                        }
+                    });
                 }
             }
         });
