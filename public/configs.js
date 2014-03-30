@@ -47,5 +47,3 @@ define(function (require) {
 
     return parsedConfig;
 });
-
-
