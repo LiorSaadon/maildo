@@ -36,7 +36,7 @@ define(function (require) {
     }
 
     //------------------------------------------------------------
-    // merge modules configs.
+    // merge modules configurations
     //------------------------------------------------------------
 
     for (var config in configs) {
