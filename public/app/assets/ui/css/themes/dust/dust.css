@@ -514,6 +514,7 @@ body {
   bottom: 15px;
   background-color: white;
   border: 1px solid gainsboro;
+  padding: 10px;
 }
 .composeView .compose-editor:hover {
   border-color: #c1c2c3;
@@ -700,36 +701,72 @@ body {
   left: 30px;
 }
 
-.mb .unread {
-  font-weight: bold;
-}
-.mb .importantIcon {
+.mb .mailTable .importance-icon {
   width: 19px;
   height: 19px;
   background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) -37px 0 no-repeat;
 }
-.mb .importantIcon.disable {
+.mb .mailTable .importance-icon.disable {
   background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) 0 0 no-repeat;
 }
-.mb .importantIcon:hover {
+.mb .mailTable .importance-icon:hover {
   background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) -37px 0 no-repeat;
 }
-.mb .starIcon {
+.mb .mailTable .star-icon {
   width: 19px;
   height: 19px;
   background: url(app/assets/ui/img/star.png);
+  display: block;
+  float: left;
 }
-.mb .starIcon.disable {
+.mb .mailTable .star-icon.disable {
   background: url(app/assets/ui/img/not-star.png);
 }
-.mb .starIcon:hover {
+.mb .mailTable .star-icon:hover {
   background: url(app/assets/ui/img/star.png);
 }
-.mb .draft {
-  color: red;
+.mb .mailTable .trash-icon-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
 }
-.mb .sentTo {
+.mb .mailTable .trash-icon {
+  width: 19px;
+  height: 19px;
+  background: url(//ssl.gstatic.com/ui/v1/icons/mail/icons2.png) no-repeat -20px -100px;
+  display: inline-block;
+  float: left;
+}
+.mb .mailTable .address.unread {
+  font-weight: bold;
+}
+.mb .mailTable .address .draft {
+  color: #DD4B39;
+  font-weight: normal;
+}
+.mb .mailTable .address .sent-to {
   padding-right: 7px;
+  font-weight: normal;
+}
+.mb .mailTable .address .trash-address {
+  display: inline-block;
+  vertical-align: middle;
+  width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mb .mailTable .sentTime.unread {
+  font-weight: bold;
+}
+.mb .mailTable .content .subject.unread {
+  font-weight: bold;
+}
+.mb .mailTable .content .separator {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.mb .mailTable .content .body {
+  color: gray;
 }
 
 /*------------ app ---------------*/

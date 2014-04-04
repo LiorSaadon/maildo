@@ -164,9 +164,9 @@ define(function (require) {
 
                 var labels = this.get('labels');
 
-                _.each(labels, function (value, key) {
-                    removeLabel(value, options)
-                });
+                _.each(labels, _.bind(function (value, key) {
+                    this.removeLabel(key, options)
+                },this));
             },
 
             //----------------------------------------------------------------

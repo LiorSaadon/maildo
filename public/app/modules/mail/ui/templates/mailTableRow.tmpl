@@ -1,22 +1,22 @@
 <td class="selector"><input type="checkbox" class="chkBox"></td>
-<td><div class="starIcon"></div></td>
-<td><div class="importantIcon"></div></td>
-
-{{#isInbox}}
-    <td><div class="inbox">{{from}}</div></td>
-{{/isInbox}}
-{{#isSent}}
-    <td><div class="sent"><span class="sentTo">{{#_i18n}}mail.to{{/_i18n}}:</span>{{from}}</div></td>
-{{/isSent}}
-{{#isDraft}}
-    <td><div class="draft">{{#_i18n}}mail.draft{{/_i18n}}</div></td>
-{{/isDraft}}
-{{#isTrash}}
-    <td><div class="trash">{{from}}</div></td>
-{{/isTrash}}
-{{#isSpam}}
-    <td><div class="spam">{{from}}</div></td>
-{{/isSpam}}
-
-<td><div class="content"><span class="subject"></span>-<span class="body">{{body}}</span></div></td>
+<td class="star"><div class="star-icon"></div></td>
+<td class="importance"><div class="importance-icon"></div></td>
+<td class="address">
+    {{#isInbox}}
+        <div class="inbox">{{from}}<div>
+    {{/isInbox}}
+    {{#isSent}}
+        <div class="sent"><span class="sent-to">{{#_i18n}}mail.to{{/_i18n}}:</span><span class="sent-address">{{from}}</span></div>
+    {{/isSent}}
+    {{#isDraft}}
+        <div class="draft">{{#_i18n}}mail.draft{{/_i18n}}</div>
+    {{/isDraft}}
+    {{#isTrash}}
+        <div class="trash-icon-wrapper"><div class="trash-icon"></div></div><div class="trash-address"><div>{{from}}</div></div>
+    {{/isTrash}}
+    {{#isSpam}}
+        <div class="spam">{{from}}</div>
+    {{/isSpam}}
+</td>
+<td><div class="content"><span class="subject"></span><span class="separator">-</span><span class="body">{{body}}</span></div></td>
 <td><div class="sentTime"></div></td>

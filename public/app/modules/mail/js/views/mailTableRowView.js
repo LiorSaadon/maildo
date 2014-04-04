@@ -19,8 +19,9 @@ define(function (require) {
                 selector: ".selector",
                 starIcon:".starIcon",
                 impIcon:".importantIcon",
-                adress: ".address",
+                address: ".address",
                 subject: ".subject",
+                body: ".body",
                 sentTime: ".sentTime"
             },
 
@@ -38,7 +39,7 @@ define(function (require) {
                options = options || {};
 
                this.action = options.action || "inbox";
-               this.listenTo(this.model, "change:labels.*" , this.setIcons);
+               this.listenTo(this.model, "change:labels.*" , this.adjustUI);
             },
 
             //-------------------------------------------------------------
@@ -48,11 +49,11 @@ define(function (require) {
             customTemplateHelpers : function () {
 
                 return {
-                    isInbox:  this.action === "inbox",
-                    isSent:   this.action === "sent",
-                    isDraft:  this.action === "draft",
-                    isTrash:  this.action === "trash",
-                    iaSpam:   this.action === "spam"
+                    isInbox: this.action === "inbox",
+                    isSent:  this.action === "sent",
+                    isDraft: this.action === "draft",
+                    isTrash: this.action === "trash",
+                    iaSpam:  this.action === "spam"
                 };
             },
 
@@ -62,7 +63,7 @@ define(function (require) {
 
             onRender:function(){
 
-                this.setIcons();
+                this.adjustUI();
                 this.setSubject();
                 this.setDate();
                 this.setSelection();
@@ -70,11 +71,13 @@ define(function (require) {
 
             //-------------------------------------------------------------
 
-            setIcons:function(){
+            adjustUI:function(){
 
                 var labels = this.model.get("labels");
 
-                this.$el.toggleClass("unread",_.has(labels,'read'));
+                this.ui.sentTime.toggleClass("unread",_.has(labels,'read'));
+                this.ui.address.toggleClass("unread",_.has(labels,'read'));
+                this.ui.subject.toggleClass("unread",_.has(labels,'read'));
                 this.ui.starIcon.toggleClass("disable",!_.has(labels,'starred'));
                 this.ui.impIcon.toggleClass("disable",!_.has(labels,'important'));
             },
