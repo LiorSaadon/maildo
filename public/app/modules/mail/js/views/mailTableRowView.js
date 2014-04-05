@@ -17,8 +17,8 @@ define(function (require) {
             ui:{
                 checkBox: ".chkBox",
                 selector: ".selector",
-                starIcon:".starIcon",
-                impIcon:".importantIcon",
+                starIcon:".star-icon",
+                impIcon:".importance-icon",
                 address: ".address",
                 subject: ".subject",
                 body: ".body",
@@ -48,7 +48,10 @@ define(function (require) {
 
             customTemplateHelpers : function () {
 
-                return {
+                return{
+                    body:    this.getContent(),
+                    subject: this.getSubject(),
+                    sentTime:this.getSentTime(),
                     isInbox: this.action === "inbox",
                     isSent:  this.action === "sent",
                     isDraft: this.action === "draft",
@@ -58,14 +61,37 @@ define(function (require) {
             },
 
             //-------------------------------------------------------------
+
+            getSubject:function(){
+
+                var subject = this.model.get("subject");
+
+                if(_.isEmpty(subject)){
+                    subject = "(" + app.translator.translate("mail.nosubject") + ")";
+                }
+                return subject;
+            },
+
+            //-------------------------------------------------------------
+
+            getContent: function(){
+                return this.model.get("body").replace(/(<([^>]+)>)/ig,"").replace(/&nbsp;/ig," ");
+            },
+
+            //-------------------------------------------------------------
+
+            getSentTime:function(){
+                return dateResolver.shortDate(this.model.get("sentTime"));
+            },
+
+
+            //-------------------------------------------------------------
             // onRender
             //-------------------------------------------------------------
 
             onRender:function(){
 
                 this.adjustUI();
-                this.setSubject();
-                this.setDate();
                 this.setSelection();
             },
 
@@ -75,9 +101,9 @@ define(function (require) {
 
                 var labels = this.model.get("labels");
 
-                this.ui.sentTime.toggleClass("unread",_.has(labels,'read'));
-                this.ui.address.toggleClass("unread",_.has(labels,'read'));
-                this.ui.subject.toggleClass("unread",_.has(labels,'read'));
+                this.ui.sentTime.toggleClass("unread",!_.has(labels,'read'));
+                this.ui.address.toggleClass("unread",!_.has(labels,'read'));
+                this.ui.subject.toggleClass("unread",!_.has(labels,'read'));
                 this.ui.starIcon.toggleClass("disable",!_.has(labels,'starred'));
                 this.ui.impIcon.toggleClass("disable",!_.has(labels,'important'));
             },
@@ -92,24 +118,6 @@ define(function (require) {
                 this.ui.checkBox.prop('checked',isSelected);
             },
 
-            //-------------------------------------------------------------
-
-            setSubject:function(){
-
-                var subject = this.model.get("subject");
-
-                if(_.isEmpty(subject)){
-                    subject = "(" + app.translator.translate("mail.nosubject") + ")";
-                }
-                this.ui.subject.text(subject);
-            },
-
-            //-------------------------------------------------------------
-
-            setDate:function(){
-
-                this.ui.sentTime.text(dateResolver.shortDate(this.model.get("sentTime")));
-            },
 
             //-------------------------------------------------------------
             // onRowClick

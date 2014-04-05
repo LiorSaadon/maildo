@@ -8,9 +8,6 @@
     .importance-icon.disable {
       background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) 0 0 no-repeat;
     }
-    .importance-icon:hover{
-      background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) -37px 0 no-repeat;
-    }
     .star-icon {
       width: 19px;
       height: 19px;
@@ -20,9 +17,6 @@
     }
     .star-icon.disable {
       background: url(app/assets/ui/img/not-star.png);
-    }
-    .star-icon:hover{
-      background: url(app/assets/ui/img/star.png);
     }
     .trash-icon-wrapper{
       display: inline-block;
@@ -62,6 +56,10 @@
       }
     }
     .content{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right:15px;
+
       .subject{
         &.unread{
           font-weight: bold;

@@ -709,9 +709,6 @@ body {
 .mb .mailTable .importance-icon.disable {
   background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) 0 0 no-repeat;
 }
-.mb .mailTable .importance-icon:hover {
-  background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) -37px 0 no-repeat;
-}
 .mb .mailTable .star-icon {
   width: 19px;
   height: 19px;
@@ -721,9 +718,6 @@ body {
 }
 .mb .mailTable .star-icon.disable {
   background: url(app/assets/ui/img/not-star.png);
-}
-.mb .mailTable .star-icon:hover {
-  background: url(app/assets/ui/img/star.png);
 }
 .mb .mailTable .trash-icon-wrapper {
   display: inline-block;
@@ -757,6 +751,11 @@ body {
 }
 .mb .mailTable .sentTime.unread {
   font-weight: bold;
+}
+.mb .mailTable .content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 15px;
 }
 .mb .mailTable .content .subject.unread {
   font-weight: bold;

@@ -114,7 +114,7 @@ define(function (require) {
                     default:
                         this.showComposeButtons(false);
                         this.showActionButtons(true);
-                        this.showPager(false);
+                        this.showPager(true);
                         this.showSettingsLabel(false);
                 }
             },

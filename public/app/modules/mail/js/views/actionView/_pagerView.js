@@ -50,6 +50,7 @@ define(function (require) {
 
             onCollectionMetadataChange: function () {
 
+                debugger;
                 if(this.collection.metadata.total === 0){
                     this.ui.container.hide();
                 }else{
