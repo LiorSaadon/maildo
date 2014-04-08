@@ -51,8 +51,8 @@ define(function (require) {
             //---------------------------------------------
 
             previous: function () {
-                var prevURL = this.options.controller.getPrevURL();
-                mail.router.navigate(prevURL, {trigger: true });
+                var prevURL = this.options.controller.buildPrevURL();
+                mail.router.navigate(prevURL);
             }
         });
     });

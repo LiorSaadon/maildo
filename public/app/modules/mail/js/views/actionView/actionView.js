@@ -21,8 +21,8 @@ define(function (require) {
             },
 
             ui: {
-                composeArea: ".compose-section",
-                actionListArea: ".action-list-section",
+                composeRegion: ".compose-section",
+                actionListRegion: ".action-list-section",
                 btnSelect: ".btnSelect",
                 btnMoveTo: ".btnMoveTo",
                 btnSend: ".btnSend",
@@ -30,41 +30,40 @@ define(function (require) {
                 btnSaveNow: ".btnSaveNow",
                 btnDiscard: ".btnDiscard",
                 btnBackToInbox: ".btnBackToInbox",
-                btnDiscardDrafts: ".btnDiscardDrafts",
                 btnDelete: ".btnDelete",
                 btnMore: ".btnMore",
-                pagerContainer: ".pager",
-                lblSettings:".lblSettings",
+                pagerRegion: ".pager",
+                lblSettings: ".lblSettings",
                 btnSettings: ".btnSettings"
             },
 
             events: {
-                "click .btnDelete": function () {
-                    mail.vent.trigger("actions", {actionType: 'delete'});
+                "click .btnSettings": function () {
+                    mail.router.navigate("settings");
+                },
+                "click .btnBackToInbox": function () {
+                    mail.router.previous();
                 },
                 "click .selectAll": function () {
-                    mail.vent.trigger("actions", {actionType: 'select', selectBy:"all"});
+                    mail.vent.trigger("actions", {actionType: 'select', selectBy: "all"});
                 },
                 "click .selectNone": function () {
-                    mail.vent.trigger("actions", {actionType: "select", selectBy:"none"});
+                    mail.vent.trigger("actions", {actionType: "select", selectBy: "none"});
                 },
                 "click .selectRead": function () {
-                    mail.vent.trigger("actions", {actionType: "select", selectBy:"read"});
+                    mail.vent.trigger("actions", {actionType: "select", selectBy: "read"});
                 },
                 "click .selectUnread": function () {
-                    mail.vent.trigger("actions", {actionType: "select", selectBy:"unread"});
+                    mail.vent.trigger("actions", {actionType: "select", selectBy: "unread"});
+                },
+                "click .btnDelete": function () {
+                    mail.vent.trigger("actions", {actionType: 'delete'});
                 },
                 "click .btnSend": function () {
                     mail.vent.trigger("newMail", {actionType: 'send'});
                 },
                 "click .btnDiscard": function () {
                     mail.vent.trigger("newMail", {actionType: 'discard'});
-                },
-                "click .btnSettings": function () {
-                    mail.router.navigate("settings",{ trigger: true });
-                },
-                "click .btnBackToInbox": function () {
-                    mail.router.previous({ trigger: true });
                 }
             },
 
@@ -94,108 +93,64 @@ define(function (require) {
             // showRelevantItems
             //------------------------------------------------------
 
-            showRelevantItems: function(){
+            showRelevantItems: function () {
 
-                this.currentContext = app.context.get("router.state.action");
+                this.showItems(["composeRegion", "lblSettings", "pagerRegion", "btnBackToInbox","btnRefresh", "btnSelect","btnMore", "btnSelect", "btnDelete", "btnMoveTo"], false);
 
-                switch (this.currentContext) {
+                switch (app.context.get("router.state.action")) {
                     case "compose":
-                        this.showComposeButtons(true);
-                        this.showActionButtons(false);
-                        this.showPager(false);
-                        this.showSettingsLabel(false);
+                        this.showItems(["composeRegion"]);
                         break;
                     case "settings":
-                        this.showComposeButtons(false);
-                        this.showActionButtons(false);
-                        this.showPager(false);
-                        this.showSettingsLabel(true);
+                        this.showItems(["lblSettings"]);
                         break;
                     default:
-                        this.showComposeButtons(false);
-                        this.showActionButtons(true);
-                        this.showPager(true);
-                        this.showSettingsLabel(false);
+                        this.showActionButtons();
+                        break;
                 }
             },
 
             //--------------------------------------------------
 
-            showComposeButtons: function(show){
+            showActionButtons: function () {
 
-                this.ui.composeArea.toggleClass("hide", !show);
-//                if(show){
-//                    this.ui.composeArea.show();
-//                }else{
-//                    this.ui.composeArea.hide();
-//                }
-            },
-
-            //--------------------------------------------------
-
-            showPager: function(show){
-
-                this.ui.pagerContainer.toggleClass("hide", !show);
-//                if(show){
-//                    this.ui.pagerContainer.show();
-//                }else{
-//                    this.ui.pagerContainer.hide();
-//                }
-            },
-
-            //--------------------------------------------------
-
-            showSettingsLabel: function(show){
-
-                this.ui.lblSettings.toggleClass("hide", !show);
-//                if(show){
-//                    this.ui.lblSettings.show();
-//                }else{
-//                    this.ui.lblSettings.hide();
-//                }
-            },
-
-            //--------------------------------------------------
-
-            showActionButtons: function(show){
-
-                if(show){
-                    this.ui.actionListArea.find("div[class^='btn']").hide();
-
-                    switch(this.actionContext()){
-                        case "view":
-                            this.ui.btnBackToInbox.show();
-                            this.ui.btnRefresh.show();
-                            break;
-                        case "empty-list":
-                            this.ui.btnSelect.show();
-                            this.ui.btnRefresh.show();
-                            break;
-                        case "list":
-                            this.ui.btnMore.show();
-                            this.ui.btnSelect.show();
-                            this.ui.btnDelete.show();
-                            this.ui.btnMoveTo.show();
-                    }
-                    this.ui.actionListArea.show();
-                }else{
-                    this.ui.actionListArea.hide();
+                switch (this.actionContext()) {
+                    case "view":
+                        this.showItems(["btnBackToInbox","btnRefresh"]);
+                        break;
+                    case "empty-list":
+                        this.showItems(["btnSelect", "btnRefresh"]);
+                        break;
+                    case "list":
+                        this.showItems(["btnMore", "btnSelect", "btnDelete", "btnMoveTo"]);
+                        break;
                 }
             },
 
             //-----------------------------------------------------
 
-            actionContext:function(){
+            actionContext: function () {
 
                 var param = app.context.get("router.state.params");
 
-                if(!_.isEmpty(param.id)){
+                if (!_.isEmpty(param.id)) {
                     return "view";
                 }
-                if(!_.isEmpty(mail.dataController.getMailCollection().getSelected())){
+                if (!_.isEmpty(mail.dataController.getMailCollection().getSelected())) {
                     return "list";
                 }
                 return "empty-list";
+            },
+
+            //------------------------------------------------------
+
+            showItems: function (items, show) {
+
+                show = _.isBoolean(show) ? show : true;
+
+                _.each(items, _.bind(function(item){
+                    this.ui[item].toggleClass("hide", !show)
+                },this));
             }
         });
     });

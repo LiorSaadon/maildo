@@ -11,12 +11,9 @@ define(function (require) {
 
             _prevState: null,
 
-            skipStates:  ['compose', 'settings'],
-
-
-            //-------------------------------------------------
+            //-----------------------------------------------------------------
             //  actions
-            //-------------------------------------------------
+            //-----------------------------------------------------------------
 
             compose:function(){
                 app.context.set("router.state",{'action':'compose'});
@@ -24,7 +21,7 @@ define(function (require) {
 
             //-------------------------------------------------
 
-            settings:function(param1,param2){
+            settings:function(){
                 app.context.set("router.state",{'action':'settings'});
             },
 
@@ -64,25 +61,41 @@ define(function (require) {
                 app.context.set("router.state",{'action':'search', 'params':this.analyzeParams(param2, param1)});
             },
 
+            //-------------------------------------------------
 
-            //-------------------------------------------------
-            // state management
-            //-------------------------------------------------
+            analyzeParams:function(id,query){
+
+                var params = {id:null, page:1, query:query};
+
+                if(_.isString(id)){
+
+                    var page = id.split('p')[1];
+
+                    if(!_.isNumber(page)){
+                        params.page = page;
+                    }else{
+                        params.id = id;
+                    }
+                }
+                return params;
+            },
+
+
+            //-----------------------------------------------------------------
+            // backupState
+            //-----------------------------------------------------------------
 
             backupState:function(){
 
                 var state = app.context.get("router.state");
-
-                if(!_.isEmpty(state)){
-                    if(_.indexOf(this.skipStates, state.action, 0) === -1){
-                        this._prevState = $.extend(true, {},state);
-                    }
-                }
+                this._prevState = $.extend(true, {},state);
             },
 
-            //-------------------------------------------------
+            //-----------------------------------------------------------------
+            // buildPrevURL
+            //-----------------------------------------------------------------
 
-            getPrevURL:function(){
+            buildPrevURL:function(){
 
                 var url = "inbox";
 
@@ -92,54 +105,6 @@ define(function (require) {
                     url = this._prevState.action + search + "/" + id;
                 }
                 return url;
-            },
-
-
-            //-------------------------------------------------
-            // analyzeParam
-            //-------------------------------------------------
-
-            analyzeParams:function(idParam,queryParam){
-
-                return $.extend({}, this.analyzeIdParam(idParam),this.analyzeQuery(queryParam));
-            },
-
-            //--------------------------------------------
-
-            analyzeIdParam:function(idParam){
-
-                if(typeof idParam === 'undefined'){
-                    return {id:null, page: 1};
-                }
-
-                var page = this.extractPage(idParam);
-
-                if(!_.isNull(page)){
-                    return {id:null, page: page};
-                }
-
-                return{id: idParam, page:null};
-            },
-
-            //------------------------------------------
-
-            extractPage:function(param){
-
-                var p = param.split('p');
-
-                if(p.length == 2){
-                   return _.isFinite(p[1]) ? parseInt(p[1],10) : 1;
-                }
-                return null;
-            },
-
-            //------------------------------------------
-
-            analyzeQuery:function(queryParam){
-
-               return{
-                   query: queryParam || null
-               };
             }
         });
     });
