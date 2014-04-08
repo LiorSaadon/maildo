@@ -149,7 +149,11 @@ define(function (require) {
                 show = _.isBoolean(show) ? show : true;
 
                 _.each(items, _.bind(function(item){
-                    this.ui[item].toggleClass("hide", !show)
+                    if(show){
+                        this.ui[item].show();
+                    }else{
+                        this.ui[item].hide();
+                    }
                 },this));
             }
         });

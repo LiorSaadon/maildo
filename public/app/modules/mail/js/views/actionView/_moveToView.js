@@ -44,9 +44,15 @@ define(function (require) {
 
                 this.currAction = app.context.get("router.state.action");
 
-                this.ui.ddiInbox.toggleClass("hide", _.contains(["inbox"],this.currAction));
-                this.ui.ddiTrash.toggleClass("hide", !_.contains(["spam","inbox"],this.currAction));
-                this.ui.ddiSpam.toggleClass( "hide", !_.contains(["inbox","trash"],this.currAction));
+                if(_.contains(["inbox"],this.currAction)){
+                    this.ui.ddiInbox.hide();
+                }
+                if(_.contains(["spam","inbox"],this.currAction)){
+                    this.ui.ddiTrash.show();
+                }
+                if(_.contains(["inbox","trash"],this.currAction)){
+                    this.ui.ddiSpam.show();
+                }
             }
         });
     });
