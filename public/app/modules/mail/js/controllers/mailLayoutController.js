@@ -119,7 +119,7 @@ define(function (require) {
                 this.mails.fetchBy({
                     filters: {
                         page: params.page,
-                        query: params.query || 'labels:' + action
+                        query: params.query || 'groups:' + action
                     },
                     success: function () {
                         that.mails.clearSelected();

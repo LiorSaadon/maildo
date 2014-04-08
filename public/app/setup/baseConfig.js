@@ -34,7 +34,6 @@ define({
         "assets-resolvers-date": "app/assets/js/resolvers/date",
         "assets-ui-component": "app/assets/ui/components",
         "assets-plugins": "app/assets/js/plugins",
-        "contactsApp": "app/modules/contacts",
         "dev.mockjax": "lib/mockjax/jquery.mockjax",
         "dev.mockjson": "lib/mockjson/jquery.mockjson"
     },

@@ -27,5 +27,8 @@ body {
     border-color: $input-border-color;
     @include box-shadow(rgba(81,82,84,0.25) 0px 0px 3px);
   }
+
+  .hide {display: none;}
+  .show {display: block;}
 }
 

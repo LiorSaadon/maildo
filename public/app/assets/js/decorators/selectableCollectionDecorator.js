@@ -52,6 +52,31 @@ define(function (require) {
 
         //--------------------------------------------------
 
+        decoratedCollection.selectAllModels = function (options) {
+
+            decoratedCollection.selectModels(this.models,options);
+        };
+
+        //--------------------------------------------------
+
+        decoratedCollection.selectModels = function (models, options) {
+
+            var exclusively = options ? options.exclusively : null, raise = false;
+
+            if (exclusively) {
+                raise = true;
+                this.selected.length = 0;
+            }
+
+            _.each(models, function (model) {
+                raise = decoratedCollection.selectModel(model, {silent:true}) || raise;
+            }, this);
+
+            if(raise){raiseTrigger(options);}
+        };
+
+        //--------------------------------------------------
+
         decoratedCollection.selectModel = function (model, options) {
 
             var id = model.get("id");
@@ -62,24 +87,6 @@ define(function (require) {
                 return true;
             }
             return false;
-        };
-
-        //--------------------------------------------------
-
-        decoratedCollection.selectModels = function (models, options) {
-
-            var exclusively = options ? options.exclusively : null, raise = false;
-
-            if (_.isBoolean(exclusively) && exclusively === true) {
-                raise = true;
-                this.selected.length = 0;
-            }
-
-            _.each(models, function (model) {
-                raise = decoratedCollection.selectModel(model, {silent:true}) || raise;
-            }, this);
-
-            if(raise){raiseTrigger(options);}
         };
 
         //----------------------------------------------------

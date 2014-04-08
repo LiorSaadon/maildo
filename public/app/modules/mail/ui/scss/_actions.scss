@@ -1,5 +1,4 @@
-.mb{
-
+.mb {
 
   .buttonsToolbar {
     @include abs-pos(22px, 'NaN', 'NaN', 200px);
@@ -7,7 +6,7 @@
 
   //--------- settings ------------------
 
-  .lblSettings{
+  .lblSettings {
     @include abs-pos(22px, 'NaN', 'NaN', 200px);
     font-size: 20px;
     color: $common-label-color;
@@ -15,95 +14,95 @@
     margin: 0;
   }
 
-  .btnSettings{
+  .btnSettings {
 
     @include abs-pos(22px, 10px, 'NaN', 'NaN');
 
     .button .settingsIcon {
-      @include set-icon(17px,17px,'app/assets/ui/img/actions.png', 0, 0);
+      @include set-icon(17px, 17px, 'app/assets/ui/img/actions.png', 0, 0);
     }
 
     .button:hover .settingsIcon {
-      background: url('app/assets/ui/img/actionsHover.png') 0 0  no-repeat;
+      background: url('app/assets/ui/img/actionsHover.png') 0 0 no-repeat;
     }
   }
 
   //--------- pager -------------------
 
-  .pager{
+  .pager {
 
-    width:300px;
+    width: 300px;
     @include abs-pos(22px, 82px, 'NaN', 'NaN');
 
-    .pagerButtons{
-        float:right;
+    .pagerButtons {
+      float: right;
 
-        .button .nextIcon {
-          @include set-icon(17px,17px,'app/assets/ui/img/actions.png', 0, -17px);
+      .btnNewer {
+        .icoNewer {
+          @include set-icon(17px, 17px, 'app/assets/ui/img/actions.png', 0, -17px);
         }
-
-        .button:hover .nextIcon {
-          background: url('app/assets/ui/img/actionsHover.png') 0 -17px  no-repeat;
+        &:hover {
+          .icoNewer {
+            background: url('app/assets/ui/img/actionsHover.png') 0 -17px  no-repeat;
+          }
         }
-
-        .button .nextIcon.common {
-          background: url('app/assets/ui/img/actionsDisabled.png') 0 -17px  no-repeat;
+        &.disable {
+          .icoNewer {
+            background: url('app/assets/ui/img/actionsDisabled.png') 0 -17px  no-repeat;
+          }
         }
-
-
-      .button .prevIcon {
-          @include set-icon(17px,17px,'app/assets/ui/img/actions.png', 0, -34px);
+      }
+      .btnOlder {
+        .icoOlder {
+          @include set-icon(17px, 17px, 'app/assets/ui/img/actions.png', 0, -34px);
         }
-
-        .button:hover .prevIcon {
-          background: url('app/assets/ui/img//actionsHover.png') 0 -34px  no-repeat;
+        &:hover {
+          .icoOlder {
+            background: url('app/assets/ui/img//actionsHover.png') 0 -34px  no-repeat;
+          }
         }
-
-        .button .prevIcon.disable {
-          background: url('app/assets/ui/img/actionsDisabled.png') 0 -34px  no-repeat;
+        &.disable {
+          .icoOlder {
+            background: url('app/assets/ui/img/actionsDisabled.png') 0 -34px  no-repeat;
+          }
         }
+      }
     }
 
-    .pagerInfo{
-        float:right;
-        padding-right:10px;
-        padding-top:8px;
-        color:white;
-        font-size:$font-size2;
-        font-family: $font-family1;
-      }
+    .pagerInfo {
+      float: right;
+      padding-right: 10px;
+      padding-top: 8px;
+      color: white;
+      font-size: $font-size2;
+      font-family: $font-family1;
+    }
   }
 
   //------------ buttons ----------------
 
-  .action-list-section{
-     div {
-       float:left
-     }
-
-    .ddsMove{
-      position:absolute;
-      top:30px;
-      display:none;
+  .action-list-section {
+    div {
+      float: left
     }
 
-    .ddsSelect{
-      position:absolute;
-      top:30px;
-      display:none;
+    .ddsMove {
+      position: absolute;
+      top: 30px;
+      display: none;
     }
 
-    .ddsMore{
-      position:absolute;
-      top:30px;
-      display:none;
-      min-width:150px;
+    .ddsSelect {
+      position: absolute;
+      top: 30px;
+      display: none;
+    }
+
+    .ddsMore {
+      position: absolute;
+      top: 30px;
+      display: none;
+      min-width: 150px;
     }
   }
 }
-
-
-
-
-
-

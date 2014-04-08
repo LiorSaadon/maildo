@@ -11,9 +11,9 @@ define(function (require) {
         var orderBy = "DESC",
             _localStorage = window.localStorage,
             filteringMap = {
-                defaultQuery: "in:inbox",
+                defaultQuery: "groups:inbox",
                 fields: {
-                    in: 'tag',
+                    groups: 'tag',
                     labels: 'tag',
                     to: 'data',
                     from: 'data',
@@ -32,8 +32,10 @@ define(function (require) {
 
             if (_.isObject(model)) {
 
-                var labels = {'sent': true};
                 var records = getRecords();
+
+                var groups = {'sent': true}
+                var labels = {unread:true, unstarred:true, unimportant:true};
 
                 if (!model.id) {
                     model.id = _.uniqueId('_');
@@ -41,10 +43,10 @@ define(function (require) {
                 }
 
                 if (model.get('to').indexOf('demo@mailbone.com') > -1) {
-                    model.set("in", 'inbox');
-                    labels.inbox = true;
+                    groups.inbox = true;
                 }
 
+                model.set("groups", groups);
                 model.set("labels", labels);
                 model.set("sentTime", dateResolver.date2Str(new Date(), false));
 
@@ -180,7 +182,7 @@ define(function (require) {
 
                 data.filters.query = data.filters.query.replace(/\s{2,}/g, ' ').replace(/\s\:/g, ':').replace(/:\s/g, ':').replace("label:", "labels:");
 
-                if (data.filters.query.indexOf("in:") === -1 && data.filters.query.indexOf("labels:") === -1) {
+                if (data.filters.query.indexOf("groups:") === -1 && data.filters.query.indexOf("labels:") === -1) {
                     data.filters.query += ' ' + filteringMap.defaultQuery;
                 }
             } else {

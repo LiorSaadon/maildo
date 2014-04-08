@@ -56,9 +56,11 @@ module.exports = function(grunt) {
                 '../public/target/app/assets/ui/css/print.css',
                 '../public/target/app/assets/ui/css/screen.css',
                 '../public/target/app/assets/js',
+                '../public/target/app/assets/data',
                 '../public/target/app/assets/ui/scss',
+                '../public/target/app/assets/ui/components',
                 '../public/target/app/assets/ui/templates',
-                '../public/target/app/main',
+                '../public/target/app/frame',
                 '../public/target/app/modules',
                 '../public/target/build',
                 '../public/target/target',
@@ -77,7 +79,7 @@ module.exports = function(grunt) {
                 },
                 files:[
                     { src:['../public/target/index.html'], dest:'../public/target/index.html' },
-                    { src:['../public/app/starter/init.js'], dest:'../public/app/starter/init.js' }
+                    { src:['../public/app/setup/init.js'], dest:'../public/app/setup/init.js' }
                 ]
             }
         }

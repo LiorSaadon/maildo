@@ -12,15 +12,15 @@ define(function (require) {
 
         MailModel = BaseModel.extend({
             defaults: {
-                in: '',
-                from: 'me',
+                from: 'demo@mailbone.com',
                 to: '',
                 cc: '',
                 bcc: '',
                 subject: '',
                 sentTime: null,
                 body: '',
-                labels: {}
+                labels: {},
+                groups:{}
             },
 
             initialize: function (attrs, options) {
@@ -28,9 +28,9 @@ define(function (require) {
                 this.localStorage = new MailStorage();
             },
 
-            //-----------------------------------------------------------------
+            //==========================================================================
             // validate
-            //-----------------------------------------------------------------
+            //==========================================================================
 
             validate: function (attrs, options) {
 
@@ -102,9 +102,10 @@ define(function (require) {
             },
 
 
-            //-----------------------------------------------------------------
+            //==========================================================================
             // add\remove address
-            //-----------------------------------------------------------------
+            //==========================================================================
+
 
             addAddress: function (attr, address) {
 
@@ -129,64 +130,76 @@ define(function (require) {
             },
 
 
-            //----------------------------------------------------------------
-            // label handling
-            //----------------------------------------------------------------
 
-            addLabel: function (label) {
+            //==========================================================================
+            // markAs
+            //==========================================================================
 
-                this.set('labels.' + label, true);
+            markAs: function (label) {
+
+                var opositeLabel = this._getOpositeLabel(label);
+
+                this._removeLabel(opositeLabel);
+                this._addLabel(label)
             },
 
             //----------------------------------------------------------------
 
-            removeLabel: function (label, options) {
+            _getOpositeLabel:function(label){
 
-                options = options || {};
+                if( label.subString(0, 2) === "un"){
+                    return label.subString(2, label.length);
+                }
+                return "un" + label;
+            },
+
+            //----------------------------------------------------------------
+
+            _addLabel:function(label){
+
+               this.set("labels." + label)
+            },
+
+            //----------------------------------------------------------------
+
+            _removeLabel: function (labelName) {
 
                 var labels = this.get('labels');
 
-                if (_.has(labels, label)) {
+                if (_.has(labels, labelName)) {
 
-                    delete labels[label];
-
-                    if (!options.silent) {
-                        this.trigger("change:labels.*");
-                    }
+                    delete labels[labelName];
                 }
             },
 
-            //----------------------------------------------------------------
+            //==========================================================================
+            // moveTo
+            //==========================================================================
 
-            removeAllLabels: function (options) {
+            moveTo:function(dest){
 
-                options = options || {};
+                var groups = this.get('groups');
 
-                var labels = this.get('labels');
+                if(_.has(groups,"trash") || _.has(groups,"spam") || dest == "trash" || dest == "spam"){
 
-                _.each(labels, _.bind(function (value, key) {
-                    this.removeLabel(key, options)
-                },this));
+                    _.each(groups, _.bind(function (value, key) {
+                        delete groups[key];
+                    },this));
+                }
+
+                this.set('groups.' + dest, true);
             },
 
-            //----------------------------------------------------------------
 
-            replaceLabel: function (label1, label2) {
-
-                this.removeLabel(label1);
-                this.addLabel(label2);
-            },
-
-            //-----------------------------------------------------------------
+            //==========================================================================
             // saveAsDraft
-            //-----------------------------------------------------------------
+            //==========================================================================
 
             saveAsDraft: function (options) {
 
                 options = options || {};
 
-                this.addLabel("draft");
-                this.set("in", "draft");
+                this.setGroup("draft");
                 this.save(null, $.extend({}, options, {validateType: "draft"}));
             }
         });

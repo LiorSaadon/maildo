@@ -43,16 +43,16 @@ define(function (require) {
                     mail.vent.trigger("actions", {actionType: 'delete'});
                 },
                 "click .selectAll": function () {
-                    mail.vent.trigger("actions", {actionType: 'selectAll'});
+                    mail.vent.trigger("actions", {actionType: 'select', selectBy:"all"});
                 },
                 "click .selectNone": function () {
-                    mail.vent.trigger("actions", {actionType: 'selectNone'});
+                    mail.vent.trigger("actions", {actionType: "select", selectBy:"none"});
                 },
                 "click .selectRead": function () {
-                    mail.vent.trigger("actions", {actionType: 'selectRead'});
+                    mail.vent.trigger("actions", {actionType: "select", selectBy:"read"});
                 },
                 "click .selectUnread": function () {
-                    mail.vent.trigger("actions", {actionType: 'selectUnread'});
+                    mail.vent.trigger("actions", {actionType: "select", selectBy:"unread"});
                 },
                 "click .btnSend": function () {
                     mail.vent.trigger("newMail", {actionType: 'send'});
@@ -123,33 +123,36 @@ define(function (require) {
 
             showComposeButtons: function(show){
 
-                if(show){
-                    this.ui.composeArea.show();
-                }else{
-                    this.ui.composeArea.hide();
-                }
+                this.ui.composeArea.toggleClass("hide", !show);
+//                if(show){
+//                    this.ui.composeArea.show();
+//                }else{
+//                    this.ui.composeArea.hide();
+//                }
             },
 
             //--------------------------------------------------
 
             showPager: function(show){
 
-                if(show){
-                    this.ui.pagerContainer.show();
-                }else{
-                    this.ui.pagerContainer.hide();
-                }
+                this.ui.pagerContainer.toggleClass("hide", !show);
+//                if(show){
+//                    this.ui.pagerContainer.show();
+//                }else{
+//                    this.ui.pagerContainer.hide();
+//                }
             },
 
             //--------------------------------------------------
 
             showSettingsLabel: function(show){
 
-                if(show){
-                    this.ui.lblSettings.show();
-                }else{
-                    this.ui.lblSettings.hide();
-                }
+                this.ui.lblSettings.toggleClass("hide", !show);
+//                if(show){
+//                    this.ui.lblSettings.show();
+//                }else{
+//                    this.ui.lblSettings.hide();
+//                }
             },
 
             //--------------------------------------------------

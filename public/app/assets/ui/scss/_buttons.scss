@@ -30,7 +30,6 @@
   .button.clicked,
   .button:hover {
     background: $button-hover-background-color;
-    border-color: $button-hover-border-color;
     color: $button-hover-color;
   }
 
@@ -42,7 +41,6 @@
   .button.disable:hover {
     cursor:default;
     background-color:$button-background-color;
-    border-color: $button-border-color;
   }
 
   //---------------------------------------------------

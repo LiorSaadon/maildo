@@ -28,6 +28,12 @@ body {
   -moz-box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 3px;
   box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 3px;
 }
+.mb .hide {
+  display: none;
+}
+.mb .show {
+  display: block;
+}
 
 .mb .button {
   text-decoration: none;
@@ -68,7 +74,6 @@ body {
 .mb .button.clicked,
 .mb .button:hover {
   background: white;
-  border-color: silver;
   color: #333333;
 }
 .mb .button.clicked .toggle,
@@ -78,7 +83,6 @@ body {
 .mb .button.disable:hover {
   cursor: default;
   background-color: #f3f3f3;
-  border-color: #d9d9d9;
 }
 .mb .button.left {
   margin-right: 0px;
@@ -404,28 +408,28 @@ body {
 .mb .pager .pagerButtons {
   float: right;
 }
-.mb .pager .pagerButtons .button .nextIcon {
+.mb .pager .pagerButtons .btnNewer .icoNewer {
   display: inline-block;
   height: 17px;
   width: 17px;
   background: url("app/assets/ui/img/actions.png") 0 -17px no-repeat;
 }
-.mb .pager .pagerButtons .button:hover .nextIcon {
+.mb .pager .pagerButtons .btnNewer:hover .icoNewer {
   background: url("app/assets/ui/img/actionsHover.png") 0 -17px no-repeat;
 }
-.mb .pager .pagerButtons .button .nextIcon.common {
+.mb .pager .pagerButtons .btnNewer.disable .icoNewer {
   background: url("app/assets/ui/img/actionsDisabled.png") 0 -17px no-repeat;
 }
-.mb .pager .pagerButtons .button .prevIcon {
+.mb .pager .pagerButtons .btnOlder .icoOlder {
   display: inline-block;
   height: 17px;
   width: 17px;
   background: url("app/assets/ui/img/actions.png") 0 -34px no-repeat;
 }
-.mb .pager .pagerButtons .button:hover .prevIcon {
+.mb .pager .pagerButtons .btnOlder:hover .icoOlder {
   background: url("app/assets/ui/img//actionsHover.png") 0 -34px no-repeat;
 }
-.mb .pager .pagerButtons .button .prevIcon.disable {
+.mb .pager .pagerButtons .btnOlder.disable .icoOlder {
   background: url("app/assets/ui/img/actionsDisabled.png") 0 -34px no-repeat;
 }
 .mb .pager .pagerInfo {

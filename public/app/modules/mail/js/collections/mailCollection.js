@@ -13,7 +13,7 @@ define(function (require) {
 
         MailCollection = PersistentCollection.extend({
 
-            isFetched:false,
+            isFetched: false,
 
             model: MailModel,
 
@@ -23,15 +23,31 @@ define(function (require) {
 
             //--------------------------------------------------
 
-            url: function() {
+            url: function () {
 
                 return urlResolver.getUrl(this.resource);
             },
 
             //--------------------------------------------------
 
-            comparator: function(model) {
+            comparator: function (model) {
                 return -model.get("sentTime").valueOf();
+            },
+
+            //--------------------------------------------------
+
+            filter: function (query) {
+
+                var filtered = [];
+
+                if(_.isString(query)){
+
+                    filtered = _.filter(this.models, function (model) {
+                        return !_.isUndefined(model.get(query));
+                    });
+                }
+
+                return filtered;
             }
         });
     });

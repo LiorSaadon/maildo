@@ -33,13 +33,13 @@ define(function (require) {
                     mail.vent.trigger("actions", {actionType: 'markAs', label: 'important'});
                 },
                 "click .markNotImp": function () {
-                    mail.vent.trigger("actions", {actionType: 'markAs', label: 'notImportant'});
+                    mail.vent.trigger("actions", {actionType: 'markAs', label: 'unimportant'});
                 },
                 "click .addStar": function () {
                     mail.vent.trigger("actions", {actionType: 'markAs', label: 'starred'});
                 },
                 "click .removeStar": function () {
-                    mail.vent.trigger("actions", {actionType: 'markAs', label: 'notStarred'});
+                    mail.vent.trigger("actions", {actionType: 'markAs', label: 'unstarred'});
                 }
             },
 

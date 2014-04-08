@@ -33,9 +33,8 @@ define(function (require) {
 
             //-----------------------------------------------------------
 
-            initialize: function (options) {
+            initialize: function () {
 
-                this.collection = mail.dataController.getMailCollection();
                 this.listenTo(app.context, 'change:router.state', this.showRelevantItems, this);
             },
 
@@ -43,24 +42,11 @@ define(function (require) {
 
             showRelevantItems: function(){
 
-                this.currentContext = app.context.get("router.state.action");
+                this.currAction = app.context.get("router.state.action");
 
-                switch (this.currentContext) {
-                    case "inbox":
-                        this.ui.ddiInbox.css("display", "none");
-                        this.ui.ddiSpam.css("display", "block");  //ddiSpam.show() set 'display:inline' for <a> tag.
-                        this.ui.ddiTrash.css("display", "block");
-                        break;
-                    case "trash":
-                        this.ui.ddiInbox.css("display", "block");
-                        this.ui.ddiSpam.css("display", "block");
-                        this.ui.ddiTrash.css("display", "none");
-                        break;
-                    default:
-                        this.ui.ddiInbox.css("display", "block");
-                        this.ui.ddiSpam.css("display", "none");
-                        this.ui.ddiTrash.css("display", "none");
-                }
+                this.ui.ddiInbox.toggleClass("hide", _.contains(["inbox"],this.currAction));
+                this.ui.ddiTrash.toggleClass("hide", !_.contains(["spam","inbox"],this.currAction));
+                this.ui.ddiSpam.toggleClass( "hide", !_.contains(["inbox","trash"],this.currAction));
             }
         });
     });

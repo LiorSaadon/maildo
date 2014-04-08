@@ -15,23 +15,16 @@ define(function (require) {
 
             ui: {
                 container:".pagerInnerContainer",
-                btnNext: ".btnNext",
-                btnPrev: ".btnPrev",
-                icoNext: ".nextIcon",
-                icoPrev: ".prevIcon",
+                btnNewer: ".btnNewer",
+                btnOlder: ".btnOlder",
                 lblTotal: ".total",
                 lblFrom: ".lblForm",
                 lblTo: ".lblTo"
             },
 
             events: {
-                "click .btnNext": "showNewerItems",
-                "click .btnPrev": "showOlderItems"
-            },
-
-            states:{
-                btnNext:'disable',
-                btnPrev:'disable'
+                "click .btnNewer": "showNewerItems",
+                "click .btnOlder": "showOlderItems"
             },
 
             //------------------------------------------------------
@@ -50,17 +43,15 @@ define(function (require) {
 
             onCollectionMetadataChange: function () {
 
-                debugger;
-                if(this.collection.metadata.total === 0){
-                    this.ui.container.hide();
-                }else{
-                    this.pageInfo = this.collection.metadata;
+                if(this.collection.metadata.total > 0){
 
+                    this.pageInfo = this.collection.metadata;
                     this.adjustButtons();
                     this.adjustLabels();
                     this.updateUrlWithoutNavigate();
-
                     this.ui.container.show();
+                }else{
+                    this.ui.container.hide();
                 }
             },
 
@@ -68,34 +59,17 @@ define(function (require) {
 
             adjustButtons: function(){
 
-                if(this.pageInfo.from === 1){
-                    this.ui.btnNext.addClass("disable");
-                    this.ui.icoNext.addClass("disable");
-                    this.states.btnNext = 'disable';
-                }else{
-                    this.ui.btnNext.removeClass("disable");
-                    this.ui.icoNext.removeClass("disable");
-                    this.states.btnNext = 'enable';
-                }
-
-                if(this.pageInfo.to < this.pageInfo.total){
-                    this.ui.btnPrev.removeClass("disable");
-                    this.ui.icoPrev.removeClass("disable");
-                    this.states.btnPrev = 'enable';
-                }else{
-                    this.ui.btnPrev.addClass("disable");
-                    this.ui.icoPrev.addClass("disable");
-                    this.states.btnPrev = 'disable';
-                }
+                this.ui.btnNewer.toggleClass("disable",this.pageInfo.from === 1);
+                this.ui.btnOlder.toggleClass("disable",this.pageInfo.to >= this.pageInfo.total);
             },
 
             //-----------------------------------------------------
 
             adjustLabels: function(){
 
-                this.ui.lblFrom.html(this.pageInfo.from);
-                this.ui.lblTo.html(Math.min(this.pageInfo.to, this.pageInfo.total));
-                this.ui.lblTotal.html(this.pageInfo.total);
+                this.ui.lblFrom.text(this.pageInfo.from);
+                this.ui.lblTo.text(Math.min(this.pageInfo.to, this.pageInfo.total));
+                this.ui.lblTotal.text(this.pageInfo.total);
             },
 
             //-----------------------------------------------------
@@ -111,18 +85,18 @@ define(function (require) {
             // on buttons click
             //------------------------------------------------------
 
-            showNewerItems: function (e) {
+            showNewerItems: function () {
 
-                if (this.states.btnNext === 'enable'){
+                if (this.pageInfo.from > 1){
                     this.navigate(this.pageInfo.currPage - 1);
                 }
             },
 
             //----------------------------------------------------
 
-            showOlderItems: function (e) {
+            showOlderItems: function () {
 
-                if (this.states.btnPrev === 'enable'){
+                if (this.pageInfo.to < this.pageInfo.total){
                     this.navigate(this.pageInfo.currPage + 1);
                 }
             },
