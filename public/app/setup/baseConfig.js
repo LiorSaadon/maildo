@@ -2,6 +2,7 @@ define({
 
     "paths": {
         "underscore": "lib/lodash/lodash",
+        "underscore.string": "lib/lodash/underscore.string",
         "underscore.deepExtend": "lib/lodash/underscore.mixin.deepExtend",
         "jquery": "lib/jquery/jquery",
         "backbone": "lib/backbone/backbone",
@@ -41,6 +42,10 @@ define({
         "underscore": {
             "exports": "_"
         },
+        "underscore.string": {
+            "exports": "_s",
+            "deps": ["underscore"]
+        },
         "modernizr": {
             "exports": "Modernizr"
         },
@@ -51,20 +56,6 @@ define({
         "backbone.deepmodel": {
             "exports": "Backbone.DeepModel",
             "deps": ["backbone"]
-        },
-        // MockJax
-        "dev.mockjax": {
-            // Exports the global $.mockjax object
-            "exports": "$.mockjax",
-            // Depends on jquery
-            "deps": ["jquery"]
-        },
-        // MockJSON
-        "dev.mockjson": {
-            // Exports the global $.mockjson object
-            "exports": "$.mockjson",
-            // Depends on jquery
-            "deps": ["jquery"]
         }
     }
 });

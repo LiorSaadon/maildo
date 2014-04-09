@@ -6,10 +6,10 @@ define(function (require) {
     var dateResolver = require("assets-resolvers-date/dateResolver");
 
 
-    var MailStorage = function (_orderBy) {
+    var MailStorage = function () {
 
-        var orderBy = "DESC",
-            _localStorage = window.localStorage,
+        var _localStorage = window.localStorage,
+            accountName = "demo@mailbone.com",
             filteringMap = {
                 defaultQuery: "groups:inbox",
                 fields: {
@@ -41,22 +41,18 @@ define(function (require) {
                     model.id = _.uniqueId('_');
                     model.set(model.idAttribute, model.id);
                 }
-
-                if (model.get('to').indexOf('demo@mailbone.com') > -1) {
+                if (model.get('to').indexOf(accountName) > -1) {
                     groups.inbox = true;
                 }
 
                 model.set("groups", groups);
                 model.set("labels", labels);
+                model.set("from", accountName)
                 model.set("sentTime", dateResolver.date2Str(new Date(), false));
 
-                if (orderBy === 'DESC') {
-                    records.unshift(model);
-                } else {
-                    records.push(model);
-                }
-
+                records.push(model);
                 _localStorage.setItem('mails', JSON.stringify(records));
+
                 return model;
             }
 

@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var _s = require("underscore.string");
     var template = require("tpl!mail-templates/actionView.tmpl");
     var PagerView = require("mail-views/actionView/_pagerView");
     var MoveToView = require("mail-views/actionView/_moveToView");
@@ -29,7 +30,7 @@ define(function (require) {
                 btnRefresh: ".btnRefresh",
                 btnSaveNow: ".btnSaveNow",
                 btnDiscard: ".btnDiscard",
-                btnBackToInbox: ".btnBackToInbox",
+                btnBack: ".btnBack",
                 btnDelete: ".btnDelete",
                 btnMore: ".btnMore",
                 pagerRegion: ".pager",
@@ -38,11 +39,11 @@ define(function (require) {
             },
 
             events: {
-                "click .btnSettings": function () {
-                    mail.router.navigate("settings");
-                },
-                "click .btnBackToInbox": function () {
+                "click .btnBack": function () {
                     mail.router.previous();
+                },
+                "click .btnSettings": function () {
+                    mail.router.navigate("settings",{trigger: true});
                 },
                 "click .selectAll": function () {
                     mail.vent.trigger("actions", {actionType: 'select', selectBy: "all"});
@@ -65,6 +66,17 @@ define(function (require) {
                 "click .btnDiscard": function () {
                     mail.vent.trigger("newMail", {actionType: 'discard'});
                 }
+            },
+
+            //------------------------------------------------------
+            // customTemplateHelpers
+            //------------------------------------------------------
+
+            customTemplateHelpers : function () {
+
+                return{
+                    action: _s.capitalize(app.context.get("router.state.action"))
+                };
             },
 
             //------------------------------------------------------
@@ -95,7 +107,7 @@ define(function (require) {
 
             showRelevantItems: function () {
 
-                this.showItems(["composeRegion", "lblSettings", "pagerRegion", "btnBackToInbox","btnRefresh", "btnSelect","btnMore", "btnSelect", "btnDelete", "btnMoveTo"], false);
+                this.showItems(["composeRegion", "lblSettings", "pagerRegion", "btnBack","btnRefresh", "btnSelect","btnMore", "btnSelect", "btnDelete", "btnMoveTo"], false);
 
                 switch (app.context.get("router.state.action")) {
                     case "compose":
@@ -116,7 +128,7 @@ define(function (require) {
 
                 switch (this.actionContext()) {
                     case "view":
-                        this.showItems(["btnBackToInbox","btnRefresh"]);
+                        this.showItems(["btnBack","btnRefresh"]);
                         break;
                     case "empty-list":
                         this.showItems(["btnSelect", "btnRefresh"]);
@@ -149,11 +161,7 @@ define(function (require) {
                 show = _.isBoolean(show) ? show : true;
 
                 _.each(items, _.bind(function(item){
-                    if(show){
-                        this.ui[item].show();
-                    }else{
-                        this.ui[item].hide();
-                    }
+                     this.ui[item].toggle(show);
                 },this));
             }
         });

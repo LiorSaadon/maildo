@@ -49,15 +49,28 @@ define(function (require) {
             customTemplateHelpers : function () {
 
                 return{
+                    from:    this.getFrom(),
                     body:    this.getContent(),
                     subject: this.getSubject(),
                     sentTime:this.getSentTime(),
+
                     isInbox: this.action === "inbox",
                     isSent:  this.action === "sent",
                     isDraft: this.action === "draft",
                     isTrash: this.action === "trash",
                     iaSpam:  this.action === "spam"
                 };
+            },
+
+            //-------------------------------------------------------------
+
+            getFrom:function(){
+                var from = this.model.get("from");
+
+                if(from === app.settings.get("accountName")){
+                    from = app.translator.translate("mail.me")
+                }
+                return from;
             },
 
             //-------------------------------------------------------------

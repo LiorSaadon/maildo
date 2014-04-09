@@ -44,15 +44,9 @@ define(function (require) {
 
                 this.currAction = app.context.get("router.state.action");
 
-                if(_.contains(["inbox"],this.currAction)){
-                    this.ui.ddiInbox.hide();
-                }
-                if(_.contains(["spam","inbox"],this.currAction)){
-                    this.ui.ddiTrash.show();
-                }
-                if(_.contains(["inbox","trash"],this.currAction)){
-                    this.ui.ddiSpam.show();
-                }
+                this.ui.ddiInbox.toggle(!_.contains(["inbox"],this.currAction));
+                this.ui.ddiSpam.toggle(_.contains(["inbox","trash"],this.currAction));
+                this.ui.ddiTrash.toggle(_.contains(["spam","inbox"],this.currAction));
             }
         });
     });

@@ -58,12 +58,12 @@ define(function (require) {
 
                 var items = this.itemsToShow();
 
-                this.showItem(this.ui.ddiStarred, items.stared);
-                this.showItem(this.ui.ddiNotStarred, items["not-stared"]);
-                this.showItem(this.ui.ddiImp, items.important);
-                this.showItem(this.ui.ddiNotImp, items["not-important"]);
-                this.showItem(this.ui.ddiRead, items.read);
-                this.showItem(this.ui.ddiUnread, items.unread);
+                this.toggle(this.ui.ddiStarred, items.stared);
+                this.toggle(this.ui.ddiNotStarred, items["not-stared"]);
+                this.toggle(this.ui.ddiImp, items.important);
+                this.toggle(this.ui.ddiNotImp, items["not-important"]);
+                this.toggle(this.ui.ddiRead, items.read);
+                this.toggle(this.ui.ddiUnread, items.unread);
             },
 
             //------------------------------------------------------------
@@ -75,40 +75,40 @@ define(function (require) {
                 _.each(this.collection.getSelected(), function (item) {
 
                     var model = that.collection.get(item);
-
                     if(model){
-
                         var labels = model.get("labels");
-
-                        if(_.has(labels,"starred")){
-                            items["not-stared"] = true;
-                        }else{
-                            items.stared = true;
-                        }
-                        if(_.has(labels,"important")){
-                            items["not-important"] = true;
-                        }else{
-                            items.important = true;
-                        }
-                        if(_.has(labels,"read")){
-                            items.unread = true;
-                        }else{
-                            items.read = true;
-                        }
+                        that.updateItemToShow(labels,items);
                     }
                 });
                 return items;
             },
 
+            //-----------------------------------------------------------
+
+            updateItemToShow:function(labels,items){
+
+                if(_.has(labels,"starred")){
+                    items["not-stared"] = true;
+                }else{
+                    items.stared = true;
+                }
+                if(_.has(labels,"important")){
+                    items["not-important"] = true;
+                }else{
+                    items.important = true;
+                }
+                if(_.has(labels,"read")){
+                    items.unread = true;
+                }else{
+                    items.read = true;
+                }
+            },
+
             //-------------------------------------------------------
 
-            showItem:function(uiItem, show){
+            toggle:function(uiItem, show){
 
-                if(show){
-                    uiItem.css("display", "block");
-                }else{
-                    uiItem.css("display", "none");
-                }
+               uiItem.css("display", show ? "block" : "none");
             }
         });
     });

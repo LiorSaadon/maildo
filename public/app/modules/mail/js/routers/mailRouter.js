@@ -52,7 +52,7 @@ define(function (require) {
 
             previous: function () {
                 var prevURL = this.options.controller.buildPrevURL();
-                mail.router.navigate(prevURL);
+                mail.router.navigate(prevURL, {trigger: true});
             }
         });
     });

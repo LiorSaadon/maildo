@@ -5,8 +5,10 @@ define(function (require) {
     var SettingsStorage = require("assets-storage/settingsStorage");
 
     var SettingsModel = BaseModel.extend({
+
         defaults : {
-            selectedTheme:'dust'
+            selectedTheme:'dust',
+            accountName: 'demo@mailbone.com'
         },
 
         //-------------------------------------------

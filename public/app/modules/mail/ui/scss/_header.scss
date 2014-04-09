@@ -34,11 +34,14 @@
   }
 
   .accountName{
-    color:$common-label-color;
+    //color:$common-label-color;
     float: right;
     margin-right: 30px;
-    margin-top: 30px;
-    font-size: 15px;
+    margin-top: 25px;
+    //font-size: 15px;
+    width:40px;
+    height:35px;
+    background-image: url('app/assets/ui/img/product_demos.jpg');
   }
 }
 

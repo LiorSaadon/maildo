@@ -29,6 +29,15 @@ define(function (require) {
 
             //-----------------------------------------------
 
+            customTemplateHelpers:function(){
+
+                return{
+                    accountName:app.settings.get("accountName")
+                };
+            },
+
+            //-----------------------------------------------
+
             onContextChange:function(){
 
                 var action = app.context.get("router.state.action");

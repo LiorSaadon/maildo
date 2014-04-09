@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var _s = require("underscore.string");
     var BaseModel = require("assets-models/baseModel");
     var MailStorage = require("mail-storage/mailStorage");
     var dateResolver = require("assets-resolvers-date/dateResolver");
@@ -11,13 +12,14 @@ define(function (require) {
     app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
 
         MailModel = BaseModel.extend({
+
             defaults: {
-                from: 'demo@mailbone.com',
+                from: '',
                 to: '',
                 cc: '',
                 bcc: '',
                 subject: '',
-                sentTime: null,
+                sentTime: '',
                 body: '',
                 labels: {},
                 groups:{}
@@ -28,9 +30,9 @@ define(function (require) {
                 this.localStorage = new MailStorage();
             },
 
-            //==========================================================================
-            // validate
-            //==========================================================================
+            //----------------------------------------------------------------
+            // validate functions
+            //----------------------------------------------------------------
 
             validate: function (attrs, options) {
 
@@ -48,13 +50,10 @@ define(function (require) {
 
             validateDraft: function () {
 
-                var error = false;
-
                 if (_.isEmpty(this.getAllAddresses()) && _.isEmpty(this.get('subject')) && _.isEmpty(this.get('body'))) {
-                    error = true;
+                    return true;
                 }
-
-                return error;
+                return false;
             },
 
             //-------------------------------------------------------------
@@ -76,6 +75,14 @@ define(function (require) {
 
             //-------------------------------------------------------------
 
+            validateAddress: function (address) {
+
+                var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                return reg.test(address);
+            },
+
+            //-------------------------------------------------------------
+
             getAllAddresses: function () {
 
                 return this.getAddresses('to').concat(this.getAddresses('cc'), this.getAddresses('bcc'));
@@ -93,18 +100,10 @@ define(function (require) {
                 return addresses;
             },
 
-            //-------------------------------------------------------------
 
-            validateAddress: function (address) {
-
-                var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-                return reg.test(address);
-            },
-
-
-            //==========================================================================
+            //----------------------------------------------------------------
             // add\remove address
-            //==========================================================================
+            //----------------------------------------------------------------
 
 
             addAddress: function (attr, address) {
@@ -130,10 +129,9 @@ define(function (require) {
             },
 
 
-
-            //==========================================================================
+            //----------------------------------------------------------------
             // markAs
-            //==========================================================================
+            //----------------------------------------------------------------
 
             markAs: function (label) {
 
@@ -147,8 +145,8 @@ define(function (require) {
 
             _getOpositeLabel:function(label){
 
-                if( label.subString(0, 2) === "un"){
-                    return label.subString(2, label.length);
+                if(_s.startsWith(label,"un")){
+                    return _s.strRight(label, "un")
                 }
                 return "un" + label;
             },
@@ -157,7 +155,7 @@ define(function (require) {
 
             _addLabel:function(label){
 
-               this.set("labels." + label)
+               this.set("labels." + label, true);
             },
 
             //----------------------------------------------------------------
@@ -167,14 +165,13 @@ define(function (require) {
                 var labels = this.get('labels');
 
                 if (_.has(labels, labelName)) {
-
                     delete labels[labelName];
                 }
             },
 
-            //==========================================================================
+            //----------------------------------------------------------------
             // moveTo
-            //==========================================================================
+            //----------------------------------------------------------------
 
             moveTo:function(dest){
 
@@ -191,15 +188,15 @@ define(function (require) {
             },
 
 
-            //==========================================================================
+            //----------------------------------------------------------------
             // saveAsDraft
-            //==========================================================================
+            //----------------------------------------------------------------
 
             saveAsDraft: function (options) {
 
                 options = options || {};
 
-                this.setGroup("draft");
+                this.moveTo("draft");
                 this.save(null, $.extend({}, options, {validateType: "draft"}));
             }
         });
