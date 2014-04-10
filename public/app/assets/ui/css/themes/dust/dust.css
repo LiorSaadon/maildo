@@ -217,7 +217,7 @@ body {
   left: 90px;
   right: 25px;
   float: left;
-  padding: 3px;
+  padding: 4px;
   margin: 0;
   list-style: none;
   background-color: white;
@@ -242,13 +242,11 @@ body {
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px;
-  padding: 8px 8px;
+  padding: 6px 6px;
   border-top: 1px solid #e5e5e5;
-  min-height: 15px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  min-height: 15px;
   color: #333333;
 }
 .mb .autoComplete .menu.default-list li:first-child {
@@ -260,12 +258,23 @@ body {
 .mb .autoComplete .menu.default-list li div.dropdown-li-icon {
   margin-right: 8px;
 }
-.mb .autoComplete .menu.default-list li span.text {
+.mb .autoComplete .menu.default-list li div.icon {
+  float: left;
+  background: url("app/assets/ui/img/user.png") no-repeat;
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+}
+.mb .autoComplete .menu.default-list li div.contentWrapper {
+  paddign-rigth: 10px;
+  vertical-align: middle;
+}
+.mb .autoComplete .menu.default-list li div.contentWrapper .title {
   font-weight: bold;
   padding-right: 8px;
 }
-.mb .autoComplete .menu.default-list li span.value {
-  font-size: 11px;
+.mb .autoComplete .menu.default-list li div.contentWrapper .text {
+  color: #777777;
 }
 .mb .autoComplete .menu.default-list li.active {
   background-color: #EEEEEE;
@@ -326,6 +335,8 @@ body {
   display: inline-block;
   vertical-align: middle;
   zoom: 1;
+  background-color: #F5F5F5;
+  border: 1px solid #D9D9D9;
 }
 .mb .tags-container .tag .content {
   display: inline-block;
@@ -335,11 +346,9 @@ body {
   line-height: 20px;
   position: relative;
   color: #767678;
-  background-color: #F5F5F5;
-  border: 1px solid #D9D9D9;
   font-size: 12px;
   font-weight: normal;
-  padding: 0px 10px 4px 8px;
+  padding: 0px 20px 4px 5px;
   box-sizing: border-box;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -347,24 +356,25 @@ body {
   -o-border-radius: 2px;
   border-radius: 2px;
   word-spacing: 0;
-  width: 100px;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 300px;
 }
-.mb .tags-container .tag .content.err {
+.mb .tags-container .tag.err {
   background-color: #ffffff;
   border: 0px;
   border-bottom: 1px dashed red;
 }
 .mb .tags-container .tag .close-button {
-  background: url("app/assets/ui/img/12x12-sprite.png?1394093108") -540px 0 no-repeat;
+  background: url("app/assets/ui/img/12x12-sprite.png") -540px 0 no-repeat;
   content: "";
   position: absolute;
-  right: 7px;
+  right: 0px;
   top: 4px;
   width: 12px;
   height: 12px;
   cursor: pointer;
+  margin-right: 5px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

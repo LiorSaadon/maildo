@@ -35,7 +35,7 @@ define(function (require) {
                 var records = getRecords();
 
                 var groups = {'sent': true}
-                var labels = {unread:true, unstarred:true, unimportant:true};
+                var labels = {unread: true, unstarred: true, unimportant: true};
 
                 if (!model.id) {
                     model.id = _.uniqueId('_');
@@ -68,7 +68,9 @@ define(function (require) {
             if (_.isObject(model)) {
 
                 var records = getRecords();
-                var record = _.find(records, {'id': model.id});
+                var record = _.find(records, function (record) {
+                    return record.id == model.id;
+                });
 
                 if (record) {
                     _localStorage.setItem('mails', JSON.stringify(records));
@@ -91,11 +93,13 @@ define(function (require) {
             if (_.isArray(arr)) {
                 _.each(arr, function (item) {
 
-                    var record = _.find(records, {'id': item.id});
+                    var record = _.find(records, function (record) {
+                        return record.id == item.id;
+                    });
                     if (record) {
-                        for (var key in item) {
+                        _.each(_.keys(item), function (key) {
                             record[key] = item[key];
-                        }
+                        });
                     }
                 });
                 _localStorage.setItem('mails', JSON.stringify(records));
@@ -113,7 +117,9 @@ define(function (require) {
             var id = _.isObject(model) ? model.id : model;
 
             var records = getRecords();
-            var record = _.find(records, {'id': id});
+            var record = _.find(records, function (record) {
+                return record.id == id;
+            });
 
             if (record) {
                 record.labels = {'trash': true};
@@ -193,7 +199,7 @@ define(function (require) {
         var getRecords = function () {
 
             var store = _localStorage.getItem('mails');
-            return typeof(store) === 'string' ? JSON.parse(store) : [];
+            return _.isString(store) ? JSON.parse(store) : [];
         };
 
 

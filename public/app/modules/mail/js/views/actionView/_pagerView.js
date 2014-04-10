@@ -80,7 +80,6 @@ define(function (require) {
                 mail.router.navigate(app.context.get("router.state.action") + param);
             },
 
-
             //------------------------------------------------------
             // on buttons click
             //------------------------------------------------------

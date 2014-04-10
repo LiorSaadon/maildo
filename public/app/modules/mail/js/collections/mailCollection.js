@@ -31,7 +31,7 @@ define(function (require) {
             //--------------------------------------------------
 
             comparator: function (model) {
-                return -model.get("sentTime").valueOf();
+                return -(new Date(model.get("sentTime")).getTime());
             },
 
             //--------------------------------------------------

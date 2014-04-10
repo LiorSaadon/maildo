@@ -86,7 +86,7 @@ define(function (require) {
             onRender: function () {
 
                 this.pagerView = new PagerView({
-                    el: this.ui.pagerContainer
+                    el: this.ui.pagerRegion
                 });
                 this.pagerView.render();
 
@@ -126,17 +126,18 @@ define(function (require) {
 
             showActionButtons: function () {
 
-                switch (this.actionContext()) {
-                    case "view":
-                        this.showItems(["btnBack","btnRefresh"]);
-                        break;
-                    case "empty-list":
-                        this.showItems(["btnSelect", "btnRefresh"]);
-                        break;
-                    case "list":
-                        this.showItems(["btnMore", "btnSelect", "btnDelete", "btnMoveTo"]);
-                        break;
+                var action = this.actionContext();
+
+                if(action === "view" || action === "empty-list"){
+                    this.showItems(["btnBack","btnRefresh"]);
+                    return;
                 }
+                if(action === "empty-selection"){
+                    this.showItems(["btnSelect", "btnRefresh","pagerRegion"]);
+                    return;
+                }
+
+                this.showItems(["btnMore", "btnSelect", "btnDelete", "btnMoveTo", "pagerRegion"]);
             },
 
             //-----------------------------------------------------
@@ -148,10 +149,13 @@ define(function (require) {
                 if (!_.isEmpty(param.id)) {
                     return "view";
                 }
-                if (!_.isEmpty(mail.dataController.getMailCollection().getSelected())) {
-                    return "list";
+                if(mail.dataController.getMailCollection().size === 0){
+                    return "empty-list";
                 }
-                return "empty-list";
+                if (_.isEmpty(mail.dataController.getMailCollection().getSelected())) {
+                    return "empty-selection";
+                }
+                return "list";
             },
 
             //------------------------------------------------------

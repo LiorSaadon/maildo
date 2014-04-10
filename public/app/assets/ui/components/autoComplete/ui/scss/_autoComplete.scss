@@ -16,7 +16,7 @@
         left: 90px;
         right: 25px;
         float: left;
-        padding: 3px;
+        padding: 4px;
         margin: 0;
         list-style: none;
         background-color: white;
@@ -41,13 +41,11 @@
           -ms-border-radius: 2px;
           -o-border-radius: 2px;
           border-radius: 2px;
-          padding: 8px 8px;
+          padding: 6px 6px;
           border-top: 1px solid #e5e5e5;
-          min-height: 15px;
           -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;
           box-sizing: border-box;
-          min-height: 15px;
           color: #333333;
           &:first-child {
             border: none;
@@ -58,12 +56,23 @@
           div.dropdown-li-icon {
             margin-right: 8px;
           }
-          span.text{
-            font-weight: bold;
-            padding-right: 8px;
+          div.icon{
+            float:left;
+            background: url('app/assets/ui/img/user.png') no-repeat;
+            height:30px;
+            width:30px;
+            margin-right:10px;
           }
-          span.value{
-            font-size: 11px;
+          div.contentWrapper{
+            paddign-rigth:10px;
+            vertical-align: middle;
+            .title{
+              font-weight: bold;
+              padding-right: 8px;
+            }
+            .text{
+              color:#777777;
+            }
           }
           &.active {
             background-color: #EEEEEE;

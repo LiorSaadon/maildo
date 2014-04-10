@@ -25,6 +25,17 @@ define(function (require) {
             url: function() {
 
                 return 'https://mailbone.com/contacts';
+            },
+
+            getTitle:function(address){
+                var contact = this.find(function(item){
+                    return item.get('address') === address;
+                });
+
+                if(_.isObject(contact)){
+                     return contact.get("title");
+                }
+                return address;
             }
         });
     });

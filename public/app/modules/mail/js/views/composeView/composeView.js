@@ -49,7 +49,7 @@ define(function (require) {
                 this.renderCcView();
                 this.renderBccView();
 
-                this.toView.addDefaultAddress("me", "demo@mailbone.com");
+                this.toView.addDefaultAddress("demo", "demo@mailbone.com");
              },
 
             //-------------------------------------------------------

@@ -14,25 +14,25 @@
 }(this, function (_, Backbone) {
     "use strict";
 
-    Backbone.Wreqr = (function(Backbone, Marionette, _){
+    Backbone.Wreqr = (function (Backbone, Marionette, _) {
         "use strict";
         var Wreqr = {};
 
         // Handlers
-        // --------
-        // A registry of functions to call, given a name
+// --------
+// A registry of functions to call, given a name
 
-        Wreqr.Handlers = (function(Backbone, _){
+        Wreqr.Handlers = (function (Backbone, _) {
             "use strict";
 
             // Constructor
             // -----------
 
-            var Handlers = function(options){
+            var Handlers = function (options) {
                 this.options = options;
                 this._wreqrHandlers = {};
 
-                if (_.isFunction(this.initialize)){
+                if (_.isFunction(this.initialize)) {
                     this.initialize(options);
                 }
             };
@@ -45,11 +45,11 @@
             _.extend(Handlers.prototype, Backbone.Events, {
 
                 // Add multiple handlers using an object literal configuration
-                setHandlers: function(handlers){
-                    _.each(handlers, function(handler, name){
+                setHandlers: function (handlers) {
+                    _.each(handlers, function (handler, name) {
                         var context = null;
 
-                        if (_.isObject(handler) && !_.isFunction(handler)){
+                        if (_.isObject(handler) && !_.isFunction(handler)) {
                             context = handler.context;
                             handler = handler.callback;
                         }
@@ -60,7 +60,7 @@
 
                 // Add a handler for the given name, with an
                 // optional context to run the handler within
-                setHandler: function(name, handler, context){
+                setHandler: function (name, handler, context) {
                     var config = {
                         callback: handler,
                         context: context
@@ -72,33 +72,33 @@
                 },
 
                 // Determine whether or not a handler is registered
-                hasHandler: function(name){
-                    return !! this._wreqrHandlers[name];
+                hasHandler: function (name) {
+                    return !!this._wreqrHandlers[name];
                 },
 
                 // Get the currently registered handler for
                 // the specified name. Throws an exception if
                 // no handler is found.
-                getHandler: function(name){
+                getHandler: function (name) {
                     var config = this._wreqrHandlers[name];
 
-                    if (!config){
-                        throw new Error("Handler not found for '" + name + "'");
+                    if (!config) {
+                        return;
                     }
 
-                    return function(){
+                    return function () {
                         var args = Array.prototype.slice.apply(arguments);
                         return config.callback.apply(config.context, args);
                     };
                 },
 
                 // Remove a handler for the specified name
-                removeHandler: function(name){
+                removeHandler: function (name) {
                     delete this._wreqrHandlers[name];
                 },
 
                 // Remove all handlers from this registry
-                removeAllHandlers: function(){
+                removeAllHandlers: function () {
                     this._wreqrHandlers = {};
                 }
             });
@@ -107,18 +107,18 @@
         })(Backbone, _);
 
         // Wreqr.CommandStorage
-        // --------------------
-        //
-        // Store and retrieve commands for execution.
-        Wreqr.CommandStorage = (function(){
+// --------------------
+//
+// Store and retrieve commands for execution.
+        Wreqr.CommandStorage = (function () {
             "use strict";
 
             // Constructor function
-            var CommandStorage = function(options){
+            var CommandStorage = function (options) {
                 this.options = options;
                 this._commands = {};
 
-                if (_.isFunction(this.initialize)){
+                if (_.isFunction(this.initialize)) {
                     this.initialize(options);
                 }
             };
@@ -129,11 +129,11 @@
                 // Get an object literal by command name, that contains
                 // the `commandName` and the `instances` of all commands
                 // represented as an array of arguments to process
-                getCommands: function(commandName){
+                getCommands: function (commandName) {
                     var commands = this._commands[commandName];
 
                     // we don't have it, so add it
-                    if (!commands){
+                    if (!commands) {
 
                         // build the configuration
                         commands = {
@@ -150,13 +150,13 @@
 
                 // Add a command by name, to the storage and store the
                 // args for the command
-                addCommand: function(commandName, args){
+                addCommand: function (commandName, args) {
                     var command = this.getCommands(commandName);
                     command.instances.push(args);
                 },
 
                 // Clear all commands for the given `commandName`
-                clearCommands: function(commandName){
+                clearCommands: function (commandName) {
                     var command = this.getCommands(commandName);
                     command.instances = [];
                 }
@@ -166,18 +166,18 @@
         })();
 
         // Wreqr.Commands
-        // --------------
-        //
-        // A simple command pattern implementation. Register a command
-        // handler and execute it.
-        Wreqr.Commands = (function(Wreqr){
+// --------------
+//
+// A simple command pattern implementation. Register a command
+// handler and execute it.
+        Wreqr.Commands = (function (Wreqr) {
             "use strict";
 
             return Wreqr.Handlers.extend({
                 // default storage type
                 storageType: Wreqr.CommandStorage,
 
-                constructor: function(options){
+                constructor: function (options) {
                     this.options = options || {};
 
                     this._initializeStorage(this.options);
@@ -188,11 +188,11 @@
                 },
 
                 // Execute a named command with the supplied args
-                execute: function(name, args){
+                execute: function (name, args) {
                     name = arguments[0];
                     args = Array.prototype.slice.call(arguments, 1);
 
-                    if (this.hasHandler(name)){
+                    if (this.hasHandler(name)) {
                         this.getHandler(name).apply(this, args);
                     } else {
                         this.storage.addCommand(name, args);
@@ -201,11 +201,11 @@
                 },
 
                 // Internal method to handle bulk execution of stored commands
-                _executeCommands: function(name, handler, context){
+                _executeCommands: function (name, handler, context) {
                     var command = this.storage.getCommands(name);
 
                     // loop through and execute all the stored command instances
-                    _.each(command.instances, function(args){
+                    _.each(command.instances, function (args) {
                         handler.apply(context, args);
                     });
 
@@ -214,11 +214,11 @@
 
                 // Internal method to initialize storage either from the type's
                 // `storageType` or the instance `options.storageType`.
-                _initializeStorage: function(options){
+                _initializeStorage: function (options) {
                     var storage;
 
                     var StorageType = options.storageType || this.storageType;
-                    if (_.isFunction(StorageType)){
+                    if (_.isFunction(StorageType)) {
                         storage = new StorageType();
                     } else {
                         storage = StorageType;
@@ -231,32 +231,34 @@
         })(Wreqr);
 
         // Wreqr.RequestResponse
-        // ---------------------
-        //
-        // A simple request/response implementation. Register a
-        // request handler, and return a response from it
-        Wreqr.RequestResponse = (function(Wreqr){
+// ---------------------
+//
+// A simple request/response implementation. Register a
+// request handler, and return a response from it
+        Wreqr.RequestResponse = (function (Wreqr) {
             "use strict";
 
             return Wreqr.Handlers.extend({
-                request: function(){
+                request: function () {
                     var name = arguments[0];
                     var args = Array.prototype.slice.call(arguments, 1);
-
-                    return this.getHandler(name).apply(this, args);
+                    if (this.hasHandler(name)) {
+                        return this.getHandler(name).apply(this, args);
+                    }
                 }
             });
 
         })(Wreqr);
 
         // Event Aggregator
-        // ----------------
-        // A pub-sub object that can be used to decouple various parts
-        // of an application through event-driven architecture.
+// ----------------
+// A pub-sub object that can be used to decouple various parts
+// of an application through event-driven architecture.
 
-        Wreqr.EventAggregator = (function(Backbone, _){
+        Wreqr.EventAggregator = (function (Backbone, _) {
             "use strict";
-            var EA = function(){};
+            var EA = function () {
+            };
 
             // Copy the `extend` function used by Backbone's classes
             EA.extend = Backbone.Model.extend;

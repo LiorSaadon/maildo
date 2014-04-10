@@ -27,6 +27,9 @@ define(function (require) {
                     case "moveTo":
                         this.moveTo(options);
                         break;
+                    case "delete":
+                        this.moveTo({target:"trash"});
+                        break;
                     case "markAs":
                         this.markAs(options);
                         break;

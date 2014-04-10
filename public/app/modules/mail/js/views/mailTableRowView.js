@@ -65,12 +65,8 @@ define(function (require) {
             //-------------------------------------------------------------
 
             getFrom:function(){
-                var from = this.model.get("from");
 
-                if(from === app.settings.get("accountName")){
-                    from = app.translator.translate("mail.me")
-                }
-                return from;
+                return mail.dataController.getContactsCollection().getTitle(this.model.get("from"))
             },
 
             //-------------------------------------------------------------
@@ -96,7 +92,6 @@ define(function (require) {
             getSentTime:function(){
                 return dateResolver.shortDate(this.model.get("sentTime"));
             },
-
 
             //-------------------------------------------------------------
             // onRender
@@ -130,7 +125,6 @@ define(function (require) {
                 this.$el.toggleClass('selected',isSelected);
                 this.ui.checkBox.prop('checked',isSelected);
             },
-
 
             //-------------------------------------------------------------
             // onRowClick

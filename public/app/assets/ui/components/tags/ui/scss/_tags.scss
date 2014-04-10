@@ -62,6 +62,8 @@
       display: inline-block;
       vertical-align: middle;
       zoom: 1;
+      background-color: #F5F5F5;
+      border:1px solid #D9D9D9;
 
       .content {
         display: inline-block;
@@ -71,11 +73,9 @@
         line-height: 20px;
         position: relative;
         color: #767678;
-        background-color: #F5F5F5;
-        border:1px solid #D9D9D9;
         font-size: 12px;
         font-weight: normal;
-        padding: 0px 10px 4px 8px;
+        padding: 0px 20px 4px 5px;
         box-sizing: border-box;
         -webkit-border-radius: 2px;
         -moz-border-radius: 2px;
@@ -83,30 +83,27 @@
         -o-border-radius: 2px;
         border-radius: 2px;
         word-spacing: 0;
-        width:100px;
         overflow:hidden;
         text-overflow: ellipsis;
+        max-width: 300px;
+      }
 
-        &:hover {
-
-        }
-
-        &.err{
-          background-color: #ffffff;
-          border:0px;
-          border-bottom:1px dashed red;
-        }
+      &.err{
+        background-color: #ffffff;
+        border:0px;
+        border-bottom:1px dashed red;
       }
 
       .close-button {
-        background: url('app/assets/ui/img/12x12-sprite.png?1394093108') -540px 0 no-repeat;
+        background: url('app/assets/ui/img/12x12-sprite.png') -540px 0 no-repeat;
         content: "";
         position: absolute;
-        right: 7px;
+        right: 0px;
         top: 4px;
         width: 12px;
         height: 12px;
         cursor: pointer;
+        margin-right: 5px;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;

@@ -5,6 +5,8 @@ define(function (require) {
     var Marionette = require("marionette");
     var template = require("tpl!mail-templates/moveToView.tmpl");
 
+    require("assets-plugins/blocks.toggle");
+
     var MoreView = {};
 
     app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
@@ -44,9 +46,9 @@ define(function (require) {
 
                 this.currAction = app.context.get("router.state.action");
 
-                this.ui.ddiInbox.toggle(!_.contains(["inbox"],this.currAction));
-                this.ui.ddiSpam.toggle(_.contains(["inbox","trash"],this.currAction));
-                this.ui.ddiTrash.toggle(_.contains(["spam","inbox"],this.currAction));
+                this.ui.ddiInbox.toggleBlock(!_.contains(["inbox"],this.currAction));
+                this.ui.ddiSpam.toggleBlock(_.contains(["inbox","trash"],this.currAction));
+                this.ui.ddiTrash.toggleBlock(_.contains(["spam","inbox"],this.currAction));
             }
         });
     });

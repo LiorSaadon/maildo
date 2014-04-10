@@ -12,13 +12,9 @@ define(function (require) {
 
         parse: function(response, options) {
            return {
-               title:response,
-               address: this._getAddress(response)
+               title:response.replace(",", " "),
+               address:(response.replace(",", ".") + "@mailbone.com").toLowerCase()
            };
-        },
-
-        _getAddress:function(response){
-           return response == "me" ? "demo@mailbone.com" : response + "@mailbone.com";
         },
 
         getText:function(){

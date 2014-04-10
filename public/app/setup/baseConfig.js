@@ -1,9 +1,9 @@
 define({
 
     "paths": {
-        "underscore": "lib/lodash/lodash",
-        "underscore.string": "lib/lodash/underscore.string",
-        "underscore.deepExtend": "lib/lodash/underscore.mixin.deepExtend",
+        "underscore": "lib/underscore/underscore",
+        "underscore.string": "lib/underscore/underscore.string",
+        "underscore.deepExtend": "lib/underscore/underscore.mixin.deepExtend",
         "jquery": "lib/jquery/jquery",
         "backbone": "lib/backbone/backbone",
         "backbone.wreqr": "lib/backbone/backbone.wreqr",

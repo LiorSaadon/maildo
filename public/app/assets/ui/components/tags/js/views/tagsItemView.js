@@ -22,7 +22,7 @@ define(function (require) {
         },
 
         onRender:function(){
-            this.ui.content.toggleClass("err", !this.model.get("isValid"));
+            this.$el.toggleClass("err", !this.model.get("isValid"));
         },
 
         _onCloseBtnClick:function(){

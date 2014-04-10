@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var Marionette = require('marionette');
-   // var mailsList = require('json!assets-data/mails.json');
+    var mailsList = require('json!assets-data/mails.json');
     var contactsList = require('json!assets-data/contacts.json');
 
     var PreliminaryDataController = Marionette.Controller.extend({
@@ -10,7 +10,7 @@ define(function (require) {
         setData:function(){
             this.localStorage = window.localStorage;
 
-            //this.setMails();
+            this.setMails();
             this.setContacts();
         },
 

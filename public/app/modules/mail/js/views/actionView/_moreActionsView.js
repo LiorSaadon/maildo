@@ -5,6 +5,8 @@ define(function (require) {
     var Marionette = require("marionette");
     var template = require("tpl!mail-templates/moreActionsView.tmpl");
 
+    require("assets-plugins/blocks.toggle");
+
     var MoreActionsView = {};
 
     app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
@@ -48,7 +50,9 @@ define(function (require) {
             initialize: function (options) {
 
                 this.collection = mail.dataController.getMailCollection();
-                this.listenTo(this.collection, "sync", this.setDropDownItems, this);
+
+                this.listenTo(this.collection, "fetch:success", this.setDropDownItems, this);
+                this.listenTo(this.collection, "update:success", this.setDropDownItems, this);
                 this.listenTo(this.collection, "change:selection", this.setDropDownItems, this);
             },
 
@@ -58,12 +62,12 @@ define(function (require) {
 
                 var items = this.itemsToShow();
 
-                this.toggle(this.ui.ddiStarred, items.stared);
-                this.toggle(this.ui.ddiNotStarred, items["not-stared"]);
-                this.toggle(this.ui.ddiImp, items.important);
-                this.toggle(this.ui.ddiNotImp, items["not-important"]);
-                this.toggle(this.ui.ddiRead, items.read);
-                this.toggle(this.ui.ddiUnread, items.unread);
+                this.ui.ddiStarred.toggleBlock(items.stared);
+                this.ui.ddiNotStarred.toggleBlock(items["not-stared"]);
+                this.ui.ddiImp.toggleBlock(items.important);
+                this.ui.ddiNotImp.toggleBlock(items["not-important"]);
+                this.ui.ddiRead.toggleBlock(items.read);
+                this.ui.ddiUnread.toggleBlock(items.unread);
             },
 
             //------------------------------------------------------------
@@ -102,13 +106,6 @@ define(function (require) {
                 }else{
                     items.read = true;
                 }
-            },
-
-            //-------------------------------------------------------
-
-            toggle:function(uiItem, show){
-
-               uiItem.css("display", show ? "block" : "none");
             }
         });
     });

@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var _s = require("underscore.string");
 
     var ContactsFilterModel = {};
 
@@ -10,17 +11,21 @@ define(function (require) {
         ContactsFilterModel = Backbone.Model.extend({
 
             setInput: function (input) {
-                this.input = _.isString(input) ? input : "";
+                this.input = _.isString(input) ? input.toLowerCase() : "";
             },
 
             //-----------------------------------------------------------------------
 
             filterBy: function (contactModel) {
 
-                var inTitle = (contactModel.get("title").substring(0, this.input.length) === this.input);
-                var inAddress = (contactModel.get("address").substring(0, this.input.length) === this.input);
+                var res = false,
+                    subTitles = contactModel.get("title").toLowerCase().split(" ");
 
-                return inTitle || inAddress;
+                 _.each(subTitles, _.bind(function(subTitle){
+                    res = res || _s.startsWith(subTitle, this.input);
+                },this));
+
+                return res;
             }
         });
     });

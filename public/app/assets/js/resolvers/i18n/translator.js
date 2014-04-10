@@ -15,7 +15,7 @@ define(function (require) {
         var translate = function (key) {
             var text = "[??" + key + "??]";
 
-            if (_.isPlainObject(dictionary) && _.isString(key) && _.has(dictionary, key)) {
+            if (_.isObject(dictionary) && _.isString(key) && _.has(dictionary, key)) {
                 text = dictionary[key];
             }
 

@@ -1,100 +1,128 @@
 [
     {
-        "from": "smith@mailbone.com",
-        "to": "demo@mailbone.com;",
-        "cc": "johnson@mailbone.com;williams@mailbone.com",
+        "from": "alan.rogers@mailbone.com",
+        "to": "demo@mailbone.com",
+        "cc": "patricia.white@mailbone.com;williams@mailbone.com",
         "bcc": "",
         "subject": "Things You Can Do With JavaScript",
-        "sentTime": "2014-03-31 18:18:09",
-        "body": "",
+        "sentTime": "2014-04-09 12:06:51",
+        "body": "later",
         "labels": {
-            "sent": true,
+            "unread": true,
+            "unstarred": true,
+            "unimportant": true
+        },
+        "groups": {
             "inbox": true
         },
-        "id": "_128"
+        "id": "_435"
     },
     {
-        "from": "johnson@mailbone.com",
-        "to": "demo@mailbone.com;",
-        "cc": "edwards@mailbone.com;cook@mailbone.com",
+        "from": "margaret.hughes@mailbone.com",
+        "to": "demo@mailbone.com",
+        "cc": "alan.rogers@mailbone.com",
         "bcc": "",
         "subject": "What is mvc programming?",
-        "sentTime": "2014-02-23 10:10:09",
-        "body": "",
+        "sentTime": "2014-04-09 12:06:51",
+        "body": "later",
         "labels": {
-            "sent": true,
+            "unread": true,
+            "starred": true,
+            "important": true
+        },
+        "groups": {
             "inbox": true
         },
-        "id": "_238"
+        "id": "_436"
     },
     {
-        "from": "williams@mailbone.com",
-        "to": "demo@mailbone.com;",
-        "cc": "stewart@mailbone.com;sanchez@mailbone.com",
-        "bcc": "roberts@mailbone.com",
-        "subject": "An Intro to Backbone.js?",
-        "sentTime": "2014-02-17 09:13:09",
-        "body": "",
-        "labels": {
-            "sent": true,
-            "inbox": true
-        },
-        "id": "_348"
-    },
-    {
-        "from": "jones@mailbone.com",
-        "to": "demo@mailbone.com;",
-        "cc": "reed@mailbone.com;bailey@mailbone.com",
-        "bcc": "edwards@mailbone.com",
-        "subject": "Why Should I Use Backbone.Marionette?",
-        "sentTime": "2014-03-15 13:16:19",
-        "body": "",
-        "labels": {
-            "sent": true,
-            "inbox": true
-        },
-        "id": "_378"
-    },
-    {
-        "from": "brown@mailbone.com",
-        "to": "demo@mailbone.com;",
-        "cc": "roberts@mailbone.com",
-        "bcc": "stewart@mailbone.com",
-        "subject": "What is underscore?",
-        "sentTime": "2014-01-21 17:19:09",
-        "body": "",
-        "labels": {
-            "sent": true,
-            "inbox": true
-        },
-        "id": "_418"
-    },
-    {
-        "from": "demo@mailbone.com",
-        "to": "demo@mailbone.com;",
+        "from": "billy.young@mailbone.com",
+        "to": "demo@mailbone.com",
         "cc": "",
         "bcc": "",
-        "subject": "How to use Mustache.js",
-        "sentTime": "2013-10-19 12:13:09",
-        "body": "",
+        "subject": "An Intro to Backbone.js",
+        "sentTime": "2014-04-07 12:06:51",
+        "body": "later",
         "labels": {
-            "sent": true,
+            "unread": true,
+            "starred": true,
+            "important": true
+        },
+        "groups": {
             "inbox": true
         },
-        "id": "_428"
+        "id": "_437"
     },
     {
-        "from": "young@mailbone.com",
-        "to": "demo@mailbone.com;",
-        "cc": "morgan@mailbone.com;murphy@mailbone.com",
-        "bcc": "rogers@mailbone.com",
-        "subject": "How to Test your JavaScript Code",
-        "sentTime": "2014-01-12 17:18:09",
-        "body": "",
+        "from": "billy.young@mailbone.com",
+        "to": "demo@mailbone.com",
+        "cc": "margaret.hughes@mailbone.com",
+        "bcc": "",
+        "subject": "Why Should I Use Backbone.Marionette?",
+        "sentTime": "2014-04-10 12:06:51",
+        "body": "later",
         "labels": {
-            "sent": true,
+            "unread": true,
+            "starred": true,
+            "important": true
+        },
+        "groups": {
             "inbox": true
         },
-        "id": "_458"
+        "id": "_438"
+    },
+    {
+        "from": "nichole.hampton@mailbone.com",
+        "to": "demo@mailbone.com",
+        "cc": "eugene.cooper@mailbone.com",
+        "bcc": "billy.young@mailbone.com",
+        "subject": "What is underscore?",
+        "sentTime": "2014-04-10 13:06:51",
+        "body": "later",
+        "labels": {
+            "unread": true,
+            "starred": true,
+            "important": true
+        },
+        "groups": {
+            "inbox": true
+        },
+        "id": "_439"
+    },
+    {
+        "from": "eugene.cooper@mailbone.com",
+        "to": "demo@mailbone.com",
+        "cc": "nichole.hampton@mailbone.com",
+        "bcc": "",
+        "subject": "How to use Mustache.js",
+        "sentTime": "2014-04-10 14:06:51",
+        "body": "later",
+        "labels": {
+            "unread": true,
+            "starred": true,
+            "important": true
+        },
+        "groups": {
+            "inbox": true
+        },
+        "id": "_440"
+    },
+    {
+        "from": "sherri.lyons@mailbone.com",
+        "to": "demo@mailbone.com",
+        "cc": "eugene.cooper@mailbone.com",
+        "bcc": "",
+        "subject": "How to Test your JavaScript Code",
+        "sentTime": "2014-04-11 14:06:51",
+        "body": "later",
+        "labels": {
+            "unread": true,
+            "starred": true,
+            "important": true
+        },
+        "groups": {
+            "inbox": true
+        },
+        "id": "_441"
     }
 ]
