@@ -1,0 +1,23 @@
+.mail-items-region{
+  height: 270px;
+  border-bottom: 1px solid $layout-splitter-color;
+  @include abs-pos(0, 0, 'NaN', 0) ;
+}
+
+.mail-data-splitter{
+  height: 4px;
+  @include abs-pos(270px, 0, 'NaN', 0);
+}
+
+.mail-preview-region{
+  background-color: #EEF0F3;
+  @include abs-pos(274px, 0, 0, 0);
+}
+
+.mail-message-region{
+  background-color: #EEF0F3;
+  display: none;
+  z-index: 100;
+  @include abs-pos(0, 0, 0, 0);
+}
+

@@ -622,6 +622,43 @@ body {
   left: 200px;
 }
 
+.mail-items-region {
+  height: 270px;
+  border-bottom: 1px solid #404040;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.mail-data-splitter {
+  height: 4px;
+  position: absolute;
+  top: 270px;
+  right: 0;
+  left: 0;
+}
+
+.mail-preview-region {
+  background-color: #EEF0F3;
+  position: absolute;
+  top: 274px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.mail-message-region {
+  background-color: #EEF0F3;
+  display: none;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .mb .navigator {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 100%;

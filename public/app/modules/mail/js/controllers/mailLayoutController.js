@@ -5,6 +5,7 @@ define(function (require) {
     var MailLayout = require("mail-views/mailLayout");
     var HeaderView = require("mail-views/headerView");
     var NavView = require("mail-views/navView");
+    var DataLayout = require("mail-views/dataLayout");
     var ActionView = require("mail-views/actionView/actionView");
     var MailTableView = require("mail-views/mailTableView");
     var ComposeView = require("mail-views/composeView/composeView");
@@ -47,6 +48,9 @@ define(function (require) {
 
                 var navView = new NavView();
                 this.mailLayout.navRegion.show(navView);
+
+                this.dataLayout = new DataLayout();
+                this.mailLayout.dataRegion.show(this.dataLayout);
             },
 
             //----------------------------------------------------
@@ -70,7 +74,7 @@ define(function (require) {
             },
 
             //----------------------------------------------------
-            // showSettings
+            // compose
             //----------------------------------------------------
 
             compose: function () {
@@ -123,9 +127,14 @@ define(function (require) {
                     },
                     success: function () {
                         that.mails.clearSelected();
-                        var tableView = new MailTableView({collection: that.mails, action:action});
-                        that.mailLayout.dataRegion.show(tableView);
-                    }
+
+                        if(that.mails.size === 0){
+
+                        }else{
+                            var tableView = new MailTableView({collection: that.mails, action:action});
+                            that.dataLayout.itemsRegion.show(tableView);
+                        }
+                     }
                 });
             },
 
@@ -141,7 +150,10 @@ define(function (require) {
                     success: function () {
                         mail.vent.trigger("actions", {action: 'markAs', label: 'read', target: id});
                         var composeView = new ComposeView({model: mailModel});
-                        that.mailLayout.dataRegion.show(composeView);
+                        that.dataLayout.previewRegion.show(composeView);
+                    },
+                    error:function(){
+                        mail.router.previous();
                     }
                 });
             }
