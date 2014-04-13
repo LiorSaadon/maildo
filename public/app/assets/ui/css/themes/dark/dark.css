@@ -753,7 +753,12 @@ body {
   color: #DD4B39;
   font-weight: normal;
 }
-.mb .mailTable .address .sent-to {
+.mb .mailTable .address .sent {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 15px;
+}
+.mb .mailTable .address .sent .sent-to {
   padding-right: 7px;
   font-weight: normal;
 }
@@ -761,8 +766,6 @@ body {
   display: inline-block;
   vertical-align: middle;
   width: 130px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .mb .mailTable .sentTime.unread {
   font-weight: bold;

@@ -41,7 +41,7 @@ define(function (require) {
                     model.id = _.uniqueId('_');
                     model.set(model.idAttribute, model.id);
                 }
-                if (model.get('to').indexOf(accountName) > -1) {
+                if (_.include(model.getOutgoingAddresses(), accountName)){
                     groups.inbox = true;
                 }
 
@@ -50,7 +50,7 @@ define(function (require) {
                 model.set("from", accountName)
                 model.set("sentTime", dateResolver.date2Str(new Date(), false));
 
-                records.push(model);
+                records.unshift(model);
                 _localStorage.setItem('mails', JSON.stringify(records));
 
                 return model;

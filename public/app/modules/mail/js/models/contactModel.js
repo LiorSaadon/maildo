@@ -13,7 +13,7 @@ define(function (require) {
         parse: function(response, options) {
            return {
                title:response.replace(",", " "),
-               address:(response.replace(",", ".") + "@mailbone.com").toLowerCase()
+               address:response.replace(",", ".").toLowerCase() + "@mailbone.com"
            };
         },
 

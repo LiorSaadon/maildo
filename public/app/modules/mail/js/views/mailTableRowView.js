@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var _s = require("underscore.string");
     var template = require("tpl!mail-templates/mailTableRow.tmpl");
     var dateResolver = require("assets-resolvers-date/dateResolver");
 
@@ -39,7 +40,7 @@ define(function (require) {
                options = options || {};
 
                this.action = options.action || "inbox";
-               this.listenTo(this.model, "change:labels.*" , this.adjustUI);
+               this.listenTo(this.model, "change:labels.*" , this.toggleUI);
             },
 
             //-------------------------------------------------------------
@@ -49,29 +50,23 @@ define(function (require) {
             customTemplateHelpers : function () {
 
                 return{
-                    from:    this.getFrom(),
-                    body:    this.getContent(),
-                    subject: this.getSubject(),
-                    sentTime:this.getSentTime(),
+                    to:      this.formatAddresses(this.model.getOutgoingAddresses()),
+                    from:    this.formatAddresses(this.model.getIngoingAddresses()),
+                    body:    this.formatContent(),
+                    subject: this.formatSubject(),
+                    sentTime:this.formatSentTime(),
 
                     isInbox: this.action === "inbox",
                     isSent:  this.action === "sent",
                     isDraft: this.action === "draft",
                     isTrash: this.action === "trash",
-                    iaSpam:  this.action === "spam"
+                    isSpam:  this.action === "spam"
                 };
             },
 
-            //-------------------------------------------------------------
+           //-------------------------------------------------------------
 
-            getFrom:function(){
-
-                return mail.dataController.getContactsCollection().getTitle(this.model.get("from"))
-            },
-
-            //-------------------------------------------------------------
-
-            getSubject:function(){
+            formatSubject:function(){
 
                 var subject = this.model.get("subject");
 
@@ -83,15 +78,33 @@ define(function (require) {
 
             //-------------------------------------------------------------
 
-            getContent: function(){
+            formatContent: function(){
                 return this.model.get("body").replace(/(<([^>]+)>)/ig,"").replace(/&nbsp;/ig," ");
             },
 
             //-------------------------------------------------------------
 
-            getSentTime:function(){
+            formatSentTime:function(){
                 return dateResolver.shortDate(this.model.get("sentTime"));
             },
+
+            //------------------------------------------------------------
+
+            formatAddresses:function(addressList){
+
+                var res = "",
+                    titles = mail.dataController.getContactsCollection().getTitles(addressList);
+
+                if(titles.length === 1){
+                   return titles[0];
+                }
+                _.each(titles, function(title){
+                    res += _s.strLeftBack(title, " ") + ", ";
+                })
+
+                return _s.strLeftBack(res,",");
+            },
+
 
             //-------------------------------------------------------------
             // onRender
@@ -99,13 +112,13 @@ define(function (require) {
 
             onRender:function(){
 
-                this.adjustUI();
+                this.toggleUI();
                 this.setSelection();
             },
 
             //-------------------------------------------------------------
 
-            adjustUI:function(){
+            toggleUI:function(){
 
                 var labels = this.model.get("labels");
 

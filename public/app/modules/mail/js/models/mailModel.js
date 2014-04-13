@@ -30,67 +30,26 @@ define(function (require) {
                 this.localStorage = new MailStorage();
             },
 
-            //----------------------------------------------------------------
-            // validate functions
-            //----------------------------------------------------------------
 
-            validate: function (attrs, options) {
+            //-------------------------------------------------------------
+            // get Ingoing\Outgoing Addresses
+            //-------------------------------------------------------------
 
-                options = options || {};
+            getIngoingAddresses: function () {
 
-                switch (options.validateType) {
-                    case "draft":
-                        return this.validateDraft();
-                    default:
-                        return this.validateMail();
-                }
+                return this._getAddresses('from');
             },
 
             //-------------------------------------------------------------
 
-            validateDraft: function () {
+            getOutgoingAddresses: function () {
 
-                if (_.isEmpty(this.getAllAddresses()) && _.isEmpty(this.get('subject')) && _.isEmpty(this.get('body'))) {
-                    return true;
-                }
-                return false;
+                return this._getAddresses('to').concat(this._getAddresses('cc'), this._getAddresses('bcc'));
             },
 
             //-------------------------------------------------------------
 
-            validateMail: function () {
-
-                var allAddresses = this.getAllAddresses();
-
-                if (_.isEmpty(allAddresses)) {
-                    return "Please specify at least one recipient.";
-                }
-
-                for (var i = 0; i < allAddresses.length; i++) {
-                    if (!this.validateAddress(allAddresses[i])) {
-                        return "The email address '" + allAddresses[i] + "' is not recognized. Please fix it and try again.";
-                    }
-                }
-            },
-
-            //-------------------------------------------------------------
-
-            validateAddress: function (address) {
-
-                var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-                return reg.test(address);
-            },
-
-            //-------------------------------------------------------------
-
-            getAllAddresses: function () {
-
-                return this.getAddresses('to').concat(this.getAddresses('cc'), this.getAddresses('bcc'));
-            },
-
-            //-------------------------------------------------------------
-
-            getAddresses: function (attr) {
+            _getAddresses: function (attr) {
 
                 var addresses = this.get(attr).split(";");
 
@@ -104,7 +63,6 @@ define(function (require) {
             //----------------------------------------------------------------
             // add\remove address
             //----------------------------------------------------------------
-
 
             addAddress: function (attr, address) {
 
@@ -128,6 +86,57 @@ define(function (require) {
                 this.set(attr, addrList);
             },
 
+
+            //----------------------------------------------------------------
+            // validate functions
+            //----------------------------------------------------------------
+
+            validate: function (attrs, options) {
+
+                options = options || {};
+
+                switch (options.validateType) {
+                    case "draft":
+                        return this.validateDraft();
+                    default:
+                        return this.validateMail();
+                }
+            },
+
+            //-------------------------------------------------------------
+
+            validateDraft: function () {
+
+                if (_.isEmpty(this._getAddresses("to")) && _.isEmpty(this.get('subject')) && _.isEmpty(this.get('body'))) {
+                    return true;
+                }
+                return false;
+            },
+
+            //-------------------------------------------------------------
+
+            validateMail: function () {
+
+                var outgoingAddresses = this.getOutgoingAddresses();
+
+                if (_.isEmpty(outgoingAddresses)) {
+                    return "Please specify at least one recipient.";
+                }
+
+                for (var i = 0; i < outgoingAddresses.length; i++) {
+                    if (!this.validateAddress(outgoingAddresses[i])) {
+                        return "The email address '" + outgoingAddresses[i] + "' is not recognized. Please fix it and try again.";
+                    }
+                }
+            },
+
+            //-------------------------------------------------------------
+
+            validateAddress: function (address) {
+
+                var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                return reg.test(address);
+            },
 
             //----------------------------------------------------------------
             // markAs

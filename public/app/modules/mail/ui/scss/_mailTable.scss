@@ -38,16 +38,21 @@
         color:#DD4B39;
         font-weight: normal;
       }
-      .sent-to{
-        padding-right:7px;
-        font-weight: normal;
+      .sent{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right:15px;
+
+        .sent-to{
+          padding-right:7px;
+          font-weight: normal;
+        }
       }
+
       .trash-address{
         display: inline-block;
         vertical-align: middle;
         width:130px;
-        overflow:hidden;
-        text-overflow: ellipsis;
       }
     }
     .sentTime{
