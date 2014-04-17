@@ -2,27 +2,26 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var MailLayout = require("mail-views/mailLayout");
+    var MainLayout = require("mail-views/mailLayout");
     var HeaderView = require("mail-views/headerView");
     var NavView = require("mail-views/navView");
-    var DataLayout = require("mail-views/dataLayout");
     var ActionView = require("mail-views/actionView/actionView");
-    var MailTableView = require("mail-views/mailTableView");
     var ComposeView = require("mail-views/composeView/composeView");
     var SettingsView = require("mail-views/settingsView");
-    var MailModel = require("mail-models/mailModel");
+    var DataLayoutController = require("mail-controllers/mailDataLayoutController");
 
-    var MailLayoutController = {};
+    var MainLayoutController = {};
 
     app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
 
-        MailLayoutController = Marionette.Controller.extend({
+        MainLayoutController = Marionette.Controller.extend({
 
             initialize: function () {
 
-                this.mailLayout = new MailLayout();
+                this.mainLayout = new MainLayout();
+                this.dataLayoutController = new DataLayoutController();
 
-                this.listenTo(this.mailLayout, "render", this.onLayoutRender, this);
+                this.listenTo(this.mainLayout, "render", this.onLayoutRender, this);
                 this.listenTo(app.context, 'change:router.state', this.onContextChange, this);
             },
 
@@ -31,7 +30,7 @@ define(function (require) {
             //----------------------------------------------------
 
             getLayout: function () {
-                return this.mailLayout;
+                return this.mainLayout;
             },
 
             //----------------------------------------------------
@@ -41,16 +40,13 @@ define(function (require) {
             onLayoutRender: function () {
 
                 var headerView = new HeaderView();
-                this.mailLayout.headerRegion.show(headerView);
+                this.mainLayout.headerRegion.show(headerView);
 
                 var actionView = new ActionView();
-                this.mailLayout.actionRegion.show(actionView);
+                this.mainLayout.actionRegion.show(actionView);
 
                 var navView = new NavView();
-                this.mailLayout.navRegion.show(navView);
-
-                this.dataLayout = new DataLayout();
-                this.mailLayout.dataRegion.show(this.dataLayout);
+                this.mainLayout.navRegion.show(navView);
             },
 
             //----------------------------------------------------
@@ -69,7 +65,7 @@ define(function (require) {
                         this.showSettings();
                         break;
                     default:
-                        this.showData(action);
+                        this.showData();
                 }
             },
 
@@ -84,7 +80,7 @@ define(function (require) {
                 var composeView = new ComposeView({
                     model:mailModel
                 });
-                this.mailLayout.dataRegion.show(composeView);
+                this.mainLayout.dataRegion.show(composeView);
             },
 
             //----------------------------------------------------
@@ -94,70 +90,18 @@ define(function (require) {
             showSettings: function () {
 
                 var settingsView = new SettingsView(app.settings);
-                this.mailLayout.dataRegion.show(settingsView);
+                this.mainLayout.dataRegion.show(settingsView);
             },
 
             //----------------------------------------------------
             // showData
             //----------------------------------------------------
 
-            showData: function (action) {
+            showData: function () {
 
-                var params = app.context.get("router.state.params");
-
-                if (params.id) {
-                    this.showItem(params.id);
-                } else {
-                    this.showCollection(action, params);
-                }
-            },
-
-            //----------------------------------------------------
-
-            showCollection: function (action, params) {
-
-                var that = this;
-
-                this.mails = mail.dataController.getMailCollection();
-
-                this.mails.fetchBy({
-                    filters: {
-                        page: params.page,
-                        query: params.query || 'groups:' + action
-                    },
-                    success: function () {
-                        that.mails.clearSelected();
-
-                        if(that.mails.size === 0){
-
-                        }else{
-                            var tableView = new MailTableView({collection: that.mails, action:action});
-                            that.dataLayout.itemsRegion.show(tableView);
-                        }
-                     }
-                });
-            },
-
-            //----------------------------------------------------
-
-            showItem: function (id) {
-
-                var that = this;
-
-                var mailModel = new MailModel({id: id});
-
-                mailModel.fetch({
-                    success: function () {
-                        mail.vent.trigger("actions", {action: 'markAs', label: 'read', target: id});
-                        var composeView = new ComposeView({model: mailModel});
-                        that.dataLayout.previewRegion.show(composeView);
-                    },
-                    error:function(){
-                        mail.router.previous();
-                    }
-                });
+                this.dataLayoutController.setLayout(this.mainLayout.dataRegion);
             }
         });
     });
-    return MailLayoutController;
+    return MainLayoutController;
 });

@@ -16,6 +16,9 @@ define(function (require) {
                 actionRegion:".mail-action-region",
                 navRegion:".mail-nav-region",
                 dataRegion:".mail-data-region"
+            },
+            initialize:function(){
+               this.isPermanent = true;
             }
         });
     });

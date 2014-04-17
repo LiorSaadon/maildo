@@ -10,7 +10,9 @@ define(function (require) {
             actionRegion:".contacts-action-region",
             navRegion:".contacts-nav-region",
             dataRegion:".contacts-data-region"
-
+        },
+        initialize:function(){
+            this.isPermanent = true;
         }
     });
 

@@ -7,8 +7,8 @@ define(function (require) {
     var FrameLayout = Marionette.Layout.extend({
         template:frameTemplate,
         regions:{
-            techbar:".techbar-region",
-            main:".main-region"
+            techbarRegion:".techbar-region",
+            mainRegion:".main-region"
         }
     });
 

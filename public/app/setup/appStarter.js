@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var Backbone = require("backbone");
-    var MarionetteExt = require("lib-extensions/marionette/marionette.ext");
+    var MarionetteExt = require("lib-extensions/marionette/marionette.extensions");
     var localStorage = require("backbone.localstorage");
     var Translator = require("i18n/translator");
     var Context = require("assets-models/context");

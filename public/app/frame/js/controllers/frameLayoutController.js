@@ -37,7 +37,7 @@ define(function (require) {
         onLayoutRender: function () {
 
             var techBarView = new TechBarView();
-            this.frameLayout.techbar.show(techBarView);
+            this.frameLayout.techbarRegion.show(techBarView);
         },
 
         //---------------------------------------------------
@@ -49,7 +49,7 @@ define(function (require) {
             if(this.currSubLayout !== moduleName){
 
                 var newLayout = app.module(moduleName).getLayout();
-                this.frameLayout.main.show(newLayout);
+                this.frameLayout.mainRegion.add(newLayout);
                 this.currSubLayout = moduleName;
             }
         }
