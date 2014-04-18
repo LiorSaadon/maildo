@@ -16,8 +16,15 @@ define(function (require) {
                 previewRegion:".mail-preview-region",
                 messageBoard:".mail-message-region"
             },
+
             initialize:function(){
                 this.isPermanent = true;
+                this.listenTo(this.messageBoard,"before:show", this.onMessageBoardShow);
+            },
+
+            onMessageBoardShow:function(){
+                this.messageBoard.$el.css("z-index","2");
+                this.messageBoard.$el.css("display","block");
             }
         });
     });

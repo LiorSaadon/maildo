@@ -658,6 +658,19 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+  padding: 35px 60px 0 60px;
+  font-family: "Helvetica Neue","Segoe UI",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+.mail-message-region .msgTitle {
+  font-size: 22px;
+  font-weight: 300;
+  padding-bottom: 18px;
+  border-bottom: 1px solid black;
+}
+.mail-message-region .msgBody {
+  font-size: 18px;
+  padding-Top: 30px;
+  line-height: 28px;
 }
 
 .mb .navigator {

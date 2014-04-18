@@ -20,5 +20,21 @@
   display: none;
   z-index: 100;
   @include abs-pos(0, 0, 0, 0);
+  padding: 35px 60px 0 60px;
+  font-family: "Helvetica Neue","Segoe UI",Helvetica,Arial,"Lucida Grande",sans-serif;
+
+  .msgTitle{
+    font-size: 22px;
+    font-weight: 300;
+    padding-bottom:18px;
+    border-bottom: 1px solid black;
+  }
+
+  .msgBody{
+    font-size: 18px;
+    padding-Top: 30px;
+    line-height: 28px;
+  }
+
 }
 

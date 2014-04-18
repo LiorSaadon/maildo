@@ -50,7 +50,7 @@ define(function (require) {
                         query: params.query || 'groups:' + action
                     },
                     success: _.bind(function () {
-                        if (this.mails.size === 0) {
+                        if (this.mails.size() === 0) {
                             this.showMessage(action);
                         } else {
                             this.showCollectionItems(action);
