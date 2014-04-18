@@ -2,7 +2,6 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var Marionette = require("marionette");
     var template = require("tpl!mail-templates/settingsView.tmpl");
 
     var SettingsView = {};

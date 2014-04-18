@@ -4,8 +4,10 @@ define(function (require) {
     var app = require("mbApp");
     var DataLayout = require("mail-views/dataLayout");
     var MailTableView = require("mail-views/mailTableView");
-    var ComposeView = require("mail-views/composeView/composeView");
+    var PreviewView = require("mail-views/previewView");
     var MailModel = require("mail-models/mailModel");
+    var MessagesView = require("mail-views/messagesView");
+
 
     var DataLayoutController = {};
 
@@ -25,7 +27,7 @@ define(function (require) {
             // onLayoutRender
             //----------------------------------------------------
 
-            onLayoutRender: function (action) {
+            onLayoutRender: function () {
 
                 var state = app.context.get("router.state");
 
@@ -49,7 +51,7 @@ define(function (require) {
                     },
                     success: _.bind(function () {
                         if (this.mails.size === 0) {
-                            this.showEmptyMessage();
+                            this.showMessage(action);
                         } else {
                             this.showCollectionItems(action);
                         }
@@ -59,22 +61,20 @@ define(function (require) {
 
             //----------------------------------------------------
 
-            showEmptyMessage: function () {
+            showMessage: function (action) {
 
-//                var emptyMessageView = new MailTableView({collection: this.mails, action: action});
-//                this.dataLayout.itemsRegion.show(emptyMessageView);
+                var messagesView = new MessagesView({msgType:"emptyData", action: action});
+                this.dataLayout.messageBoard.show(messagesView);
             },
 
             //----------------------------------------------------
 
             showCollectionItems: function (action) {
+
                 this.mails.clearSelected();
 
                 var tableView = new MailTableView({collection: this.mails, action: action});
                 this.dataLayout.itemsRegion.show(tableView);
-
-//                var emptyMessageView = new MailTableView({collection: this.mails, action: action});
-//                this.dataLayout.itemsRegion.show(emptyMessageView);
             },
 
             //----------------------------------------------------
@@ -88,8 +88,8 @@ define(function (require) {
                 mailModel.fetch({
                     success: function () {
                         mail.vent.trigger("actions", {action: 'markAs', label: 'read', target: id});
-                        var composeView = new ComposeView({model: mailModel});
-                        that.dataLayout.previewRegion.show(composeView);
+                        var previewView = new PreviewView({model: mailModel});
+                        that.dataLayout.previewRegion.show(previewView);
                     },
                     error: function () {
                         mail.router.previous();
