@@ -14,7 +14,7 @@ define(function (require) {
             regions:{
                 itemsRegion:".mail-items-region",
                 previewRegion:".mail-preview-region",
-                messageBoard:".mail-message-region"
+                messageBoard:".mail-message-board-region"
             },
 
             initialize:function(){

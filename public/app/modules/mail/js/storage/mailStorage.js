@@ -118,7 +118,7 @@ define(function (require) {
 
             var records = getRecords();
             var record = _.find(records, function (record) {
-                return record.id == id;
+                return record.id === id;
             });
 
             if (record) {
@@ -149,7 +149,10 @@ define(function (require) {
         var find = function (model, options) {
 
             var records = getRecords();
-            return _.find(records, {'id': model.id});
+            var model =  _.find(records, function (record) {
+                return record.id === model.id;
+            });
+            return model;
         };
 
         //------------------------------------------------

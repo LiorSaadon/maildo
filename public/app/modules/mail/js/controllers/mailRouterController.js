@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var _s = require("underscore.string");
 
     var MailRouterController = {};
 
@@ -65,16 +66,13 @@ define(function (require) {
 
             analyzeParams:function(id,query){
 
-                var params = {id:null, page:1, query:query};
+                var params = {page:1, query:query};
 
-                if(_.isString(id)){
+                if(_s.startsWith(id, "p")){
+                    var page = id.split("p")[1];
 
-                    var page = id.split('p')[1];
-
-                    if(!_.isNumber(page)){
+                    if(_.isFinite(page)){
                         params.page = page;
-                    }else{
-                        params.id = id;
                     }
                 }
                 return params;
@@ -100,9 +98,9 @@ define(function (require) {
                 var url = "inbox";
 
                 if(!_.isEmpty(this._prevState)){
-                    var search = this._prevState.params.query ? "/" + this._prevState.params.query : "";
-                    var id = this._prevState.params.id ? this._prevState.params.id : "p"+this._prevState.params.page;
-                    url = this._prevState.action + search + "/" + id;
+                    var page = "p" + this._prevState.params.page;
+                    var query = this._prevState.params.query ? "/" + this._prevState.params.query : "";
+                    url = this._prevState.action + query + "/" + page;
                 }
                 return url;
             }

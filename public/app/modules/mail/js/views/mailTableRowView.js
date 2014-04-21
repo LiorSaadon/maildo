@@ -27,13 +27,13 @@ define(function (require) {
             },
 
             events:{
-                "click .selector":"swapSelection",
-                "click .from":"onRowClick",
-                "click .subject":"onRowClick",
+                "click .selector":"onRowSelect",
+                "click .star":"onRowClick",
+                "click .importance":"onRowClick",
+                "click .address":"onRowClick",
+                "click .content":"onRowClick",
                 "click .sentTime":"onRowClick"
             },
-
-            //------------------------------------------------
 
             initialize:function(options){
 
@@ -105,7 +105,6 @@ define(function (require) {
                 return _s.strLeftBack(res,",");
             },
 
-
             //-------------------------------------------------------------
             // onRender
             //-------------------------------------------------------------
@@ -129,14 +128,24 @@ define(function (require) {
                 this.ui.impIcon.toggleClass("disable",!_.has(labels,'important'));
             },
 
+            //------------------------------------------------
+
+            setSelection:function () {
+
+                var selected = this.model.collection.isSelected(this.model);
+
+                this.$el.toggleClass('selected',selected);
+                this.ui.checkBox.prop('checked',selected);
+            },
+
+            //-------------------------------------------------------------
+            // onRowSelect
             //-------------------------------------------------------------
 
-            setSelection:function() {
+            onRowSelect:function(){
 
-                var isSelected = this.model.collection.isSelected(this.model);
-
-                this.$el.toggleClass('selected',isSelected);
-                this.ui.checkBox.prop('checked',isSelected);
+                mail.vent.trigger("mailTable:ItemClicked", {itemView:null});
+                this.model.collection.toggleSelection(this.model, {callerName:'itemView'});
             },
 
             //-------------------------------------------------------------
@@ -145,20 +154,17 @@ define(function (require) {
 
             onRowClick:function(){
 
-                var state = app.context.get("router.state");
-                var search = state.params.query ? "/" + state.params.query : "";
-                //mail.router.navigate(state.action + search + "/" + this.model.id, { trigger: true });
+                mail.vent.trigger("mail:preview", this.model.id);
+                mail.vent.trigger("mailTable:ItemClicked", {itemView:this});
             },
 
-            //------------------------------------------------
+            //-------------------------------------------------------------
+            // markAsClicked
+            //-------------------------------------------------------------
 
-            swapSelection:function () {
+            markAsClicked:function(clicked){
 
-                var isSelected = this.model.collection.isSelected(this.model);
-
-                this.$el.toggleClass('selected',isSelected);
-                this.ui.checkBox.prop('checked',isSelected);
-                this.model.collection.toggleSelection(this.model, {callerName:'itemView'});
+                this.$el.toggleClass('clickedRow',clicked);
             }
         });
     });

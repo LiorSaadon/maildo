@@ -7,6 +7,7 @@ define(function (require) {
     var PreviewView = require("mail-views/previewView");
     var MailModel = require("mail-models/mailModel");
     var MessagesView = require("mail-views/messagesView");
+    var EmptyMailView = require("mail-views/emptyMailView");
 
 
     var DataLayoutController = {};
@@ -15,45 +16,41 @@ define(function (require) {
 
         DataLayoutController = Marionette.Controller.extend({
 
-            setLayout: function (region) {
+            initialize: function () {
 
-                this.dataLayout = new DataLayout();
+                this.mails = mail.dataController.getMailCollection();
 
-                this.listenTo(this.dataLayout, "render", this.onLayoutRender, this);
-                region.show(this.dataLayout);
+                this.listenTo(mail.vent, "mail:preview", this.showMail);
+                this.listenTo(this.mails, "change:selection", this.onSelectionChange, this);
             },
 
             //----------------------------------------------------
-            // onLayoutRender
+            // setLayout
+            //----------------------------------------------------
+
+            setLayout: function (region) {
+
+                this.dataLayout = new DataLayout();
+                this.listenTo(this.dataLayout, "render", this.onLayoutRender);
+                region.show(this.dataLayout);
+            },
+
             //----------------------------------------------------
 
             onLayoutRender: function () {
 
                 var state = app.context.get("router.state");
 
-                if (state.params.id) {
-                    this.showItem(state.params.id);
-                } else {
-                    this.showCollection(state.action, state.params);
-                }
-            },
-
-            //----------------------------------------------------
-
-            showCollection: function (action, params) {
-
-                this.mails = mail.dataController.getMailCollection();
-
                 this.mails.fetchBy({
                     filters: {
-                        page: params.page,
-                        query: params.query || 'groups:' + action
+                        page: state.params.page,
+                        query: state.params.query || 'groups:' + state.action
                     },
                     success: _.bind(function () {
-                        if (this.mails.size() === 0) {
-                            this.showMessage(action);
+                        if (this.mails.size() > 0) {
+                            this.showCollection(state.action);
                         } else {
-                            this.showCollectionItems(action);
+                            this.showEmptyFolderMessage(state.action);
                         }
                     }, this)
                 });
@@ -61,15 +58,7 @@ define(function (require) {
 
             //----------------------------------------------------
 
-            showMessage: function (action) {
-
-                var messagesView = new MessagesView({msgType:"emptyData", action: action});
-                this.dataLayout.messageBoard.show(messagesView);
-            },
-
-            //----------------------------------------------------
-
-            showCollectionItems: function (action) {
+            showCollection: function (action) {
 
                 this.mails.clearSelected();
 
@@ -79,24 +68,40 @@ define(function (require) {
 
             //----------------------------------------------------
 
-            showItem: function (id) {
+            showEmptyFolderMessage: function (action) {
 
-                var that = this;
+                var messagesView = new MessagesView({msgType: "emptyFolder", action: action});
+                this.dataLayout.messageBoard.show(messagesView);
+            },
+
+            //----------------------------------------------------
+            // showMail
+            //----------------------------------------------------
+
+            showMail: function (id) {
 
                 var mailModel = new MailModel({id: id});
 
-                mailModel.fetch({
-                    success: function () {
-                        mail.vent.trigger("actions", {action: 'markAs', label: 'read', target: id});
-                        var previewView = new PreviewView({model: mailModel});
-                        that.dataLayout.previewRegion.show(previewView);
-                    },
-                    error: function () {
-                        mail.router.previous();
-                    }
-                });
-            }
+                mail.vent.trigger("actions", {actionType: 'markAs', label: 'read'});
+                mail.vent.trigger("actions", {actionType: "select", selectBy: "none"});
 
+                mailModel.fetch({
+                    success: _.bind(function () {
+                        var previewView = new PreviewView({model: mailModel});
+                        this.dataLayout.previewRegion.show(previewView);
+                    }, this)
+                });
+            },
+
+            //-----------------------------------------------------
+            // onSelectionChange
+            //-----------------------------------------------------
+
+            onSelectionChange:function(){
+
+                var emptyMailView = new EmptyMailView({selected:this.mails.getSelected().length});
+                this.dataLayout.previewRegion.show(emptyMailView);
+            }
         });
     });
     return DataLayoutController;

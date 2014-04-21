@@ -43,11 +43,8 @@ define(function (require) {
 
         decoratedCollection.clearSelected = function (options) {
 
-            var raise = this.selected.length > 0;
-
             this.selected.length = 0;
-
-            if(raise){raiseTrigger(options);}
+            raiseTrigger(options);
         };
 
         //--------------------------------------------------

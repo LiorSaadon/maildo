@@ -20,7 +20,8 @@ define(function (require) {
                 options = options || {};
 
                 this.action = options.action || "inbox";
-                this.listenTo(this.collection, "change:selection", this.onCollectionChange, this);
+                this.listenTo(mail.vent, "mailTable:ItemClicked", this.onItemClicked, this);
+                this.listenTo(this.collection, "change:selection", this.onSelectionChange, this);
             },
 
             //-------------------------------------------------------
@@ -53,10 +54,10 @@ define(function (require) {
             },
 
             //-------------------------------------------------------
-            // onCollectionChange
+            // onSelectionChange
             //-------------------------------------------------------
 
-            onCollectionChange: function(options){
+            onSelectionChange: function(options){
 
                 options = options || {};
 
@@ -66,6 +67,21 @@ define(function (require) {
 
                         view.setSelection();
                     });
+                }
+            },
+
+            //--------------------------------------------------
+
+            onItemClicked:function(options){
+
+                options = options || {};
+
+                this.children.each(function(itemView){
+                    itemView.markAsClicked(false);
+                });
+
+                if(options.itemView){
+                    options.itemView.markAsClicked(true);
                 }
             }
         });

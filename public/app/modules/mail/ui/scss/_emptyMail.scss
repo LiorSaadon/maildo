@@ -1,0 +1,25 @@
+.mb{
+  .emptyMail{
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: url('app/assets/ui/img/envelop.png') no-repeat center;
+    background-color: #F7FAFF;
+
+    .counter{
+      display: table-cell;
+      vertical-align: middle;
+      font-size:25px;
+      font-weight: bold;
+    }
+
+    .message{
+      display: table-cell;
+      vertical-align: middle;
+      font-size:12px;
+      font-weight: normal;
+    }
+  }
+}
