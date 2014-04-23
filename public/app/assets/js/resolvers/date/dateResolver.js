@@ -88,31 +88,8 @@ define(function (require) {
             return str;
         };
 
-        //----------------------------------------------------------------
-        // date2Str
-        //--------------------------------------------------------------
-
-        /**
-         * @param date
-         * @returns str "M D" - i.e. Sep 12
-         */
-        var shortDate = function(date) {
-
-            if(_.isString(date)){
-                date = strToDate(date);
-            }
-            if(_.isDate(date)){
-                var day = date.getDate();
-                var month = date.getMonth() + 1;
-                var monthStr = app.translator.translate("mail.timerange.months."+month);
-                return monthStr + ' ' + day;
-            }
-            return '';
-        };
-
         return {
             strToDate:strToDate,
-            shortDate:shortDate,
             date2Str:date2Str
         };
     })();

@@ -14,7 +14,7 @@ define(function (require) {
         //-------------------------------------------
 
         initialize:function(){
-            this.id = _.uniqueId('_');
+            this.set("id", _.uniqueId('_'));
             this.localStorage = new SettingsStorage();
         }
     });

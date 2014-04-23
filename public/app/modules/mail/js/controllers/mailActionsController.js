@@ -19,6 +19,8 @@ define(function (require) {
 
             actions: function (options) {
 
+                options = options || {};
+
                 switch (options.actionType) {
 
                     case 'select':
@@ -28,7 +30,7 @@ define(function (require) {
                         this.moveTo(options);
                         break;
                     case "delete":
-                        this.moveTo({target:"trash"});
+                        this.moveTo({target: "trash"});
                         break;
                     case "markAs":
                         this.markAs(options);
@@ -61,7 +63,7 @@ define(function (require) {
 
             markAs: function (options) {
 
-                var that = this, items = this.collection.getSelected();
+                var that = this, items = options.items || this.collection.getSelected();
 
                 _.each(items, function (item) {
 
@@ -70,42 +72,45 @@ define(function (require) {
                         model.markAs(options.label);
                     }
                 });
-                this.updateCollection(items, true);
+                this.updateCollection(items, options);
             },
 
             //----------------------------------------------------
 
             moveTo: function (options) {
 
-                var that = this, items = this.collection.getSelected();
+                var that = this, items = options.items || this.collection.getSelected();
 
                 _.each(items, function (item) {
 
                     var model = that.collection.get(item);
                     if (model) {
-                        model.moveTo(options.target);
+                        model.moveTo(options.target, options);
                     }
                 });
-
-                this.updateCollection(items);
+                this.updateCollection(items, _.extend({}, options, {"refresh": true, "clearSelected": true}));
             },
 
             //----------------------------------------------------
 
-            updateCollection: function (items, silent) {
-
-                var that = this;
+            updateCollection: function (items, options) {
 
                 this.collection.update({
 
                     selectedItems: items,
                     fields: ['id', 'labels', 'groups'],
 
-                    success: function () {
-                        if (!silent) {
-                            that.collection.refresh();
+                    success: _.bind(function () {
+                        if (_.isFunction(options.callback)) {
+                            options.callback();
                         }
-                    }
+                        if (options.clearSelected) {
+                            this.collection.clearSelected();
+                        }
+                        if (options.refresh) {
+                            this.collection.refresh();
+                        }
+                    }, this)
                 });
             }
         });

@@ -82,7 +82,7 @@ define(function (require) {
 
                 var mailModel = new MailModel({id: id});
 
-                mail.vent.trigger("actions", {actionType: 'markAs', label: 'read'});
+                mail.vent.trigger("actions", {actionType: 'markAs', label: 'read', items:[id]});
                 mail.vent.trigger("actions", {actionType: "select", selectBy: "none"});
 
                 mailModel.fetch({

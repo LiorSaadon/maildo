@@ -34,7 +34,7 @@ define(function (require) {
 
                 var records = getRecords();
 
-                var groups = {'sent': true}
+                var groups = {'sent': true};
                 var labels = {unread: true, unstarred: true, unimportant: true};
 
                 if (!model.id) {
@@ -47,7 +47,7 @@ define(function (require) {
 
                 model.set("groups", groups);
                 model.set("labels", labels);
-                model.set("from", accountName)
+                model.set("from", accountName);
                 model.set("sentTime", dateResolver.date2Str(new Date(), false));
 
                 records.unshift(model);
@@ -149,10 +149,10 @@ define(function (require) {
         var find = function (model, options) {
 
             var records = getRecords();
-            var model =  _.find(records, function (record) {
+            var _model =  _.find(records, function (record) {
                 return record.id === model.id;
             });
-            return model;
+            return _model;
         };
 
         //------------------------------------------------

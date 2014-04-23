@@ -147,7 +147,7 @@ define(function (require) {
                 var opositeLabel = this._getOpositeLabel(label);
 
                 this._removeLabel(opositeLabel);
-                this._addLabel(label)
+                this._addLabel(label);
             },
 
             //----------------------------------------------------------------
@@ -155,7 +155,7 @@ define(function (require) {
             _getOpositeLabel:function(label){
 
                 if(_s.startsWith(label,"un")){
-                    return _s.strRight(label, "un")
+                    return _s.strRight(label, "un");
                 }
                 return "un" + label;
             },

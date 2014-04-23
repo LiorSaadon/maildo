@@ -8,6 +8,7 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 18:06:51",
         "body": "later",
+        "relatedBody":"mail2",
         "labels": {
             "read": true,
             "starred": true,
@@ -26,6 +27,7 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 17:06:51",
         "body": "later",
+        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -44,6 +46,7 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
+        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -64,6 +67,7 @@
         "subject": "",
         "sentTime": "2014-04-12 18:06:51",
         "body": "later",
+        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "unstarred": true,
@@ -82,6 +86,7 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 17:06:51",
         "body": "later",
+        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "unstarred": true,
@@ -100,6 +105,7 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
+        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "unstarred": true,
@@ -117,7 +123,7 @@
         "to": "demo@mailbone.com",
         "cc": "patricia.white@mailbone.com;williams@mailbone.com",
         "bcc": "",
-        "subject": "Things You Can Do With JavaScript",
+        "subject": "Things You Can Do With JavaScript1",
         "sentTime": "2014-04-09 15:06:51",
         "body": "later",
         "labels": {
@@ -138,6 +144,7 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-09 15:06:51",
         "body": "later",
+        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -156,6 +163,7 @@
         "subject": "What is mvc programming?",
         "sentTime": "2014-04-09 12:06:51",
         "body": "later",
+        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -174,6 +182,7 @@
         "subject": "An Intro to Backbone.js",
         "sentTime": "2014-04-08 17:08:51",
         "body": "later",
+        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -192,6 +201,7 @@
         "subject": "Why Should I Use Backbone.Marionette?",
         "sentTime": "2014-04-08 17:06:51",
         "body": "later",
+        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -210,6 +220,7 @@
         "subject": "What is underscore?",
         "sentTime": "2014-04-07 13:06:51",
         "body": "later",
+        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -228,6 +239,7 @@
         "subject": "How to use Mustache.js",
         "sentTime": "2014-04-06 14:06:51",
         "body": "later",
+        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -246,6 +258,7 @@
         "subject": "How to Test your JavaScript Code",
         "sentTime": "2014-04-05 14:06:51",
         "body": "later",
+        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,

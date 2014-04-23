@@ -1,0 +1,18 @@
+<div class="special">
+  <div class="inner-container">
+n case you hadn't noticed, I've temporarily<br/> disabled my weekly blog roundup emails. I did this because I know I'm already overloading your inboxes with emails this week. <br/>I want to try to keep things to an even pace while the WatchMeCode subscriptions are launching to you. But I also want to keep you up to date with what's going on - so I'm combining my blog roundup with info on yet another new episode that I've added to WatchMeCode's streaming catalog.
+
+
+
+
+Prototypes, Static Members, Instances And Dependency Injection<br/><br/><br/><br/>
+In a blog post I wrote yesterday, I examine some options for having potentially hundreds or thousands of objects emit events to a single object that needs to listen to all of them. This is a common situation in code with a lot of model instances. Backbone.js, as an example, handles this by allowing a parent Collection to forward all events from the Models in that collection. But I wasn't able to find such a clean answer in the NodeJS code that I was working on. I did find a good solution, though. Check out this post that walks through some of the 1,000 paper cuts that I earned along the way to finding a good solution.
+
+
+
+
+SOLID JavaScript In A Wobbly World Wide Web<br/><br/><br/><br/><br/><br/>
+Lastly for today, I've added the SOLID JavaScript talk that I gave at CodeMash 2014 to the list of free episodes on WatchMeCode's subscription service. It's a 45 minute talk that covers the core of the 5 SOLID principles as applied to JavaScript. You'll see some great info on how to apply the principles and how not to make some of the most common mistakes with these principles.
+  <br/><br/><br/><br/><br/><br/><br/>end
+  </div>
+</div>
