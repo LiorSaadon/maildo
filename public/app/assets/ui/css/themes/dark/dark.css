@@ -895,7 +895,7 @@ body {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: #F2F2F2;
+  background-color: #EEF0F3;
 }
 .mb .previewMail .body .special .inner-container {
   width: 800px;
@@ -903,6 +903,20 @@ body {
   font-size: 12px;
   font-weight: normal;
   background-color: #ffffff;
+  padding: 40px 20px 10px 30px;
+}
+.mb .previewMail .body .special .inner-container .title {
+  margin: 0;
+  padding: 0;
+  display: block;
+  font-family: Helvetica;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 125%;
+  letter-spacing: -1px;
+  text-align: left;
+  color: #606060 !important;
 }
 
 .mb .messages-board {
