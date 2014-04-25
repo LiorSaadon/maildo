@@ -30,20 +30,18 @@ define(function (require) {
                 btnRefresh: ".btnRefresh",
                 btnSaveNow: ".btnSaveNow",
                 btnDiscard: ".btnDiscard",
-                btnBack: ".btnBack",
                 btnDelete: ".btnDelete",
                 btnMore: ".btnMore",
                 pagerRegion: ".pager",
                 lblSettings: ".lblSettings",
-                btnSettings: ".btnSettings"
+                btnSettings: ".btnSettings",
+                btnDiscardDrafts: ".btnDiscardDrafts",
+                btnDeleteForever: ".btnDeleteForever"
             },
 
             events: {
-                "click .btnBack": function () {
-                    mail.router.previous();
-                },
                 "click .btnSettings": function () {
-                    mail.router.navigate("settings",{trigger: true});
+                    mail.router.navigate("settings", {trigger: true});
                 },
                 "click .selectAll": function () {
                     mail.vent.trigger("actions", {actionType: 'select', selectBy: "all"});
@@ -58,6 +56,9 @@ define(function (require) {
                     mail.vent.trigger("actions", {actionType: "select", selectBy: "unread"});
                 },
                 "click .btnDelete": function () {
+                    mail.vent.trigger("actions", {actionType: 'moveTo', target: 'trash'});
+                },
+                "click .btnDeleteForever": function () {
                     mail.vent.trigger("actions", {actionType: 'delete'});
                 },
                 "click .btnSend": function () {
@@ -65,6 +66,9 @@ define(function (require) {
                 },
                 "click .btnDiscard": function () {
                     mail.vent.trigger("newMail", {actionType: 'discard'});
+                },
+                "click .btnDiscardDrafts": function () {
+                    mail.vent.trigger("actions", {actionType: 'delete'});
                 }
             },
 
@@ -72,7 +76,7 @@ define(function (require) {
             // customTemplateHelpers
             //------------------------------------------------------
 
-            customTemplateHelpers : function () {
+            customTemplateHelpers: function () {
 
                 return{
                     action: _s.capitalize(app.context.get("router.state.action"))
@@ -107,55 +111,45 @@ define(function (require) {
 
             showRelevantItems: function () {
 
-                this.showItems(["composeRegion", "lblSettings", "pagerRegion", "btnBack","btnRefresh", "btnSelect","btnMore", "btnSelect", "btnDelete", "btnMoveTo"], false);
+                var action = this.getAction();
 
-                switch (app.context.get("router.state.action")) {
+                this.showItems(["composeRegion", "lblSettings", "btnRefresh", "btnSelect", "btnMore", "btnSelect", "btnDelete", "btnMoveTo", "btnDeleteForever", "btnDiscardDrafts"], false);
+
+                switch (action) {
                     case "compose":
                         this.showItems(["composeRegion"]);
                         break;
                     case "settings":
                         this.showItems(["lblSettings"]);
                         break;
+                    case "non-selected":
+                        this.showItems(["btnSelect", "btnRefresh"]);
+                        break;
+                    case "draft":
+                        this.showItems(["btnSelect", "btnDiscardDrafts", "btnMore"]);
+                        break;
+                    case "spam":
+                        this.showItems(["btnSelect", "btnDeleteForever", "btnMore"]);
+                        break;
+                    case "trash":
+                        this.showItems(["btnSelect", "btnDeleteForever", "btnMore"]);
+                        break;
                     default:
-                        this.showActionButtons();
+                        this.showItems(["btnSelect", "btnDelete", "btnMoveTo", "btnMore"]);
                         break;
                 }
             },
 
             //--------------------------------------------------
 
-            showActionButtons: function () {
+            getAction: function () {
 
-                var action = this.actionContext();
+                var action = app.context.get("router.state.action");
 
-                if(action === "view" || action === "empty-list"){
-                    this.showItems(["btnBack","btnRefresh"]);
-                    return;
-                }
-                if(action === "empty-selection"){
-                    this.showItems(["btnSelect", "btnRefresh","pagerRegion"]);
-                    return;
-                }
-
-                this.showItems(["btnMore", "btnSelect", "btnDelete", "btnMoveTo", "pagerRegion"]);
-            },
-
-            //-----------------------------------------------------
-
-            actionContext: function () {
-
-                var param = app.context.get("router.state.params");
-
-                if (!_.isEmpty(param.id)) {
-                    return "view";
-                }
-                if(mail.dataController.getMailCollection().size === 0){
-                    return "empty-list";
-                }
                 if (_.isEmpty(mail.dataController.getMailCollection().getSelected())) {
-                    return "empty-selection";
+                    action = "non-selected";
                 }
-                return "list";
+                return action;
             },
 
             //------------------------------------------------------
@@ -164,9 +158,9 @@ define(function (require) {
 
                 show = _.isBoolean(show) ? show : true;
 
-                _.each(items, _.bind(function(item){
-                     this.ui[item].toggle(show);
-                },this));
+                _.each(items, _.bind(function (item) {
+                    this.ui[item].toggle(show);
+                }, this));
             }
         });
     });

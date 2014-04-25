@@ -15,7 +15,11 @@
     .menu {
       float: right;
       padding-right:25px;
-      width: 200px
+
+      .button{
+        padding-right: 0px;
+        padding-left: 0px;
+      }
     }
 
     .menuitem{

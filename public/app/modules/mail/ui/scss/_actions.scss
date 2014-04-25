@@ -32,7 +32,7 @@
   .pager {
 
     width: 300px;
-    @include abs-pos(22px, 82px, 'NaN', 'NaN');
+    @include abs-pos(22px, 90px, 'NaN', 'NaN');
 
     .pagerButtons {
       float: right;

@@ -10,13 +10,12 @@
     display: inline-block;
     float: left;
     margin-right:15px;
-    padding-top: 5px;
-    padding-bottom:5px;
+    padding:5px 8px 5px 8px;
+    min-width:50px;
     background: $button-background-color;
     border: solid 1px $button-border-color;
-    min-width:$button-normal-width;
     text-align: center;
-    @include border-radius(2px) ;
+    @include border-radius(2px);
   }
 
   .button .caption{
@@ -65,6 +64,8 @@
 
   .button.icon{
     min-width:$button-icon-width;
+    padding-right:0px;
+    padding-left:0px;
   }
 
   .button.prime {
@@ -72,7 +73,7 @@
   }
 
   .button.primeIcon {
-    min-width:$button-primeIcon-width;
+    min-width:50px;
   }
 
   .button.link{

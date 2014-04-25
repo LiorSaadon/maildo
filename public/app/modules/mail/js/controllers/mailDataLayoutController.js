@@ -21,6 +21,7 @@ define(function (require) {
                 this.mails = mail.dataController.getMailCollection();
 
                 this.listenTo(mail.vent, "mail:preview", this.showMail);
+                this.listenTo(this.mails, "update:success", this.onCollectionUpdate, this);
                 this.listenTo(this.mails, "change:selection", this.onSelectionChange, this);
             },
 
@@ -101,6 +102,15 @@ define(function (require) {
 
                 var emptyMailView = new EmptyMailView({selected:this.mails.getSelected().length});
                 this.dataLayout.previewRegion.show(emptyMailView);
+            },
+
+            //-----------------------------------------------------
+
+            onCollectionUpdate:function(){
+
+                if(this.mails.size() === 0){
+                    this.showEmptyFolderMessage();
+                }
             }
         });
     });

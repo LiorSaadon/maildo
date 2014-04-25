@@ -46,11 +46,10 @@ body {
   display: inline-block;
   float: left;
   margin-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px 8px 5px 8px;
+  min-width: 50px;
   background: #343434;
   border: solid 1px #d9d9d9;
-  min-width: 72px;
   text-align: center;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -113,12 +112,14 @@ body {
 }
 .mb .button.icon {
   min-width: 30px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 .mb .button.prime {
   min-width: 115px;
 }
 .mb .button.primeIcon {
-  min-width: 60px;
+  min-width: 50px;
 }
 .mb .button.link {
   border: 0;
@@ -416,7 +417,7 @@ body {
   width: 300px;
   position: absolute;
   top: 22px;
-  right: 82px;
+  right: 90px;
 }
 .mb .pager .pagerButtons {
   float: right;
@@ -979,7 +980,10 @@ body {
 .mb .techbar .menu {
   float: right;
   padding-right: 25px;
-  width: 200px;
+}
+.mb .techbar .menu .button {
+  padding-right: 0px;
+  padding-left: 0px;
 }
 .mb .techbar .menuitem {
   color: #bbbbbb;
