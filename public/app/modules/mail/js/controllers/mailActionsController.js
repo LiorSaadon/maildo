@@ -30,7 +30,7 @@ define(function (require) {
                         this.moveTo(options);
                         break;
                     case "delete":
-                        this.moveTo({target: "trash"});
+                        this.deleteItems(options);
                         break;
                     case "markAs":
                         this.markAs(options);
@@ -72,7 +72,7 @@ define(function (require) {
                         model.markAs(options.label);
                     }
                 });
-                this.updateCollection(items, options);
+                this.updateItems(items, options);
             },
 
             //----------------------------------------------------
@@ -88,12 +88,12 @@ define(function (require) {
                         model.moveTo(options.target, options);
                     }
                 });
-                this.updateCollection(items, _.extend({}, options, {"refresh": true, "clearSelected": true}));
+                this.updateItems(items, _.extend({}, options, {"refresh": true, "clearSelected": true}));
             },
 
             //----------------------------------------------------
 
-            updateCollection: function (items, options) {
+            updateItems: function (items, options) {
 
                 this.collection.update({
 
@@ -101,15 +101,26 @@ define(function (require) {
                     fields: ['id', 'labels', 'groups'],
 
                     success: _.bind(function () {
-                        if (_.isFunction(options.callback)) {
-                            options.callback();
-                        }
                         if (options.clearSelected) {
                             this.collection.clearSelected();
                         }
                         if (options.refresh) {
                             this.collection.refresh();
                         }
+                    }, this)
+                });
+            },
+
+            //----------------------------------------------------
+
+            deleteItems: function (options) {
+
+                this.collection.destroy({
+
+                    selectedItems: this.collection.getSelected(),
+
+                    success: _.bind(function () {
+                        this.collection.refresh();
                     }, this)
                 });
             }

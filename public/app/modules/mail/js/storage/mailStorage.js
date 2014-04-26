@@ -112,21 +112,17 @@ define(function (require) {
         // destroy
         //-------------------------------------------------
 
-        var destroy = function (model) {
-
-            var id = _.isObject(model) ? model.id : model;
+        var destroy = function (modelId) {
 
             var records = getRecords();
-            var record = _.find(records, function (record) {
-                return record.id === id;
+
+            var filtered = _.reject(records, function(record){
+                return record.id === modelId;
             });
 
-            if (record) {
-                record.labels = {'trash': true};
-                _localStorage.setItem('mails', JSON.stringify(records));
+            if (!_.isUndefined(filtered)) {
+                _localStorage.setItem('mails', JSON.stringify(filtered));
             }
-
-            return model;
         };
 
         //-------------------------------------------------
@@ -139,7 +135,7 @@ define(function (require) {
                 destroy(item);
             });
 
-            return model;
+            return {res:[]};
         };
 
         //-------------------------------------------------

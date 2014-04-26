@@ -8,7 +8,7 @@ define(function (require) {
         metadata:{},
 
         //------------------------------------------------
-        // override fetch for error handling.
+        // override fetch for triggering.
         //------------------------------------------------
 
         fetch:function (options) {
@@ -62,6 +62,42 @@ define(function (require) {
             }
         },
 
+        //--------------------------------------------------
+        // destroy
+        //--------------------------------------------------
+
+        destroy:function(_options){
+
+            var that = this,
+                options = _options ? _.clone(_options) : {},
+                success = options.success;
+
+            if(_.isArray(options.selectedItems)){
+                options.data = options.selectedItems.splice(0);
+            }else{
+                options.data = this.getModelIds();
+            }
+
+            _.each(options.data, function(item){ // remove new or not existed items
+                var model = that.get(item);
+                if(!model || model.isNew()){
+                    options.data.slice($.inArray(item, options.data),1);
+                }
+            });
+
+            if(_.isEmpty(options.data)){ //no items to delete
+                options.success();
+                return false;
+            }
+            options.success = function(resp) {
+                if (success){
+                    success(that, resp, options);
+                }
+                that.trigger('delete:success', that, resp, options);
+            };
+
+            return Backbone.sync.apply(this,['delete', this, options]);
+        },
 
         //--------------------------------------------------
         // update

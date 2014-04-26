@@ -20,8 +20,9 @@ define(function (require) {
 
                 this.mails = mail.dataController.getMailCollection();
 
-                this.listenTo(mail.vent, "mail:preview", this.showMail);
+                this.listenTo(mail.vent,  "mail:preview", this.showMail);
                 this.listenTo(this.mails, "update:success", this.onCollectionUpdate, this);
+                this.listenTo(this.mails, "delete:success", this.onCollectionDelete, this);
                 this.listenTo(this.mails, "change:selection", this.onSelectionChange, this);
             },
 
@@ -88,8 +89,7 @@ define(function (require) {
 
                 mailModel.fetch({
                     success: _.bind(function () {
-                        var previewView = new PreviewView({model: mailModel});
-                        this.dataLayout.previewRegion.show(previewView);
+                        this.dataLayout.previewRegion.show(new PreviewView({model: mailModel}));
                     }, this)
                 });
             },
@@ -107,6 +107,15 @@ define(function (require) {
             //-----------------------------------------------------
 
             onCollectionUpdate:function(){
+
+                if(this.mails.size() === 0){
+                    this.showEmptyFolderMessage();
+                }
+            },
+
+            //-----------------------------------------------------
+
+            onCollectionDelete:function(){
 
                 if(this.mails.size() === 0){
                     this.showEmptyFolderMessage();

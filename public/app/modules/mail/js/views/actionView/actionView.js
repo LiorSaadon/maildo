@@ -36,7 +36,8 @@ define(function (require) {
                 lblSettings: ".lblSettings",
                 btnSettings: ".btnSettings",
                 btnDiscardDrafts: ".btnDiscardDrafts",
-                btnDeleteForever: ".btnDeleteForever"
+                btnDeleteForever: ".btnDeleteForever",
+                btnNotSpam: ".btnNotSpam"
             },
 
             events: {
@@ -57,6 +58,9 @@ define(function (require) {
                 },
                 "click .btnDelete": function () {
                     mail.vent.trigger("actions", {actionType: 'moveTo', target: 'trash'});
+                },
+                "click .btnNotSpam": function () {
+                    mail.vent.trigger("actions", {actionType: 'moveTo', target: 'inbox'});
                 },
                 "click .btnDeleteForever": function () {
                     mail.vent.trigger("actions", {actionType: 'delete'});
@@ -111,9 +115,9 @@ define(function (require) {
 
             showRelevantItems: function () {
 
-                var action = this.getAction();
+                var action = app.context.get("router.state.action");
 
-                this.showItems(["composeRegion", "lblSettings", "btnRefresh", "btnSelect", "btnMore", "btnSelect", "btnDelete", "btnMoveTo", "btnDeleteForever", "btnDiscardDrafts"], false);
+                this.showItems(["composeRegion", "lblSettings", "btnRefresh", "btnSelect", "btnMore", "btnSelect", "btnDelete", "btnMoveTo", "btnDeleteForever", "btnDiscardDrafts", "btnNotSpam"], false);
 
                 switch (action) {
                     case "compose":
@@ -122,34 +126,34 @@ define(function (require) {
                     case "settings":
                         this.showItems(["lblSettings"]);
                         break;
-                    case "non-selected":
-                        this.showItems(["btnSelect", "btnRefresh"]);
-                        break;
-                    case "draft":
-                        this.showItems(["btnSelect", "btnDiscardDrafts", "btnMore"]);
-                        break;
-                    case "spam":
-                        this.showItems(["btnSelect", "btnDeleteForever", "btnMore"]);
-                        break;
-                    case "trash":
-                        this.showItems(["btnSelect", "btnDeleteForever", "btnMore"]);
-                        break;
                     default:
-                        this.showItems(["btnSelect", "btnDelete", "btnMoveTo", "btnMore"]);
+                        this.showListButtons(action);
                         break;
                 }
             },
 
-            //--------------------------------------------------
+            //---------------------------------------------------------
 
-            getAction: function () {
-
-                var action = app.context.get("router.state.action");
+            showListButtons: function (action) {
 
                 if (_.isEmpty(mail.dataController.getMailCollection().getSelected())) {
-                    action = "non-selected";
+                    this.showItems(["btnSelect", "btnRefresh"]);
+                } else {
+                    switch (action) {
+                        case "draft":
+                            this.showItems(["btnSelect", "btnDiscardDrafts", "btnNotSpam", "btnMore"]);
+                            break;
+                        case "spam":
+                            this.showItems(["btnSelect", "btnDeleteForever", "btnMore"]);
+                            break;
+                        case "trash":
+                            this.showItems(["btnSelect", "btnDeleteForever", "btnMore"]);
+                            break;
+                        default:
+                            this.showItems(["btnSelect", "btnDelete", "btnMoveTo", "btnMore"]);
+                            break;
+                    }
                 }
-                return action;
             },
 
             //------------------------------------------------------

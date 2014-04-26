@@ -16,7 +16,7 @@ define(function (require) {
             //  actions
             //-----------------------------------------------------------------
 
-            compose:function(){
+            compose:function(param){
                 app.context.set("router.state",{'action':'compose'});
             },
 
@@ -77,7 +77,6 @@ define(function (require) {
                 }
                 return params;
             },
-
 
             //-----------------------------------------------------------------
             // backupState
