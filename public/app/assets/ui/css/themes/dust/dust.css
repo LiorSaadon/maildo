@@ -529,7 +529,7 @@ body {
   top: 155px;
   left: 20px;
   right: 20px;
-  bottom: 15px;
+  bottom: 60px;
   background-color: white;
   border: 1px solid gainsboro;
   padding: 10px;
@@ -544,6 +544,20 @@ body {
   -webkit-box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 1px;
   -moz-box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 1px;
   box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 1px;
+}
+.composeView .btnSend1 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+.composeView .btnSend1 .button .settingsIcon {
+  display: inline-block;
+  height: 17px;
+  width: 17px;
+  background: url("app/assets/ui/img/actions.png") 0 0 no-repeat;
+}
+.composeView .btnSend1 .button:hover .settingsIcon {
+  background: url("app/assets/ui/img/actionsHover.png") 0 0 no-repeat;
 }
 
 .mb .logo {
@@ -627,7 +641,7 @@ body {
 }
 
 .mail-items-region {
-  height: 340px;
+  height: 270px;
   border-bottom: 1px solid #7685a0;
   position: absolute;
   top: 0;
@@ -638,7 +652,7 @@ body {
 .mail-data-splitter {
   height: 4px;
   position: absolute;
-  top: 340px;
+  top: 270px;
   right: 0;
   left: 0;
 }
@@ -646,7 +660,7 @@ body {
 .mail-preview-region {
   background-color: #ffffff;
   position: absolute;
-  top: 344px;
+  top: 274px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -837,13 +851,12 @@ body {
   width: 100%;
   text-align: center;
   background: url("app/assets/ui/img/envelop.png") no-repeat center;
-  background-color: #F7FAFF;
+  background-color: #ffffff;
 }
 .mb .emptyMail .counter {
   display: table-cell;
   vertical-align: middle;
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 50px;
 }
 .mb .emptyMail .message {
   display: table-cell;
@@ -896,7 +909,6 @@ body {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: #EEF0F3;
 }
 .mb .previewMail .body .special .inner-container {
   width: 800px;
@@ -904,6 +916,7 @@ body {
   font-size: 12px;
   font-weight: normal;
   background-color: #ffffff;
+  border: 1px solid silver;
   padding: 40px 20px 10px 30px;
 }
 .mb .previewMail .body .special .inner-container .title {

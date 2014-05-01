@@ -1,17 +1,17 @@
 .mail-items-region{
-  height: 340px;
+  height: 270px;
   border-bottom: 1px solid $layout-splitter-color;
   @include abs-pos(0, 0, 'NaN', 0) ;
 }
 
 .mail-data-splitter{
   height: 4px;
-  @include abs-pos(340px, 0, 'NaN', 0);
+  @include abs-pos(270px, 0, 'NaN', 0);
 }
 
 .mail-preview-region{
   background-color: #ffffff;
-  @include abs-pos(344px, 0, 0, 0);
+  @include abs-pos(274px, 0, 0, 0);
   padding-bottom: 20px;
   overflow:auto;
 }

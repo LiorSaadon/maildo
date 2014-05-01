@@ -117,7 +117,7 @@ define(function (require) {
 
                 var action = app.context.get("router.state.action");
 
-                this.showItems(["composeRegion", "lblSettings", "btnRefresh", "btnSelect", "btnMore", "btnSelect", "btnDelete", "btnMoveTo", "btnDeleteForever", "btnDiscardDrafts", "btnNotSpam"], false);
+                this.showItems(["composeRegion", "lblSettings", "btnRefresh", "btnSelect", "btnMore", "btnSelect", "btnDelete", "btnMoveTo", "btnDeleteForever", "btnDiscardDrafts", "btnNotSpam", "pagerRegion"], false);
 
                 switch (action) {
                     case "compose":
