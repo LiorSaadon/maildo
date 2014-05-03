@@ -1,9 +1,6 @@
 .mb {
   @include abs-pos(0,0,0,0);
   background-color: $layout-background-color;
-  min-width:950px;
-  min-height:900px;
-
 
    .techbar-region {
       height: 30px;

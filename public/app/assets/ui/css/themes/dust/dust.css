@@ -34,6 +34,150 @@ body {
 .mb .show {
   display: block;
 }
+.mb .browser-scroll {
+  scrollbar-track-color: white;
+  scrollbar-base-color: #c1c2c3;
+  scrollbar-arrow-color: #adadad;
+  scrollbar-shadow-color: white;
+  scrollbar-dark-shadow-color: white;
+  scrollbar-3dlight-color: white;
+  scrollbar-highlight-color: white;
+}
+.mb .browser-scroll:hover::-webkit-scrollbar-track {
+  background-color: whitesmoke;
+}
+.mb .browser-scroll:hover::-webkit-scrollbar-thumb {
+  background-color: #c1c2c3;
+}
+.mb .browser-scroll::-webkit-scrollbar {
+  width: 15px;
+}
+.mb .browser-scroll::-webkit-scrollbar-track, .mb .browser-scroll::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-color: white;
+  border-style: solid;
+  border-width: 0 7px 0 0;
+}
+.mb .browser-scroll.light {
+  scrollbar-track-color: #f4f4f3;
+  scrollbar-base-color: #adadad;
+  scrollbar-arrow-color: #98999b;
+  scrollbar-shadow-color: #f4f4f3;
+  scrollbar-dark-shadow-color: #f4f4f3;
+  scrollbar-3dlight-color: #f4f4f3;
+  scrollbar-highlight-color: #f4f4f3;
+}
+.mb .browser-scroll.light:hover::-webkit-scrollbar-track {
+  background-color: #e5e5e5;
+}
+.mb .browser-scroll.light:hover::-webkit-scrollbar-thumb {
+  background-color: #adadad;
+}
+.mb .browser-scroll.light::-webkit-scrollbar {
+  width: 15px;
+}
+.mb .browser-scroll.light::-webkit-scrollbar-track, .mb .browser-scroll.light::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-color: #f4f4f3;
+  border-style: solid;
+  border-width: 0 7px 0 0;
+}
+.mb .browser-scroll.dark {
+  scrollbar-track-color: #515254;
+  scrollbar-base-color: #98999b;
+  scrollbar-arrow-color: #adadad;
+  scrollbar-shadow-color: #515254;
+  scrollbar-dark-shadow-color: #515254;
+  scrollbar-3dlight-color: #515254;
+  scrollbar-highlight-color: #515254;
+}
+.mb .browser-scroll.dark:hover::-webkit-scrollbar-track {
+  background-color: #767678;
+}
+.mb .browser-scroll.dark:hover::-webkit-scrollbar-thumb {
+  background-color: #98999b;
+}
+.mb .browser-scroll.dark::-webkit-scrollbar {
+  width: 15px;
+}
+.mb .browser-scroll.dark::-webkit-scrollbar-track, .mb .browser-scroll.dark::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-color: #515254;
+  border-style: solid;
+  border-width: 0 7px 0 0;
+}
+.mb .browser-scroll.scroll-fixed {
+  scrollbar-track-color: white;
+  scrollbar-base-color: #c1c2c3;
+  scrollbar-arrow-color: #adadad;
+  scrollbar-shadow-color: white;
+  scrollbar-dark-shadow-color: white;
+  scrollbar-3dlight-color: white;
+  scrollbar-highlight-color: white;
+}
+.mb .browser-scroll.scroll-fixed::-webkit-scrollbar-track {
+  background-color: whitesmoke;
+}
+.mb .browser-scroll.scroll-fixed::-webkit-scrollbar-thumb {
+  background-color: #c1c2c3;
+}
+.mb .browser-scroll.scroll-fixed::-webkit-scrollbar {
+  width: 15px;
+}
+.mb .browser-scroll.scroll-fixed::-webkit-scrollbar-track, .mb .browser-scroll.scroll-fixed::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-color: white;
+  border-style: solid;
+  border-width: 0 7px 0 0;
+}
+.mb .browser-scroll.scroll-fixed.light {
+  scrollbar-track-color: #f4f4f3;
+  scrollbar-base-color: #c1c2c3;
+  scrollbar-arrow-color: #adadad;
+  scrollbar-shadow-color: #f4f4f3;
+  scrollbar-dark-shadow-color: #f4f4f3;
+  scrollbar-3dlight-color: #f4f4f3;
+  scrollbar-highlight-color: #f4f4f3;
+}
+.mb .browser-scroll.scroll-fixed.light::-webkit-scrollbar-track {
+  background-color: #e5e5e5;
+}
+.mb .browser-scroll.scroll-fixed.light::-webkit-scrollbar-thumb {
+  background-color: #c1c2c3;
+}
+.mb .browser-scroll.scroll-fixed.light::-webkit-scrollbar {
+  width: 15px;
+}
+.mb .browser-scroll.scroll-fixed.light::-webkit-scrollbar-track, .mb .browser-scroll.scroll-fixed.light::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-color: #f4f4f3;
+  border-style: solid;
+  border-width: 0 7px 0 0;
+}
+.mb .browser-scroll.scroll-fixed.dark {
+  scrollbar-track-color: #515254;
+  scrollbar-base-color: #98999b;
+  scrollbar-arrow-color: #adadad;
+  scrollbar-shadow-color: #515254;
+  scrollbar-dark-shadow-color: #515254;
+  scrollbar-3dlight-color: #515254;
+  scrollbar-highlight-color: #515254;
+}
+.mb .browser-scroll.scroll-fixed.dark::-webkit-scrollbar-track {
+  background-color: #767678;
+}
+.mb .browser-scroll.scroll-fixed.dark::-webkit-scrollbar-thumb {
+  background-color: #98999b;
+}
+.mb .browser-scroll.scroll-fixed.dark::-webkit-scrollbar {
+  width: 15px;
+}
+.mb .browser-scroll.scroll-fixed.dark::-webkit-scrollbar-track, .mb .browser-scroll.scroll-fixed.dark::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-color: #515254;
+  border-style: solid;
+  border-width: 0 7px 0 0;
+}
 
 .mb .button {
   text-decoration: none;
@@ -286,11 +430,10 @@ body {
 
 .mb .tags-container {
   position: relative;
-  min-height: 32px;
   width: 100%;
   background-color: white;
   border: 1px solid gainsboro;
-  padding: 3px 4px 2px 4px;
+  padding: 1px 2px 0px 2px;
   -webkit-border-radius: 1px;
   -moz-border-radius: 1px;
   -ms-border-radius: 1px;
@@ -491,42 +634,50 @@ body {
   padding: 20px;
 }
 .composeView .compose-header .tagsPlaceholder {
-  height: 32px;
+  height: 30px;
   display: table;
   width: 100%;
 }
 .composeView .compose-header .field {
-  padding-bottom: 10px;
+  height: 30px;
+  margin-bottom: 3px;
+  clear: both;
 }
 .composeView .compose-header .field-options {
   padding-left: 70px;
   padding-bottom: 10px;
+  min-width: 150px;
 }
 .composeView .compose-header .label {
   float: left;
-  min-width: 70px;
+  width: 70px;
   color: gray;
   font-weight: bold;
 }
 .composeView .compose-header .link {
   color: #15c;
   cursor: pointer;
-  padding-right: 15px;
+  padding-right: 5px;
 }
 .composeView .compose-header .link:hover {
   text-decoration: underline;
 }
 .composeView .compose-header .inputbox {
+  float: left;
   padding: 0 5px 0 0;
   overflow: hidden;
+  width: 85%;
 }
 .composeView .compose-header .inputbox input {
+  height: 30px;
   width: 100%;
-  height: 32px;
+}
+.composeView .compose-header .autoComplete .menu .default-list {
+  right: 105px;
 }
 .composeView .compose-editor {
   position: absolute;
-  top: 155px;
+  top: 90px;
   left: 20px;
   right: 20px;
   bottom: 60px;
@@ -851,12 +1002,12 @@ body {
   width: 100%;
   text-align: center;
   background: url("app/assets/ui/img/envelop.png") no-repeat center;
-  background-color: #ffffff;
+  background-color: #E6E6E9;
 }
 .mb .emptyMail .counter {
   display: table-cell;
   vertical-align: middle;
-  font-size: 50px;
+  font-size: 40px;
 }
 .mb .emptyMail .message {
   display: table-cell;
@@ -956,8 +1107,6 @@ body {
   bottom: 0;
   left: 0;
   background-color: #55688a;
-  min-width: 950px;
-  min-height: 900px;
 }
 .mb .techbar-region {
   height: 30px;

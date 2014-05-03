@@ -10,23 +10,26 @@
     padding:20px;
 
     .tagsPlaceholder{
-      height:32px;
+      height:30px;
       display:table;
       width:100%;
     }
 
     .field{
-      padding-bottom: 10px;
+      height:30px;
+      margin-bottom: 3px;
+      clear:both;
     }
 
     .field-options{
       padding-left: 70px;
       padding-bottom: 10px;
+      min-width:150px;
     }
 
     .label {
       float: left;
-      min-width:70px;
+      width:70px;
       color:gray;
       font-weight: bold;
     }
@@ -34,21 +37,31 @@
     .link{
       color:#15c;
       cursor:pointer;
-      padding-right: 15px;
+      padding-right: 5px;
     }
 
     .link:hover{
       text-decoration:underline;
     }
 
-     .inputbox {
+    .inputbox {
+      float:left;
       padding: 0 5px 0 0;
       overflow: hidden;
+      width:85%;
     }
 
     .inputbox input {
-      width: 100%;
-      height:32px;
+      height:30px;
+      width:100%;
+    }
+
+    .autoComplete{
+      .menu{
+        .default-list{
+           right:105px;
+        }
+      }
     }
   }
 
@@ -56,7 +69,7 @@
 
   .compose-editor{
     position:absolute;
-    top:155px;;
+    top:90px;;
     left:20px;
     right:20px;
     bottom:60px;
@@ -75,7 +88,6 @@
     border-color: $input-border-color;;
     @include box-shadow(rgba(81,82,84,0.25) 0px 0px 1px);
   }
-
 
   .btnSend1 {
     @include abs-pos('NaN', 'NaN', 20px, 20px);

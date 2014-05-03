@@ -117,7 +117,7 @@ define(function (require) {
 
                 var action = app.context.get("router.state.action");
 
-                this.showItems(["composeRegion", "lblSettings", "btnRefresh", "btnSelect", "btnMore", "btnSelect", "btnDelete", "btnMoveTo", "btnDeleteForever", "btnDiscardDrafts", "btnNotSpam", "pagerRegion"], false);
+                this.hideAll();
 
                 switch (action) {
                     case "compose":
@@ -127,18 +127,19 @@ define(function (require) {
                         this.showItems(["lblSettings"]);
                         break;
                     default:
-                        this.showListButtons(action);
+                        this.showListOptions(action);
                         break;
                 }
             },
 
             //---------------------------------------------------------
 
-            showListButtons: function (action) {
+            showListOptions: function (action) {
 
-                if (_.isEmpty(mail.dataController.getMailCollection().getSelected())) {
-                    this.showItems(["btnSelect", "btnRefresh"]);
-                } else {
+                this.showItems(["btnSelect", "pagerRegion"]);
+
+                if (!_.isEmpty(mail.dataController.getMailCollection().getSelected())) {
+
                     switch (action) {
                         case "draft":
                             this.showItems(["btnSelect", "btnDiscardDrafts", "btnNotSpam", "btnMore"]);
@@ -154,6 +155,12 @@ define(function (require) {
                             break;
                     }
                 }
+            },
+
+            //-------------------------------------------------------
+
+            hideAll:function(){
+                this.showItems(["composeRegion", "lblSettings", "btnRefresh", "btnSelect", "btnMore", "btnSelect", "btnDelete", "btnMoveTo", "btnDeleteForever", "btnDiscardDrafts", "btnNotSpam", "pagerRegion"], false);
             },
 
             //------------------------------------------------------

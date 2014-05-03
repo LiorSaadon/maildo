@@ -5,6 +5,7 @@ define(function (require) {
     var DataLayout = require("mail-views/dataLayout");
     var MailTableView = require("mail-views/mailTableView");
     var PreviewView = require("mail-views/previewView");
+    var ComposeView = require("mail-views/composeView/composeView");
     var MailModel = require("mail-models/mailModel");
     var MessagesView = require("mail-views/messagesView");
     var EmptyMailView = require("mail-views/emptyMailView");
@@ -89,7 +90,8 @@ define(function (require) {
 
                 mailModel.fetch({
                     success: _.bind(function () {
-                        this.dataLayout.previewRegion.show(new PreviewView({model: mailModel}));
+                        var view = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
+                        this.dataLayout.previewRegion.show(view);
                     }, this)
                 });
             },

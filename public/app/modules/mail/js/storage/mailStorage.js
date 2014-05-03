@@ -32,21 +32,27 @@ define(function (require) {
 
             if (_.isObject(model)) {
 
+                var groups = {};
+                var labels = {unread: true, unstarred: true, unimportant: true};
                 var records = getRecords();
 
-                var groups = {'sent': true};
-                var labels = {unread: true, unstarred: true, unimportant: true};
+                if(!_.isEmpty(model.get("groups.draft"))){
+                    groups.sent = true;
+
+                    if (_.include(model.getOutgoingAddresses(), accountName)){
+                        groups.inbox = true;
+                    }
+                }else{
+                    groups.draft = true;
+                }
 
                 if (!model.id) {
                     model.id = _.uniqueId('_');
                     model.set(model.idAttribute, model.id);
                 }
-                if (_.include(model.getOutgoingAddresses(), accountName)){
-                    groups.inbox = true;
-                }
 
-                model.set("groups", groups);
                 model.set("labels", labels);
+                model.set("groups", groups);
                 model.set("from", accountName);
                 model.set("sentTime", dateResolver.date2Str(new Date(), false));
 

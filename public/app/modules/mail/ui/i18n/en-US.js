@@ -18,7 +18,7 @@ define(function () {
         'mail.to':'To',
         "mail.nosubject":"no subject",
         "mail.me":"me",
-        "mail.emptyMail.selectitem": "Select a message to view",
+        "mail.emptyMail.selectitem": "Select a message",
         "mail.timerange.months.1" : "Jan",
         "mail.timerange.months.2" : "Feb",
         "mail.timerange.months.3" : "Mar",

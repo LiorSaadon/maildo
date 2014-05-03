@@ -58,7 +58,24 @@ $color34:#dcdcdc;
 $color35:#FFFFCC;
 $color36:#F9F9E0;
 
-
+$black: #000;
+$gray100: #323336;
+$gray85: #515254;
+$gray80: #5a5b5e;
+$gray67: #767678;
+$gray56: #8c8d8f;
+$gray50: #98999b;
+$gray40: #adadad;
+$gray30: #c1c2c3;
+$gray25: #ccc;
+$gray20: #d6d6d6;
+$gray17: #dcdcdc;
+$gray13: #e5e5e5;
+$gray9:#ededed;
+$gray5:#f5f5f5;
+$warmgray5:#f4f4f3;
+$gray4: #f7f7f7;
+$white:#fff;
 
 
 
@@ -190,6 +207,45 @@ $button-primeIcon-width:$btnWidth2;
   height: $height;
   width: $width;
   background: url($bg) $spriteLeft $spriteTop  no-repeat;
+}
+
+
+// Browser specific styling of scroll bars - at the momemnt only webkit (Chrome and Safari) and IE support styling of scroll bars (IE is very limited)
+@mixin mb-browser-scroll($background, $track, $thumb, $arrow) {
+  &:hover {
+    &::-webkit-scrollbar-track {background-color: $track;}
+    &::-webkit-scrollbar-thumb {background-color: $thumb;}
+  }
+  @include mb-browser-scroll-base($background, $track, $thumb, $arrow);
+}
+
+// similiar scroll as above - but for cases that the scroll always appears
+@mixin mb-browser-scroll-fixed($background, $track, $thumb, $arrow) {
+  &::-webkit-scrollbar-track {background-color: $track;}
+  &::-webkit-scrollbar-thumb {background-color: $thumb;}
+  @include mb-browser-scroll-base($background, $track, $thumb, $arrow);
+}
+
+@mixin mb-browser-scroll-base($background, $track, $thumb, $arrow) {
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  &::-webkit-scrollbar-track, &::-webkit-scrollbar-thumb {
+    width: 8px;
+    border-color: $background;
+    border-style: solid;
+    border-width: 0 7px 0 0;
+  }
+
+// IE
+  scrollbar-track-color: $background;
+  scrollbar-base-color: $thumb;
+  scrollbar-arrow-color: $arrow;
+  scrollbar-shadow-color: $background;
+  scrollbar-dark-shadow-color: $background;
+  scrollbar-3dlight-color: $background;
+  scrollbar-highlight-color: $background;
 }
 
 
