@@ -72,16 +72,14 @@ define(function (require) {
 
             //--------------------------------------------------
 
-            onItemClicked:function(options){
-
-                options = options || {};
+            onItemClicked:function(_itemView){
 
                 this.children.each(function(itemView){
                     itemView.markAsClicked(false);
                 });
 
-                if(options.itemView){
-                    options.itemView.markAsClicked(true);
+                if(_itemView){
+                   _itemView.markAsClicked(true);
                 }
             }
         });

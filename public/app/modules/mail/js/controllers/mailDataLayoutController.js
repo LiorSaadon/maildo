@@ -21,7 +21,7 @@ define(function (require) {
 
                 this.mails = mail.dataController.getMailCollection();
 
-                this.listenTo(mail.vent,  "mail:preview", this.showMail);
+                this.listenTo(mail.vent,  "mailTable:ItemClicked", this.showMail);
                 this.listenTo(this.mails, "update:success", this.onCollectionUpdate, this);
                 this.listenTo(this.mails, "delete:success", this.onCollectionDelete, this);
                 this.listenTo(this.mails, "change:selection", this.onSelectionChange, this);
@@ -81,19 +81,22 @@ define(function (require) {
             // showMail
             //----------------------------------------------------
 
-            showMail: function (id) {
+            showMail: function (mailview) {
 
-                var mailModel = new MailModel({id: id});
+                if(_.isObject(mailview)){
 
-                mail.vent.trigger("actions", {actionType: 'markAs', label: 'read', items:[id]});
-                mail.vent.trigger("actions", {actionType: "select", selectBy: "none"});
+                    var mailModel = new MailModel({id: mailview.model.id});
 
-                mailModel.fetch({
-                    success: _.bind(function () {
-                        var view = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
-                        this.dataLayout.previewRegion.show(view);
-                    }, this)
-                });
+                    mail.vent.trigger("actions", {actionType: 'markAs', label: 'read', items:[mailModel.id]});
+                    mail.vent.trigger("actions", {actionType: "select", selectBy: "none"});
+
+                    mailModel.fetch({
+                        success: _.bind(function () {
+                            var _view = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
+                            this.dataLayout.previewRegion.show(_view);
+                        }, this)
+                    });
+                }
             },
 
             //-----------------------------------------------------

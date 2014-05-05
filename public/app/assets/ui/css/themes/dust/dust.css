@@ -362,8 +362,8 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   z-index: 1000;
-  left: 90px;
-  right: 25px;
+  left: 70px;
+  right: 6px;
   float: left;
   padding: 4px;
   margin: 0;
@@ -433,7 +433,7 @@ body {
   width: 100%;
   background-color: white;
   border: 1px solid gainsboro;
-  padding: 1px 2px 0px 2px;
+  padding: 2px 2px 0px 3px;
   -webkit-border-radius: 1px;
   -moz-border-radius: 1px;
   -ms-border-radius: 1px;
@@ -533,6 +533,18 @@ body {
   top: 22px;
   left: 200px;
 }
+.mb .lblCompose {
+  position: absolute;
+  top: 22px;
+  left: 200px;
+  font-size: 20px;
+  color: white;
+  font-weight: normal;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 400px;
+}
 .mb .lblSettings {
   position: absolute;
   top: 22px;
@@ -626,61 +638,43 @@ body {
   background-color: #eef0f3;
 }
 
+.composeView {
+  color: #404040;
+}
 .composeView .compose-header {
   position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  padding: 20px;
+  top: 30px;
+  right: 95px;
+  left: 30px;
 }
 .composeView .compose-header .tagsPlaceholder {
-  height: 30px;
+  height: 32px;
   display: table;
   width: 100%;
 }
 .composeView .compose-header .field {
-  height: 30px;
-  margin-bottom: 3px;
-  clear: both;
-}
-.composeView .compose-header .field-options {
-  padding-left: 70px;
-  padding-bottom: 10px;
-  min-width: 150px;
+  padding-bottom: 4px;
 }
 .composeView .compose-header .label {
   float: left;
-  width: 70px;
+  min-width: 70px;
   color: gray;
   font-weight: bold;
 }
-.composeView .compose-header .link {
-  color: #15c;
-  cursor: pointer;
-  padding-right: 5px;
-}
-.composeView .compose-header .link:hover {
-  text-decoration: underline;
-}
 .composeView .compose-header .inputbox {
-  float: left;
   padding: 0 5px 0 0;
   overflow: hidden;
-  width: 85%;
 }
 .composeView .compose-header .inputbox input {
-  height: 30px;
   width: 100%;
-}
-.composeView .compose-header .autoComplete .menu .default-list {
-  right: 105px;
+  height: 32px;
 }
 .composeView .compose-editor {
   position: absolute;
-  top: 90px;
-  left: 20px;
-  right: 20px;
-  bottom: 60px;
+  top: 140px;
+  right: 100px;
+  bottom: 85px;
+  left: 100px;
   background-color: white;
   border: 1px solid gainsboro;
   padding: 10px;
@@ -696,19 +690,26 @@ body {
   -moz-box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 1px;
   box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 1px;
 }
-.composeView .btnSend1 {
+.composeView .sendBtn {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 25px;
+  left: 100px;
+  background-color: #4d90fe;
+  border: 1px solid #3079ed;
+  color: #ffffff;
 }
-.composeView .btnSend1 .button .settingsIcon {
-  display: inline-block;
+.composeView .sendBtn:hover {
+  color: #ffffff;
+  background-color: #4d90fe;
+}
+.composeView .closeX {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 16px;
   height: 17px;
-  width: 17px;
-  background: url("app/assets/ui/img/actions.png") 0 0 no-repeat;
-}
-.composeView .btnSend1 .button:hover .settingsIcon {
-  background: url("app/assets/ui/img/actionsHover.png") 0 0 no-repeat;
+  background: url(app/assets/ui/img/closeBtn.png);
+  cursor: pointer;
 }
 
 .mb .logo {
@@ -815,7 +816,6 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  padding-bottom: 20px;
   overflow: auto;
 }
 

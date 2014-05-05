@@ -102,7 +102,7 @@ define(function (require) {
 
             onRowSelect: function () {
 
-                mail.vent.trigger("mailTable:ItemClicked", {itemView: null});
+                mail.vent.trigger("mailTable:ItemClicked", null);
                 this.model.collection.toggleSelection(this.model, {callerName: 'itemView'});
             },
 
@@ -112,8 +112,7 @@ define(function (require) {
 
             onRowClick: function () {
 
-                mail.vent.trigger("mail:preview", this.model.id);
-                mail.vent.trigger("mailTable:ItemClicked", {itemView: this});
+                mail.vent.trigger("mailTable:ItemClicked", this);
             },
 
             //-------------------------------------------------------------

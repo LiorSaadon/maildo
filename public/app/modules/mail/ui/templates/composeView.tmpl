@@ -3,18 +3,10 @@
         <div class="field">
             <div class="label">{{#_i18n}}mail.composeview.to{{/_i18n}}</div>
             <div class="inputbox"><div class="toInputWrapper"></div></div>
-            <div class="field-options" style="min-width:100px;">
-                <span class="link addCc">cc</span>
-                <span  class="link addBcc">bcc</span>
-            </div>
         </div>
-        <div class="field ccLine" style="display:none">
+        <div class="field ccLine">
             <div class="label">{{#_i18n}}mail.composeview.cc{{/_i18n}}</div>
             <div class="inputbox"><div class="ccInputWrapper"></div></div>
-        </div>
-        <div class="field bccLine" style="display:none">
-            <div class="label">{{#_i18n}}mail.composeview.bcc{{/_i18n}}</div>
-            <div class="inputbox"><div class="bccInputWrapper"></div></div>
         </div>
         <div class=field>
             <div class="label">{{#_i18n}}mail.composeview.subject{{/_i18n}}</div>
@@ -23,5 +15,6 @@
     </div>
     <div class="compose-editor" contenteditable="true">{{body}}
     </div>
-    <div class="btnSend1"><a href="javascript:void(0)" class="button primeIcon _btnSettings"><span class="settingsIcon"></span></a></div>
+    <a href="javascript:void(0)" class="button sendBtn">Send</span></a>
+    <a class="closeX"></a>
 </div>

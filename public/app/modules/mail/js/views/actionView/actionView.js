@@ -18,22 +18,23 @@ define(function (require) {
             initialize: function (options) {
 
                 this.listenTo(app.context, 'change:router.state', this.showRelevantItems, this);
+                this.listenTo(mail.vent, "change:messageSubject", this.onMessageSubjectChange, this);
                 this.listenTo(mail.dataController.getMailCollection(), "change:selection", this.showRelevantItems, this);
             },
 
             ui: {
-                composeRegion: ".compose-section",
                 actionListRegion: ".action-list-section",
                 btnSelect: ".btnSelect",
                 btnMoveTo: ".btnMoveTo",
-                btnSend: ".btnSend",
+//                btnSend: ".btnSend",
                 btnRefresh: ".btnRefresh",
-                btnSaveNow: ".btnSaveNow",
-                btnDiscard: ".btnDiscard",
+//                btnSaveNow: ".btnSaveNow",
+//                btnDiscard: ".btnDiscard",
                 btnDelete: ".btnDelete",
                 btnMore: ".btnMore",
                 pagerRegion: ".pager",
                 lblSettings: ".lblSettings",
+                lblCompose:".lblCompose",
                 btnSettings: ".btnSettings",
                 btnDiscardDrafts: ".btnDiscardDrafts",
                 btnDeleteForever: ".btnDeleteForever",
@@ -65,12 +66,12 @@ define(function (require) {
                 "click .btnDeleteForever": function () {
                     mail.vent.trigger("actions", {actionType: 'delete'});
                 },
-                "click .btnSend": function () {
-                    mail.vent.trigger("newMail", {actionType: 'send'});
-                },
-                "click .btnDiscard": function () {
-                    mail.vent.trigger("newMail", {actionType: 'discard'});
-                },
+//                "click .btnSend": function () {
+//                    mail.vent.trigger("newMail", {actionType: 'send'});
+//                },
+//                "click .btnDiscard": function () {
+//                    mail.vent.trigger("newMail", {actionType: 'discard'});
+//                },
                 "click .btnDiscardDrafts": function () {
                     mail.vent.trigger("actions", {actionType: 'delete'});
                 }
@@ -121,7 +122,7 @@ define(function (require) {
 
                 switch (action) {
                     case "compose":
-                        this.showItems(["composeRegion"]);
+                        this.showItems(["lblCompose"]);
                         break;
                     case "settings":
                         this.showItems(["lblSettings"]);
@@ -160,7 +161,7 @@ define(function (require) {
             //-------------------------------------------------------
 
             hideAll:function(){
-                this.showItems(["composeRegion", "lblSettings", "btnRefresh", "btnSelect", "btnMore", "btnSelect", "btnDelete", "btnMoveTo", "btnDeleteForever", "btnDiscardDrafts", "btnNotSpam", "pagerRegion"], false);
+                this.showItems(["lblCompose", "lblSettings", "btnRefresh", "btnSelect", "btnMore", "btnSelect", "btnDelete", "btnMoveTo", "btnDeleteForever", "btnDiscardDrafts", "btnNotSpam", "pagerRegion"], false);
             },
 
             //------------------------------------------------------
@@ -172,6 +173,17 @@ define(function (require) {
                 _.each(items, _.bind(function (item) {
                     this.ui[item].toggle(show);
                 }, this));
+            },
+
+            //---------------------------------------------------------
+            // onMessageSubjectChange
+            //---------------------------------------------------------
+
+            onMessageSubjectChange:function(subject){
+
+                if(_.isString(subject)){
+                    this.ui.lblCompose.text(subject);
+                }
             }
         });
     });

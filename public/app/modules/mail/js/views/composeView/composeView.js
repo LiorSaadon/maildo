@@ -19,17 +19,12 @@ define(function (require) {
                 inputSubject: ".subject",
                 inputEditor: ".compose-editor",
                 header:".compose-header",
-                addCc: '.addCc',
-                addBcc: '.addBcc',
-                ccLine: '.ccLine',
-                bccLine: '.bccLine'
+                ccLine: '.ccLine'
             },
 
             events: {
                 "change .subject": "onSubjectChange",
-                "blur .compose-editor": "onBodyBlur",
-                "click .addCc": "showCc",
-                "click .addBcc": "showBcc"
+                "blur .compose-editor": "onBodyBlur"
             },
 
             //------------------------------------------------------
@@ -47,7 +42,6 @@ define(function (require) {
 
                 this.renderToView();
                 this.renderCcView();
-                this.renderBccView();
 
                 this.toView.addDefaultAddress("demo", "demo@mailbone.com");
              },
@@ -76,47 +70,23 @@ define(function (require) {
                 this.ccView.render();
             },
 
-            //-------------------------------------------------------
-
-            renderBccView:function(){
-
-                this.bccView = new AddressView({
-                    model:this.model,
-                    modelAttr:'bcc',
-                    el: this.ui.bccInputWrapper
-                });
-                this.bccView.render();
-            },
-
-
             //------------------------------------------------------
             // events handlers
             //------------------------------------------------------
 
             onSubjectChange: function(){
-                this.model.set('subject',this.ui.inputSubject.val());
+
+                var val = this.ui.inputSubject.val()
+                this.model.set('subject', val);
+
+                var msg = !_.isEmpty(val) ? val : "New Message";
+                mail.vent.trigger("change:messageSubject",msg);
             },
 
             //-----------------------------------------------------------------
 
             onBodyBlur: function(){
                 this.model.set('body',this.ui.inputEditor.html());
-            },
-
-            //-----------------------------------------------------------------
-
-            showCc: function(){
-                this.ui.ccLine.show();
-                this.ui.addCc.hide();
-                this.ui.inputEditor.css('top', parseInt(this.ui.header.css('height'),10) + parseInt(this.ui.ccInputWrapper.css("height"),10) + 'px') ;
-            },
-
-            //-----------------------------------------------------------------
-
-            showBcc: function(){
-                this.ui.bccLine.show();
-                this.ui.addBcc.hide();
-                this.ui.inputEditor.css('top', parseInt(this.ui.header.css('height'),10) + parseInt(this.ui.ccInputWrapper.css("height"),10) + 'px') ;
             }
         });
     });
