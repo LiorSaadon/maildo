@@ -25,7 +25,7 @@ define(function (require) {
             },
 
             events: {
-                "click .closeBtn": "onCloseClick",
+                "click .closeBtn": "onCloseBtnClick",
                 "click .sendBtn": "onSendClick",
                 "change .subject": "onSubjectChange",
                 "blur .compose-editor": "onBodyBlur"
@@ -101,18 +101,8 @@ define(function (require) {
 
             //-------------------------------------------------------
 
-            onCloseClick:function(){
-
+            onCloseBtnClick:function(){
                 mail.vent.trigger("mail:discard",this.model);
-            },
-
-            //-------------------------------------------------------
-            // close
-            //-------------------------------------------------------
-
-            onBeforeClose : function () {
-
-                //mail.vent.trigger("mail:save",this.model);
             }
         });
     });
