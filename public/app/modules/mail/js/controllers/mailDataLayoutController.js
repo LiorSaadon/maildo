@@ -85,17 +85,13 @@ define(function (require) {
 
                 if(_.isObject(mailview)){
 
-                    var mailModel = new MailModel({id: mailview.model.id});
+                    var mailModel = mailview.model;
 
-                    mail.vent.trigger("actions", {actionType: 'markAs', label: 'read', items:[mailModel.id]});
                     mail.vent.trigger("actions", {actionType: "select", selectBy: "none"});
+                    mail.vent.trigger("actions", {actionType: 'markAs', label: 'read', items:[mailModel.id]});
 
-                    mailModel.fetch({
-                        success: _.bind(function () {
-                            var _view = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
-                            this.dataLayout.previewRegion.show(_view);
-                        }, this)
-                    });
+                    var _view = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
+                    this.dataLayout.previewRegion.show(_view);
                 }
             },
 

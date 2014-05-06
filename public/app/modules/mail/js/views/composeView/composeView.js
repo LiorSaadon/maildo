@@ -19,10 +19,14 @@ define(function (require) {
                 inputSubject: ".subject",
                 inputEditor: ".compose-editor",
                 header:".compose-header",
-                ccLine: '.ccLine'
+                ccLine: '.ccLine',
+                sendBtn:".sendBtn",
+                closeBtn:".closeBtn"
             },
 
             events: {
+                "click .closeBtn": "onCloseClick",
+                "click .sendBtn": "onSendClick",
                 "change .subject": "onSubjectChange",
                 "blur .compose-editor": "onBodyBlur"
             },
@@ -70,9 +74,9 @@ define(function (require) {
                 this.ccView.render();
             },
 
-            //------------------------------------------------------
+            //-------------------------------------------------------
             // events handlers
-            //------------------------------------------------------
+            //-------------------------------------------------------
 
             onSubjectChange: function(){
 
@@ -80,13 +84,35 @@ define(function (require) {
                 this.model.set('subject', val);
 
                 var msg = !_.isEmpty(val) ? val : "New Message";
-                mail.vent.trigger("change:messageSubject",msg);
+                mail.vent.trigger("change:mailSubject",msg);
             },
 
-            //-----------------------------------------------------------------
+            //-------------------------------------------------------
 
             onBodyBlur: function(){
                 this.model.set('body',this.ui.inputEditor.html());
+            },
+
+            //-------------------------------------------------------
+
+            onSendClick:function(){
+              mail.vent.trigger("mail:send",this.model);
+            },
+
+            //-------------------------------------------------------
+
+            onCloseClick:function(){
+
+                mail.vent.trigger("mail:discard",this.model);
+            },
+
+            //-------------------------------------------------------
+            // close
+            //-------------------------------------------------------
+
+            onBeforeClose : function () {
+
+                //mail.vent.trigger("mail:save",this.model);
             }
         });
     });

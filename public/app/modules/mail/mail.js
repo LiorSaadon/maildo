@@ -8,7 +8,7 @@ define(function (require) {
         var LayoutController = require("mail-controllers/mailLayoutController");
         var DataController = require("mail-controllers/mailDataController");
         var ActionsController = require("mail-controllers/mailActionsController");
-        var NewMailActionsController = require("mail-controllers/newMailActionsController");
+        var ComposeActionsController = require("mail-controllers/composeActionsController");
         var Router = require("mail-routers/mailRouter");
         var RouterController = require("mail-controllers/mailRouterController");
 
@@ -16,7 +16,7 @@ define(function (require) {
             this.vent = new Backbone.Wreqr.EventAggregator();
             this.dataController = new DataController();
             this.actionsController = new ActionsController();
-            this.newMailActionsController = new NewMailActionsController();
+            this.composeActionsController = new ComposeActionsController();
             this.layoutController = new LayoutController(options);
             this.routerController = new RouterController();
             this.router = new Router({ controller: this.routerController });

@@ -164,7 +164,9 @@ define(function (require) {
 
             _addLabel:function(label){
 
-               this.set("labels." + label, true);
+               if( !this.get("labels." + label)){
+                   this.set("labels." + label, true);
+               }
             },
 
             //----------------------------------------------------------------

@@ -34,6 +34,12 @@ define(function (require) {
                 "click .sentTime": "onRowClick"
             },
 
+            modelEvents: {
+                "change:subject" : "_onSubjectChanged",
+                "change:body" : "_onBodyChanged"
+            },
+
+
             initialize: function (options) {
 
                 options = options || {};
@@ -49,17 +55,17 @@ define(function (require) {
             customTemplateHelpers: function () {
 
                 return{
+                    isInbox: this.action === "inbox",
+                    isSent: this.action === "sent",
+                    isDraft:  this.action=== "draft",
+                    isTrash: this.action === "trash",
+                    isSpam: this.action === "spam",
+
                     body: formatter.formatContent(this.model.get("body")),
                     subject: formatter.formatSubject(this.model.get("subject")),
                     sentTime: formatter.formatShortDate(this.model.get("sentTime")),
                     to: formatter.formatAddresses(this.model.getOutgoingAddresses()),
-                    from: formatter.formatAddresses(this.model.getIngoingAddresses()),
-
-                    isInbox: this.action === "inbox",
-                    isSent: this.action === "sent",
-                    isDraft: this.action === "draft",
-                    isTrash: this.action === "trash",
-                    isSpam: this.action === "spam"
+                    from: formatter.formatAddresses(this.model.getIngoingAddresses())
                 };
             },
 
@@ -97,7 +103,23 @@ define(function (require) {
             },
 
             //-------------------------------------------------------------
-            // onRowSelect
+            // dataChanged
+            //-------------------------------------------------------------
+
+            _onSubjectChanged:function(){
+
+                this.ui.subject.text(formatter.formatSubject(this.model.get("subject")));
+            },
+
+            //-------------------------------------------------------------
+
+            _onBodyChanged:function(){
+
+                this.ui.body.text(formatter.formatSubject(this.model.get("body")));
+            },
+
+            //-------------------------------------------------------------
+            // rowEvents
             //-------------------------------------------------------------
 
             onRowSelect: function () {
@@ -107,16 +129,12 @@ define(function (require) {
             },
 
             //-------------------------------------------------------------
-            // onRowClick
-            //-------------------------------------------------------------
 
             onRowClick: function () {
 
                 mail.vent.trigger("mailTable:ItemClicked", this);
             },
 
-            //-------------------------------------------------------------
-            // markAsClicked
             //-------------------------------------------------------------
 
             markAsClicked: function (clicked) {

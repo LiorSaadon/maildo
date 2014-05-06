@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var MailModel = require("mail-models/mailModel");
     var MainLayout = require("mail-views/mailLayout");
     var HeaderView = require("mail-views/headerView");
     var NavView = require("mail-views/navView");
@@ -75,10 +76,8 @@ define(function (require) {
 
             compose: function () {
 
-                var mailModel = mail.newMailActionsController.composeModel();
-
                 var composeView = new ComposeView({
-                    model:mailModel
+                    model:new MailModel()
                 });
                 this.mainLayout.dataRegion.show(composeView);
             },

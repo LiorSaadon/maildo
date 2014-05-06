@@ -36,14 +36,12 @@ define(function (require) {
                 var labels = {unread: true, unstarred: true, unimportant: true};
                 var records = getRecords();
 
-                if(!_.isEmpty(model.get("groups.draft"))){
-                    groups.sent = true;
+                if(_.isEmpty(model.get("groups.draft"))){
+                    model.set("groups.sent", true);
 
                     if (_.include(model.getOutgoingAddresses(), accountName)){
-                        groups.inbox = true;
+                        model.set("groups.inbox", true);
                     }
-                }else{
-                    groups.draft = true;
                 }
 
                 if (!model.id) {
@@ -52,7 +50,6 @@ define(function (require) {
                 }
 
                 model.set("labels", labels);
-                model.set("groups", groups);
                 model.set("from", accountName);
                 model.set("sentTime", dateResolver.date2Str(new Date(), false));
 
@@ -79,6 +76,14 @@ define(function (require) {
                 });
 
                 if (record) {
+                    if(!_.has(record.groups.draft)){
+                        delete record.groups.draft;
+                        record.groups.sent = true;
+
+                        if (_.include(model.getOutgoingAddresses(), "demo@mailbone.com")){
+                            record.groups.inbox = true;
+                        }
+                    }
                     _localStorage.setItem('mails', JSON.stringify(records));
                 }
                 return model;
@@ -115,10 +120,31 @@ define(function (require) {
         };
 
         //-------------------------------------------------
-        // destroy
+        // destroy function
         //-------------------------------------------------
 
-        var destroy = function (modelId) {
+        var destroyAll = function (model, options) {
+
+            _.each(options.data, function (item) {
+                deleteItem(item);
+            });
+
+            return {res:[]};
+        };
+
+        //--------------------------------------------------
+
+        var destroy = function (model, options) {
+
+            if(_.isObject(model)){
+                deleteItem(model.id);
+            }
+            return {res:[]};
+        };
+
+        //--------------------------------------------------
+
+        var deleteItem = function (modelId) {
 
             var records = getRecords();
 
@@ -129,19 +155,6 @@ define(function (require) {
             if (!_.isUndefined(filtered)) {
                 _localStorage.setItem('mails', JSON.stringify(filtered));
             }
-        };
-
-        //-------------------------------------------------
-        // destroyAll
-        //-------------------------------------------------
-
-        var destroyAll = function (model, options) {
-
-            _.each(options.data, function (item) {
-                destroy(item);
-            });
-
-            return {res:[]};
         };
 
         //-------------------------------------------------
