@@ -188,7 +188,7 @@ define(function (require) {
 
                 var groups = this.get('groups');
 
-                if(_.has(groups,"trash") || _.has(groups,"spam") || dest == "trash" || dest == "spam"){
+                if(_.has(groups,"trash") || _.has(groups,"spam") || _.has(groups,"draft") || dest == "trash" || dest == "spam"){
 
                     _.each(groups, _.bind(function (value, key) {
                         delete groups[key];
@@ -196,19 +196,6 @@ define(function (require) {
                 }
 
                 this.set('groups.' + dest, true);
-            },
-
-
-            //----------------------------------------------------------------
-            // saveAsDraft
-            //----------------------------------------------------------------
-
-            saveAsDraft: function (options) {
-
-                options = options || {};
-
-                this.moveTo("draft");
-                this.save(null, $.extend({}, options, {validateType: "draft"}));
             }
         });
     });

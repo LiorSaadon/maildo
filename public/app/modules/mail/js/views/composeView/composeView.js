@@ -103,6 +103,12 @@ define(function (require) {
 
             onCloseBtnClick:function(){
                 mail.vent.trigger("mail:discard",this.model);
+            },
+
+            //--------------------------------------------------------
+
+            onBeforeClose:function () {
+                mail.vent.trigger("composeView:close", this.model);
             }
         });
     });

@@ -76,8 +76,7 @@ define(function (require) {
                 });
 
                 if (record) {
-                    if(!_.has(record.groups.draft)){
-                        delete record.groups.draft;
+                    if(typeof record.groups.draft === "undefined"){
                         record.groups.sent = true;
 
                         if (_.include(model.getOutgoingAddresses(), "demo@mailbone.com")){

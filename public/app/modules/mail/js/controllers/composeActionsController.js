@@ -2,7 +2,6 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var MailModel = require("mail-models/mailModel");
 
     var ComposeActionsController = {};
 
@@ -13,17 +12,17 @@ define(function (require) {
             initialize: function () {
 
                 this.listenTo(mail.vent, 'mail:send', this.send, this);
-                this.listenTo(mail.vent, 'mail:save', this.save, this);
                 this.listenTo(mail.vent, 'mail:discard', this.discard, this);
+                this.listenTo(mail.vent, 'composeView:close', this.saveAsDraft, this);
             },
 
             //-------------------------------------------
 
-            send: function(mailModel) {
+            send: function (mailModel) {
 
-                if(_.isObject(mailModel)){
+                if (_.isObject(mailModel)) {
 
-                    mailModel.save(null,{
+                    mailModel.save(null, {
 
                         invalid: function (model, error) {
                             alert(error);
@@ -37,13 +36,13 @@ define(function (require) {
 
             //-------------------------------------------
 
-            discard:function(mailModel){
+            discard: function (mailModel) {
 
-                if(mailModel.get("groups.draft")){
+                if (mailModel.get("groups.draft")) {
 
                     mailModel.destroy({
 
-                        success: function(){
+                        success: function () {
                             mail.layoutController.showData();
                         }
                     });
@@ -52,12 +51,16 @@ define(function (require) {
 
             //-------------------------------------------
 
-            save: function (mailModel) {
+            saveAsDraft: function (mailModel) {
 
-                if(mailModel.isNew() || mailModel.get("groups.draft")){
+                if (mailModel.isNew() || mailModel.get("groups.draft")) {
 
-                    mailModel.saveAsDraft({
+                    var newModel = $.extend(true, {}, mailModel);
 
+                    newModel.moveTo("draft");
+
+                    newModel.save(null, {
+                        validateType: "draft"
                     });
                 }
             }
