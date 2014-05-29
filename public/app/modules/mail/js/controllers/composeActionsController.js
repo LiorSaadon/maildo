@@ -24,9 +24,8 @@ define(function (require) {
 
                     mailModel.save(null, {
 
-                        invalid: function (model, error) {
-                            alert(error);
-                        },
+                        invalid: function (model, error) {},
+
                         success: function () {
                             mail.router.previous();
                         }
@@ -38,14 +37,16 @@ define(function (require) {
 
             discard: function (mailModel) {
 
-                if (mailModel.get("groups.draft")) {
-
-                    mailModel.destroy({
-
-                        success: function () {
-                            mail.layoutController.showData();
-                        }
-                    });
+                if(mailModel.isNew()){
+                    mail.router.previous();
+                }else{
+                    if (mailModel.get("groups.draft")) {
+                        mailModel.destroy({
+                            success: function () {
+                                mail.layoutController.showData();
+                            }
+                        });
+                    }
                 }
             },
 

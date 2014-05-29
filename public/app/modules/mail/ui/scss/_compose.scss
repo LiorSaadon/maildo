@@ -1,29 +1,29 @@
-.composeView{
+.composeView {
   @include abs-pos(0, 0, 0, 0);
-  background-color: $data-background-color;
+  background-color: #F9FBFF;
 }
 
-.composeView{
+.composeView {
 
   color: #404040;
 
-  .compose-header{
+  .compose-header {
     @include abs-pos(30px, 95px, 'NaN', 30px);
 
-    .tagsPlaceholder{
-      height:32px;
-      display:table;
-      width:100%;
+    .tagsPlaceholder {
+      height: 32px;
+      display: table;
+      width: 100%;
     }
 
-    .field{
+    .field {
       padding-bottom: 4px;
     }
 
     .label {
       float: left;
-      min-width:70px;
-      color:gray;
+      min-width: 70px;
+      color: gray;
       font-weight: bold;
     }
 
@@ -34,42 +34,42 @@
 
     .inputbox input {
       width: 100%;
-      height:32px;
+      height: 32px;
     }
   }
 
   //--------------------------------------------
 
-  .compose-editor{
-    @include abs-pos(140px, 100px, 85px, 100px) ;
+  .compose-editor {
+    @include abs-pos(140px, 100px, 85px, 100px);
     background-color: $input-background-color;
-    border:1px solid $input-border-color;
-    padding:10px;
+    border: 1px solid $input-border-color;
+    padding: 10px;
   }
 
   .compose-editor:hover {
-    border-color:$input-hover-border-color;
+    border-color: $input-hover-border-color;
   }
 
   .compose-editor:active,
-  .compose-editor:focus{
+  .compose-editor:focus {
     outline: none;
     border-color: $input-border-color;;
-    @include box-shadow(rgba(81,82,84,0.25) 0px 0px 1px);
+    @include box-shadow(rgba(81, 82, 84, 0.25) 0px 0px 1px);
   }
 
   //------------------------------------------------
 
-  .sendBtn{
-      @include abs-pos('NaN', 'NaN', 25px, 100px);
-      background-color: #4d90fe;
-      border: 1px solid #3079ed;
-      color:#ffffff;
+  .sendBtn {
+    @include abs-pos('NaN', 'NaN', 25px, 100px);
+    background-color: #4d90fe;
+    border: 1px solid #3079ed;
+    color: #ffffff;
 
-      &:hover {
-        color:#ffffff;
-        background-color:#4d90fe;
-      }
+    &:hover {
+      color: #ffffff;
+      background-color: #4d90fe;
+    }
   }
 
   //------------------------------------------------
@@ -79,7 +79,7 @@
     width: 16px;
     height: 17px;
     background: url(app/assets/ui/img/closeBtn.png);
-    cursor:pointer;
+    cursor: pointer;
   }
 
 }

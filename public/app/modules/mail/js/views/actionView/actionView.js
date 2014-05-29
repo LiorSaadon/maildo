@@ -134,10 +134,10 @@ define(function (require) {
 
                     switch (action) {
                         case "draft":
-                            this.showItems(["btnSelect", "btnDiscardDrafts", "btnNotSpam", "btnMore"]);
+                            this.showItems(["btnSelect", "btnDiscardDrafts", "btnMore"]);
                             break;
                         case "spam":
-                            this.showItems(["btnSelect", "btnDeleteForever", "btnMore"]);
+                            this.showItems(["btnSelect", , "btnNotSpam", "btnDeleteForever", "btnMore"]);
                             break;
                         case "trash":
                             this.showItems(["btnSelect", "btnDeleteForever", "btnMore"]);
