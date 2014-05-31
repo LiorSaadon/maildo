@@ -13,7 +13,7 @@ define(function (require) {
 
     var MainLayoutController = {};
 
-    app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
         MainLayoutController = Marionette.Controller.extend({
 

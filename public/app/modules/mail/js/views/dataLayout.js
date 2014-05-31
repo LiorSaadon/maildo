@@ -2,12 +2,11 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var Marionette = require("marionette");
     var layoutTemplate = require("tpl!mail-templates/dataLayout.tmpl");
 
     var DataLayout = {};
 
-    app.module('mail', function (mail, mb,  Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app,  Backbone, Marionette, $, _) {
 
         DataLayout = Marionette.Layout.extend({
             template:layoutTemplate,

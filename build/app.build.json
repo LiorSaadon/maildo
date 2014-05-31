@@ -20,8 +20,9 @@
         "tpl": "lib/require/require.tpl",
         "css": "lib/require/require.css",
         "i18n": "app/assets/js/resolvers/i18n",
-        "tmpl": "app/assets/js/resolvers/template/tmpl",
-        "templateCache": "app/assets/js/resolvers/template/templateCache",
+        "onDemandLoader":"app/assets/js/lib-extensions/requirejs/require.loadOnDemand",
+        "tmpl": "lib/require/tmpl",
+        "templateCache": "lib/require/templateCache",
         "lib-extensions": "app/assets/js/lib-extensions",
         "assets-data": "app/assets/data",
         "assets-storage": "app/assets/js/storage",
@@ -44,11 +45,6 @@
         "frame-collections":"app/frame/js/collections",
         "frame-models":"app/frame/js/models",
         "frame-storage":"app/frame/js/storage",
-        "contactsApp": "app/modules/contacts",
-        "contactsApp-views": "app/modules/contacts/js/views",
-        "contacts-templates":"app/modules/contacts/ui/templates",
-        "contacts-controllers":"app/modules/contacts/js/controllers",
-        "contacts-routers":"app/modules/contacts/js/routers",
         "mailApp": "app/modules/mail",
         "mail-views": "app/modules/mail/js/views",
         "mail-templates":"app/modules/mail/ui/templates",
@@ -57,7 +53,13 @@
         "mail-controllers":"app/modules/mail/js/controllers",
         "mail-mocks":"app/modules/mail/mocks",
         "mail-collections":"app/modules/mail/js/collections",
-        "mail-storage":"app/modules/mail/js/storage"
+        "mail-storage":"app/modules/mail/js/storage",
+        "mail-utils":"app/modules/mail/js/utils",
+        "notepad": "app/modules/notepad",
+        "notepad-views": "app/modules/notepad/js/views",
+        "notepad-templates":"app/modules/notepad/ui/templates",
+        "notepad-controllers":"app/modules/notepad/js/controllers",
+        "notepad-routers":"app/modules/notepad/js/routers"
     },
     "shim": {
         "underscore": {

@@ -10,7 +10,7 @@ define(function (require) {
 
     var ActionView = {};
 
-    app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
         ActionView = Marionette.ItemView.extend({
             template: template,
             className: 'actionView',

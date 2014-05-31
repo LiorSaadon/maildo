@@ -2,12 +2,11 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var Marionette = require("marionette");
     var template = require("tpl!mail-templates/navView.tmpl");
 
     var NavView = {};
 
-    app.module('mail', function (mail, mb,  Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app,  Backbone, Marionette, $, _) {
 
         NavView = Marionette.CompositeView.extend({
             template:template,

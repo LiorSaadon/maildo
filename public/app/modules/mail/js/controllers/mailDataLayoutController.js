@@ -13,7 +13,7 @@ define(function (require) {
 
     var DataLayoutController = {};
 
-    app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
         DataLayoutController = Marionette.Controller.extend({
 

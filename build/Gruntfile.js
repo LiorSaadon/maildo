@@ -93,6 +93,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-replace');
 
+
+    grunt.registerTask("quick", [
+        'jshint'
+    ]);
+
     grunt.registerTask('default', [
         'compass',
         'jshint',

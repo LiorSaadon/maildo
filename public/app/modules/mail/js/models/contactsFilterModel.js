@@ -6,7 +6,7 @@ define(function (require) {
 
     var ContactsFilterModel = {};
 
-    app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
         ContactsFilterModel = Backbone.Model.extend({
 

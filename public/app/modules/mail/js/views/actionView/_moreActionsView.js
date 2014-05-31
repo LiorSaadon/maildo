@@ -9,7 +9,7 @@ define(function (require) {
 
     var MoreActionsView = {};
 
-    app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
         MoreActionsView = Marionette.ItemView.extend({
 
             template: template,

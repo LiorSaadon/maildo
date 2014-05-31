@@ -1,30 +1,36 @@
 define(function (require) {
     "use strict";
 
+    var app = require("mbApp");
     var DeepModel = require("backbone.deepmodel");
 
-    var contactModel = DeepModel.extend({
+    var ContactModel = {};
 
-        defaults : {
-            title:'',
-            address:''
-        },
+    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
-        parse: function(response, options) {
-           return {
-               title:response.replace(",", " "),
-               address:response.replace(",", ".").toLowerCase() + "@mailbone.com"
-           };
-        },
+        ContactModel = DeepModel.extend({
 
-        getText:function(){
-            return this.get("title");
-        },
+            defaults : {
+                title:'',
+                address:''
+            },
 
-        getValue: function(){
-            return this.get("address");
-        }
+            parse: function(response, options) {
+                return {
+                    title:response.replace(",", " "),
+                    address:response.replace(",", ".").toLowerCase() + "@mailbone.com"
+                };
+            },
+
+            getText:function(){
+                return this.get("title");
+            },
+
+            getValue: function(){
+                return this.get("address");
+            }
+        });
     });
 
-    return contactModel;
+    return ContactModel;
 });

@@ -7,7 +7,7 @@ define(function (require) {
 
     var MailTableView = {};
 
-    app.module('mail', function (mail, mb,  Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app,  Backbone, Marionette, $, _) {
 
         MailTableView = Marionette.CompositeView.extend({
             name:'mailTable',

@@ -10,7 +10,7 @@ define(function (require) {
 
     var ContactsCollection = {};
 
-    app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
         ContactsCollection = Backbone.Collection.extend({
 

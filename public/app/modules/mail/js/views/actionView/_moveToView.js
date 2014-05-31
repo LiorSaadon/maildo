@@ -2,14 +2,13 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var Marionette = require("marionette");
     var template = require("tpl!mail-templates/moveToView.tmpl");
 
     require("assets-plugins/toggle.block");
 
     var MoreView = {};
 
-    app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
         MoreView = Marionette.ItemView.extend({
 
             template: template,

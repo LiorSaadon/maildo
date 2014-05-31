@@ -1,24 +1,31 @@
 define(function (require) {
     "use strict";
 
-    var ContactsStorage = function (_orderBy) {
+    var app = require("mbApp");
 
-        var _localStorage = window.localStorage;
+    var ContactsStorage = {};
 
-        //----------------------------------------------------
-        // findAll
-        //----------------------------------------------------
+    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
-        var findAll = function (model,options) {
+        ContactsStorage = function (_orderBy) {
 
-            var contacts = _localStorage.getItem('contacts');
-            return _.isString(contacts) ? JSON.parse(contacts) : [];
+            var _localStorage = window.localStorage;
+
+            //----------------------------------------------------
+            // findAll
+            //----------------------------------------------------
+
+            var findAll = function (model,options) {
+
+                var contacts = _localStorage.getItem('contacts');
+                return _.isString(contacts) ? JSON.parse(contacts) : [];
+            };
+
+            return{
+                findAll: findAll
+            };
         };
-
-        return{
-            findAll: findAll
-        };
-    };
+    });
 
     return ContactsStorage;
 });

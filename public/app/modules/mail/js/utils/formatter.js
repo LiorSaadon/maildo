@@ -7,7 +7,7 @@ define(function (require) {
 
     var Formatter = {};
 
-    app.module('mail', function (mail, mb,  Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app,  Backbone, Marionette, $, _) {
 
         Formatter = (function () {
 
@@ -68,7 +68,7 @@ define(function (require) {
                 formatContent:formatContent,
                 formatShortDate:formatShortDate,
                 formatAddresses:formatAddresses
-            }
+            };
         })();
     });
 

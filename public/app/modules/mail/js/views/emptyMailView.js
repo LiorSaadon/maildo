@@ -6,7 +6,7 @@ define(function (require) {
 
     var EmptyMailView = {};
 
-    app.module('mail', function (mail, mb,  Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app,  Backbone, Marionette, $, _) {
 
         EmptyMailView = Marionette.CompositeView.extend({
             template:template,

@@ -2,15 +2,13 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var Backbone = require("backbone");
-    var ContactModel = require("mail-models/contactModel");
     var Tags = require("assets-ui-component/tags/tags");
     var template = require("tpl!mail-templates/_addressView.tmpl");
     var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
 
     var AddressView ={};
 
-    app.module('mail', function (mail, mb,  Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app,  Backbone, Marionette, $, _) {
         AddressView = Marionette.ItemView.extend({
 
             className: 'addressView',

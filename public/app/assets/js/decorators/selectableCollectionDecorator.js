@@ -14,7 +14,7 @@ define(function (require) {
 
         decoratedCollection.getSelected = function () {
 
-            return this.selected.slice();;
+            return this.selected.slice();
         };
 
         //--------------------------------------------------

@@ -80,7 +80,7 @@ define(function (require) {
 
             onSubjectChange: function(){
 
-                var val = this.ui.inputSubject.val()
+                var val = this.ui.inputSubject.val();
                 this.model.set('subject', val);
 
                 var msg = !_.isEmpty(val) ? val : "New Message";

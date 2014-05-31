@@ -5,7 +5,7 @@ define(function (require) {
 
     var ActionsController = {};
 
-    app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
         ActionsController = Marionette.Controller.extend({
 

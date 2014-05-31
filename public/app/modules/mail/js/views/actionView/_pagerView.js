@@ -2,12 +2,11 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var Marionette = require("marionette");
     var template = require("tpl!mail-templates/pagerView.tmpl");
 
     var PagerView = {};
 
-    app.module('mail', function (mail, mb, Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
         PagerView = Marionette.ItemView.extend({
 
             template: template,

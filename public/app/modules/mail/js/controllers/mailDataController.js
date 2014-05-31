@@ -9,7 +9,7 @@ define(function (require) {
 
     var DataController = {};
 
-    app.module('mail', function (mail, mbApp, Backbone, Marionette, $, _) {
+    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
         DataController = Marionette.Controller.extend({
 
