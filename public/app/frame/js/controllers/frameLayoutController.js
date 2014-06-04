@@ -6,7 +6,6 @@ define(function (require) {
     var Backbone = require('backbone');
     var Marionette = require('marionette');
     var FrameLayout = require('frame-views/frameLayout');
-    var TechBarView = require('frame-views/techBarView');
     var LayoutHelpers = require("assets-resolvers-ui/dropdownDisplayer");
 
     var LayoutController = Marionette.Controller.extend({
@@ -36,21 +35,18 @@ define(function (require) {
 
         onLayoutRender: function () {
 
-            var techBarView = new TechBarView();
-            this.frameLayout.techbarRegion.show(techBarView);
         },
 
-        //---------------------------------------------------
-        // changeSubLayout
-        //---------------------------------------------------
+        //----------------------------------------------------
+        // getRegions
+        //----------------------------------------------------
 
-        changeSubLayout: function(moduleName){
+        setRegion:function(regionName, view){
 
-            if(this.currSubLayout !== moduleName){
-
-                var newLayout = app.module(moduleName).getLayout();
-                this.frameLayout.mainRegion.add(newLayout);
-                this.currSubLayout = moduleName;
+            if(this.frameLayout[regionName+"Region"]){
+                if(!_.isEmpty(view)){
+                    this.frameLayout[regionName+"Region"].show(view);
+                }
             }
         }
     });

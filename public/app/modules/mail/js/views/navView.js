@@ -15,15 +15,15 @@ define(function (require) {
 
             initialize:function(){
 
-                this.listenTo(app.context, 'change:router.state', this.onContextChange, this);
+                this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
             },
 
             //-----------------------------------------------
 
-            onContextChange:function(){
+            onActionChange:function(){
 
                 this.$el.find('a').removeClass('selected');
-                var action = app.context.get("router.state.action");
+                var action = app.context.get("mail.action.type");
                 this.$el.find('.nav-'+action).addClass('selected');
             }
         });

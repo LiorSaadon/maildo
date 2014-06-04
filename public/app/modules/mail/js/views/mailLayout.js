@@ -11,8 +11,6 @@ define(function (require) {
        MailLayout = Marionette.Layout.extend({
             template:layoutTemplate,
             regions:{
-                headerRegion:".mail-header-region",
-                actionRegion:".mail-action-region",
                 navRegion:".mail-nav-region",
                 dataRegion:".mail-data-region"
             },

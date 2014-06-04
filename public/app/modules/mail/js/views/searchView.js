@@ -2,14 +2,15 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var template = require("tpl!mail-templates/headerView.tmpl");
+    var template = require("tpl!mail-templates/searchView.tmpl");
 
-    var HeaderView = {};
+    var SearchView = {};
 
     app.module('mail', function (mail, app,  Backbone, Marionette, $, _) {
 
-        HeaderView = Marionette.ItemView.extend({
+        SearchView = Marionette.ItemView.extend({
             template:template,
+            className:"searchPanel",
 
             ui: {
                 btnSearch: ".btnSearch",
@@ -22,8 +23,8 @@ define(function (require) {
 
             //-----------------------------------------------
 
-            initialize:function(options){
-                this.listenTo(app.context, 'change:router.state', this.onContextChange, this);
+            initialize:function(){
+                this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
             },
 
             //-----------------------------------------------
@@ -37,9 +38,9 @@ define(function (require) {
 
             //-----------------------------------------------
 
-            onContextChange:function(){
+            onActionChange:function(){
 
-                var action = app.context.get("router.state.action");
+                var action = app.context.get("mail.action.type");
 
                 if(action !== "search"){
                    this.ui.inputSearch.val('');
@@ -56,5 +57,5 @@ define(function (require) {
         });
     });
 
-    return HeaderView;
+    return SearchView;
 });

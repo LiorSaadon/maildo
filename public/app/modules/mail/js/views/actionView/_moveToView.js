@@ -36,14 +36,14 @@ define(function (require) {
 
             initialize: function () {
 
-                this.listenTo(app.context, 'change:router.state', this.showRelevantItems, this);
+                this.listenTo(app.context, 'change:mail.action', this.showRelevantItems, this);
             },
 
             //-----------------------------------------------------------
 
             showRelevantItems: function(){
 
-                this.currAction = app.context.get("router.state.action");
+                this.currAction = app.context.get("mail.action.type");
 
                 this.ui.ddiInbox.toggleBlock(!_.contains(["inbox"],this.currAction));
                 this.ui.ddiSpam.toggleBlock(_.contains(["inbox","trash"],this.currAction));

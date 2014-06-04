@@ -42,8 +42,8 @@ define(function (require) {
             //---------------------------------------------
 
             before: function () {
-                this.options.controller.backupState();
-                app.frame.changeSubLayout("mail");
+                app.context.set("module","mail");
+                this.options.controller.backupAction();
             },
 
             //---------------------------------------------

@@ -1,15 +1,73 @@
 .mb {
-  @include abs-pos(0,0,0,0);
+
+  @include abs-pos(0, 0, 0, 0);
   background-color: $layout-background-color;
 
-   .techbar-region {
-      height: 30px;
-      border-bottom: 1px solid $layout-splitter-color;
-      background-color: red;
-      @include abs-pos(0, 0, 'NaN', 0) ;
+  .techbar-wrapper {
+    height: 30px;
+    border-bottom: 1px solid $layout-splitter-color;
+    background-color: red;
+    @include abs-pos(0, 0, 'NaN', 0);
   }
 
-   .main-region {
-       @include abs-pos(30px, 0, 0, 0) ;
+  .header-wrapper{
+    height: 70px;
+    border-bottom: 1px solid $layout-splitter-color;
+    @include abs-pos(30px, 0, 'NaN', 0) ;
+
+    .logo {
+      width: 145px;
+      height: 40px;
+      background-image: url('app/assets/ui/img/logo.png');
+      @include abs-pos(10px, 'NaN', 'NaN', 22px);
+    }
+
+    .accountName{
+      float: right;
+      margin-right: 26px;
+      margin-top: 20px;
+      width:40px;
+      height:35px;
+      background-image: url('app/assets/ui/img/product_demos.jpg');
+    }
+
+    .search-region{
+      width: 550px;
+      height: 30px;
+      @include abs-pos(19px, 'NaN', 'NaN', 200px);
+    }
+  }
+
+  .actions-wrapper{
+      height: 70px;
+      border-bottom: 1px solid $layout-splitter-color;
+      @include abs-pos(100px, 0, 'NaN', 0);
+
+      .moduleSwitcher{
+        width: 140px;
+        height: 25px;
+        color:white;
+        font-size:20px;
+        @include abs-pos(24px, 'NaN', 'NaN', 27px);
+      }
+
+      .actions-region{
+        @include abs-pos(20px, 90px, 'NaN', 200px);
+      }
+
+      .btnSettings {
+        @include abs-pos(21px, 10px, 'NaN', 'NaN');
+
+        .button .settingsIcon {
+          @include set-icon(17px, 17px, 'app/assets/ui/img/actions.png', 0, 0);
+        }
+        .button:hover .settingsIcon {
+          background: url('app/assets/ui/img/actionsHover.png') 0 0 no-repeat;
+        }
+      }
+  }
+
+  .main-region {
+    @include abs-pos(170px, 0, 0, 0);
   }
 }

@@ -17,7 +17,7 @@ define(function (require) {
 
             initialize: function (options) {
 
-                this.listenTo(app.context, 'change:router.state', this.showRelevantItems, this);
+                this.listenTo(app.context, 'change:mail.action', this.showRelevantItems, this);
                 this.listenTo(mail.vent, "change:mailSubject", this.onMessageSubjectChange, this);
                 this.listenTo(mail.dataController.getMailCollection(), "change:selection", this.showRelevantItems, this);
             },
@@ -75,7 +75,7 @@ define(function (require) {
             customTemplateHelpers: function () {
 
                 return{
-                    action: _s.capitalize(app.context.get("router.state.action"))
+                    action: _s.capitalize(app.context.get("mail.action.type"))
                 };
             },
 
@@ -107,7 +107,7 @@ define(function (require) {
 
             showRelevantItems: function () {
 
-                var action = app.context.get("router.state.action");
+                var action = app.context.get("mail.action.type");
 
                 this.hideAll();
 

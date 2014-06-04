@@ -6,10 +6,8 @@ define(function (require) {
     var MailTableView = require("mail-views/mailTableView");
     var PreviewView = require("mail-views/previewView");
     var ComposeView = require("mail-views/composeView/composeView");
-    var MailModel = require("mail-models/mailModel");
     var MessagesView = require("mail-views/messagesView");
     var EmptyMailView = require("mail-views/emptyMailView");
-
 
     var DataLayoutController = {};
 
@@ -28,32 +26,33 @@ define(function (require) {
             },
 
             //----------------------------------------------------
-            // setLayout
+            // newLayout
             //----------------------------------------------------
 
-            setLayout: function (region) {
+            newLayout: function () {
 
                 this.dataLayout = new DataLayout();
                 this.listenTo(this.dataLayout, "render", this.onLayoutRender);
-                region.show(this.dataLayout);
+
+                return this.dataLayout;
             },
 
             //----------------------------------------------------
 
             onLayoutRender: function () {
 
-                var state = app.context.get("router.state");
+                var action = app.context.get("mail.action");
 
                 this.mails.fetchBy({
                     filters: {
-                        page: state.params.page,
-                        query: state.params.query || 'groups:' + state.action
+                        page: action.params.page,
+                        query: action.params.query || 'groups:' + action.type
                     },
                     success: _.bind(function () {
                         if (this.mails.size() > 0) {
-                            this.showCollection(state.action);
+                            this.showCollection(action.type);
                         } else {
-                            this.showEmptyFolderMessage(state.action);
+                            this.showEmptyFolderMessage(action.type);
                         }
                     }, this)
                 });
@@ -61,21 +60,22 @@ define(function (require) {
 
             //----------------------------------------------------
 
-            showCollection: function (action) {
+            showCollection: function (actionType) {
 
                 this.mails.clearSelected();
 
-                var tableView = new MailTableView({collection: this.mails, action: action});
+                var tableView = new MailTableView({collection: this.mails, action: actionType});
                 this.dataLayout.itemsRegion.show(tableView);
             },
 
             //----------------------------------------------------
 
-            showEmptyFolderMessage: function (action) {
+            showEmptyFolderMessage: function (actionType) {
 
-                var messagesView = new MessagesView({msgType: "emptyFolder", action: action});
+                var messagesView = new MessagesView({msgType: "emptyFolder", action: actionType});
                 this.dataLayout.messageBoard.show(messagesView);
             },
+
 
             //----------------------------------------------------
             // showMail

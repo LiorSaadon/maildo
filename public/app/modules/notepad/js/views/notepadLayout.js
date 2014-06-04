@@ -6,14 +6,14 @@ define(function (require) {
 
     var NotepadLayout = {};
 
-    app.module('notepad', function (notepad, app,  Backbone, Marionette, $, _) {
+    app.module('notepad', function (notepad, app, Backbone, Marionette, $, _) {
 
         NotepadLayout = Marionette.Layout.extend({
             template:layoutTemplate,
             regions:{
-                headerRegion:".notepad-header-region",
-                actionRegion:".notepad-action-region",
-                dataRegion:".notepad-data-region"
+                notebooksRegion:".notebooks-region",
+                notesRegion:".notes-region",
+                noteInfoRegion:".note-info-region"
             },
             initialize:function(){
                 this.isPermanent = true;

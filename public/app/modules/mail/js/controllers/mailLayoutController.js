@@ -4,7 +4,7 @@ define(function (require) {
     var app = require("mbApp");
     var MailModel = require("mail-models/mailModel");
     var MainLayout = require("mail-views/mailLayout");
-    var HeaderView = require("mail-views/headerView");
+    var SearchView = require("mail-views/searchView");
     var NavView = require("mail-views/navView");
     var ActionView = require("mail-views/actionView/actionView");
     var ComposeView = require("mail-views/composeView/composeView");
@@ -19,44 +19,46 @@ define(function (require) {
 
             initialize: function () {
 
+                this.searchView = new SearchView();
                 this.mainLayout = new MainLayout();
+                this.actionView = new ActionView();
+
                 this.dataLayoutController = new DataLayoutController();
 
-                this.listenTo(this.mainLayout, "render", this.onLayoutRender, this);
-                this.listenTo(app.context, 'change:router.state', this.onContextChange, this);
+                this.listenTo(app.context, 'change:module', this.setViews, this);
+                this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
+                this.listenTo(this.mainLayout, "render", this.onMainLayoutRender, this);
             },
 
             //----------------------------------------------------
-            // getLayout
+            // setViews
             //----------------------------------------------------
 
-            getLayout: function () {
-                return this.mainLayout;
+            setViews: function () {
+
+                if(app.context.get("module") === "mail"){
+
+                    app.frame.setRegion("search", this.searchView);
+                    app.frame.setRegion("actions", this.actionView);
+                    app.frame.setRegion("main", this.mainLayout);
+                }
             },
 
             //----------------------------------------------------
-            // onLayoutRender
-            //----------------------------------------------------
 
-            onLayoutRender: function () {
-
-                var headerView = new HeaderView();
-                this.mainLayout.headerRegion.show(headerView);
-
-                var actionView = new ActionView();
-                this.mainLayout.actionRegion.show(actionView);
+            onMainLayoutRender:function(){
 
                 var navView = new NavView();
                 this.mainLayout.navRegion.show(navView);
             },
 
             //----------------------------------------------------
-            // onContextChange
+            // onActionChange
             //----------------------------------------------------
 
-            onContextChange: function () {
+            onActionChange: function () {
 
-                var action = app.context.get("router.state.action");
+                var action = app.context.get("mail.action.type");
 
                 switch (action) {
                     case "compose":
@@ -71,8 +73,6 @@ define(function (require) {
             },
 
             //----------------------------------------------------
-            // compose
-            //----------------------------------------------------
 
             compose: function () {
 
@@ -83,8 +83,6 @@ define(function (require) {
             },
 
             //----------------------------------------------------
-            // showSettings
-            //----------------------------------------------------
 
             showSettings: function () {
 
@@ -93,12 +91,11 @@ define(function (require) {
             },
 
             //----------------------------------------------------
-            // showData
-            //----------------------------------------------------
 
             showData: function () {
 
-                this.dataLayoutController.setLayout(this.mainLayout.dataRegion);
+                var dataLayout = this.dataLayoutController.newLayout();
+                this.mainLayout.dataRegion.show(dataLayout);
             }
         });
     });

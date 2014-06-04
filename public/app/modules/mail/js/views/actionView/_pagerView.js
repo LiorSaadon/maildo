@@ -76,7 +76,7 @@ define(function (require) {
             updateUrlWithoutNavigate:function(){
 
                 var param = this.pageInfo.currPage > 1 ? ("/p" + this.pageInfo.currPage.toString()) : "";
-                mail.router.navigate(app.context.get("router.state.action") + param);
+                mail.router.navigate(app.context.get("mail.action.type") + param);
             },
 
             //------------------------------------------------------
@@ -103,9 +103,9 @@ define(function (require) {
 
             navigate: function(page){
 
-                var state = app.context.get("router.state");
-                var search = state.params.query ? "/" + state.params.query : "";
-                mail.router.navigate(state.action + search + "/p" + page.toString(), { trigger: true });
+                var action = app.context.get("mail.action");
+                var search = action.params.query ? "/" + action.params.query : "";
+                mail.router.navigate(action.type + search + "/p" + page.toString(), { trigger: true });
             }
         });
     });

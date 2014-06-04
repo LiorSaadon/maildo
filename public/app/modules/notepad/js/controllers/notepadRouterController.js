@@ -5,7 +5,7 @@ define(function (require) {
 
     var NotepadRouterController = {};
 
-    app.module('notepad', function (notepad, mb,  Backbone, Marionette, $, _) {
+    app.module('notepad', function (notepad, app, Backbone, Marionette, $, _) {
 
         NotepadRouterController = Marionette.Controller.extend({
 
@@ -14,8 +14,12 @@ define(function (require) {
             //  actions
             //-----------------------------------------------------------------
 
+            notes:function(){
+                app.context.set("notepad.action",{'type':'notes'});
+            },
+
             newNote:function(){
-                app.context.set("router.state",{'action':'newNote'});
+                app.context.set("notepad.action",{'action':'newNote'});
             }
         });
     });

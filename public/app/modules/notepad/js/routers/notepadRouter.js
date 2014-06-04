@@ -9,6 +9,7 @@ define(function (require) {
         NotepadRouter = Marionette.AppRouter.extend({
 
             appRoutes: {
+                "notes": "notes",
                 "newnote": "newNote"
             },
 
@@ -28,7 +29,7 @@ define(function (require) {
             //---------------------------------------------
 
             before: function () {
-                app.frame.changeSubLayout("notepad");
+                app.context.set("module","notepad");
             }
         });
     });

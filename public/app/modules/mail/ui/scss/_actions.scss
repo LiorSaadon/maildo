@@ -1,13 +1,13 @@
 .mb {
 
   .buttonsToolbar {
-    @include abs-pos(22px, 'NaN', 'NaN', 200px);
+    @include abs-pos(0px, 'NaN', 'NaN', 0px);
   }
 
   //--------- compose ------------------
 
   .lblCompose {
-    @include abs-pos(22px, 'NaN', 'NaN', 200px);
+    @include abs-pos(0px, 'NaN', 'NaN', 0px);
     font-size: 20px;
     color: $common-label-color;
     font-weight: normal;
@@ -20,32 +20,18 @@
   //--------- settings ------------------
 
   .lblSettings {
-    @include abs-pos(22px, 'NaN', 'NaN', 200px);
+    @include abs-pos(0px, 'NaN', 'NaN', 0px);
     font-size: 20px;
     color: $common-label-color;
     font-weight: normal;
     margin: 0;
   }
 
-  .btnSettings {
-
-    @include abs-pos(22px, 10px, 'NaN', 'NaN');
-
-    .button .settingsIcon {
-      @include set-icon(17px, 17px, 'app/assets/ui/img/actions.png', 0, 0);
-    }
-
-    .button:hover .settingsIcon {
-      background: url('app/assets/ui/img/actionsHover.png') 0 0 no-repeat;
-    }
-  }
-
   //--------- pager -------------------
 
   .pager {
 
-    width: 300px;
-    @include abs-pos(22px, 90px, 'NaN', 'NaN');
+    float: right;
 
     .pagerButtons {
       float: right;
