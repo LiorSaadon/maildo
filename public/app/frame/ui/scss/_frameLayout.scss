@@ -19,7 +19,7 @@
       width: 145px;
       height: 40px;
       background-image: url('app/assets/ui/img/logo.png');
-      @include abs-pos(10px, 'NaN', 'NaN', 22px);
+      @include abs-pos(10px, 'NaN', 'NaN', 25px);
     }
 
     .accountName{
@@ -39,16 +39,40 @@
   }
 
   .actions-wrapper{
-      height: 70px;
+      height: 65px;
       border-bottom: 1px solid $layout-splitter-color;
       @include abs-pos(100px, 0, 'NaN', 0);
 
       .moduleSwitcher{
         width: 140px;
         height: 25px;
-        color:white;
-        font-size:20px;
+
         @include abs-pos(24px, 'NaN', 'NaN', 27px);
+
+        .button{
+          padding-left:0px;
+        }
+
+        .button .toggle{
+          border-top-color: #ffffff;
+        }
+
+        .link{
+          color:white;
+          font-size:19px;
+        }
+
+        .ddsModules {
+          position: absolute;
+          top: 30px;
+          left:5px;
+          display: none;
+          min-width:135px;
+
+          .ddm{
+            height: 19px;
+          }
+        }
       }
 
       .actions-region{
@@ -68,6 +92,6 @@
   }
 
   .main-region {
-    @include abs-pos(170px, 0, 0, 0);
+    @include abs-pos(165px, 0, 0, 0);
   }
 }

@@ -7,10 +7,12 @@ define(function (require) {
 
         var LayoutController = require("notepad-controllers/notepadLayoutController");
         var RouterController = require("notepad-controllers/notepadRouterController");
+        var DataController = require("notepad-controllers/notepadDataController");
         var Router = require("notepad-routers/notepadRouter");
 
         this.addInitializer(function (options) {
             this.vent = new Backbone.Wreqr.EventAggregator();
+            this.dataController = new DataController(options);
             this.layoutController = new LayoutController(options);
             this.routerController = new RouterController();
             this.router = new Router({ controller: this.routerController });

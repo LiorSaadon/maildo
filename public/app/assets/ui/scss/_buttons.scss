@@ -82,5 +82,7 @@
     font-size: $font-size2;
     font-weight: normal;
   }
-
+  .button.link.clicked{
+    border:1px solid $button-border-color;
+  }
 }

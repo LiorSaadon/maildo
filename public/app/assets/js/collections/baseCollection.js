@@ -53,12 +53,8 @@ define(function (require) {
 
             if(!_.isEqual(this.metadata, metadata)){
 
-                this.metadata.total = metadata.total;
-                this.metadata.currPage = metadata.currPage + 1;
-                this.metadata.from = metadata.from + 1;
-                this.metadata.to = Math.min(metadata.total, metadata.to + 1);
-
-                this.trigger("change:metadata");
+               this.metadata = _.clone(metadata);
+               this.trigger("change:metadata");
             }
         },
 
@@ -75,7 +71,7 @@ define(function (require) {
             if(_.isArray(options.selectedItems)){
                 options.data = options.selectedItems.splice(0);
             }else{
-                options.data = this.getModelIds();
+                options.data = this.getModelIds(); // all items
             }
 
             _.each(options.data, function(item){ // remove new or not existed items
@@ -119,9 +115,6 @@ define(function (require) {
             return Backbone.sync.apply(this,['update', this, options]);
         },
 
-
-        //--------------------------------------------------
-        // toJSON
         //--------------------------------------------------
 
         toJSON: function(_options){

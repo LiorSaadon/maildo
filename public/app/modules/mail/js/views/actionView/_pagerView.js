@@ -11,6 +11,7 @@ define(function (require) {
 
             template: template,
             className: 'pageInfoView',
+            pageInfo: {},
 
             ui: {
                 container:".pagerInnerContainer",
@@ -42,9 +43,9 @@ define(function (require) {
 
             onCollectionMetadataChange: function () {
 
-                if(this.collection.metadata.total > 0){
+                if(_.isObject(this.collection.metadata) && this.collection.metadata.total > 0){
 
-                    this.pageInfo = this.collection.metadata;
+                    this.updatePageInfo();
                     this.adjustButtons();
                     this.adjustLabels();
                     this.updateUrlWithoutNavigate();
@@ -52,6 +53,18 @@ define(function (require) {
                 }else{
                     this.ui.container.hide();
                 }
+            },
+
+            //-----------------------------------------------------
+
+            updatePageInfo:function(){
+
+                var metadata = this.collection.metadata;
+
+                this.pageInfo.total = metadata.total;
+                this.pageInfo.currPage = metadata.currPage + 1;
+                this.pageInfo.from = metadata.from + 1;
+                this.pageInfo.to = Math.min(metadata.total, metadata.to + 1);
             },
 
             //-----------------------------------------------------

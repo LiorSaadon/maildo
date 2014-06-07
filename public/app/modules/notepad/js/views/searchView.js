@@ -6,7 +6,7 @@ define(function (require) {
 
     var SearchView = {};
 
-    app.module('notepad', function (mail, app,  Backbone, Marionette, $, _) {
+    app.module('notepad', function (notepad, app,  Backbone, Marionette, $, _) {
 
         SearchView = Marionette.ItemView.extend({
             template:template,

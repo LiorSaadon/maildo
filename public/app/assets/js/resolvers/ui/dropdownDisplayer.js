@@ -23,7 +23,7 @@ define(function (require) {
             if(parentFloat === "right"){
                 $('.dropdown-slider.' + ddsId).css("right", $(this).position().right);
             }else{
-                $('.dropdown-slider.' + ddsId).css("left", $(this).position().left - 5);
+                $('.dropdown-slider.' + ddsId).css("left", $(this).position().left); // - 5
             }
 
             $('.dropdown-slider.' + ddsId).toggle();

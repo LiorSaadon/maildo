@@ -271,11 +271,14 @@ body {
   font-size: 13px;
   font-weight: normal;
 }
+.mb .button.link.clicked {
+  border: 1px solid #d9d9d9;
+}
 
 .mb .dropdown-slider {
   display: block;
   overflow: hidden;
-  margin: 0 7px 5px 5px;
+  margin: 0 7px 5px 0;
   border: 1px solid #cbcbcb;
   border-top: 0px;
   min-width: 130px;
@@ -731,17 +734,16 @@ body {
 
 .mail-nav-region {
   width: 40px;
-  padding-top: 30px;
   padding-left: 30px;
   position: absolute;
-  top: 10px;
+  top: 20px;
   bottom: 0;
   left: 0;
 }
 
 .mail-data-region {
   position: absolute;
-  top: 25px;
+  top: 20px;
   right: 25px;
   bottom: 10px;
   left: 200px;
@@ -1056,21 +1058,21 @@ body {
 .mb .notebooks-region {
   width: 200px;
   position: absolute;
-  top: 25px;
+  top: 20px;
   bottom: 20px;
 }
 .mb .notes-region {
   width: 250px;
   background-color: #FCFDFD;
   position: absolute;
-  top: 25px;
+  top: 20px;
   bottom: 20px;
   left: 200px;
 }
 .mb .note-info-region {
   background-color: #eff3f5;
   position: absolute;
-  top: 25px;
+  top: 20px;
   right: 26px;
   bottom: 20px;
   left: 450px;
@@ -1113,7 +1115,7 @@ body {
   background-image: url("app/assets/ui/img/logo.png");
   position: absolute;
   top: 10px;
-  left: 22px;
+  left: 25px;
 }
 .mb .header-wrapper .accountName {
   float: right;
@@ -1131,7 +1133,7 @@ body {
   left: 200px;
 }
 .mb .actions-wrapper {
-  height: 70px;
+  height: 65px;
   border-bottom: 1px solid #7685a0;
   position: absolute;
   top: 100px;
@@ -1141,11 +1143,29 @@ body {
 .mb .actions-wrapper .moduleSwitcher {
   width: 140px;
   height: 25px;
-  color: white;
-  font-size: 20px;
   position: absolute;
   top: 24px;
   left: 27px;
+}
+.mb .actions-wrapper .moduleSwitcher .button {
+  padding-left: 0px;
+}
+.mb .actions-wrapper .moduleSwitcher .button .toggle {
+  border-top-color: #ffffff;
+}
+.mb .actions-wrapper .moduleSwitcher .link {
+  color: white;
+  font-size: 19px;
+}
+.mb .actions-wrapper .moduleSwitcher .ddsModules {
+  position: absolute;
+  top: 30px;
+  left: 5px;
+  display: none;
+  min-width: 135px;
+}
+.mb .actions-wrapper .moduleSwitcher .ddsModules .ddm {
+  height: 19px;
 }
 .mb .actions-wrapper .actions-region {
   position: absolute;
@@ -1169,7 +1189,7 @@ body {
 }
 .mb .main-region {
   position: absolute;
-  top: 170px;
+  top: 165px;
   right: 0;
   bottom: 0;
   left: 0;

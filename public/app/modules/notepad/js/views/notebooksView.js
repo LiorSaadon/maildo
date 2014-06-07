@@ -3,21 +3,24 @@ define(function (require) {
 
     var app = require("mbApp");
     var template = require("tpl!notepad-templates/notebooksView.tmpl");
+    var NotebookItemView = require("notepad-views/notebookItemView");
 
-    var NavView = {};
+    var NotebooksView = {};
 
-    app.module('notepad', function (mail, app,  Backbone, Marionette, $, _) {
+    app.module('notepad', function (notepad, app,  Backbone, Marionette, $, _) {
 
-        NavView = Marionette.CompositeView.extend({
-            template:template,
-
-            //-----------------------------------------------
+        NotebooksView = Marionette.CompositeView.extend({
+            name:'notebooks',
+            template : template,
+            itemView : NotebookItemView,
+            itemViewContainer : "ul",
 
             initialize:function(){
+            },
 
+            onRender:function(){
             }
         });
     });
-
-    return NavView;
+    return NotebooksView;
 });

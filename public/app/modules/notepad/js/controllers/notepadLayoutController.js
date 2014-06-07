@@ -9,7 +9,7 @@ define(function (require) {
 
     var MainLayoutController = {};
 
-    app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
+    app.module('notepad', function (notepad, app, Backbone, Marionette, $, _) {
 
         MainLayoutController = Marionette.Controller.extend({
 
@@ -42,8 +42,14 @@ define(function (require) {
 
             onMainLayoutRender:function(){
 
-                var notebooksView = new NotebooksView();
-                this.mainLayout.notebooksRegion.show(notebooksView);
+                this.notebooks = notepad.dataController.getNotebooksCollection();
+
+                this.notebooks.fetch({
+                    success: _.bind(function () {
+                        var notebooksView = new NotebooksView({collection: this.notebooks});
+                        this.mainLayout.notebooksRegion.show(notebooksView);
+                    }, this)
+                });
             },
 
             onActionChange:function(){

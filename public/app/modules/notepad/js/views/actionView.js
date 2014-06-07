@@ -7,7 +7,7 @@ define(function (require) {
 
     var ActionView = {};
 
-    app.module('notepad', function (mail, app, Backbone, Marionette, $, _) {
+    app.module('notepad', function (notepad, app, Backbone, Marionette, $, _) {
         ActionView = Marionette.ItemView.extend({
             template: template,
             className: 'actionView'
