@@ -19,15 +19,10 @@ define(function (require) {
 
             initialize: function () {
 
-                this.searchView = new SearchView();
-                this.mainLayout = new MainLayout();
-                this.actionView = new ActionView();
-
                 this.dataLayoutController = new DataLayoutController();
 
                 this.listenTo(app.context, 'change:module', this.setViews, this);
                 this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
-                this.listenTo(this.mainLayout, "render", this.onMainLayoutRender, this);
             },
 
             //----------------------------------------------------
@@ -36,7 +31,13 @@ define(function (require) {
 
             setViews: function () {
 
-                if(app.context.get("module") === "mail"){
+               if(app.context.get("module") === "mail"){
+
+                    this.searchView = new SearchView();
+                    this.mainLayout = new MainLayout();
+                    this.actionView = new ActionView();
+
+                    this.listenTo(this.mainLayout, "render", this.onMainLayoutRender, this);
 
                     app.frame.setRegion("search", this.searchView);
                     app.frame.setRegion("actions", this.actionView);

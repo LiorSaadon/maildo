@@ -43,6 +43,8 @@ define(function (require) {
 
                 var action = app.context.get("mail.action");
 
+                this.mails.clearSelected();
+
                 this.mails.fetchBy({
                     filters: {
                         page: action.params.page,
@@ -61,8 +63,6 @@ define(function (require) {
             //----------------------------------------------------
 
             showCollection: function (actionType) {
-
-                this.mails.clearSelected();
 
                 var tableView = new MailTableView({collection: this.mails, action: actionType});
                 this.dataLayout.itemsRegion.show(tableView);

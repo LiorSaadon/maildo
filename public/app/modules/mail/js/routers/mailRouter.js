@@ -42,8 +42,7 @@ define(function (require) {
             //---------------------------------------------
 
             before: function () {
-                app.context.set("module","mail");
-                this.options.controller.backupAction();
+                this.options.controller.beforeRoute();
             },
 
             //---------------------------------------------

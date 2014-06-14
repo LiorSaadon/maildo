@@ -79,13 +79,16 @@ define(function (require) {
             },
 
             //-----------------------------------------------------------------
-            // backupState
+            // beforeRoute
             //-----------------------------------------------------------------
 
-            backupAction:function(){
+            beforeRoute:function(){
 
                 var action = app.context.get("mail.action");
                 this._prevAction = $.extend(true, {},action);
+
+                app.context.set("mail.action",null, {silent:true});
+                app.context.set("module","mail");
             },
 
             //-----------------------------------------------------------------
@@ -99,7 +102,7 @@ define(function (require) {
                 if(!_.isEmpty(this._prevAction)){
                     var page = "p" + this._prevAction.params.page;
                     var query = this._prevAction.params.query ? "/" + this._prevAction.params.query : "";
-                    url = this._prevAction.action + query + "/" + page;
+                    url = this._prevAction.type + query + "/" + page;
                 }
                 return url;
             }
