@@ -6,6 +6,7 @@ define(function (require) {
     var SearchView = require("tasks-views/searchView");
     var ActionView = require("tasks-views/actionView");
     var CategoriesView = require("tasks-views/categoriesView");
+    var eModules = require('json!assets-data/eModules.json');
 
     var MainLayoutController = {};
 
@@ -20,7 +21,6 @@ define(function (require) {
                 this.actionView = new ActionView();
 
                 this.listenTo(app.context, 'change:module', this.setViews, this);
-                this.listenTo(app.context, 'change:tasks.action', this.onActionChange, this);
                 this.listenTo(this.mainLayout, "render", this.onMainLayoutRender, this);
             },
 
@@ -30,7 +30,7 @@ define(function (require) {
 
             setViews: function () {
 
-                if(app.context.get("module") === "tasks"){
+                if(app.context.get("module") === eModules.TASKS){
 
                     app.frame.setRegion("search", this.searchView);
                     app.frame.setRegion("actions", this.actionView);
@@ -42,18 +42,26 @@ define(function (require) {
 
             onMainLayoutRender:function(){
 
-                this.categories = tasks.dataController.getCategoriesCollection();
+                this.categories = tasks.dataController.categories;
 
-                this.categories.fetch({
-                    success: _.bind(function () {
-                        var categoriesView = new CategoriesView({collection: this.categories});
-                        this.mainLayout.categoriesRegion.show(categoriesView);
-                    }, this)
-                });
+                this.onCategoryChange(this.categories.models[0].id);
+                var categoriesView = new CategoriesView({collection: this.categories});
+                this.mainLayout.categoriesRegion.show(categoriesView);
             },
 
-            onActionChange:function(){
+            //----------------------------------------------------
 
+            onCategoryChange:function(categoryId){
+
+                this.tasksCollection = tasks.dataController.tasksCollection;
+
+//                this.tasksCollection.fetch({
+//                    categoryId: categoryId,
+//                    success: _.bind(function () {
+////                        var tasksCollection = new CategoriesView({collection: this.tasksCollection});
+////                        this.mainLayout.categoriesRegion.show(tasksCollection);
+//                    }, this)
+//                });
             }
         });
     });

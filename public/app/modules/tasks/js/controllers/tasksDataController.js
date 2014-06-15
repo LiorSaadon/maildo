@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var TasksCollection = require("tasks-collections/tasksCollection");
     var CategoriesCollection = require("tasks-collections/categoriesCollection");
     var PreliminaryDataController = require("tasks-controllers/preliminaryDataController");
 
@@ -18,12 +19,8 @@ define(function (require) {
 
                 this.categories = new CategoriesCollection();
                 this.categories.fetch();
-            },
 
-            //------------------------------------------------------
-
-            getCategoriesCollection : function () {
-                return this.categories;
+                this.tasksCollection = new TasksCollection();
             }
         });
     });

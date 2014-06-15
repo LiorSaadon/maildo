@@ -29,8 +29,8 @@ define(function (require) {
             //---------------------------------------------
 
             before: function () {
-                app.context.set("module","tasks");
-            }
+                this.options.controller.beforeRoute();
+            },
         });
     });
 

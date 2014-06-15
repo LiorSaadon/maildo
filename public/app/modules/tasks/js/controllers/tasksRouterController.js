@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var eModules = require('json!assets-data/eModules.json');
 
     var TasksRouterController = {};
 
@@ -20,6 +21,15 @@ define(function (require) {
 
             newTask:function(){
                 app.context.set("tasks.action",{'action':'newTask'});
+            },
+
+            //-----------------------------------------------------------------
+            // beforeRoute
+            //-----------------------------------------------------------------
+
+            beforeRoute:function(){
+
+                app.context.set("module",eModules.TASKS);
             }
         });
     });

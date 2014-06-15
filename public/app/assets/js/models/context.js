@@ -10,6 +10,9 @@ define(function (require) {
             module: '',
             mail:{
                 action:{}
+            },
+            tasks:{
+                category:''
             }
         }
     });

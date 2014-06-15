@@ -3,6 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var _s = require("underscore.string");
+    var eModules = require('json!assets-data/eModules.json');
 
     var MailRouterController = {};
 
@@ -88,7 +89,7 @@ define(function (require) {
                 this._prevAction = $.extend(true, {},action);
 
                 app.context.set("mail.action",null, {silent:true});
-                app.context.set("module","mail");
+                app.context.set("module",eModules.MAIL);
             },
 
             //-----------------------------------------------------------------

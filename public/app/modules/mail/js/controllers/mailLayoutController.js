@@ -10,6 +10,7 @@ define(function (require) {
     var ComposeView = require("mail-views/composeView/composeView");
     var SettingsView = require("mail-views/settingsView");
     var DataLayoutController = require("mail-controllers/mailDataLayoutController");
+    var eModules = require('json!assets-data/eModules.json');
 
     var MainLayoutController = {};
 
@@ -31,7 +32,7 @@ define(function (require) {
 
             setViews: function () {
 
-               if(app.context.get("module") === "mail"){
+               if(app.context.get("module") === eModules.MAIL){
 
                     this.searchView = new SearchView();
                     this.mainLayout = new MainLayout();
