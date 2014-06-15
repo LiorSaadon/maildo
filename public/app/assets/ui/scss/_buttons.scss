@@ -37,9 +37,12 @@
     @include arrow-down-hover( $button-hover-toggle-color);
   }
 
+  .button.disable,
   .button.disable:hover {
     cursor:default;
+    color:$button-disable-color;
     background-color:$button-background-color;
+
   }
 
   //---------------------------------------------------

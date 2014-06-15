@@ -58,26 +58,16 @@ $color34:#dcdcdc;
 $color35:#FFFFCC;
 $color36:#F9F9E0;
 
-$black: #000;
-$gray100: #323336;
-$gray85: #515254;
-$gray80: #5a5b5e;
-$gray67: #767678;
-$gray56: #8c8d8f;
-$gray50: #98999b;
-$gray40: #adadad;
-$gray30: #c1c2c3;
-$gray25: #ccc;
-$gray20: #d6d6d6;
-$gray17: #dcdcdc;
-$gray13: #e5e5e5;
-$gray9:#ededed;
-$gray5:#f5f5f5;
-$warmgray5:#f4f4f3;
-$gray4: #f7f7f7;
+$gray21:#B6AEAE;
 $white:#fff;
-
-
+$gray5:#f5f5f5;
+$gray30: #c1c2c3;
+$gray40: #adadad;
+$warmgray5:#f4f4f3;
+$gray13: #e5e5e5;
+$gray50: #98999b;
+$gray85: #515254;
+$gray67: #767678;
 
 
 //BUTTON-WIDTHS
@@ -114,6 +104,7 @@ $button-clicked-color:$color12;
 $button-clicked-toggle-color:$color11;
 $button-clicked-background-color:$color4;
 $button-clicked-border-color:$color10;
+$button-disable-color:$gray21;
 
 $dd-border-color:$color13;
 $ddItem-color:$color14;

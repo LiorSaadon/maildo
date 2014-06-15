@@ -223,8 +223,10 @@ body {
 .mb .button:hover .toggle {
   border-top-color: #676767;
 }
+.mb .button.disable,
 .mb .button.disable:hover {
   cursor: default;
+  color: #b6aeae;
   background-color: #f3f3f3;
 }
 .mb .button.left {
