@@ -15,9 +15,9 @@ define({
                 "root": "app/modules/mail"
             },
             {
-                "name": "notepad",
+                "name": "tasks",
                 "type": "MODULE",
-                "root": "app/modules/notepad"
+                "root": "app/modules/tasks"
             }
         ]
 });

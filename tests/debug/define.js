@@ -25,5 +25,6 @@ refreshPage = {};
 itemViewContainer={};
 App = {};
 App.mail = {};
+App.tasks = {};
 App.mail.routerController = {};
 App.Login ={};

@@ -55,15 +55,15 @@
         "mail-collections":"app/modules/mail/js/collections",
         "mail-storage":"app/modules/mail/js/storage",
         "mail-utils":"app/modules/mail/js/utils",
-        "notepad": "app/modules/notepad",
-        "notepad-data":"app/modules/notepad/data",
-        "notepad-models": "app/modules/notepad/js/models",
-        "notepad-collections": "app/modules/notepad/js/collections",
-        "notepad-views": "app/modules/notepad/js/views",
-        "notepad-templates":"app/modules/notepad/ui/templates",
-        "notepad-controllers":"app/modules/notepad/js/controllers",
-        "notepad-routers":"app/modules/notepad/js/routers",
-        "notepad-storage":"app/modules/notepad/js/storage"
+        "tasks": "app/modules/tasks",
+        "tasks-data":"app/modules/tasks/data",
+        "tasks-models": "app/modules/tasks/js/models",
+        "tasks-collections": "app/modules/tasks/js/collections",
+        "tasks-views": "app/modules/tasks/js/views",
+        "tasks-templates":"app/modules/tasks/ui/templates",
+        "tasks-controllers":"app/modules/tasks/js/controllers",
+        "tasks-routers":"app/modules/tasks/js/routers",
+        "tasks-storage":"app/modules/tasks/js/storage"
     },
     "shim": {
         "underscore": {
