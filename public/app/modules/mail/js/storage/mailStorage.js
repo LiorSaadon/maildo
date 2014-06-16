@@ -205,7 +205,7 @@ define(function (require) {
 
                     data.filters.query = data.filters.query.replace(/\s{2,}/g, ' ').replace(/\s\:/g, ':').replace(/:\s/g, ':').replace("label:", "labels:");
 
-                    if (data.filters.query.indexOf("groups:") === -1 && data.filters.query.indexOf("labels:") === -1) {
+                    if (_.isEmpty(data.filters.query)) {
                         data.filters.query += ' ' + filteringMap.defaultQuery;
                     }
                 } else {

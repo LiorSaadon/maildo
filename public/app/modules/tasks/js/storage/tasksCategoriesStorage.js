@@ -3,11 +3,11 @@ define(function (require) {
 
     var app = require("mbApp");
 
-    var TasksStorage = {};
+    var TasksCategoriesStorage = {};
 
     app.module('tasks', function (tasks, app, Backbone, Marionette, $, _) {
 
-        TasksStorage = function () {
+        TasksCategoriesStorage = function () {
 
             var _localStorage = window.localStorage;
 
@@ -17,7 +17,7 @@ define(function (require) {
 
             var findAll = function (model, options) {
 
-                var store = _localStorage.getItem('tasks');
+                var store = _localStorage.getItem('tasksCategories');
 
                 return {
                     collection: _.isString(store) ? JSON.parse(store) : []
@@ -31,5 +31,5 @@ define(function (require) {
 
     });
 
-    return TasksStorage;
+    return TasksCategoriesStorage;
 });

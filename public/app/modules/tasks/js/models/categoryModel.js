@@ -3,7 +3,6 @@ define(function (require) {
 
     var app = require("mbApp");
     var BaseModel = require("assets-models/baseModel");
-    var TasksStorage = require("tasks-storage/tasksStorage");
 
     var CategoryModel = {};
 
@@ -17,7 +16,6 @@ define(function (require) {
 
             initialize: function (attrs, options) {
 
-                this.localStorage = new TasksStorage();
             }
         });
     });

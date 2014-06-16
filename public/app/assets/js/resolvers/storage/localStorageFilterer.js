@@ -1,14 +1,15 @@
 define(function (require) {
     "use strict";
 
+    var _s = require("underscore.string");
+
     var LocalStorageFilterer = function (_orderBy) {
 
         var pageSize = 5;
 
-
-        //=========================================================
+        //--------------------------------------------------------
         // filter
-        //=========================================================
+        //--------------------------------------------------------
 
 
         var filter = function(records, filters, filteringMap){
@@ -24,9 +25,10 @@ define(function (require) {
             };
         };
 
-        //-------------------------------------------------
+        //--------------------------------------------------------
         // filterByQuery
-        //-------------------------------------------------
+        //--------------------------------------------------------
+
 
         var filterByQuery = function(records, query, filteringMap){
 
@@ -34,60 +36,61 @@ define(function (require) {
 
             for(var i=0; i<subQueries.length; i++){
 
-                if(subQueries[i].indexOf(':') > 0){
-                    records = filterByReservedKey(records, subQueries[i], filteringMap);
+                var q = setQuery(subQueries[i],filteringMap);
+
+                if(_.isString(q.key)){
+                    records = filterByTag(q, records);
                 }else{
-                    records = filterByFreeKey(records, subQueries[i], filteringMap);
+                    records = filterByData(q, records);
                 }
             }
-
             return records;
         };
 
-        //----------------------------------------------
+        //-------------------------------------------------------
 
-        var filterByReservedKey = function(records, subQuery, filteringMap){
+        var setQuery = function(query, filteringMap){
 
-             var qInfo = subQuery.split(':');
+            var arr = query.toLowerCase().split(':'), res = {};
 
-             var key = qInfo[0],value = qInfo[1];
+            if(arr.length == 2){
+               if(filteringMap.fields[arr[0]] === "tag"){
+                    res.key = arr[0];
+                    res.val = arr[1];
+               }
+            }else{
+                res.val = query;
+            }
+            return res;
+        };
 
-             if(filteringMap.fields[key] === "tag"){
+        //-------------------------------------------------------
 
-                 return _.reject(records, function (obj) {
+        var filterByTag = function(query, records){
 
-                     if(_.isObject(obj[key])){
-                         return !_.has(obj[key],value);
-                     }
-                     else if(_.isString(obj[key])){
-                         return obj[key] === value;
-                     }
-                     return true;
-                 });
-             }else if(filteringMap.fields[key] === "data"){
+            return _.reject(records, function (obj) {
 
-                 return _.reject(records, function (obj) {
-
-                     if(_.isString(obj[key])){
-                         return obj[key].indexOf(value) === -1;
-                     }
-                     return true;
-                 });
-             }
+                 if(_.isObject(obj[query.key])){
+                     return !_.has(obj[query.key],query.val);
+                 }
+                 else if(_.isString(obj[query.key])){
+                     return obj[query.key] === query.val;
+                 }
+                 return true;
+            });
         };
 
         //----------------------------------------------
 
-        var filterByFreeKey = function(records, word, filteringMap){
+        var filterByData = function(query, records){
 
-            var t=  _.filter(records, function (obj){
+            var t= _.filter(records, function (obj){
 
                 var res = 0;
 
                 _.each(obj, function(val, key){
-
-                    if(filteringMap.fields[key] === "data"){
-                        res += (obj[key].indexOf(word) > -1) ? 1 : 0;
+                    if(_.isString(obj[key])){
+                        res += (obj[key].toLowerCase().indexOf(query.val) > -1) ? 1 : 0;
                     }
                 });
                 return res > 0;
@@ -96,9 +99,11 @@ define(function (require) {
             return  t;
         };
 
-        //-------------------------------------------------
+
+        //--------------------------------------------------------
         // filterByPage
-        //-------------------------------------------------
+        //--------------------------------------------------------
+
 
         var filterByPage = function(records, page, metadata){
 

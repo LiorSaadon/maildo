@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var CategoryModel = require("tasks-models/categoryModel");
-    var TasksStorage = require("tasks-storage/tasksStorage");
+    var Storage = require("tasks-storage/tasksCategoriesStorage");
     var BaseCollection = require("assets-collections/BaseCollection");
 
     var MailCollection = {};
@@ -16,7 +16,7 @@ define(function (require) {
 
             model: CategoryModel,
 
-            localStorage: new TasksStorage()
+            localStorage: new Storage()
         });
     });
     return MailCollection;

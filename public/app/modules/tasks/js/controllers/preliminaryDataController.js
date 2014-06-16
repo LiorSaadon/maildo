@@ -21,8 +21,8 @@ define(function (require) {
             //------------------------------------------------------------------------
 
             setCategories:function(){
-                if(_.isNull(this.localStorage.getItem('taskCategories'))){
-                    this.localStorage.setItem('taskCategories', JSON.stringify(categoryList));
+                if(_.isNull(this.localStorage.getItem('tasksCategories'))){
+                    this.localStorage.setItem('tasksCategories', JSON.stringify(categoryList));
                 }
             },
 
