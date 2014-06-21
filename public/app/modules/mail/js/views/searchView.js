@@ -3,6 +3,8 @@ define(function (require) {
 
     var app = require("mbApp");
     var template = require("tpl!mail-templates/searchView.tmpl");
+    var Tags = require("assets-ui-component/tags/tags");
+    var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
 
     var SearchView = {};
 
@@ -14,7 +16,7 @@ define(function (require) {
 
             ui: {
                 btnSearch: ".btnSearch",
-                inputSearch: ".inputSearch"
+                autoCompletePlaceholder: ".autoCompletePlaceholder"
             },
 
             events: {
@@ -24,7 +26,8 @@ define(function (require) {
             //-----------------------------------------------
 
             initialize:function(){
-                this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
+                this.vent = new Backbone.Wreqr.EventAggregator();
+//                this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
             },
 
             //-----------------------------------------------
@@ -37,23 +40,46 @@ define(function (require) {
             },
 
             //-----------------------------------------------
+            // onRender
+            //-----------------------------------------------
 
-            onActionChange:function(){
+            onRender:function(){
 
-                var action = app.context.get("mail.action.type");
-
-                if(action !== "search"){
-                   this.ui.inputSearch.val('');
-                }
+                this.renderAutoComponent();
+                this.vent.trigger("input:change","e");
             },
 
             //-----------------------------------------------
 
-            onSearchClick:function(){
+            renderAutoComponent:function(){
 
-                var url = "search/" + this.ui.inputSearch.val().replace("label", "labels") + "/p1";
-                mail.router.navigate(url, {trigger: true});
-            }
+                this.autoComplete = new AutoComplete({
+                    collection:mail.dataController.getContactsCollection(),
+                    el:this.ui.autoCompletePlaceholder,
+                    vent: this.vent
+                });
+                this.autoComplete.show();
+            }//,
+//
+//
+//            //-----------------------------------------------
+//
+//            onActionChange:function(){
+//
+//                var action = app.context.get("mail.action.type");
+//
+//                if(action !== "search"){
+//                   this.ui.inputSearch.val('');
+//                }
+//            },
+//
+//            //-----------------------------------------------
+//
+//            onSearchClick:function(){
+//
+//                var url = "search/" + this.ui.inputSearch.val().replace("label", "labels") + "/p1";
+//                mail.router.navigate(url, {trigger: true});
+//            }
         });
     });
 

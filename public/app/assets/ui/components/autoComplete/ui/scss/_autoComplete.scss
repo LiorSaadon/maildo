@@ -13,8 +13,8 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         z-index: 1000;
-        left: 70px;
-        right: 6px;
+        //left: 70px;
+        //right: 6px;
         float: left;
         padding: 4px;
         margin: 0;
@@ -34,6 +34,7 @@
         background-clip: padding-box;
         overflow-y: auto;
         overflow-x: hidden;
+        width:100%;
 
         li {
           -webkit-border-radius: 2px;
