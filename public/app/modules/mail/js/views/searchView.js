@@ -4,6 +4,7 @@ define(function (require) {
     var app = require("mbApp");
     var template = require("tpl!mail-templates/searchView.tmpl");
     var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
+    var SearchComponent = require("assets-ui-component/search/search");
 
     var SearchView = {};
 
@@ -14,28 +15,14 @@ define(function (require) {
             className:"searchPanel",
 
             ui: {
-                btnSearch: ".btnSearch",
+                searchPlaceholder: ".search-placeholder",
                 autoCompletePlaceholder: ".autoCompletePlaceholder"
-            },
-
-            events: {
-                "click .btnSearch": "onSearchClick"
             },
 
             //-----------------------------------------------
 
             initialize:function(){
                 this.vent = new Backbone.Wreqr.EventAggregator();
-//                this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
-            },
-
-            //-----------------------------------------------
-
-            customTemplateHelpers:function(){
-
-                return{
-                    accountName:app.settings.get("accountName")
-                };
             },
 
             //-----------------------------------------------
@@ -44,8 +31,18 @@ define(function (require) {
 
             onRender:function(){
 
+                this.renderSearchComponent();
                 //this.renderAutoComponent();
                 //this.vent.trigger("input:change","e");
+            },
+
+            renderSearchComponent:function(){
+
+                this.searchComponent = new SearchComponent({
+                    el:this.ui.searchPlaceholder,
+                    vent: this.vent
+                });
+                this.searchComponent.render();
             },
 
             //-----------------------------------------------
@@ -74,25 +71,7 @@ define(function (require) {
                     })
                 });
                 return new AutoComplete.Collection(contacts);
-            }//,
-//            //-----------------------------------------------
-//
-//            onActionChange:function(){
-//
-//                var action = app.context.get("mail.action.type");
-//
-//                if(action !== "search"){
-//                   this.ui.inputSearch.val('');
-//                }
-//            },
-//
-//            //-----------------------------------------------
-//
-//            onSearchClick:function(){
-//
-//                var url = "search/" + this.ui.inputSearch.val().replace("label", "labels") + "/p1";
-//                mail.router.navigate(url, {trigger: true});
-//            }
+            }
         });
     });
 
