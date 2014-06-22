@@ -1,4 +1,5 @@
 listenTo = {};
+listenToOnce = {};
 mail = {};
 mail.dataController = {};
 mail.newMailActionsController = {};

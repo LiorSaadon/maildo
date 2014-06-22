@@ -387,6 +387,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
+  max-width: 600px;
 }
 .mb .autoComplete .menu.default-list li {
   -webkit-border-radius: 2px;
@@ -412,7 +413,7 @@ body {
 }
 .mb .autoComplete .menu.default-list li div.icon {
   float: left;
-  background: url("app/assets/ui/img/user.png") no-repeat;
+  background: url("app/assets/ui/img/user-gary.png") no-repeat;
   height: 30px;
   width: 30px;
   margin-right: 10px;
@@ -422,7 +423,7 @@ body {
   vertical-align: middle;
 }
 .mb .autoComplete .menu.default-list li div.contentWrapper .title {
-  font-weight: bold;
+  color: #000000;
   padding-right: 8px;
 }
 .mb .autoComplete .menu.default-list li div.contentWrapper .text {
@@ -706,25 +707,21 @@ body {
   display: table-cell;
 }
 .mb .searchPanel .input-wrapper .searchInput {
-  width: 550px;
+  width: 480px;
   height: 30px;
   float: left;
   margin-right: 15px;
-  margin-bottom: 1px;
   background-color: white;
 }
-.mb .searchPanel .btnSearch a {
+.mb .searchPanel .input-wrapper .btnSearch {
+  color: white;
   background-color: #4d90fe;
   border: 1px solid #3079ed;
 }
-.mb .searchPanel .btnSearch a span {
+.mb .searchPanel .input-wrapper .btnSearch span {
   margin-top: -2px;
-  display: inline-block;
-  height: 22px;
-  width: 22px;
-  background: url("app/assets/ui/img/search.png") 0 0 no-repeat;
 }
-.mb .searchPanel .btnSearch a:hover {
+.mb .searchPanel .input-wrapper .btnSearch:hover {
   border-color: #3079ed;
   background-color: #3e83f1;
 }

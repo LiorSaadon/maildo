@@ -2,18 +2,20 @@ define(function (require) {
     "use strict";
 
     var Marionette = require("marionette");
-    var FilterDecorator = require("assets-decorators/filterCollectionDecorator");
     var AutoCompleteCompositeView = require("assets-ui-component/autoComplete/js/views/autoCompleteCompositeView");
+    var FilterCollectionDecorator =  require("assets-decorators/FilterCollectionDecorator");
+    var AutoCompleteCollection = require("assets-ui-component/autoComplete/js/collections/autoCompleteCollection");
+    var AutoCompleteFilterModel = require("assets-ui-component/autoComplete/js/models/autoCompleteFilterModel");
 
     var AutoComplete = Marionette.Controller.extend({
 
         initialize: function (options) {
 
-            this.filterModel = options.filterModel || options.collection.filterModel;
-            this.collection = new FilterDecorator(options.collection);
-            this.maxItems = options.maxItems || 5;
-            this.vent = options.vent;
             this.el = options.el;
+            this.vent = options.vent;
+            this.maxItems = options.maxItems || 5;
+            this.filterModel = options.filterModel || new AutoCompleteFilterModel();
+            this.collection = new FilterCollectionDecorator(new AutoCompleteCollection(options.items || []));
 
             this.listenTo(this.vent, 'input:change', this.onInputChange, this);
         },
@@ -47,5 +49,6 @@ define(function (require) {
             this.autoCompleteTableView.render();
         }
     });
+
     return AutoComplete;
 });

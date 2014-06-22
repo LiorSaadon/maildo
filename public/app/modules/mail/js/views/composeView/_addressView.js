@@ -25,7 +25,6 @@ define(function (require) {
 
             initialize:function(options){
 
-                this.contacts = options.contacts;
                 this.modelAttr = options.modelAttr;
                 this.vent = new Backbone.Wreqr.EventAggregator();
 
@@ -61,11 +60,26 @@ define(function (require) {
             renderAutoComponent:function(){
 
                 this.autoComplete = new AutoComplete({
-                    collection:mail.dataController.getContactsCollection(),
+                    items: this.getContacts(),
                     el:this.ui.autoCompletePlaceholder,
                     vent: this.vent
                 });
                 this.autoComplete.show();
+            },
+
+            //-----------------------------------------------------------------
+
+            getContacts:function(){
+
+                var contacts = [];
+
+                mail.dataController.getContactsCollection().each(function(model){
+                    contacts.push({
+                        text: model.get("title"),
+                        value: model.get("address")
+                    })
+                });
+                return contacts;
             },
 
             //-----------------------------------------------------------------

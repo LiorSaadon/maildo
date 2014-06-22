@@ -1,9 +1,6 @@
 define(function (require) {
     "use strict";
 
-    var Marionette = require("marionette");
-
-
     //============================================================
     // FilterCollectionDecorator
     //============================================================
@@ -21,8 +18,6 @@ define(function (require) {
         filterCollection.filterBy = function (_filterModel, maxItems) {
 
             var items, that = this;
-
-            //-----------------------------------------
 
             if(_.isObject(_filterModel)){
                 this.filterModel = _filterModel;

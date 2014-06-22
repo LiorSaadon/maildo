@@ -23,15 +23,6 @@ define(function (require) {
 
         //-------------------------------------------------------------
 
-        customTemplateHelpers : function () {
-            return {
-                text : this.model.getText(),
-                value : this.model.getValue()
-            };
-        },
-
-        //-------------------------------------------------------------
-
         _onMouseEnter:function(){
 
             this.vent.trigger("item:over", this);

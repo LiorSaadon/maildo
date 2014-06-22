@@ -20,15 +20,15 @@ define(function (require) {
                     title:response.replace(",", " "),
                     address:response.replace(",", ".").toLowerCase() + "@mailbone.com"
                 };
-            },
-
-            getText:function(){
-                return this.get("title");
-            },
-
-            getValue: function(){
-                return this.get("address");
             }
+//
+//            getText:function(){
+//                return this.get("title");
+//            },
+//
+//            getValue: function(){
+//                return this.get("address");
+//            }
         });
     });
 

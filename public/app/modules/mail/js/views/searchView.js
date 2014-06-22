@@ -3,7 +3,6 @@ define(function (require) {
 
     var app = require("mbApp");
     var template = require("tpl!mail-templates/searchView.tmpl");
-    var Tags = require("assets-ui-component/tags/tags");
     var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
 
     var SearchView = {};
@@ -45,8 +44,8 @@ define(function (require) {
 
             onRender:function(){
 
-                this.renderAutoComponent();
-                this.vent.trigger("input:change","e");
+                //this.renderAutoComponent();
+                //this.vent.trigger("input:change","e");
             },
 
             //-----------------------------------------------
@@ -54,14 +53,28 @@ define(function (require) {
             renderAutoComponent:function(){
 
                 this.autoComplete = new AutoComplete({
-                    collection:mail.dataController.getContactsCollection(),
+                    collection:this.getContacts(),
                     el:this.ui.autoCompletePlaceholder,
                     vent: this.vent
                 });
                 this.autoComplete.show();
+            },
+
+            //-----------------------------------------------------------------
+
+            getContacts:function(){
+
+                var contacts =  [];
+
+                mail.dataController.getContactsCollection().each(function(model){
+
+                    contacts.push({
+                        text: model.get("title"),
+                        value: model.get("address")
+                    })
+                });
+                return new AutoComplete.Collection(contacts);
             }//,
-//
-//
 //            //-----------------------------------------------
 //
 //            onActionChange:function(){

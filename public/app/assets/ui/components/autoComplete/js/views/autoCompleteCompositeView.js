@@ -114,7 +114,7 @@ define(function (require) {
 
                 setTimeout(_.bind(function () {
                     var itemModel = this.childArr[selectedItem].model;
-                    this.vent.trigger("item:selected",itemModel.getText(),itemModel.getValue());
+                    this.vent.trigger("item:selected",itemModel.get("text"),itemModel.get("value"));
                 }, this), 50);
             }
             this.closeEl();
