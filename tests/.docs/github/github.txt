@@ -8,8 +8,12 @@
 to set from github:
 
 close all projects
+install git
+settings --> version controll --> github
+settings --> version controll --> git : path to git executable : C:\Program Files (x86)\Git\cmd\git.exe
+
 select Check out from Version Control --> github
-git Repository URL: https://github.com/shaulmazor/mailjs.git
+git Repository URL: https://github.com/shaulmazor/mailbone.git
 parent URL: D:\smd
-directory name: D:\smd\mailjs
+directory name: mailbone
 
