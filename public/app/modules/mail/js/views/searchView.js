@@ -32,9 +32,11 @@ define(function (require) {
             onRender:function(){
 
                 this.renderSearchComponent();
-                //this.renderAutoComponent();
-                //this.vent.trigger("input:change","e");
+                this.renderAutoComponent();
+                this.vent.trigger("input:change","e");
             },
+
+            //-----------------------------------------------
 
             renderSearchComponent:function(){
 
@@ -50,7 +52,7 @@ define(function (require) {
             renderAutoComponent:function(){
 
                 this.autoComplete = new AutoComplete({
-                    collection:this.getContacts(),
+                    items: this.getContacts(),
                     el:this.ui.autoCompletePlaceholder,
                     vent: this.vent
                 });
@@ -61,16 +63,15 @@ define(function (require) {
 
             getContacts:function(){
 
-                var contacts =  [];
+                var contacts = [];
 
                 mail.dataController.getContactsCollection().each(function(model){
-
                     contacts.push({
                         text: model.get("title"),
                         value: model.get("address")
                     })
                 });
-                return new AutoComplete.Collection(contacts);
+                return contacts;
             }
         });
     });

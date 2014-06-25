@@ -35,6 +35,14 @@ define(function (require) {
 
             this.el = options.el;
             this.vent = options.vent;
+
+            this.listenTo(this.vent,"item:active", this.onItemOver, this);
+        },
+
+        //----------------------------------------------------------
+
+        onItemOver:function(text, value){
+            this.ui.searchInput.val(text);
         },
 
         //----------------------------------------------------------
@@ -57,7 +65,7 @@ define(function (require) {
         //------------------------------------------------------------
 
         outsideClicked: function () {
-            alert("outside");
+
         }
     });
     return SearchView;

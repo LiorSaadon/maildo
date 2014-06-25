@@ -387,7 +387,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
-  max-width: 600px;
+  max-width: 445px;
 }
 .mb .autoComplete .menu.default-list li {
   -webkit-border-radius: 2px;
@@ -434,10 +434,10 @@ body {
 }
 
 .mb .search-placeholder {
-  display: table-cell;
+  display: inline-block;
 }
 .mb .search-placeholder .search-input {
-  width: 480px;
+  width: 445px;
   height: 30px;
   float: left;
   margin-right: 15px;

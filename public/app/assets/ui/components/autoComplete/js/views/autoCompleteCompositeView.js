@@ -80,11 +80,11 @@ define(function (require) {
             switch (key) {
                 case KeyCode.ARROW_UP:
                     this.selectedItem = Math.max(0, this.selectedItem - 1);
-                    this.setActive();
+                    this.setActive(true);
                     break;
                 case KeyCode.ARROW_DOWN:
                     this.selectedItem = Math.min(this.children.length - 1, this.selectedItem + 1);
-                    this.setActive();
+                    this.setActive(true);
                     break;
                 case KeyCode.ENTER:
                     this.selectItem();
@@ -94,14 +94,20 @@ define(function (require) {
 
         //--------------------------------------------------------------
 
-        setActive: function () {
+        setActive: function (report) {
 
             this.children.each(function (view) {
-
                 view.setActive(false);
             });
 
-            this.childArr[this.selectedItem].setActive(true);
+            var selectedView = this.childArr[this.selectedItem];
+
+            if(_.isObject(selectedView)){
+                selectedView.setActive(true);
+            }
+            if(report){
+               this.vent.trigger("item:active",selectedView.model.get("text"),selectedView.model.get("value"));
+            }
         },
 
         //-------------------------------------------------------------
