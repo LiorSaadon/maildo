@@ -24,6 +24,7 @@ define(function (require) {
         events:{
             "click":"onClick",
             "keyup .search-input": "onButtonKeyUp",
+            "input .search-input": "onInputChange",
             "clickoutside": "outsideClicked"
         },
 
@@ -62,10 +63,16 @@ define(function (require) {
             }
         },
 
+        //-----------------------------------------------------------
+
+        onInputChange:function(){
+            this.vent.trigger("input:change", this.ui.searchInput.val(), {"addSearchKey":true});
+        },
+
         //------------------------------------------------------------
 
         outsideClicked: function () {
-
+            this.vent.trigger("closeAll");
         }
     });
     return SearchView;

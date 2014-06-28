@@ -54,20 +54,33 @@
           }
           div.dropdown-li-value {
             display: inline-block;
+            width: 100%;
           }
           div.dropdown-li-icon {
             margin-right: 8px;
           }
           div.icon{
             float:left;
-            background: url('app/assets/ui/img/user-gary.png') no-repeat;
+
             height:30px;
             width:30px;
             margin-right:10px;
+
+            &.search{
+              background: url('app/assets/ui/img/qicons.png')  0 -97px no-repeat;
+            }
+            &.contact{
+              background: url('app/assets/ui/img/qicons.png') 0 0 no-repeat;
+            }
+            &.recent{
+              background: url('app/assets/ui/img/qicons.png') 0 -130px no-repeat;
+            }
           }
           div.contentWrapper{
             paddign-rigth:10px;
             vertical-align: middle;
+            height: 30px;
+            display: table-cell;
             .title{
               color:#000000;
               padding-right: 8px;

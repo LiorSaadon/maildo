@@ -6,22 +6,22 @@ define(function (require) {
 
     var AutoCompleteFilterModel = Backbone.Model.extend({
 
-            setInput: function (input) {
-                this.input = _.isString(input) ? input.toLowerCase() : "";
-            },
+        setInput: function (input) {
+            this.input = _.isString(input) ? input.toLowerCase() : "";
+        },
 
-            //-----------------------------------------------------------------------
+        //-----------------------------------------------------------------------
 
-            filterBy: function (model) {
+        filterBy: function (model) {
 
-                var res = false, splittedText = model.get("text").split(" ");
+            var res = false, splittedText = model.get("text").split(" ");
 
-                _.each(splittedText, _.bind(function(item){
-                    res = res || _s.startsWith(item, this.input);
-                },this));
+            _.each(splittedText, _.bind(function (item) {
+                res = res || _s.startsWith(item, this.input);
+            }, this));
 
-                return res;
-            }
+            return res;
+        }
 
     });
     return AutoCompleteFilterModel;

@@ -5,34 +5,35 @@ define(function (require) {
     // FilterCollectionDecorator
     //============================================================
 
-    var FilterCollectionDecorator = function (original) {
+    var FilterCollectionDecorator = function (original, filterModel) {
 
         var filterCollection = $.extend({}, original);
 
         filterCollection.models = [];
+        filterCollection.filterModel = filterModel;
 
         //------------------------------------------------
         // filterBy
         //------------------------------------------------
 
-        filterCollection.filterBy = function (_filterModel, maxItems) {
+        filterCollection.filterBy = function (options) {
 
-            var items, that = this;
-
-            if(_.isObject(_filterModel)){
-                this.filterModel = _filterModel;
-            }
+            var items, options = options || {};
 
             if (this.filterModel) {
-                items = _.filter(original.models, function (model) {
-                    return that.filterModel.filterBy(model);
-                });
+                items = _.filter(original.models, _.bind(function (model) {
+                    return this.filterModel.filterBy(model);
+                }, this));
             } else {
                 items = original.models;
             }
 
-            if(_.isFinite(maxItems)){
-                items = items.slice(0,maxItems);
+            if (_.isArray(options.mandatoryItems)) {
+                items = _.union(options.mandatoryItems, items);
+            }
+
+            if (_.isFinite(options.maxItems)) {
+                items = items.slice(0, options.maxItems);
             }
             filterCollection.reset(items);
         };

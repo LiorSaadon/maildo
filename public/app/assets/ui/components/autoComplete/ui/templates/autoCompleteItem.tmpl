@@ -1,8 +1,17 @@
 <div class="dropdown-li-value">
-    <div class="icon"></div>
-    <div class="contentWrapper">
-        <span class="title">{{text}}</span>
-        <span class="text">{{value}}</span>
-    </div>
+    {{#isContact}}
+        <div class="icon contact"></div>
+        <div class="contentWrapper">
+            <div class="title">{{text}}</div>
+            <div class="text">{{value}}</div>
+        </div>
+    {{/isContact}}
+
+    {{#isSearch}}
+        <div class="icon search"></div>
+        <div class="contentWrapper">
+            <div class="title">{{text}}</div>
+        </div>
+    {{/isSearch}}
 </div>
 

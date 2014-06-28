@@ -76,7 +76,8 @@ define(function (require) {
                 mail.dataController.getContactsCollection().each(function(model){
                     contacts.push({
                         text: model.get("title"),
-                        value: model.get("address")
+                        value: model.get("address"),
+                        type: AutoComplete.TYPES.CONTACT
                     })
                 });
                 return contacts;

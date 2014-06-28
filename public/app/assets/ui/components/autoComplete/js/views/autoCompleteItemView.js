@@ -23,6 +23,19 @@ define(function (require) {
 
         //-------------------------------------------------------------
 
+        customTemplateHelpers: function () {
+
+            var type = this.model.get("type");
+
+            return{
+                isContact: type === AutoCompleteItemView.TYPES.CONTACT,
+                isSearch: type === AutoCompleteItemView.TYPES.SEARCH,
+                isRecent: type === AutoCompleteItemView.TYPES.RECENT
+            };
+        },
+
+        //-------------------------------------------------------------
+
         _onMouseEnter:function(){
 
             this.vent.trigger("item:over", this);
@@ -41,6 +54,13 @@ define(function (require) {
             this.$el.toggleClass('active', isActive);
         }
      });
+
+
+    AutoCompleteItemView.TYPES = {
+        CONTACT: 1,
+        SEARCH: 2,
+        RECENT: 3
+    }
 
     return AutoCompleteItemView;
 });

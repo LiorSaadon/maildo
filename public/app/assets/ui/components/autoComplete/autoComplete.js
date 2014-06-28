@@ -2,8 +2,10 @@ define(function (require) {
     "use strict";
 
     var Marionette = require("marionette");
+    var FilterCollectionDecorator = require("assets-decorators/FilterCollectionDecorator");
+    var AutoCompleteModel = require("assets-ui-component/autoComplete/js/models/autoCompleteModel");
+    var AutoCompleteItemView = require("assets-ui-component/autoComplete/js/views/AutoCompleteItemView");
     var AutoCompleteCompositeView = require("assets-ui-component/autoComplete/js/views/autoCompleteCompositeView");
-    var FilterCollectionDecorator =  require("assets-decorators/FilterCollectionDecorator");
     var AutoCompleteCollection = require("assets-ui-component/autoComplete/js/collections/autoCompleteCollection");
     var AutoCompleteFilterModel = require("assets-ui-component/autoComplete/js/models/autoCompleteFilterModel");
 
@@ -15,7 +17,7 @@ define(function (require) {
             this.vent = options.vent;
             this.maxItems = options.maxItems || 5;
             this.filterModel = options.filterModel || new AutoCompleteFilterModel();
-            this.collection = new FilterCollectionDecorator(new AutoCompleteCollection(options.items || []));
+            this.collection = new FilterCollectionDecorator(new AutoCompleteCollection(options.items || []), this.filterModel);
 
             this.listenTo(this.vent, 'input:change', this.onInputChange, this);
         },
@@ -24,13 +26,18 @@ define(function (require) {
         // onFilterChange
         //----------------------------------------------------
 
-        onInputChange: function (input) {
+        onInputChange: function (input, options) {
 
-            if(_.isEmpty(input)){
+            options = options || {};
+
+            if (_.isEmpty(input)) {
                 this.collection.filterAll();
-            }else{
+            } else {
                 this.filterModel.setInput(input);
-                this.collection.filterBy(this.filterModel,this.maxItems);
+                this.collection.filterBy({
+                    maxItems: this.maxItems,
+                    mandatoryItems: options.addSearchKey ? [new AutoCompleteModel({text: input, value: input, type: AutoComplete.TYPES.SEARCH})] : []
+                });
             }
         },
 
@@ -49,6 +56,8 @@ define(function (require) {
             this.autoCompleteTableView.render();
         }
     });
+
+    AutoComplete.TYPES = AutoCompleteItemView.TYPES;
 
     return AutoComplete;
 });
