@@ -12,17 +12,43 @@ define(function (require) {
 
         //-----------------------------------------------------------------------
 
-        filterBy: function (model) {
+        predicate: function (model) {
 
-            var res = false, splittedText = model.get("text").split(" ");
+            return this.test(model.get("text")) || this.test(model.get("value"));
+        },
 
-            _.each(splittedText, _.bind(function (item) {
-                res = res || _s.startsWith(item, this.input);
-            }, this));
+        //------------------------------------------------------------------------
 
+        test: function (text) {
+
+            var res = false;
+
+            if (_.isString(text)) {
+
+                text = text.toLowerCase();
+
+                res = _s.startsWith(text, this.input) ||
+                    _s.contains(text, " " + this.input) ||
+                    _s.contains(text, ":" + this.input) ||
+                    _s.contains(text, "." + this.input) ||
+                    _s.contains(text, "@" + this.input);
+            }
             return res;
-        }
+        },
 
+        //------------------------------------------------------------------------
+
+        emphasizeKeys: function (text) {
+
+            if (_.isString(text)) {
+                return text
+                    .replace(new RegExp("^" + this.input), "<b>" + this.input + "</b>")
+                    .replace(new RegExp(":" + this.input, "g"), ":<b>" + this.input + "</b>")
+                    .replace(new RegExp("@" + this.input, "g"), "@<b>" + this.input + "</b>")
+                    //.replace(new RegExp("." + this.input, "g"), ".<b>" + this.input + "</b>")
+            }
+            return text;
+        }
     });
     return AutoCompleteFilterModel;
 });

@@ -22,7 +22,7 @@ define(function (require) {
 
             if (this.filterModel) {
                 items = _.filter(original.models, _.bind(function (model) {
-                    return this.filterModel.filterBy(model);
+                    return this.filterModel.predicate(model);
                 }, this));
             } else {
                 items = original.models;
