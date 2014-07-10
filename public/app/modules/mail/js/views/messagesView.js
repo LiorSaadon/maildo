@@ -9,7 +9,20 @@ define(function (require) {
     app.module('mail', function (mail, app,  Backbone, Marionette, $, _) {
 
         MessagesView = Marionette.ItemView.extend({
-            template:template
+            template:template,
+
+            ui:{
+              "msgTitle":".msgTitle"
+            },
+
+            initialize:function(options){
+                options = options || {};
+                this.msg = options.msg
+            },
+
+            onRender:function(){
+              this.ui.msgTitle.html(this.msg);
+            }
         });
     });
 

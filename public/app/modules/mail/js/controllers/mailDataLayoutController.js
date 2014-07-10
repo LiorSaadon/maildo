@@ -72,7 +72,7 @@ define(function (require) {
 
             showEmptyFolderMessage: function (actionType) {
 
-                var messagesView = new MessagesView({msgType: "emptyFolder", action: actionType});
+                var messagesView = new MessagesView({msg:app.translator.translate("mail.emptyFolder."+actionType)});
                 this.dataLayout.messageBoard.show(messagesView);
             },
 

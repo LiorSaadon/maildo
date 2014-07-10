@@ -23,8 +23,8 @@ define(function (require) {
 
             this.vent = options.vent;
 
-            this.listenTo(this.vent, "item:click", this.selectItem);
-            this.listenTo(this.vent, "item:over", this.onHover);
+            this.listenTo(this.vent, "autocomplete:item:click", this.selectItem);
+            this.listenTo(this.vent, "autocomplete:item:over", this.onHover);
             this.listenTo(this.vent, "key:press", this.onKeyPress);
             this.listenTo(this.vent, "closeAll", this.closeEl);
         },
@@ -35,7 +35,8 @@ define(function (require) {
 
             var view = new ItemView({
                 model: item,
-                vent: this.vent
+                vent: this.vent,
+                filterModel:this.collection.filterModel
             });
             return view;
         },
@@ -62,8 +63,10 @@ define(function (require) {
         //-------------------------------------------------------------
 
         closeEl: function () {
-            this.selectedItem = -1;
-            this.$el.hide();
+            _.defer(_.bind(function(){
+                this.selectedItem = -1;
+                this.$el.hide();
+            }, this));
         },
 
         //-------------------------------------------------------------
@@ -80,11 +83,11 @@ define(function (require) {
             switch (key) {
                 case KeyCode.ARROW_UP:
                     this.selectedItem = Math.max(0, this.selectedItem - 1);
-                    this.setActive(true);
+                    this.setActive();
                     break;
                 case KeyCode.ARROW_DOWN:
                     this.selectedItem = Math.min(this.children.length - 1, this.selectedItem + 1);
-                    this.setActive(true);
+                    this.setActive();
                     break;
                 case KeyCode.ENTER:
                     this.selectItem();
@@ -94,7 +97,7 @@ define(function (require) {
 
         //--------------------------------------------------------------
 
-        setActive: function (report) {
+        setActive: function () {
 
             this.children.each(function (view) {
                 view.setActive(false);
@@ -105,23 +108,17 @@ define(function (require) {
             if(_.isObject(selectedView)){
                 selectedView.setActive(true);
             }
-            if(report){
-               this.vent.trigger("item:active",selectedView.model.get("text"),selectedView.model.get("value"));
-            }
+            this.vent.trigger("autocomplete:item:active",selectedView.model.get("text"),selectedView.model.get("value"));
         },
 
         //-------------------------------------------------------------
 
         selectItem: function(){
 
-            if(this.selectedItem >= 0){
+            var itemModel = this.childArr[this.selectedItem].model;
 
-                var selectedItem = this.selectedItem;
-
-                setTimeout(_.bind(function () {
-                    var itemModel = this.childArr[selectedItem].model;
-                    this.vent.trigger("item:selected",itemModel.get("text"),itemModel.get("value"));
-                }, this), 50);
+            if(_.isObject(itemModel)){
+                this.vent.trigger("autocomplete:item:selected",itemModel.get("text"),itemModel.get("value"));
             }
             this.closeEl();
         },

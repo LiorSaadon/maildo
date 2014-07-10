@@ -3,7 +3,7 @@ define(function () {
 
     var Dictionary = {
 
-        'tasks.kuku' : 'tasks table should be here.....Translator is working',
+        "tasks.search.caption":"Search Tasks"
     };
 
     return Dictionary;

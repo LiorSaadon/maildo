@@ -19,15 +19,18 @@ define(function (require) {
                 autoCompletePlaceholder: ".autoCompletePlaceholder"
             },
 
-            //-----------------------------------------------
+            //---------------------------------------------------------
 
             initialize:function(){
                 this.vent = new Backbone.Wreqr.EventAggregator();
+
+                this.listenTo(this.vent,"search",this.search, this);
+                this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
             },
 
-            //-----------------------------------------------
+            //---------------------------------------------------------
             // onRender
-            //-----------------------------------------------
+            //---------------------------------------------------------
 
             onRender:function(){
 
@@ -35,18 +38,19 @@ define(function (require) {
                 this.renderAutoComponent();
             },
 
-            //-----------------------------------------------
+            //---------------------------------------------------------
 
             renderSearchComponent:function(){
 
                 this.searchComponent = new SearchComponent({
                     el:this.ui.searchPlaceholder,
-                    vent: this.vent
+                    vent: this.vent,
+                    caption: app.translator.translate("mail.search.caption")
                 });
                 this.searchComponent.render();
             },
 
-            //-----------------------------------------------
+            //---------------------------------------------------------
 
             renderAutoComponent:function(){
 
@@ -58,7 +62,7 @@ define(function (require) {
                 this.autoComplete.show();
             },
 
-            //-----------------------------------------------------------------
+            //---------------------------------------------------------
 
             getContacts:function(){
 
@@ -72,6 +76,29 @@ define(function (require) {
                     })
                 });
                 return contacts;
+            },
+
+            //---------------------------------------------------------
+            // search
+            //---------------------------------------------------------
+
+            search:function(key){
+                if(!_.isEmpty(key)){
+                    mail.router.navigate("search/"+key,{trigger: true});
+                }
+            },
+
+            //----------------------------------------------------
+            // onActionChange
+            //----------------------------------------------------
+
+            onActionChange: function () {
+
+                var action = app.context.get("mail.action.type");
+
+                if (action != "search") {
+                    this.searchComponent.clear();
+                }
             }
         });
     });

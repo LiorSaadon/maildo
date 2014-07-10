@@ -97,7 +97,7 @@ define(function (require) {
 
             if (key === KeyCode.ENTER) {
                 this.ui.tagSelector.hide();
-                this.vent.trigger("input:enter", this.ui.tagSelector.text());
+                this.vent.trigger("tag:input:enter", this.ui.tagSelector.text());
             }
         },
 

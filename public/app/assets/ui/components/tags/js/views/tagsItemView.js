@@ -26,7 +26,7 @@ define(function (require) {
         },
 
         _onCloseBtnClick:function(){
-            this.vent.trigger("item:remove", this.model.cid);
+            this.vent.trigger("tag:item:remove", this.model.cid);
         }
      });
 

@@ -60,6 +60,7 @@ define(function (require) {
                     isDraft:  this.action=== "draft",
                     isTrash: this.action === "trash",
                     isSpam: this.action === "spam",
+                    isSearch: this.action === "search",
 
                     body: formatter.formatContent(this.model.get("body")),
                     subject: formatter.formatSubject(this.model.get("subject")),

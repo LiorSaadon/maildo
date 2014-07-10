@@ -13,10 +13,8 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         z-index: 1000;
-        //left: 70px;
-        //right: 6px;
         float: left;
-        padding: 4px;
+        padding: 0;
         margin: 0;
         list-style: none;
         background-color: white;
@@ -43,7 +41,7 @@
           -ms-border-radius: 2px;
           -o-border-radius: 2px;
           border-radius: 2px;
-          padding: 6px 6px;
+          padding: 4px 4px;
           border-top: 1px solid #e5e5e5;
           -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;
@@ -70,7 +68,7 @@
               background: url('app/assets/ui/img/qicons.png')  0 -97px no-repeat;
             }
             &.contact{
-              background: url('app/assets/ui/img/qicons.png') 0 0 no-repeat;
+              background: url('app/assets/ui/img/qicons.png') 0 2px no-repeat;
             }
             &.recent{
               background: url('app/assets/ui/img/qicons.png') 0 -130px no-repeat;

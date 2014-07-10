@@ -17,32 +17,41 @@ define(function (require) {
 
         template: template,
 
-        ui:{
-            "searchInput":".search-input"
+        ui: {
+            "searchInput": ".search-input"
         },
 
-        events:{
-            "click":"onClick",
+        events: {
+            "click .btnSearch": "search",
             "keyup .search-input": "onButtonKeyUp",
             "input .search-input": "onInputChange",
             "clickoutside": "outsideClicked"
         },
 
         //----------------------------------------------------------
-        // initialize
-        //----------------------------------------------------------
 
         initialize: function (options) {
 
             this.el = options.el;
             this.vent = options.vent;
+            this.caption = options.caption;
 
-            this.listenTo(this.vent,"item:active", this.onItemOver, this);
+            this.listenTo(this.vent, "autocomplete:item:selected", this.search, this);
+            this.listenTo(this.vent, "autocomplete:item:active", this.onItemActive, this);
+        },
+
+        //-----------------------------------------------------------
+
+        customTemplateHelpers : function () {
+
+            return{
+                caption: this.caption
+            };
         },
 
         //----------------------------------------------------------
 
-        onItemOver:function(text, value){
+        onItemActive: function (text, value) {
             this.ui.searchInput.val(text);
         },
 
@@ -52,21 +61,30 @@ define(function (require) {
 
             var key = event.keyCode;
 
-            if (key === KeyCode.ARROW_DOWN || key === KeyCode.ARROW_UP) {
+            if (key === KeyCode.ARROW_DOWN || key === KeyCode.ARROW_UP || key === KeyCode.ENTER) {
                 event.preventDefault();
                 this.vent.trigger("key:press", key);
-            }
-
-            if (key === KeyCode.ENTER) {
-                this.ui.tagSelector.hide();
-                this.vent.trigger("input:enter", "TT");
             }
         },
 
         //-----------------------------------------------------------
 
-        onInputChange:function(){
-            this.vent.trigger("input:change", this.ui.searchInput.val(), {"addSearchKey":true});
+        onInputChange: function () {
+            this.vent.trigger("input:change", this.ui.searchInput.val(), {"addSearchKey": true});
+        },
+
+        //-----------------------------------------------------------
+
+        search: function () {
+            this.vent.trigger("closeAll");
+            this.vent.trigger("search", this.ui.searchInput.val());
+        },
+
+        //------------------------------------------------------------
+
+        clear: function () {
+            debugger;
+            this.ui.searchInput.val("");
         },
 
         //------------------------------------------------------------

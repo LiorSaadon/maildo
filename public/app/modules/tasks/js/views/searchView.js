@@ -3,6 +3,8 @@ define(function (require) {
 
     var app = require("mbApp");
     var template = require("tpl!tasks-templates/searchView.tmpl");
+    var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
+    var SearchComponent = require("assets-ui-component/search/search");
 
     var SearchView = {};
 
@@ -13,35 +15,82 @@ define(function (require) {
             className:"searchPanel",
 
             ui: {
-                btnSearch: ".btnSearch",
-                inputSearch: ".inputSearch"
+                searchPlaceholder: ".search-placeholder",
+                autoCompletePlaceholder: ".autoCompletePlaceholder"
             },
 
-            events: {
-                "click .btnSearch": "onSearchClick"
-            },
-
-            //-----------------------------------------------
+            //---------------------------------------------------------
 
             initialize:function(){
-                this.listenTo(app.context, 'change:tasks.action', this.onActionChange, this);
+                this.vent = new Backbone.Wreqr.EventAggregator();
+
+                this.listenTo(this.vent,"search",this.search, this);
+                this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
             },
 
-            //-----------------------------------------------
+            //---------------------------------------------------------
+            // onRender
+            //---------------------------------------------------------
 
-            onActionChange:function(){
+            onRender:function(){
 
-                var action = app.context.get("tasks.action.type");
+                this.renderSearchComponent();
+                this.renderAutoComponent();
+            },
 
-                if(action !== "search"){
-                   this.ui.inputSearch.val('');
+            //---------------------------------------------------------
+
+            renderSearchComponent:function(){
+
+                this.searchComponent = new SearchComponent({
+                    el:this.ui.searchPlaceholder,
+                    vent: this.vent,
+                    caption: app.translator.translate("tasks.search.caption")
+                });
+                this.searchComponent.render();
+            },
+
+            //---------------------------------------------------------
+
+            renderAutoComponent:function(){
+
+                this.autoComplete = new AutoComplete({
+                    items: this.getContacts(),
+                    el:this.ui.autoCompletePlaceholder,
+                    vent: this.vent
+                });
+                this.autoComplete.show();
+            },
+
+            //---------------------------------------------------------
+
+            getContacts:function(){
+
+                return [];
+
+            },
+
+            //---------------------------------------------------------
+            // search
+            //---------------------------------------------------------
+
+            search:function(key){
+                if(!_.isEmpty(key)){
+                    mail.router.navigate("search/"+key,{trigger: true});
                 }
             },
 
-            //-----------------------------------------------
+            //----------------------------------------------------
+            // onActionChange
+            //----------------------------------------------------
 
-            onSearchClick:function(){
+            onActionChange: function () {
 
+                var action = app.context.get("mail.action.type");
+
+                if (action != "search") {
+                    this.searchComponent.clear();
+                }
             }
         });
     });

@@ -87,7 +87,7 @@ define(function (require) {
 
             addDefaultAddress: function(title, address){
 
-                this.vent.trigger("item:selected",title,address);
+               //this.vent.trigger("autocomplete:item:selected",title,address);
             },
 
             //-----------------------------------------------------------------

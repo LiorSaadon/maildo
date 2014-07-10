@@ -15,9 +15,9 @@ define(function (require) {
             this.vent = options.vent;
             this.el = options.el;
 
-            this.listenTo(this.vent,"input:enter", this.onEnter);
-            this.listenTo(this.vent,"item:remove", this.onRemoveItem);
-            this.listenTo(this.vent,"item:selected",this.onItemSelected);
+            this.listenTo(this.vent,"tag:input:enter", this.onEnter);
+            this.listenTo(this.vent,"tag:item:remove", this.onRemoveItem);
+            this.listenTo(this.vent,"autocomplete:item:selected",this.onItemSelected);
         },
 
         //----------------------------------------------------

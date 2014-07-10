@@ -38,16 +38,27 @@ define(function (require) {
 
         //------------------------------------------------------------------------
 
-        emphasizeKeys: function (text) {
+        highlightKey: function (key) {
 
-            if (_.isString(text)) {
-                return text
-                    .replace(new RegExp("^" + this.input), "<b>" + this.input + "</b>")
-                    .replace(new RegExp(":" + this.input, "g"), ":<b>" + this.input + "</b>")
-                    .replace(new RegExp("@" + this.input, "g"), "@<b>" + this.input + "</b>")
-                    //.replace(new RegExp("." + this.input, "g"), ".<b>" + this.input + "</b>")
+            if (_.isString(key)) {
+                return key
+                    .replace(new RegExp("^" + this.input, 'gi'), function (str) {
+                        return '<b>' + str + '</b>'
+                    })
+                    .replace(new RegExp(" " + this.input, 'gi'), function (str) {
+                        return ' <b>' + _s.strRight(str, ' ') + '</b>'
+                    })
+                    .replace(new RegExp(":" + this.input, "gi"), function (str) {
+                        return ':<b>' + _s.strRight(str, ':') + '</b>'
+                    })
+                    .replace(new RegExp("@" + this.input, "gi"), function (str) {
+                        return '@<b>' + _s.strRight(str, '@') + '</b>'
+                    })
+                    .replace(new RegExp("\\." + this.input, "gi"), function (str) {
+                        return '.<b>' + _s.strRight(str, '.') + '</b>'
+                    })
             }
-            return text;
+            return key;
         }
     });
     return AutoCompleteFilterModel;

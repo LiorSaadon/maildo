@@ -17,6 +17,9 @@
     {{#isSpam}}
         <div class="spam">{{from}}</div>
     {{/isSpam}}
+    {{#isSearch}}
+        <div class="inbox">{{from}}<div>
+    {{/isSearch}}
 </td>
 <td><div class="content"><span class="subject">{{subject}}</span><span class="separator">-</span><span class="body">{{body}}</span></div></td>
 <td><div class="sentTime">{{sentTime}}</div></td>

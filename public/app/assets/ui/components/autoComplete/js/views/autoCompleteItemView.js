@@ -9,6 +9,11 @@ define(function (require) {
         tagName:'li',
         className:'li_row',
 
+        ui:{
+           "title": ".title",
+           "text": ".text"
+        },
+
         events:{
             "mouseenter":"_onMouseEnter",
             "click":"_onClick"
@@ -19,6 +24,7 @@ define(function (require) {
         initialize: function (options) {
 
             this.vent = options.vent;
+            this.filterModel = options.filterModel;
         },
 
         //-------------------------------------------------------------
@@ -29,23 +35,30 @@ define(function (require) {
 
             return{
                 isContact: type === AutoCompleteItemView.TYPES.CONTACT,
-                isSearch: type === AutoCompleteItemView.TYPES.SEARCH,
-                isRecent: type === AutoCompleteItemView.TYPES.RECENT
+                isSearch: type === AutoCompleteItemView.TYPES.SEARCH
             };
+        },
+
+        //-------------------------------------------------------------
+
+        onRender:function(){
+
+            this.ui.title.html(this.filterModel.highlightKey(this.model.get("text")));
+            this.ui.text.html(this.filterModel.highlightKey(this.model.get("value")));
         },
 
         //-------------------------------------------------------------
 
         _onMouseEnter:function(){
 
-            this.vent.trigger("item:over", this);
+            this.vent.trigger("autocomplete:item:over", this);
         },
 
         //-------------------------------------------------------------
 
         _onClick:function(){
 
-            this.vent.trigger("item:click");
+            this.vent.trigger("autocomplete:item:click");
         },
 
         //-------------------------------------------------------------
