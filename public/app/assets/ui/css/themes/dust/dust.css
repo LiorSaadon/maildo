@@ -822,15 +822,15 @@ body {
   margin: 0px;
   padding-top: 3px;
 }
+.mb .navigator ul li.selected a {
+  color: #EDC967;
+}
 .mb .navigator ul li a {
   font-size: 13px;
   display: block;
   padding: 5px 0px 2px 4px;
   text-decoration: none;
   color: white;
-}
-.mb .navigator ul li a.selected {
-  color: #EDC967;
 }
 .mb .navigator ul li:hover, .mb .navigator ul li:focus {
   color: white;
@@ -1084,6 +1084,11 @@ body {
   bottom: 20px;
   left: 200px;
 }
+.mb .tasks-region .message {
+  font-size: 12px;
+  padding: 15px 16px;
+  line-height: 22px;
+}
 .mb .task-info-region {
   background-color: #eff3f5;
   position: absolute;
@@ -1093,9 +1098,29 @@ body {
   left: 450px;
 }
 
-.mb .tasks-categories {
+.mb .category-list {
   padding-top: 0px;
   padding-left: 27px;
+}
+.mb .tasks-list ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+}
+.mb .tasks-list ul li {
+  border-bottom: 1px solid #d4d4d4;
+  padding: 10px 0 5px 20px;
+  cursor: pointer;
+}
+.mb .tasks-list ul li .title {
+  padding-bottom: 6px;
+}
+.mb .tasks-list ul li .content {
+  padding-bottom: 2px;
+}
+.mb .tasks-list ul li:hover {
+  background-color: #f4f4f4;
 }
 
 /*------------ app ---------------*/

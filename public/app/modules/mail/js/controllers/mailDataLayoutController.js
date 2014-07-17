@@ -53,7 +53,7 @@ define(function (require) {
                     success: _.bind(function () {
                         if (this.mails.size() > 0) {
                             this.showCollection(action.type);
-                        } else {
+                        }else {
                             this.showEmptyFolderMessage(action.type);
                         }
                     }, this)
@@ -63,7 +63,6 @@ define(function (require) {
             //----------------------------------------------------
 
             showCollection: function (actionType) {
-
                 var tableView = new MailTableView({collection: this.mails, action: actionType});
                 this.dataLayout.itemsRegion.show(tableView);
             },
@@ -71,11 +70,9 @@ define(function (require) {
             //----------------------------------------------------
 
             showEmptyFolderMessage: function (actionType) {
-
                 var messagesView = new MessagesView({msg:app.translator.translate("mail.emptyFolder."+actionType)});
                 this.dataLayout.messageBoard.show(messagesView);
             },
-
 
             //----------------------------------------------------
             // showMail

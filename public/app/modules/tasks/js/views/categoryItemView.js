@@ -12,10 +12,12 @@ define(function (require) {
             template: template,
             tagName: 'li',
 
-            initialize:function(){
+            triggers: {
+                "click": "click"
             },
 
-            onRender:function(){
+            markAsClicked:function(selected){
+                this.$el.toggleClass('selected', selected);
             }
         });
     });

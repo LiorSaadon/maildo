@@ -41,24 +41,5 @@
         "category":1,
         "title":"unfiled",
         "content":"bla bla"
-    },
-
-    {
-        "id":8,
-        "category":2,
-        "title":"note7",
-        "content":"bla bla"
-    },
-    {
-        "id":9,
-        "category":2,
-        "title":"note8",
-        "content":"bla bla"
-    },
-    {
-        "id":10,
-        "category":2,
-        "title":"note9",
-        "content":"bla bla"
     }
 ]

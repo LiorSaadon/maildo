@@ -3,6 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var template = require("tpl!mail-templates/mailTable.tmpl");
+    var EmptyView = require("mail-views/messagesView");
     var MailableRowView = require("mail-views/mailTableRowView");
 
     var MailTableView = {};
@@ -12,8 +13,8 @@ define(function (require) {
         MailTableView = Marionette.CompositeView.extend({
             name:'mailTable',
             template : template,
-            itemView : MailableRowView,
-            itemViewContainer : "tbody",
+            childView : MailableRowView,
+            childViewContainer : "tbody",
 
             initialize:function(options){
 
@@ -25,26 +26,10 @@ define(function (require) {
             },
 
             //-------------------------------------------------------
-            // appendHtml
+            // buildChildView
             //-------------------------------------------------------
 
-            appendHtml: function(collectionView, itemView, index){
-
-                var childrenContainer = this.$(this.itemViewContainer);
-                var children = childrenContainer.children();
-
-                if (children.size() <= index) {
-                    childrenContainer.append(itemView.el);
-                } else {
-                    childrenContainer.children().eq(index).before(itemView.el);
-                }
-            },
-
-            //-------------------------------------------------------
-            // buildItemView
-            //-------------------------------------------------------
-
-            buildItemView : function (item, ItemView) {
+            buildChildView : function (item, ItemView) {
 
                 var view = new ItemView({
                     action: this.action,

@@ -88,8 +88,8 @@ define(function (require) {
                 var action = app.context.get("mail.action");
                 this._prevAction = $.extend(true, {},action);
 
-                app.context.set("mail.action",null, {silent:true});
                 app.context.set("module",eModules.MAIL);
+                app.context.set("mail.action",null, {silent:true});
             },
 
             //-----------------------------------------------------------------

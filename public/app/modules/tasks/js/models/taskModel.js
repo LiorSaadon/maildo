@@ -15,9 +15,7 @@ define(function (require) {
                 title:""
             },
 
-            initialize: function (attrs, options) {
-                this.localStorage = new TasksStorage();
-            }
+            localStorage: TasksStorage
         });
     });
     return TaskModel;

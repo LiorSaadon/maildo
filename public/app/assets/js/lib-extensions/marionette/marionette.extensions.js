@@ -10,17 +10,17 @@ define(function (require) {
     // appendHtml - Overriding default Marionette, otherwise it'll append the itemView at the end no matter the index is
     //----------------------------------------------------
 
-    Marionette.CompositeView.prototype.appendHtml = function (collectionView, itemView, index) {
-
-        var childrenContainer = this.$(this.itemViewContainer);
-        var children = childrenContainer.children();
-
-        if (children.size() <= index) {
-            childrenContainer.append(itemView.el);
-        } else {
-            childrenContainer.children().eq(index).before(itemView.el);
-        }
-    };
+//    Marionette.CompositeView.prototype.appendHtml = function (collectionView, itemView, index) {
+//
+//        var childrenContainer = this.$(this.itemViewContainer);
+//        var children = childrenContainer.children();
+//
+//        if (children.size() <= index) {
+//            childrenContainer.append(itemView.el);
+//        } else {
+//            childrenContainer.children().eq(index).before(itemView.el);
+//        }
+//    };
 
     //----------------------------------------------------
     // templateHelpers

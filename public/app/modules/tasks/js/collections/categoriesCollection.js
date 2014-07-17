@@ -3,21 +3,21 @@ define(function (require) {
 
     var app = require("mbApp");
     var CategoryModel = require("tasks-models/categoryModel");
-    var Storage = require("tasks-storage/tasksCategoriesStorage");
     var BaseCollection = require("assets-collections/BaseCollection");
+    var CategoriesStorage = require("tasks-storage/categoriesStorage");
 
-    var MailCollection = {};
+    var CategoryCollection = {};
 
     app.module('tasks', function (tasks, app, Backbone, Marionette, $, _) {
 
-        MailCollection = BaseCollection.extend({
+        CategoryCollection = BaseCollection.extend({
 
             isFetched: false,
 
             model: CategoryModel,
 
-            localStorage: new Storage()
+            localStorage: new CategoriesStorage()
         });
     });
-    return MailCollection;
+    return CategoryCollection;
 });

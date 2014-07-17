@@ -6,7 +6,7 @@ define(function (require) {
     var frameTemplate = require("tpl!frame-templates/frameLayout.tmpl");
     var TechBarView = require('frame-views/techBarView');
 
-    var FrameLayout = Marionette.Layout.extend({
+    var FrameLayout = Marionette.LayoutView.extend({
         template:frameTemplate,
 
         ui:{
@@ -18,10 +18,6 @@ define(function (require) {
             searchRegion:".search-region",
             actionsRegion:".actions-region",
             mainRegion:".main-region"
-        },
-
-        initialize:function(){
-            this.listenTo(app.context, 'change:module', this.onModuleChange, this);
         },
 
         onRender:function(){

@@ -18,9 +18,9 @@ define(function (require) {
 
         fetchBy: function (options) {
 
-            var that = this;
+            options = options || {};
 
-            this.setFilters(options.filters);
+            this.setFilters(options);
 
             this.fetch({
 
@@ -28,12 +28,12 @@ define(function (require) {
 
                 data: {filters: this.filters},
 
-                success: function(collection){
-                    that.isFetched = true;
+                success: _.bind(function(collection){
+                    this.isFetched = true;
                     if (_.isFunction(options.success)) {
                         options.success(collection);
                     }
-                },
+                },this),
 
                 error: function(collection){
                     if (_.isFunction(options.error)) {
@@ -45,12 +45,9 @@ define(function (require) {
 
         //------------------------------------------------
 
-        setFilters:function(filters){
+        setFilters:function(options){
 
-            filters = filters || {};
-
-            this.filters.query = filters.query || 'label:inbox';
-            this.filters.page = filters.page || this.metadata.currPage;
+            this.filters = options.filters ? _.clone(options.filters) : {};
         },
 
         //-------------------------------------------------

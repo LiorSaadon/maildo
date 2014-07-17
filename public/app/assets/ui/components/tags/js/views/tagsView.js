@@ -17,8 +17,8 @@ define(function (require) {
     var AutoCompleteCompositeView = Marionette.CompositeView.extend({
 
         template: template,
-        itemView: TagsItemView,
-        itemViewContainer: ".selectedTags",
+        childView: TagsItemView,
+        childViewContainer: ".selectedTags",
 
         ui:{
             container:".tags-container",
@@ -40,11 +40,12 @@ define(function (require) {
 
             this.el = options.el;
             this.vent = options.vent;
+            this.listenTo(this.vent, "tag:add", this.afterItemAdded);
         },
 
         //--------------------------------------------------------------
 
-        buildItemView: function (item, ItemView) {
+        buildChildView: function (item, ItemView) {
 
             var view = new ItemView({
                 model: item,
@@ -55,7 +56,7 @@ define(function (require) {
 
         //------------------------------------------------------------
 
-        onAfterItemAdded: function () {
+        afterItemAdded: function () {
 
             this.ui.tagSelector.text("");
             if(this.inFocus){

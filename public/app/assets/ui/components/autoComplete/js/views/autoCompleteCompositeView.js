@@ -14,8 +14,8 @@ define(function (require) {
     var AutoCompleteCompositeView = Marionette.CompositeView.extend({
 
         template: template,
-        itemView: AutoCompleteItemView,
-        itemViewContainer: ".menu",
+        childView: AutoCompleteItemView,
+        childViewContainer: ".menu",
 
         //-------------------------------------------------------------
 
@@ -23,6 +23,7 @@ define(function (require) {
 
             this.vent = options.vent;
 
+            this.listenTo(this.collection, "empty:collection", this.closeEl);
             this.listenTo(this.vent, "autocomplete:item:click", this.selectItem);
             this.listenTo(this.vent, "autocomplete:item:over", this.onHover);
             this.listenTo(this.vent, "key:press", this.onKeyPress);
@@ -31,7 +32,7 @@ define(function (require) {
 
         //--------------------------------------------------------------
 
-        buildItemView: function (item, ItemView) {
+        buildChildView: function (item, ItemView) {
 
             var view = new ItemView({
                 model: item,
@@ -43,7 +44,13 @@ define(function (require) {
 
         //------------------------------------------------------------
 
-        onCompositeCollectionRendered: function () {
+        onRender: function () {
+
+            this.closeEl();
+        },
+        //------------------------------------------------------------
+
+        onRenderCollection: function () {
 
             this.childArr = [];
 
@@ -51,13 +58,8 @@ define(function (require) {
                 this.childArr.push(view);
             }, this));
 
-            if (this.collection.isEmpty()) {
-                this.selectedItem = -1;
-                this.closeEl();
-            } else {
-                this.selectedItem = 0;
-                this.showEl();
-            }
+            this.selectedItem = 0;
+            this.showEl();
         },
 
         //-------------------------------------------------------------
@@ -107,18 +109,18 @@ define(function (require) {
 
             if(_.isObject(selectedView)){
                 selectedView.setActive(true);
+                this.vent.trigger("autocomplete:item:active",selectedView.model.get("text"),selectedView.model.get("value"));
             }
-            this.vent.trigger("autocomplete:item:active",selectedView.model.get("text"),selectedView.model.get("value"));
         },
 
         //-------------------------------------------------------------
 
         selectItem: function(){
 
-            var itemModel = this.childArr[this.selectedItem].model;
+            var selectedView = this.childArr[this.selectedItem];
 
-            if(_.isObject(itemModel)){
-                this.vent.trigger("autocomplete:item:selected",itemModel.get("text"),itemModel.get("value"));
+            if(_.isObject(selectedView)){
+                this.vent.trigger("autocomplete:item:selected",selectedView.model.get("text"),selectedView.model.get("value"));
             }
             this.closeEl();
         },

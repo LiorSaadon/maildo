@@ -5,7 +5,6 @@ define(function (require) {
     var MailCollection = require("mail-collections/mailCollection");
     var ContactsCollection = require("mail-collections/contactsCollection");
     var SelectableDecortator = require("assets-decorators/selectableCollectionDecorator");
-    var PreliminaryDataController = require("mail-controllers/preliminaryDataController");
 
     var DataController = {};
 
@@ -14,9 +13,6 @@ define(function (require) {
         DataController = Marionette.Controller.extend({
 
             initialize: function () {
-
-                this.preliminaryDataController = new PreliminaryDataController();
-                this.preliminaryDataController.setData();
 
                 this.mails = new SelectableDecortator(new MailCollection());
 

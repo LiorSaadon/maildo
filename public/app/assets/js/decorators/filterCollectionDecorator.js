@@ -35,6 +35,10 @@ define(function (require) {
             if (_.isFinite(options.maxItems)) {
                 items = items.slice(0, options.maxItems);
             }
+
+            if (_.isEmpty(items)) {
+                filterCollection.trigger("empty:collection");
+            }
             filterCollection.reset(items);
         };
 
@@ -45,6 +49,7 @@ define(function (require) {
 
         filterCollection.filterAll = function () {
 
+            filterCollection.trigger("empty:collection");
             filterCollection.reset([]);
         };
 

@@ -1,7 +1,32 @@
-.mb{
+.mb {
 
-  .tasks-categories{
-     padding-top:0px;
-     padding-left:27px;
+  .category-list {
+    padding-top: 0px;
+    padding-left: 27px;
+  }
+
+  .tasks-list {
+    ul {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+      border: none;
+
+      li {
+        border-bottom: 1px solid $color15;
+        padding: 10px 0 5px 20px;
+        cursor: pointer;
+
+        .title {
+          padding-bottom: 6px;
+        }
+        .content {
+          padding-bottom: 2px;
+        }
+        &:hover {
+          background-color: $color9;
+        }
+      }
+    }
   }
 }

@@ -89,7 +89,9 @@ define(function (require) {
                 var action = app.context.get("mail.action.type");
 
                 if (action != "search") {
-                    this.searchComponent.clear();
+                    if(this.searchComponent){
+                        this.searchComponent.clear();
+                    }
                 }
             }
         });

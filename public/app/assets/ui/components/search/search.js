@@ -83,7 +83,6 @@ define(function (require) {
         //------------------------------------------------------------
 
         clear: function () {
-            debugger;
             this.ui.searchInput.val("");
         },
 

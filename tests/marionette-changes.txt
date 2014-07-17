@@ -1,0 +1,11 @@
+2.0.2 (17-7-14)
+-------------------
+
+1. itemView --> childView
+2.. itemViewContainer --> childViewContainer
+3. buildItemView --> buildChildView
+4. itemview:click --> childview:click
+5. Layout --> LayoutView
+6. app.on("initialize:before" --> app.on("before:start"
+7. onRenderCollection --> onCompositeCollectionRendered
+

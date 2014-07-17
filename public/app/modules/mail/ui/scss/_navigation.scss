@@ -19,6 +19,12 @@
     min-height:30px;
     margin: 0px;
     padding-top: 3px;
+
+    &.selected {
+      a{
+        color: #EDC967;
+      }
+    }
   }
 
   .navigator ul li a {
@@ -29,9 +35,7 @@
     color: $navItem-color;
   }
 
-  .navigator ul li a.selected {
-    color: #EDC967;
-  }
+
 
   .navigator ul li:hover, .navigator ul li:focus {
     color: $navItem-color;

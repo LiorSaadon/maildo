@@ -5,6 +5,8 @@ define(function (require) {
 
     app.module('mail', function (mail, App,  Backbone, Marionette, $, _) {
 
+        require("mail-controllers/mailPreliminaryDataController");
+
         var LayoutController = require("mail-controllers/mailLayoutController");
         var DataController = require("mail-controllers/mailDataController");
         var ActionsController = require("mail-controllers/mailActionsController");
@@ -18,12 +20,11 @@ define(function (require) {
             this.actionsController = new ActionsController();
             this.composeActionsController = new ComposeActionsController();
             this.layoutController = new LayoutController(options);
-            this.routerController = new RouterController();
-            this.router = new Router({ controller: this.routerController });
+            this.router = new Router({ controller: new RouterController() });
         });
 
-        this.getLayout =function(){
-            return this.layoutController.getLayout();
+        this.setLayout =function(){
+            return this.layoutController.setViews();
         };
     });
 

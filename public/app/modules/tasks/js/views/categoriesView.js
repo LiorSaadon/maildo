@@ -12,13 +12,41 @@ define(function (require) {
         CategoriesView = Marionette.CompositeView.extend({
             name:'tasks-categories',
             template : template,
-            itemView : CategoryItemView,
-            itemViewContainer : "ul",
+            childView : CategoryItemView,
+            childViewContainer : "ul",
 
-            initialize:function(){
+            initialize:function(options){
+
+                options = options || {};
+                this.selectedId = options.selectedId;
+                this.listenTo(this, "childview:click", this._handleChildClick);
             },
 
-            onRender:function(){
+            //------------------------------------------------------------
+
+            onRenderCollection: function () {
+
+                if(!_.isUndefined(this.selectedId)){
+                    var itemView = this.children.findByModelCid(this.selectedId);
+
+                    if(_.isObject(itemView)){
+                        this._handleChildClick(itemView);
+                    }
+                }
+            },
+
+            //------------------------------------------------------------
+
+            _handleChildClick:function(itemView){
+
+                this.children.each(function(_itemView){
+                    _itemView.markAsClicked(false);
+                });
+
+                if(itemView){
+                   itemView.markAsClicked(true);
+                   tasks.vent.trigger("category:item:click", itemView.model.id);
+                }
             }
         });
     });

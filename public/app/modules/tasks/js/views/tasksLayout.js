@@ -8,7 +8,7 @@ define(function (require) {
 
     app.module('tasks', function (tasks, app, Backbone, Marionette, $, _) {
 
-        TasksLayout = Marionette.Layout.extend({
+        TasksLayout = Marionette.LayoutView.extend({
             template:layoutTemplate,
             regions:{
                 categoriesRegion:".tasks-categories-region",

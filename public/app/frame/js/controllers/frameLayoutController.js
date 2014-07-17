@@ -3,10 +3,10 @@ define(function (require) {
 
     var app = require('mbApp');
     var _ = require('underscore');
-    var Backbone = require('backbone');
     var Marionette = require('marionette');
     var FrameLayout = require('frame-views/frameLayout');
     var LayoutHelpers = require("assets-resolvers-ui/dropdownDisplayer");
+    var eModules = require('json!assets-data/eModules.json');
 
     var LayoutController = Marionette.Controller.extend({
 
@@ -19,6 +19,7 @@ define(function (require) {
         initialize: function (options) {
 
             this.frameLayout = new FrameLayout();
+            this.listenTo(app.context, 'change:module', this.changeSublayout, this);
         },
 
         //---------------------------------------------------
@@ -27,14 +28,18 @@ define(function (require) {
 
         setLayout: function (mainRegion) {
 
-            this.listenTo(this.frameLayout, "render", this.onLayoutRender);
             mainRegion.show(this.frameLayout);
         },
 
-        //---------------------------------------------------
+        //--------------------------------------------------
 
-        onLayoutRender: function () {
+        changeSublayout:function(){
 
+           var currentModule = app.context.get("module");
+
+           if(_.result(app.submodules[currentModule], "setLayout")){
+               this.frameLayout.onModuleChange();
+           }
         },
 
         //----------------------------------------------------

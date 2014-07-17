@@ -8,7 +8,7 @@ define(function (require) {
 
     app.module('mail', function (mail, app,  Backbone, Marionette, $, _) {
 
-        NavView = Marionette.CompositeView.extend({
+        NavView = Marionette.ItemView.extend({
             template:template,
 
             //-----------------------------------------------
@@ -22,7 +22,7 @@ define(function (require) {
 
             onActionChange:function(){
 
-                this.$el.find('a').removeClass('selected');
+                this.$el.find('li').removeClass('selected');
                 var action = app.context.get("mail.action.type");
                 this.$el.find('.nav-'+action).addClass('selected');
             }

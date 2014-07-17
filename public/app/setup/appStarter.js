@@ -16,7 +16,7 @@ define(function (require) {
     // init
     //------------------------------------------
 
-    app.on("initialize:before", function () {
+    app.on("before:start", function () {
 
         app.vent = new Backbone.Wreqr.EventAggregator();
 

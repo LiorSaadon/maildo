@@ -8,7 +8,7 @@ define(function (require) {
 
     app.module('mail', function (mail, app,  Backbone, Marionette, $, _) {
 
-       MailLayout = Marionette.Layout.extend({
+       MailLayout = Marionette.LayoutView.extend({
             template:layoutTemplate,
             regions:{
                 navRegion:".mail-nav-region",

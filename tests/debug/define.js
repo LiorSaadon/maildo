@@ -1,8 +1,10 @@
 listenTo = {};
+trigger = {};
 listenToOnce = {};
 mail = {};
 mail.dataController = {};
 mail.newMailActionsController = {};
+mail.router={};
 customTemplateHelpers = {};
 resource = {};
 model = {};

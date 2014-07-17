@@ -30,7 +30,7 @@ define(function (require) {
 
             before: function () {
                 this.options.controller.beforeRoute();
-            },
+            }
         });
     });
 

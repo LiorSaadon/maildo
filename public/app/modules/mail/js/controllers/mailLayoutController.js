@@ -10,7 +10,6 @@ define(function (require) {
     var ComposeView = require("mail-views/composeView/composeView");
     var SettingsView = require("mail-views/settingsView");
     var DataLayoutController = require("mail-controllers/mailDataLayoutController");
-    var eModules = require('json!assets-data/eModules.json');
 
     var MainLayoutController = {};
 
@@ -21,8 +20,6 @@ define(function (require) {
             initialize: function () {
 
                 this.dataLayoutController = new DataLayoutController();
-
-                this.listenTo(app.context, 'change:module', this.setViews, this);
                 this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
             },
 
@@ -32,18 +29,17 @@ define(function (require) {
 
             setViews: function () {
 
-               if(app.context.get("module") === eModules.MAIL){
+                this.searchView = new SearchView();
+                this.mainLayout = new MainLayout();
+                this.actionView = new ActionView();
 
-                    this.searchView = new SearchView();
-                    this.mainLayout = new MainLayout();
-                    this.actionView = new ActionView();
+                this.listenTo(this.mainLayout, "render", this.onMainLayoutRender, this);
 
-                    this.listenTo(this.mainLayout, "render", this.onMainLayoutRender, this);
+                app.frame.setRegion("search", this.searchView);
+                app.frame.setRegion("actions", this.actionView);
+                app.frame.setRegion("main", this.mainLayout);
 
-                    app.frame.setRegion("search", this.searchView);
-                    app.frame.setRegion("actions", this.actionView);
-                    app.frame.setRegion("main", this.mainLayout);
-                }
+                return true;
             },
 
             //----------------------------------------------------

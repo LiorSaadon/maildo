@@ -18,7 +18,6 @@
 
       & span {
         margin-top: -2px;
-        //@include set-icon(22px, 22px, 'app/assets/ui/img/search.png');
       }
       &:hover{
         border-color: $searchBtn-border-hover-color;
