@@ -21,7 +21,7 @@ define(function (require) {
                 options = options || {};
 
                 this.action = options.action || "inbox";
-                this.listenTo(mail.vent, "mailTable:ItemClicked", this.onItemClicked, this);
+                this.listenTo(this, "childview:click", this._handleChildClick);
                 this.listenTo(this.collection, "change:selection", this.onSelectionChange, this);
             },
 
@@ -57,7 +57,7 @@ define(function (require) {
 
             //--------------------------------------------------
 
-            onItemClicked:function(_itemView){
+            _handleChildClick:function(_itemView){
 
                 this.children.each(function(itemView){
                     itemView.markAsClicked(false);
@@ -65,6 +65,7 @@ define(function (require) {
 
                 if(_itemView){
                    _itemView.markAsClicked(true);
+                   mail.vent.trigger("mailTable:ItemClicked", _itemView.model);
                 }
             }
         });

@@ -78,11 +78,9 @@ define(function (require) {
             // showMail
             //----------------------------------------------------
 
-            showMail: function (mailview) {
+            showMail: function (mailModel) {
 
-                if(_.isObject(mailview)){
-
-                    var mailModel = mailview.model;
+                if(_.isObject(mailModel)){
 
                     mail.vent.trigger("actions", {actionType: "select", selectBy: "none"});
                     mail.vent.trigger("actions", {actionType: 'markAs', label: 'read', items:[mailModel.id]});

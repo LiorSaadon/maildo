@@ -25,20 +25,22 @@ define(function (require) {
                 sentTime: ".sentTime"
             },
 
+            triggers: {
+                "click .star": "click",
+                "click .importance": "click",
+                "click .address": "click",
+                "click .content": "click",
+                "click .sentTime": "click"
+            },
+
             events: {
-                "click .selector": "onRowSelect",
-                "click .star": "onRowClick",
-                "click .importance": "onRowClick",
-                "click .address": "onRowClick",
-                "click .content": "onRowClick",
-                "click .sentTime": "onRowClick"
+                "click .selector": "onRowSelect"
             },
 
             modelEvents: {
                 "change:subject" : "_onSubjectChanged",
                 "change:body" : "_onBodyChanged"
             },
-
 
             initialize: function (options) {
 
@@ -133,7 +135,7 @@ define(function (require) {
 
             onRowClick: function () {
 
-                mail.vent.trigger("mailTable:ItemClicked", this);
+                this.trigger("childview:click", this);
             },
 
             //-------------------------------------------------------------

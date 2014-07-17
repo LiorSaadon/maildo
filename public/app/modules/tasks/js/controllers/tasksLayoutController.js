@@ -17,6 +17,7 @@ define(function (require) {
 
             initialize: function () {
 
+                //this.listenTo(tasks.vent, "task:click", this.showTask);
                 this.listenTo(tasks.vent, "category:item:click", this.showCategoryTasks);
             },
 
@@ -67,6 +68,12 @@ define(function (require) {
                         this.mainLayout.tasksRegion.show(tasksCollection);
                     }, this)
                 });
+            },
+
+            //----------------------------------------------------
+
+            showTask:function(){
+
             }
         });
     });
