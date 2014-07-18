@@ -12,6 +12,10 @@ define(function (require) {
             template: template,
             tagName: 'li',
 
+            triggers: {
+               "click": "click"
+            },
+
             initialize:function(){
             },
 

@@ -16,10 +16,6 @@ define(function (require) {
             },
 
             initialize:function(){
-            },
-
-            onClick:function(){
-                tasks.vent.trigger("task:show", this.model.id)
             }
         });
     });

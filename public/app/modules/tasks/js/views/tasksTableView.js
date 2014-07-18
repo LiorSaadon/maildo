@@ -20,12 +20,17 @@ define(function (require) {
             initialize:function(){
 
                 this.setEmptyViewOptions();
+                this.listenTo(this, "childview:click", this._handleChildClick);
             },
 
             setEmptyViewOptions:function(){
                 this.emptyViewOptions =  {
                     msg:app.translator.translate("tasks.noTasks")
                 }
+            },
+
+            _handleChildClick:function(){
+                alert("3123123");
             }
         });
     });
