@@ -20,6 +20,10 @@ define(function (require) {
             },
 
             onRender:function(){
+            },
+
+            markAsClicked:function(select){
+                this.$el.toggleClass("select", select);
             }
         });
     });

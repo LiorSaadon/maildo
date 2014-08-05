@@ -7,7 +7,7 @@
 
   .tasks-region{
     width: 250px;
-    background-color:#FCFDFD;
+    background-color:#F8F8F8;
     @include abs-pos(20px, 'NaN', 20px, 200px);
 
     .message{
@@ -18,7 +18,7 @@
   }
 
   .task-info-region{
-    background-color:rgb(239, 243, 245);;
+    background-color:#FCFDFD;
     @include abs-pos(20px, 26px, 20px, 450px);
   }
 }

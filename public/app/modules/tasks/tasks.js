@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var eModules = require('json!assets-data/eModules.json');
 
     app.module('tasks', function (tasks, app,  Backbone, Marionette, $, _) {
 
@@ -14,7 +15,7 @@ define(function (require) {
 
         this.addInitializer(function (options) {
 
-            this.vent = new Backbone.Wreqr.EventAggregator();
+            this.channel = Backbone.Wreqr.radio.channel("tasks");
             this.dataController = new DataController(options);
             this.layoutController = new LayoutController(options);
             this.router = new Router({ controller: new RouterController() });

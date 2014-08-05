@@ -13,7 +13,7 @@ define(function (require) {
             regions:{
                 categoriesRegion:".tasks-categories-region",
                 tasksRegion:".tasks-region",
-                taskInfoRegion:".task-info-region"
+                taskDetailRegion:".task-info-region"
             },
             initialize:function(){
                 this.isPermanent = true;

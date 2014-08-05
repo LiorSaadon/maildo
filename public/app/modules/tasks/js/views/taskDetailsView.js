@@ -15,7 +15,13 @@ define(function (require) {
                 click:"onClick"
             },
 
-            initialize:function(){
+            //-----------------------------------------------------------
+
+            customTemplateHelpers : function () {
+
+                return{
+                    title: this.model.isNew() ? app.translator.translate("tasks.caption.new.task") : this.model.get("title")
+                };
             }
         });
     });

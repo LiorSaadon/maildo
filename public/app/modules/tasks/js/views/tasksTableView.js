@@ -5,6 +5,7 @@ define(function (require) {
     var template = require("tpl!tasks-templates/tasksTableView.tmpl");
     var EmptyView = require("tasks-views/messagesView");
     var TaskTableRowView = require("tasks-views/taskTableRowView");
+    var TaskDet
 
     var TasksView = {};
 
@@ -23,14 +24,25 @@ define(function (require) {
                 this.listenTo(this, "childview:click", this._handleChildClick);
             },
 
+            //-----------------------------------------------------
+
             setEmptyViewOptions:function(){
                 this.emptyViewOptions =  {
                     msg:app.translator.translate("tasks.noTasks")
                 }
             },
 
-            _handleChildClick:function(){
-                alert("3123123");
+            //-----------------------------------------------------
+
+            _handleChildClick:function(item){
+                this.children.each(function(itemView){
+                    itemView.markAsClicked(false);
+                });
+
+                if(item){
+                    item.markAsClicked(true);
+                    tasks.channel.vent.trigger("task:show", item.model);
+                }
             }
         });
     });

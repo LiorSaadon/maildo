@@ -45,7 +45,7 @@ define(function (require) {
 
                 if(itemView){
                    itemView.markAsClicked(true);
-                   tasks.vent.trigger("category:item:click", itemView.model.id);
+                   tasks.channel.vent.trigger("category:tasks:show", itemView.model.id);
                 }
             }
         });

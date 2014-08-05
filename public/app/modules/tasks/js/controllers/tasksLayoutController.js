@@ -5,9 +5,11 @@ define(function (require) {
     var MainLayout = require("tasks-views/tasksLayout");
     var SearchView = require("tasks-views/searchView");
     var ActionView = require("tasks-views/actionView");
+    var TaskDetailsView = require("tasks-views/taskDetailsView");
     var TasksTableView = require("tasks-views/tasksTableView");
     var CategoriesView = require("tasks-views/categoriesView");
     var eModules = require('json!assets-data/eModules.json');
+    var TaskModel = require("tasks-models/taskModel");
 
     var MainLayoutController = {};
 
@@ -17,8 +19,9 @@ define(function (require) {
 
             initialize: function () {
 
-                //this.listenTo(tasks.vent, "task:click", this.showTask);
-                this.listenTo(tasks.vent, "category:item:click", this.showCategoryTasks);
+                this.listenTo(tasks.channel.vent, "task:show", this.showTask);
+                this.listenTo(tasks.channel.vent, "task:create", this.createTask);
+                this.listenTo(tasks.channel.vent, "category:tasks:show", this.showCategoryTasks);
             },
 
             //----------------------------------------------------
@@ -57,23 +60,40 @@ define(function (require) {
 
             showCategoryTasks: function (categoryId) {
 
+                this.currentCategory = categoryId;
                 this.tasksCollection = tasks.dataController.tasksCollection;
 
                 this.tasksCollection.fetchBy({
                     filters: {
-                        categoryId: categoryId
+                        categoryId: this.currentCategory
                     },
                     success: _.bind(function () {
                         var tasksCollection = new TasksTableView({collection: this.tasksCollection});
                         this.mainLayout.tasksRegion.show(tasksCollection);
+                        this.mainLayout.taskDetailRegion.empty();
                     }, this)
                 });
             },
 
             //----------------------------------------------------
 
-            showTask:function(){
+            showTask:function(taskModel){
 
+               var taskDetails = new TaskDetailsView({
+                   model:taskModel
+               });
+               this.mainLayout.taskDetailRegion.show(taskDetails);
+            },
+
+            //----------------------------------------------------
+
+            createTask:function(){
+
+                if(_.isFinite(this.currentCategory)){
+
+                    var taskModel = new TaskModel({"category":this.currentCategory});
+                    this.showTask(taskModel)
+                }
             }
         });
     });
