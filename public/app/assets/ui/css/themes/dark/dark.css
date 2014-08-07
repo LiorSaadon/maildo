@@ -1127,8 +1127,8 @@ body {
 }
 
 .mb .task-details-view .task-title {
-  padding: 13px 0;
-  border-bottom: 1px solid #d7d5d5;
+  padding: 15px 0;
+  border-bottom: 1px solid #D7D5D5;
 }
 .mb .task-details-view .task-title .task-title-input {
   border: 0;
@@ -1142,7 +1142,11 @@ body {
   outline: none;
 }
 .mb .task-details-view .task-body {
-  padding: 10px 10px 28px 28px;
+  position: absolute;
+  top: 75px;
+  right: 23px;
+  bottom: 95px;
+  left: 24px;
 }
 .mb .task-details-view .task-body:active, .mb .task-details-view .task-body:focus {
   outline: none;
@@ -1152,12 +1156,12 @@ body {
   bottom: 0px;
   right: 0px;
   left: 0px;
-  border-top: 1px solid #d7d5d5;
+  border-top: 1px solid #E9E9E9;
   padding: 20px 20px 20px 30px;
 }
 .mb .task-details-view .task-actions .sendBtn {
   background-color: #4d90fe;
-  border: 1px solid #3079ed;
+  border: 1px solid #D7D5D5;
   color: #ffffff;
 }
 .mb .task-details-view .task-actions .sendBtn:hover {
