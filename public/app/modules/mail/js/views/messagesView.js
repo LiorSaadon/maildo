@@ -17,7 +17,7 @@ define(function (require) {
 
             initialize:function(options){
                 options = options || {};
-                this.msg = options.msg
+                this.msg = options.msg;
             },
 
             onRender:function(){

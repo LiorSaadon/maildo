@@ -76,7 +76,7 @@ define(function (require) {
 
             search:function(key){
                 if(!_.isEmpty(key)){
-                    mail.router.navigate("search/"+key,{trigger: true});
+                    tasks.router.navigate("search/"+key,{trigger: true});
                 }
             },
 

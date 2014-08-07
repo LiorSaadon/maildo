@@ -73,7 +73,7 @@ define(function (require) {
         CONTACT: 1,
         SEARCH: 2,
         RECENT: 3
-    }
+    };
 
     return AutoCompleteItemView;
 });

@@ -92,7 +92,7 @@ define(function (require) {
                 if(_.isFinite(this.currentCategory)){
 
                     var taskModel = new TaskModel({"category":this.currentCategory});
-                    this.showTask(taskModel)
+                    this.showTask(taskModel);
                 }
             }
         });

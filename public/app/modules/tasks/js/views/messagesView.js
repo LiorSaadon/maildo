@@ -6,7 +6,7 @@ define(function (require) {
 
     var MessagesView = {};
 
-    app.module('mail', function (mail, app,  Backbone, Marionette, $, _) {
+    app.module('tasks', function (tasks, app,  Backbone, Marionette, $, _) {
 
         MessagesView = Marionette.ItemView.extend({
             template:template,
@@ -17,7 +17,7 @@ define(function (require) {
 
             initialize:function(options){
                 options = options || {};
-                this.msg = options.msg
+                this.msg = options.msg;
             },
 
             onRender:function(){

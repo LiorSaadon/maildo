@@ -82,8 +82,8 @@ define(function (require) {
 
                 if(_.isObject(mailModel)){
 
-                    mail.vent.trigger("actions", {actionType: "select", selectBy: "none"});
-                    mail.vent.trigger("actions", {actionType: 'markAs', label: 'read', items:[mailModel.id]});
+                    mail.vent.trigger("mail:select", {selectBy: "none"});
+                    mail.vent.trigger("mail:markAs", {label: 'read', items:[mailModel.id]});
 
                     var _view = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
                     this.dataLayout.previewRegion.show(_view);

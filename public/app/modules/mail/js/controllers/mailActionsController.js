@@ -12,30 +12,15 @@ define(function (require) {
             initialize: function () {
 
                 this.collection = mail.dataController.mails;
-                this.listenTo(mail.vent, 'actions', this.actions, this);
-            },
 
-            //-------------------------------------------------------------------
-
-            actions: function (options) {
-
-                options = options || {};
-
-                switch (options.actionType) {
-
-                    case 'select':
-                        this.select(options);
-                        break;
-                    case "moveTo":
-                        this.moveTo(options);
-                        break;
-                    case "delete":
-                        this.deleteItems(options);
-                        break;
-                    case "markAs":
-                        this.markAs(options);
-                        break;
-                }
+                this.listenTo(mail.vent, 'mail:select', this.select, this);
+                this.listenTo(mail.vent, 'mail:moveTo', this.moveTo, this);
+                this.listenTo(mail.vent, 'mail:delete', this.deleteItems, this);
+                this.listenTo(mail.vent, 'mail:markAs', this.markAs, this);
+                this.listenTo(mail.vent, 'mail:send', this.send, this);
+                this.listenTo(mail.vent, 'mail:delete', this.deleteItems, this);
+                this.listenTo(mail.vent, 'mail:discard', this.discard, this);
+                this.listenTo(mail.vent, 'composeView:close', this.saveAsDraft, this);
             },
 
             //----------------------------------------------------
@@ -113,7 +98,7 @@ define(function (require) {
 
             //----------------------------------------------------
 
-            deleteItems: function (options) {
+            deleteItems: function () {
 
                 this.collection.destroy({
 
@@ -123,6 +108,56 @@ define(function (require) {
                         this.collection.refresh();
                     }, this)
                 });
+            },
+
+            //-------------------------------------------
+
+            send: function (mailModel) {
+
+                if (_.isObject(mailModel)) {
+
+                    mailModel.save(null, {
+
+                        invalid: function (model, error) {},
+
+                        success: function () {
+                            mail.router.previous();
+                        }
+                    });
+                }
+            },
+
+            //-------------------------------------------
+
+            discard: function (mailModel) {
+
+                if(mailModel.isNew()){
+                    mail.router.previous();
+                }else{
+                    if (mailModel.get("groups.draft")) {
+                        mailModel.destroy({
+                            success: function () {
+                                mail.layoutController.showData();
+                            }
+                        });
+                    }
+                }
+            },
+
+            //-------------------------------------------
+
+            saveAsDraft: function (mailModel) {
+
+                if (mailModel.isNew() || mailModel.get("groups.draft")) {
+
+                    var newModel = $.extend(true, {}, mailModel);
+
+                    newModel.moveTo("draft");
+
+                    newModel.save(null, {
+                        validateType: "draft"
+                    });
+                }
             }
         });
     });

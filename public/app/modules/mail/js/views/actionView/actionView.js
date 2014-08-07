@@ -43,28 +43,25 @@ define(function (require) {
                     mail.router.navigate("settings", {trigger: true});
                 },
                 "click .selectAll": function () {
-                    mail.vent.trigger("actions", {actionType: 'select', selectBy: "all"});
+                    mail.vent.trigger("mail:select", {selectBy: "all"});
                 },
                 "click .selectNone": function () {
-                    mail.vent.trigger("actions", {actionType: "select", selectBy: "none"});
+                    mail.vent.trigger("mail:select", {selectBy: "none"});
                 },
                 "click .selectRead": function () {
-                    mail.vent.trigger("actions", {actionType: "select", selectBy: "read"});
+                    mail.vent.trigger("mail:select", {selectBy: "read"});
                 },
                 "click .selectUnread": function () {
-                    mail.vent.trigger("actions", {actionType: "select", selectBy: "unread"});
+                    mail.vent.trigger("mail:select", {selectBy: "unread"});
                 },
                 "click .btnDelete": function () {
-                    mail.vent.trigger("actions", {actionType: 'moveTo', target: 'trash'});
+                    mail.vent.trigger("mail:moveTo", {target: 'trash'});
                 },
                 "click .btnNotSpam": function () {
-                    mail.vent.trigger("actions", {actionType: 'moveTo', target: 'inbox'});
-                },
-                "click .btnDeleteForever": function () {
-                    mail.vent.trigger("actions", {actionType: 'delete'});
+                    mail.vent.trigger("mail:moveTo", {target: 'inbox'});
                 },
                 "click .btnDiscardDrafts": function () {
-                    mail.vent.trigger("actions", {actionType: 'delete'});
+                    mail.vent.trigger("mail:delete");
                 }
             },
 

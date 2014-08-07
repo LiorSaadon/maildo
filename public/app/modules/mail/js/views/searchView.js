@@ -73,7 +73,7 @@ define(function (require) {
                         text: model.get("title"),
                         value: model.get("address"),
                         type: AutoComplete.TYPES.CONTACT
-                    })
+                    });
                 });
                 return contacts;
             },

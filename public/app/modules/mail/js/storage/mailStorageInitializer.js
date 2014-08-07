@@ -5,11 +5,11 @@ define(function (require) {
     var mailsList = require('json!assets-data/mails.json');
     var contactsList = require('json!assets-data/contacts.json');
 
-    var PreliminaryDataController = {};
+    var mailStorageInitializer = {};
 
     app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
-        PreliminaryDataController = (function(){
+        mailStorageInitializer = (function(){
 
             var localStorage = window.localStorage;
 
@@ -27,7 +27,7 @@ define(function (require) {
                 if(_.isNull(localStorage.getItem('contacts'))){
                     localStorage.setItem('contacts', JSON.stringify(contactsList));
                 }
-            }
+            };
 
             //------------------------------------------------------------------------
 
@@ -36,5 +36,5 @@ define(function (require) {
         })();
     });
 
-    return PreliminaryDataController;
+    return mailStorageInitializer;
 });

@@ -43,20 +43,20 @@ define(function (require) {
             if (_.isString(key)) {
                 return key
                     .replace(new RegExp("^" + this.input, 'gi'), function (str) {
-                        return '<b>' + str + '</b>'
+                        return '<b>' + str + '</b>';
                     })
                     .replace(new RegExp(" " + this.input, 'gi'), function (str) {
-                        return ' <b>' + _s.strRight(str, ' ') + '</b>'
+                        return ' <b>' + _s.strRight(str, ' ') + '</b>';
                     })
                     .replace(new RegExp(":" + this.input, "gi"), function (str) {
-                        return ':<b>' + _s.strRight(str, ':') + '</b>'
+                        return ':<b>' + _s.strRight(str, ':') + '</b>';
                     })
                     .replace(new RegExp("@" + this.input, "gi"), function (str) {
-                        return '@<b>' + _s.strRight(str, '@') + '</b>'
+                        return '@<b>' + _s.strRight(str, '@') + '</b>';
                     })
                     .replace(new RegExp("\\." + this.input, "gi"), function (str) {
-                        return '.<b>' + _s.strRight(str, '.') + '</b>'
-                    })
+                        return '.<b>' + _s.strRight(str, '.') + '</b>';
+                    });
             }
             return key;
         }

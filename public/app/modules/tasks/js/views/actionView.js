@@ -21,8 +21,8 @@ define(function (require) {
 
             initialize: function () {
 
-                this.listenTo(tasks.channel.vent, "task:show", _.bind(function(){this.showDelete(true)},this));
-                this.listenTo(tasks.channel.vent, "category:tasks:show", _.bind(function(){this.showDelete(false)},this));
+                this.listenTo(tasks.channel.vent, "task:show", _.bind(function(){this.showDelete(true);},this));
+                this.listenTo(tasks.channel.vent, "category:tasks:show", _.bind(function(){this.showDelete(false);},this));
             },
 
             //-------------------------------------------------------------
@@ -34,7 +34,6 @@ define(function (require) {
             //-------------------------------------------------------------
 
             createTask:function(){
-                debugger;
                 tasks.channel.vent.trigger("task:create");
             }
         });

@@ -5,7 +5,6 @@ define(function (require) {
     var template = require("tpl!tasks-templates/tasksTableView.tmpl");
     var EmptyView = require("tasks-views/messagesView");
     var TaskTableRowView = require("tasks-views/taskTableRowView");
-    var TaskDet
 
     var TasksView = {};
 
@@ -29,7 +28,7 @@ define(function (require) {
             setEmptyViewOptions:function(){
                 this.emptyViewOptions =  {
                     msg:app.translator.translate("tasks.noTasks")
-                }
+                };
             },
 
             //-----------------------------------------------------

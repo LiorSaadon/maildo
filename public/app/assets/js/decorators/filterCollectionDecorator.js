@@ -18,7 +18,9 @@ define(function (require) {
 
         filterCollection.filterBy = function (options) {
 
-            var items, options = options || {};
+            options = options || {};
+
+            var items;
 
             if (this.filterModel) {
                 items = _.filter(original.models, _.bind(function (model) {
