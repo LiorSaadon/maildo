@@ -18,7 +18,6 @@ define(function (require) {
                 this.listenTo(mail.vent, 'mail:delete', this.deleteItems, this);
                 this.listenTo(mail.vent, 'mail:markAs', this.markAs, this);
                 this.listenTo(mail.vent, 'mail:send', this.send, this);
-                this.listenTo(mail.vent, 'mail:delete', this.deleteItems, this);
                 this.listenTo(mail.vent, 'mail:discard', this.discard, this);
                 this.listenTo(mail.vent, 'composeView:close', this.saveAsDraft, this);
             },

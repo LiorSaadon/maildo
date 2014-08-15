@@ -62,6 +62,9 @@ define(function (require) {
                 },
                 "click .btnDiscardDrafts": function () {
                     mail.vent.trigger("mail:delete");
+                },
+                "click .btnDeleteForever": function () {
+                    mail.vent.trigger("mail:delete");
                 }
             },
 

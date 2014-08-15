@@ -27,28 +27,27 @@ define(function (require) {
                 "click .btnOlder": "showOlderItems"
             },
 
-            //------------------------------------------------------
-            // initialize
-            //------------------------------------------------------
-
             initialize: function () {
 
                 this.collection = mail.dataController.getMailCollection();
-                this.listenTo(this.collection, "change:metadata",this.onCollectionMetadataChange, this);
+                this.listenTo(this.collection, "change:metadata",this.adjustPage, this);
+            },
+
+            onRender:function(){
+               this.adjustPage();
             },
 
             //------------------------------------------------------
-            // onCollectionMetadataChange
+            // adjustPage
             //------------------------------------------------------
 
-            onCollectionMetadataChange: function () {
+            adjustPage: function () {
 
                 if(_.isObject(this.collection.metadata) && this.collection.metadata.total > 0){
 
                     this.updatePageInfo();
                     this.adjustButtons();
                     this.adjustLabels();
-                    this.updateUrlWithoutNavigate();
                     this.ui.container.show();
                 }else{
                     this.ui.container.hide();
@@ -84,16 +83,8 @@ define(function (require) {
                 this.ui.lblTotal.text(this.pageInfo.total);
             },
 
-            //-----------------------------------------------------
-
-            updateUrlWithoutNavigate:function(){
-
-                var param = this.pageInfo.currPage > 1 ? ("/p" + this.pageInfo.currPage.toString()) : "";
-                mail.router.navigate(app.context.get("mail.action.type") + param);
-            },
-
             //------------------------------------------------------
-            // on buttons click
+            // buttons click
             //------------------------------------------------------
 
             showNewerItems: function () {

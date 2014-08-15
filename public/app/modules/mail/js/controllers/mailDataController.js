@@ -4,7 +4,7 @@ define(function (require) {
     var app = require("mbApp");
     var MailCollection = require("mail-collections/mailCollection");
     var ContactsCollection = require("mail-collections/contactsCollection");
-    var SelectableDecortator = require("assets-decorators/selectableCollectionDecorator");
+    var SelectableDecorator = require("assets-decorators/selectableCollectionDecorator");
 
     var DataController = {};
 
@@ -14,7 +14,7 @@ define(function (require) {
 
             initialize: function () {
 
-                this.mails = new SelectableDecortator(new MailCollection());
+                this.mails = new SelectableDecorator(new MailCollection());
 
                 this.contactsCollection = new ContactsCollection();
                 this.contactsCollection.fetch();
