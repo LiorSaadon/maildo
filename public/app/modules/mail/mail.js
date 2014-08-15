@@ -7,7 +7,7 @@ define(function (require) {
 
         require("mail-storage/mailStorageInitializer");
 
-        var LayoutController = require("mail-controllers/mailLayoutController");
+        var MainLayoutController = require("mail-controllers/mailMainLayoutController");
         var DataController = require("mail-controllers/mailDataController");
         var ActionsController = require("mail-controllers/mailActionsController");
         var Router = require("mail-routers/mailRouter");
@@ -17,12 +17,12 @@ define(function (require) {
             this.vent = new Backbone.Wreqr.EventAggregator();
             this.dataController = new DataController();
             this.actionsController = new ActionsController();
-            this.layoutController = new LayoutController(options);
+            this.mainLayoutController = new MainLayoutController(options);
             this.router = new Router({ controller: new RouterController() });
         });
 
         this.setLayout =function(){
-            return this.layoutController.setViews();
+            return this.mainLayoutController.setViews();
         };
     });
 

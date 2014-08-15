@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var layoutTemplate = require("tpl!mail-templates/mailLayout.tmpl");
+    var layoutTemplate = require("tpl!mail-templates/mainLayout.tmpl");
 
     var MailLayout = {};
 
@@ -12,7 +12,7 @@ define(function (require) {
             template:layoutTemplate,
             regions:{
                 navRegion:".mail-nav-region",
-                dataRegion:".mail-data-region"
+                workRegion:".mail-work-region"
             },
             initialize:function(){
                this.isPermanent = true;

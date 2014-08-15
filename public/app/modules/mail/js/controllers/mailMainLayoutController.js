@@ -3,13 +3,14 @@ define(function (require) {
 
     var app = require("mbApp");
     var MailModel = require("mail-models/mailModel");
-    var MainLayout = require("mail-views/mailLayout");
+    var MainLayout = require("mail-views/mailMainLayout");
     var SearchView = require("mail-views/searchView");
     var NavView = require("mail-views/navView");
     var ActionView = require("mail-views/actionView/actionView");
     var ComposeView = require("mail-views/composeView/composeView");
     var SettingsView = require("mail-views/settingsView");
-    var DataLayoutController = require("mail-controllers/mailDataLayoutController");
+    var EmptyFoldersView = require("mail-views/emptyFolderView");
+    var ContentLayoutController = require("mail-controllers/mailContentLayoutController");
 
     var MainLayoutController = {};
 
@@ -19,7 +20,7 @@ define(function (require) {
 
             initialize: function () {
 
-                this.dataLayoutController = new DataLayoutController();
+                this.contentLayoutController = new ContentLayoutController();
                 this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
             },
 
@@ -38,8 +39,6 @@ define(function (require) {
                 app.frame.setRegion("search", this.searchView);
                 app.frame.setRegion("actions", this.actionView);
                 app.frame.setRegion("main", this.mainLayout);
-
-                return true;
             },
 
             //----------------------------------------------------
@@ -47,7 +46,10 @@ define(function (require) {
             onMainLayoutRender:function(){
 
                 var navView = new NavView();
-                this.mainLayout.navRegion.show(navView);
+                this.mainLayout.navRegion.add(navView);
+
+                var emptyFolderView = new EmptyFoldersView();
+                this.mainLayout.workRegion.add(emptyFolderView);
             },
 
             //----------------------------------------------------
@@ -66,7 +68,7 @@ define(function (require) {
                         this.showSettings();
                         break;
                     default:
-                        this.showData();
+                        this.showMails();
                 }
             },
 
@@ -77,7 +79,7 @@ define(function (require) {
                 var composeView = new ComposeView({
                     model:new MailModel()
                 });
-                this.mainLayout.dataRegion.show(composeView);
+                this.mainLayout.workRegion.add(composeView);
             },
 
             //----------------------------------------------------
@@ -85,15 +87,15 @@ define(function (require) {
             showSettings: function () {
 
                 var settingsView = new SettingsView(app.settings);
-                this.mainLayout.dataRegion.show(settingsView);
+                this.mainLayout.workRegion.add(settingsView);
             },
 
             //----------------------------------------------------
 
-            showData: function () {
+            showMails: function () {
 
-                var dataLayout = this.dataLayoutController.newLayout();
-                this.mainLayout.dataRegion.show(dataLayout);
+                var contentLayout = this.contentLayoutController.newLayout();
+                this.mainLayout.workRegion.add(contentLayout);
             }
         });
     });

@@ -8,27 +8,31 @@ define(function (require) {
 
     app.module('mail', function (mail, app,  Backbone, Marionette, $, _) {
 
-        EmptyMailView = Marionette.CompositeView.extend({
-            template:template,
+        EmptyMailView = Marionette.ItemView.extend({
+             template:template,
+             isPermanent:true,
 
-             initialize: function(options){
-
-                 options = options || {};
-                 this.selected = options.selected || 0;
+             ui:{
+                 counter:".counter",
+                 message:".message"
              },
 
-            //-------------------------------------------------------------
-            // customTemplateHelpers
-            //-------------------------------------------------------------
+             initialize: function(){
 
-            customTemplateHelpers : function () {
+                 this.mailCollection = mail.dataController.getMailCollection();
+                 this.listenTo(this.mailCollection, "change:selection", this.onSelectionChange, this);
+             },
 
-                return{
-                    counter: this.selected,
-                    showCounter: this.selected > 0,
-                    showMessage: this.selected === 0
-                };
-            }
+             //-----------------------------------------------------------------------
+
+             onSelectionChange : function () {
+
+                var selected = this.mailCollection.getSelected().length;
+
+                this.ui.counter.html(selected);
+                this.ui.counter.toggle(selected>0);
+                this.ui.message.toggle(selected===0);
+             }
         });
     });
 

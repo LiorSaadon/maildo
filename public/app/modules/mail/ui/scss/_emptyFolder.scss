@@ -1,0 +1,23 @@
+.mb{
+  .empty-folder{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #EEF0F3;
+    z-index: 100;
+    font-family: "Helvetica Neue","Segoe UI",Helvetica,Arial,"Lucida Grande",sans-serif;
+
+    .msgTitle{
+      font-size: 22px;
+      font-weight: 300;
+      padding:18px;
+      border-bottom: 1px solid black;
+    }
+
+    .msgBody{
+      font-size: 18px;
+      padding-Top: 30px;
+      line-height: 28px;
+    }
+  }
+}

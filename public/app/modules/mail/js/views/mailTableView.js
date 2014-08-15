@@ -3,7 +3,6 @@ define(function (require) {
 
     var app = require("mbApp");
     var template = require("tpl!mail-templates/mailTable.tmpl");
-    var EmptyView = require("mail-views/messagesView");
     var MailableRowView = require("mail-views/mailTableRowView");
 
     var MailTableView = {};

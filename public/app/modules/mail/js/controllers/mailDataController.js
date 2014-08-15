@@ -18,6 +18,14 @@ define(function (require) {
 
                 this.contactsCollection = new ContactsCollection();
                 this.contactsCollection.fetch();
+
+                this._bindEvents();
+            },
+
+            //------------------------------------------------------
+
+            _bindEvents:function(){
+                this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
             },
 
             //------------------------------------------------------
@@ -30,6 +38,26 @@ define(function (require) {
 
             getContactsCollection: function(){
                return this.contactsCollection;
+            },
+
+            //-----------------------------------------------------
+
+            onActionChange:function(){
+
+                var action = app.context.get("mail.action");
+
+                if(_.isObject(action) && _.isObject(action.params)){
+
+                    this.mails.fetchBy({
+                        filters: {
+                            page: action.params.page,
+                            query: action.params.query || 'groups:' + action.type
+                        },
+                        success: _.bind(function(){
+                            this.mails.clearSelected();
+                        },this)
+                    });
+                }
             }
         });
     });

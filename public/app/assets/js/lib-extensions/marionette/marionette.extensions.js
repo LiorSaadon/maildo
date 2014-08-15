@@ -77,13 +77,15 @@ define(function (require) {
     // add - an alternative to region.show(), doesn't not remove permanent views
     //-------------------------------------------------------------
 
-    Marionette.Region.prototype.add = function(view) {
+    Marionette.Region.prototype.add = function(view, options) {
+
+        options = options || {};
 
         if(_.isObject(view) && !_.isEmpty(view.cid)){
 
             this.views = this.views || {};
-            this.ensureEl();
-            this._clean(view);
+            this._ensureElement();
+            this.clean(view.cid);
 
             if (!this._hasView(view)) {
                 this._addView(view);
@@ -91,7 +93,10 @@ define(function (require) {
                 this.$el.append(view.el);
             }
 
-            this._showView(view);
+            if(options.hideOtherViews){
+                this._showView(view);
+            }
+
             Marionette.triggerMethod.call(view, "show");
             Marionette.triggerMethod.call(this, "show", view);
         }
@@ -99,13 +104,13 @@ define(function (require) {
 
     //-------------------------------------------------------------
 
-    Marionette.Region.prototype._clean = function(viewToShow) {
+    Marionette.Region.prototype.clean = function(currViewId) {
 
         for (var key in this.views) {
 
             var view = this.views[key];
 
-            if (view && !view.isPermanent && !view.isClosed && view.cid !== viewToShow.cid) {
+            if (view && !view.isPermanent && !view.isClosed && view.cid !== currViewId) {
                 if (view.close) {view.close();}
                 else if (view.remove) {view.remove();}
                 delete this.views[key];
@@ -134,7 +139,7 @@ define(function (require) {
 
     //-------------------------------------------------------------
 
-    Marionette.Region.prototype._showView = function (view) {
+    Marionette.Region.prototype._showView = function (view,options) {
 
         for (var key in this.views) {
             var _view = this.views[key];

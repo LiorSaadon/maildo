@@ -137,7 +137,7 @@ define(function (require) {
                     if (mailModel.get("groups.draft")) {
                         mailModel.destroy({
                             success: function () {
-                                mail.layoutController.showData();
+                                mail.vent.trigger("discard:success");
                             }
                         });
                     }
