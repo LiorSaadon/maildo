@@ -24,6 +24,7 @@ define(function (require) {
 
             _bindEvents:function(){
 
+                this.listenTo(mail.channel.vent, "preview:close", this.closeMailView);
                 this.listenTo(mail.channel.vent, "discard:success", this.closeMailView);
                 this.listenTo(mail.channel.vent, "mailTable:ItemClicked", this.showMail);
                 this.listenTo(app.context, 'change:mail.action', this.closeMailView);
@@ -65,8 +66,8 @@ define(function (require) {
                     mail.channel.vent.trigger("mail:select", {selectBy: "none"});
                     mail.channel.vent.trigger("mail:markAs", {label: 'read', items:[mailModel.id]});
 
-                    this.mailView = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
-                    this.contentLayout.previewRegion.add(this.mailView);
+                    var mailView = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
+                    this.contentLayout.previewRegion.add(mailView);
                 }
             },
 
