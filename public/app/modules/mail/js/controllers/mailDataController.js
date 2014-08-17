@@ -15,6 +15,7 @@ define(function (require) {
             initialize: function () {
 
                 this.mails = new SelectableDecorator(new MailCollection());
+                this.mails.persist();
 
                 this.contactsCollection = new ContactsCollection();
                 this.contactsCollection.fetch();

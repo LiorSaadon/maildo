@@ -10,43 +10,48 @@ define(function (require) {
         // persist
         //-------------------------------------------------
 
-        persist: function (_options) {
+        persist: function (options) {
+
+            options = options || {};
 
             var that = this;
-            var options = _options || {};
-            var fetchInterval = options.fetchInterval || 60000;
-            var filters = this.filters ? _.clone(this.filters) : {};
+            var fetchInterval = options.fetchInterval || 30000;
 
-            this.fetch({
+            var recall = function(){
 
-                data: $.extend({}, this.filters, {persist: true}),
+                setTimeout(function () {
+                    that.persist.call(that,options);
+                }, fetchInterval);
+            };
 
-                success: function (collection, resp, bbOptions) {
+            var onSuccess = function (collection, resp, reqOptions) {
 
-                    that.fetched = true;
-
-                    if (_.isEqual(that.filters,filters)) {
-                        if (_.isFunction(options.success)) {
-                            options.success(collection, resp, bbOptions);
-                        }
-                    }
-                    setTimeout(function () {
-                        that.persist(options);
-                    }, fetchInterval);
-                },
-
-                error: function (collection, resp, bbOptions) {
-
-                    if (_.isEqual(that.filters,filters)) {
-                        if (_.isFunction(options.error)) {
-                            options.error(collection, resp, bbOptions);
-                        }
-                    }
-                    setTimeout(function () {
-                        that.persist(options);
-                    }, fetchInterval);
+                that.fetched = true;
+                if (_.isFunction(options.success)) {
+                    options.success(collection, resp, reqOptions);
                 }
-            });
+                recall();
+            };
+
+            var onError = function (collection, resp, reqOptions) {
+
+                if (_.isFunction(options.error)) {
+                    options.error(collection, resp, reqOptions);
+                }
+                recall();
+            };
+
+            //----------------------------------------------
+
+            if(!this.validFilters()){
+                recall();
+            }else{
+                this.fetch({
+                    data: $.extend({}, {filters: this.filters, persist: true}),
+                    success: onSuccess,
+                    error: onError
+                });
+            }
         },
 
         //-------------------------------------------------
@@ -56,6 +61,7 @@ define(function (require) {
         set: function (response, options) {
 
             if (_.isObject(response) && _.isObject(response.metadata)) {
+
                 if (response.metadata.status !== 'nochange') {
                     BaseCollection.prototype.set.call(this, response, options);
                 }

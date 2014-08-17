@@ -13,22 +13,22 @@ define(function (require) {
 
         filters = filters || {};
 
-        var aid = urlParam(url, 'aid');
-        var sid = urlParam(url, 'sid');
+//        var aid = urlParam(url, 'aid');
+//        var sid = urlParam(url, 'sid');
 
-        var isValid = _.isString('aid') && _.isString(sid) && _.isString(filters.query) && _.isNumber(filters.page);
+        var isValid =  _.isString(filters.query) && _.isNumber(filters.page);  //_.isString('aid') && _.isString(sid) &&
         if(!isValid){
             return false;
         }
 
         var resId = extractIds(records);
 
-        var item = _.where(cache, {sid: sid, aid:aid, query:filters.query, page:filters.page});
+        var item = _.where(cache, {query:filters.query, page:filters.page});  //sid: sid, aid:aid,
         if (item &&_.isEqual(resId, item.res)) {
             return false;
         }
 
-        updateCache(aid, sid, filters.query, filters.page, resId);
+        updateCache(filters.query, filters.page, resId); //aid, sid,
         return true;
     };
 
@@ -54,15 +54,15 @@ define(function (require) {
 
     //----------------------------------
 
-    var updateCache = function (aid, sid, query, page, resIds) {
+    var updateCache = function (query, page, resIds) {    //aid, sid,
 
-        var item = _.where(cache, {sid: sid, aid:aid, query:query, page:page});
+        var item = _.where(cache, {query:query, page:page});   //sid: sid, aid:aid,
         if (item) {
             item.res = resIds;
         }else{
             cache.push({
-                sid: sid,
-                aid:aid,
+//                sid: sid,
+//                aid:aid,
                 query:query,
                 page:page,
                 res:resIds
@@ -70,7 +70,7 @@ define(function (require) {
         }
     };
 
-    //----------------------------------
+    //------------------------------;----
 
     return{
         detect: detect

@@ -12,6 +12,7 @@ el = {};
 $el = {};
 navigate = {};
 collection = {};
+validFilters = {};
 collection.getSelected = null;
 collection.isSelected = null;
 validate = {};
