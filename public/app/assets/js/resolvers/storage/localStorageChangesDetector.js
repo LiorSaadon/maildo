@@ -16,7 +16,7 @@ define(function (require) {
 //        var aid = urlParam(url, 'aid');
 //        var sid = urlParam(url, 'sid');
 
-        var isValid =  _.isString(filters.query) && _.isNumber(filters.page);  //_.isString('aid') && _.isString(sid) &&
+        var isValid =  _.isString(filters.query) && _.isFinite(filters.page);  //_.isString('aid') && _.isString(sid) &&
         if(!isValid){
             return false;
         }

@@ -15,7 +15,7 @@ define(function (require) {
             options = options || {};
 
             var that = this;
-            var fetchInterval = options.fetchInterval || 30000;
+            var fetchInterval = options.fetchInterval || 10000;
 
             var recall = function(){
 
