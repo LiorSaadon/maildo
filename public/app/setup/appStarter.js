@@ -18,8 +18,6 @@ define(function (require) {
 
     app.on("before:start", function () {
 
-        app.vent = new Backbone.Wreqr.EventAggregator();
-
         app.translator = Translator;
         app.context = new Context();
         app.settings = new Settings();
@@ -46,7 +44,7 @@ define(function (require) {
 
     var loadTheme = function () {
 
-        app.vent.once("onCssLoaded", removeSplashScreen);
+        app.channel.vent.once("onCssLoaded", removeSplashScreen);
         app.themesController.loadTheme(app.settings.get("selectedTheme"));
     };
 

@@ -31,7 +31,7 @@ define(function (require) {
 
             $("mss").remove();
             $(['<style type="text/css" id="mss">', data, '</style>'].join('')).appendTo('head');
-            app.vent.trigger("onCssLoaded");
+            app.channel.vent.trigger("onCssLoaded");
         }
     });
 

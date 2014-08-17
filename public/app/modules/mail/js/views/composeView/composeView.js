@@ -84,7 +84,7 @@ define(function (require) {
                 this.model.set('subject', val);
 
                 var msg = !_.isEmpty(val) ? val : "New Message";
-                mail.vent.trigger("change:mailSubject",msg);
+                mail.channel.vent.trigger("change:mailSubject",msg);
             },
 
             //-------------------------------------------------------
@@ -96,19 +96,19 @@ define(function (require) {
             //-------------------------------------------------------
 
             onSendClick:function(){
-              mail.vent.trigger("mail:send",this.model);
+                mail.channel.vent.trigger("mail:send",this.model);
             },
 
             //-------------------------------------------------------
 
             onCloseBtnClick:function(){
-                mail.vent.trigger("mail:discard",this.model);
+                mail.channel.vent.trigger("mail:discard",this.model);
             },
 
             //--------------------------------------------------------
 
             onBeforeClose:function () {
-                mail.vent.trigger("composeView:close", this.model);
+                mail.channel.vent.trigger("composeView:close", this.model);
             }
         });
     });

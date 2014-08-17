@@ -1,66 +1,69 @@
-.settingsView {
-  background-color: $settings-background-color;
-  padding: 15px;
-  @include abs-pos(0, 0, 0, 0);
+.mb {
+  .settingsView {
+
+    background-color: $settings-background-color;
+    padding: 15px;
+    @include abs-pos(0, 0, 0, 0);
+    z-index:200;
+
+    fieldset {
+      margin: 5px 0 0;
+      padding: 5px 0 0;
+      padding-bottom: 20px;
+      clear: both;
+      border: 1px solid #DDD;
+      border-color: #DDD transparent transparent;
+    }
+
+    legend {
+      margin: 0 5px;
+      padding: 0 5px;
+      font-size: $font-size3;
+      font-weight: bold;
+      color: $settings-legend-color;
+    }
+
+    .field {
+      line-height: 40px;
+    }
+
+    .fieldTitle {
+      width: 160px;
+      padding-right: 15px;
+      float: left;
+      text-align: right;
+    }
+
+    .themeBox {
+      border:1px solid  $settings-background-color;
+      float:left;
+      margin-right:20px ;
+      padding:5px;
+      padding-top:0
+    }
+
+    .themeBox:hover {
+      border:1px solid $settings-themeBox-border-hover-color;
+      cursor:pointer;
+    }
+
+    .themeTitle {
+      text-decoration: underline;
+      width:100%;
+      text-align: center;
+    }
+
+    .themeIcon{
+      border:1px solid $settings-themeIcon-border-color;
+    }
+
+    .close {
+      @include abs-pos('NaN', 'NaN', 30px, 30px);
+    }
+  }
 }
 
-.settingsView {
 
-  fieldset {
-    margin: 5px 0 0;
-    padding: 5px 0 0;
-    padding-bottom: 20px;
-    clear: both;
-    border: 1px solid #DDD;
-    border-color: #DDD transparent transparent;
-  }
-
-  legend {
-    margin: 0 5px;
-    padding: 0 5px;
-    font-size: $font-size3;
-    font-weight: bold;
-    color: $settings-legend-color;
-  }
-
-  .field {
-    line-height: 40px;
-  }
-
-  .fieldTitle {
-    width: 160px;
-    padding-right: 15px;
-    float: left;
-    text-align: right;
-  }
-
-  .themeBox {
-    border:1px solid  $settings-background-color;
-    float:left;
-    margin-right:20px ;
-    padding:5px;
-    padding-top:0
-  }
-
-  .themeBox:hover {
-    border:1px solid $settings-themeBox-border-hover-color;
-    cursor:pointer;
-  }
-
-  .themeTitle {
-    text-decoration: underline;
-    width:100%;
-    text-align: center;
-  }
-
-  .themeIcon{
-    border:1px solid $settings-themeIcon-border-color;
-  }
-
-  .close {
-    @include abs-pos('NaN', 'NaN', 30px, 30px);
-  }
-}
 
 
 

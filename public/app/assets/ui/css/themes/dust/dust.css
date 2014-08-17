@@ -651,47 +651,45 @@ body {
   min-width: 150px;
 }
 
-.composeView {
+.mb .composeView {
+  color: #404040;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background-color: #F9FBFF;
+  z-index: 200;
 }
-
-.composeView {
-  color: #404040;
-}
-.composeView .compose-header {
+.mb .composeView .compose-header {
   position: absolute;
   top: 30px;
   right: 95px;
   left: 30px;
 }
-.composeView .compose-header .tagsPlaceholder {
+.mb .composeView .compose-header .tagsPlaceholder {
   height: 32px;
   display: table;
   width: 100%;
 }
-.composeView .compose-header .field {
+.mb .composeView .compose-header .field {
   padding-bottom: 4px;
 }
-.composeView .compose-header .label {
+.mb .composeView .compose-header .label {
   float: left;
   min-width: 70px;
   color: gray;
   font-weight: bold;
 }
-.composeView .compose-header .inputbox {
+.mb .composeView .compose-header .inputbox {
   padding: 0 5px 0 0;
   overflow: hidden;
 }
-.composeView .compose-header .inputbox input {
+.mb .composeView .compose-header .inputbox input {
   width: 100%;
   height: 32px;
 }
-.composeView .compose-editor {
+.mb .composeView .compose-editor {
   position: absolute;
   top: 140px;
   right: 100px;
@@ -701,18 +699,17 @@ body {
   border: 1px solid gainsboro;
   padding: 10px;
 }
-.composeView .compose-editor:hover {
-  border-color: #c1c2c3;
-}
-.composeView .compose-editor:active,
-.composeView .compose-editor:focus {
+.mb .composeView .compose-editor:active, .mb .composeView .compose-editor:focus {
   outline: none;
   border-color: gainsboro;
   -webkit-box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 1px;
   -moz-box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 1px;
   box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 1px;
 }
-.composeView .sendBtn {
+.mb .composeView .compose-editor:hover {
+  border-color: #c1c2c3;
+}
+.mb .composeView .sendBtn {
   position: absolute;
   bottom: 25px;
   left: 100px;
@@ -720,11 +717,11 @@ body {
   border: 1px solid #3079ed;
   color: #ffffff;
 }
-.composeView .sendBtn:hover {
+.mb .composeView .sendBtn:hover {
   color: #ffffff;
   background-color: #4d90fe;
 }
-.composeView .closeBtn {
+.mb .composeView .closeBtn {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -836,7 +833,7 @@ body {
   background-color: #292c31;
 }
 
-.settingsView {
+.mb .settingsView {
   background-color: #f9f9f9;
   padding: 15px;
   position: absolute;
@@ -844,9 +841,9 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 200;
 }
-
-.settingsView fieldset {
+.mb .settingsView fieldset {
   margin: 5px 0 0;
   padding: 5px 0 0;
   padding-bottom: 20px;
@@ -854,42 +851,42 @@ body {
   border: 1px solid #DDD;
   border-color: #DDD transparent transparent;
 }
-.settingsView legend {
+.mb .settingsView legend {
   margin: 0 5px;
   padding: 0 5px;
   font-size: 11px;
   font-weight: bold;
   color: #454545;
 }
-.settingsView .field {
+.mb .settingsView .field {
   line-height: 40px;
 }
-.settingsView .fieldTitle {
+.mb .settingsView .fieldTitle {
   width: 160px;
   padding-right: 15px;
   float: left;
   text-align: right;
 }
-.settingsView .themeBox {
+.mb .settingsView .themeBox {
   border: 1px solid #f9f9f9;
   float: left;
   margin-right: 20px;
   padding: 5px;
   padding-top: 0;
 }
-.settingsView .themeBox:hover {
+.mb .settingsView .themeBox:hover {
   border: 1px solid #282a2c;
   cursor: pointer;
 }
-.settingsView .themeTitle {
+.mb .settingsView .themeTitle {
   text-decoration: underline;
   width: 100%;
   text-align: center;
 }
-.settingsView .themeIcon {
+.mb .settingsView .themeIcon {
   border: 1px solid #cccccc;
 }
-.settingsView .close {
+.mb .settingsView .close {
   position: absolute;
   bottom: 30px;
   left: 30px;

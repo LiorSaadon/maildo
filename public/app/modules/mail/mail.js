@@ -14,7 +14,7 @@ define(function (require) {
         var RouterController = require("mail-controllers/mailRouterController");
 
         this.addInitializer(function (options) {
-            this.vent = new Backbone.Wreqr.EventAggregator();
+            this.channel = Backbone.Wreqr.radio.channel("mail");
             this.dataController = new DataController();
             this.actionsController = new ActionsController();
             this.mainLayoutController = new MainLayoutController(options);

@@ -13,13 +13,13 @@ define(function (require) {
 
                 this.collection = mail.dataController.mails;
 
-                this.listenTo(mail.vent, 'mail:select', this.select, this);
-                this.listenTo(mail.vent, 'mail:moveTo', this.moveTo, this);
-                this.listenTo(mail.vent, 'mail:delete', this.deleteItems, this);
-                this.listenTo(mail.vent, 'mail:markAs', this.markAs, this);
-                this.listenTo(mail.vent, 'mail:send', this.send, this);
-                this.listenTo(mail.vent, 'mail:discard', this.discard, this);
-                this.listenTo(mail.vent, 'composeView:close', this.saveAsDraft, this);
+                this.listenTo(mail.channel.vent, 'mail:select', this.select, this);
+                this.listenTo(mail.channel.vent, 'mail:moveTo', this.moveTo, this);
+                this.listenTo(mail.channel.vent, 'mail:delete', this.deleteItems, this);
+                this.listenTo(mail.channel.vent, 'mail:markAs', this.markAs, this);
+                this.listenTo(mail.channel.vent, 'mail:send', this.send, this);
+                this.listenTo(mail.channel.vent, 'mail:discard', this.discard, this);
+                this.listenTo(mail.channel.vent, 'composeView:close', this.saveAsDraft, this);
             },
 
             //----------------------------------------------------
@@ -136,7 +136,7 @@ define(function (require) {
                     if (mailModel.get("groups.draft")) {
                         mailModel.destroy({
                             success: function () {
-                                mail.vent.trigger("discard:success");
+                                mail.channel.vent.trigger("discard:success");
                             }
                         });
                     }

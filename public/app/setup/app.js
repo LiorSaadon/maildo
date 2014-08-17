@@ -3,5 +3,5 @@ define(function (require) {
 
     var Marionette = require("marionette");
 
-    return new Marionette.Application();
+    return new Marionette.Application({ channelName: 'appChannel' });
 });

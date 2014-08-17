@@ -22,13 +22,13 @@ define(function (require) {
 
             events: {
                 "click .moveToInbox": function () {
-                    mail.vent.trigger("mail:moveTo", {target: 'inbox'});
+                    mail.channel.vent.trigger("mail:moveTo", {target: 'inbox'});
                 },
                 "click .moveToTrash": function () {
-                    mail.vent.trigger("mail:moveTo", {target: 'trash'});
+                    mail.channel.vent.trigger("mail:moveTo", {target: 'trash'});
                 },
                 "click .moveToSpam": function () {
-                    mail.vent.trigger("mail:moveTo", {target: 'spam'});
+                    mail.channel.vent.trigger("mail:moveTo", {target: 'spam'});
                 }
             },
 

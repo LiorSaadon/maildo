@@ -26,22 +26,22 @@ define(function (require) {
 
             events: {
                 "click .markRead": function () {
-                    mail.vent.trigger("mail:markAs", {label: 'read'});
+                    mail.channel.vent.trigger("mail:markAs", {label: 'read'});
                 },
                 "click .markUnread": function () {
-                    mail.vent.trigger("mail:markAs", {label: 'unread'});
+                    mail.channel.vent.trigger("mail:markAs", {label: 'unread'});
                 },
                 "click .markImp": function () {
-                    mail.vent.trigger("mail:markAs", {label: 'important'});
+                    mail.channel.vent.trigger("mail:markAs", {label: 'important'});
                 },
                 "click .markNotImp": function () {
-                    mail.vent.trigger("mail:markAs", { label: 'unimportant'});
+                    mail.channel.vent.trigger("mail:markAs", { label: 'unimportant'});
                 },
                 "click .addStar": function () {
-                    mail.vent.trigger("mail:markAs", {label: 'starred'});
+                    mail.channel.vent.trigger("mail:markAs", {label: 'starred'});
                 },
                 "click .removeStar": function () {
-                    mail.vent.trigger("mail:markAs", {label: 'unstarred'});
+                    mail.channel.vent.trigger("mail:markAs", {label: 'unstarred'});
                 }
             },
 

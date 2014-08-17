@@ -127,7 +127,7 @@ define(function (require) {
 
             onRowSelect: function () {
 
-                mail.vent.trigger("mailTable:ItemClicked", null);
+                mail.channel.vent.trigger("mailTable:ItemClicked", null);
                 this.model.collection.toggleSelection(this.model, {callerName: 'itemView'});
             },
 

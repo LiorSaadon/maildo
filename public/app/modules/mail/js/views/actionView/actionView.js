@@ -18,7 +18,7 @@ define(function (require) {
             initialize: function (options) {
 
                 this.listenTo(app.context, 'change:mail.action', this.showRelevantItems, this);
-                this.listenTo(mail.vent, "change:mailSubject", this.onMessageSubjectChange, this);
+                this.listenTo(mail.channel.vent, "change:mailSubject", this.onMessageSubjectChange, this);
                 this.listenTo(mail.dataController.getMailCollection(), "change:selection", this.showRelevantItems, this);
             },
 
@@ -43,28 +43,28 @@ define(function (require) {
                     mail.router.navigate("settings", {trigger: true});
                 },
                 "click .selectAll": function () {
-                    mail.vent.trigger("mail:select", {selectBy: "all"});
+                    mail.channel.vent.trigger("mail:select", {selectBy: "all"});
                 },
                 "click .selectNone": function () {
-                    mail.vent.trigger("mail:select", {selectBy: "none"});
+                    mail.channel.vent.trigger("mail:select", {selectBy: "none"});
                 },
                 "click .selectRead": function () {
-                    mail.vent.trigger("mail:select", {selectBy: "read"});
+                    mail.channel.vent.trigger("mail:select", {selectBy: "read"});
                 },
                 "click .selectUnread": function () {
-                    mail.vent.trigger("mail:select", {selectBy: "unread"});
+                    mail.channel.vent.trigger("mail:select", {selectBy: "unread"});
                 },
                 "click .btnDelete": function () {
-                    mail.vent.trigger("mail:moveTo", {target: 'trash'});
+                    mail.channel.vent.trigger("mail:moveTo", {target: 'trash'});
                 },
                 "click .btnNotSpam": function () {
-                    mail.vent.trigger("mail:moveTo", {target: 'inbox'});
+                    mail.channel.vent.trigger("mail:moveTo", {target: 'inbox'});
                 },
                 "click .btnDiscardDrafts": function () {
-                    mail.vent.trigger("mail:delete");
+                    mail.channel.vent.trigger("mail:delete");
                 },
                 "click .btnDeleteForever": function () {
-                    mail.vent.trigger("mail:delete");
+                    mail.channel.vent.trigger("mail:delete");
                 }
             },
 

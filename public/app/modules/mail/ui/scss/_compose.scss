@@ -1,85 +1,83 @@
-.composeView {
-  @include abs-pos(0, 0, 0, 0);
-  background-color: #F9FBFF;
-}
+.mb{
+  .composeView {
+    color: #404040;
+    @include abs-pos(0, 0, 0, 0);
+    background-color: #F9FBFF;
+    z-index:200;
 
-.composeView {
+    .compose-header {
+      @include abs-pos(30px, 95px, 'NaN', 30px);
 
-  color: #404040;
+      .tagsPlaceholder {
+        height: 32px;
+        display: table;
+        width: 100%;
+      }
 
-  .compose-header {
-    @include abs-pos(30px, 95px, 'NaN', 30px);
+      .field {
+        padding-bottom: 4px;
+      }
 
-    .tagsPlaceholder {
-      height: 32px;
-      display: table;
-      width: 100%;
+      .label {
+        float: left;
+        min-width: 70px;
+        color: gray;
+        font-weight: bold;
+      }
+
+      .inputbox {
+        padding: 0 5px 0 0;
+        overflow: hidden;
+      }
+
+      .inputbox input {
+        width: 100%;
+        height: 32px;
+      }
     }
 
-    .field {
-      padding-bottom: 4px;
+    //--------------------------------------------
+
+    .compose-editor {
+      @include abs-pos(140px, 100px, 85px, 100px);
+      background-color: $input-background-color;
+      border: 1px solid $input-border-color;
+      padding: 10px;
+
+      &:active,&:focus {
+        outline: none;
+        border-color: $input-border-color;;
+        @include box-shadow(rgba(81, 82, 84, 0.25) 0px 0px 1px);
+      }
+
+      &:hover {
+        border-color: $input-hover-border-color;
+      }
     }
 
-    .label {
-      float: left;
-      min-width: 70px;
-      color: gray;
-      font-weight: bold;
-    }
+    //------------------------------------------------
 
-    .inputbox {
-      padding: 0 5px 0 0;
-      overflow: hidden;
-    }
-
-    .inputbox input {
-      width: 100%;
-      height: 32px;
-    }
-  }
-
-  //--------------------------------------------
-
-  .compose-editor {
-    @include abs-pos(140px, 100px, 85px, 100px);
-    background-color: $input-background-color;
-    border: 1px solid $input-border-color;
-    padding: 10px;
-  }
-
-  .compose-editor:hover {
-    border-color: $input-hover-border-color;
-  }
-
-  .compose-editor:active,
-  .compose-editor:focus {
-    outline: none;
-    border-color: $input-border-color;;
-    @include box-shadow(rgba(81, 82, 84, 0.25) 0px 0px 1px);
-  }
-
-  //------------------------------------------------
-
-  .sendBtn {
-    @include abs-pos('NaN', 'NaN', 25px, 100px);
-    background-color: #4d90fe;
-    border: 1px solid #3079ed;
-    color: #ffffff;
-
-    &:hover {
-      color: #ffffff;
+    .sendBtn {
+      @include abs-pos('NaN', 'NaN', 25px, 100px);
       background-color: #4d90fe;
+      border: 1px solid #3079ed;
+      color: #ffffff;
+
+      &:hover {
+        color: #ffffff;
+        background-color: #4d90fe;
+      }
+    }
+
+    //------------------------------------------------
+
+    .closeBtn {
+      @include abs-pos(12px, 12px, 'NaN', 'NaN');
+      width: 16px;
+      height: 17px;
+      background: url(app/assets/ui/img/closeBtn.png);
+      cursor: pointer;
     }
   }
-
-  //------------------------------------------------
-
-  .closeBtn {
-    @include abs-pos(12px, 12px, 'NaN', 'NaN');
-    width: 16px;
-    height: 17px;
-    background: url(app/assets/ui/img/closeBtn.png);
-    cursor: pointer;
-  }
-
 }
+

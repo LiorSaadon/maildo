@@ -64,7 +64,7 @@ define(function (require) {
 
                 if(_itemView){
                    _itemView.markAsClicked(true);
-                   mail.vent.trigger("mailTable:ItemClicked", _itemView.model);
+                    mail.channel.vent.trigger("mailTable:ItemClicked", _itemView.model);
                 }
             }
         });
