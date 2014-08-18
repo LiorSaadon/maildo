@@ -35,9 +35,11 @@ define(function (require) {
 
         changeSublayout:function(){
 
-           var currentModule = app.context.get("module");
+           var subModule = app.submodules[app.context.get("module")];
 
-           if(_.result(app.submodules[currentModule], "setLayout")){
+           if(_.isObject(subModule) && _.isFunction(subModule.setLayout)){
+
+               subModule.setLayout();
                this.frameLayout.onModuleChange();
            }
         },

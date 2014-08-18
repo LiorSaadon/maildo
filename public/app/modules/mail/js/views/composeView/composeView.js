@@ -36,6 +36,7 @@ define(function (require) {
             initialize:function(options){
 
                 this.contacts = options.contacts;
+                this.listenTo(this.model, "change", this.onModelChange);
             },
 
             //------------------------------------------------------
@@ -46,8 +47,6 @@ define(function (require) {
 
                 this.renderToView();
                 this.renderCcView();
-
-                this.toView.addDefaultAddress("demo", "demo@mailbone.com");
              },
 
             //-------------------------------------------------------
@@ -82,9 +81,6 @@ define(function (require) {
 
                 var val = this.ui.inputSubject.val();
                 this.model.set('subject', val);
-
-                var msg = !_.isEmpty(val) ? val : "New Message";
-                mail.channel.vent.trigger("change:mailSubject",msg);
             },
 
             //-------------------------------------------------------
@@ -105,10 +101,10 @@ define(function (require) {
                 mail.channel.vent.trigger("mail:discard",this.model);
             },
 
-            //--------------------------------------------------------
+            //-------------------------------------------------------
 
-            onBeforeDestroy:function () {
-                mail.channel.vent.trigger("composeView:destroy", this.model);
+            onModelChange:function(){
+                mail.channel.vent.trigger("mail:change",this.model);
             }
         });
     });

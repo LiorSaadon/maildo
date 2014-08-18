@@ -17,24 +17,8 @@ define(function (require) {
 
             initialize:function(options){
 
-                options = options || {};
-
-                this.action = options.action || "inbox";
                 this.listenTo(this, "childview:click", this._handleChildClick);
                 this.listenTo(this.collection, "change:selection", this.onSelectionChange, this);
-            },
-
-            //-------------------------------------------------------
-            // buildChildView
-            //-------------------------------------------------------
-
-            buildChildView : function (item, ItemView) {
-
-                var view = new ItemView({
-                    action: this.action,
-                    model : item
-                });
-                return view;
             },
 
             //-------------------------------------------------------

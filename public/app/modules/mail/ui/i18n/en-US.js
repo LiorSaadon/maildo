@@ -37,7 +37,8 @@ define(function () {
         "mail.timerange.months.9" : "Sep",
         "mail.timerange.months.10" : "Oct",
         "mail.timerange.months.11" : "Nov",
-        "mail.timerange.months.12" : "Dec"
+        "mail.timerange.months.12" : "Dec",
+        "mail.newMessage":"New message"
     };
 
     return Dictionary;

@@ -17,8 +17,8 @@ define(function (require) {
 
             initialize: function (options) {
 
+                this.listenTo(mail.channel.vent, "mail:change", this.onMailChange, this);
                 this.listenTo(app.context, 'change:mail.action', this.showRelevantItems, this);
-                this.listenTo(mail.channel.vent, "change:mailSubject", this.onMessageSubjectChange, this);
                 this.listenTo(mail.dataController.getMailCollection(), "change:selection", this.showRelevantItems, this);
             },
 
@@ -170,11 +170,14 @@ define(function (require) {
             // onMessageSubjectChange
             //---------------------------------------------------------
 
-            onMessageSubjectChange:function(subject){
+            onMailChange:function(mailModel){
 
-                if(_.isString(subject)){
-                    this.ui.lblCompose.text(subject);
+                var subject = mailModel.get('subject');
+
+                if(_.isEmpty(subject)){
+                    subject = app.translator.translate("mail.newMessage");
                 }
+                this.ui.lblCompose.text(subject);
             }
         });
     });

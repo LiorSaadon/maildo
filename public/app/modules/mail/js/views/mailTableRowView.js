@@ -44,9 +44,7 @@ define(function (require) {
 
             initialize: function (options) {
 
-                options = options || {};
-
-                this.action = options.action || "inbox";
+                this.action = app.context.get("mail.action.type");
                 this.listenTo(this.model, "change:labels.*", this.toggleUI);
             },
 

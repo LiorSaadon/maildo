@@ -37,10 +37,12 @@ define(function (require) {
                 if (_.isObject(model)) {
 
                     var groups = {};
+                    var isDraft = !!model.get("groups.draft");
                     var labels = {unread: true, unstarred: true, unimportant: true};
+
                     var records = getRecords();
 
-                    if(_.isEmpty(model.get("groups.draft"))){
+                    if(!isDraft){
                         model.set("groups.sent", true);
 
                         if (_.include(model.getOutgoingAddresses(), accountName)){

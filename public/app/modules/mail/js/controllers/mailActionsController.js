@@ -19,7 +19,7 @@ define(function (require) {
                 this.listenTo(mail.channel.vent, 'mail:markAs', this.markAs, this);
                 this.listenTo(mail.channel.vent, 'mail:send', this.send, this);
                 this.listenTo(mail.channel.vent, 'mail:discard', this.discard, this);
-                this.listenTo(mail.channel.vent, 'composeView:destroy', this.saveAsDraft, this);
+                this.listenTo(mail.channel.vent, 'mail:change', this.saveAsDraft, this);
             },
 
             //----------------------------------------------------
@@ -115,11 +115,9 @@ define(function (require) {
 
                 if (_.isObject(mailModel)) {
 
-                    mailModel.save(null, {
+                    mailModel.set("groups.draft", false, {silent:true});
 
-                        invalid: function (model, error) {
-                            alert("254235");
-                        },
+                    mailModel.save(null, {
 
                         success: function () {
                             mail.router.previous();
@@ -136,6 +134,7 @@ define(function (require) {
                     mail.router.previous();
                 }else{
                     if (mailModel.get("groups.draft")) {
+
                         mailModel.destroy({
                             success: function () {
                                 mail.channel.vent.trigger("discard:success");
@@ -149,16 +148,13 @@ define(function (require) {
 
             saveAsDraft: function (mailModel) {
 
-                if (mailModel.isNew() || mailModel.get("groups.draft")) {
+                var newModel = $.extend(true, {}, mailModel);
 
-                    var newModel = $.extend(true, {}, mailModel);
+                newModel.set("groups.draft", true, {silent:true});
 
-                    newModel.moveTo("draft");
-
-                    newModel.save(null, {
-                        validateType: "draft"
-                    });
-                }
+                newModel.save(null, {
+                    validateType: "draft"
+                });
             }
         });
     });
