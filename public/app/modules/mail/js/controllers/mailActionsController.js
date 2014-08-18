@@ -19,7 +19,7 @@ define(function (require) {
                 this.listenTo(mail.channel.vent, 'mail:markAs', this.markAs, this);
                 this.listenTo(mail.channel.vent, 'mail:send', this.send, this);
                 this.listenTo(mail.channel.vent, 'mail:discard', this.discard, this);
-                this.listenTo(mail.channel.vent, 'composeView:close', this.saveAsDraft, this);
+                this.listenTo(mail.channel.vent, 'composeView:destroy', this.saveAsDraft, this);
             },
 
             //----------------------------------------------------
@@ -117,7 +117,9 @@ define(function (require) {
 
                     mailModel.save(null, {
 
-                        invalid: function (model, error) {},
+                        invalid: function (model, error) {
+                            alert("254235");
+                        },
 
                         success: function () {
                             mail.router.previous();

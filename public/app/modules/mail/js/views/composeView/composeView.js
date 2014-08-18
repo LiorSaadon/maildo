@@ -107,8 +107,8 @@ define(function (require) {
 
             //--------------------------------------------------------
 
-            onBeforeClose:function () {
-                mail.channel.vent.trigger("composeView:close", this.model);
+            onBeforeDestroy:function () {
+                mail.channel.vent.trigger("composeView:destroy", this.model);
             }
         });
     });

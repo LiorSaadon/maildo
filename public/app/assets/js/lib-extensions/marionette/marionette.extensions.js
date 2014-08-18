@@ -110,8 +110,8 @@ define(function (require) {
 
             var view = this.views[key];
 
-            if (view && !view.isPermanent && !view.isClosed && view.cid !== currViewId) {
-                if (view.close) {view.close();}
+            if (view && !view.isPermanent && !view.isDestroyed && view.cid !== currViewId) {
+                if (view.destroy) {view.destroy();}
                 else if (view.remove) {view.remove();}
                 delete this.views[key];
             }
@@ -132,7 +132,7 @@ define(function (require) {
         var that = this;
         this.views[view.cid] = view;
 
-        this.listenTo(view, "close", function () {
+        this.listenTo(view, "destroy", function () {
             delete that.views[view.cid];
         });
     };
@@ -152,28 +152,26 @@ define(function (require) {
 
 
     //-------------------------------------------------------------
-    // override close - called by region.show()
+    // override destroy - called by region.show()
     //-------------------------------------------------------------
 
-    var _originalClose = Marionette.Region.prototype.close;
+    var _originalDestroy = Marionette.Region.prototype.destroy;
 
-    Marionette.Region.prototype.close = function () {
+    Marionette.Region.prototype.destroy = function () {
 
-        _originalClose.apply(this, [].slice.apply(arguments));
+        _originalDestroy.apply(this, [].slice.apply(arguments));
 
         for (var key in this.views) {
 
             var view = this.views[key];
 
             if(_.isObject(view)){
-                if (view.close) {view.close();}
+                if (view.destroy) {view.destroy();}
                 else if (view.remove) {view.remove();}
                 delete this.views[key];
             }
         }
     };
-
-
 
     return Marionette;
 });

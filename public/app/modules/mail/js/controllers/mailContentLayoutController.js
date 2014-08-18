@@ -22,7 +22,7 @@ define(function (require) {
 
             //-----------------------------------------------------
 
-            _bindEvents:function(){
+            _bindEvents: function () {
 
                 this.listenTo(mail.channel.vent, "preview:close", this.closeMailView);
                 this.listenTo(mail.channel.vent, "discard:success", this.closeMailView);
@@ -61,10 +61,10 @@ define(function (require) {
 
             showMail: function (mailModel) {
 
-                if(_.isObject(mailModel)){
+                if (_.isObject(mailModel)) {
 
                     mail.channel.vent.trigger("mail:select", {selectBy: "none"});
-                    mail.channel.vent.trigger("mail:markAs", {label: 'read', items:[mailModel.id]});
+                    mail.channel.vent.trigger("mail:markAs", {label: 'read', items: [mailModel.id]});
 
                     var mailView = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
                     this.contentLayout.previewRegion.add(mailView);
@@ -73,9 +73,10 @@ define(function (require) {
 
             //----------------------------------------------------
 
-            closeMailView: function(){
+            closeMailView: function () {
 
-                if(this.contentLayout){
+                if (this.contentLayout &&
+                    this.contentLayout.previewRegion) {
                     this.contentLayout.previewRegion.clean();
                 }
             }
