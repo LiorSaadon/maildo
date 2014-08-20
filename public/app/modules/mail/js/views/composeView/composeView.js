@@ -105,6 +105,12 @@ define(function (require) {
 
             onModelChange:function(){
                 mail.channel.vent.trigger("mail:change",this.model);
+            },
+
+            //-------------------------------------------------------
+
+            onInvalid:function(){
+                this.ui.toInputWrapper.addClass("error");
             }
         });
     });

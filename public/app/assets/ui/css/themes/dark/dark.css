@@ -685,6 +685,9 @@ body {
   padding: 0 5px 0 0;
   overflow: hidden;
 }
+.mb .composeView .compose-header .inputbox .error {
+  border: 1px solid red;
+}
 .mb .composeView .compose-header .inputbox input {
   width: 100%;
   height: 32px;

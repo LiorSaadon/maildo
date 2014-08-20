@@ -28,6 +28,10 @@
       .inputbox {
         padding: 0 5px 0 0;
         overflow: hidden;
+
+        .error{
+          border:1px solid red;
+        }
       }
 
       .inputbox input {

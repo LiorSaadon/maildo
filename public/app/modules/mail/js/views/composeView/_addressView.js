@@ -86,28 +86,24 @@ define(function (require) {
             //-----------------------------------------------------------------
 
             addDefaultAddress: function(title, address){
-
                //this.vent.trigger("autocomplete:item:selected",title,address);
             },
 
             //-----------------------------------------------------------------
 
             addAddress: function(address){
-
                 this.model.addAddress(this.modelAttr, address);
             },
 
             //-----------------------------------------------------------------
 
             updateLastAddress: function(address){
-
                 this.model.updateLastAddress(this.modelAttr, address);
             },
 
             //-----------------------------------------------------------------
 
             removeAddress: function(address){
-
                 this.model.removeAddress(this.modelAttr, address);
             }
         });

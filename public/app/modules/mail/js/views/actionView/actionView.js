@@ -23,7 +23,6 @@ define(function (require) {
             },
 
             ui: {
-                actionListRegion: ".action-list-section",
                 btnSelect: ".btnSelect",
                 btnMoveTo: ".btnMoveTo",
                 btnRefresh: ".btnRefresh",
@@ -69,8 +68,6 @@ define(function (require) {
             },
 
             //------------------------------------------------------
-            // customTemplateHelpers
-            //------------------------------------------------------
 
             customTemplateHelpers: function () {
 
@@ -109,7 +106,7 @@ define(function (require) {
 
                 var action = app.context.get("mail.action.type");
 
-                this.hideAll();
+                this.resetUI();
 
                 switch (action) {
                     case "compose":
@@ -122,6 +119,14 @@ define(function (require) {
                         this.showListOptions(action);
                         break;
                 }
+            },
+
+            //-------------------------------------------------------
+
+            resetUI:function(){
+
+                this.showItems(_.keys(this.ui), false);
+                this.ui.lblCompose.text(app.translator.translate("mail.newMessage"));
             },
 
             //---------------------------------------------------------
@@ -149,12 +154,6 @@ define(function (require) {
                 }
             },
 
-            //-------------------------------------------------------
-
-            hideAll:function(){
-                this.showItems(["lblCompose", "lblSettings", "btnRefresh", "btnSelect", "btnMore", "btnSelect", "btnDelete", "btnMoveTo", "btnDeleteForever", "btnDiscardDrafts", "btnNotSpam", "pagerRegion"], false);
-            },
-
             //------------------------------------------------------
 
             showItems: function (items, show) {
@@ -167,7 +166,7 @@ define(function (require) {
             },
 
             //---------------------------------------------------------
-            // onMessageSubjectChange
+            // onMailChange
             //---------------------------------------------------------
 
             onMailChange:function(mailModel){

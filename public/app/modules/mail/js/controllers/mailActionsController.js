@@ -153,7 +153,11 @@ define(function (require) {
                 newModel.set("groups.draft", true, {silent:true});
 
                 newModel.save(null, {
-                    validateType: "draft"
+                    validateType: "draft",
+
+                    success:function(model,resp){
+                        //mailModel.draftId = model.id;
+                    }
                 });
             }
         });

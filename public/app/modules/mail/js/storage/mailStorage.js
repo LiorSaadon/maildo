@@ -36,33 +36,33 @@ define(function (require) {
 
                 if (_.isObject(model)) {
 
-                    var groups = {};
-                    var isDraft = !!model.get("groups.draft");
+                    model = model.toJSON();
+
+                    var isDraft = !!model.groups.draft;
                     var labels = {unread: true, unstarred: true, unimportant: true};
 
                     var records = getRecords();
 
                     if(!isDraft){
-                        model.set("groups.sent", true);
+                        model.groups.sent = true;
 
-                        if (_.include(model.getOutgoingAddresses(), accountName)){
-                            model.set("groups.inbox", true);
+                        if((model.to + model.cc + model.bcc).indexOf(accountName) !== -1){
+                            model.groups.inbox = true;
                         }
                     }
-
                     if (!model.id) {
                         model.id = _.uniqueId('_');
-                        model.set(model.idAttribute, model.id);
+                        model.idAttribute = model.id;
                     }
 
-                    model.set("labels", labels);
-                    model.set("from", accountName);
-                    model.set("sentTime", dateResolver.date2Str(new Date(), false));
+                    model.labels = labels;
+                    model.from = accountName;
+                    model.sentTime = dateResolver.date2Str(new Date(), false);
 
                     records.unshift(model);
                     _localStorage.setItem('mails', JSON.stringify(records));
 
-                    return model;
+                    return {id:model.id};
                 }
 
                 return {status: "error", message: 'model not valid'};
@@ -76,22 +76,25 @@ define(function (require) {
 
                 if (_.isObject(model)) {
 
+                    model = model.toJSON();
+
                     var records = getRecords();
+
                     var record = _.find(records, function (record) {
                         return record.id == model.id;
                     });
 
                     if (record) {
-                        if(typeof record.groups.draft === "undefined"){
+                        if(!!record.groups.draft){
                             record.groups.sent = true;
 
-                            if (_.include(model.getOutgoingAddresses(), "demo@mailbone.com")){
-                                record.groups.inbox = true;
+                            if((model.to + model.cc + model.bcc).indexOf(accountName) !== -1){
+                                model.groups.inbox = true;
                             }
                         }
                         _localStorage.setItem('mails', JSON.stringify(records));
                     }
-                    return model;
+                    return {id:model.id};
                 }
 
                 return {status: "error", message: 'model not valid'};
@@ -119,7 +122,6 @@ define(function (require) {
                         }
                     });
                     _localStorage.setItem('mails', JSON.stringify(records));
-                    return collection;
                 }
                 return {status: "error", message: 'collection is not valid'};
             };

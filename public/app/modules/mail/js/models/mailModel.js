@@ -36,14 +36,12 @@ define(function (require) {
             //-------------------------------------------------------------
 
             getIngoingAddresses: function () {
-
                 return this._getAddresses('from');
             },
 
             //-------------------------------------------------------------
 
             getOutgoingAddresses: function () {
-
                 return this._getAddresses('to').concat(this._getAddresses('cc'), this._getAddresses('bcc'));
             },
 
@@ -95,22 +93,9 @@ define(function (require) {
 
                 options = options || {};
 
-                switch (options.validateType) {
-                    case "draft":
-                        return this.validateDraft();
-                    default:
-                        return this.validateMail();
+                if (options.validateType !== "draft") {
+                    return this.validateMail();
                 }
-            },
-
-            //-------------------------------------------------------------
-
-            validateDraft: function () {
-
-                if (_.isEmpty(this._getAddresses("to")) && _.isEmpty(this.get('subject')) && _.isEmpty(this.get('body'))) {
-                    return true;
-                }
-                return false;
             },
 
             //-------------------------------------------------------------
