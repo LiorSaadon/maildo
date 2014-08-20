@@ -115,8 +115,6 @@ define(function (require) {
 
                 if (_.isObject(mailModel)) {
 
-                    mailModel.set("groups.draft", false, {silent:true});
-
                     mailModel.save(null, {
 
                         success: function () {
@@ -156,7 +154,7 @@ define(function (require) {
                     validateType: "draft",
 
                     success:function(model,resp){
-                        //mailModel.draftId = model.id;
+                        mailModel.set("draftId",model.id);
                     }
                 });
             }

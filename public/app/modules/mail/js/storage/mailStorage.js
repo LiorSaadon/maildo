@@ -49,6 +49,9 @@ define(function (require) {
                         if((model.to + model.cc + model.bcc).indexOf(accountName) !== -1){
                             model.groups.inbox = true;
                         }
+                        if(!_.isEmpty(model.draftId)){
+                           debugger;
+                        }
                     }
                     if (!model.id) {
                         model.id = _.uniqueId('_');
