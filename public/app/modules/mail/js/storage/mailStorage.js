@@ -72,11 +72,11 @@ define(function (require) {
             // update
             //-------------------------------------------------
 
-            var update = function (model) {
+            var update = function (_model) {
 
-                if (_.isObject(model)) {
+                if (_.isObject(_model)) {
 
-                    model = model.toJSON();
+                    var model = _model.toJSON();
 
                     var records = getRecords();
 
@@ -85,19 +85,24 @@ define(function (require) {
                     });
 
                     if (record) {
-                        if(!!record.groups.draft){
-                            //update body, to , from,.....
+                        if(model.groups.draft){
+                            record.to =  model.to;
+                            record.from = model.from;
+                            record.cc = model.cc;
+                            record.bcc = model.bcc;
+                            record.subject = model.subject;
+                            record.body = model.body;
                         }else{
-                            records = _.reject(records, function(record){
-                                return record.id === model.id;
-                            });
-                            _localStorage.setItem('mails', JSON.stringify(records));
+                            record.groups = {sent:true};
 
-                            return create(model)
+                            if((record.to + record.cc + record.bcc).indexOf(accountName) !== -1){
+                                record.groups.inbox = true;
+                            }
+                            _localStorage.setItem('mails', JSON.stringify(records));
                         }
+                        return {id:model.id};
                     }
                 }
-
                 return {status: "error", message: 'model not valid'};
             };
 
