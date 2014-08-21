@@ -49,9 +49,6 @@ define(function (require) {
                         if((model.to + model.cc + model.bcc).indexOf(accountName) !== -1){
                             model.groups.inbox = true;
                         }
-                        if(!_.isEmpty(model.draftId)){
-                           debugger;
-                        }
                     }
                     if (!model.id) {
                         model.id = _.uniqueId('_');
@@ -89,15 +86,16 @@ define(function (require) {
 
                     if (record) {
                         if(!!record.groups.draft){
-                            record.groups.sent = true;
+                            //update body, to , from,.....
+                        }else{
+                            records = _.reject(records, function(record){
+                                return record.id === model.id;
+                            });
+                            _localStorage.setItem('mails', JSON.stringify(records));
 
-                            if((model.to + model.cc + model.bcc).indexOf(accountName) !== -1){
-                                model.groups.inbox = true;
-                            }
+                            return create(model)
                         }
-                        _localStorage.setItem('mails', JSON.stringify(records));
                     }
-                    return {id:model.id};
                 }
 
                 return {status: "error", message: 'model not valid'};

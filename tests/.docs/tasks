@@ -1,11 +1,6 @@
-22-3-14:
- 1. filter not working
- 2. fix view of mail table: tine subject (draft..)
- 3. cancel onItemClick temp
-
-
- fix css defects
- verify that all message taken from dic
+1. 1.AddressView component need to render all the address that exist in the model.
+2. click on cancel \ok should not raise saveToDraft.
+3. select draft item (remove draft from action menu) not work well.
 
 
 
