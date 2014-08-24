@@ -87,7 +87,6 @@ define(function (require) {
                     if (record) {
                         if(model.groups.draft){
                             record.to =  model.to;
-                            record.from = model.from;
                             record.cc = model.cc;
                             record.bcc = model.bcc;
                             record.subject = model.subject;
@@ -96,10 +95,11 @@ define(function (require) {
                             record.groups = {sent:true};
 
                             if((record.to + record.cc + record.bcc).indexOf(accountName) !== -1){
+                                record.from = accountName;
                                 record.groups.inbox = true;
                             }
-                            _localStorage.setItem('mails', JSON.stringify(records));
                         }
+                        _localStorage.setItem('mails', JSON.stringify(records));
                         return {id:model.id};
                     }
                 }

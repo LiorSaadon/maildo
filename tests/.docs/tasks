@@ -1,7 +1,6 @@
-1. 1.AddressView component need to render all the address that exist in the model.
-2. delete item that shown in preview does not remove it from preview.
-2. click on cancel \ok should not raise saveToDraft.
-3. select draft item (remove draft from action menu) not work well.
+1. 1.AddressView component need to render all the address that exist in the model.  (24-8)
+2. if model in preview not exist clean preview region.  (24-8)
+3. selections not updated correctly. now update after fetch (24-8)
 
 
 

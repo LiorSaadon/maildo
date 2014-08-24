@@ -26,6 +26,7 @@ define(function (require) {
             //------------------------------------------------------
 
             _bindEvents:function(){
+                this.listenTo(this.mails, 'fetch:success', this.updateSelection, this);
                 this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
             },
 
@@ -43,6 +44,12 @@ define(function (require) {
 
             //-----------------------------------------------------
 
+            updateSelection:function(){
+                this.mails.updateSelection();
+            },
+
+            //-----------------------------------------------------
+
             onActionChange:function(){
 
                 var action = app.context.get("mail.action");
@@ -53,10 +60,7 @@ define(function (require) {
                         filters: {
                             page: action.params.page,
                             query: action.params.query || 'groups:' + action.type
-                        },
-                        success: _.bind(function(){
-                            this.mails.clearSelected();
-                        },this)
+                        }
                     });
                 }
             }

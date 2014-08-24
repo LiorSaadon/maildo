@@ -22,28 +22,25 @@ define(function (require) {
 
             //-----------------------------------------------------------------
 
-            url: function() {
+            getTitle:function(address){
 
-                return 'https://mailbone.com/contacts';
+                var model = _.find(this.models,function (record) {
+                    return record.get("address") === address;
+                });
+
+                return model ?  model.get("title") : address;
             },
 
             //-----------------------------------------------------------------
 
             getTitles:function(addressList){
 
-                var that = this, res = [];
+                var res = [];
 
-                _.each(addressList, function(address){
+                _.each(addressList, _.bind(function(address){
+                    res.push(this.getTitle(address));
+                },this));
 
-                    var model = _.find(that.models,function (record) {
-                        return record.get("address") === address;
-                    });
-                    if(model){
-                        res.push(model.get("title"));
-                    }else{
-                        res.push(address);
-                    }
-                });
                 return res;
             }
         });

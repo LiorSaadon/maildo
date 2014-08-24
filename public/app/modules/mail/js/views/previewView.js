@@ -23,8 +23,6 @@ define(function (require) {
             initialize: function(){
 
                 this.mailCollection = mail.dataController.getMailCollection();
-
-                this.listenTo(this.model,"remove",this.closePreview);
                 this.listenTo(this.mailCollection, "change:selection", this.onSelectionChange);
             },
 
@@ -58,12 +56,6 @@ define(function (require) {
 
                 var selected = this.mailCollection.getSelected().length;
                 this.$el.toggle(selected === 0);
-            },
-
-            //------------------------------------------------------------
-
-            closePreview:function(){
-                mail.channel.vent.trigger("preview:close");
             }
         });
     });

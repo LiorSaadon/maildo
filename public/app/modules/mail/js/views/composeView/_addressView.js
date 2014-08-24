@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var _s = require("underscore.string");
     var Tags = require("assets-ui-component/tags/tags");
     var template = require("tpl!mail-templates/_addressView.tmpl");
     var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
@@ -50,7 +51,8 @@ define(function (require) {
                 this.tags = new Tags({
                     el:this.ui.tagsPlaceholder,
                     vent: this.vent,
-                    validator: this.model.validateAddress
+                    validator: this.model.validateAddress,
+                    initialTags: this.getAddresses()
                 });
                 this.tags.show();
             },
@@ -85,8 +87,22 @@ define(function (require) {
 
             //-----------------------------------------------------------------
 
-            addDefaultAddress: function(title, address){
-               //this.vent.trigger("autocomplete:item:selected",title,address);
+            getAddresses:function(){
+
+                var res = [], addresses = this.model.get(this.modelAttr);
+
+                if(!_.isEmpty(addresses)){
+
+                    var addrArr = _s.strLeftBack(addresses, ";").split(";");
+
+                    _.each(addrArr, function(address){
+                        res.push({
+                            text:mail.dataController.getContactsCollection().getTitle(address),
+                            value:address
+                        })
+                    });
+                }
+                return res;
             },
 
             //-----------------------------------------------------------------

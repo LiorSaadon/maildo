@@ -72,7 +72,7 @@ define(function (require) {
                         model.moveTo(options.target, options);
                     }
                 });
-                this.updateItems(items, _.extend({}, options, {"refresh": true, "clearSelected": true}));
+                this.updateItems(items, _.extend({}, options, {"refresh": true}));
             },
 
             //----------------------------------------------------
@@ -85,9 +85,6 @@ define(function (require) {
                     fields: ['id', 'labels', 'groups'],
 
                     success: _.bind(function () {
-                        if (options.clearSelected) {
-                            this.collection.clearSelected();
-                        }
                         if (options.refresh) {
                             this.collection.refresh();
                         }

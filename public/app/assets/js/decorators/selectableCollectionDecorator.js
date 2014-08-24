@@ -41,6 +41,27 @@ define(function (require) {
 
         //--------------------------------------------------
 
+        decoratedCollection.updateSelection = function(options){
+
+            var itemsToRemove = [];
+
+            _.each(this.selected, _.bind(function(selectedItem) {
+                var model = this.get(selectedItem);
+
+                if(_.isEmpty(model)){
+                    itemsToRemove.push(selectedItem);
+                }
+            },this));
+
+            if(!_.isEmpty(itemsToRemove)){
+                debugger;
+                this.selected = _.difference(this.selected, itemsToRemove);
+                raiseTrigger(options);
+            }
+        };
+
+        //--------------------------------------------------
+
         decoratedCollection.clearSelected = function (options) {
 
             this.selected.length = 0;
@@ -103,7 +124,7 @@ define(function (require) {
 
             var silent = options ? options.silent : null;
 
-            if (_.isUndefined(silent) || _.isNull(silent) || (_.isBoolean(silent) && !silent)) {
+            if (!silent) {
                 decoratedCollection.trigger('change:selection', decoratedCollection.selected, options);
                 return true;
             }

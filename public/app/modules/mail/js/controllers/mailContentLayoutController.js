@@ -24,10 +24,8 @@ define(function (require) {
 
             _bindEvents: function () {
 
-                this.listenTo(mail.channel.vent, "preview:close", this.closeMailView);
-                this.listenTo(mail.channel.vent, "discard:success", this.closeMailView);
-                this.listenTo(mail.channel.vent, "mailTable:ItemClicked", this.showMail);
-                this.listenTo(app.context, 'change:mail.action', this.closeMailView);
+                this.listenTo(this.mails, "fetch:success", this.closeMailView);
+                this.listenTo(mail.channel.vent, "mailTable:ItemClicked", this.showMailView);
             },
 
             //----------------------------------------------------
@@ -56,12 +54,14 @@ define(function (require) {
             },
 
             //----------------------------------------------------
-            // showMail
+            // mailView
             //----------------------------------------------------
 
-            showMail: function (mailModel) {
+            showMailView: function (mailModel) {
 
                 if (_.isObject(mailModel)) {
+
+                    this.viewModel = mailModel;
 
                     mail.channel.vent.trigger("mail:select", {selectBy: "none"});
                     mail.channel.vent.trigger("mail:markAs", {label: 'read', items: [mailModel.id]});
@@ -73,11 +73,14 @@ define(function (require) {
 
             //----------------------------------------------------
 
-            closeMailView: function () {
+            closeMailView:function(){
 
-                if (this.contentLayout &&
-                    this.contentLayout.previewRegion) {
-                    this.contentLayout.previewRegion.clean();
+                if (_.isObject(this.viewModel)) {
+                    var _viewModel = this.mails.get(this.viewModel.id);
+
+                    if(_.isEmpty(_viewModel) && this.contentLayout && this.contentLayout.previewRegion){
+                        this.contentLayout.previewRegion.clean();
+                    }
                 }
             }
         });

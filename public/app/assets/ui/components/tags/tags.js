@@ -10,10 +10,19 @@ define(function (require) {
 
         initialize: function (options) {
 
-            this.collection = new TagsCollection();
+            var initialTags = options.initialTags || [];
+
+            this.collection = new TagsCollection(initialTags);
             this.validator = options.validator;
             this.vent = options.vent;
             this.el = options.el;
+
+            this._bindEvents();
+        },
+
+        //--------------------------------------------------
+
+        _bindEvents:function(){
 
             this.listenTo(this.vent,"tag:input:enter", this.onEnter);
             this.listenTo(this.vent,"tag:item:remove", this.onRemoveItem);
