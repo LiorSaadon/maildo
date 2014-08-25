@@ -660,6 +660,7 @@ body {
   left: 0;
   background-color: #F9FBFF;
   z-index: 200;
+  min-height: 350px;
 }
 .mb .composeView .compose-header {
   position: absolute;

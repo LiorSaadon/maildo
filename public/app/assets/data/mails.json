@@ -2,7 +2,7 @@
 
     {
         "from": "demo@mailbone.com",
-        "to": "anna.james@mailbone.com;julia.ward@mailbone.com",
+        "to": "anna.james@mailbone.com;julia.ward@mailbone.com;",
         "cc": "",
         "bcc": "",
         "subject": "Things You Can Do With JavaScript",
@@ -21,7 +21,7 @@
     },
     {
         "from": "demo@mailbone.com",
-        "to": "anna.james@mailbone.com",
+        "to": "anna.james@mailbone.com;",
         "cc": "",
         "bcc": "",
         "subject": "Things You Can Do With JavaScript",
@@ -40,7 +40,7 @@
     },
     {
         "from": "demo@mailbone.com",
-        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com",
+        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
         "cc": "williams@mailbone.com",
         "bcc": "",
         "subject": "Things You Can Do With JavaScript",
@@ -61,8 +61,8 @@
 
     {
         "from": "demo@mailbone.com",
-        "to": "patricia.white@mailbone.com;alan.rogers@mailbone.com;dennis.king@mailbone.com",
-        "cc": "anna.james@mailbone.com",
+        "to": "patricia.white@mailbone.com;alan.rogers@mailbone.com;dennis.king@mailbone.com;",
+        "cc": "anna.james@mailbone.com;",
         "bcc": "",
         "subject": "13241234123",
         "sentTime": "2014-04-12 18:06:51",
@@ -80,8 +80,8 @@
     },
     {
         "from": "demo@mailbone.com",
-        "to": "anna.james@mailbone.com",
-        "cc": "patricia.white@mailbone.com;alan.rogers@mailbone.com;dennis.king@mailbone.com",
+        "to": "anna.james@mailbone.com;",
+        "cc": "patricia.white@mailbone.com;alan.rogers@mailbone.com;dennis.king@mailbone.com;",
         "bcc": "",
         "subject": "Things You Can Do With JavaScript1111",
         "sentTime": "2014-04-12 17:06:51",
@@ -99,8 +99,8 @@
     },
     {
         "from": "demo@mailbone.com",
-        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com",
-        "cc": "dennis.king@mailbone.com",
+        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
+        "cc": "dennis.king@mailbone.com;",
         "bcc": "",
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 15:06:51",
@@ -120,8 +120,8 @@
 
     {
         "from": "alan.rogers@mailbone.com",
-        "to": "demo@mailbone.com",
-        "cc": "patricia.white@mailbone.com;williams@mailbone.com",
+        "to": "demo@mailbone.com;",
+        "cc": "patricia.white@mailbone.com;williams@mailbone.com;",
         "bcc": "",
         "subject": "Things You Can Do With JavaScript1",
         "sentTime": "2014-04-09 15:06:51",
@@ -138,8 +138,8 @@
     },
     {
         "from": "alan.rogers@mailbone.com",
-        "to": "demo@mailbone.com",
-        "cc": "patricia.white@mailbone.com;williams@mailbone.com",
+        "to": "demo@mailbone.com;",
+        "cc": "patricia.white@mailbone.com;williams@mailbone.com;",
         "bcc": "",
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-09 15:06:51",
@@ -157,8 +157,8 @@
     },
     {
         "from": "margaret.hughes@mailbone.com",
-        "to": "demo@mailbone.com",
-        "cc": "alan.rogers@mailbone.com",
+        "to": "demo@mailbone.com;",
+        "cc": "alan.rogers@mailbone.com;",
         "bcc": "",
         "subject": "What is mvc programming?",
         "sentTime": "2014-04-09 12:06:51",
@@ -176,7 +176,7 @@
     },
     {
         "from": "billy.young@mailbone.com",
-        "to": "demo@mailbone.com",
+        "to": "demo@mailbone.com;",
         "cc": "",
         "bcc": "",
         "subject": "An Intro to Backbone.js",
@@ -195,8 +195,8 @@
     },
     {
         "from": "billy.young@mailbone.com",
-        "to": "demo@mailbone.com",
-        "cc": "margaret.hughes@mailbone.com",
+        "to": "demo@mailbone.com;",
+        "cc": "margaret.hughes@mailbone.com;",
         "bcc": "",
         "subject": "Why Should I Use Backbone.Marionette?",
         "sentTime": "2014-04-08 17:06:51",
@@ -214,8 +214,8 @@
     },
     {
         "from": "nichole.hampton@mailbone.com",
-        "to": "demo@mailbone.com",
-        "cc": "eugene.cooper@mailbone.com",
+        "to": "demo@mailbone.com;",
+        "cc": "eugene.cooper@mailbone.com;",
         "bcc": "billy.young@mailbone.com",
         "subject": "What is underscore?",
         "sentTime": "2014-04-07 13:06:51",
@@ -233,8 +233,8 @@
     },
     {
         "from": "eugene.cooper@mailbone.com",
-        "to": "demo@mailbone.com",
-        "cc": "nichole.hampton@mailbone.com",
+        "to": "demo@mailbone.com;",
+        "cc": "nichole.hampton@mailbone.com;",
         "bcc": "",
         "subject": "How to use Mustache.js",
         "sentTime": "2014-04-06 14:06:51",
@@ -252,8 +252,8 @@
     },
     {
         "from": "sherri.lyons@mailbone.com",
-        "to": "demo@mailbone.com",
-        "cc": "eugene.cooper@mailbone.com",
+        "to": "demo@mailbone.com;",
+        "cc": "eugene.cooper@mailbone.com;",
         "bcc": "",
         "subject": "How to Test your JavaScript Code",
         "sentTime": "2014-04-05 14:06:51",

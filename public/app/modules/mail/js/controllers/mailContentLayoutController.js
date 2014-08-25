@@ -24,8 +24,9 @@ define(function (require) {
 
             _bindEvents: function () {
 
-                this.listenTo(this.mails, "fetch:success", this.closeMailView);
-                this.listenTo(mail.channel.vent, "mailTable:ItemClicked", this.showMailView);
+                this.listenTo(this.mails, "fetch:success", this.closePreview);
+                this.listenTo(this.mails, "change:selection", this.togglePreview);
+                this.listenTo(mail.channel.vent, "mailTable:ItemClicked", this.showPreview);
             },
 
             //----------------------------------------------------
@@ -54,33 +55,43 @@ define(function (require) {
             },
 
             //----------------------------------------------------
-            // mailView
+            // showPreview
             //----------------------------------------------------
 
-            showMailView: function (mailModel) {
+            showPreview: function (mailModel) {
 
                 if (_.isObject(mailModel)) {
-
-                    this.viewModel = mailModel;
 
                     mail.channel.vent.trigger("mail:select", {selectBy: "none"});
                     mail.channel.vent.trigger("mail:markAs", {label: 'read', items: [mailModel.id]});
 
-                    var mailView = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
-                    this.contentLayout.previewRegion.add(mailView);
+                    this.preView = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
+                    this.contentLayout.previewRegion.add(this.preView);
                 }
             },
 
             //----------------------------------------------------
 
-            closeMailView:function(){
+            closePreview:function(){
 
-                if (_.isObject(this.viewModel)) {
-                    var _viewModel = this.mails.get(this.viewModel.id);
+                if (_.isObject(this.preView) && _.isObject(this.preView.model) ) {
 
-                    if(_.isEmpty(_viewModel) && this.contentLayout && this.contentLayout.previewRegion){
-                        this.contentLayout.previewRegion.clean();
+                    var isModelExist = _.isObject(this.mails.get(this.preView.model.id));
+
+                    if(!isModelExist && this.contentLayout && this.contentLayout.previewRegion){
+                            this.contentLayout.previewRegion.clean();
                     }
+                }
+            },
+
+            //----------------------------------------------------
+
+            togglePreview:function(){
+
+                if (_.isObject(this.preView)){
+
+                    var selected = this.mails.getSelected().length;
+                    this.preView.$el.toggle(selected === 0);
                 }
             }
         });

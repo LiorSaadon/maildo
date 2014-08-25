@@ -1,16 +1,30 @@
+24-8
+------
 1. 1.AddressView component need to render all the address that exist in the model.  (24-8)
 2. if model in preview not exist clean preview region.  (24-8)
 3. selections not updated correctly. now update after fetch (24-8)
+
+25-8
+---------
+1. In low resolution: send not display correctly.  (min height:350px)
+2. draft->select item--> preview still display
+3. address component render addresses if exist (relevant to drafts)
+4. validation for mail addresses (empty or invalid) work correctly. The red border remove by clicking address component.
 
 
 
 
  sanity tests
  --------------------
- 1.filter is working
- 2. persistent is working
- 3.components are working
- 4.table size as defines in settings.
+ 1.filter is work correctly
+ 2.persistent is working
+ 3.compose work
+ 4.draft preview work
+ 5.selection work. back to selected item (if selected).
+ 6.components are working
+ 7.table size as defines in settings.
+ 8. paging work (change due persistent)
+ 9. action buttons display according to selected action(inbox, send to...)
 
 
 

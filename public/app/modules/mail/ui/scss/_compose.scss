@@ -4,6 +4,7 @@
     @include abs-pos(0, 0, 0, 0);
     background-color: #F9FBFF;
     z-index:200;
+    min-height: 350px;
 
     .compose-header {
       @include abs-pos(30px, 95px, 'NaN', 30px);

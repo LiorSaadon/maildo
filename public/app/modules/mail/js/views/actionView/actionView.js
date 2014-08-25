@@ -145,7 +145,7 @@ define(function (require) {
                             this.showItems(["btnSelect", , "btnNotSpam", "btnDeleteForever", "btnMore"]);
                             break;
                         case "trash":
-                            this.showItems(["btnSelect", "btnDeleteForever", "btnMore"]);
+                            this.showItems(["btnSelect", "btnDeleteForever", "btnMoveTo", "btnMore"]);
                             break;
                         default:
                             this.showItems(["btnSelect", "btnDelete", "btnMoveTo", "btnMore"]);

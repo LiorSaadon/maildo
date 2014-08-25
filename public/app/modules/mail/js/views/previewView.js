@@ -20,12 +20,6 @@ define(function (require) {
 
             },
 
-            initialize: function(){
-
-                this.mailCollection = mail.dataController.getMailCollection();
-                this.listenTo(this.mailCollection, "change:selection", this.onSelectionChange);
-            },
-
             //-------------------------------------------------------------
 
             customTemplateHelpers : function () {
@@ -48,14 +42,6 @@ define(function (require) {
                 }else{
                     this.ui.body.html(this.model.get("body"));
                 }
-            },
-
-            //-----------------------------------------------------------
-
-            onSelectionChange:function(){
-
-                var selected = this.mailCollection.getSelected().length;
-                this.$el.toggle(selected === 0);
             }
         });
     });

@@ -148,7 +148,7 @@ define(function (require) {
                 mailModel.set("groups.draft", true, {silent:true});
 
                 mailModel.save(null, {
-                    validateType: "draft"
+                    saveAs: "draft"
                 });
             }
         });

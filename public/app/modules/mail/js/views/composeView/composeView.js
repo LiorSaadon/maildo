@@ -2,6 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var MailModel = require("mail-models/mailModel");
     var template = require("tpl!mail-templates/composeView.tmpl");
     var AddressView = require("mail-views/composeView/_addressView");
 
@@ -28,7 +29,9 @@ define(function (require) {
                 "click .closeBtn": "onCloseBtnClick",
                 "click .sendBtn": "onSendClick",
                 "change .subject": "onSubjectChange",
-                "blur .compose-editor": "onBodyBlur"
+                "blur .compose-editor": "onEditorBlur",
+                "click .toInputWrapper": "onToInputWrapperClick",
+                "click .ccInputWrapper": "onCcInputWrapperClick"
             },
 
             //------------------------------------------------------
@@ -85,7 +88,7 @@ define(function (require) {
 
             //-------------------------------------------------------
 
-            onBodyBlur: function(){
+            onEditorBlur: function(){
                 this.model.set('body',this.ui.inputEditor.html());
             },
 
@@ -103,14 +106,34 @@ define(function (require) {
 
             //-------------------------------------------------------
 
+            onToInputWrapperClick:function(){
+                this.ui.toInputWrapper.removeClass("error");
+            },
+
+            //-------------------------------------------------------
+
+            onCcInputWrapperClick:function(){
+                this.ui.ccInputWrapper.removeClass("error");
+            },
+
+            //-------------------------------------------------------
+
             onModelChange:function(){
                 mail.channel.vent.trigger("mail:change",this.model);
             },
 
             //-------------------------------------------------------
 
-            onInvalid:function(){
-                this.ui.toInputWrapper.addClass("error");
+            onInvalid:function(model, error){
+
+                switch(error){
+                    case MailModel.Errors.NoRecipient: case MailModel.Errors.InvalidToAddress:
+                        this.ui.toInputWrapper.addClass("error");
+                        break;
+                    case MailModel.Errors.InvalidCcAddress:
+                        this.ui.ccInputWrapper.addClass("error");
+                        break;
+                }
             }
         });
     });

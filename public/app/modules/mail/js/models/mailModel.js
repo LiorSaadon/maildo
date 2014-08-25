@@ -5,7 +5,6 @@ define(function (require) {
     var _s = require("underscore.string");
     var BaseModel = require("assets-models/baseModel");
     var MailStorage = require("mail-storage/mailStorage");
-    var dateResolver = require("assets-resolvers-date/dateResolver");
 
     var MailModel = {};
 
@@ -30,9 +29,8 @@ define(function (require) {
                 this.localStorage = new MailStorage();
             },
 
-
             //-------------------------------------------------------------
-            // get Ingoing\Outgoing Addresses
+            // get addresses
             //-------------------------------------------------------------
 
             getIngoingAddresses: function () {
@@ -86,31 +84,32 @@ define(function (require) {
 
 
             //----------------------------------------------------------------
-            // validate functions
+            // validate
             //----------------------------------------------------------------
 
             validate: function (attrs, options) {
 
                 options = options || {};
 
-                if (options.validateType !== "draft") {
-                    return this.validateMail();
-                }
-            },
+                if (options.saveAs !== "draft") {
 
-            //-------------------------------------------------------------
+                    var outgoingAddresses = this.getOutgoingAddresses();
+                    if (_.isEmpty(outgoingAddresses)) {
+                        return MailModel.Errors.NoRecipient;
+                    }
 
-            validateMail: function () {
+                    var to = this._getAddresses('to');
+                    for (var i = 0; i < to.length; i++) {
+                        if (!this.validateAddress(to[i])) {
+                            return MailModel.Errors.InvalidToAddress;
+                        }
+                    }
 
-                var outgoingAddresses = this.getOutgoingAddresses();
-
-                if (_.isEmpty(outgoingAddresses)) {
-                    return "Please specify at least one recipient.";
-                }
-
-                for (var i = 0; i < outgoingAddresses.length; i++) {
-                    if (!this.validateAddress(outgoingAddresses[i])) {
-                        return "The email address '" + outgoingAddresses[i] + "' is not recognized. Please fix it and try again.";
+                    var cc = this._getAddresses('cc');
+                    for (var i = 0; i < cc.length; i++) {
+                        if (!this.validateAddress(cc[i])) {
+                            return MailModel.Errors.InvalidCcAddress;
+                        }
                     }
                 }
             },
@@ -173,7 +172,7 @@ define(function (require) {
 
                 var groups = this.get('groups');
 
-                if(_.has(groups,"trash") || _.has(groups,"spam") || _.has(groups,"draft") || dest == "trash" || dest == "spam"){
+                if(!!groups.trash || !!groups.spam || dest === "trash" || dest === "spam"){
 
                     _.each(groups, _.bind(function (value, key) {
                         delete groups[key];
@@ -183,6 +182,15 @@ define(function (require) {
                 this.set('groups.' + dest, true);
             }
         });
+
+        //----------------------------------------------------------------
+
+        MailModel.Errors = {
+
+            NoRecipient: 1,
+            InvalidToAddress: 2,
+            InvalidCcAddress: 3
+        }
     });
     return MailModel;
 });
