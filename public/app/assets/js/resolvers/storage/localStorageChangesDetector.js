@@ -1,7 +1,7 @@
 define(function (require) {
     "use strict";
 
-    var localStorageChangesDetector = function () {
+    var localStorageChangesDetector = (function () {
 
     var cache = [];
 
@@ -9,26 +9,18 @@ define(function (require) {
     // detect
     //-----------------------------------------
 
-    var detect = function (url, records, filters) {
+    var detect = function (records, url, filters) {
 
         filters = filters || {};
 
-//        var aid = urlParam(url, 'aid');
-//        var sid = urlParam(url, 'sid');
-
-        var isValid =  _.isString(filters.query) && _.isFinite(filters.page);  //_.isString('aid') && _.isString(sid) &&
-        if(!isValid){
-            return false;
-        }
-
         var resId = extractIds(records);
 
-        var item = _.where(cache, {query:filters.query, page:filters.page});  //sid: sid, aid:aid,
-        if (item &&_.isEqual(resId, item.res)) {
+        var cacheItem = _.findWhere(cache, {url:url, query:filters.query, page:filters.page});
+        if (cacheItem &&_.isEqual(resId, cacheItem.res)) {
             return false;
         }
 
-        updateCache(filters.query, filters.page, resId); //aid, sid,
+        updateCache(url, filters.query, filters.page, resId);
         return true;
     };
 
@@ -44,25 +36,18 @@ define(function (require) {
 
         return res;
     };
-    //---------------------------------------
-
-    var urlParam = function (url, name) {
-
-        var res = new RegExp(name + '=' + '(.+?)(&|$)').exec(url);
-        return (res||[null])[1];
-    };
 
     //----------------------------------
 
-    var updateCache = function (query, page, resIds) {    //aid, sid,
+    var updateCache = function (url, query, page, resIds) {
 
-        var item = _.where(cache, {query:query, page:page});   //sid: sid, aid:aid,
-        if (item) {
-            item.res = resIds;
+        var cacheItem = _.where(cache, {url:url, query:query, page:page});
+
+        if (!_.isEmpty(cacheItem)) {
+            cacheItem.res = resIds;
         }else{
             cache.push({
-//                sid: sid,
-//                aid:aid,
+                url:url,
                 query:query,
                 page:page,
                 res:resIds
@@ -75,7 +60,7 @@ define(function (require) {
     return{
         detect: detect
     };
-};
+})();
 
 return localStorageChangesDetector;
 });

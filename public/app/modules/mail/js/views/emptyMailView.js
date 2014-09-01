@@ -19,15 +19,15 @@ define(function (require) {
 
              initialize: function(){
 
-                 this.mailCollection = mail.dataController.getMailCollection();
-                 this.listenTo(this.mailCollection, "change:selection", this.onSelectionChange, this);
+                 this.mails = mail.dataController.getMailCollection();
+                 this.listenTo(this.mails, "change:selection", this.onSelectionChange, this);
              },
 
              //-----------------------------------------------------------------------
 
              onSelectionChange : function () {
 
-                var selected = this.mailCollection.getSelected().length;
+                var selected = this.mails.getSelected().length;
 
                 this.ui.counter.html(selected);
                 this.ui.counter.toggle(selected>0);

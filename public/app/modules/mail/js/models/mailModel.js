@@ -27,6 +27,7 @@ define(function (require) {
             initialize: function (attrs, options) {
 
                 this.localStorage = new MailStorage();
+                this.set("cc", app.settings.get("accountName") + ";");
             },
 
             //-------------------------------------------------------------
@@ -106,7 +107,7 @@ define(function (require) {
                     }
 
                     var cc = this._getAddresses('cc');
-                    for (var i = 0; i < cc.length; i++) {
+                    for (i = 0; i < cc.length; i++) {
                         if (!this.validateAddress(cc[i])) {
                             return MailModel.Errors.InvalidCcAddress;
                         }
@@ -190,7 +191,7 @@ define(function (require) {
             NoRecipient: 1,
             InvalidToAddress: 2,
             InvalidCcAddress: 3
-        }
+        };
     });
     return MailModel;
 });

@@ -192,7 +192,7 @@ body {
   margin-right: 15px;
   padding: 5px 8px 5px 8px;
   min-width: 50px;
-  background: #343434;
+  background: #bebaba;
   border: solid 1px #d9d9d9;
   text-align: center;
   -webkit-border-radius: 2px;
@@ -216,7 +216,7 @@ body {
 }
 .mb .button.clicked,
 .mb .button:hover {
-  background: #494949;
+  background: #949090;
   color: white;
 }
 .mb .button.clicked .toggle,
@@ -227,7 +227,7 @@ body {
 .mb .button.disable:hover {
   cursor: default;
   color: #b6aeae;
-  background-color: #343434;
+  background-color: #bebaba;
 }
 .mb .button.left {
   margin-right: 0px;
@@ -741,7 +741,7 @@ body {
 
 .mail-action-region {
   height: 70px;
-  border-bottom: 1px solid #404040;
+  border-bottom: 1px solid #aaaaaa;
   position: absolute;
   top: 80px;
   right: 0;
@@ -767,7 +767,7 @@ body {
 
 .mail-items-region {
   height: 270px;
-  border-bottom: 1px solid #404040;
+  border-bottom: 1px solid #aaaaaa;
   position: absolute;
   top: 0;
   right: 0;
@@ -1196,11 +1196,14 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #111111;
+  background-color: #6f6f6f;
+  min-width: 1024px;
+  min-height: 550px;
+  overflow: hidden;
 }
 .mb .techbar-wrapper {
   height: 30px;
-  border-bottom: 1px solid #404040;
+  border-bottom: 1px solid #aaaaaa;
   background-color: red;
   position: absolute;
   top: 0;
@@ -1209,7 +1212,7 @@ body {
 }
 .mb .header-wrapper {
   height: 70px;
-  border-bottom: 1px solid #404040;
+  border-bottom: 1px solid #aaaaaa;
   position: absolute;
   top: 30px;
   right: 0;
@@ -1240,7 +1243,7 @@ body {
 }
 .mb .actions-wrapper {
   height: 65px;
-  border-bottom: 1px solid #404040;
+  border-bottom: 1px solid #aaaaaa;
   position: absolute;
   top: 100px;
   right: 0;

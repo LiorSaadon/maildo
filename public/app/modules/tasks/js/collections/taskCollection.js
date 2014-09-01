@@ -16,7 +16,16 @@ define(function (require) {
 
             model: TaskModel,
 
-            localStorage: TasksStorage
+            resource: 'https://mailbone.com/tasks',
+
+            localStorage: TasksStorage,
+
+            //--------------------------------------------------
+
+            url: function () {
+
+                return this.resource;
+            }
         });
     });
     return TaskCollection;

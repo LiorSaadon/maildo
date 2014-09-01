@@ -1,7 +1,8 @@
 [
     {
        "id":0,
-       "name":"collage"
+       "name":"collage",
+       "isDefault":true
     },
     {
         "id":1,

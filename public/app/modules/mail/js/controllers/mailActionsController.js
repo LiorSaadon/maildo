@@ -11,7 +11,7 @@ define(function (require) {
 
             initialize: function () {
 
-                this.collection = mail.dataController.mails;
+                this.mails = mail.dataController.getMailCollection();
 
                 this.listenTo(mail.channel.vent, 'mail:select', this.select, this);
                 this.listenTo(mail.channel.vent, 'mail:moveTo', this.moveTo, this);
@@ -29,16 +29,16 @@ define(function (require) {
                 switch (options.selectBy) {
 
                     case 'all':
-                        this.collection.selectAllModels();
+                        this.mails.selectAll();
                         break;
                     case 'none':
-                        this.collection.clearSelected();
+                        this.mails.clearSelected();
                         break;
                     case 'read':
-                        this.collection.selectModels(this.collection.filter("labels.read"), {exclusively: true});
+                        this.mails.selectModels(this.mails.filterLabel("read"), {exclusively: true});
                         break;
                     case 'unread':
-                        this.collection.selectModels(this.collection.filter("labels.unread"), {exclusively: true});
+                        this.mails.selectModels(this.mails.filterLabel("unread"), {exclusively: true});
                         break;
                 }
             },
@@ -47,11 +47,11 @@ define(function (require) {
 
             markAs: function (options) {
 
-                var that = this, items = options.items || this.collection.getSelected();
+                var that = this, items = options.items || this.mails.getSelected();
 
                 _.each(items, function (item) {
 
-                    var model = that.collection.get(item);
+                    var model = that.mails.get(item);
                     if (model) {
                         model.markAs(options.label);
                     }
@@ -63,11 +63,11 @@ define(function (require) {
 
             moveTo: function (options) {
 
-                var that = this, items = options.items || this.collection.getSelected();
+                var that = this, items = options.items || this.mails.getSelected();
 
                 _.each(items, function (item) {
 
-                    var model = that.collection.get(item);
+                    var model = that.mails.get(item);
                     if (model) {
                         model.moveTo(options.target, options);
                     }
@@ -79,14 +79,14 @@ define(function (require) {
 
             updateItems: function (items, options) {
 
-                this.collection.update({
+                this.mails.update({
 
                     selectedItems: items,
                     fields: ['id', 'labels', 'groups'],
 
                     success: _.bind(function () {
                         if (options.refresh) {
-                            this.collection.refresh();
+                            this.mails.refresh();
                         }
                     }, this)
                 });
@@ -96,12 +96,12 @@ define(function (require) {
 
             deleteItems: function () {
 
-                this.collection.destroy({
+                this.mails.destroy({
 
-                    selectedItems: this.collection.getSelected(),
+                    selectedItems: this.mails.getSelected(),
 
                     success: _.bind(function () {
-                        this.collection.refresh();
+                        this.mails.refresh();
                     }, this)
                 });
             },
@@ -133,9 +133,9 @@ define(function (require) {
                     if (mailModel.get("groups.draft")) {
 
                         mailModel.destroy({
-                            success: function () {
-                                mail.channel.vent.trigger("discard:success");
-                            }
+                            success: _.bind(function () {
+                                this.mails.refresh();
+                            },this)
                         });
                     }
                 }

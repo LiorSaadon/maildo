@@ -6,7 +6,7 @@ define(function (require) {
 
     app.module('tasks', function (tasks, app,  Backbone, Marionette, $, _) {
 
-        require("tasks-controllers/tasksPreliminaryDataController");
+        require("tasks-storage/tasksStorageInitializer");
 
         var LayoutController = require("tasks-controllers/tasksLayoutController");
         var RouterController = require("tasks-controllers/tasksRouterController");

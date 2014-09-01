@@ -11,7 +11,8 @@ define(function (require) {
         CategoryModel = BaseModel.extend({
 
             defaults: {
-                title:""
+                title:"",
+                isDefault:false
             },
 
             initialize: function (attrs, options) {

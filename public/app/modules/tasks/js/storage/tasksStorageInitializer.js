@@ -5,11 +5,11 @@ define(function (require) {
     var categoryList = require('json!tasks-data/categories.json');
     var taskList = require('json!tasks-data/tasks.json');
 
-    var PreliminaryDataController = {};
+    var TasksStorageInitializer = {};
 
     app.module('tasks', function (tasks, app, Backbone, Marionette, $, _) {
 
-        PreliminaryDataController = (function(){
+        TasksStorageInitializer = (function(){
 
             var localStorage = window.localStorage;
 
@@ -36,5 +36,5 @@ define(function (require) {
         })();
     });
 
-    return PreliminaryDataController;
+    return TasksStorageInitializer;
 });

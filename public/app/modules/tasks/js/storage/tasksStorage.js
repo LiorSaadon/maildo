@@ -2,6 +2,8 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
+    var CategoriesStorage = require("tasks-storage/categoriesStorage");
+    var ChangesDetector = require("assets-resolvers-storage/localStorageChangesDetector");
 
     var TasksStorage = {};
 
@@ -10,6 +12,7 @@ define(function (require) {
         TasksStorage = (function () {
 
             var _localStorage = window.localStorage;
+            var categoriesStorage = new CategoriesStorage();
 
             //------------------------------------------------
             // findAll
@@ -17,11 +20,27 @@ define(function (require) {
 
             var findAll = function (model, options) {
 
-                var tasks = getTasks();
+                var tasks = getTasks(),
+                    data = options.data || {};
 
-                return {
-                    collection: _.where(tasks, {category:options.data.filters.categoryId}),
-                    metadata:{}
+                var categoryId = data.filters ? data.filters.categoryId : null;
+
+                if(!_.isFinite(categoryId)){
+                    categoryId = categoriesStorage.getDefaultCategoryId();
+                }
+
+                var result = _.where(tasks, {category:categoryId});
+                var changed = ChangesDetector.detect(result, model.url(), {"query":"categoryId:"+categoryId});
+
+                if (data.persist && !changed) {
+                    return {
+                        metadata: {status: 'nochange'},
+                        collection: []
+                    };
+                }
+                return{
+                    metadata: {categoryId: categoryId},
+                    collection:result
                 };
             };
 

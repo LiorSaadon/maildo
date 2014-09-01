@@ -5,6 +5,7 @@ define(function (require) {
     var _s = require("underscore.string");
     var Tags = require("assets-ui-component/tags/tags");
     var template = require("tpl!mail-templates/_addressView.tmpl");
+    var ContactsFilterModel = require("mail-models/contactsFilterModel");
     var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
 
     var AddressView ={};
@@ -63,6 +64,7 @@ define(function (require) {
 
                 this.autoComplete = new AutoComplete({
                     items: this.getContacts(),
+                    filterModel: new ContactsFilterModel(),
                     el:this.ui.autoCompletePlaceholder,
                     vent: this.vent
                 });
@@ -75,7 +77,7 @@ define(function (require) {
 
                 var contacts = [];
 
-                mail.dataController.getContactsCollection().each(function(model){
+                mail.dataController.contactCollection.each(function(model){
                     contacts.push({
                         text: model.get("title"),
                         value: model.get("address"),
@@ -97,9 +99,9 @@ define(function (require) {
 
                     _.each(addrArr, function(address){
                         res.push({
-                            text:mail.dataController.getContactsCollection().getTitle(address),
+                            text:mail.dataController.contactCollection.getTitle(address),
                             value:address
-                        })
+                        });
                     });
                 }
                 return res;

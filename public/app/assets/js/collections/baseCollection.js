@@ -19,13 +19,15 @@ define(function (require) {
             var errorFunc = options.error;
 
             options.success = function(collection, response, options) {
-                collection.trigger("fetch:success");
+
+                collection.trigger("fetch:success",response);
                 if (_.isFunction(successFunc)) {
                     successFunc(collection, response, options);
                 }
             };
             options.error = function(collection, response, options) {
-                collection.trigger("fetch:error");
+
+                collection.trigger("fetch:error", response);
                 if (_.isFunction(errorFunc)) {
                     errorFunc(collection, response, options);
                 }
@@ -43,8 +45,12 @@ define(function (require) {
 
             response = _.isObject(response) ? response : {};
 
-            this.updateMetadata(response.metadata);
-            Backbone.Collection.prototype.set.call(this, response.collection, options);
+            if(_.isObject(response.collection)){
+                Backbone.Collection.prototype.set.call(this, response.collection, options);
+            }
+            if(_.isObject(response.metadata)){
+                this.updateMetadata(response.metadata);
+            }
         },
 
         //--------------------------------------------------

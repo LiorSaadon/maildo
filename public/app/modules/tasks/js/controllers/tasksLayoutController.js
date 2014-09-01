@@ -21,7 +21,7 @@ define(function (require) {
 
                 this.listenTo(tasks.channel.vent, "task:show", this.showTask);
                 this.listenTo(tasks.channel.vent, "task:create", this.createTask);
-                this.listenTo(tasks.channel.vent, "category:tasks:show", this.showCategoryTasks);
+                this.listenTo(tasks.channel.vent, 'category:change', this.closeTask);
             },
 
             //----------------------------------------------------
@@ -39,40 +39,17 @@ define(function (require) {
                 app.frame.setRegion("search", this.searchView);
                 app.frame.setRegion("actions", this.actionView);
                 app.frame.setRegion("main", this.mainLayout);
-
-                return true;
             },
 
             //----------------------------------------------------
 
             onMainLayoutRender: function () {
 
-                var categories = tasks.dataController.categories;
-                var selected = categories.models[0];
+                var categoriesView = new CategoriesView({collection: tasks.dataController.categoryCollection});
+                this.mainLayout.categoriesRegion.add(categoriesView);
 
-                var categoriesView = new CategoriesView({collection: categories, selectedId: selected.cid});
-                this.mainLayout.categoriesRegion.show(categoriesView);
-
-                this.showCategoryTasks(selected.id);
-            },
-
-            //----------------------------------------------------
-
-            showCategoryTasks: function (categoryId) {
-
-                this.currentCategory = categoryId;
-                this.tasksCollection = tasks.dataController.tasksCollection;
-
-                this.tasksCollection.fetchBy({
-                    filters: {
-                        categoryId: this.currentCategory
-                    },
-                    success: _.bind(function () {
-                        var tasksCollection = new TasksTableView({collection: this.tasksCollection});
-                        this.mainLayout.tasksRegion.show(tasksCollection);
-                        this.mainLayout.taskDetailRegion.empty();
-                    }, this)
-                });
+                var tasksView = new TasksTableView({collection: tasks.dataController.taskCollection});
+                this.mainLayout.tasksRegion.add(tasksView);
             },
 
             //----------------------------------------------------
@@ -82,18 +59,21 @@ define(function (require) {
                var taskDetails = new TaskDetailsView({
                    model:taskModel
                });
-               this.mainLayout.taskDetailRegion.show(taskDetails);
+               this.mainLayout.taskDetailRegion.add(taskDetails);
             },
 
             //----------------------------------------------------
 
             createTask:function(){
 
-                if(_.isFinite(this.currentCategory)){
+                var taskModel = new TaskModel({"categoryId":app.context.get("tasks.selectedCategory")});
+                this.showTask(taskModel);
+            },
 
-                    var taskModel = new TaskModel({"category":this.currentCategory});
-                    this.showTask(taskModel);
-                }
+            //----------------------------------------------------
+
+            closeTask:function(){
+                this.mainLayout.taskDetailRegion.clean();
             }
         });
     });

@@ -15,37 +15,38 @@ define(function (require) {
             childView : CategoryItemView,
             childViewContainer : "ul",
 
-            initialize:function(options){
+            initialize:function(){
 
-                options = options || {};
-                this.selectedId = options.selectedId;
-                this.listenTo(this, "childview:click", this._handleChildClick);
+                this.listenTo(this, "childview:click", this._onChildClick);
+                this.listenTo(tasks.channel.vent,"category:change",this._onCategoryChanged);
             },
 
             //------------------------------------------------------------
 
             onRenderCollection: function () {
-
-                if(!_.isUndefined(this.selectedId)){
-                    var itemView = this.children.findByModelCid(this.selectedId);
-
-                    if(_.isObject(itemView)){
-                        this._handleChildClick(itemView);
-                    }
-                }
+                this._onCategoryChanged(tasks.channel.reqres.request("selected:category"));
             },
 
             //------------------------------------------------------------
 
-            _handleChildClick:function(itemView){
+            _onChildClick:function(itemView){
+                tasks.channel.vent.trigger("category:change:request", {categoryId: itemView.model.id});
+            },
 
-                this.children.each(function(_itemView){
-                    _itemView.markAsClicked(false);
-                });
+            //------------------------------------------------------------
+
+            _onCategoryChanged:function(category){
+
+                var itemView = this.children.findByModelCid(category.cid);
 
                 if(itemView){
-                   itemView.markAsClicked(true);
-                   tasks.channel.vent.trigger("category:tasks:show", itemView.model.id);
+
+                    this.children.each(function(_itemView){
+                        _itemView.markAsClicked(false);
+                    });
+                    if(itemView){
+                        itemView.markAsClicked(true);
+                    }
                 }
             }
         });

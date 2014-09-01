@@ -7,7 +7,6 @@ define(function (require) {
     var AutoCompleteItemView = require("assets-ui-component/autoComplete/js/views/AutoCompleteItemView");
     var AutoCompleteCompositeView = require("assets-ui-component/autoComplete/js/views/autoCompleteCompositeView");
     var AutoCompleteCollection = require("assets-ui-component/autoComplete/js/collections/autoCompleteCollection");
-    var AutoCompleteFilterModel = require("assets-ui-component/autoComplete/js/models/autoCompleteFilterModel");
 
     var AutoComplete = Marionette.Controller.extend({
 
@@ -16,7 +15,7 @@ define(function (require) {
             this.el = options.el;
             this.vent = options.vent;
             this.maxItems = options.maxItems || 5;
-            this.filterModel = options.filterModel || new AutoCompleteFilterModel();
+            this.filterModel = options.filterModel;
             this.collection = new FilterCollectionDecorator(new AutoCompleteCollection(options.items || []), this.filterModel);
 
             this.listenTo(this.vent, 'input:change', this.onInputChange, this);

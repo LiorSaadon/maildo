@@ -50,14 +50,6 @@ define(function (require) {
             this.filters = options.filters ? _.clone(options.filters) : {};
         },
 
-        //-------------------------------------------------
-
-        validFilters: function(){
-
-            var filters = this.filters || {};
-            return !_.isEmpty(filters.query) && _.isFinite(filters.page);
-        },
-
 
         //-------------------------------------------------
         // refresh

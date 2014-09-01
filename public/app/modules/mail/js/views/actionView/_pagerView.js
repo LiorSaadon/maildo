@@ -29,8 +29,8 @@ define(function (require) {
 
             initialize: function () {
 
-                this.collection = mail.dataController.getMailCollection();
-                this.listenTo(this.collection, "change:metadata",this.adjustPage, this);
+                this.mails = mail.dataController.getMailCollection();
+                this.listenTo(this.mails, "change:metadata",this.adjustPage, this);
             },
 
             onRender:function(){
@@ -43,7 +43,7 @@ define(function (require) {
 
             adjustPage: function () {
 
-                if(_.isObject(this.collection.metadata) && this.collection.metadata.total > 0){
+                if(_.isObject(this.mails.metadata) && this.mails.metadata.total > 0){
 
                     this.updatePageInfo();
                     this.adjustButtons();
@@ -58,7 +58,7 @@ define(function (require) {
 
             updatePageInfo:function(){
 
-                var metadata = this.collection.metadata;
+                var metadata = this.mails.metadata;
 
                 this.pageInfo.total = metadata.total;
                 this.pageInfo.currPage = metadata.currPage + 1;

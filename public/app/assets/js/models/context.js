@@ -11,7 +11,7 @@ define(function (require) {
                 action:{}
             },
             tasks:{
-                category:''
+                selectedCategory:{}
             }
         }
     });

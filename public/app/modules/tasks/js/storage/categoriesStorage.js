@@ -17,15 +17,37 @@ define(function (require) {
 
             var findAll = function (model, options) {
 
-                var store = _localStorage.getItem('tasksCategories');
-
                 return {
-                    collection: _.isString(store) ? JSON.parse(store) : []
+                    collection:getRecords()
                 };
             };
 
+            //------------------------------------------------
+
+            var getDefaultCategoryId = function(){
+
+                var records =  getRecords();
+
+                var record = _.find(records, function (record) {
+                    return record.isDefault === true;
+                });
+
+                return record.id;
+            };
+
+            //------------------------------------------------
+            // getRecords
+            //------------------------------------------------
+
+            var getRecords = function () {
+
+                var store = _localStorage.getItem('tasksCategories');
+                return _.isString(store) ? JSON.parse(store) : [];
+            };
+
             return{
-                findAll: findAll
+                findAll: findAll,
+                getDefaultCategoryId:getDefaultCategoryId
             };
         };
 

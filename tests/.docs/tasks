@@ -12,6 +12,21 @@
 4. validation for mail addresses (empty or invalid) work correctly. The red border remove by clicking address component.
 
 
+26-8
+---------
+1. In low resolution: min-width, min-height for main layout
+2. draft -> close -->  mails.refresh();
+
+
+what left?
+-------------
+1.splitter.
+2.sass second look.
+3.set languages
+4.filter refactor.
+
+
+
 
 
  sanity tests
@@ -22,7 +37,7 @@
  4.draft preview work
  5.selection work. back to selected item (if selected).
  6.components are working
- 7.table size as defines in settings.
+ 7.languages as defines in settings.
  8. paging work (change due persistent)
  9. action buttons display according to selected action(inbox, send to...)
 

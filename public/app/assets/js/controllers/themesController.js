@@ -31,7 +31,10 @@ define(function (require) {
 
             $("mss").remove();
             $(['<style type="text/css" id="mss">', data, '</style>'].join('')).appendTo('head');
-            app.channel.vent.trigger("onCssLoaded");
+
+            setTimeout(function(){
+                app.channel.vent.trigger("onCssLoaded");
+            },250);
         }
     });
 

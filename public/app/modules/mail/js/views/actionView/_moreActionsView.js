@@ -49,11 +49,11 @@ define(function (require) {
 
             initialize: function (options) {
 
-                this.collection = mail.dataController.getMailCollection();
+                this.mails = mail.dataController.getMailCollection();
 
-                this.listenTo(this.collection, "fetch:success", this.setDropDownItems, this);
-                this.listenTo(this.collection, "update:success", this.setDropDownItems, this);
-                this.listenTo(this.collection, "change:selection", this.setDropDownItems, this);
+                this.listenTo(this.mails, "fetch:success", this.setDropDownItems, this);
+                this.listenTo(this.mails, "update:success", this.setDropDownItems, this);
+                this.listenTo(this.mails, "change:selection", this.setDropDownItems, this);
             },
 
             //------------------------------------------------------------
@@ -76,9 +76,9 @@ define(function (require) {
 
                 var that = this, items = {};
 
-                _.each(this.collection.getSelected(), function (item) {
+                _.each(this.mails.getSelected(), function (item) {
 
-                    var model = that.collection.get(item);
+                    var model = that.mails.get(item);
                     if(model){
                         var labels = model.get("labels");
                         that.updateItemToShow(labels,items);

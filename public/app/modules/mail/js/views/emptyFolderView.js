@@ -21,7 +21,7 @@ define(function (require) {
 
             initialize:function(){
 
-                this.mailCollection = mail.dataController.getMailCollection();
+                this.mails = mail.dataController.getMailCollection();
                 this._bindEvents();
             },
 
@@ -29,16 +29,16 @@ define(function (require) {
 
             _bindEvents:function(){
 
-                this.listenTo(this.mailCollection, "fetch:success", this.checkIfEmpty, this);
-                this.listenTo(this.mailCollection, "update:success", this.checkIfEmpty, this);
-                this.listenTo(this.mailCollection, "delete:success", this.checkIfEmpty, this);
+                this.listenTo(this.mails, "fetch:success", this.checkIfEmpty, this);
+                this.listenTo(this.mails, "update:success", this.checkIfEmpty, this);
+                this.listenTo(this.mails, "delete:success", this.checkIfEmpty, this);
             },
 
             //--------------------------------------------------
 
             checkIfEmpty:function(){
 
-                var isEmpty = this.mailCollection.isEmpty();
+                var isEmpty = this.mails.isEmpty();
 
                 if(isEmpty){
                    var action = app.context.get("mail.action");

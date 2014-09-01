@@ -54,7 +54,6 @@ define(function (require) {
             },this));
 
             if(!_.isEmpty(itemsToRemove)){
-                debugger;
                 this.selected = _.difference(this.selected, itemsToRemove);
                 raiseTrigger(options);
             }
@@ -70,7 +69,7 @@ define(function (require) {
 
         //--------------------------------------------------
 
-        decoratedCollection.selectAllModels = function (options) {
+        decoratedCollection.selectAll = function (options) {
 
             decoratedCollection.selectModels(this.models,options);
         };

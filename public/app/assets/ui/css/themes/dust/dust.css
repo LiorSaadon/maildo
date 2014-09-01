@@ -1197,6 +1197,9 @@ body {
   bottom: 0;
   left: 0;
   background-color: #55688a;
+  min-width: 1024px;
+  min-height: 550px;
+  overflow: hidden;
 }
 .mb .techbar-wrapper {
   height: 30px;

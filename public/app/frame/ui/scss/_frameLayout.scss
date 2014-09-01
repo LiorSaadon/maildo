@@ -2,6 +2,9 @@
 
   @include abs-pos(0, 0, 0, 0);
   background-color: $layout-background-color;
+  min-width:1024px;
+  min-height: 550px;
+  overflow:hidden;
 
   .techbar-wrapper {
     height: 30px;

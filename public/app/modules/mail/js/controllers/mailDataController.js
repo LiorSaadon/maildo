@@ -14,49 +14,51 @@ define(function (require) {
 
             initialize: function () {
 
-                this.mails = new SelectableDecorator(new MailCollection());
-                this.mails.persist();
+                this.contactCollection = new ContactsCollection();
+                this.mailCollection = new SelectableDecorator(new MailCollection());
 
-                this.contactsCollection = new ContactsCollection();
-                this.contactsCollection.fetch();
+                this.listenTo(app.context, 'change:mail.action', this._onActionChange, this);
+                this.listenTo(this.mailCollection, 'fetch:success', this._updateSelection, this);
 
-                this._bindEvents();
+                this._fetchAll();
             },
 
-            //------------------------------------------------------
+            //-----------------------------------------------------
 
-            _bindEvents:function(){
-                this.listenTo(this.mails, 'fetch:success', this.updateSelection, this);
-                this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
+            _fetchAll:function(){
+
+                setTimeout(_.bind(function(){
+                    this.mailCollection.persist();
+                    this.contactCollection.fetch();
+                },this),30);
             },
 
             //------------------------------------------------------
 
             getMailCollection : function () {
-                return this.mails;
+                return this.mailCollection;
             },
 
             //------------------------------------------------------
 
             getContactsCollection: function(){
-               return this.contactsCollection;
+                return this.contactCollection;
+            },
+            //-----------------------------------------------------
+
+            _updateSelection:function(){
+                this.mailCollection.updateSelection();
             },
 
             //-----------------------------------------------------
 
-            updateSelection:function(){
-                this.mails.updateSelection();
-            },
-
-            //-----------------------------------------------------
-
-            onActionChange:function(){
+            _onActionChange:function(){
 
                 var action = app.context.get("mail.action");
 
                 if(_.isObject(action) && _.isObject(action.params)){
 
-                    this.mails.fetchBy({
+                    this.mailCollection.fetchBy({
                         filters: {
                             page: action.params.page,
                             query: action.params.query || 'groups:' + action.type

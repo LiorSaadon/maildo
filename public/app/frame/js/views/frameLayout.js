@@ -28,7 +28,7 @@ define(function (require) {
         },
 
         onModuleChange:function(){
-            this.ui.switcherCaption.html(app.context.get("module"));
+            this.ui.switcherCaption.html(app.translator.translate("mb.module." +app.context.get("module")));
         }
     });
 

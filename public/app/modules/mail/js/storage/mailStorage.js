@@ -190,13 +190,12 @@ define(function (require) {
             var findAll = function (model, options) {
 
                 var filterer = new Filterer(),
-                    changesDetector = new ChangesDetector(),
                     data = options.data || {};
 
                 adjustFilters(data);
 
                 var result = filterer.filter(getRecords(), data.filters, filteringMap);
-                var changed = changesDetector.detect(model.url, result.records, data.filters);
+                var changed = ChangesDetector.detect(result.collection, model.url(), data.filters);
 
                 if (data.persist && !changed) {
                     return {

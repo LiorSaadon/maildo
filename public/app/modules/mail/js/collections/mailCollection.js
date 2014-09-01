@@ -3,7 +3,6 @@ define(function (require) {
 
     var app = require("mbApp");
     var MailModel = require("mail-models/mailModel");
-    var urlResolver = require("assets-resolvers-url/urlResolver");
     var MailStorage = require("mail-storage/mailStorage");
     var PersistentCollection = require("assets-collections/PersistentCollection");
 
@@ -25,7 +24,7 @@ define(function (require) {
 
             url: function () {
 
-                return urlResolver.getUrl(this.resource);
+                return this.resource;
             },
 
             //--------------------------------------------------
@@ -36,14 +35,14 @@ define(function (require) {
 
             //--------------------------------------------------
 
-            filter: function (query) {
+            filterLabel: function (label) {
 
                 var filtered = [];
 
-                if(_.isString(query)){
+                if(_.isString(label)){
 
                     filtered = _.filter(this.models, function (model) {
-                        return !_.isUndefined(model.get(query));
+                        return !!model.get("labels."+label);
                     });
                 }
 
