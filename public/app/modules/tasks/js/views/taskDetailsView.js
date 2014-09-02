@@ -11,17 +11,35 @@ define(function (require) {
         TaskDetailsView = Marionette.ItemView.extend({
             template: template,
 
-            events:{
-                click:"onClick"
+            ui:{
+                content:".task-body",
+                title:".task-title-input",
+                save:".save",
+                cancel:".cancel"
             },
 
-            //-----------------------------------------------------------
+            events:{
+                "click .save" : "onSave",
+                "click .cancel" : "onCancel"
+            },
 
-            customTemplateHelpers : function () {
 
-                return{
-                    title: this.model.isNew() ? app.translator.translate("tasks.caption.new.task") : this.model.get("title")
-                };
+            onRender:function(){
+
+                var title = this.model.isNew() ? app.translator.translate("tasks.task.new.caption") : this.model.get("title");
+
+                this.ui.title.html(title);
+                this.ui.content.html(this.model.get("content"));
+            },
+
+            //------------------------------------------------------
+
+            onSave:function(){
+
+                this.model.set("title", this.ui.title.val());
+                this.model.set("content", this.ui.content.html());
+
+                tasks.channel.vent.trigger("task:save",this.model);
             }
         });
     });

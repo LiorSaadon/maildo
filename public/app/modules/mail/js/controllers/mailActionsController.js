@@ -50,7 +50,6 @@ define(function (require) {
                 var that = this, items = options.items || this.mails.getSelected();
 
                 _.each(items, function (item) {
-
                     var model = that.mails.get(item);
                     if (model) {
                         model.markAs(options.label);
@@ -66,7 +65,6 @@ define(function (require) {
                 var that = this, items = options.items || this.mails.getSelected();
 
                 _.each(items, function (item) {
-
                     var model = that.mails.get(item);
                     if (model) {
                         model.moveTo(options.target, options);
@@ -88,7 +86,10 @@ define(function (require) {
                         if (options.refresh) {
                             this.mails.refresh();
                         }
-                    }, this)
+                    }, this),
+                    error:function(){
+                        mail.channel.vent.trigger("mail:updateItems:error");
+                    }
                 });
             },
 
@@ -102,7 +103,10 @@ define(function (require) {
 
                     success: _.bind(function () {
                         this.mails.refresh();
-                    }, this)
+                    }, this),
+                    error:function(){
+                        mail.channel.vent.trigger("mail:deleteItems:error");
+                    }
                 });
             },
 
@@ -118,6 +122,9 @@ define(function (require) {
 
                         success: function () {
                             mail.router.previous();
+                        },
+                        error:function(){
+                            mail.channel.vent.trigger("mail:save:error", mailModel);
                         }
                     });
                 }
@@ -135,7 +142,10 @@ define(function (require) {
                         mailModel.destroy({
                             success: _.bind(function () {
                                 this.mails.refresh();
-                            },this)
+                            },this),
+                            error:function(){
+                                mail.channel.vent.trigger("mail:delete:error", mailModel);
+                            }
                         });
                     }
                 }

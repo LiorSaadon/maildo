@@ -6,6 +6,11 @@ define(function (require) {
 
     var PersistentCollection = FilteredCollection.extend({
 
+        initialize:function(options){
+
+            FilteredCollection.prototype.initialize(options);
+        },
+
         //-------------------------------------------------
         // persist
         //-------------------------------------------------

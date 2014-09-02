@@ -7,9 +7,10 @@ define(function (require) {
 
         PAGE_SIZE: 5,
 
-        filters:{
-            query:'',
-            page:1
+        initialize:function(options){
+
+            BaseCollection.prototype.initialize(options);
+            this.setFilters(options);
         },
 
         //-------------------------------------------------
@@ -47,9 +48,9 @@ define(function (require) {
 
         setFilters:function(options){
 
-            this.filters = options.filters ? _.clone(options.filters) : {};
+            options = options || {};
+            this.filters = options.filters ? _.clone(options.filters) : {query:'',page:1};
         },
-
 
         //-------------------------------------------------
         // refresh

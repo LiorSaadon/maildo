@@ -65,9 +65,12 @@ define(function (require) {
             //----------------------------------------------------
 
             createTask:function(){
+                var category = tasks.channel.reqres.request("selected:category");
 
-                var taskModel = new TaskModel({"categoryId":app.context.get("tasks.selectedCategory")});
-                this.showTask(taskModel);
+                if(category){
+                    var taskModel = new TaskModel({"categoryId":category.id});
+                    this.showTask(taskModel);
+                }
             },
 
             //----------------------------------------------------

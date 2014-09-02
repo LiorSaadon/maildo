@@ -56,7 +56,7 @@ define(function (require) {
             var formatContent = function (content) {
 
                 if (!_.isEmpty(content)) {
-                   return content.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/ig, " ");
+                   return content.replace(/(<([^>]+)>)/ig, " ").replace(/&nbsp;/ig, " ");
                 }
                 return content;
             };

@@ -20,8 +20,6 @@ define(function (require) {
 
             localStorage: TasksStorage,
 
-            //--------------------------------------------------
-
             url: function () {
 
                 return this.resource;

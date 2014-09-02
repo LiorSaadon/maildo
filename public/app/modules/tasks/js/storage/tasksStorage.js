@@ -14,6 +14,81 @@ define(function (require) {
             var _localStorage = window.localStorage;
             var categoriesStorage = new CategoriesStorage();
 
+
+            //-------------------------------------------------
+            // create
+            //-------------------------------------------------
+
+            var create = function (model) {
+
+                if (_.isObject(model)) {
+
+                    model = model.toJSON();
+
+                    var tasks = getTasks();
+
+                    if (!model.id) {
+                        model.id = _.uniqueId('_');
+                        model.idAttribute = model.id;
+                    }
+                    tasks.unshift(model);
+                    _localStorage.setItem('tasks', JSON.stringify(tasks));
+
+                    return {id:model.id};
+                }
+
+                return {status: "error", message: 'model not valid'};
+            };
+
+            //-------------------------------------------------
+            // update
+            //-------------------------------------------------
+
+            var update = function (_model) {
+
+                if (_.isObject(_model)) {
+
+                    var model = _model.toJSON();
+
+                    var tasks = getTasks();
+
+                    var task = _.find(tasks, function (record) {
+                        return record.id == model.id;
+                    });
+
+                    if (task) {
+
+                        task.title =  model.title;
+                        task.content = model.content;
+
+                        _localStorage.setItem('tasks', JSON.stringify(tasks));
+                        return {id:model.id};
+                    }
+                }
+                return {status: "error", message: 'model not valid'};
+            };
+
+            //-------------------------------------------------
+            // destroy function
+            //-------------------------------------------------
+
+            var destroy = function (model, options) {
+
+                if(_.isObject(model)){
+                    var tasks = getTasks();
+
+                    var filtered = _.reject(tasks, function(record){
+                        return record.id === model.id;
+                    });
+
+                    if (!_.isUndefined(filtered)) {
+                        _localStorage.setItem('tasks', JSON.stringify(filtered));
+                    }
+                }
+                return {res:[]};
+            };
+
+
             //------------------------------------------------
             // findAll
             //------------------------------------------------
@@ -29,7 +104,7 @@ define(function (require) {
                     categoryId = categoriesStorage.getDefaultCategoryId();
                 }
 
-                var result = _.where(tasks, {category:categoryId});
+                var result = _.where(tasks, {categoryId:categoryId});
                 var changed = ChangesDetector.detect(result, model.url(), {"query":"categoryId:"+categoryId});
 
                 if (data.persist && !changed) {
@@ -45,7 +120,7 @@ define(function (require) {
             };
 
             //------------------------------------------------
-            // getRecords
+            // getTasks
             //------------------------------------------------
 
             var getTasks = function () {
@@ -55,6 +130,9 @@ define(function (require) {
             };
 
             return{
+                create: create,
+                update: update,
+                destroy: destroy,
                 findAll: findAll
             };
         })();

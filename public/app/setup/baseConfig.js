@@ -31,6 +31,7 @@ define({
         "assets-models": "app/assets/js/models",
         "assets-resolvers-url": "app/assets/js/resolvers/url",
         "assets-decorators": "app/assets/js/decorators",
+        "assets-resolvers": "app/assets/js/resolvers",
         "assets-resolvers-storage": "app/assets/js/resolvers/storage",
         "assets-resolvers-ui": "app/assets/js/resolvers/ui",
         "assets-resolvers-date": "app/assets/js/resolvers/date",

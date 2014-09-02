@@ -1,0 +1,58 @@
+.mb {
+
+  .tasks-list {
+    ul {
+      white-space: nowrap;
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+      border: none;
+
+      li {
+        border-bottom: 1px solid $color15;
+        cursor: pointer;
+
+        .task-info{
+          width: 205px;
+          display:inline-block;
+          padding-left: 15px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+
+          .title {
+            padding-bottom: 6px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .content {
+            padding-bottom: 2px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+
+        .delete-wrapper{
+          padding: 0 5px 10px 5px;
+          display:none;
+
+          .delete-icon{
+            width: 10px;
+            height: 12px;
+            background: url('app/assets/ui/img/delete.png') no-repeat center;
+          }
+        }
+
+        &:hover {
+          background-color: $color9;
+
+          .delete-wrapper{
+            display:inline-block;
+          }
+        }
+        &.select{
+          background-color:#E9E9E9;
+        }
+      }
+    }
+  }
+}

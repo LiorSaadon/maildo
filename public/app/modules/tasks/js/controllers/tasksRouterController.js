@@ -10,11 +10,6 @@ define(function (require) {
 
         TasksRouterController = Marionette.Controller.extend({
 
-
-            //-----------------------------------------------------------------
-            //  actions
-            //-----------------------------------------------------------------
-
             tasks:function(){
                 app.context.set("tasks.action",{'type':'tasks'});
             },
@@ -22,10 +17,6 @@ define(function (require) {
             newTask:function(){
                 app.context.set("tasks.action",{'action':'newTask'});
             },
-
-            //-----------------------------------------------------------------
-            // beforeRoute
-            //-----------------------------------------------------------------
 
             beforeRoute:function(){
 

@@ -133,7 +133,7 @@ define(function (require) {
             };
 
             //-------------------------------------------------
-            // destroy function
+            // destroy functions
             //-------------------------------------------------
 
             var destroyAll = function (model, options) {

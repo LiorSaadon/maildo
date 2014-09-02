@@ -3,6 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var template = require("tpl!tasks-templates/taskTableRowView.tmpl");
+    var formatter = require("assets-resolvers/formatter");
 
     var TaskRowView = {};
 
@@ -12,18 +13,38 @@ define(function (require) {
             template: template,
             tagName: 'li',
 
+            ui:{
+              "title":".title",
+              "content":".content"
+            },
+
             triggers: {
                "click": "click"
             },
 
-            initialize:function(){
+            events:{
+                "click .delete-wrapper" : "deleteItem"
             },
 
-            onRender:function(){
+            modelEvents:{
+               "change":"updateUI"
+            },
+
+            onRender: function () {
+                this.updateUI();
+            },
+
+            updateUI:function(){
+               this.ui.title.html(this.model.get("title"));
+               this.ui.content.html(formatter.formatContent(this.model.get("content")));
             },
 
             markAsClicked:function(select){
                 this.$el.toggleClass("select", select);
+            },
+
+            deleteItem:function(){
+               alert("234234");
             }
         });
     });

@@ -4,8 +4,9 @@ define(function () {
     var Dictionary = {
 
         "tasks.search.caption":"Search Tasks",
-        "tasks.caption.new.task":"New Task",
-        "tasks.noTasks":"You have no tasks in this category. To Add a task, click a 'New Task'."
+        "tasks.task.new.caption":"New Task",
+        "tasks.noTasks":"You have no tasks in this category. </br> To Add a task, click a 'New Task'.",
+        "tasks.task.welcome.massage":"Mailbone allows you to quickly create tasks, save them and access them anywhere you check your Mail."
     };
 
     return Dictionary;

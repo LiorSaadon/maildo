@@ -15,6 +15,8 @@ define(function (require) {
             childView : CategoryItemView,
             childViewContainer : "ul",
 
+            //------------------------------------------------------------
+
             initialize:function(){
 
                 this.listenTo(this, "childview:click", this._onChildClick);

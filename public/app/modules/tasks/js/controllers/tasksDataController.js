@@ -13,14 +13,20 @@ define(function (require) {
 
             initialize: function () {
 
-                this.categoryCollection = new CategoryCollection();
                 this.taskCollection = new TaskCollection();
+                this.categoryCollection = new CategoryCollection();
 
-                tasks.channel.reqres.setHandler("selected:category",this.getSelectedCategory, this);
+                this._bindEvents();
+                this._fetchAll();
+            },
+
+            //-----------------------------------------------------
+
+            _bindEvents:function(){
+
                 this.listenTo(tasks.channel.vent,"category:change:request", this.loadTasks);
                 this.listenTo(this.taskCollection, "change:metadata", this.updateSelectedCategory);
-
-                this._fetchAll();
+                tasks.channel.reqres.setHandler("selected:category",this.getSelectedCategory, this);
             },
 
             //-----------------------------------------------------
@@ -37,12 +43,7 @@ define(function (require) {
 
             getSelectedCategory:function(){
 
-                var category = this.categoryCollection.get(this.taskCollection.metadata.categoryId);
-
-                if(_.isObject(category)){
-                    return {cid:category.cid, att:category.toJSON()};
-                }
-                return {};
+                return this.categoryCollection.get(this.taskCollection.metadata.categoryId);
             },
 
             //-----------------------------------------------------

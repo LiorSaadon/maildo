@@ -6,9 +6,11 @@
   }
 
   .tasks-region{
-    width: 250px;
-    background-color:#F8F8F8;
+    width: 249px;
+    color: #4E4E4E;
+    background-color:#FCFDFD;
     @include abs-pos(20px, 'NaN', 20px, 200px);
+    border-right: 1px solid $color15;
 
     .message{
        font-size:12px;
@@ -18,7 +20,19 @@
   }
 
   .task-info-region{
-    background-color:#FCFDFD;
     @include abs-pos(20px, 26px, 20px, 450px);
+    background-color:#E7E7E7;
+    color: #4E4E4E;
+
+    .welcome-message{
+      position: absolute;
+      top: 45%;
+      margin-left: 100px;
+      margin-right: 100px;
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 35px;
+      color:$color14;
+    }
   }
 }

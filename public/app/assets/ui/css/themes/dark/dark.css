@@ -1097,12 +1097,14 @@ body {
   bottom: 20px;
 }
 .mb .tasks-region {
-  width: 250px;
-  background-color: #F8F8F8;
+  width: 249px;
+  color: #4E4E4E;
+  background-color: #FCFDFD;
   position: absolute;
   top: 20px;
   bottom: 20px;
   left: 200px;
+  border-right: 1px solid #d4d4d4;
 }
 .mb .tasks-region .message {
   font-size: 12px;
@@ -1110,19 +1112,32 @@ body {
   line-height: 22px;
 }
 .mb .task-info-region {
-  background-color: #FCFDFD;
   position: absolute;
   top: 20px;
   right: 26px;
   bottom: 20px;
   left: 450px;
+  background-color: #E7E7E7;
+  color: #4E4E4E;
+}
+.mb .task-info-region .welcome-message {
+  position: absolute;
+  top: 45%;
+  margin-left: 100px;
+  margin-right: 100px;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 35px;
+  color: #585858;
 }
 
 .mb .category-list {
   padding-top: 0px;
   padding-left: 27px;
 }
+
 .mb .tasks-list ul {
+  white-space: nowrap;
   list-style: none;
   margin: 0px;
   padding: 0px;
@@ -1130,43 +1145,69 @@ body {
 }
 .mb .tasks-list ul li {
   border-bottom: 1px solid #d4d4d4;
-  padding: 10px 0 5px 20px;
   cursor: pointer;
 }
-.mb .tasks-list ul li .title {
-  padding-bottom: 6px;
+.mb .tasks-list ul li .task-info {
+  width: 205px;
+  display: inline-block;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-.mb .tasks-list ul li .content {
+.mb .tasks-list ul li .task-info .title {
+  padding-bottom: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mb .tasks-list ul li .task-info .content {
   padding-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mb .tasks-list ul li .delete-wrapper {
+  padding: 0 5px 10px 5px;
+  display: none;
+}
+.mb .tasks-list ul li .delete-wrapper .delete-icon {
+  width: 10px;
+  height: 12px;
+  background: url("app/assets/ui/img/delete.png") no-repeat center;
 }
 .mb .tasks-list ul li:hover {
   background-color: #f4f4f4;
+}
+.mb .tasks-list ul li:hover .delete-wrapper {
+  display: inline-block;
 }
 .mb .tasks-list ul li.select {
   background-color: #E9E9E9;
 }
 
 .mb .task-details-view .task-title {
-  padding: 15px 0;
-  border-bottom: 1px solid #D7D5D5;
+  left: 0px;
+  height: 58px;
+  background-color: white;
 }
 .mb .task-details-view .task-title .task-title-input {
   border: 0;
-  width: 95%;
-  line-height: 25px;
-  font-size: 21px;
-  font-weight: 300;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
   padding-left: 28px;
+  color: #4E4E4E;
 }
-.mb .task-details-view .task-title .task-title-input:active, .mb .task-details-view .task-title .task-title-input:focus {
+.mb .task-details-view .task-title:active, .mb .task-details-view .task-title:focus {
   outline: none;
 }
 .mb .task-details-view .task-body {
   position: absolute;
-  top: 75px;
-  right: 23px;
-  bottom: 95px;
-  left: 24px;
+  top: 58px;
+  right: 0px;
+  bottom: 70px;
+  left: 0px;
+  padding: 30px;
+  background-color: white;
+  border-top: 1px solid #d4d4d4;
 }
 .mb .task-details-view .task-body:active, .mb .task-details-view .task-body:focus {
   outline: none;
@@ -1176,16 +1217,17 @@ body {
   bottom: 0px;
   right: 0px;
   left: 0px;
-  border-top: 1px solid #E9E9E9;
+  border-top: 1px solid #d4d4d4;
+  background-color: white;
   padding: 20px 20px 20px 30px;
 }
-.mb .task-details-view .task-actions .sendBtn {
+.mb .task-details-view .task-actions .save {
   background-color: #4d90fe;
   border: 1px solid #D7D5D5;
-  color: #ffffff;
+  color: white;
 }
-.mb .task-details-view .task-actions .sendBtn:hover {
-  color: #ffffff;
+.mb .task-details-view .task-actions .save:hover {
+  color: white;
   background-color: #4d90fe;
 }
 

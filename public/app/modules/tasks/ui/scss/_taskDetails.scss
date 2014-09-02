@@ -2,30 +2,34 @@
   .task-details-view {
 
     .task-title {
-      padding: 15px 0;
-      border-bottom: 1px solid #D7D5D5;
+      left: 0px;
+      height:58px;
+      background-color: $color4;
 
-      .task-title-input {
+      .task-title-input{
         border: 0;
-        width: 95%;
-        line-height: 25px;
-        font-size: 21px;
-        font-weight: 300;
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
         padding-left: 28px;
+        color: #4E4E4E;
+      }
 
-        &:active,
-        &:focus {
-          outline: none;
-        }
+      &:active,
+      &:focus {
+        outline: none;
       }
     }
 
     .task-body {
       position: absolute;
-      top: 75px;
-      right: 23px;
-      bottom: 95px;
-      left: 24px;
+      top: 58px;
+      right: 0px;
+      bottom: 70px;
+      left: 0px;
+      padding: 30px;
+      background-color: $color4;
+      border-top: 1px solid $color15;
 
       &:active,
       &:focus {
@@ -38,16 +42,17 @@
       bottom: 0px;
       right: 0px;
       left: 0px;
-      border-top: 1px solid #E9E9E9;
+      border-top: 1px solid $color15;
+      background-color: $color4;
       padding: 20px 20px 20px 30px;
 
-      .sendBtn {
+      .save {
         background-color: #4d90fe;
         border: 1px solid #D7D5D5;
-        color: #ffffff;
+        color: $color4;
 
         &:hover {
-          color: #ffffff;
+          color: $color4;
           background-color: #4d90fe;
         }
       }

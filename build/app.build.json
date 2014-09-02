@@ -35,6 +35,7 @@
         "assets-resolvers-storage": "app/assets/js/resolvers/storage",
         "assets-resolvers-ui": "app/assets/js/resolvers/ui",
         "assets-resolvers-date": "app/assets/js/resolvers/date",
+        "assets-resolvers": "app/assets/js/resolvers",
         "assets-ui-component": "app/assets/ui/components",
         "assets-plugins": "app/assets/js/plugins",
         "dev.mockjax": "lib/mockjax/jquery.mockjax",

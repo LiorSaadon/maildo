@@ -1,44 +1,44 @@
 [
     {
        "id":1,
-       "category":0,
-       "title":"note1",
-       "content":"bla bla"
+       "categoryId":0,
+       "title":"note1etrewr twertwerter",
+       "content":"bla bla wert wert wert wertssdfgsdfgs dfgsdfgsdfsdf"
     },
     {
         "id":2,
-        "category":0,
+        "categoryId":0,
         "title":"note2",
         "content":"bla bla"
     },
     {
         "id":3,
-        "category":0,
+        "categoryId":0,
         "title":"note3",
         "content":"bla bla"
     },
     {
         "id":4,
-        "category":0,
+        "categoryId":0,
         "title":"note4",
         "content":"bla bla"
     },
 
     {
         "id":5,
-        "category":1,
+        "categoryId":1,
         "title":"note5",
         "content":"bla bla"
     },
     {
         "id":6,
-        "category":1,
+        "categoryId":1,
         "title":"note6",
         "content":"bla bla"
     },
     {
         "id":7,
-        "category":1,
+        "categoryId":1,
         "title":"unfiled",
         "content":"bla bla"
     }
