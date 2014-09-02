@@ -28,7 +28,7 @@ define(function (require) {
 
                 var title = this.model.isNew() ? app.translator.translate("tasks.task.new.caption") : this.model.get("title");
 
-                this.ui.title.html(title);
+                this.ui.title.val(title);
                 this.ui.content.html(this.model.get("content"));
             },
 
