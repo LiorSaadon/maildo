@@ -2,9 +2,9 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var template = require("tpl!tasks-templates/tasksTableView.tmpl");
+    var template = require("tpl!tasks-templates/tasksView.tmpl");
     var EmptyView = require("tasks-views/messagesView");
-    var TaskTableRowView = require("tasks-views/taskTableRowView");
+    var TaskItemView = require("tasks-views/taskItemView");
 
     var TasksView = {};
 
@@ -13,7 +13,7 @@ define(function (require) {
         TasksView = Marionette.CompositeView.extend({
             name:'tasks-list',
             template : template,
-            childView : TaskTableRowView,
+            childView : TaskItemView,
             childViewContainer : "ul",
             emptyView: EmptyView,
 
@@ -34,10 +34,10 @@ define(function (require) {
             //-----------------------------------------------------
 
             _handleChildClick:function(item){
+
                 this.children.each(function(itemView){
                     itemView.markAsClicked(false);
                 });
-
                 if(item){
                     item.markAsClicked(true);
                     tasks.channel.vent.trigger("task:show", item.model);

@@ -18,6 +18,14 @@
 2. draft -> close -->  mails.refresh();
 
 
+3-9-14
+---------
+1. draft -> show <div>sfasd</siv> in table row
+2. draft -> remove demo address -> switch to different item -> go back -> deom address still there.
+
+
+
+
 what left?
 -------------
 1.splitter.

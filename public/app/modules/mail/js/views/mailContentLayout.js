@@ -14,6 +14,9 @@ define(function (require) {
                 itemsRegion:".mail-items-region",
                 previewRegion:".mail-preview-region",
                 messageBoard:".mail-message-board-region"
+            },
+            initialize:function(){
+                this.isPermanent = true;
             }
         });
     });

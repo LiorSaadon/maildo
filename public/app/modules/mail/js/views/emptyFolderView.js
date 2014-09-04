@@ -29,7 +29,7 @@ define(function (require) {
 
             _bindEvents:function(){
 
-                this.listenTo(this.mails, "fetch:success", this.checkIfEmpty, this);
+                this.listenTo(this.mails, "change:items", this.checkIfEmpty, this);
                 this.listenTo(this.mails, "update:success", this.checkIfEmpty, this);
                 this.listenTo(this.mails, "delete:success", this.checkIfEmpty, this);
             },

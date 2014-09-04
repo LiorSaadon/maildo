@@ -16,7 +16,6 @@ define(function (require) {
             ui: {
                 toInputWrapper: ".toInputWrapper",
                 ccInputWrapper: ".ccInputWrapper",
-                bccInputWrapper: ".bccInputWrapper",
                 inputSubject: ".subject",
                 inputEditor: ".compose-editor",
                 header:".compose-header",
@@ -26,12 +25,16 @@ define(function (require) {
             },
 
             events: {
-                "click .closeBtn": "onCloseBtnClick",
-                "click .sendBtn": "onSendClick",
-                "change .subject": "onSubjectChange",
-                "blur .compose-editor": "onEditorBlur",
-                "click .toInputWrapper": "onToInputWrapperClick",
-                "click .ccInputWrapper": "onCcInputWrapperClick"
+                "click  @ui.closeBtn": "onCloseBtnClick",
+                "click  @ui.sendBtn": "onSendClick",
+                "change @ui.inputSubject": "onSubjectChange",
+                "blur   @ui.inputEditor": "onEditorBlur",
+                "click  @ui.toInputWrapper": "onToInputWrapperClick",
+                "click  @ui.ccInputWrapper": "onCcInputWrapperClick"
+            },
+
+            modelEvents:{
+              change:"onModelChange"
             },
 
             //------------------------------------------------------
@@ -39,7 +42,6 @@ define(function (require) {
             initialize:function(options){
 
                 this.contacts = options.contacts;
-                this.listenTo(this.model, "change", this.onModelChange);
             },
 
             //------------------------------------------------------
@@ -127,6 +129,7 @@ define(function (require) {
             onInvalid:function(model, error){
 
                 switch(error){
+
                     case MailModel.Errors.NoRecipient: case MailModel.Errors.InvalidToAddress:
                         this.ui.toInputWrapper.addClass("error");
                         break;

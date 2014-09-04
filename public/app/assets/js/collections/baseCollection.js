@@ -60,7 +60,7 @@ define(function (require) {
             if(!_.isEqual(this.metadata, metadata)){
 
                this.metadata = _.clone(metadata);
-               this.trigger("change:metadata");
+               this.trigger("change:metadata", metadata);
             }
         },
 

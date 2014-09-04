@@ -17,8 +17,8 @@ define(function (require) {
                 this.contactCollection = new ContactsCollection();
                 this.mailCollection = new SelectableDecorator(new MailCollection());
 
-                this.listenTo(app.context, 'change:mail.action', this._onActionChange, this);
-                this.listenTo(this.mailCollection, 'fetch:success', this._updateSelection, this);
+                this.listenTo(app.context, "change:mail.action", this._onActionChange, this);
+                this.listenTo(this.mailCollection, "change:items", this._updateSelection, this);
 
                 this._fetchAll();
             },

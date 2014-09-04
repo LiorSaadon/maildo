@@ -64,7 +64,9 @@ define(function (require) {
             if (_.isObject(response) && _.isObject(response.metadata)) {
 
                 if (response.metadata.status !== 'nochange') {
+
                     BaseCollection.prototype.set.call(this, response, options);
+                    this.trigger("change:items");
                 }
             }
         }

@@ -24,7 +24,7 @@ define(function (require) {
 
             _bindEvents: function () {
 
-                this.listenTo(this.mails, "fetch:success", this.closePreview);
+                this.listenTo(this.mails, "change:items", this.closePreview);
                 this.listenTo(this.mails, "change:selection", this.togglePreview);
                 this.listenTo(mail.channel.vent, "mailTable:ItemClicked", this.showPreview);
             },
@@ -65,22 +65,8 @@ define(function (require) {
                     mail.channel.vent.trigger("mail:select", {selectBy: "none"});
                     mail.channel.vent.trigger("mail:markAs", {label: 'read', items: [mailModel.id]});
 
-                    this.preView = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
-                    this.contentLayout.previewRegion.add(this.preView);
-                }
-            },
-
-            //----------------------------------------------------
-
-            closePreview:function(){
-
-                if (_.isObject(this.preView) && _.isObject(this.preView.model) ) {
-
-                    var isModelExist = _.isObject(this.mails.get(this.preView.model.id));
-
-                    if(!isModelExist && this.contentLayout && this.contentLayout.previewRegion){
-                            this.contentLayout.previewRegion.clean();
-                    }
+                    this.preview = !mailModel.get("groups.draft") ? new PreviewView({model: mailModel}) : new ComposeView({model: mailModel});
+                    this.contentLayout.previewRegion.add(this.preview);
                 }
             },
 
@@ -88,10 +74,24 @@ define(function (require) {
 
             togglePreview:function(){
 
-                if (_.isObject(this.preView)){
+                if (_.isObject(this.preview)){
 
                     var selected = this.mails.getSelected().length;
-                    this.preView.$el.toggle(selected === 0);
+                    this.preview.$el.toggle(selected === 0);
+                }
+            },
+
+            //----------------------------------------------------
+
+            closePreview:function(){
+
+                if (this.contentLayout && this.preview && this.preview.model) {
+
+                    var isModelExist = _.isObject(this.mails.get(this.preview.model.id));
+
+                    if(!isModelExist){
+                        this.contentLayout.previewRegion.clean();
+                    }
                 }
             }
         });

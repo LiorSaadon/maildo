@@ -13,11 +13,12 @@ define(function (require) {
 
                 this.mails = mail.dataController.getMailCollection();
 
+                this.listenTo(this.mails, "change:metadata",this.fixUrl, this);
+                this.listenTo(mail.channel.vent, 'mail:send', this.send, this);
                 this.listenTo(mail.channel.vent, 'mail:select', this.select, this);
                 this.listenTo(mail.channel.vent, 'mail:moveTo', this.moveTo, this);
                 this.listenTo(mail.channel.vent, 'mail:delete', this.deleteItems, this);
                 this.listenTo(mail.channel.vent, 'mail:markAs', this.markAs, this);
-                this.listenTo(mail.channel.vent, 'mail:send', this.send, this);
                 this.listenTo(mail.channel.vent, 'mail:discard', this.discard, this);
                 this.listenTo(mail.channel.vent, 'mail:change', this.saveAsDraft, this);
             },
@@ -160,6 +161,12 @@ define(function (require) {
                 mailModel.save(null, {
                     saveAs: "draft"
                 });
+            },
+
+            //------------------------------------------
+
+            fixUrl:function(metadata){
+                mail.router.fixUrl({page:metadata.currPage + 1});
             }
         });
     });

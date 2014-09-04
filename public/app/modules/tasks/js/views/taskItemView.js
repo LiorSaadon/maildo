@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var template = require("tpl!tasks-templates/taskTableRowView.tmpl");
+    var template = require("tpl!tasks-templates/taskItemView.tmpl");
     var formatter = require("assets-resolvers/formatter");
 
     var TaskRowView = {};
@@ -43,8 +43,9 @@ define(function (require) {
                 this.$el.toggleClass("select", select);
             },
 
-            deleteItem:function(){
-               alert("234234");
+            deleteItem:function(event){
+                event.stopPropagation();
+                tasks.channel.vent.trigger("task:delete:request", this.model);
             }
         });
     });

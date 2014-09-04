@@ -51,7 +51,7 @@ define(function (require) {
 
                 this.mails = mail.dataController.getMailCollection();
 
-                this.listenTo(this.mails, "fetch:success", this.setDropDownItems, this);
+                this.listenTo(this.mails, "change:items", this.setDropDownItems, this);
                 this.listenTo(this.mails, "update:success", this.setDropDownItems, this);
                 this.listenTo(this.mails, "change:selection", this.setDropDownItems, this);
             },

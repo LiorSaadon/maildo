@@ -27,7 +27,11 @@ define(function (require) {
             },
 
             //---------------------------------------------
-            // route
+
+            initialize:function(options){
+                this.controller = options.controller;
+            },
+
             //---------------------------------------------
 
             route: function (route, name, callback) {
@@ -38,20 +42,22 @@ define(function (require) {
             },
 
             //---------------------------------------------
-            // before
-            //---------------------------------------------
 
             before: function () {
-                this.options.controller.beforeRoute();
+                this.controller.beforeRoute();
             },
 
             //---------------------------------------------
-            // previous
-            //---------------------------------------------
 
             previous: function () {
-                var prevURL = this.options.controller.buildPrevURL();
+                var prevURL = this.controller.buildPrevURL();
                 mail.router.navigate(prevURL, {trigger: true});
+            },
+
+            //----------------------------------------------
+
+            fixUrl: function(options){
+
             }
         });
     });

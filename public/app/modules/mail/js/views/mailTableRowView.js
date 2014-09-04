@@ -116,7 +116,7 @@ define(function (require) {
 
             _onBodyChanged:function(){
 
-                this.ui.body.text(formatter.formatSubject(this.model.get("body")));
+                this.ui.body.text(formatter.formatContent(this.model.get("body")));
             },
 
             //-------------------------------------------------------------

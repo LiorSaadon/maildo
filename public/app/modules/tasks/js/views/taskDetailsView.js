@@ -12,17 +12,16 @@ define(function (require) {
             template: template,
 
             ui:{
-                content:".task-body",
                 title:".task-title-input",
-                save:".save",
-                cancel:".cancel"
+                content:".task-body",
+                save:".save"
             },
 
             events:{
-                "click .save" : "onSave",
-                "click .cancel" : "onCancel"
+                "click @ui.save" : "onSave"
             },
 
+            //------------------------------------------------------
 
             onRender:function(){
 
@@ -39,7 +38,7 @@ define(function (require) {
                 this.model.set("title", this.ui.title.val());
                 this.model.set("content", this.ui.content.html());
 
-                tasks.channel.vent.trigger("task:save",this.model);
+                tasks.channel.vent.trigger("task:save:request",this.model);
             }
         });
     });

@@ -33,13 +33,15 @@ define(function (require) {
                 this.listenTo(this.mails, "change:metadata",this.adjustPage, this);
             },
 
+            //----------------------------------------------------
+
             onRender:function(){
                this.adjustPage();
             },
 
-            //------------------------------------------------------
+            //----------------------------------------------------
             // adjustPage
-            //------------------------------------------------------
+            //----------------------------------------------------
 
             adjustPage: function () {
 
@@ -54,7 +56,7 @@ define(function (require) {
                 }
             },
 
-            //-----------------------------------------------------
+            //----------------------------------------------------
 
             updatePageInfo:function(){
 
@@ -66,7 +68,7 @@ define(function (require) {
                 this.pageInfo.to = Math.min(metadata.total, metadata.to + 1);
             },
 
-            //-----------------------------------------------------
+            //----------------------------------------------------
 
             adjustButtons: function(){
 
@@ -74,7 +76,7 @@ define(function (require) {
                 this.ui.btnOlder.toggleClass("disable",this.pageInfo.to >= this.pageInfo.total);
             },
 
-            //-----------------------------------------------------
+            //----------------------------------------------------
 
             adjustLabels: function(){
 
@@ -83,9 +85,9 @@ define(function (require) {
                 this.ui.lblTotal.text(this.pageInfo.total);
             },
 
-            //------------------------------------------------------
+            //----------------------------------------------------
             // buttons click
-            //------------------------------------------------------
+            //----------------------------------------------------
 
             showNewerItems: function () {
 

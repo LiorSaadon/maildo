@@ -25,8 +25,6 @@ define(function (require) {
 
             this.fetch({
 
-                reset:true,
-
                 data: {filters: this.filters},
 
                 success: _.bind(function(collection){

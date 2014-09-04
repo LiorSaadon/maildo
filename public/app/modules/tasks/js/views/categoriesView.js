@@ -42,7 +42,6 @@ define(function (require) {
                 var itemView = this.children.findByModelCid(category.cid);
 
                 if(itemView){
-
                     this.children.each(function(_itemView){
                         _itemView.markAsClicked(false);
                     });
