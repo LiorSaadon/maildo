@@ -13,6 +13,10 @@ define(function (require) {
         var Router = require("mail-routers/mailRouter");
         var RouterController = require("mail-controllers/mailRouterController");
 
+        //------------------------------------------
+        // init
+        //------------------------------------------
+
         this.addInitializer(function (options) {
             this.channel = Backbone.Wreqr.radio.channel("mail");
             this.dataController = new DataController();
@@ -20,6 +24,10 @@ define(function (require) {
             this.mainLayoutController = new MainLayoutController(options);
             this.router = new Router({ controller: new RouterController() });
         });
+
+        //------------------------------------------
+        // setLayout
+        //------------------------------------------
 
         this.setLayout =function(){
             return this.mainLayoutController.setViews();

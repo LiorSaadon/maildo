@@ -14,7 +14,6 @@ define({
         "text": "lib/require/require.text",
         "json": "lib/require/require.json",
         "mustache": "lib/mustache/mustache",
-        "modernizr": "lib/modernizr/modernizr",
         "mbApp": "app/setup/app",
         "tpl": "lib/require/require.tpl",
         "css": "lib/require/require.css",
@@ -41,23 +40,5 @@ define({
         "dev.mockjson": "lib/mockjson/jquery.mockjson"
     },
     "shim": {
-        "underscore": {
-            "exports": "_"
-        },
-        "underscore.string": {
-            "exports": "_s",
-            "deps": ["underscore"]
-        },
-        "modernizr": {
-            "exports": "Modernizr"
-        },
-        "backbone.localstorage": {
-            "exports": "Backbone.LocalStorage",
-            "deps": ["backbone"]
-        },
-        "backbone.deepmodel": {
-            "exports": "Backbone.DeepModel",
-            "deps": ["backbone"]
-        }
     }
 });

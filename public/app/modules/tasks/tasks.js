@@ -14,6 +14,10 @@ define(function (require) {
         var ActionsController = require("tasks-controllers/tasksActionsController");
         var Router = require("tasks-routers/tasksRouter");
 
+        //------------------------------------------
+        // init
+        //------------------------------------------
+
         this.addInitializer(function (options) {
 
             this.channel = Backbone.Wreqr.radio.channel("tasks");
@@ -22,6 +26,10 @@ define(function (require) {
             this.actionsController = new ActionsController();
             this.router = new Router({ controller: new RouterController() });
         });
+
+        //------------------------------------------
+        // setLayout
+        //------------------------------------------
 
         this.setLayout =function(){
             return this.layoutController.setViews();

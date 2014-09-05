@@ -12,56 +12,84 @@ define(function (require) {
 
         DataController = Marionette.Controller.extend({
 
+
+            //---------------------------------------------------
+            // initialize
+            //---------------------------------------------------
+
             initialize: function () {
 
                 this.contactCollection = new ContactsCollection();
                 this.mailCollection = new SelectableDecorator(new MailCollection());
 
-                this.listenTo(app.context, "change:mail.action", this._onActionChange, this);
-                this.listenTo(this.mailCollection, "change:items", this._updateSelection, this);
-
+                this._bindEvents();
+                this._setHandlers();
                 this._fetchAll();
             },
 
             //-----------------------------------------------------
 
-            _fetchAll:function(){
+            _bindEvents: function () {
 
-                setTimeout(_.bind(function(){
-                    this.mailCollection.persist();
-                    this.contactCollection.fetch();
-                },this),30);
+                this.listenTo(this.mailCollection, "fetch:success", this._updateSelection, this);
+                this.listenTo(app.context, "change:mail.action", this._refreshMailCollection, this);
             },
 
             //------------------------------------------------------
 
-            getMailCollection : function () {
+            _setHandlers: function () {
+
+                mail.channel.reqres.setHandler("mail:collection", this._getMailCollection, this);
+                mail.channel.reqres.setHandler("contact:collection", this._getContactCollection, this);
+            },
+
+            //-----------------------------------------------------
+
+            _fetchAll: function () {
+
+                setTimeout(_.bind(function () {
+                    this.mailCollection.persist();
+                    this.contactCollection.fetch();
+                }, this), 150);
+            },
+
+
+            //------------------------------------------------------
+            // get collections
+            //-------------------------------------------------------
+
+            _getMailCollection: function () {
                 return this.mailCollection;
             },
 
             //------------------------------------------------------
 
-            getContactsCollection: function(){
+            _getContactCollection: function () {
                 return this.contactCollection;
             },
+
+
+            //-----------------------------------------------------
+            // update collections
             //-----------------------------------------------------
 
-            _updateSelection:function(){
-                this.mailCollection.updateSelection();
+            _updateSelection: function () {
+                this.mailCollection.updateSelection({});
             },
 
             //-----------------------------------------------------
 
-            _onActionChange:function(){
+            _refreshMailCollection: function () {
 
-                var action = app.context.get("mail.action");
+                var action = app.context.get("mail.action") || {};
+                var params = action.params || {};
 
-                if(_.isObject(action) && _.isObject(action.params)){
+                if (_.isFinite(params.page)) {
 
                     this.mailCollection.fetchBy({
                         filters: {
-                            page: action.params.page,
-                            query: action.params.query || 'groups:' + action.type
+                            page: params.page,
+                            query: params.query || 'groups:' + action.type
                         }
                     });
                 }

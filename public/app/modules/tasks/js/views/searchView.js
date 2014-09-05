@@ -55,19 +55,11 @@ define(function (require) {
             renderAutoComponent:function(){
 
                 this.autoComplete = new AutoComplete({
-                    items: this.getContacts(),
+                    items: [],
                     el:this.ui.autoCompletePlaceholder,
                     vent: this.vent
                 });
                 this.autoComplete.show();
-            },
-
-            //---------------------------------------------------------
-
-            getContacts:function(){
-
-                return [];
-
             },
 
             //---------------------------------------------------------

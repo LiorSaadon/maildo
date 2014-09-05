@@ -15,13 +15,6 @@ define(function (require) {
             template: template,
             className: 'actionView',
 
-            initialize: function (options) {
-
-                this.listenTo(mail.channel.vent, "mail:change", this.onMailChange, this);
-                this.listenTo(app.context, 'change:mail.action', this.showRelevantItems, this);
-                this.listenTo(mail.dataController.getMailCollection(), "change:selection", this.showRelevantItems, this);
-            },
-
             ui: {
                 btnSelect: ".btnSelect",
                 btnMoveTo: ".btnMoveTo",
@@ -38,7 +31,7 @@ define(function (require) {
             },
 
             events: {
-                "click .btnSettings": function () {
+                "click @ui.btnSettings": function () {
                     mail.router.navigate("settings", {trigger: true});
                 },
                 "click .selectAll": function () {
@@ -53,18 +46,35 @@ define(function (require) {
                 "click .selectUnread": function () {
                     mail.channel.vent.trigger("mail:select", {selectBy: "unread"});
                 },
-                "click .btnDelete": function () {
+                "click @ui.btnDelete": function () {
                     mail.channel.vent.trigger("mail:moveTo", {target: 'trash'});
                 },
-                "click .btnNotSpam": function () {
+                "click @ui.btnNotSpam": function () {
                     mail.channel.vent.trigger("mail:moveTo", {target: 'inbox'});
                 },
-                "click .btnDiscardDrafts": function () {
+                "click @ui.btnDiscardDrafts": function () {
                     mail.channel.vent.trigger("mail:delete");
                 },
-                "click .btnDeleteForever": function () {
+                "click @ui.btnDeleteForever": function () {
                     mail.channel.vent.trigger("mail:delete");
                 }
+            },
+
+            //-----------------------------------------------------------
+
+            initialize: function (options) {
+
+                this.mails = mail.channel.reqres.request("mail:collection");
+                this._bindEvents();
+            },
+
+            //-----------------------------------------------------
+
+            _bindEvents: function () {
+
+                this.listenTo(mail.channel.vent, "mail:change", this.onMailChange, this);
+                this.listenTo(this.mails, "change:selection", this.showRelevantItems, this);
+                this.listenTo(app.context, 'change:mail.action', this.showRelevantItems, this);
             },
 
             //------------------------------------------------------
@@ -76,8 +86,6 @@ define(function (require) {
                 };
             },
 
-            //------------------------------------------------------
-            // onRender
             //------------------------------------------------------
 
             onRender: function () {
@@ -135,7 +143,7 @@ define(function (require) {
 
                 this.showItems(["btnSelect", "pagerRegion"]);
 
-                if (!_.isEmpty(mail.dataController.getMailCollection().getSelected())) {
+                if (!_.isEmpty(this.mails.getSelected())) {
 
                     switch (action) {
                         case "draft":

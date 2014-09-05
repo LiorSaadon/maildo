@@ -5,9 +5,9 @@ define(function (require) {
 
     var cache = [];
 
-    //-----------------------------------------
+    //---------------------------------------------
     // detect
-    //-----------------------------------------
+    //---------------------------------------------
 
     var detect = function (records, url, filters) {
 
@@ -24,7 +24,7 @@ define(function (require) {
         return true;
     };
 
-    //---------------------------------------
+    //---------------------------------------------
 
     var extractIds = function (records) {
 
@@ -37,11 +37,11 @@ define(function (require) {
         return res;
     };
 
-    //----------------------------------
+    //---------------------------------------------
 
     var updateCache = function (url, query, page, resIds) {
 
-        var cacheItem = _.where(cache, {url:url, query:query, page:page});
+        var cacheItem = _.findWhere(cache, {url:url, query:query, page:page});
 
         if (!_.isEmpty(cacheItem)) {
             cacheItem.res = resIds;
@@ -55,7 +55,7 @@ define(function (require) {
         }
     };
 
-    //------------------------------;----
+    //---------------------------------------------
 
     return{
         detect: detect

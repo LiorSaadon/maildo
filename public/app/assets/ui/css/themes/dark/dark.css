@@ -993,6 +993,7 @@ body {
   width: 100%;
   background-color: #EEF0F3;
   z-index: 100;
+  display: none;
   font-family: "Helvetica Neue","Segoe UI",Helvetica,Arial,"Lucida Grande",sans-serif;
 }
 .mb .empty-folder .msgTitle {

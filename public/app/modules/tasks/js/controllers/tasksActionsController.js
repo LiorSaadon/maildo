@@ -11,7 +11,13 @@ define(function (require) {
 
             initialize: function () {
 
-                this.tasks = tasks.dataController.taskCollection;
+                this.tasks = tasks.channel.reqres.request("task:collection");
+                this._bindEvents();
+            },
+
+            //----------------------------------------------------
+
+            _bindEvents:function(){
 
                 this.listenTo(tasks.channel.vent, 'task:save:request', this.saveTask, this);
                 this.listenTo(tasks.channel.vent, 'task:delete:request', this.deleteTask, this);

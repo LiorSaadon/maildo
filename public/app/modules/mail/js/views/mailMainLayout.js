@@ -10,12 +10,10 @@ define(function (require) {
 
        MailLayout = Marionette.LayoutView.extend({
             template:layoutTemplate,
+            isPermanent:true,
             regions:{
                 navRegion:".mail-nav-region",
                 workRegion:".mail-work-region"
-            },
-            initialize:function(){
-               this.isPermanent = true;
             }
         });
     });

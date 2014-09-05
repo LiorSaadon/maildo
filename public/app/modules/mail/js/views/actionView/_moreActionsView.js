@@ -25,22 +25,22 @@ define(function (require) {
             },
 
             events: {
-                "click .markRead": function () {
+                "click @ui.ddiRead": function () {
                     mail.channel.vent.trigger("mail:markAs", {label: 'read'});
                 },
-                "click .markUnread": function () {
+                "click @ui.ddiUnread": function () {
                     mail.channel.vent.trigger("mail:markAs", {label: 'unread'});
                 },
-                "click .markImp": function () {
+                "click @ui.ddiImp": function () {
                     mail.channel.vent.trigger("mail:markAs", {label: 'important'});
                 },
-                "click .markNotImp": function () {
+                "click @ui.ddiNotImp": function () {
                     mail.channel.vent.trigger("mail:markAs", { label: 'unimportant'});
                 },
-                "click .addStar": function () {
+                "click @ui.ddiStarred": function () {
                     mail.channel.vent.trigger("mail:markAs", {label: 'starred'});
                 },
-                "click .removeStar": function () {
+                "click @ui.ddiNotStarred": function () {
                     mail.channel.vent.trigger("mail:markAs", {label: 'unstarred'});
                 }
             },
@@ -49,11 +49,14 @@ define(function (require) {
 
             initialize: function (options) {
 
-                this.mails = mail.dataController.getMailCollection();
+                this.mails = mail.channel.reqres.request("mail:collection");
+                this._bindEvents();
+            },
 
-                this.listenTo(this.mails, "change:items", this.setDropDownItems, this);
-                this.listenTo(this.mails, "update:success", this.setDropDownItems, this);
-                this.listenTo(this.mails, "change:selection", this.setDropDownItems, this);
+            //-----------------------------------------------------------
+
+            _bindEvents:function(){
+                this.listenTo(this.mails, "change:items update:success change:selection", this.setDropDownItems, this);
             },
 
             //------------------------------------------------------------

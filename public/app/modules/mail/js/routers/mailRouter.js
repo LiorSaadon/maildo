@@ -50,8 +50,7 @@ define(function (require) {
             //---------------------------------------------
 
             previous: function () {
-                var prevURL = this.controller.buildPrevURL();
-                mail.router.navigate(prevURL, {trigger: true});
+                mail.router.navigate("inbox", {trigger: true});
             },
 
             //----------------------------------------------

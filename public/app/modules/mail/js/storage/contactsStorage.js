@@ -18,7 +18,11 @@ define(function (require) {
             var findAll = function (model,options) {
 
                 var contacts = _localStorage.getItem('contacts');
-                return _.isString(contacts) ? JSON.parse(contacts) : [];
+
+                return{
+                    metadata:{},
+                    collection:_.isString(contacts) ? JSON.parse(contacts) : []
+                };
             };
 
             return{

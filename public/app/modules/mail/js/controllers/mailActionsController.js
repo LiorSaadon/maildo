@@ -11,7 +11,13 @@ define(function (require) {
 
             initialize: function () {
 
-                this.mails = mail.dataController.getMailCollection();
+                this.mails = mail.channel.reqres.request("mail:collection");
+                this._bindEvents();
+            },
+
+            //-----------------------------------------------------
+
+            _bindEvents:function(){
 
                 this.listenTo(this.mails, "change:metadata",this.fixUrl, this);
                 this.listenTo(mail.channel.vent, 'mail:send', this.send, this);
@@ -36,10 +42,10 @@ define(function (require) {
                         this.mails.clearSelected();
                         break;
                     case 'read':
-                        this.mails.selectModels(this.mails.filterLabel("read"), {exclusively: true});
+                        this.mails.selectModels(this.mails.filterByLabel("read"), {exclusively: true});
                         break;
                     case 'unread':
-                        this.mails.selectModels(this.mails.filterLabel("unread"), {exclusively: true});
+                        this.mails.selectModels(this.mails.filterByLabel("unread"), {exclusively: true});
                         break;
                 }
             },

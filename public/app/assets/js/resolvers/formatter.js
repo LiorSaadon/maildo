@@ -11,10 +11,11 @@ define(function (require) {
 
         Formatter = (function () {
 
-            var formatAddresses = function(addressList){
+            var formatAddresses = function(titles){
 
-                var res = "",
-                    titles = mail.dataController.getContactsCollection().getTitles(addressList);
+                var res = "";
+
+                titles = titles || [];
 
                 if(titles.length === 1){
                     return titles[0];

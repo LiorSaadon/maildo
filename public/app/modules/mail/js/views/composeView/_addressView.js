@@ -29,10 +29,19 @@ define(function (require) {
 
                 this.modelAttr = options.modelAttr;
                 this.vent = new Backbone.Wreqr.EventAggregator();
+                this.contacts = mail.channel.reqres.request("contact:collection");
 
-                this.listenTo(this.vent, 'tag:add', this.addAddress, this);
-                this.listenTo(this.vent, 'tag:remove', this.removeAddress, this);
-                this.listenTo(this.vent, 'input:change', this.updateLastAddress, this);
+                this._bindEvents();
+            },
+
+            //--------------------------------------------------------
+
+            _bindEvents:function(){
+
+                this.listenTo(this.vent, "tag:add", this.addAddress, this);
+                this.listenTo(this.vent, "tag:remove", this.removeAddress, this);
+                this.listenTo(this.vent, "input:change", this.updateLastAddress, this);
+                this.listenTo(this.contacts, "fetch:success", this.renderAutoComponent, this);
             },
 
             //----------------------------------------------------------------
@@ -62,29 +71,32 @@ define(function (require) {
 
             renderAutoComponent:function(){
 
-                this.autoComplete = new AutoComplete({
-                    items: this.getContacts(),
-                    filterModel: new ContactsFilterModel(),
-                    el:this.ui.autoCompletePlaceholder,
-                    vent: this.vent
-                });
-                this.autoComplete.show();
+                if(!this.contacts.isEmpty()){
+
+                    this.autoComplete = new AutoComplete({
+                        vent: this.vent,
+                        items: this.getContactArray(),
+                        el:this.ui.autoCompletePlaceholder,
+                        filterModel: new ContactsFilterModel()
+                    });
+                    this.autoComplete.show();
+                }
             },
 
             //-----------------------------------------------------------------
 
-            getContacts:function(){
+            getContactArray:function(){
 
-                var contacts = [];
+                var _contacts = [];
 
-                mail.dataController.contactCollection.each(function(model){
-                    contacts.push({
+                this.contacts.each(function(model){
+                    _contacts.push({
                         text: model.get("title"),
                         value: model.get("address"),
                         type: AutoComplete.TYPES.CONTACT
                     });
                 });
-                return contacts;
+                return _contacts;
             },
 
             //-----------------------------------------------------------------
@@ -94,12 +106,11 @@ define(function (require) {
                 var res = [], addresses = this.model.get(this.modelAttr);
 
                 if(!_.isEmpty(addresses)){
+                    var addressArr = _s.strLeftBack(addresses, ";").split(";");
 
-                    var addrArr = _s.strLeftBack(addresses, ";").split(";");
-
-                    _.each(addrArr, function(address){
+                    _.each(addressArr, function(address){
                         res.push({
-                            text:mail.dataController.contactCollection.getTitle(address),
+                            text:mail.dataController.contactCollection.getTitles([address]),
                             value:address
                         });
                     });

@@ -17,6 +17,7 @@ define(function (require) {
                 this.categoryCollection = new CategoryCollection();
 
                 this._bindEvents();
+                this._setHandlers();
                 this._fetchAll();
             },
 
@@ -24,9 +25,17 @@ define(function (require) {
 
             _bindEvents:function(){
 
-                this.listenTo(tasks.channel.vent,"category:change:request", this.loadTasks);
-                this.listenTo(this.taskCollection, "change:metadata", this.updateSelectedCategory);
-                tasks.channel.reqres.setHandler("selected:category",this.getSelectedCategory, this);
+                this.listenTo(this.taskCollection,"change:metadata", this.updateSelectedCategory);
+                this.listenTo(tasks.channel.vent,"category:change:request", this.refreshTaskCollection);
+            },
+
+            //------------------------------------------------------
+
+            _setHandlers:function(){
+
+                tasks.channel.reqres.setHandler("task:collection",this._getTaskCollection, this);
+                tasks.channel.reqres.setHandler("category:collection",this._getCategoryCollection, this);
+                tasks.channel.reqres.setHandler("selected:category",this._getSelectedCategory, this);
             },
 
             //-----------------------------------------------------
@@ -41,8 +50,19 @@ define(function (require) {
 
             //-----------------------------------------------------
 
-            getSelectedCategory:function(){
+            _getTaskCollection:function(){
+               return this.taskCollection;
+            },
 
+            //-----------------------------------------------------
+
+            _getCategoryCollection:function(){
+                return this.categoryCollection;
+            },
+
+            //-----------------------------------------------------
+
+            _getSelectedCategory:function(){
                 return this.categoryCollection.get(this.taskCollection.metadata.categoryId);
             },
 
@@ -59,7 +79,7 @@ define(function (require) {
 
             //-----------------------------------------------------
 
-            loadTasks:function(options){
+            refreshTaskCollection:function(options){
 
                 options = options || {};
 

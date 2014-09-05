@@ -21,14 +21,6 @@ define(function (require) {
                     address:response.replace(",", ".").toLowerCase() + "@mailbone.com"
                 };
             }
-//
-//            getText:function(){
-//                return this.get("title");
-//            },
-//
-//            getValue: function(){
-//                return this.get("address");
-//            }
         });
     });
 

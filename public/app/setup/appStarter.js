@@ -1,16 +1,18 @@
 define(function (require) {
     "use strict";
 
+    require("backbone.localstorage");
+    require("lib-extensions/marionette/marionette.extensions");
+    require("app/assets/js/lib-extensions/requirejs/require.loadByType!modules");
+
     var app = require("mbApp");
     var Backbone = require("backbone");
-    var MarionetteExt = require("lib-extensions/marionette/marionette.extensions");
-    var localStorage = require("backbone.localstorage");
     var Translator = require("i18n/translator");
     var Context = require("assets-models/context");
     var Settings = require("assets-models/settings");
-    var Modules = require("app/assets/js/lib-extensions/requirejs/require.loadByType!modules");
     var ThemesController = require("assets-controllers/themesController");
     var FrameLayoutController = require("frame-controllers/frameLayoutController");
+
 
     //------------------------------------------
     // init

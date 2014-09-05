@@ -11,20 +11,18 @@ define(function (require) {
 
         MailRouterController = Marionette.Controller.extend({
 
-            _prevAction: null,
-
             //-----------------------------------------------------------------
             //  actions
             //-----------------------------------------------------------------
 
             compose:function(){
-                app.context.set("mail.action",{'type':'compose'});
+                app.context.set("mail.action",{'type':'compose', 'params':{}});
             },
 
             //-------------------------------------------------
 
             settings:function(){
-                app.context.set("mail.action",{'type':'settings'});
+                app.context.set("mail.action",{'type':'settings', 'params':{}});
             },
 
             //-------------------------------------------------
@@ -86,26 +84,9 @@ define(function (require) {
             beforeRoute:function(){
 
                 var action = app.context.get("mail.action");
-                this._prevAction = $.extend(true, {},action);
 
                 app.context.set("module",eModules.MAIL);
                 app.context.set("mail.action",null, {silent:true});
-            },
-
-            //-----------------------------------------------------------------
-            // buildPrevURL
-            //-----------------------------------------------------------------
-
-            buildPrevURL:function(){
-
-                var url = "inbox";
-
-                if(!_.isEmpty(this._prevAction)){
-                    var page = "p" + this._prevAction.params.page;
-                    var query = this._prevAction.params.query ? "/" + this._prevAction.params.query : "";
-                    url = this._prevAction.type + query + "/" + page;
-                }
-                return url;
             }
         });
     });

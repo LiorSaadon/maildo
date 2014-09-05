@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var formatter = require("assets-resolvers/formatter");
-    var template = require("tpl!mail-templates/mailTableRow.tmpl");
+    var template = require("tpl!mail-templates/mailItemView.tmpl");
 
     var MailTableRowView = {};
 
@@ -42,9 +42,17 @@ define(function (require) {
                 "change:body" : "_onBodyChanged"
             },
 
-            initialize: function (options) {
+            initialize: function () {
 
                 this.action = app.context.get("mail.action.type");
+                this.contacts = mail.channel.reqres.request("contact:collection");
+
+                this._bindEvents();
+            },
+
+            //-----------------------------------------------------
+
+            _bindEvents:function(){
                 this.listenTo(this.model, "change:labels.*", this.toggleUI);
             },
 
@@ -65,8 +73,8 @@ define(function (require) {
                     body: formatter.formatContent(this.model.get("body")),
                     subject: formatter.formatSubject(this.model.get("subject")),
                     sentTime: formatter.formatShortDate(this.model.get("sentTime")),
-                    to: formatter.formatAddresses(this.model.getOutgoingAddresses()),
-                    from: formatter.formatAddresses(this.model.getIngoingAddresses())
+                    to: formatter.formatAddresses(this.contacts.getTitles(this.model.getOutgoingAddresses())),
+                    from: formatter.formatAddresses(this.contacts.getTitles(this.model.getIngoingAddresses()))
                 };
             },
 
@@ -127,13 +135,6 @@ define(function (require) {
 
                 mail.channel.vent.trigger("mailTable:ItemClicked", null);
                 this.model.collection.toggleSelection(this.model, {callerName: 'itemView'});
-            },
-
-            //-------------------------------------------------------------
-
-            onRowClick: function () {
-
-                this.trigger("childview:click", this);
             },
 
             //-------------------------------------------------------------

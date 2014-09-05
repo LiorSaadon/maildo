@@ -21,13 +21,13 @@ define(function (require) {
             },
 
             events: {
-                "click .moveToInbox": function () {
+                "click @ui.ddiInbox": function () {
                     mail.channel.vent.trigger("mail:moveTo", {target: 'inbox'});
                 },
-                "click .moveToTrash": function () {
+                "click @ui.ddiTrash": function () {
                     mail.channel.vent.trigger("mail:moveTo", {target: 'trash'});
                 },
-                "click .moveToSpam": function () {
+                "click @ui.ddiSpam": function () {
                     mail.channel.vent.trigger("mail:moveTo", {target: 'spam'});
                 }
             },

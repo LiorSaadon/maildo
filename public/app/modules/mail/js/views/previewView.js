@@ -17,7 +17,11 @@ define(function (require) {
                 to:".to",
                 from:".from",
                 body: ".body"
+            },
 
+            initialize: function () {
+
+                this.contacts = mail.channel.reqres.request("contact:collection");
             },
 
             //-------------------------------------------------------------
@@ -26,8 +30,8 @@ define(function (require) {
 
                 return{
                     subject: formatter.formatSubject(this.model.get("subject")),
-                    to: formatter.formatAddresses(this.model.getOutgoingAddresses()),
-                    from: formatter.formatAddresses(this.model.getIngoingAddresses())
+                    to: formatter.formatAddresses(this.contacts.getTitles(this.model.getOutgoingAddresses())),
+                    from: formatter.formatAddresses(this.contacts.getTitles(this.model.getIngoingAddresses()))
                 };
             },
 

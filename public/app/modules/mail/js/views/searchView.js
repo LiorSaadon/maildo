@@ -3,6 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var template = require("tpl!mail-templates/searchView.tmpl");
+    var ContactsFilterModel = require("mail-models/contactsFilterModel");
     var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
     var SearchComponent = require("assets-ui-component/search/search");
 
@@ -22,10 +23,20 @@ define(function (require) {
             //---------------------------------------------------------
 
             initialize:function(){
+
                 this.vent = new Backbone.Wreqr.EventAggregator();
+                this.contacts = mail.channel.reqres.request("contact:collection");
+
+                this._bindEvents();
+            },
+
+            //--------------------------------------------------------
+
+            _bindEvents:function(){
 
                 this.listenTo(this.vent,"search",this.search, this);
-                this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
+                this.listenTo(app.context, "change:mail.action", this.onActionChange, this);
+                this.listenTo(this.contacts, "fetch:success", this.renderAutoComponent, this);
             },
 
             //---------------------------------------------------------
@@ -35,7 +46,6 @@ define(function (require) {
             onRender:function(){
 
                 this.renderSearchComponent();
-                this.renderAutoComponent();
             },
 
             //---------------------------------------------------------
@@ -55,8 +65,9 @@ define(function (require) {
             renderAutoComponent:function(){
 
                 this.autoComplete = new AutoComplete({
-                    items: this.getContacts(),
+                    items: this.getContactArray(),
                     el:this.ui.autoCompletePlaceholder,
+                    filterModel: new ContactsFilterModel(),
                     vent: this.vent
                 });
                 this.autoComplete.show();
@@ -64,18 +75,18 @@ define(function (require) {
 
             //---------------------------------------------------------
 
-            getContacts:function(){
+            getContactArray:function(){
 
-                var contacts = [];
+                var _contacts = [];
 
-                mail.dataController.getContactsCollection().each(function(model){
-                    contacts.push({
+                this.contacts.each(function(model){
+                    _contacts.push({
                         text: model.get("title"),
                         value: model.get("address"),
                         type: AutoComplete.TYPES.CONTACT
                     });
                 });
-                return contacts;
+                return _contacts;
             },
 
             //---------------------------------------------------------
@@ -83,6 +94,7 @@ define(function (require) {
             //---------------------------------------------------------
 
             search:function(key){
+
                 if(!_.isEmpty(key)){
                     mail.router.navigate("search/"+key,{trigger: true});
                 }

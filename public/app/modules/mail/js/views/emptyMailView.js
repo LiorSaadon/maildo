@@ -19,11 +19,17 @@ define(function (require) {
 
              initialize: function(){
 
-                 this.mails = mail.dataController.getMailCollection();
+                 this.mails = mail.channel.reqres.request("mail:collection");
+                 this._bindEvents();
+             },
+
+             //-------------------------------------------------------------
+
+             _bindEvents:function(){
                  this.listenTo(this.mails, "change:selection", this.onSelectionChange, this);
              },
 
-             //-----------------------------------------------------------------------
+             //--------------------------------------------------------------
 
              onSelectionChange : function () {
 

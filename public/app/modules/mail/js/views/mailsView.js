@@ -2,8 +2,8 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var template = require("tpl!mail-templates/mailTable.tmpl");
-    var MailableRowView = require("mail-views/mailTableRowView");
+    var template = require("tpl!mail-templates/mailsView.tmpl");
+    var MailableRowView = require("mail-views/mailItemView");
 
     var MailTableView = {};
 
@@ -30,9 +30,7 @@ define(function (require) {
                 options = options || {};
 
                 if(options.callerName !== 'itemView'){
-
                     this.children.each(function(view){
-
                         view.setSelection();
                     });
                 }

@@ -14,7 +14,6 @@ define(function (require) {
             //-----------------------------------------------
 
             initialize:function(){
-
                 this.listenTo(app.context, 'change:mail.action', this.onActionChange, this);
             },
 

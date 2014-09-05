@@ -19,7 +19,9 @@ define(function (require) {
 
             initialize: function () {
 
-                this.tasks = tasks.dataController.taskCollection;
+                this.tasks = tasks.channel.reqres.request("task:collection");
+                this.categories = tasks.channel.reqres.request("category:collection");
+
                 this._bindEvents();
             },
 
@@ -53,10 +55,10 @@ define(function (require) {
 
             onMainLayoutRender: function () {
 
-                var categoriesView = new CategoriesView({collection: tasks.dataController.categoryCollection});
+                var categoriesView = new CategoriesView({collection: this.categories});
                 this.mainLayout.categoriesRegion.add(categoriesView);
 
-                var tasksView = new TasksView({collection: tasks.dataController.taskCollection});
+                var tasksView = new TasksView({collection: this.tasks});
                 this.mainLayout.tasksRegion.add(tasksView);
             },
 

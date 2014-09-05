@@ -23,13 +23,19 @@ define(function (require) {
             },
 
             events: {
-                "click .btnNewer": "showNewerItems",
-                "click .btnOlder": "showOlderItems"
+                "click @ui.btnNewer": "showNewerItems",
+                "click @ui.btnOlder": "showOlderItems"
             },
 
             initialize: function () {
 
-                this.mails = mail.dataController.getMailCollection();
+                this.mails = mail.channel.reqres.request("mail:collection");
+                this._bindEvents();
+            },
+
+            //---------------------------------------------------
+
+            _bindEvents:function(){
                 this.listenTo(this.mails, "change:metadata",this.adjustPage, this);
             },
 

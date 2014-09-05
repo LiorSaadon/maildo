@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var ContentLayout = require("mail-views/mailContentLayout");
-    var MailTableView = require("mail-views/mailTableView");
+    var MailsView = require("mail-views/mailsView");
     var PreviewView = require("mail-views/previewView");
     var ComposeView = require("mail-views/composeView/composeView");
     var EmptyMailView = require("mail-views/emptyMailView");
@@ -16,7 +16,7 @@ define(function (require) {
 
             initialize: function () {
 
-                this.mails = mail.dataController.getMailCollection();
+                this.mails = mail.channel.reqres.request("mail:collection");
                 this._bindEvents();
             },
 
@@ -50,8 +50,8 @@ define(function (require) {
                 var emptyMailView = new EmptyMailView();
                 this.contentLayout.previewRegion.add(emptyMailView);
 
-                var tableView = new MailTableView({collection: this.mails});
-                this.contentLayout.itemsRegion.show(tableView);
+                var tableView = new MailsView({collection: this.mails});
+                this.contentLayout.itemsRegion.add(tableView);
             },
 
             //----------------------------------------------------
@@ -85,7 +85,7 @@ define(function (require) {
 
             closePreview:function(){
 
-                if (this.contentLayout && this.preview && this.preview.model) {
+                if (this.contentLayout && this.contentLayout.previewRegion && this.preview && this.preview.model) {
 
                     var isModelExist = _.isObject(this.mails.get(this.preview.model.id));
 

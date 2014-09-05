@@ -35,7 +35,7 @@ define(function (require) {
 
             //--------------------------------------------------
 
-            filterLabel: function (label) {
+            filterByLabel: function (label) {
 
                 var filtered = [];
 
