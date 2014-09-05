@@ -1043,7 +1043,6 @@ body {
 .mb .previewMail .body {
   overflow-x: auto;
   padding-top: 20px;
-  padding-left: 38px;
 }
 .mb .previewMail .body .special {
   display: table;

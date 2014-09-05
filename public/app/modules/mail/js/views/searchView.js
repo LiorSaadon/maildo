@@ -46,6 +46,7 @@ define(function (require) {
             onRender:function(){
 
                 this.renderSearchComponent();
+                this.renderAutoComponent();
             },
 
             //---------------------------------------------------------
@@ -64,13 +65,16 @@ define(function (require) {
 
             renderAutoComponent:function(){
 
-                this.autoComplete = new AutoComplete({
-                    items: this.getContactArray(),
-                    el:this.ui.autoCompletePlaceholder,
-                    filterModel: new ContactsFilterModel(),
-                    vent: this.vent
-                });
-                this.autoComplete.show();
+                if(!this.autoComplete && !this.contacts.isEmpty()){
+
+                    this.autoComplete = new AutoComplete({
+                        items: this.getContactArray(),
+                        el:this.ui.autoCompletePlaceholder,
+                        filterModel: new ContactsFilterModel(),
+                        vent: this.vent
+                    });
+                    this.autoComplete.show();
+                }
             },
 
             //---------------------------------------------------------

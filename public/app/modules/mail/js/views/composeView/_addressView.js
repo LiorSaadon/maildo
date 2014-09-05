@@ -71,7 +71,7 @@ define(function (require) {
 
             renderAutoComponent:function(){
 
-                if(!this.contacts.isEmpty()){
+                if(!this.autoComplete && !this.contacts.isEmpty()){
 
                     this.autoComplete = new AutoComplete({
                         vent: this.vent,

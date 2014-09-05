@@ -125,9 +125,9 @@
         if (options && options.delayTime && _.isFinite(options.delayTime)) {
             delayTime = options.delayTime;
         }
-        setTimeout(function () {
+        //setTimeout(function () {
             execLocalSync.apply(that, [method, model, options]);
-        }, delayTime);
+        //}, delayTime);
     };
 
     //-------------------------------------------
