@@ -865,7 +865,7 @@ body {
 .mb .settingsView .field {
   line-height: 40px;
 }
-.mb .settingsView .fieldTitle {
+.mb .settingsView .field .title {
   width: 160px;
   padding-right: 15px;
   float: left;
@@ -874,20 +874,19 @@ body {
 .mb .settingsView .themeBox {
   border: 1px solid #f9f9f9;
   float: left;
-  margin-right: 20px;
-  padding: 5px;
   padding-top: 0;
+  margin-right: 10px;
 }
 .mb .settingsView .themeBox:hover {
   border: 1px solid #282a2c;
   cursor: pointer;
 }
-.mb .settingsView .themeTitle {
+.mb .settingsView .themeBox .title {
   text-decoration: underline;
   width: 100%;
   text-align: center;
 }
-.mb .settingsView .themeIcon {
+.mb .settingsView .themeBox .icon {
   border: 1px solid #cccccc;
 }
 .mb .settingsView .close {

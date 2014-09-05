@@ -25,36 +25,36 @@
 
     .field {
       line-height: 40px;
-    }
 
-    .fieldTitle {
-      width: 160px;
-      padding-right: 15px;
-      float: left;
-      text-align: right;
+      .title{
+        width: 160px;
+        padding-right: 15px;
+        float: left;
+        text-align: right;
+      }
+
     }
 
     .themeBox {
       border:1px solid  $settings-background-color;
       float:left;
-      margin-right:20px ;
-      padding:5px;
-      padding-top:0
-    }
+      padding-top:0;
+      margin-right:10px;
 
-    .themeBox:hover {
-      border:1px solid $settings-themeBox-border-hover-color;
-      cursor:pointer;
-    }
+      &:hover{
+        border:1px solid $settings-themeBox-border-hover-color;
+        cursor:pointer;
+      }
 
-    .themeTitle {
-      text-decoration: underline;
-      width:100%;
-      text-align: center;
-    }
+      .title {
+        text-decoration: underline;
+        width:100%;
+        text-align: center;
+      }
 
-    .themeIcon{
-      border:1px solid $settings-themeIcon-border-color;
+      .icon{
+        border:1px solid $settings-themeIcon-border-color;
+      }
     }
 
     .close {

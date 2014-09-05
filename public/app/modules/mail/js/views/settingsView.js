@@ -13,11 +13,12 @@ define(function (require) {
 
             ui: {
                 btnDark:".darkTheme",
-                btnDust: ".dustTheme"
+                btnDust: ".dustTheme",
+                ddlLang: ".language-box"
             },
 
             events: {
-                "change .emails_per_page": "onPageSizeChange"
+                "change @ui.ddlLang": "onLanguageChange"
             },
 
             //----------------------------------------------------------------------
@@ -28,8 +29,8 @@ define(function (require) {
 
             //----------------------------------------------------------------------
 
-            onPageSizeChange:function(e){
-                app.settings.set("mail.pageSize", 12);
+            onLanguageChange:function(e){
+                app.settings.set("selectedLang",  this.ui.ddlLang.val());
             },
 
             //----------------------------------------------------------------------
