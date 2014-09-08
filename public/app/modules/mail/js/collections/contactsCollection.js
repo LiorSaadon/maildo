@@ -5,7 +5,7 @@ define(function (require) {
     var ContactModel = require("mail-models/contactModel");
     var urlResolver = require("assets-resolvers-url/urlResolver");
     var ContactsStorage = require("mail-storage/contactsStorage");
-    var BaseCollection = require("assets-collections/BaseCollection");
+    var BaseCollection = require("base-collections/BaseCollection");
 
     var ContactsCollection = {};
 

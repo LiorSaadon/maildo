@@ -38,31 +38,31 @@
 
       .btnNewer {
         .icoNewer {
-          @include set-icon(17px, 17px, 'app/assets/ui/img/actions.png', 0, -17px);
+          @include set-icon(17px, 17px, 'app/common/ui/img/actions.png', 0, -17px);
         }
         &:hover {
           .icoNewer {
-            background: url('app/assets/ui/img/actionsHover.png') 0 -17px  no-repeat;
+            background: url('app/common/ui/img/actionsHover.png') 0 -17px  no-repeat;
           }
         }
         &.disable {
           .icoNewer {
-            background: url('app/assets/ui/img/actionsDisabled.png') 0 -17px  no-repeat;
+            background: url('app/common/ui/img/actionsDisabled.png') 0 -17px  no-repeat;
           }
         }
       }
       .btnOlder {
         .icoOlder {
-          @include set-icon(17px, 17px, 'app/assets/ui/img/actions.png', 0, -34px);
+          @include set-icon(17px, 17px, 'app/common/ui/img/actions.png', 0, -34px);
         }
         &:hover {
           .icoOlder {
-            background: url('app/assets/ui/img//actionsHover.png') 0 -34px  no-repeat;
+            background: url('app/common/ui/img//actionsHover.png') 0 -34px  no-repeat;
           }
         }
         &.disable {
           .icoOlder {
-            background: url('app/assets/ui/img/actionsDisabled.png') 0 -34px  no-repeat;
+            background: url('app/common/ui/img/actionsDisabled.png') 0 -34px  no-repeat;
           }
         }
       }

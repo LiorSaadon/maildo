@@ -21,7 +21,7 @@
     .logo {
       width: 145px;
       height: 40px;
-      background-image: url('app/assets/ui/img/logo.png');
+      background-image: url('app/common/ui/img/logo.png');
       @include abs-pos(10px, 'NaN', 'NaN', 25px);
     }
 
@@ -31,7 +31,7 @@
       margin-top: 20px;
       width:40px;
       height:35px;
-      background-image: url('app/assets/ui/img/product_demos.jpg');
+      background-image: url('app/common/ui/img/product_demos.jpg');
     }
 
     .search-region{
@@ -86,10 +86,10 @@
         @include abs-pos(21px, 10px, 'NaN', 'NaN');
 
         .button .settingsIcon {
-          @include set-icon(17px, 17px, 'app/assets/ui/img/actions.png', 0, 0);
+          @include set-icon(17px, 17px, 'app/common/ui/img/actions.png', 0, 0);
         }
         .button:hover .settingsIcon {
-          background: url('app/assets/ui/img/actionsHover.png') 0 0 no-repeat;
+          background: url('app/common/ui/img/actionsHover.png') 0 0 no-repeat;
         }
       }
   }

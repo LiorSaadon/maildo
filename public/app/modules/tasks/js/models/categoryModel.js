@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var BaseModel = require("assets-models/baseModel");
+    var BaseModel = require("base-models/baseModel");
 
     var CategoryModel = {};
 

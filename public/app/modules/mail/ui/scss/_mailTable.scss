@@ -11,12 +11,12 @@
     .star-icon {
       width: 19px;
       height: 19px;
-      background: url(app/assets/ui/img/star.png);
+      background: url(app/common/ui/img/star.png);
       display:block;
       float:left;
     }
     .star-icon.disable {
-      background: url(app/assets/ui/img/not-star.png);
+      background: url(app/common/ui/img/not-star.png);
     }
     .trash-icon-wrapper{
       display: inline-block;

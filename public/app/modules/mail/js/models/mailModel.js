@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var _s = require("underscore.string");
-    var BaseModel = require("assets-models/baseModel");
+    var BaseModel = require("base-models/baseModel");
     var MailStorage = require("mail-storage/mailStorage");
 
     var MailModel = {};

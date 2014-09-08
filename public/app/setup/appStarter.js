@@ -3,14 +3,14 @@ define(function (require) {
 
     require("backbone.localstorage");
     require("lib-extensions/marionette/marionette.extensions");
-    require("app/assets/js/lib-extensions/requirejs/require.loadByType!modules");
+    require("app/assets/lib-extensions/requirejs/require.loadByType!modules");
 
     var app = require("mbApp");
     var Backbone = require("backbone");
     var Translator = require("i18n/translator");
-    var Context = require("assets-models/context");
-    var Settings = require("assets-models/settings");
-    var ThemesController = require("assets-controllers/themesController");
+    var Context = require("common-context/context");
+    var Settings = require("common-settings/settings");
+    var ThemesController = require("common-settings/themesController");
     var FrameLayoutController = require("frame-controllers/frameLayoutController");
 
 

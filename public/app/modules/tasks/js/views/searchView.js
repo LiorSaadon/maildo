@@ -3,8 +3,8 @@ define(function (require) {
 
     var app = require("mbApp");
     var template = require("tpl!tasks-templates/searchView.tmpl");
-    var AutoComplete = require("assets-ui-component/autoComplete/autoComplete");
-    var SearchComponent = require("assets-ui-component/search/search");
+    var AutoComplete = require("common-ui-component/autoComplete/autoComplete");
+    var SearchComponent = require("common-ui-component/search/search");
 
     var SearchView = {};
 

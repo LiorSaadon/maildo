@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var baseConfig = require("app/setup/baseConfig");
-    var configs = require("app/assets/js/lib-extensions/requirejs/require.loadByType!config");
+    var configs = require("app/assets/lib-extensions/requirejs/require.loadByType!config");
 
     var leVersion = "@@version";
 
