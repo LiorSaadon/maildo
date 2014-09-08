@@ -2,15 +2,14 @@ define(function (require) {
     "use strict";
 
     var _ = require("underscore");
-    var i18nObjects  = require("app/assets/lib-extensions/requirejs/require.loadByType!i18n");
 
     var Translator = (function () {
 
         var dictionary = {};
 
-        _.each(i18nObjects, function(obj){
+        var updateDictionary = function(obj){
             $.extend(dictionary, obj);
-        });
+        };
 
         var translate = function (key) {
             var text = "[??" + key + "??]";
@@ -24,7 +23,8 @@ define(function (require) {
 
         return {
             dictionary : dictionary,
-            translate : translate
+            translate : translate,
+            updateDictionary:updateDictionary
         };
 
     })();

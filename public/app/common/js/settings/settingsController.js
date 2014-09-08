@@ -3,13 +3,67 @@ define(function (require) {
 
     var app = require('mbApp');
     var _ = require('underscore');
-    var Backbone = require('backbone');
     var Marionette = require('marionette');
-    var Settings = require("assets-models/settings");
+    var Settings = require("common-settings/settings");
 
-    var ThemesController = Marionette.Controller.extend({
+    var SettingsController = Marionette.Controller.extend({
 
+        initialize:function(){
+            app.settings = new Settings();
+        },
+
+        //----------------------------------------------------
+
+        fetch:function(){
+
+            app.settings.fetch({
+                success: _.bind(function () {
+                    this._loadTheme();
+                    this._loadDictionaries();
+                },this)
+            });
+        },
+
+        //----------------------------------------------------
+
+        _loadTheme:function(){
+
+            var themeName = app.settings.get("selectedTheme");
+            var file = "text!app/common/ui/css/themes/" + themeName + "/" + themeName +".css";
+
+            require([file], _.bind(function (themeObj) {
+
+                $("mss").remove();
+                $(['<style type="text/css" id="mss">', themeObj, '</style>'].join('')).appendTo('head');
+
+                this.raiseTrigger("theme");
+            },this));
+        },
+
+        //----------------------------------------------------
+
+        _loadDictionaries:function(){
+
+            require(["app/assets/lib-extensions/requirejs/require.loadByType!i18n"], _.bind(function(i18nObjects){
+
+                _.each(i18nObjects, function(obj){
+                    app.translator.updateDictionary(obj);
+                });
+                this.raiseTrigger("dictionary");
+            },this));
+        },
+
+        //----------------------------------------------------
+
+        raiseTrigger:function(field){
+
+            this[field+"Loaded"] = true;
+
+            if(this.themeLoaded && this.dictionaryLoaded){
+                app.channel.vent.trigger("onSettingsLoaded");
+            }
+        }
     });
 
-    return ThemesController;
+    return SettingsController;
 });

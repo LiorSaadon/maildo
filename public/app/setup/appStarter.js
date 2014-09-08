@@ -10,7 +10,7 @@ define(function (require) {
     var Translator = require("i18n/translator");
     var Context = require("common-context/context");
     var Settings = require("common-settings/settings");
-    var ThemesController = require("common-settings/themesController");
+    var SettingsController = require("common-settings/settingsController");
     var FrameLayoutController = require("frame-controllers/frameLayoutController");
 
 
@@ -24,7 +24,7 @@ define(function (require) {
         app.context = new Context();
         app.settings = new Settings();
         app.frame = new FrameLayoutController();
-        app.themesController = new ThemesController();
+        app.settingsController = new SettingsController();
     });
 
     //------------------------------------------
@@ -33,21 +33,17 @@ define(function (require) {
 
     app.on("start", function () {
 
-        app.settings.fetch({
-            success: function () {
-                loadTheme();
-                setLayout();
-                startHistory();
-            }
-        });
+        app.channel.vent.once("onSettingsLoaded", onSettingsLoaded);
+        app.settingsController.fetch();
     });
 
-    //--------------------------------------------------
+    //------------------------------------------
 
-    var loadTheme = function () {
+    var onSettingsLoaded =function(){
 
-        app.channel.vent.once("onCssLoaded", removeSplashScreen);
-        app.themesController.loadTheme(app.settings.get("selectedTheme"));
+        setLayout();
+        startHistory();
+        removeSplashScreen();
     };
 
     //------------------------------------------
