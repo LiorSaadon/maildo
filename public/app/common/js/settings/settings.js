@@ -7,7 +7,8 @@ define(function (require) {
     var SettingsModel = BaseModel.extend({
 
         defaults : {
-            selectedTheme:'dust',
+            lang:"en-US",
+            theme:'dust',
             accountName: 'demo@mailbone.com'
         },
 

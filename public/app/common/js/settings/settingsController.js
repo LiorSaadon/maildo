@@ -28,10 +28,9 @@ define(function (require) {
 
         _loadTheme:function(){
 
-            var themeName = app.settings.get("selectedTheme");
-            var file = "text!app/common/ui/css/themes/" + themeName + "/" + themeName +".css";
+            var theme = app.settings.get("theme");
 
-            require([file], _.bind(function (themeObj) {
+            require(["text!app/common/ui/css/themes/" + theme + "/" + theme +".css"], _.bind(function (themeObj) {
 
                 $("mss").remove();
                 $(['<style type="text/css" id="mss">', themeObj, '</style>'].join('')).appendTo('head');
@@ -44,7 +43,7 @@ define(function (require) {
 
         _loadDictionaries:function(){
 
-            require(["app/assets/lib-extensions/requirejs/require.loadByType!i18n"], _.bind(function(i18nObjects){
+            require(["app/assets/lib-extensions/requirejs/require.loadByType!i18n?"+app.settings.get("lang")], _.bind(function(i18nObjects){
 
                 _.each(i18nObjects, function(obj){
                     app.translator.updateDictionary(obj);

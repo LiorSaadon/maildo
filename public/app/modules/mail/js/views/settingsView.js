@@ -30,7 +30,15 @@ define(function (require) {
             //----------------------------------------------------------------------
 
             onLanguageChange:function(e){
-                app.settings.set("selectedLang",  this.ui.ddlLang.val());
+                var lang = this.ui.ddlLang.val();
+
+                app.settings.set("lang", lang);
+                app.settings.save(null,{
+                    success:function(){
+                        location.reload(true);
+                    }
+                });
+
             },
 
             //----------------------------------------------------------------------
@@ -40,7 +48,7 @@ define(function (require) {
                 var target = $(e.currentTarget || e.srcElement);
                 var theme = target.attr("data-name");
 
-                app.settings.set("selectedTheme", theme);
+                app.settings.set("theme", theme);
                 app.settings.save(null,{
                     success:function(){
                         app.themesController.loadTheme(theme);
