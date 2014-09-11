@@ -4,7 +4,7 @@ define(function (require) {
     var Marionette = require("marionette");
     var template = require("tpl!frame-templates/techBar.tmpl");
 
-    var TechBarView = Marionette.CompositeView.extend({
+    var TechBarView = Marionette.ItemView.extend({
         template:template,
 
         initialize:function (options) {

@@ -24,6 +24,8 @@ define(function (require) {
 
             this.setFilters(options);
 
+            app.channel.vent.trigger("data:refresh:before",this);
+
             this.fetch({
 
                 reset:true,
@@ -32,6 +34,7 @@ define(function (require) {
 
                 success: _.bind(function(collection){
                     this.isFetched = true;
+                    app.channel.vent.trigger("data:refresh:success",this);
                     if (_.isFunction(options.success)) {
                         options.success(collection);
                     }
@@ -59,7 +62,6 @@ define(function (require) {
 
         refresh: function () {
 
-            app.channel.vent.trigger("before:data:refresh",this);
             this.fetchBy({filters:this.filters});
         }
     });
