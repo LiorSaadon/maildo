@@ -59,7 +59,10 @@ define(function (require) {
             this[field+"Loaded"] = true;
 
             if(this.themeLoaded && this.dictionaryLoaded){
-                app.channel.vent.trigger("onSettingsLoaded");
+
+                setTimeout(function(){
+                    app.channel.vent.trigger("onSettingsLoaded");
+                },0);
             }
         }
     });

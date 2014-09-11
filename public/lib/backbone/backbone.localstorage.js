@@ -10,7 +10,7 @@
 
     "use strict";
 
-    var DELAY_TIME = 0;
+    var DELAY_TIME = 300;
 
     //**************************************
     // LocalStorage
@@ -125,9 +125,9 @@
         if (options && options.delayTime && _.isFinite(options.delayTime)) {
             delayTime = options.delayTime;
         }
-        //setTimeout(function () {
+        setTimeout(function () {
             execLocalSync.apply(that, [method, model, options]);
-        //}, delayTime);
+        }, delayTime);
     };
 
     //-------------------------------------------

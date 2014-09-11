@@ -47,10 +47,11 @@ define(function (require) {
 
             _fetchAll: function () {
 
-                setTimeout(_.bind(function () {
-                    this.mailCollection.persist();
-                    this.contactCollection.fetch();
-                }, this), 150);
+                this.contactCollection.fetch({
+                    success:_.bind(function(){
+                        this.mailCollection.persist();
+                    },this)
+                });
             },
 
 
