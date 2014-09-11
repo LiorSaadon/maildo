@@ -10,6 +10,7 @@ define(function (require) {
 
         ContentLayout = Marionette.LayoutView.extend({
             template:layoutTemplate,
+            isPermanent:true,
             regions:{
                 itemsRegion:".mail-items-region",
                 previewRegion:".mail-preview-region",

@@ -1,6 +1,7 @@
 define(function (require) {
     "use strict";
 
+    var app = require("mbApp");
     var BaseCollection = require("base-collections/baseCollection");
 
     var FilteredCollection = BaseCollection.extend({
@@ -58,6 +59,7 @@ define(function (require) {
 
         refresh: function () {
 
+            app.channel.vent.trigger("before:data:refresh",this);
             this.fetchBy({filters:this.filters});
         }
     });

@@ -94,7 +94,9 @@ define(function (require) {
 
             showMails: function () {
 
-                this.contentLayout = this.contentLayoutController.newLayout();
+                if(!this.contentLayout){
+                    this.contentLayout = this.contentLayoutController.newLayout();
+                }
                 this.mainLayout.workRegion.add(this.contentLayout);
             }
         });

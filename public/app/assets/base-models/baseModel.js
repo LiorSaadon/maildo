@@ -1,9 +1,7 @@
 define(function (require) {
     "use strict";
 
-    var Backbone = require("backbone");
     var DeepModel = require("backbone.deepmodel");
-    var MailStorage = require("mail-storage/mailStorage");
 
     var BaseModel = DeepModel.extend({
 

@@ -40,7 +40,7 @@ define(function (require) {
             onRender:function(){
 
                 if(this.model.has("relatedBody")){
-                    require(["onDemandLoader!text!app/assets/data/mail1.txt"], _.bind(function (text) {
+                    require(["onDemandLoader!text!app/common/data/mail1.txt"], _.bind(function (text) {
                        this.ui.body.html(text);
                     },this));
                 }else{
