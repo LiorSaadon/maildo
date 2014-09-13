@@ -93,9 +93,9 @@ define(function (require) {
                             record.body = model.body;
                         }else{
                             record.groups = {sent:true};
+                            record.from = accountName;
 
                             if((record.to + record.cc + record.bcc).indexOf(accountName) !== -1){
-                                record.from = accountName;
                                 record.groups.inbox = true;
                             }
                         }

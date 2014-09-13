@@ -1244,13 +1244,20 @@ body {
   min-height: 550px;
   overflow: hidden;
 }
-.mb .loader {
+.mb .loader-wrapper {
   position: absolute;
   top: 0px;
-  left: 10px;
-  background-color: yellow;
+  left: 0px;
+  right: 0px;
+  height: 28px;
+  text-align: center;
   z-index: 10;
   display: none;
+}
+.mb .loader-wrapper .loader {
+  background-color: #F9EDBE;
+  border: 1px solid #F0C36D;
+  color: #222222;
 }
 .mb .techbar-wrapper {
   height: 30px;

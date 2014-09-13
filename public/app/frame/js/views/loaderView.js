@@ -17,11 +17,11 @@ define(function (require) {
         },
 
         showLoader: function () {
-            this.ui.loader.show();
+            this.$el.show();
         },
 
         closeLoader: function () {
-            this.ui.loader.hide();
+            this.$el.hide();
         }
     });
 

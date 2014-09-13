@@ -62,7 +62,7 @@
     {
         "from": "demo@mailbone.com",
         "to": "patricia.white@mailbone.com;alan.rogers@mailbone.com;dennis.king@mailbone.com;",
-        "cc": "anna.james@mailbone.com;",
+        "cc": "anna.james@mailbone.com;demo@mailbone.com;",
         "bcc": "",
         "subject": "Draft 453",
         "sentTime": "2014-04-12 18:06:51",
@@ -81,7 +81,7 @@
     {
         "from": "demo@mailbone.com",
         "to": "anna.james@mailbone.com;",
-        "cc": "patricia.white@mailbone.com;alan.rogers@mailbone.com;dennis.king@mailbone.com;",
+        "cc": "demo@mailbone.com;patricia.white@mailbone.com;",
         "bcc": "",
         "subject": "Draft 111",
         "sentTime": "2014-04-12 17:06:51",
@@ -100,7 +100,7 @@
     {
         "from": "demo@mailbone.com",
         "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
-        "cc": "dennis.king@mailbone.com;",
+        "cc": "patricia.white@mailbone.com;dennis.king@mailbone.com;",
         "bcc": "",
         "subject": "Draft 123",
         "sentTime": "2014-04-12 15:06:51",

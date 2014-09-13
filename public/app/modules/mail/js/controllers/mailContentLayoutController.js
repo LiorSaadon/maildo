@@ -85,7 +85,7 @@ define(function (require) {
 
             closePreview:function(){
 
-                if (this.contentLayout && this.contentLayout.previewRegion && this.preview && this.preview.model) {
+                if (this.preview && this.preview.model) {
 
                     var isModelExist = _.isObject(this.mails.get(this.preview.model.id));
 

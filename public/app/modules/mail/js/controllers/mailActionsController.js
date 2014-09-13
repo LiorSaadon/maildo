@@ -123,13 +123,19 @@ define(function (require) {
 
                 if (_.isObject(mailModel)) {
 
+                    var isDraft = mailModel.get("groups.draft");
                     mailModel.set("groups.draft", false, {silent:true});
 
                     mailModel.save(null, {
 
-                        success: function () {
-                            mail.router.previous();
-                        },
+                        success: _.bind(function () {
+                            if(isDraft){
+                                this.mails.refresh();
+                            }else{
+                                mail.router.previous();
+                            }
+                        },this),
+
                         error:function(){
                             mail.channel.vent.trigger("mail:save:error", mailModel);
                         }

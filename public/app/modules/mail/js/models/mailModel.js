@@ -27,8 +27,8 @@ define(function (require) {
             initialize: function (attrs, options) {
 
                 this.localStorage = new MailStorage();
-                this.set("cc", app.settings.get("accountName") + ";");
             },
+
 
             //-------------------------------------------------------------
             // get addresses
