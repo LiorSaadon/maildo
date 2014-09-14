@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var _s = require("underscore.string");
-    var dateResolver = require("assets-resolvers-date/dateResolver");
+    var dateResolver = require("mailbone-resolvers/date/dateResolver");
 
     var Formatter = {};
 

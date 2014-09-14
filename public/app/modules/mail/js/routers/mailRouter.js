@@ -36,7 +36,7 @@ define(function (require) {
 
             route: function (route, name, callback) {
                 return Backbone.Router.prototype.route.call(this, route, name, function () {
-                    this.controller.beforeRoute()
+                    this.controller.beforeRoute();
                     callback.apply(this, arguments);
                 });
             },

@@ -2,9 +2,9 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var Filterer = require("assets-resolvers-storage/localStorageFilterer");
-    var ChangesDetector = require("assets-resolvers-storage/localStorageChangesDetector");
-    var dateResolver = require("assets-resolvers-date/dateResolver");
+    var dateResolver = require("mailbone-resolvers/date/dateResolver");
+    var Filterer = require("mailbone-resolvers/storage/localStorageFilterer");
+    var ChangesDetector = require("mailbone-resolvers/storage/localStorageChangesDetector");
 
     var MailStorage = {};
 

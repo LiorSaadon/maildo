@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var BaseCollection = require("base-collections/baseCollection");
+    var BaseCollection = require("mailbone-base-collections/baseCollection");
 
     var FilteredCollection = BaseCollection.extend({
 

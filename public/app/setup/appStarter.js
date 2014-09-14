@@ -2,8 +2,8 @@ define(function (require) {
     "use strict";
 
     require("backbone.localstorage");
-    require("lib-extensions/marionette/marionette.extensions");
-    require("app/assets/lib-extensions/requirejs/require.loadByType!modules");
+    require("mailbone-extensions/marionette/marionette.extensions");
+    require("lib/mailbone/lib-extensions/requirejs/require.loadByType!modules");
 
     var app = require("mbApp");
     var Backbone = require("backbone");

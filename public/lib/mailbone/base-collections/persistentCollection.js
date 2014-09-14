@@ -1,8 +1,8 @@
 define(function (require) {
     "use strict";
 
-    var BaseCollection = require("base-collections/BaseCollection");
-    var FilteredCollection = require("base-collections/FilteredCollection");
+    var BaseCollection = require("mailbone-base-collections/BaseCollection");
+    var FilteredCollection = require("mailbone-base-collections/FilteredCollection");
 
     var PersistentCollection = FilteredCollection.extend({
 

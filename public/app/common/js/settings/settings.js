@@ -1,7 +1,7 @@
 define(function (require) {
     "use strict";
 
-    var BaseModel = require("base-models/baseModel");
+    var BaseModel = require("mailbone-base-models/baseModel");
     var SettingsStorage = require("common-settings/settingsStorage");
 
     var SettingsModel = BaseModel.extend({

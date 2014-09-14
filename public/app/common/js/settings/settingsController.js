@@ -43,7 +43,7 @@ define(function (require) {
 
         _loadDictionaries:function(){
 
-            require(["app/assets/lib-extensions/requirejs/require.loadByType!i18n?"+app.settings.get("lang")], _.bind(function(i18nObjects){
+            require(["lib/mailbone/lib-extensions/requirejs/require.loadByType!i18n?"+app.settings.get("lang")], _.bind(function(i18nObjects){
 
                 _.each(i18nObjects, function(obj){
                     app.translator.updateDictionary(obj);

@@ -27,7 +27,7 @@ module.exports = function(grunt) {
             },
             i18n:{
                 files:{
-                    "../public/target/app/assets/ui/i18n/en-US.js": ["../public/app/frame/ui/i18n/en-US.js","../public/app/modules/mail/ui/i18n/en-US.js","../public/app/modules/contacts/ui/i18n/en-US.js"]
+                    "../public/target/lib/mailbone/ui/i18n/en-US.js": ["../public/app/frame/ui/i18n/en-US.js","../public/app/modules/mail/ui/i18n/en-US.js","../public/app/modules/contacts/ui/i18n/en-US.js"]
 //                    "../public/target/app/common/ui/i18n/de-DE.js": ["../public/app/main/ui/i18n/de-DE.js","../public/app/modules/mail/ui/i18n/de-DE.js","../public/app/modules/contacts/ui/i18n/de-DE.js"]
                 }
             }
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         uglify: {
             i18n: {
                 files: {
-                    '../public/target/app/assets/ui/i18n/de-DE.js': ['../public/target/app/assets/ui/i18n/de-DE.js']
+                    '../public/target/lib/mailbone/ui/i18n/de-DE.js': ['../public/target/lib/mailbone/ui/i18n/de-DE.js']
                 }
             }
         },
@@ -52,14 +52,13 @@ module.exports = function(grunt) {
                 force:true
             },
             output:[
-                '../public/target/app/assets/ui/css/ie.css',
-                '../public/target/app/assets/ui/css/print.css',
-                '../public/target/app/assets/ui/css/screen.css',
-                '../public/target/app/assets/js',
-                '../public/target/app/assets/data',
-                '../public/target/app/assets/ui/scss',
-                '../public/target/app/assets/ui/components',
-                '../public/target/app/assets/ui/templates',
+                '../public/target/app/common/css/ie.css',
+                '../public/target/app/common/css/print.css',
+                '../public/target/app/common/css/screen.css',
+                '../public/target/app/common/js',
+                '../public/target/app/common/data',
+                '../public/target/app/common/scss',
+                '../public/target/app/common/ui/components',
                 '../public/target/app/frame',
                 '../public/target/app/modules',
                 '../public/target/build',

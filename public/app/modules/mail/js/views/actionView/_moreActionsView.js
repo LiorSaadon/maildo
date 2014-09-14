@@ -5,7 +5,7 @@ define(function (require) {
     var Marionette = require("marionette");
     var template = require("tpl!mail-templates/moreActionsView.tmpl");
 
-    require("assets-plugins/toggle.block");
+    require("mailbone-plugins/toggle.block");
 
     var MoreActionsView = {};
 
