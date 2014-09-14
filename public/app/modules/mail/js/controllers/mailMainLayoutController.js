@@ -8,7 +8,6 @@ define(function (require) {
     var NavView = require("mail-views/navView");
     var ActionView = require("mail-views/actionView/actionView");
     var ComposeView = require("mail-views/composeView/composeView");
-    var SettingsView = require("mail-views/settingsView");
     var EmptyFoldersView = require("mail-views/emptyFolderView");
     var ContentLayoutController = require("mail-controllers/mailContentLayoutController");
 
@@ -64,9 +63,6 @@ define(function (require) {
                     case "compose":
                         this.compose();
                         break;
-                    case "settings":
-                        this.showSettings();
-                        break;
                     default:
                         this.showMails();
                 }
@@ -80,14 +76,6 @@ define(function (require) {
                     model:new MailModel()
                 });
                 this.mainLayout.workRegion.add(composeView);
-            },
-
-            //----------------------------------------------------
-
-            showSettings: function () {
-
-                var settingsView = new SettingsView(app.settings);
-                this.mainLayout.workRegion.add(settingsView);
             },
 
             //----------------------------------------------------

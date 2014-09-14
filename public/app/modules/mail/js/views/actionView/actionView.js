@@ -22,18 +22,13 @@ define(function (require) {
                 btnDelete: ".btnDelete",
                 btnMore: ".btnMore",
                 pagerRegion: ".pager",
-                lblSettings: ".lblSettings",
                 lblCompose:".lblCompose",
-                btnSettings: ".btnSettings",
                 btnDiscardDrafts: ".btnDiscardDrafts",
                 btnDeleteForever: ".btnDeleteForever",
                 btnNotSpam: ".btnNotSpam"
             },
 
             events: {
-                "click @ui.btnSettings": function () {
-                    mail.router.navigate("settings", {trigger: true});
-                },
                 "click .selectAll": function () {
                     mail.channel.vent.trigger("mail:select", {selectBy: "all"});
                 },
@@ -119,9 +114,6 @@ define(function (require) {
                 switch (action) {
                     case "compose":
                         this.showItems(["lblCompose"]);
-                        break;
-                    case "settings":
-                        this.showItems(["lblSettings"]);
                         break;
                     default:
                         this.showListOptions(action);

@@ -11,18 +11,8 @@ define(function (require) {
 
         MailRouterController = Marionette.Controller.extend({
 
-            //-----------------------------------------------------------------
-            //  actions
-            //-----------------------------------------------------------------
-
             compose:function(){
                 app.context.set("mail.action",{'type':'compose', 'params':{}});
-            },
-
-            //-------------------------------------------------
-
-            settings:function(){
-                app.context.set("mail.action",{'type':'settings', 'params':{}});
             },
 
             //-------------------------------------------------

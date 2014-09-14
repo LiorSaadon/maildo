@@ -31,7 +31,7 @@ define(function (require) {
         // setLayout
         //------------------------------------------
 
-        this.setLayout =function(){
+        this.setLayout = function(){
             return this.layoutController.setViews();
         };
     });

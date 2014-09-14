@@ -86,7 +86,6 @@ define(function (require) {
                 var params = action.params || {};
 
                 if (_.isFinite(params.page)) {
-
                     this.mailCollection.fetchBy({
                         filters: {
                             page: params.page,
