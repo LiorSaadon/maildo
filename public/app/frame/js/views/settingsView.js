@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var template = require("tpl!mail-templates/settingsView.tmpl");
+    var template = require("tpl!frame-templates/settingsView.tmpl");
 
     var SettingsView = {};
 
@@ -18,13 +18,8 @@ define(function (require) {
             },
 
             events: {
+                "click .themeBox": "onThemeClick",
                 "change @ui.ddlLang": "onLanguageChange"
-            },
-
-            //----------------------------------------------------------------------
-
-            onRender:function(){
-                this.$el.on("click", "div.themeBox", this.onThemeClick);
             },
 
             //----------------------------------------------------------------------
@@ -38,7 +33,6 @@ define(function (require) {
                         location.reload(true);
                     }
                 });
-
             },
 
             //----------------------------------------------------------------------
@@ -51,7 +45,7 @@ define(function (require) {
                 app.settings.set("theme", theme);
                 app.settings.save(null,{
                     success:function(){
-                        app.themesController.loadTheme(theme);
+                        app.settingsController._loadTheme();
                     }
                 });
             }

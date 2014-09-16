@@ -28,5 +28,6 @@ additional_import_paths = ["../../app/frame/ui/scss",
                            "../../app/modules/tasks/ui/scss",
                            "../../app/common/ui/components/autoComplete/ui/scss",
                            "../../app/common/ui/components/tags/ui/scss",
+                           "../../app/common/ui/components/dialog/ui/scss",
                            "../../app/common/ui/components/search/ui/scss",
                            "../../app/common/ui/scss"]

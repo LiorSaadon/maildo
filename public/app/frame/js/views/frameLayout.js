@@ -6,7 +6,8 @@ define(function (require) {
     var frameTemplate = require("tpl!frame-templates/frameLayout.tmpl");
     var TechBarView = require('frame-views/techBarView');
     var LoaderView = require('frame-views/loaderView');
-   // var SettingsView = require('frame-views/settingsView');
+    var SettingsView = require('frame-views/settingsView');
+    var Dialog = require("common-ui-component/dialog/dialog");
 
     var FrameLayout = Marionette.LayoutView.extend({
         template:frameTemplate,
@@ -48,14 +49,15 @@ define(function (require) {
 
         openSettings:function(){
 
-//             var settingsView = new SettingsView({
-//                 model:app.settings
-//             });
-//
-//             Dialog.show({
-//                 view:settingsView,
-//                 el:this.$el
-//             });
+             var settingsView = new SettingsView({
+                 model:app.settings
+             });
+
+             var dialog = new Dialog({
+                 el:this.el,
+                 insideView:settingsView
+             });
+             dialog.show();
         },
 
         //-------------------------------------------------------

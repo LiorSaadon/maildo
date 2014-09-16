@@ -1,38 +1,20 @@
 .mb {
   .settingsView {
 
-    background-color: $settings-background-color;
-    padding: 15px;
-    @include abs-pos(0, 0, 0, 0);
+    width:600px;
+    height:350px;
     z-index:200;
 
-    fieldset {
-      margin: 5px 0 0;
-      padding: 5px 0 0;
-      padding-bottom: 20px;
-      clear: both;
-      border: 1px solid #DDD;
-      border-color: #DDD transparent transparent;
-    }
+    .section {
+      padding-top:40px;
 
-    legend {
-      margin: 0 5px;
-      padding: 0 5px;
-      font-size: $font-size3;
-      font-weight: bold;
-      color: $settings-legend-color;
-    }
-
-    .field {
-      line-height: 40px;
 
       .title{
-        width: 160px;
+        width: 120px;
         padding-right: 15px;
         float: left;
         text-align: right;
       }
-
     }
 
     .themeBox {
