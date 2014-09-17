@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var Marionette = require("marionette");
-    var DialogView = require("common-ui-component/dialog/js/views/dialogView");
+    var DialogView = require("common-ui-component/dialog/js/views/dialogView1");
 
     var AutoComplete = Marionette.Controller.extend({
 
