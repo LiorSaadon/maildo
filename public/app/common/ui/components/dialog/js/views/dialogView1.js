@@ -47,6 +47,9 @@ define(function (require) {
             if (this.insideView) {
                 this.$el.find(".dialog-innerBox").append(this.insideView.render().el);
                 this._$el.append(this.$el);
+
+                this.$el.find(".dialog-outerbox").css("margin-top", -this.insideView.$el.height()/2 + "px");
+                this.$el.find(".dialog-outerbox").css("margin-left",-this.insideView.$el.width()/2 + "px");
             }
             return this;
         },

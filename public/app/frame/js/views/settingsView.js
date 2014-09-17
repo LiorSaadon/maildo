@@ -24,6 +24,13 @@ define(function (require) {
 
             //----------------------------------------------------------------------
 
+            onRender:function(){
+
+               this.ui.ddlLang.val(app.settings.get("lang"));
+            },
+
+            //----------------------------------------------------------------------
+
             onLanguageChange:function(e){
                 var lang = this.ui.ddlLang.val();
 

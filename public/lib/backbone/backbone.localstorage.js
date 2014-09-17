@@ -10,7 +10,7 @@
 
     "use strict";
 
-    var DELAY_TIME = 150;
+    var DELAY_TIME = 0;
 
     //**************************************
     // LocalStorage
