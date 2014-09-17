@@ -22,8 +22,10 @@ define(function (require) {
                 "spam/:param": "spam",
                 "search/:param1": "search",
                 "search/:param1/:param2": "search",
-                "compose": "compose"
+                "compose": "compose",
+                '*notFound': 'inbox'
             },
+
 
             //---------------------------------------------
 

@@ -769,8 +769,8 @@ body {
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 16px;
-  height: 17px;
+  width: 12px;
+  height: 12px;
   background: url(app/common/ui/img/closeBtn.png);
   cursor: pointer;
 }

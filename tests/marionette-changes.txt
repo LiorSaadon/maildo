@@ -10,6 +10,7 @@
 7. onRenderCollection --> onCompositeCollectionRendered
 8. view.close --> view.destroy (before:destroy)
    region.close --> region.destroy
-9. channel for app is must
+9. channel for app is mandatory
+10. collection pass to compositeView must be instanceof backbone.collection
 
 

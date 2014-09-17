@@ -91,7 +91,7 @@ define(function (require) {
 
                     success: _.bind(function () {
                         if (options.refresh) {
-                            this.mails.refresh();
+                            this.handleSuccess();
                         }
                     }, this),
                     error:function(){
@@ -109,7 +109,7 @@ define(function (require) {
                     selectedItems: this.mails.getSelected(),
 
                     success: _.bind(function () {
-                        this.mails.refresh();
+                        this.handleSuccess();
                     }, this),
                     error:function(){
                         mail.channel.vent.trigger("mail:deleteItems:error");
@@ -123,19 +123,13 @@ define(function (require) {
 
                 if (_.isObject(mailModel)) {
 
-                    var isDraft = mailModel.get("groups.draft");
                     mailModel.set("groups.draft", false, {silent:true});
 
                     mailModel.save(null, {
 
                         success: _.bind(function () {
-                            if(isDraft){
-                                this.mails.refresh();
-                            }else{
-                                mail.router.previous();
-                            }
+                            this.handleSuccess();
                         },this),
-
                         error:function(){
                             mail.channel.vent.trigger("mail:save:error", mailModel);
                         }
@@ -154,7 +148,7 @@ define(function (require) {
 
                         mailModel.destroy({
                             success: _.bind(function () {
-                                this.mails.refresh();
+                                this.handleSuccess();
                             },this),
                             error:function(){
                                 mail.channel.vent.trigger("mail:delete:error", mailModel);
@@ -179,6 +173,17 @@ define(function (require) {
 
             fixUrl:function(metadata){
                 mail.router.fixUrl({page:metadata.currPage + 1});
+            },
+
+            //------------------------------------------
+
+            handleSuccess:function(){
+
+                if(app.context.get("mail.action.type") === "compose"){
+                    mail.router.previous();
+                }else{
+                    this.mails.refresh();
+                }
             }
         });
     });

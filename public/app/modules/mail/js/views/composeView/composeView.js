@@ -129,7 +129,6 @@ define(function (require) {
             onInvalid:function(model, error){
 
                 switch(error){
-
                     case MailModel.Errors.NoRecipient: case MailModel.Errors.InvalidToAddress:
                         this.ui.toInputWrapper.addClass("error");
                         break;
