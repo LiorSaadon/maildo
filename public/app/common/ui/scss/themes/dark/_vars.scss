@@ -6,21 +6,24 @@
 //COLORS
 //-------------------------------
 
-$layout-background-color:#6F6F6F;
-$layout-splitter-color:#AAAAAA;
+$layout-background-color:#383838;
+$layout-splitter-color:#666666;
 
-$button-color:white;
+$button-color:$color6;
 $button-icon-color:$color25;
-$button-background-color:#BEBABA;
-$button-toggle-color:white;
+$button-background-color:$color5;
+$button-toggle-color:$color8;
 $button-splitter-color:$color9;
 $button-border-color:$color7;
 $button-hover-border-color:$color10;
-$button-hover-color:white;
-$button-hover-toggle-color:white;
-$button-hover-background-color:#949090;
+$button-hover-color:$color12;
+$button-hover-toggle-color:$color11;
+$button-hover-background-color:$color4;
+
 
 $button-clicked-color:$color12;
 $button-clicked-toggle-color:$color11;
 $button-clicked-background-color:white;
 $button-clicked-border-color:$color10;
+
+$empty-mail-background:#DFDFDF;
