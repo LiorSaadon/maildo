@@ -2,7 +2,7 @@
 
 
   .data-table-contanier{
-    @include abs-pos(0, 0, 0, 0);
+    //@include abs-pos(0, 0, 0, 0);
     background-color: $data-background-color;
   }
 

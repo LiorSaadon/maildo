@@ -310,11 +310,6 @@ body {
 }
 
 .mb .data-table-contanier {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   background-color: #f1f3f4;
 }
 .mb .data-table {
@@ -806,12 +801,11 @@ body {
 }
 
 .mail-items-region {
-  height: 270px;
-  border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #7685a0;
+  height: 45%;
+  width: 100%;
   position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
+  background-color: #ffffff;
 }
 
 .mail-data-splitter {
@@ -823,13 +817,12 @@ body {
 }
 
 .mail-preview-region {
-  background-color: #ffffff;
-  position: absolute;
-  top: 274px;
-  right: 0;
-  bottom: 0;
-  left: 0;
   overflow: auto;
+  height: 55%;
+  width: 100%;
+  top: 45%;
+  position: absolute;
+  margin-top: 3px;
 }
 
 .mail-message-board-region {
@@ -992,7 +985,7 @@ body {
   width: 100%;
   text-align: center;
   background: url("app/common/ui/img/envelop.png") no-repeat center;
-  background-color: #dfdfdf;
+  background-color: #fcfcfc;
 }
 .mb .emptyMail .counter {
   display: table-cell;
