@@ -14,3 +14,74 @@
 10. collection pass to compositeView must be instanceof backbone.collection
 
 
+
+
+
+compose -> REDACTAR
+inbox --> Recibidos (389)
+sent Mail -> Enviados
+spam - Spam
+draft -> Borradores
+trash --> Papelera
+
+Settings --> Ajustes
+display lang --> Idioma de la interfaz
+choose Theme --> Temas
+
+There are no emails in your Draft Folder. --> No hay mensajes de correo electrónico en su la Borradores Papelera.
+There are no emails in your Trash Folder . --> No hay mensajes de correo electrónico en la carpeta Papelera
+There are no emails in your Spam Folder. --> No hay mensajes de correo electrónico en su carpeta Borrador.
+There are no emails in your Sent Folder . --> No hay mensajes de correo electrónico en la carpeta Correo enviado
+There are no emails in your inbox Folder. --> No hay mensajes de correo electrónico en su la Recibidos Papelera.
+
+
+All    Todo
+None   Nada
+Read   Leido
+Unread No Leido
+Select seleccionar
+
+
+To Para
+cc Cc
+Subject Asunto
+Send Enviar
+New message --> Mensaje nuevo
+
+Tasks --> Tareas
+
+Select a message --> Seleccione un mensaje
+
+more --> Más
+Mark as read --> Marcar como leído
+Mark as unread --> Marcar como no leído
+
+mark as importante --> Marcar como importante
+mark sr unimportant --> Marcar como irrelevante
+add star -> Destacar
+remove star -> No destacar
+
+
+move to --?>  Mover a
+delete --> Eliminar
+
+Search mail --> Buscar en mail
+Search tasks --> Buscar en tareas
+
+older -->  Anterior
+newer -->  Siguiente
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
