@@ -24,12 +24,14 @@ define({
         "i18n": "lib/mailbone/resolvers/i18n",
         "onDemandLoader": "lib/mailbone/lib-extensions/requirejs/require.loadOnDemand",
         "tmpl": "lib/require/tmpl",
-        "templateCache": "lib/require/templateCache",
+        "templateCache": "lib/require/templateCache"
+        ,
         "common-static-data":"app/common/data/static-data",
         "common-enums": "app/common/data/enums",
         "common-settings": "app/common/js/settings",
         "common-context": "app/common/js/context",
         "common-ui-component": "app/common/ui/components",
+
         "mailbone-base-collections": "lib/mailbone/base-collections",
         "mailbone-base-models": "lib/mailbone/base-models",
         "mailbone-decorators": "lib/mailbone/decorators",

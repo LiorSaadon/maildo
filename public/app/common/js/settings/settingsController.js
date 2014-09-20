@@ -43,7 +43,7 @@ define(function (require) {
 
         _loadDictionaries:function(){
 
-            require(["app/common/i18n/"+app.settings.get("lang")], _.bind(function(i18nObject){
+            require(["app/common/ui/i18n/"+app.settings.get("lang")], _.bind(function(i18nObject){
 
                 app.translator.updateDictionary(i18nObject);
                 this.raiseTrigger("dictionary");

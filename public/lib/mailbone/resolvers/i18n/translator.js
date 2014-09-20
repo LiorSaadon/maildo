@@ -11,13 +11,24 @@ define(function (require) {
             $.extend(dictionary, obj);
         };
 
+        //--------------------------------------------
+
         var translate = function (key) {
-            var text = "[??" + key + "??]";
 
-            if (_.isObject(dictionary) && _.isString(key) && _.has(dictionary, key)) {
-                text = dictionary[key];
+            var text = "[?" + key + "?]";
+
+            if (_.isString(key)) {
+
+                var subkeys = key.split(":");
+
+                if(subkeys.length == 2){
+
+                    if(_.has(dictionary, subkeys[0])){
+
+                        text = dictionary[subkeys[1]];
+                    }
+                }
             }
-
             return text;
         };
 
