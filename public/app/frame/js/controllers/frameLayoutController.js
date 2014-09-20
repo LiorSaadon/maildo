@@ -6,7 +6,7 @@ define(function (require) {
     var Marionette = require('marionette');
     var FrameLayout = require('frame-views/frameLayout');
     var LayoutHelpers = require("mailbone-resolvers/ui/dropdownDisplayer");
-    var eModules = require('json!common-data/eModules.json');
+    var eModules = require('json!common-enums/eModules.json');
 
     var LayoutController = Marionette.Controller.extend({
 

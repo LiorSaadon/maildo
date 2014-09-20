@@ -1,6 +1,9 @@
-{
-    "appDir": "../public",
-    "baseUrl": ".",
+define({
+
+    leVersion: "@@version",
+    locale: "en-us",
+    deps: [],
+    waitSeconds: 0,
     "paths": {
         "underscore": "lib/underscore/underscore",
         "underscore.string": "lib/underscore/underscore.string",
@@ -23,7 +26,6 @@
         "tmpl": "lib/require/tmpl",
         "templateCache": "lib/require/templateCache",
         "common-static-data":"app/common/data/static-data",
-
         "common-enums": "app/common/data/enums",
         "common-settings": "app/common/js/settings",
         "common-context": "app/common/js/context",
@@ -68,108 +70,8 @@
         "tasks-storage":"app/modules/tasks/js/storage"
     },
     "shim": {
-        "underscore": {
-            "exports": "_"
-        },
-        "modernizr": {
-            "exports": "Modernizr"
-        },
-        "backbone.localstorage": {
-            "exports": "Backbone.LocalStorage",
-            "deps": ["backbone"]
-        },
-        "backbone.deepmodel": {
-            "exports": "Backbone.DeepModel",
-            "deps": ["backbone"]
-        },
-        "dev.mockjax": {
-            "exports": "$.mockjax",
-            "deps": ["jquery"]
-        },
-        "dev.mockjson": {
-            "exports": "$.mockjson",
-            "deps": ["jquery"]
-        }
     },
-    "packages": [],
-    "keepBuildDir": false,
-    "locale": "en-US",
-    "optimize": "uglify2",
-    "skipDirOptimize": false,
-    "generateSourceMaps": false,
-    "normalizeDirDefines": "skip",
-    "uglify": {
-        "toplevel": true,
-        "ascii_only": true,
-        "beautify": false,
-        "max_line_length": 1000,
-        "defines": {
-            "DEBUG": [
-                "name",
-                "false"
-            ]
-        },
-        "no_mangle": true
-    },
-    "uglify2": {
-        "output": {
-            "beautify": false
-        },
-        "compress": {
-            "sequences": false,
-            "unsafe": false,
-            "global_defs": {
-                "DEBUG": false
-            }
-        },
-        "warnings": true,
-        "mangle": false
-    },
-    "closure": {
-        "CompilerOptions": {},
-        "CompilationLevel": "SIMPLE_OPTIMIZATIONS",
-        "loggingLevel": "WARNING"
-    },
-    "optimizeCss": "standard",
-    "cssImportIgnore": null,
-    "inlineText": true,
-    "inlineJSON": true,
-    "inlineTemplates": true,
-    "useStrict": false,
-    "pragmasOnSave": {
-        "i18nLoader": true,
-        "developmentPhase": true
-    },
-    "hasOnSave": {},
-    "skipPragmas": false,
-    "skipModuleInsertion": false,
-    "stubModules": [
-        "tpl"
-    ],
-    "optimizeAllPluginResources": false,
-    "findNestedDependencies": true,
-    "removeCombined": true,
-    "modules": [
-        {
-            "name": "app/setup/init"
-        }
-    ],
-    "deps": [],
-    "wrap": false,
-    "fileExclusionRegExp":"/(jasmine|build|jshintr|compass|read-me|plato|^\\.|\\.bat$|\\.git|\\.svn|\\.iml|\\.scss|\\.rb|\\.min.*|\\.txt|pom\\.xml|integration\\.js)/",
-    "preserveLicenseComments": true,
-        "logLevel": 0,
-        "throwWhen": {
-        "optimize": true
-    },
-    "cjsTranslate": true,
-        "useSourceUrl": false,
-        "waitSeconds": 7,
-        "tpl": {
+    tpl: {
         "templateExtension": ""
-    },
-    "buildModules": [
-        "*"
-    ],
-    "dir": "../public/target"
-}
+    }
+});

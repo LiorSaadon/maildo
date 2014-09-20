@@ -10,6 +10,7 @@ define(function (require) {
 
             this.el = options.el;
             this.vent = options.vent;
+            this.title = options.title || "",
             this.insideView = options.insideView;
         },
 
@@ -22,6 +23,7 @@ define(function (require) {
             this.dialogView = new DialogView({
                 vent: this.vent,
                 el: this.el,
+                title:this.title,
                 zindex:1000,
                 insideView:this.insideView
             });

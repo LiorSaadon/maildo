@@ -7,8 +7,11 @@ define(function () {
         'mb.techbar.about' : 'About1',
         'mb.techbar.tutorial' : 'Tutorial1',
         'mb.techbar.resources' : 'Resources1',
-        'mb.module.mail' : 'Mail1',
-        'mb.module.tasks' : 'Tasks1'
+        'mb.module.mail' : 'Correo',
+        'mb.module.tasks' : 'Tareas',
+        'mb.settings': 'Configuración',
+        'mb.settings.theme':'Temas:',
+        'mb.settings.language':'Idioma:'
     };
 
     return Dictionary;

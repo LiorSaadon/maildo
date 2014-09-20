@@ -144,17 +144,14 @@ define(function (require) {
                 if(mailModel.isNew()){
                     mail.router.previous();
                 }else{
-                    if (mailModel.get("groups.draft")) {
-
-                        mailModel.destroy({
-                            success: _.bind(function () {
-                                this.handleSuccess();
-                            },this),
-                            error:function(){
-                                mail.channel.vent.trigger("mail:delete:error", mailModel);
-                            }
-                        });
-                    }
+                    mailModel.destroy({
+                        success: _.bind(function () {
+                            this.handleSuccess();
+                        },this),
+                        error:function(){
+                            mail.channel.vent.trigger("mail:delete:error", mailModel);
+                        }
+                    });
                 }
             },
 

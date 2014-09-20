@@ -24,6 +24,7 @@ define(function (require) {
 
             if (options && options.insideView) {
 
+                this.title = options.title;
                 this.zIndex = options.zIndex;
                 this.insideView = options.insideView;
                 this.templateId = (new Date()).getTime().toString();
@@ -37,7 +38,7 @@ define(function (require) {
         onBeforeRender:function(){
 
             this._$el = this.$el;
-            this.$el = $("<div/>").addClass(this.className).addClass(this.templateId)
+            this.$el = $("<div/>").addClass(this.className).addClass(this.templateId);
         },
 
         //-----------------------------------------------
@@ -45,6 +46,7 @@ define(function (require) {
         onRender: function () {
 
             if (this.insideView) {
+                this.$el.find(".dialog-header-title").html(this.title);
                 this.$el.find(".dialog-innerBox").append(this.insideView.render().el);
                 this._$el.append(this.$el);
 

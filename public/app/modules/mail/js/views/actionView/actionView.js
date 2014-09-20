@@ -18,7 +18,6 @@ define(function (require) {
             ui: {
                 btnSelect: ".btnSelect",
                 btnMoveTo: ".btnMoveTo",
-                btnRefresh: ".btnRefresh",
                 btnDelete: ".btnDelete",
                 btnMore: ".btnMore",
                 pagerRegion: ".pager",

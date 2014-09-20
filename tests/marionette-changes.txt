@@ -18,7 +18,7 @@
 
 
 compose -> REDACTAR
-inbox --> Recibidos (389)
+inbox --> Recibidos
 sent Mail -> Enviados
 spam - Spam
 draft -> Borradores

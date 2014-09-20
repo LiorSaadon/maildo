@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var eModules = require('json!common-data/eModules.json');
+    var eModules = require('json!common-enums/eModules.json');
 
     var TasksRouterController = {};
 

@@ -43,11 +43,9 @@ define(function (require) {
 
         _loadDictionaries:function(){
 
-            require(["lib/mailbone/lib-extensions/requirejs/require.loadByType!i18n?"+app.settings.get("lang")], _.bind(function(i18nObjects){
+            require(["app/common/i18n/"+app.settings.get("lang")], _.bind(function(i18nObject){
 
-                _.each(i18nObjects, function(obj){
-                    app.translator.updateDictionary(obj);
-                });
+                app.translator.updateDictionary(i18nObject);
                 this.raiseTrigger("dictionary");
             },this));
         },

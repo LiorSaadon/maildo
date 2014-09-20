@@ -2,8 +2,8 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var mailsList = require('json!common-data/mails.json');
-    var contactsList = require('json!common-data/contacts.json');
+    var mailsList = require('json!mail-data/mails.json');
+    var contactsList = require('json!common-static-data/contacts.json');
 
     var mailStorageInitializer = {};
 

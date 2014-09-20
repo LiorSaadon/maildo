@@ -55,6 +55,7 @@ define(function (require) {
 
              var dialog = new Dialog({
                  el:this.el,
+                 title: app.translator.translate("mb.settings"),
                  insideView:settingsView
              });
              dialog.show();

@@ -1,12 +1,13 @@
 define(function (require) {
     "use strict";
 
+    require("mail-module");
+    require("tasks-module");
     require("backbone.localstorage");
     require("mailbone-extensions/marionette/marionette.extensions");
-    require("lib/mailbone/lib-extensions/requirejs/require.loadByType!modules");
 
     var app = require("mbApp");
-    var Backbone = require("backbone");
+    var Backbone =  require("backbone");
     var Translator = require("i18n/translator");
     var AppRouter =  require("app/setup/appRouter");
     var Context = require("common-context/context");

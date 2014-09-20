@@ -8,7 +8,10 @@ define(function () {
         'mb.techbar.tutorial' : 'Tutorial',
         'mb.techbar.resources' : 'Resources',
         'mb.module.mail' : 'Mail',
-        'mb.module.tasks' : 'Tasks'
+        'mb.module.tasks' : 'Tasks',
+        'mb.settings': 'Settings',
+        'mb.settings.theme':'Choose theme:',
+        'mb.settings.language':'Display language:'
     };
 
     return Dictionary;
