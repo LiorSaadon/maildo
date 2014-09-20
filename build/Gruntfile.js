@@ -21,18 +21,6 @@ module.exports = function(grunt) {
             uses_defaults:['../public/app/**/*.js']
         },
 
-        concat:{
-            options:{
-                separator:'' // we don't insert any separator between files
-            },
-            i18n:{
-                files:{
-                    "../public/target/lib/mailbone/ui/i18n/en-US.js": ["../public/app/frame/ui/i18n/en-US.js","../public/app/modules/mail/ui/i18n/en-US.js","../public/app/modules/tasks/ui/i18n/en-US.js"]
-                    //"../public/target/app/common/ui/i18n/es-ES.js": ["../public/app/frame/ui/i18n/de-DE.js","../public/app/modules/mail/ui/i18n/de-DE.js","../public/app/modules/tasks/ui/i18n/de-DE.js"]
-                }
-            }
-        },
-
         requirejs: {
             compile: {
                 options: grunt.file.readJSON('app.build.json')
@@ -42,7 +30,8 @@ module.exports = function(grunt) {
         uglify: {
             i18n: {
                 files: {
-                    '../public/target/lib/mailbone/ui/i18n/de-DE.js': ['../public/target/lib/mailbone/ui/i18n/de-DE.js']
+                    '../public/target/app/common/ui/i18n/en-US.js' : '../public/target/app/common/ui/i18n/en-US.js',
+                    '../public/target/app/common/ui/i18n/es-ES.js' : '../public/target/app/common/ui/i18n/es-ES.js'
                 }
             }
         },
@@ -100,7 +89,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
         'compass',
         'jshint',
-        'concat:i18n',
         'requirejs',
         'clean:output'
         //'replace'
