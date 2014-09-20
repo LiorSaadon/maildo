@@ -36,7 +36,7 @@ define(function (require) {
                 if(_.isDate(date)){
                     var day = date.getDate();
                     var month = date.getMonth() + 1;
-                    var monthStr = app.translator.translate("mail.timerange.months."+month);
+                    var monthStr = app.translator.translate("mail:timerange.months."+month);
                     return monthStr + ' ' + day;
                 }
                 return '';
@@ -47,7 +47,7 @@ define(function (require) {
             var formatSubject =  function (subject) {
 
                 if (_.isEmpty(subject)) {
-                    subject = "(" + app.translator.translate("mail.nosubject") + ")";
+                    subject = "(" + app.translator.translate("mail:nosubject") + ")";
                 }
                 return subject;
             };

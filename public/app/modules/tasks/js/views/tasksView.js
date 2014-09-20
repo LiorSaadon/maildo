@@ -27,7 +27,7 @@ define(function (require) {
 
             setEmptyViewOptions:function(){
                 this.emptyViewOptions =  {
-                    msg:app.translator.translate("tasks.noTasks")
+                    msg:app.translator.translate("tasks:noTasks")
                 };
             },
 

@@ -25,7 +25,7 @@ define(function (require) {
 
                     if(_.has(dictionary, subkeys[0])){
 
-                        text = dictionary[subkeys[1]];
+                        text = dictionary[subkeys[0]][subkeys[1]];
                     }
                 }
             }

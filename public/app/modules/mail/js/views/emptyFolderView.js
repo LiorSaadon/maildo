@@ -40,7 +40,7 @@ define(function (require) {
 
                 if(isEmpty){
                    var action = app.context.get("mail.action");
-                   this.ui.msgTitle.html(app.translator.translate("mail.emptyFolder." + action.type));
+                   this.ui.msgTitle.html(app.translator.translate("mail:emptyFolder." + action.type));
                 }
                 this.$el.toggle(isEmpty);
             }

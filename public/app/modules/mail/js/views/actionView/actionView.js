@@ -125,7 +125,7 @@ define(function (require) {
             resetUI:function(){
 
                 this.showItems(_.keys(this.ui), false);
-                this.ui.lblCompose.text(app.translator.translate("mail.newMessage"));
+                this.ui.lblCompose.text(app.translator.translate("mail:newMessage"));
             },
 
             //---------------------------------------------------------
@@ -173,7 +173,7 @@ define(function (require) {
                 var subject = mailModel.get('subject');
 
                 if(_.isEmpty(subject)){
-                    subject = app.translator.translate("mail.newMessage");
+                    subject = app.translator.translate("mail:newMessage");
                 }
                 this.ui.lblCompose.text(subject);
             }

@@ -55,7 +55,7 @@ define(function (require) {
 
              var dialog = new Dialog({
                  el:this.el,
-                 title: app.translator.translate("mb.settings"),
+                 title: app.translator.translate("frame:settings"),
                  insideView:settingsView
              });
              dialog.show();
@@ -64,7 +64,7 @@ define(function (require) {
         //-------------------------------------------------------
 
         onModuleChange:function(){
-            this.ui.switcherCaption.html(app.translator.translate("mb.module." +app.context.get("module")));
+            this.ui.switcherCaption.html(app.translator.translate("frame:module." +app.context.get("module")));
         }
     });
 

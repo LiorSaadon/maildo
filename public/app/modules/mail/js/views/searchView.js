@@ -56,7 +56,7 @@ define(function (require) {
                 this.searchComponent = new SearchComponent({
                     el:this.ui.searchPlaceholder,
                     vent: this.vent,
-                    caption: app.translator.translate("mail.search.caption")
+                    caption: app.translator.translate("mail:search.caption")
                 });
                 this.searchComponent.render();
             },
