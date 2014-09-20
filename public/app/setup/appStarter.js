@@ -9,7 +9,7 @@ define(function (require) {
     var app = require("mbApp");
     var Backbone =  require("backbone");
     var Translator = require("i18n/translator");
-    var AppRouter =  require("app/setup/appRouter");
+    var AppRouter = require("app/setup/appRouter");
     var Context = require("common-context/context");
     var Settings = require("common-settings/settings");
     var SettingsController = require("common-settings/settingsController");
