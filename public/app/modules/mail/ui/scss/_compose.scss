@@ -1,10 +1,10 @@
 .mb{
   .composeView {
-    color: #404040;
     @include abs-pos(0, 0, 0, 0);
-    background-color: #FCFCFC;
+    background-color: $mail-compose-bgClr;
     z-index:200;
     min-height: 350px;
+    color: $mail-compose-clr;
 
     .compose-header {
       @include abs-pos(30px, 95px, 'NaN', 30px);
@@ -51,7 +51,7 @@
 
       &:active,&:focus {
         outline: none;
-        border-color: $input-border-color;;
+        border-color: $input-border-color;
         @include box-shadow(rgba(81, 82, 84, 0.25) 0px 0px 1px);
       }
 
@@ -64,13 +64,13 @@
 
     .sendBtn {
       @include abs-pos('NaN', 'NaN', 25px, 100px);
-      background-color: #4d90fe;
-      border: 1px solid #3079ed;
-      color: #ffffff;
+      background-color: $mail-compose-send-bgClr;
+      border: 1px solid $mail-compose-send-boClr;
+      color: $mail-compose-send-clr;
 
       &:hover {
-        color: #ffffff;
-        background-color: #4d90fe;
+        color: $mail-comose-send-hover-clr;
+        background-color: $mail-compose-send-hover-bgClr;
       }
     }
 

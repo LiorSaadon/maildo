@@ -1,6 +1,6 @@
 define({
     "frame":{
-        "slogen": "The Art of MVC in practice!",
+        "techbar.slogan": "The Art of MVC in practice!",
         "techbar.about": "About",
         "techbar.tutorial": "Tutorial",
         "techbar.resources": "Resources",
@@ -8,7 +8,8 @@ define({
         "module.tasks": "Tasks",
         "settings": "Settings",
         "settings.theme": "Choose theme:",
-        "settings.language": "Display language:"
+        "settings.language": "Display language:",
+        "save":"Save"
     },
     "mail":{
         "emptyFolder.search":"No results found.",
@@ -38,6 +39,7 @@ define({
         "me":"me",
         "page.prev":"Previous",
         "page.next":"Next",
+        "actions.moveTo":"Move to",
         "actions.more":"More",
         "actions.markAs.read":"Mark as read",
         "actions.markAs.unread":"Mark as unread",
@@ -66,9 +68,9 @@ define({
         "newMessage":"New message"
     },
     "tasks":{
-        "tasks.search.caption":"Search Tasks",
-        "tasks.task.new.caption":"New Task",
-        "tasks.noTasks":"You have no tasks in this category. </br> To Add a task, click a 'New Task'.",
-        "tasks.task.welcome.massage":"Mailbone allows you to quickly create tasks, save them and access them anywhere you check your Mail."
+        "search.caption":"Search Tasks",
+        "new.task":"New Task",
+        "noTasks":"You have no tasks in this category. </br> To Add a task, click a 'New Task'.",
+        "welcome.massage":"Mailbone allows you to quickly create tasks, save them and access them anywhere you check your Mail."
     }
 });

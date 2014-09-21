@@ -1,7 +1,6 @@
 define({
-
     "frame":{
-        "slogen": "The Art of MVC in practice!",
+        "techbar.slogan": "The Art of MVC in practice!",
         "techbar.about": "About",
         "techbar.tutorial": "Tutorial",
         "techbar.resources": "Resources",
@@ -9,7 +8,8 @@ define({
         "module.tasks": "Tareas",
         "settings": "Configuración",
         "settings.theme": "Temas:",
-        "settings.language": "Idioma:"
+        "settings.language": "Idioma:",
+        "save":"Guardar"
     },
     "mail":{
         "emptyFolder.search":"No se encontraron resultados",
@@ -30,6 +30,7 @@ define({
         "select.none": "Nada",
         "select.read": "Leido",
         "select.unread": "No Leido",
+        "me":"yo",
         "to":"Para",
         "cc": "Cc",
         "subject": "Asuto",
@@ -37,6 +38,7 @@ define({
         "loading":"loading...",
         "page.prev":"Anterior",
         "page.next":"Siguiente",
+        "actions.moveTo":"Mover a",
         "actions.more":"Más",
         "actions.markAs.read":"Marcar como leído",
         "actions.markAs.unread":"Marcar como no leído",
@@ -65,9 +67,9 @@ define({
         "newMessage":"Mensaje nuevo"
     },
     "tasks":{
-        "tasks.search.caption":"Buscar en Tareas",
-        "tasks.task.new.caption":"New Task1",
-        "tasks.noTasks":"You have no tasks in this category. </br> To Add a task, click a 'New Task'1.",
-        "tasks.task.welcome.massage":"Mailbone allows you to quickly create tasks, save them and access them anywhere you check your Mail1."
+        "search.caption":"Buscar en Tareas",
+        "new.task":"Nueva tarea",
+        "noTasks":"You have no tasks in this category. </br> To Add a task, click a 'New Task'1.",
+        "welcome.massage":"Mailbone allows you to quickly create tasks, save them and access them anywhere you check your Mail1."
     }
 });

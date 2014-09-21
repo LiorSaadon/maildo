@@ -339,6 +339,7 @@ body {
 }
 
 .mb .loader {
+  display: none;
   position: absolute;
   width: 90px;
   background: #F9EDBE;
@@ -687,15 +688,15 @@ body {
 }
 
 .mb .composeView {
-  color: #404040;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #FCFCFC;
+  background-color: #fcfcfc;
   z-index: 200;
   min-height: 350px;
+  color: #404040;
 }
 .mb .composeView .compose-header {
   position: absolute;
@@ -754,10 +755,10 @@ body {
   left: 100px;
   background-color: #4d90fe;
   border: 1px solid #3079ed;
-  color: #ffffff;
+  color: white;
 }
 .mb .composeView .sendBtn:hover {
-  color: #ffffff;
+  color: white;
   background-color: #4d90fe;
 }
 .mb .composeView .closeBtn {
@@ -800,24 +801,15 @@ body {
   left: 200px;
 }
 
-.mail-items-region {
+.mb .mail-items-region {
   border-bottom: 1px solid #7685a0;
   height: 45%;
   width: 100%;
   position: absolute;
-  background-color: #ffffff;
+  background-color: white;
 }
-
-.mail-data-splitter {
-  height: 4px;
-  position: absolute;
-  top: 270px;
-  right: 0;
-  left: 0;
-}
-
-.mail-preview-region {
-  background-color: #ffffff;
+.mb .mail-preview-region {
+  background-color: #eef0f3;
   overflow: auto;
   height: 55%;
   width: 100%;
@@ -825,9 +817,8 @@ body {
   position: absolute;
   margin-top: 3px;
 }
-
-.mail-message-board-region {
-  background-color: #EEF0F3;
+.mb .mail-message-board-region {
+  background-color: white;
   z-index: 101;
   position: absolute;
   top: 0;
@@ -871,44 +862,6 @@ body {
   background-color: #292c31;
 }
 
-.mb .settingsView {
-  width: 600px;
-  height: 350px;
-  z-index: 200;
-}
-.mb .settingsView .section {
-  padding-top: 40px;
-}
-.mb .settingsView .section .title {
-  width: 120px;
-  padding-right: 15px;
-  float: left;
-  text-align: right;
-}
-.mb .settingsView .themeBox {
-  border: 1px solid #f9f9f9;
-  float: left;
-  padding-top: 0;
-  margin-right: 10px;
-}
-.mb .settingsView .themeBox:hover {
-  border: 1px solid #282a2c;
-  cursor: pointer;
-}
-.mb .settingsView .themeBox .title {
-  text-decoration: underline;
-  width: 100%;
-  text-align: center;
-}
-.mb .settingsView .themeBox .icon {
-  border: 1px solid #cccccc;
-}
-.mb .settingsView .close {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-}
-
 .mb .mailTable .importance-icon {
   width: 19px;
   height: 19px;
@@ -943,7 +896,7 @@ body {
   font-weight: bold;
 }
 .mb .mailTable .address .draft {
-  color: #DD4B39;
+  color: #dd4b39;
   font-weight: normal;
 }
 .mb .mailTable .address .sent {
@@ -1004,7 +957,7 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: #EEF0F3;
+  background-color: #eef0f3;
   z-index: 100;
   display: none;
   font-family: "Helvetica Neue","Segoe UI",Helvetica,Arial,"Lucida Grande",sans-serif;
@@ -1034,7 +987,7 @@ body {
   font-family: arial,sans-serif;
   font-size: 15px;
   font-weight: bold;
-  border-bottom: 1px solid #D8D8D8;
+  border-bottom: 1px solid #d8d8d8;
   padding-bottom: 10px;
   margin-bottom: 15px;
 }
@@ -1254,10 +1207,11 @@ body {
   left: 0;
   background-color: #55688a;
   min-width: 1024px;
-  min-height: 550px;
+  min-height: 650px;
   overflow: hidden;
 }
-.mb .loader-wrapper {
+.mb techbarsdafasdf
+.loader-wrapper {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -1267,7 +1221,8 @@ body {
   z-index: 10;
   display: none;
 }
-.mb .loader-wrapper .loader {
+.mb techbarsdafasdf
+.loader-wrapper .loader {
   background-color: #F9EDBE;
   border: 1px solid #F0C36D;
   color: #222222;
@@ -1459,4 +1414,42 @@ body {
 }
 .mb .techbar .ddsResources .special {
   color: #f26300;
+}
+
+.mb .settingsView {
+  width: 600px;
+  height: 350px;
+  z-index: 200;
+}
+.mb .settingsView .section {
+  padding-top: 40px;
+}
+.mb .settingsView .section .title {
+  width: 120px;
+  padding-right: 15px;
+  float: left;
+  text-align: right;
+}
+.mb .settingsView .themeBox {
+  border: 1px solid #f9f9f9;
+  float: left;
+  padding-top: 0;
+  margin-right: 10px;
+}
+.mb .settingsView .themeBox:hover {
+  border: 1px solid #282a2c;
+  cursor: pointer;
+}
+.mb .settingsView .themeBox .title {
+  text-decoration: underline;
+  width: 100%;
+  text-align: center;
+}
+.mb .settingsView .themeBox .icon {
+  border: 1px solid #cccccc;
+}
+.mb .settingsView .close {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
 }

@@ -1,10 +1,10 @@
+@import "vars";
 @import "actions";
 @import "compose";
 @import "header";
 @import "layout";
 @import "contentLayout";
-@import "navigation";
-@import "../../../../frame/ui/scss/_settings";
+@import "../../../../common/ui/scss/_navigation";
 @import "mailTable";
 @import "emptyMail";
 @import "emptyFolder";

@@ -3,7 +3,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: #EEF0F3;
+    background-color: $mail-empty-folder-bgClr;
     z-index: 100;
     display:none;
     font-family: "Helvetica Neue","Segoe UI",Helvetica,Arial,"Lucida Grande",sans-serif;
@@ -12,7 +12,7 @@
       font-size: 22px;
       font-weight: 300;
       padding:18px;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid $mail-empty-folder-title-boClr;
     }
 
     .msgBody{

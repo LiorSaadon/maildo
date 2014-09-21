@@ -1,6 +1,6 @@
 .mail-action-region{
   height: 70px;
-  border-bottom: 1px solid $layout-splitter-color;
+  border-bottom: 1px solid $mail-layout-splitter-br;
   @include abs-pos(80px, 0, 'NaN', 0);
 }
 

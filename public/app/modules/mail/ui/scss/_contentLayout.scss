@@ -1,30 +1,27 @@
-.mail-items-region{
-  border-bottom: 1px solid #7685a0;
-  height: 45%;
-  width: 100%;
-  position: absolute;
-  background-color: #ffffff;
-}
+.mb{
+  .mail-items-region{
+    border-bottom: 1px solid $mail-content-layout-items-region-boClr;
+    height: 45%;
+    width: 100%;
+    position: absolute;
+    background-color: $mail-content-layout-items-region-bgClr;
+  }
 
-.mail-data-splitter{
-  height: 4px;
-  @include abs-pos(270px, 0, 'NaN', 0);
-}
+  .mail-preview-region{
+    background-color: $mail-content-layout-preview-region-bgClr;
+    overflow: auto;
+    height: 55%;
+    width: 100%;
+    top: 45%;
+    position: absolute;
+    margin-top: 3px
+  }
 
-.mail-preview-region{
-  background-color: #ffffff;
-  overflow: auto;
-  height: 55%;
-  width: 100%;
-  top: 45%;
-  position: absolute;
-  margin-top: 3px
-}
-
-.mail-message-board-region{
-  background-color: #EEF0F3;
-  z-index: 101;
-  @include abs-pos(0, 0, 0, 0);
-  padding: 35px 60px 0 60px;
+  .mail-message-board-region{
+    background-color: $mail-content-layout-message-board-bgClr;
+    z-index: 101;
+    @include abs-pos(0, 0, 0, 0);
+    padding: 35px 60px 0 60px;
+  }
 }
 
