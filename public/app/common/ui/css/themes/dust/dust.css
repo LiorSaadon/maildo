@@ -1210,8 +1210,7 @@ body {
   min-height: 650px;
   overflow: hidden;
 }
-.mb techbarsdafasdf
-.loader-wrapper {
+.mb .loader-wrapper {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -1221,8 +1220,7 @@ body {
   z-index: 10;
   display: none;
 }
-.mb techbarsdafasdf
-.loader-wrapper .loader {
+.mb .loader-wrapper .loader {
   background-color: #F9EDBE;
   border: 1px solid #F0C36D;
   color: #222222;
@@ -1317,10 +1315,10 @@ body {
   display: inline-block;
   height: 17px;
   width: 17px;
-  background: url("app/common/ui/img/actions.png") 0 0 no-repeat;
+  background: url("app/common/ui/img/actions1.png") 0 0 no-repeat;
 }
 .mb .actions-wrapper .btnSettings .button:hover .settingsIcon {
-  background: url("app/common/ui/img/actionsHover.png") 0 0 no-repeat;
+  background: url("app/common/ui/img/actions1.png") -34px 0 no-repeat;
 }
 .mb .main-region {
   position: absolute;

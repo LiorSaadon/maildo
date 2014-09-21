@@ -26,6 +26,7 @@ javascripts_dir = "../../app/common/js"
 additional_import_paths = ["../../app/frame/ui/scss",
                            "../../app/modules/mail/ui/scss",
                            "../../app/modules/tasks/ui/scss",
+                           "../../app/frame/ui/scss",
                            "../../app/common/ui/components/autoComplete/ui/scss",
                            "../../app/common/ui/components/tags/ui/scss",
                            "../../app/common/ui/components/dialog/ui/scss",
