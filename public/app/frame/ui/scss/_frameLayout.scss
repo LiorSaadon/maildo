@@ -17,15 +17,15 @@
     display: none;
 
     .loader{
-      background-color: #F9EDBE;
-      border:1px solid #F0C36D;
-      color:#222222;
+      background-color: $loader-bgColor;
+      border:1px solid $loader-boClr;
+      color:$loader-color;
     }
   }
 
   .techbar-wrapper {
     height: 30px;
-    border-bottom: 1px solid $techbar-border-color;
+    border-bottom: 1px solid $techbar-color;
     background-color: red;
     @include abs-pos(0, 0, 'NaN', 0);
   }

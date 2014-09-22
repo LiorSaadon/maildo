@@ -57,7 +57,7 @@
       min-width: 155px;
       border-top: 0px;
       @include abs-pos(30px, 18px, 'NaN', 'NaN');
-      background-color: $ddItem-background-color;
+      background-color: $techbar-ddsResources-background-color;
     }
 
     .ddsResources .group{
@@ -71,11 +71,11 @@
       border-right: 0px;
       border-left: 0px;
       border-bottom: 0px;
-      border-color:#ffffff;
+      border-color: $techbar-ddsResources-fieldset-color;
     }
 
     .ddsResources legend {
-      color:#325E0A;
+      color:$techbar-ddsResources-legend-color;
     }
 
     .ddsResources .ddm {

@@ -1,0 +1,77 @@
+@mixin arrow-down($size:4px, $color:#000000,  $paddingTop:2px) {
+  width: 0;
+  height: 0;
+  border-left: $size solid transparent;
+  border-right: $size solid transparent;
+  border-top:$size solid $color;
+  position: relative;
+  font-size: 0;
+  padding-top: $paddingTop;
+}
+
+//------------------------------------------------------------
+
+@mixin arrow-down-hover( $color:#000000) {
+  border-top-color:$color;
+}
+
+//-------------------------------------------------------------
+
+@mixin abs-pos($top, $right, $bottom, $left) {
+  position:absolute;
+  @if $top != 'NaN' {top: $top;}
+  @if $right != 'NaN' {right: $right;}
+  @if $bottom != 'NaN' {bottom: $bottom;}
+  @if $left != 'NaN' {left: $left;}
+}
+
+//-------------------------------------------------------------
+
+@mixin set-icon($width, $height, $bg, $spriteLeft:0, $spriteTop:0) {
+  display: inline-block;
+  height: $height;
+  width: $width;
+  background: url($bg) $spriteLeft $spriteTop  no-repeat;
+}
+
+//----------------------------------------------------------------
+
+@mixin mb-browser-scroll($background, $track, $thumb, $arrow) {
+  &:hover {
+    &::-webkit-scrollbar-track {background-color: $track;}
+    &::-webkit-scrollbar-thumb {background-color: $thumb;}
+  }
+  @include mb-browser-scroll-base($background, $track, $thumb, $arrow);
+}
+
+//----------------------------------------------------------------
+
+@mixin mb-browser-scroll-fixed($background, $track, $thumb, $arrow) {
+  &::-webkit-scrollbar-track {background-color: $track;}
+  &::-webkit-scrollbar-thumb {background-color: $thumb;}
+  @include mb-browser-scroll-base($background, $track, $thumb, $arrow);
+}
+
+//----------------------------------------------------------------
+
+@mixin mb-browser-scroll-base($background, $track, $thumb, $arrow) {
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  &::-webkit-scrollbar-track, &::-webkit-scrollbar-thumb {
+    width: 8px;
+    border-color: $background;
+    border-style: solid;
+    border-width: 0 7px 0 0;
+  }
+
+// IE
+  scrollbar-track-color: $background;
+  scrollbar-base-color: $thumb;
+  scrollbar-arrow-color: $arrow;
+  scrollbar-shadow-color: $background;
+  scrollbar-dark-shadow-color: $background;
+  scrollbar-3dlight-color: $background;
+  scrollbar-highlight-color: $background;
+}

@@ -9,7 +9,7 @@
   .lblCompose {
     @include abs-pos(0px, 'NaN', 'NaN', 0px);
     font-size: 20px;
-    color: $common-label-color;
+    color: $mail-label-color;
     font-weight: normal;
     margin: 0;
     overflow:hidden;
@@ -22,7 +22,7 @@
   .lblSettings {
     @include abs-pos(0px, 'NaN', 'NaN', 0px);
     font-size: 20px;
-    color: $common-label-color;
+    color: $mail-label-color;
     font-weight: normal;
     margin: 0;
   }
@@ -86,20 +86,17 @@
     }
 
     .ddsMove {
-      position: absolute;
-      top: 30px;
+      @include abs-pos(30px,'NaN','NaN','NaN');
       display: none;
     }
 
     .ddsSelect {
-      position: absolute;
-      top: 30px;
+      @include abs-pos(30px,'NaN','NaN','NaN');
       display: none;
     }
 
     .ddsMore {
-      position: absolute;
-      top: 30px;
+      @include abs-pos(30px,'NaN','NaN','NaN');
       display: none;
       min-width: 150px;
     }

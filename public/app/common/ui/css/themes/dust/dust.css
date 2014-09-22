@@ -1,10 +1,13 @@
+/*--------- ui-components ----------*/
+/*----------- modules -------------*/
+/*------------ frame ---------------*/
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 13px;
   overflow: hidden;
 }
 
-.mb input {
+input {
   vertical-align: middle;
   padding: 0 8px;
   background-color: white;
@@ -18,168 +21,21 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.mb input:hover {
+
+input:hover {
   border-color: #c1c2c3;
 }
-.mb input:active,
-.mb input:focus {
+
+input:active,
+input:focus {
   outline: none;
   border-color: gainsboro;
   -webkit-box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 3px;
   -moz-box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 3px;
   box-shadow: rgba(81, 82, 84, 0.25) 0px 0px 3px;
 }
-.mb .hide {
-  display: none;
-}
-.mb .show {
-  display: block;
-}
-.mb .browser-scroll {
-  scrollbar-track-color: white;
-  scrollbar-base-color: #c1c2c3;
-  scrollbar-arrow-color: #adadad;
-  scrollbar-shadow-color: white;
-  scrollbar-dark-shadow-color: white;
-  scrollbar-3dlight-color: white;
-  scrollbar-highlight-color: white;
-}
-.mb .browser-scroll:hover::-webkit-scrollbar-track {
-  background-color: whitesmoke;
-}
-.mb .browser-scroll:hover::-webkit-scrollbar-thumb {
-  background-color: #c1c2c3;
-}
-.mb .browser-scroll::-webkit-scrollbar {
-  width: 15px;
-}
-.mb .browser-scroll::-webkit-scrollbar-track, .mb .browser-scroll::-webkit-scrollbar-thumb {
-  width: 8px;
-  border-color: white;
-  border-style: solid;
-  border-width: 0 7px 0 0;
-}
-.mb .browser-scroll.light {
-  scrollbar-track-color: #f4f4f3;
-  scrollbar-base-color: #adadad;
-  scrollbar-arrow-color: #98999b;
-  scrollbar-shadow-color: #f4f4f3;
-  scrollbar-dark-shadow-color: #f4f4f3;
-  scrollbar-3dlight-color: #f4f4f3;
-  scrollbar-highlight-color: #f4f4f3;
-}
-.mb .browser-scroll.light:hover::-webkit-scrollbar-track {
-  background-color: #e5e5e5;
-}
-.mb .browser-scroll.light:hover::-webkit-scrollbar-thumb {
-  background-color: #adadad;
-}
-.mb .browser-scroll.light::-webkit-scrollbar {
-  width: 15px;
-}
-.mb .browser-scroll.light::-webkit-scrollbar-track, .mb .browser-scroll.light::-webkit-scrollbar-thumb {
-  width: 8px;
-  border-color: #f4f4f3;
-  border-style: solid;
-  border-width: 0 7px 0 0;
-}
-.mb .browser-scroll.dark {
-  scrollbar-track-color: #515254;
-  scrollbar-base-color: #98999b;
-  scrollbar-arrow-color: #adadad;
-  scrollbar-shadow-color: #515254;
-  scrollbar-dark-shadow-color: #515254;
-  scrollbar-3dlight-color: #515254;
-  scrollbar-highlight-color: #515254;
-}
-.mb .browser-scroll.dark:hover::-webkit-scrollbar-track {
-  background-color: #767678;
-}
-.mb .browser-scroll.dark:hover::-webkit-scrollbar-thumb {
-  background-color: #98999b;
-}
-.mb .browser-scroll.dark::-webkit-scrollbar {
-  width: 15px;
-}
-.mb .browser-scroll.dark::-webkit-scrollbar-track, .mb .browser-scroll.dark::-webkit-scrollbar-thumb {
-  width: 8px;
-  border-color: #515254;
-  border-style: solid;
-  border-width: 0 7px 0 0;
-}
-.mb .browser-scroll.scroll-fixed {
-  scrollbar-track-color: white;
-  scrollbar-base-color: #c1c2c3;
-  scrollbar-arrow-color: #adadad;
-  scrollbar-shadow-color: white;
-  scrollbar-dark-shadow-color: white;
-  scrollbar-3dlight-color: white;
-  scrollbar-highlight-color: white;
-}
-.mb .browser-scroll.scroll-fixed::-webkit-scrollbar-track {
-  background-color: whitesmoke;
-}
-.mb .browser-scroll.scroll-fixed::-webkit-scrollbar-thumb {
-  background-color: #c1c2c3;
-}
-.mb .browser-scroll.scroll-fixed::-webkit-scrollbar {
-  width: 15px;
-}
-.mb .browser-scroll.scroll-fixed::-webkit-scrollbar-track, .mb .browser-scroll.scroll-fixed::-webkit-scrollbar-thumb {
-  width: 8px;
-  border-color: white;
-  border-style: solid;
-  border-width: 0 7px 0 0;
-}
-.mb .browser-scroll.scroll-fixed.light {
-  scrollbar-track-color: #f4f4f3;
-  scrollbar-base-color: #c1c2c3;
-  scrollbar-arrow-color: #adadad;
-  scrollbar-shadow-color: #f4f4f3;
-  scrollbar-dark-shadow-color: #f4f4f3;
-  scrollbar-3dlight-color: #f4f4f3;
-  scrollbar-highlight-color: #f4f4f3;
-}
-.mb .browser-scroll.scroll-fixed.light::-webkit-scrollbar-track {
-  background-color: #e5e5e5;
-}
-.mb .browser-scroll.scroll-fixed.light::-webkit-scrollbar-thumb {
-  background-color: #c1c2c3;
-}
-.mb .browser-scroll.scroll-fixed.light::-webkit-scrollbar {
-  width: 15px;
-}
-.mb .browser-scroll.scroll-fixed.light::-webkit-scrollbar-track, .mb .browser-scroll.scroll-fixed.light::-webkit-scrollbar-thumb {
-  width: 8px;
-  border-color: #f4f4f3;
-  border-style: solid;
-  border-width: 0 7px 0 0;
-}
-.mb .browser-scroll.scroll-fixed.dark {
-  scrollbar-track-color: #515254;
-  scrollbar-base-color: #98999b;
-  scrollbar-arrow-color: #adadad;
-  scrollbar-shadow-color: #515254;
-  scrollbar-dark-shadow-color: #515254;
-  scrollbar-3dlight-color: #515254;
-  scrollbar-highlight-color: #515254;
-}
-.mb .browser-scroll.scroll-fixed.dark::-webkit-scrollbar-track {
-  background-color: #767678;
-}
-.mb .browser-scroll.scroll-fixed.dark::-webkit-scrollbar-thumb {
-  background-color: #98999b;
-}
-.mb .browser-scroll.scroll-fixed.dark::-webkit-scrollbar {
-  width: 15px;
-}
-.mb .browser-scroll.scroll-fixed.dark::-webkit-scrollbar-track, .mb .browser-scroll.scroll-fixed.dark::-webkit-scrollbar-thumb {
-  width: 8px;
-  border-color: #515254;
-  border-style: solid;
-  border-width: 0 7px 0 0;
-}
 
+/*--------- css-component ----------*/
 .mb .button {
   text-decoration: none;
   font-family: Helvetica, Arial, sans-serif;
@@ -338,19 +194,184 @@ body {
   padding-left: 5px;
 }
 
-.mb .loader {
-  display: none;
-  position: absolute;
-  width: 90px;
-  background: #F9EDBE;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  padding-left: 10px;
-  margin-left: -16px;
-  top: 0;
-  left: 50%;
-  font-weight: bold;
-  border: 1px solid #F0C36D;
+.mb .navigator {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  width: 160px;
+  padding-top: 50px;
+  margin: 0px;
+}
+.mb .navigator ul {
+  width: 140px;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+}
+.mb .navigator ul li {
+  min-height: 30px;
+  margin: 0px;
+  padding-top: 3px;
+}
+.mb .navigator ul li.selected a {
+  color: #EDC967;
+}
+.mb .navigator ul li a {
+  font-size: 13px;
+  display: block;
+  padding: 5px 0px 2px 4px;
+  text-decoration: none;
+  color: white;
+}
+.mb .navigator ul li:hover, .mb .navigator ul li:focus {
+  color: white;
+  background-color: #292c31;
+}
+
+.browser-scroll {
+  scrollbar-track-color: white;
+  scrollbar-base-color: #c1c2c3;
+  scrollbar-arrow-color: #adadad;
+  scrollbar-shadow-color: white;
+  scrollbar-dark-shadow-color: white;
+  scrollbar-3dlight-color: white;
+  scrollbar-highlight-color: white;
+}
+.browser-scroll:hover::-webkit-scrollbar-track {
+  background-color: whitesmoke;
+}
+.browser-scroll:hover::-webkit-scrollbar-thumb {
+  background-color: #c1c2c3;
+}
+.browser-scroll::-webkit-scrollbar {
+  width: 15px;
+}
+.browser-scroll::-webkit-scrollbar-track, .browser-scroll::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-color: white;
+  border-style: solid;
+  border-width: 0 7px 0 0;
+}
+.browser-scroll.light {
+  scrollbar-track-color: #f4f4f3;
+  scrollbar-base-color: #adadad;
+  scrollbar-arrow-color: #98999b;
+  scrollbar-shadow-color: #f4f4f3;
+  scrollbar-dark-shadow-color: #f4f4f3;
+  scrollbar-3dlight-color: #f4f4f3;
+  scrollbar-highlight-color: #f4f4f3;
+}
+.browser-scroll.light:hover::-webkit-scrollbar-track {
+  background-color: #e5e5e5;
+}
+.browser-scroll.light:hover::-webkit-scrollbar-thumb {
+  background-color: #adadad;
+}
+.browser-scroll.light::-webkit-scrollbar {
+  width: 15px;
+}
+.browser-scroll.light::-webkit-scrollbar-track, .browser-scroll.light::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-color: #f4f4f3;
+  border-style: solid;
+  border-width: 0 7px 0 0;
+}
+.browser-scroll.dark {
+  scrollbar-track-color: #515254;
+  scrollbar-base-color: #98999b;
+  scrollbar-arrow-color: #adadad;
+  scrollbar-shadow-color: #515254;
+  scrollbar-dark-shadow-color: #515254;
+  scrollbar-3dlight-color: #515254;
+  scrollbar-highlight-color: #515254;
+}
+.browser-scroll.dark:hover::-webkit-scrollbar-track {
+  background-color: #767678;
+}
+.browser-scroll.dark:hover::-webkit-scrollbar-thumb {
+  background-color: #98999b;
+}
+.browser-scroll.dark::-webkit-scrollbar {
+  width: 15px;
+}
+.browser-scroll.dark::-webkit-scrollbar-track, .browser-scroll.dark::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-color: #515254;
+  border-style: solid;
+  border-width: 0 7px 0 0;
+}
+
+.browser-scroll.scroll-fixed {
+  scrollbar-track-color: white;
+  scrollbar-base-color: #c1c2c3;
+  scrollbar-arrow-color: #adadad;
+  scrollbar-shadow-color: white;
+  scrollbar-dark-shadow-color: white;
+  scrollbar-3dlight-color: white;
+  scrollbar-highlight-color: white;
+}
+.browser-scroll.scroll-fixed::-webkit-scrollbar-track {
+  background-color: whitesmoke;
+}
+.browser-scroll.scroll-fixed::-webkit-scrollbar-thumb {
+  background-color: #c1c2c3;
+}
+.browser-scroll.scroll-fixed::-webkit-scrollbar {
+  width: 15px;
+}
+.browser-scroll.scroll-fixed::-webkit-scrollbar-track, .browser-scroll.scroll-fixed::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-color: white;
+  border-style: solid;
+  border-width: 0 7px 0 0;
+}
+.browser-scroll.scroll-fixed.light {
+  scrollbar-track-color: #f4f4f3;
+  scrollbar-base-color: #c1c2c3;
+  scrollbar-arrow-color: #adadad;
+  scrollbar-shadow-color: #f4f4f3;
+  scrollbar-dark-shadow-color: #f4f4f3;
+  scrollbar-3dlight-color: #f4f4f3;
+  scrollbar-highlight-color: #f4f4f3;
+}
+.browser-scroll.scroll-fixed.light::-webkit-scrollbar-track {
+  background-color: #e5e5e5;
+}
+.browser-scroll.scroll-fixed.light::-webkit-scrollbar-thumb {
+  background-color: #c1c2c3;
+}
+.browser-scroll.scroll-fixed.light::-webkit-scrollbar {
+  width: 15px;
+}
+.browser-scroll.scroll-fixed.light::-webkit-scrollbar-track, .browser-scroll.scroll-fixed.light::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-color: #f4f4f3;
+  border-style: solid;
+  border-width: 0 7px 0 0;
+}
+.browser-scroll.scroll-fixed.dark {
+  scrollbar-track-color: #515254;
+  scrollbar-base-color: #98999b;
+  scrollbar-arrow-color: #adadad;
+  scrollbar-shadow-color: #515254;
+  scrollbar-dark-shadow-color: #515254;
+  scrollbar-3dlight-color: #515254;
+  scrollbar-highlight-color: #515254;
+}
+.browser-scroll.scroll-fixed.dark::-webkit-scrollbar-track {
+  background-color: #767678;
+}
+.browser-scroll.scroll-fixed.dark::-webkit-scrollbar-thumb {
+  background-color: #98999b;
+}
+.browser-scroll.scroll-fixed.dark::-webkit-scrollbar {
+  width: 15px;
+}
+.browser-scroll.scroll-fixed.dark::-webkit-scrollbar-track, .browser-scroll.scroll-fixed.dark::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-color: #515254;
+  border-style: solid;
+  border-width: 0 7px 0 0;
 }
 
 /*--------- ui-components ----------*/
@@ -602,7 +623,7 @@ body {
   box-sizing: border-box;
 }
 
-/*----------- modules -------------*/
+/*----------- modules --------------*/
 .mb .buttonsToolbar {
   position: absolute;
   top: 0px;
@@ -826,40 +847,6 @@ body {
   bottom: 0;
   left: 0;
   padding: 35px 60px 0 60px;
-}
-
-.mb .navigator {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 100%;
-  width: 160px;
-  padding-top: 50px;
-  margin: 0px;
-}
-.mb .navigator ul {
-  width: 140px;
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-  border: none;
-}
-.mb .navigator ul li {
-  min-height: 30px;
-  margin: 0px;
-  padding-top: 3px;
-}
-.mb .navigator ul li.selected a {
-  color: #EDC967;
-}
-.mb .navigator ul li a {
-  font-size: 13px;
-  display: block;
-  padding: 5px 0px 2px 4px;
-  text-decoration: none;
-  color: white;
-}
-.mb .navigator ul li:hover, .mb .navigator ul li:focus {
-  color: white;
-  background-color: #292c31;
 }
 
 .mb .mailTable .importance-icon {
@@ -1198,7 +1185,7 @@ body {
   background-color: #4d90fe;
 }
 
-/*------------ app ---------------*/
+/*------------ frame ---------------*/
 .mb {
   position: absolute;
   top: 0;
@@ -1221,13 +1208,13 @@ body {
   display: none;
 }
 .mb .loader-wrapper .loader {
-  background-color: #F9EDBE;
-  border: 1px solid #F0C36D;
+  background-color: #f9edbe;
+  border: 1px solid #f0c36d;
   color: #222222;
 }
 .mb .techbar-wrapper {
   height: 30px;
-  border-bottom: 1px solid #7685a0;
+  border-bottom: 1px solid #bbbbbb;
   background-color: red;
   position: absolute;
   top: 0;
@@ -1400,10 +1387,10 @@ body {
   border-right: 0px;
   border-left: 0px;
   border-bottom: 0px;
-  border-color: #ffffff;
+  border-color: white;
 }
 .mb .techbar .ddsResources legend {
-  color: #325E0A;
+  color: #325e0a;
 }
 .mb .techbar .ddsResources .ddm {
   color: #376d91;
