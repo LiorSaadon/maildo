@@ -18,13 +18,13 @@
     }
 
     .themeBox {
-      border:1px solid  $settings-background-color;
+      border:1px solid  $settings-background-clr;
       float:left;
       padding-top:0;
       margin-right:10px;
 
       &:hover{
-        border:1px solid $settings-themeBox-border-hover-color;
+        border:1px solid $settings-themeBox-hover-boClr;
         cursor:pointer;
       }
 
@@ -35,7 +35,7 @@
       }
 
       .icon{
-        border:1px solid $settings-themeIcon-border-color;
+        border:1px solid $settings-themeIcon-border-clr;
       }
     }
 

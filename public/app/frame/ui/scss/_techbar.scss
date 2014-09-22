@@ -1,7 +1,7 @@
 .mb {
 
   .techbar {
-    background-color: $techbar-background-color;
+    background-color: $techbar-background-clr;
     padding-left: 30px;
     @include abs-pos(0, 0, 'NaN', 0);
 
@@ -9,7 +9,7 @@
       float: left;
       padding-left: 0px;
       padding-top: 7px;
-      color: $techbar-color;
+      color: $techbar-clr;
     }
 
     .menu {
@@ -23,9 +23,9 @@
     }
 
     .menuitem{
-      color: $techbar-color;
+      color: $techbar-clr;
       min-width: 60px;
-      border: 1px solid $techbar-background-color;
+      border: 1px solid $techbar-background-clr;
       margin-right:0px;
       text-align: left;
     }

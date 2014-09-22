@@ -1,7 +1,7 @@
 .mb {
 
   @include abs-pos(0, 0, 0, 0);
-  background-color: $layout-background-color;
+  background-color: $layout-background-clr;
   min-width:1024px;
   min-height: 650px;
   overflow:hidden;
@@ -25,14 +25,14 @@
 
   .techbar-wrapper {
     height: 30px;
-    border-bottom: 1px solid $techbar-color;
+    border-bottom: 1px solid $techbar-clr;
     background-color: red;
     @include abs-pos(0, 0, 'NaN', 0);
   }
 
   .header-wrapper{
     height: 70px;
-    border-bottom: 1px solid $layout-splitter-color;
+    border-bottom: 1px solid $layout-splitter-clr;
     @include abs-pos(30px, 0, 'NaN', 0) ;
 
     .logo {
@@ -60,7 +60,7 @@
 
   .actions-wrapper{
       height: 65px;
-      border-bottom: 1px solid $layout-splitter-color;
+      border-bottom: 1px solid $layout-splitter-clr;
       @include abs-pos(100px, 0, 'NaN', 0);
 
       .moduleSwitcher{
@@ -83,9 +83,7 @@
         }
 
         .ddsModules {
-          position: absolute;
-          top: 30px;
-          left:5px;
+          @include abs-pos(30px, 'NaN', 'NaN', 5px);
           display: none;
           min-width:135px;
 
