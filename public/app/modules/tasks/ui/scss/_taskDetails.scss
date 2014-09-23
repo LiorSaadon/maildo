@@ -4,7 +4,7 @@
     .task-title {
       left: 0px;
       height:58px;
-      background-color: $color4;
+      background-color: $task-details-view-title-bgClr;
 
       .task-title-input{
         border: 0;
@@ -12,7 +12,7 @@
         height: 100%;
         font-size: 18px;
         padding-left: 28px;
-        color: #4E4E4E;
+        color: $task-details-view-title-input-clr;
       }
 
       &:active,
@@ -22,14 +22,10 @@
     }
 
     .task-body {
-      position: absolute;
-      top: 58px;
-      right: 0px;
-      bottom: 70px;
-      left: 0px;
+      @include abs-pos(58px, 0, 70px, 0);
       padding: 30px;
-      background-color: $color4;
-      border-top: 1px solid $color15;
+      background-color: $task-details-view-body-bgClr;
+      border-top: 1px solid $task-details-view-body-boClr;
 
       &:active,
       &:focus {
@@ -38,22 +34,19 @@
     }
 
     .task-actions {
-      position: absolute;
-      bottom: 0px;
-      right: 0px;
-      left: 0px;
-      border-top: 1px solid $color15;
-      background-color: $color4;
+      @include abs-pos('NaN', 0, 0, 0);
+      border-top: 1px solid $task-details-view-actions-boClr;
+      background-color: $task-details-view-actions-bgClr;
       padding: 20px 20px 20px 30px;
 
       .save {
-        background-color: #4d90fe;
-        border: 1px solid #D7D5D5;
-        color: $color4;
+        background-color: $task-details-view-actions-save-bgClr;
+        border: 1px solid $task-details-view-actions-save-boClr;
+        color: $task-details-view-actions-save-clr;
 
         &:hover {
-          color: $color4;
-          background-color: #4d90fe;
+          color: $task-details-view-actions-save-hover-clr;
+          background-color: $task-details-view-actions-save-hover-bgClr;
         }
       }
     }

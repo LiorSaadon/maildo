@@ -2,6 +2,8 @@
 @import "compass/utilities";
 @import "compass/css3/box-sizing";
 
+
+@import "../common/vars/vars";
 @import "../common/mixins/_mixin";
 @import "../common/defaults/_default";
 
@@ -28,6 +30,9 @@
 /*------------ frame ---------------*/
 
 @import "../../../../frame/ui/scss/_frame";
+
+
+
 
 
 

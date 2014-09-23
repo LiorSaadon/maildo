@@ -174,7 +174,7 @@ input:focus {
   border-spacing: 0;
 }
 .mb .data-table tr {
-  background-color: white;
+  background-color: #eef0f3;
   color: #222222;
   cursor: pointer;
 }
@@ -798,7 +798,7 @@ input:focus {
 
 .mail-action-region {
   height: 70px;
-  border-bottom: 1px solid #7685a0;
+  border-bottom: 1px solid #666666;
   position: absolute;
   top: 80px;
   right: 0;
@@ -1051,8 +1051,8 @@ input:focus {
 }
 .mb .tasks-region {
   width: 249px;
-  color: #4E4E4E;
-  background-color: #FCFDFD;
+  color: #4e4e4e;
+  background-color: #fcfdfd;
   position: absolute;
   top: 20px;
   bottom: 20px;
@@ -1070,8 +1070,8 @@ input:focus {
   right: 26px;
   bottom: 20px;
   left: 450px;
-  background-color: #E7E7E7;
-  color: #4E4E4E;
+  background-color: #e7e7e7;
+  color: #4e4e4e;
 }
 .mb .task-info-region .welcome-message {
   position: absolute;
@@ -1104,9 +1104,7 @@ input:focus {
 .mb .tasks-list ul li .task-info {
   width: 205px;
   display: inline-block;
-  padding-left: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0 10px 10px;
 }
 .mb .tasks-list ul li .task-info .title {
   padding-bottom: 6px;
@@ -1134,7 +1132,7 @@ input:focus {
   display: inline-block;
 }
 .mb .tasks-list ul li.select {
-  background-color: #E9E9E9;
+  background-color: #e9e9e9;
 }
 
 .mb .task-details-view .task-title {
@@ -1148,7 +1146,7 @@ input:focus {
   height: 100%;
   font-size: 18px;
   padding-left: 28px;
-  color: #4E4E4E;
+  color: #4e4e4e;
 }
 .mb .task-details-view .task-title:active, .mb .task-details-view .task-title:focus {
   outline: none;
@@ -1156,9 +1154,9 @@ input:focus {
 .mb .task-details-view .task-body {
   position: absolute;
   top: 58px;
-  right: 0px;
+  right: 0;
   bottom: 70px;
-  left: 0px;
+  left: 0;
   padding: 30px;
   background-color: white;
   border-top: 1px solid #d4d4d4;
@@ -1168,16 +1166,16 @@ input:focus {
 }
 .mb .task-details-view .task-actions {
   position: absolute;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
+  right: 0;
+  bottom: 0;
+  left: 0;
   border-top: 1px solid #d4d4d4;
   background-color: white;
   padding: 20px 20px 20px 30px;
 }
 .mb .task-details-view .task-actions .save {
   background-color: #4d90fe;
-  border: 1px solid #D7D5D5;
+  border: 1px solid #d7d5d5;
   color: white;
 }
 .mb .task-details-view .task-actions .save:hover {

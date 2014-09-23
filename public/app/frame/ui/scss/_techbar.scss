@@ -1,7 +1,7 @@
 .mb {
 
   .techbar {
-    background-color: $techbar-background-clr;
+    background-color: $techbar-bgClr;
     padding-left: 30px;
     @include abs-pos(0, 0, 'NaN', 0);
 
@@ -25,31 +25,31 @@
     .menuitem{
       color: $techbar-clr;
       min-width: 60px;
-      border: 1px solid $techbar-background-clr;
+      border: 1px solid $techbar-bgClr;
       margin-right:0px;
       text-align: left;
     }
 
     .menuitem span.toggle {
-      @include arrow-down(4px, $techbar-toogle-color, 1px);
+      @include arrow-down(4px, $techbar-toogle-clr, 1px);
     }
 
     .menuitem:hover {
-      color: $techbar-hover-color;
+      color: $techbar-hover-clr;
     }
 
     .menuitem:hover .toggle {
-      @include arrow-down-hover($techbar-toogle-hover-color);
+      @include arrow-down-hover($techbar-toogle-hover-clr);
     }
 
     .menuitem.clicked {
-      background: $techbar-hover-color;
+      background: $techbar-hover-clr;
       border: 1px solid $dd-border-color;
-      color: $techbar-ddItem-color;
+      color: $techbar-ddItem-clr;
     }
 
     .menuitem.clicked .toggle {
-      border-top-color: $techbar-toogle-clicked-color;
+      border-top-color: $techbar-toogle-clicked-clr;
     }
 
     .ddsResources {
@@ -57,7 +57,7 @@
       min-width: 155px;
       border-top: 0px;
       @include abs-pos(30px, 18px, 'NaN', 'NaN');
-      background-color: $techbar-ddsResources-background-color;
+      background-color: $techbar-ddsResources-background-clr;
     }
 
     .ddsResources .group{
@@ -71,21 +71,21 @@
       border-right: 0px;
       border-left: 0px;
       border-bottom: 0px;
-      border-color: $techbar-ddsResources-fieldset-color;
+      border-color: $techbar-ddsResources-fieldset-clr;
     }
 
     .ddsResources legend {
-      color:$techbar-ddsResources-legend-color;
+      color:$techbar-ddsResources-legend-clr;
     }
 
     .ddsResources .ddm {
-      color: $techbar-ddItem-color;
+      color: $techbar-ddItem-clr;
       padding: 6px 6px 5px 0px;
       font-size:11px;
     }
 
     .ddsResources .special {
-      color: $techbar-ddItem-special-color;
+      color: $techbar-ddItem-special-clr;
     }
   }
 }
