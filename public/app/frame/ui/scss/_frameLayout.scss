@@ -1,7 +1,7 @@
 .mb {
 
   @include abs-pos(0, 0, 0, 0);
-  background-color: $layout-background-clr;
+  background-color: $_clr10;
   min-width:1024px;
   min-height: 650px;
   overflow:hidden;
@@ -17,22 +17,22 @@
     display: none;
 
     .loader{
-      background-color: $loader-bgColor;
-      border:1px solid $loader-boClr;
-      color:$loader-color;
+      background-color: $_bgClr11;
+      border:1px solid $_boClr11;
+      color:$_clr12;
     }
   }
 
   .techbar-wrapper {
     height: 30px;
-    border-bottom: 1px solid $techbar-clr;
+    border-bottom: 1px solid $_clr13;
     background-color: red;
     @include abs-pos(0, 0, 'NaN', 0);
   }
 
   .header-wrapper{
     height: 70px;
-    border-bottom: 1px solid $layout-splitter-clr;
+    border-bottom: 1px solid $_clr11;
     @include abs-pos(30px, 0, 'NaN', 0) ;
 
     .logo {
@@ -60,7 +60,7 @@
 
   .actions-wrapper{
       height: 65px;
-      border-bottom: 1px solid $layout-splitter-clr;
+      border-bottom: 1px solid $_clr11;
       @include abs-pos(100px, 0, 'NaN', 0);
 
       .moduleSwitcher{

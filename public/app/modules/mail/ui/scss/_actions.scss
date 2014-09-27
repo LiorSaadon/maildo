@@ -9,7 +9,7 @@
   .lblCompose {
     @include abs-pos(0px, 'NaN', 'NaN', 0px);
     font-size: 20px;
-    color: $mail-label-color;
+    color: $_clr2;
     font-weight: normal;
     margin: 0;
     overflow:hidden;
@@ -22,7 +22,7 @@
   .lblSettings {
     @include abs-pos(0px, 'NaN', 'NaN', 0px);
     font-size: 20px;
-    color: $mail-label-color;
+    color: $_clr2;
     font-weight: normal;
     margin: 0;
   }

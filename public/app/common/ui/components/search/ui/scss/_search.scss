@@ -15,15 +15,15 @@
 
     .btnSearch{
       color:white;
-      background-color: $searchBtn-background-color;
-      border: 1px solid $searchBtn-border-color;
+      background-color: $_bgClr3;
+      border: 1px solid $_boClr12;
 
       & span {
         margin-top: -2px;
       }
       &:hover{
-        border-color: $searchBtn-border-hover-color;
-        background-color: $searchBtn-background-hover-color;
+        border-color: $_boClr13;
+        background-color: $_bgClr14;
       }
     }
   }

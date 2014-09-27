@@ -1,14 +1,14 @@
 .mb{
   .mail-items-region{
-    border-bottom: 1px solid $mail-content-layout-items-region-boClr;
+    border-bottom: 1px solid $_boClr1;
     height: 45%;
     width: 100%;
     position: absolute;
-    background-color: $mail-content-layout-items-region-bgClr;
+    background-color: $_bgClr4;
   }
 
   .mail-preview-region{
-    background-color: $mail-content-layout-preview-region-bgClr;
+    background-color: $_bgClr4;
     overflow: auto;
     height: 55%;
     width: 100%;
@@ -18,7 +18,7 @@
   }
 
   .mail-message-board-region{
-    background-color: $mail-content-layout-message-board-bgClr;
+    background-color: $_bgClr4;
     z-index: 101;
     @include abs-pos(0, 0, 0, 0);
     padding: 35px 60px 0 60px;

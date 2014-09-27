@@ -8,7 +8,7 @@ input{
   vertical-align: middle;
   padding:0 8px;
   background-color: $input-background-color;
-  border:1px solid $input-border-color;
+  border:1px solid $_boClr16;
   @include border-radius(1px);
   @include box-sizing(border-box);
 }
@@ -20,7 +20,7 @@ input:hover {
 input:active,
 input:focus{
   outline: none;
-  border-color: $input-border-color;
+  border-color: $_boClr16;
   @include box-shadow(rgba(81,82,84,0.25) 0px 0px 3px);
 }
 

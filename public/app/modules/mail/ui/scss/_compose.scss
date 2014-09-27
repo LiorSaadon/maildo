@@ -1,10 +1,10 @@
 .mb{
   .composeView {
     @include abs-pos(0, 0, 0, 0);
-    background-color: $mail-compose-bgClr;
+    background-color: $_bgClr1;
     z-index:200;
     min-height: 350px;
-    color: $mail-compose-clr;
+    color: $_clr1;
 
     .compose-header {
       @include abs-pos(30px, 95px, 'NaN', 30px);
@@ -31,7 +31,7 @@
         overflow: hidden;
 
         .error{
-          border:1px solid $mail-compose-err-bgClr;
+          border:1px solid $_bgClr2;
         }
       }
 
@@ -45,13 +45,13 @@
 
     .compose-editor {
       @include abs-pos(140px, 100px, 85px, 100px);
-      background-color: $input-background-color;
-      border: 1px solid $input-border-color;
+      background-color: $_clr2;
+      border: 1px solid $_boClr16;
       padding: 10px;
 
       &:active,&:focus {
         outline: none;
-        border-color: $input-border-color;
+        border-color: $_boClr16;
         @include box-shadow(rgba(81, 82, 84, 0.25) 0px 0px 1px);
       }
 
@@ -64,13 +64,13 @@
 
     .sendBtn {
       @include abs-pos('NaN', 'NaN', 25px, 100px);
-      background-color: $mail-compose-send-bgClr;
-      border: 1px solid $mail-compose-send-boClr;
-      color: $mail-compose-send-clr;
+      background-color: $_bgClr2;
+      border: 1px solid $_boClr1;
+      color: $_clr2;
 
       &:hover {
-        color: $mail-comose-send-hover-clr;
-        background-color: $mail-compose-send-hover-bgClr;
+        color: $_clr2;
+        background-color: $_bgClr3;
       }
     }
 

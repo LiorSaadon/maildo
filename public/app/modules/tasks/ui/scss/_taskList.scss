@@ -9,7 +9,7 @@
       border: none;
 
       li {
-        border-bottom: 1px solid $task-list-li-boClr;
+        border-bottom: 1px solid $_boClr54;
         min-height: 58px;
         cursor: pointer;
 
@@ -42,14 +42,14 @@
         }
 
         &:hover {
-          background-color: $task-list-li-hover-bgClr;
+          background-color: $_bgClr57;
 
           .delete-wrapper{
             display:inline-block;
           }
         }
         &.select{
-          background-color:$task-list-li-select-bgClr;
+          background-color:$_bgClr58;
         }
       }
     }

@@ -774,7 +774,7 @@ input:focus {
   position: absolute;
   bottom: 25px;
   left: 100px;
-  background-color: #4d90fe;
+  background-color: red;
   border: 1px solid #3079ed;
   color: white;
 }
@@ -823,14 +823,14 @@ input:focus {
 }
 
 .mb .mail-items-region {
-  border-bottom: 1px solid #7685a0;
+  border-bottom: 1px solid #3079ed;
   height: 45%;
   width: 100%;
   position: absolute;
   background-color: white;
 }
 .mb .mail-preview-region {
-  background-color: #eef0f3;
+  background-color: white;
   overflow: auto;
   height: 55%;
   width: 100%;

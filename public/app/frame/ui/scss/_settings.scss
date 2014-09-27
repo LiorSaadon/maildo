@@ -18,13 +18,13 @@
     }
 
     .themeBox {
-      border:1px solid  $settings-bgClr;
+      border:1px solid  $_bgClr15;
       float:left;
       padding-top:0;
       margin-right:10px;
 
       &:hover{
-        border:1px solid $settings-themeBox-hover-boClr;
+        border:1px solid $_boClr15;
         cursor:pointer;
       }
 
@@ -35,7 +35,7 @@
       }
 
       .icon{
-        border:1px solid $settings-themeIcon-boClr;
+        border:1px solid $_boClr14;
       }
     }
 
