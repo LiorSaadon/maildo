@@ -25,14 +25,13 @@
 
   .techbar-wrapper {
     height: 30px;
-    border-bottom: 1px solid $_clr13;
     background-color: red;
     @include abs-pos(0, 0, 'NaN', 0);
   }
 
   .header-wrapper{
     height: 70px;
-    border-bottom: 1px solid $_clr11;
+    border-bottom: 1px solid $_boClr53;
     @include abs-pos(30px, 0, 'NaN', 0) ;
 
     .logo {
@@ -60,7 +59,7 @@
 
   .actions-wrapper{
       height: 65px;
-      border-bottom: 1px solid $_clr11;
+      border-bottom: 1px solid $_boClr53;
       @include abs-pos(100px, 0, 'NaN', 0);
 
       .moduleSwitcher{

@@ -23,10 +23,9 @@ javascripts_dir = "../../app/assets/js"
 # and then run:
 # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
 
-additional_import_paths = ["../../app/frame/ui/scss",
-                           "../../app/modules/mail/ui/scss",
+additional_import_paths = ["../../app/modules/mail/ui/scss",
                            "../../app/modules/tasks/ui/scss",
-                           "../../app/frame/ui/scss",
+                           "../../app/core/frame/ui/scss",
                            "../../app/assets/ui/components/autoComplete/ui/scss",
                            "../../app/assets/ui/components/tags/ui/scss",
                            "../../app/assets/ui/components/dialog/ui/scss",

@@ -24,7 +24,6 @@ define({
         "onDemandLoader": "app/assets/js/lib-extensions/requirejs/require.loadOnDemand",
         "tmpl": "lib/require/tmpl",
         "templateCache": "lib/require/templateCache",
-        "assets-static-data":"app/assets/data",
 
         "assets-enums": "app/assets/enums",
         "assets-ui-components":"app/assets/ui/components",
@@ -35,9 +34,11 @@ define({
         "assets-resolvers": "app/assets/js/resolvers",
         "assets-plugins": "app/assets/js/plugins",
         "assets-extensions": "app/assets/js/lib-extensions",
+        "assets-i18n": "app/assets/js/resolvers/i18n",
+        "assets-static-data":"app/assets/data",
+
         "mail-module": "app/modules/mail/mail",
         "tasks-module": "app/modules/tasks/tasks",
-        "assets-i18n": "app/assets/js/resolvers/i18n",
 
         "frame":"app/core/frame/frame",
         "frame-views":  "app/core/frame/js/views",
