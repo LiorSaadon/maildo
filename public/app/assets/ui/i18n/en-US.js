@@ -52,7 +52,7 @@ define({
         "actions.discardDraft":"discard draft",
         "actions.delete":"delete",
         "search.caption":"Search Mail",
-        "empty.selectitem": "Select a message",
+        "emptyMail.selectitem": "Select a message",
         "timerange.months.1" : "Jan",
         "timerange.months.2" : "Feb",
         "timerange.months.3" : "Mar",

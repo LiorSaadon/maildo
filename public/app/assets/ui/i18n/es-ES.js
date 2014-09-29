@@ -34,7 +34,7 @@ define({
         "to":"Para",
         "cc": "Cc",
         "subject": "Asuto",
-        "send":"Enviar",
+        "composeview.send":"Enviar",
         "loading":"loading...",
         "page.prev":"Anterior",
         "page.next":"Siguiente",
@@ -69,7 +69,7 @@ define({
     "tasks":{
         "search.caption":"Buscar en Tareas",
         "new.task":"Nueva tarea",
-        "noTasks":"You have no tasks in this category. </br> To Add a task, click a 'New Task'1.",
-        "welcome.massage":"Mailbone allows you to quickly create tasks, save them and access them anywhere you check your Mail1."
+        "noTasks":"No tienes notas en este categoría. </br> Para agregar una tarea, haz clic en 'Tarea nueva'.",
+        "welcome.massage":"Con Mailbone puedes tomar notas rápidamente, guardarlas y tener acceso a ellas desde cualquier lugar donde puedas ver tu Mail."
     }
 });
