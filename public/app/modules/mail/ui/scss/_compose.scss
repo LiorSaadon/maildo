@@ -56,7 +56,7 @@
       }
 
       &:hover {
-        border-color: $input-hover-border-color;
+        border-color: $_boClr8;
       }
     }
 
@@ -80,7 +80,7 @@
       @include abs-pos(12px, 12px, 'NaN', 'NaN');
       width: 12px;
       height: 12px;
-      background: url(app/common/ui/img/closeBtn.png);
+      background: url(app/assets/ui/img/closeBtn.png);
       cursor: pointer;
     }
   }

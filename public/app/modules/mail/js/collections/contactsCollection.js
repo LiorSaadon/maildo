@@ -4,7 +4,7 @@ define(function (require) {
     var app = require("mbApp");
     var ContactModel = require("mail-models/contactModel");
     var ContactsStorage = require("mail-storage/contactsStorage");
-    var BaseCollection = require("mailbone-base-collections/BaseCollection");
+    var BaseCollection = require("assets-base-collections/BaseCollection");
 
     var ContactsCollection = {};
 

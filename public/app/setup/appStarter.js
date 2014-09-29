@@ -4,12 +4,12 @@ define(function (require) {
     require("mail-module");
     require("tasks-module");
     require("backbone.localstorage");
-    require("mailbone-extensions/marionette/marionette.extensions");
+    require("assets-extensions/marionette/marionette.extensions");
 
     var app = require("mbApp");
     var Frame = require("frame");
     var Backbone =  require("backbone");
-    var Translator = require("i18n/translator");
+    var Translator = require("assets-i18n/translator");
     var AppRouter = require("app/setup/appRouter");
     var Context = require("common-context/context");
     var SettingsController = require("common-settings/settingsController");

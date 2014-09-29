@@ -1,0 +1,27 @@
+body {
+  font-family: $font-family1;
+  font-size: $font-size1;
+  overflow: hidden;
+}
+
+input{
+  vertical-align: middle;
+  padding:0 8px;
+  background-color: #ffffff;
+  border:1px solid #dcdcdc;
+  @include border-radius(1px);
+  @include box-sizing(border-box);
+}
+
+input:hover {
+  border-color:#c1c2c3;
+}
+
+input:active,
+input:focus{
+  outline: none;
+  border-color: #dcdcdc;
+  @include box-shadow(rgba(81,82,84,0.25) 0px 0px 3px);
+}
+
+

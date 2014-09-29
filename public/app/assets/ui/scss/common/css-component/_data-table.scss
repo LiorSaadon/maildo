@@ -1,0 +1,38 @@
+
+$data-background-color:#F1F3F4;
+$data-row-color:#222;
+$data-row-border-color:#ffffff;
+$data-row-background-color:#EEF0F3;
+$data-row-selected-color:#FFFFCC;
+$data-row-clicked-color:#F9F9E0;
+
+.data-table {
+
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 0;
+
+    tr {
+      background-color: $data-row-background-color;
+      color: $data-row-color;
+      cursor: pointer;
+    }
+
+    tr.selected{
+      background-color: $data-row-selected-color;
+    }
+
+    tr.clickedRow{
+      background-color: $data-row-clicked-color;
+    }
+
+    td {
+      line-height: 35px;
+      font-size: $font-size2;
+      vertical-align: middle;
+      white-space: nowrap;
+      overflow: hidden;
+      border-bottom: 1px $data-row-border-color solid;
+      padding-left: 5px;
+    }
+  }

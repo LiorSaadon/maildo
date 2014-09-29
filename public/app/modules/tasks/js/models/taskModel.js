@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var BaseModel = require("mailbone-base-models/baseModel");
+    var BaseModel = require("assets-base-models/baseModel");
     var TasksStorage = require("tasks-storage/tasksStorage");
 
     var TaskModel = {};

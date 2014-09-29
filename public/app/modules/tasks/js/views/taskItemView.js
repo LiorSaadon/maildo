@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var template = require("tpl!tasks-templates/taskItemView.tmpl");
-    var formatter = require("mailbone-resolvers/formatter");
+    var formatter = require("assets-resolvers/formatter");
 
     var TaskRowView = {};
 

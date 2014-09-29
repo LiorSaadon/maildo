@@ -1,0 +1,30 @@
+$gray21:#B6AEAE;
+$white:#fff;
+$gray5:#f5f5f5;
+$gray30: #c1c2c3;
+$gray40: #adadad;
+$warmgray5:#f4f4f3;
+$gray13: #e5e5e5;
+$gray50: #98999b;
+$gray85: #515254;
+$gray67: #767678;
+
+.browser-scroll {
+  @include mb-browser-scroll($white, $gray5, $gray30, $gray40);
+  &.light {
+    @include mb-browser-scroll($warmgray5, $gray13, $gray40, $gray50);
+  }
+  &.dark {
+    @include mb-browser-scroll($gray85, $gray67, $gray50, $gray40);
+  }
+}
+
+.browser-scroll.scroll-fixed {
+  @include mb-browser-scroll-fixed($white, $gray5, $gray30, $gray40);
+  &.light {
+    @include mb-browser-scroll-fixed($warmgray5, $gray13, $gray30, $gray40);
+  }
+  &.dark {
+    @include mb-browser-scroll-fixed($gray85, $gray67, $gray50, $gray40);
+  }
+}

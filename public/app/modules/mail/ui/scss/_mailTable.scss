@@ -1,81 +1,85 @@
 .mb{
-  .mailTable{
-    .importance-icon{
-      width: 19px;
-      height: 19px;
-      background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) -37px 0 no-repeat;
-    }
-    .importance-icon.disable {
-      background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) 0 0 no-repeat;
-    }
-    .star-icon {
-      width: 19px;
-      height: 19px;
-      background: url(app/common/ui/img/star.png);
-      display:block;
-      float:left;
-    }
-    .star-icon.disable {
-      background: url(app/common/ui/img/not-star.png);
-    }
-    .trash-icon-wrapper{
-      display: inline-block;
-      vertical-align: middle;
-      width:40px;
-    }
-    .trash-icon{
-      width: 19px;
-      height: 19px;
-      background: url(//ssl.gstatic.com/ui/v1/icons/mail/icons2.png) no-repeat -20px -100px;
-      display:inline-block;
-      float:left;
-    }
-    .address{
-      &.unread{
-        font-weight: bold;
-      }
-      .draft{
-        color:$_clr4;
-        font-weight: normal;
-      }
-      .sent{
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding-right:15px;
+  .mail-table-contanier{
+    background-color: $_bgClr4;
 
-        .sent-to{
-          padding-right:7px;
-          font-weight: normal;
-        }
+    .mail-table{
+      .importance-icon{
+        width: 19px;
+        height: 19px;
+        background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) -37px 0 no-repeat;
       }
-
-      .trash-address{
+      .importance-icon.disable {
+        background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) 0 0 no-repeat;
+      }
+      .star-icon {
+        width: 19px;
+        height: 19px;
+        background: url(app/assets/ui/img/star.png);
+        display:block;
+        float:left;
+      }
+      .star-icon.disable {
+        background: url(app/assets/ui/img/not-star.png);
+      }
+      .trash-icon-wrapper{
         display: inline-block;
         vertical-align: middle;
-        width:130px;
+        width:40px;
       }
-    }
-    .sentTime{
-      &.unread{
-        font-weight: bold;
+      .trash-icon{
+        width: 19px;
+        height: 19px;
+        background: url(//ssl.gstatic.com/ui/v1/icons/mail/icons2.png) no-repeat -20px -100px;
+        display:inline-block;
+        float:left;
       }
-    }
-    .content{
-      overflow: hidden;
-      text-overflow: ellipsis;
-      padding-right:15px;
+      .address{
+        &.unread{
+          font-weight: bold;
+        }
+        .draft{
+          color:$_clr4;
+          font-weight: normal;
+        }
+        .sent{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding-right:15px;
 
-      .subject{
+          .sent-to{
+            padding-right:7px;
+            font-weight: normal;
+          }
+        }
+
+        .trash-address{
+          display: inline-block;
+          vertical-align: middle;
+          width:130px;
+        }
+      }
+      .sentTime{
         &.unread{
           font-weight: bold;
         }
       }
-      .separator{
-        padding-right:5px;
-        padding-left:5px;
-      }
-      .body{
-        color:gray;
+      .content{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right:15px;
+
+        .subject{
+          &.unread{
+            font-weight: bold;
+          }
+        }
+        .separator{
+          padding-right:5px;
+          padding-left:5px;
+        }
+        .body{
+          color:gray;
+        }
       }
     }
   }

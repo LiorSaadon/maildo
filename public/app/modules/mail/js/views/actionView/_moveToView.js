@@ -4,7 +4,7 @@ define(function (require) {
     var app = require("mbApp");
     var template = require("tpl!mail-templates/moveToView.tmpl");
 
-    require("mailbone-plugins/toggle.block");
+    require("assets-plugins/toggle.block");
 
     var MoreView = {};
 

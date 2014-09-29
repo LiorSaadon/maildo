@@ -2,10 +2,10 @@
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "../../app/common/ui/css"
-sass_dir = "../../app/common/ui/scss"
-images_dir = "../../app/common/ui/img"
-javascripts_dir = "../../app/common/js"
+css_dir = "../../app/assets/ui/css"
+sass_dir = "../../app/assets/ui/scss"
+images_dir = "../../app/assets/ui/img"
+javascripts_dir = "../../app/assets/js"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
@@ -27,8 +27,8 @@ additional_import_paths = ["../../app/frame/ui/scss",
                            "../../app/modules/mail/ui/scss",
                            "../../app/modules/tasks/ui/scss",
                            "../../app/frame/ui/scss",
-                           "../../app/common/ui/components/autoComplete/ui/scss",
-                           "../../app/common/ui/components/tags/ui/scss",
-                           "../../app/common/ui/components/dialog/ui/scss",
-                           "../../app/common/ui/components/search/ui/scss",
-                           "../../app/common/ui/scss"]
+                           "../../app/assets/ui/components/autoComplete/ui/scss",
+                           "../../app/assets/ui/components/tags/ui/scss",
+                           "../../app/assets/ui/components/dialog/ui/scss",
+                           "../../app/assets/ui/components/search/ui/scss",
+                           "../../app/assets/ui/scss"]
