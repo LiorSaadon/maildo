@@ -3,6 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var MailModel = require("mail-models/mailModel");
+    var formatter = require("assets-resolvers/formatter");
     var template = require("tpl!mail-templates/composeView.tmpl");
     var AddressView = require("mail-views/composeView/_addressView");
 
@@ -52,6 +53,7 @@ define(function (require) {
 
                 this.renderToView();
                 this.renderCcView();
+                this.ui.inputEditor.html(this.model.get('body'));
              },
 
             //-------------------------------------------------------
