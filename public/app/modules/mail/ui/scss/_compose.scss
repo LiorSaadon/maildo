@@ -48,6 +48,7 @@
       background-color: $_clr2;
       border: 1px solid $_boClr16;
       padding: 10px;
+      overflow: auto;
 
       &:active,&:focus {
         outline: none;

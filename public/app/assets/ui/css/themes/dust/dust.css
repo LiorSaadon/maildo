@@ -756,6 +756,7 @@ input:focus {
   background-color: white;
   border: 1px solid gainsboro;
   padding: 10px;
+  overflow: auto;
 }
 .mb .composeView .compose-editor:active, .mb .composeView .compose-editor:focus {
   outline: none;
