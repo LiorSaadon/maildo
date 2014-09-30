@@ -6,20 +6,20 @@
       .importance-icon{
         width: 19px;
         height: 19px;
-        background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) -37px 0 no-repeat;
+        background: url('app/assets/ui/img/tblIcons.png') -56px 2px no-repeat;
       }
       .importance-icon.disable {
-        background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) 0 0 no-repeat;
+        background: url('app/assets/ui/img/tblIcons.png') 0 2px no-repeat;
       }
       .star-icon {
         width: 19px;
         height: 19px;
-        background: url(app/assets/ui/img/star.png);
+        background: url('app/assets/ui/img/tblIcons.png') -40px 2px no-repeat;
         display:block;
         float:left;
       }
       .star-icon.disable {
-        background: url(app/assets/ui/img/not-star.png);
+        background: url('app/assets/ui/img/tblIcons.png') -20px 2px no-repeat;
       }
       .trash-icon-wrapper{
         display: inline-block;
@@ -29,7 +29,7 @@
       .trash-icon{
         width: 19px;
         height: 19px;
-        background: url(//ssl.gstatic.com/ui/v1/icons/mail/icons2.png) no-repeat -20px -100px;
+        background: url('app/assets/ui/img/tblIcons.png') -75px 0px no-repeat;
         display:inline-block;
         float:left;
       }
@@ -51,7 +51,6 @@
             font-weight: normal;
           }
         }
-
         .trash-address{
           display: inline-block;
           vertical-align: middle;

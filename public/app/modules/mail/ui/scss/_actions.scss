@@ -42,12 +42,12 @@
         }
         &:hover {
           .icoNewer {
-            background: url('app/assets/ui/img/actionsHover.png') 0 -17px  no-repeat;
+            background: url('app/assets/ui/img/actions.png') -34px -17px  no-repeat;
           }
         }
         &.disable {
           .icoNewer {
-            background: url('app/assets/ui/img/actionsDisabled.png') 0 -17px  no-repeat;
+            background: url('app/assets/ui/img/.png') -17px -17px  no-repeat;
           }
         }
       }
@@ -57,12 +57,12 @@
         }
         &:hover {
           .icoOlder {
-            background: url('app/assets/ui/img//actionsHover.png') 0 -34px  no-repeat;
+            background: url('app/assets/ui/img//actions.png') -34px -34px  no-repeat;
           }
         }
         &.disable {
           .icoOlder {
-            background: url('app/assets/ui/img/actionsDisabled.png') 0 -34px  no-repeat;
+            background: url('app/assets/ui/img/actions1.png') -17px -34px  no-repeat;
           }
         }
       }

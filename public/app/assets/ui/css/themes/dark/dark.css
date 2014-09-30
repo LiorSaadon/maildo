@@ -495,7 +495,7 @@ input:focus {
   height: 12px;
   z-index: 2;
   cursor: pointer;
-  background: url(app/assets/ui/img/closeBtn.png);
+  background: url("app/assets/ui/img/closeButtons.png") -10px 0px no-repeat;
 }
 
 .mb .search-placeholder {
@@ -606,7 +606,7 @@ input:focus {
   border-bottom: 1px dashed red;
 }
 .mb .tags-container .tag .close-button {
-  background: url("app/assets/ui/img/12x12-sprite.png") -540px 0 no-repeat;
+  background: url("app/assets/ui/img/closeButtons.png") 3px 0px no-repeat;
   content: "";
   position: absolute;
   right: 0px;
@@ -660,10 +660,10 @@ input:focus {
   background: url("app/assets/ui/img/actions.png") 0 -17px no-repeat;
 }
 .mb .pager .pagerButtons .btnNewer:hover .icoNewer {
-  background: url("app/assets/ui/img/actionsHover.png") 0 -17px no-repeat;
+  background: url("app/assets/ui/img/actions.png") -34px -17px no-repeat;
 }
 .mb .pager .pagerButtons .btnNewer.disable .icoNewer {
-  background: url("app/assets/ui/img/actionsDisabled.png") 0 -17px no-repeat;
+  background: url("app/assets/ui/img/.png") -17px -17px no-repeat;
 }
 .mb .pager .pagerButtons .btnOlder .icoOlder {
   display: inline-block;
@@ -672,10 +672,10 @@ input:focus {
   background: url("app/assets/ui/img/actions.png") 0 -34px no-repeat;
 }
 .mb .pager .pagerButtons .btnOlder:hover .icoOlder {
-  background: url("app/assets/ui/img//actionsHover.png") 0 -34px no-repeat;
+  background: url("app/assets/ui/img//actions.png") -34px -34px no-repeat;
 }
 .mb .pager .pagerButtons .btnOlder.disable .icoOlder {
-  background: url("app/assets/ui/img/actionsDisabled.png") 0 -34px no-repeat;
+  background: url("app/assets/ui/img/actions1.png") -17px -34px no-repeat;
 }
 .mb .pager .pagerInfo {
   float: right;
@@ -785,7 +785,7 @@ input:focus {
   right: 12px;
   width: 12px;
   height: 12px;
-  background: url(app/assets/ui/img/closeBtn.png);
+  background: url("app/assets/ui/img/closeButtons.png") -10px 0px no-repeat;
   cursor: pointer;
 }
 
@@ -852,20 +852,20 @@ input:focus {
 .mb .mail-table-contanier .mail-table .importance-icon {
   width: 19px;
   height: 19px;
-  background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) -37px 0 no-repeat;
+  background: url("app/assets/ui/img/tblIcons.png") -56px 2px no-repeat;
 }
 .mb .mail-table-contanier .mail-table .importance-icon.disable {
-  background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance2.png) 0 0 no-repeat;
+  background: url("app/assets/ui/img/tblIcons.png") 0 2px no-repeat;
 }
 .mb .mail-table-contanier .mail-table .star-icon {
   width: 19px;
   height: 19px;
-  background: url(app/assets/ui/img/star.png);
+  background: url("app/assets/ui/img/tblIcons.png") -40px 2px no-repeat;
   display: block;
   float: left;
 }
 .mb .mail-table-contanier .mail-table .star-icon.disable {
-  background: url(app/assets/ui/img/not-star.png);
+  background: url("app/assets/ui/img/tblIcons.png") -20px 2px no-repeat;
 }
 .mb .mail-table-contanier .mail-table .trash-icon-wrapper {
   display: inline-block;
@@ -875,7 +875,7 @@ input:focus {
 .mb .mail-table-contanier .mail-table .trash-icon {
   width: 19px;
   height: 19px;
-  background: url(//ssl.gstatic.com/ui/v1/icons/mail/icons2.png) no-repeat -20px -100px;
+  background: url("app/assets/ui/img/tblIcons.png") -75px 0px no-repeat;
   display: inline-block;
   float: left;
 }
@@ -980,7 +980,7 @@ input:focus {
 }
 .mb .previewMail .addressRegion .icon {
   float: left;
-  background: url("app/assets/ui/img/profile1.png") no-repeat;
+  background: url("app/assets/ui/img/user-gray.png") no-repeat;
   height: 32px;
   width: 32px;
   margin-right: 10px;
@@ -1304,10 +1304,10 @@ input:focus {
   display: inline-block;
   height: 17px;
   width: 17px;
-  background: url("app/assets/ui/img/actions1.png") 0 0 no-repeat;
+  background: url("app/assets/ui/img/actions.png") 0 0 no-repeat;
 }
 .mb .actions-wrapper .btnSettings .button:hover .settingsIcon {
-  background: url("app/assets/ui/img/actions1.png") -34px 0 no-repeat;
+  background: url("app/assets/ui/img/actions.png") -34px 0 no-repeat;
 }
 .mb .main-region {
   position: absolute;
