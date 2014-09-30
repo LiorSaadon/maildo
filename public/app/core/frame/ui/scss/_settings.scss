@@ -22,20 +22,20 @@
       float:left;
       padding-top:0;
       margin-right:10px;
+      width: 90px;
+      height: 90px;
 
       &:hover{
         border:1px solid $_boClr15;
         cursor:pointer;
       }
 
-      .title {
-        text-decoration: underline;
-        width:100%;
-        text-align: center;
+      &.dustTheme{
+        background-color: $dustClr;
       }
 
-      .icon{
-        border:1px solid $_boClr14;
+      &.darkTheme{
+        background-color: $darkClr;
       }
     }
 

@@ -663,7 +663,7 @@ input:focus {
   background: url("app/assets/ui/img/actions.png") -34px -17px no-repeat;
 }
 .mb .pager .pagerButtons .btnNewer.disable .icoNewer {
-  background: url("app/assets/ui/img/.png") -17px -17px no-repeat;
+  background: url("app/assets/ui/img/actions.png") -17px -17px no-repeat;
 }
 .mb .pager .pagerButtons .btnOlder .icoOlder {
   display: inline-block;
@@ -675,7 +675,7 @@ input:focus {
   background: url("app/assets/ui/img//actions.png") -34px -34px no-repeat;
 }
 .mb .pager .pagerButtons .btnOlder.disable .icoOlder {
-  background: url("app/assets/ui/img/actions1.png") -17px -34px no-repeat;
+  background: url("app/assets/ui/img/actions.png") -17px -34px no-repeat;
 }
 .mb .pager .pagerInfo {
   float: right;
@@ -1423,18 +1423,18 @@ input:focus {
   float: left;
   padding-top: 0;
   margin-right: 10px;
+  width: 90px;
+  height: 90px;
 }
 .mb .settingsView .themeBox:hover {
   border: 1px solid #282a2c;
   cursor: pointer;
 }
-.mb .settingsView .themeBox .title {
-  text-decoration: underline;
-  width: 100%;
-  text-align: center;
+.mb .settingsView .themeBox.dustTheme {
+  background-color: #55688a;
 }
-.mb .settingsView .themeBox .icon {
-  border: 1px solid #cccccc;
+.mb .settingsView .themeBox.darkTheme {
+  background-color: #383838;
 }
 .mb .settingsView .close {
   position: absolute;
