@@ -1,6 +1,6 @@
 define({
     "frame":{
-        "techbar.slogan": "The Art of MVC in practice!",
+        "techbar.slogan": "The Art of large-scale MVC in practice!",
         "techbar.about": "About",
         "techbar.tutorial": "Tutorial",
         "techbar.resources": "Resources",

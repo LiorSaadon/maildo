@@ -25,7 +25,6 @@ define({
         "tmpl": "lib/require/tmpl",
         "templateCache": "lib/require/templateCache",
 
-        "assets-enums": "app/assets/enums",
         "assets-ui-components":"app/assets/ui/components",
         "assets-base-collections": "app/assets/js/base-collections",
         "assets-base-models": "app/assets/js/base-models",
@@ -35,7 +34,7 @@ define({
         "assets-plugins": "app/assets/js/plugins",
         "assets-extensions": "app/assets/js/lib-extensions",
         "assets-i18n": "app/assets/js/resolvers/i18n",
-        "assets-static-data":"app/assets/data",
+        "assets-data":"app/assets/data",
 
         "mail-module": "app/modules/mail/mail",
         "tasks-module": "app/modules/tasks/tasks",

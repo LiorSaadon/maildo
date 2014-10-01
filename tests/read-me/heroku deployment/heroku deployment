@@ -6,7 +6,6 @@ git add .
 git commit -m "init"
 heroku login
 heroku create
-heroku addons:add mongolab
 git push heroku master
 heroku open
 

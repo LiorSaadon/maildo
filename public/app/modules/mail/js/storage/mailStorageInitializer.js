@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var mailsList = require('json!mail-data/mails.json');
-    var contactsList = require('json!assets-static-data/contacts.json');
+    var contactsList = require('json!assets-data/contacts.json');
 
     var mailStorageInitializer = {};
 

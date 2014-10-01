@@ -1127,9 +1127,9 @@ input:focus {
   display: none;
 }
 .mb .tasks-list ul li .delete-wrapper .delete-icon {
-  width: 10px;
-  height: 12px;
-  background: url("app/assets/ui/img/delete.png") no-repeat center;
+  width: 12px;
+  height: 14px;
+  background: url("app/assets/ui/img/tblIcons.png") -81px 0px no-repeat;
 }
 .mb .tasks-list ul li:hover {
   background-color: #f4f4f4;

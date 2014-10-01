@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var _s = require("underscore.string");
-    var eModules = require('json!assets-enums/eModules.json');
+    var eModules = require('json!assets-data/eModules.json');
 
     var MailRouterController = {};
 
