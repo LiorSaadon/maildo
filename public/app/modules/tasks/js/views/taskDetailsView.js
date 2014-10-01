@@ -25,7 +25,7 @@ define(function (require) {
 
             onRender:function(){
 
-                var title = this.model.isNew() ? app.translator.translate("tasks:task.new.caption") : this.model.get("title");
+                var title = this.model.isNew() ? app.translator.translate("tasks:new.task") : this.model.get("title");
 
                 this.ui.title.val(title);
                 this.ui.content.html(this.model.get("content"));
