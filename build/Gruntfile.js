@@ -49,28 +49,27 @@ module.exports = function(grunt) {
             options:{
                 force:true
             },
-            output:[
-                '../public/target/app/assets/css/ie.css',
-                '../public/target/app/assets/css/print.css',
-                '../public/target/app/assets/css/screen.css',
+            target:[
                 '../public/target/app/assets/js',
                 '../public/target/app/assets/data',
-                '../public/target/app/assets/scss',
+                '../public/target/app/assets/ui/scss',
                 '../public/target/app/assets/ui/components',
-                '../public/target/app/frame',
+                '../public/target/app/core',
                 '../public/target/app/modules',
                 '../public/target/build',
-                '../public/target/target',
                 '../public/target/lib/compass',
                 '../public/target/debug',
                 '../public/target/*.txt'
+            ],
+            ci:[
+                '../../mailbone-prod/public'
             ]
         },
 
         //-------------------------------------------------------
 
         replace:{
-            dist:{
+            version:{
                 options:{
                     variables:{
                         version: (new Date()).getTime().toString()
@@ -78,7 +77,7 @@ module.exports = function(grunt) {
                 },
                 files:[
                     { src:['../public/target/index.html'], dest:'../public/target/index.html' },
-                    { src:['../public/app/setup/init.js'], dest:'../public/app/setup/init.js' }
+                    { src:['../public/target/app/setup/init.js'], dest:'../public/target/app/setup/init.js' }
                 ]
             }
         },
@@ -86,7 +85,7 @@ module.exports = function(grunt) {
         //-------------------------------------------------------
 
         copy: {
-            targetFiles: {
+            target2ci: {
                 files: [
                     {expand: true, cwd: '../public/target/', src: ['**'],dest: '../../mailbone-prod/public'}
                 ]
@@ -113,7 +112,9 @@ module.exports = function(grunt) {
         'compass',
         'jshint',
         'requirejs',
-        'clean:output',
-        'copy:targetFiles'
+        'clean:target',
+        'replace:version',
+        'clean:ci',
+        'copy:target2ci'
     ]);
 };
