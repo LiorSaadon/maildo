@@ -9,8 +9,8 @@ module.exports = function(grunt) {
         compass:{
             dist:{
                 options:{
-                    basePath:'../public/lib/compass',
-                    config:'../public/lib/compass/config.rb',
+                    basePath:'../public/app/assets/compass',
+                    config:'../public/app/assets//compass/config.rb',
                     environment:'production'
                 }
             }
@@ -53,6 +53,7 @@ module.exports = function(grunt) {
                 '../public/target/app/assets/js',
                 '../public/target/app/assets/data',
                 '../public/target/app/assets/ui/scss',
+                '../public/target/app/assets/compass',
                 '../public/target/app/assets/ui/components',
                 '../public/target/app/core',
                 '../public/target/app/modules',
