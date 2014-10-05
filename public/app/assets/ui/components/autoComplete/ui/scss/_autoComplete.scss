@@ -65,13 +65,13 @@
             margin-right:10px;
 
             &.search{
-              background: url('app/assets/ui/img/qicons.png')  0 -97px no-repeat;
+              background: image-url('qicons.png')  0 -97px no-repeat;
             }
             &.contact{
-              background: url('app/assets/ui/img/qicons.png') 0 2px no-repeat;
+              background: image-url('qicons.png') 0 2px no-repeat;
             }
             &.recent{
-              background: url('app/assets/ui/img/qicons.png') 0 -130px no-repeat;
+              background: image-url('qicons.png') 0 -130px no-repeat;
             }
           }
           div.contentWrapper{

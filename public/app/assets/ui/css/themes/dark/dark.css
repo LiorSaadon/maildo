@@ -434,13 +434,13 @@ input:focus {
   margin-right: 10px;
 }
 .mb .autoComplete .menu.default-list li div.icon.search {
-  background: url("app/assets/ui/img/qicons.png") 0 -97px no-repeat;
+  background: url('../app/assets/ui/img/qicons.png?1410103001') 0 -97px no-repeat;
 }
 .mb .autoComplete .menu.default-list li div.icon.contact {
-  background: url("app/assets/ui/img/qicons.png") 0 2px no-repeat;
+  background: url('../app/assets/ui/img/qicons.png?1410103001') 0 2px no-repeat;
 }
 .mb .autoComplete .menu.default-list li div.icon.recent {
-  background: url("app/assets/ui/img/qicons.png") 0 -130px no-repeat;
+  background: url('../app/assets/ui/img/qicons.png?1410103001') 0 -130px no-repeat;
 }
 .mb .autoComplete .menu.default-list li div.contentWrapper {
   paddign-rigth: 10px;
@@ -495,7 +495,7 @@ input:focus {
   height: 12px;
   z-index: 2;
   cursor: pointer;
-  background: url("app/assets/ui/img/closeButtons.png") -10px 0px no-repeat;
+  background: url('../app/assets/ui/img/closeButtons.png?1412081184') -10px 0px no-repeat;
 }
 
 .mb .search-placeholder {
@@ -606,7 +606,7 @@ input:focus {
   border-bottom: 1px dashed red;
 }
 .mb .tags-container .tag .close-button {
-  background: url("app/assets/ui/img/closeButtons.png") 3px 0px no-repeat;
+  background: url('../app/assets/ui/img/closeButtons.png?1412081184') 3px 0px no-repeat;
   content: "";
   position: absolute;
   right: 0px;
@@ -660,10 +660,10 @@ input:focus {
   background: url("app/assets/ui/img/actions.png") 0 -17px no-repeat;
 }
 .mb .pager .pagerButtons .btnNewer:hover .icoNewer {
-  background: url("app/assets/ui/img/actions.png") -34px -17px no-repeat;
+  background: url('../app/assets/ui/img/actions.png?1411312368') -34px -17px no-repeat;
 }
 .mb .pager .pagerButtons .btnNewer.disable .icoNewer {
-  background: url("app/assets/ui/img/actions.png") -17px -17px no-repeat;
+  background: url('../app/assets/ui/img/actions.png?1411312368') -17px -17px no-repeat;
 }
 .mb .pager .pagerButtons .btnOlder .icoOlder {
   display: inline-block;
@@ -672,10 +672,10 @@ input:focus {
   background: url("app/assets/ui/img/actions.png") 0 -34px no-repeat;
 }
 .mb .pager .pagerButtons .btnOlder:hover .icoOlder {
-  background: url("app/assets/ui/img//actions.png") -34px -34px no-repeat;
+  background: url('../app/assets/ui/img/actions.png?1411312368') -34px -34px no-repeat;
 }
 .mb .pager .pagerButtons .btnOlder.disable .icoOlder {
-  background: url("app/assets/ui/img/actions.png") -17px -34px no-repeat;
+  background: url('../app/assets/ui/img/actions.png?1411312368') -17px -34px no-repeat;
 }
 .mb .pager .pagerInfo {
   float: right;
@@ -786,7 +786,7 @@ input:focus {
   right: 12px;
   width: 12px;
   height: 12px;
-  background: url("app/assets/ui/img/closeButtons.png") -10px 0px no-repeat;
+  background: url('../app/assets/ui/img/closeButtons.png?1412081184') -10px 0px no-repeat;
   cursor: pointer;
 }
 
@@ -853,20 +853,20 @@ input:focus {
 .mb .mail-table-contanier .mail-table .importance-icon {
   width: 19px;
   height: 19px;
-  background: url("app/assets/ui/img/tblIcons.png") -56px 2px no-repeat;
+  background: url('../app/assets/ui/img/tblIcons.png?1412079354') -56px 2px no-repeat;
 }
 .mb .mail-table-contanier .mail-table .importance-icon.disable {
-  background: url("app/assets/ui/img/tblIcons.png") 0 2px no-repeat;
+  background: url('../app/assets/ui/img/tblIcons.png?1412079354') 0 2px no-repeat;
 }
 .mb .mail-table-contanier .mail-table .star-icon {
   width: 19px;
   height: 19px;
-  background: url("app/assets/ui/img/tblIcons.png") -40px 2px no-repeat;
+  background: url('../app/assets/ui/img/tblIcons.png?1412079354') -40px 2px no-repeat;
   display: block;
   float: left;
 }
 .mb .mail-table-contanier .mail-table .star-icon.disable {
-  background: url("app/assets/ui/img/tblIcons.png") -20px 2px no-repeat;
+  background: url('../app/assets/ui/img/tblIcons.png?1412079354') -20px 2px no-repeat;
 }
 .mb .mail-table-contanier .mail-table .trash-icon-wrapper {
   display: inline-block;
@@ -876,7 +876,7 @@ input:focus {
 .mb .mail-table-contanier .mail-table .trash-icon {
   width: 19px;
   height: 19px;
-  background: url("app/assets/ui/img/tblIcons.png") -75px 0px no-repeat;
+  background: url('../app/assets/ui/img/tblIcons.png?1412079354') -75px 0px no-repeat;
   display: inline-block;
   float: left;
 }
@@ -926,7 +926,7 @@ input:focus {
   height: 100%;
   width: 100%;
   text-align: center;
-  background: url("app/assets/ui/img/envelop.png") no-repeat center;
+  background: url('../app/assets/ui/img/envelop.png?1410103001') no-repeat center;
   background-color: #fcfcfc;
 }
 .mb .emptyMail .counter {
@@ -981,7 +981,7 @@ input:focus {
 }
 .mb .previewMail .addressRegion .icon {
   float: left;
-  background: url("app/assets/ui/img/user-gray.png") no-repeat;
+  background: url('../app/assets/ui/img/user-gray.png?1410103001') no-repeat;
   height: 32px;
   width: 32px;
   margin-right: 10px;
@@ -1129,7 +1129,7 @@ input:focus {
 .mb .tasks-list ul li .delete-wrapper .delete-icon {
   width: 12px;
   height: 14px;
-  background: url("app/assets/ui/img/tblIcons.png") -81px 0px no-repeat;
+  background: url('../app/assets/ui/img/tblIcons.png?1412079354') -81px 0px no-repeat;
 }
 .mb .tasks-list ul li:hover {
   background-color: #f4f4f4;
@@ -1233,9 +1233,9 @@ input:focus {
   left: 0;
 }
 .mb .header-wrapper .logo {
-  width: 145px;
+  width: 146px;
   height: 40px;
-  background-image: url("app/assets/ui/img/logo.png");
+  background-image: url('../app/assets/ui/img/logo.png?1410103001');
   position: absolute;
   top: 10px;
   left: 25px;
@@ -1246,7 +1246,7 @@ input:focus {
   margin-top: 20px;
   width: 40px;
   height: 35px;
-  background-image: url("app/assets/ui/img/product_demos.jpg");
+  background-image: url('../app/assets/ui/img/product_demos.jpg?1410103001');
 }
 .mb .header-wrapper .search-region {
   width: 550px;
@@ -1308,7 +1308,7 @@ input:focus {
   background: url("app/assets/ui/img/actions.png") 0 0 no-repeat;
 }
 .mb .actions-wrapper .btnSettings .button:hover .settingsIcon {
-  background: url("app/assets/ui/img/actions.png") -34px 0 no-repeat;
+  background: url('../app/assets/ui/img/actions.png?1411312368') -34px 0 no-repeat;
 }
 .mb .main-region {
   position: absolute;

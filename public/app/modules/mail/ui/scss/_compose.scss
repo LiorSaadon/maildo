@@ -81,7 +81,7 @@
       @include abs-pos(12px, 12px, 'NaN', 'NaN');
       width: 12px;
       height: 12px;
-      background: url('app/assets/ui/img/closeButtons.png') -10px 0px  no-repeat;
+      background: image-url('closeButtons.png') -10px 0px  no-repeat;
       cursor: pointer;
     }
   }
