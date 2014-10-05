@@ -1,0 +1,12 @@
+<div class="special">
+  <div class="inner-container">
+     <div class="title">What What is MVC Programming?</div>
+     <p style="margin:1em 0;padding:0;color:#606060;font-family:Helvetica;font-size:15px;line-height:150%;text-align:left">The average customer doesn't care about software quality or craftsmanship or anything like that (unless they are, themselves, a developer interested in the code / API - I'm assuming they are not, at this point). They want to know that the software provides a solution that meets their needs and does so in a timely and cost effective manner.&nbsp;</p>
+     <br/>
+     <p style="margin:1em 0;padding:0;color:#606060;font-family:Helvetica;font-size:15px;line-height:150%;text-align:left">The average customer doesn't care about software quality or craftsmanship or anything like that (unless they are, themselves, a developer interested in the code / API - I'm assuming they are not, at this point). They want to know that the software provides a solution that meets their needs and does so in a timely and cost effective manner.&nbsp;</p>
+     <br/>
+     <p style="margin:1em 0;padding:0;color:#606060;font-family:Helvetica;font-size:15px;line-height:150%;text-align:left">The average customer doesn't care about software quality or craftsmanship or anything like that (unless they are, themselves, a developer interested in the code / API - I'm assuming they are not, at this point). They want to know that the software provides a solution that meets their needs and does so in a timely and cost effective manner.&nbsp;</p>
+     <br/>
+     <p style="margin:1em 0;padding:0;color:#606060;font-family:Helvetica;font-size:15px;line-height:150%;text-align:left">The average customer doesn't care about software quality or craftsmanship or anything like that (unless they are, themselves, a developer interested in the code / API - I'm assuming they are not, at this point). They want to know that the software provides a solution that meets their needs and does so in a timely and cost effective manner.&nbsp;</p>
+  </div>
+</div>

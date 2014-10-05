@@ -18,7 +18,7 @@
         "mbApp": "app/setup/app",
         "tpl": "lib/require/require.tpl",
         "css": "lib/require/require.css",
-        "onDemandLoader": "app/assets/js/lib-extensions/requirejs/require.loadOnDemand",
+        "onDemandLoader": "lib/require/require.loadOnDemand",
         "tmpl": "lib/require/tmpl",
         "templateCache": "lib/require/templateCache",
 

@@ -88,7 +88,8 @@ module.exports = function(grunt) {
         copy: {
             target2ci: {
                 files: [
-                    {expand: true, cwd: '../public/target/', src: ['**'],dest: '../../mailbone-prod/public'}
+                    {expand: true, cwd: '../public/target/', src: ['**'],dest: '../../mailbone-prod/public'},
+                    {expand: true, cwd: '../public/app/assets/data', src: ['*txt'],dest: '../../mailbone-prod/public/app/assets/data'}
                 ]
             }
         }
