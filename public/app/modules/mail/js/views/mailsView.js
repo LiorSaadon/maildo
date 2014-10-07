@@ -32,11 +32,13 @@ define(function (require) {
                 if(options.callerName !== 'itemView'){
                     this.children.each(function(view){
                         view.setSelection();
+                        //var notClicked = this.collection.getSelection() > 0 && view !== this.clickedItem)
+                        //view.markAsClicked(!notClicked)
                     });
                 }
             },
 
-            //--------------------------------------------------
+            //-------------------------------------------------------
 
             _handleChildClick:function(_itemView){
 

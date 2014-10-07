@@ -850,6 +850,12 @@ input:focus {
 .mb .mail-table-contanier {
   background-color: white;
 }
+.mb .mail-table-contanier .mail-table tr.selected {
+  background-color: #f5f5fd;
+}
+.mb .mail-table-contanier .mail-table tr.clickedRow {
+  background-color: #f5f5fd;
+}
 .mb .mail-table-contanier .mail-table .importance-icon {
   width: 19px;
   height: 19px;
@@ -927,7 +933,7 @@ input:focus {
   width: 100%;
   text-align: center;
   background: url('../app/assets/ui/img/envelop.png?1410103001') no-repeat center;
-  background-color: #fcfcfc;
+  background-color: #f5f5fd;
 }
 .mb .emptyMail .counter {
   display: table-cell;

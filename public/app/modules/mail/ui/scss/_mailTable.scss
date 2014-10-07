@@ -3,6 +3,17 @@
     background-color: $_bgClr4;
 
     .mail-table{
+
+      tr {
+
+        &.selected{
+          background-color: $_bgClr17;
+        }
+
+        &.clickedRow{
+          background-color: $_bgClr17;
+        }
+      }
       .importance-icon{
         width: 19px;
         height: 19px;
