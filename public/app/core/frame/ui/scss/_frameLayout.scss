@@ -100,7 +100,7 @@
         @include abs-pos(21px, 10px, 'NaN', 'NaN');
 
         .button .settingsIcon {
-          @include set-icon(17px, 17px, 'app/assets/ui/img/actions.png', 0, 0);
+          @include set-icon(17px, 17px, 'actions.png', 0, 0);
         }
         .button:hover .settingsIcon {
           background: image-url('actions.png') -34px 0 no-repeat;

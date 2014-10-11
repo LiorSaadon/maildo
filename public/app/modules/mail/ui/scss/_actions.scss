@@ -38,7 +38,7 @@
 
       .btnNewer {
         .icoNewer {
-          @include set-icon(17px, 17px, 'app/assets/ui/img/actions.png', 0, -17px);
+          @include set-icon(17px, 17px, 'actions.png', 0, -17px);
         }
         &:hover {
           .icoNewer {
@@ -53,7 +53,7 @@
       }
       .btnOlder {
         .icoOlder {
-          @include set-icon(17px, 17px, 'app/assets/ui/img/actions.png', 0, -34px);
+          @include set-icon(17px, 17px, 'actions.png', 0, -34px);
         }
         &:hover {
           .icoOlder {

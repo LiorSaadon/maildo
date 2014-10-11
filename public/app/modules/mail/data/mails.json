@@ -2,6 +2,82 @@
 
     {
         "from": "demo@mailbone.com",
+        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
+        "cc": "williams@mailbone.com",
+        "bcc": "",
+        "subject": "Things You Can Do With JavaScript",
+        "sentTime": "2014-04-12 15:06:51",
+        "body": "later",
+        "relatedBody":"mail1",
+        "labels": {
+            "read": true,
+            "starred": true,
+            "important": true
+        },
+        "groups": {
+            "sent": true
+        },
+        "id": "_906"
+    },
+    {
+        "from": "demo@mailbone.com",
+        "to": "anna.james@mailbone.com;julia.ward@mailbone.com;",
+        "cc": "",
+        "bcc": "",
+        "subject": "Things You Can Do With JavaScript",
+        "sentTime": "2014-04-12 18:06:51",
+        "body": "later",
+        "relatedBody":"mail2",
+        "labels": {
+            "read": true,
+            "starred": true,
+            "important": true
+        },
+        "groups": {
+            "sent": true
+        },
+        "id": "_905"
+    },
+    {
+        "from": "demo@mailbone.com",
+        "to": "anna.james@mailbone.com;",
+        "cc": "",
+        "bcc": "",
+        "subject": "Things You Can Do With JavaScript",
+        "sentTime": "2014-04-12 17:06:51",
+        "body": "later",
+        "relatedBody":"mail1",
+        "labels": {
+            "read": true,
+            "starred": true,
+            "important": true
+        },
+        "groups": {
+            "sent": true
+        },
+        "id": "_904"
+    },
+    {
+        "from": "demo@mailbone.com",
+        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
+        "cc": "williams@mailbone.com",
+        "bcc": "",
+        "subject": "Things You Can Do With JavaScript",
+        "sentTime": "2014-04-12 15:06:51",
+        "body": "later",
+        "relatedBody":"mail1",
+        "labels": {
+            "read": true,
+            "starred": true,
+            "important": true
+        },
+        "groups": {
+            "sent": true
+        },
+        "id": "_903"
+    },
+    {
+        "from": "demo@mailbone.com",
         "to": "anna.james@mailbone.com;julia.ward@mailbone.com;",
         "cc": "",
         "bcc": "",
@@ -119,81 +195,6 @@
 
 
     {
-        "from": "alan.rogers@mailbone.com",
-        "to": "demo@mailbone.com;",
-        "cc": "patricia.white@mailbone.com;williams@mailbone.com;",
-        "bcc": "",
-        "subject": "Things You Can Do With JavaScript1",
-        "sentTime": "2014-04-09 15:06:51",
-        "body": "later",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
-        "groups": {
-            "inbox": true
-        },
-        "id": "_707"
-    },
-    {
-        "from": "alan.rogers@mailbone.com",
-        "to": "demo@mailbone.com;",
-        "cc": "patricia.white@mailbone.com;williams@mailbone.com;",
-        "bcc": "",
-        "subject": "Things You Can Do With JavaScript",
-        "sentTime": "2014-04-09 15:06:51",
-        "body": "later",
-        "relatedBody":"mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
-        "groups": {
-            "inbox": true
-        },
-        "id": "_706"
-    },
-    {
-        "from": "margaret.hughes@mailbone.com",
-        "to": "demo@mailbone.com;",
-        "cc": "alan.rogers@mailbone.com;",
-        "bcc": "",
-        "subject": "What is mvc programming?",
-        "sentTime": "2014-04-09 12:06:51",
-        "body": "later",
-        "relatedBody":"mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
-        "groups": {
-            "inbox": true
-        },
-        "id": "_705"
-    },
-    {
-        "from": "billy.young@mailbone.com",
-        "to": "demo@mailbone.com;",
-        "cc": "",
-        "bcc": "",
-        "subject": "An Intro to Backbone.js",
-        "sentTime": "2014-04-08 17:08:51",
-        "body": "later",
-        "relatedBody":"mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
-        "groups": {
-            "inbox": true
-        },
-        "id": "_704"
-    },
-    {
         "from": "billy.young@mailbone.com",
         "to": "demo@mailbone.com;",
         "cc": "margaret.hughes@mailbone.com;",
@@ -269,4 +270,5 @@
         },
         "id": "_700"
     }
+
 ]

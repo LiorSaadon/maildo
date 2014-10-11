@@ -6,7 +6,7 @@ define(function (require) {
 
     var FilteredCollection = BaseCollection.extend({
 
-        PAGE_SIZE: 5,
+        PAGE_SIZE: 10,
 
         initialize:function(options){
 

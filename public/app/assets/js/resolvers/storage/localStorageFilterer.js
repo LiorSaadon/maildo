@@ -5,7 +5,7 @@ define(function (require) {
 
     var LocalStorageFilterer = function (_orderBy) {
 
-        var pageSize = 5;
+        var pageSize = 10;
 
         //--------------------------------------------------------
         // filter

@@ -1,5 +1,6 @@
 .mb{
   .mail-items-region{
+    overflow:auto;
     border-bottom: 1px solid $_boClr1;
     height: 45%;
     width: 100%;
@@ -10,7 +11,7 @@
   .mail-preview-region{
     background-color: $_bgClr4;
     overflow: auto;
-    height: 55%;
+    height: 54%;
     width: 100%;
     top: 45%;
     position: absolute;

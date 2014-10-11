@@ -58,12 +58,12 @@ module.exports = function(grunt) {
                 '../public/target/app/core',
                 '../public/target/app/modules',
                 '../public/target/build',
-                '../public/target/lib/compass',
+                '../public/target/vendor/compass',
                 '../public/target/debug',
                 '../public/target/*.txt'
             ],
             ci:[
-                '../../mailbone-prod/public'
+                '../../mailbone-ci/public'
             ]
         },
 
@@ -88,8 +88,8 @@ module.exports = function(grunt) {
         copy: {
             target2ci: {
                 files: [
-                    {expand: true, cwd: '../public/target/', src: ['**'],dest: '../../mailbone-prod/public'},
-                    {expand: true, cwd: '../public/app/assets/data', src: ['*txt'],dest: '../../mailbone-prod/public/app/assets/data'}
+                    {expand: true, cwd: '../public/target/', src: ['**'],dest: '../../mailbone-ci/public'},
+                    {expand: true, cwd: '../public/app/assets/data', src: ['*txt'],dest: '../../mailbone-ci/public/app/assets/data'}
                 ]
             }
         }
