@@ -16,7 +16,7 @@ define(function (require) {
                 subject:".subject",
                 to:".to",
                 from:".from",
-                body: ".body"
+                body:".body"
             },
 
             initialize: function () {

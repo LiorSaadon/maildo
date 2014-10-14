@@ -10,7 +10,7 @@ module.exports = function(grunt) {
             dist:{
                 options:{
                     basePath:'../public/app/assets/compass',
-                    config:'../public/app/assets//compass/config.rb',
+                    config:'../public/app/assets//config/config.rb',
                     environment:'production'
                 }
             }

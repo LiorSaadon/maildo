@@ -18,6 +18,8 @@ define({
         "text": "vendor/require/require.text",
         "json": "vendor/require/require.json",
         "mustache": "vendor/mustache/mustache",
+        "sinon":"vendor/sinon",
+        "squire":"vendor/squire",
         "mbApp": "app/setup/app",
         "tpl": "vendor/require/require.tpl",
         "css": "vendor/require/require.css",

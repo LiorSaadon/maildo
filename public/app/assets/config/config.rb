@@ -13,8 +13,7 @@ images_dir = "../ui/img"
 # relative_assets = true
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
- line_comments = false
-
+line_comments = false
 
 http_images_path = "../app/assets/ui/img"
 

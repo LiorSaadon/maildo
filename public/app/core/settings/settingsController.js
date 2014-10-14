@@ -32,8 +32,8 @@ define(function (require) {
 
             require(["text!app/assets/ui/css/themes/" + theme + "/" + theme +".css"], _.bind(function (themeObj) {
 
-                $("mss").remove();
-                $(['<style type="text/css" id="mss">', themeObj, '</style>'].join('')).appendTo('head');
+                $("theme-css").remove();
+                $(['<style type="text/css" id="theme-css">', themeObj, '</style>'].join('')).appendTo('head');
 
                 this.raiseTrigger("theme");
             },this));
