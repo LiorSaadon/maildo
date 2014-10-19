@@ -35,7 +35,9 @@ define(function (require) {
     // Start testing....
     //************************************************************************************
 
-    environment.require(["mail-controllers/mailContentLayoutController"], function (mailContentLayoutController) {
+    environment.require(["mail-controllers/mailContentLayoutController"], function (MailContentLayoutController) {
+
+        var mailContentLayoutController = new MailContentLayoutController();
 
     });
 });
