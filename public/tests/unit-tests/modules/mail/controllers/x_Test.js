@@ -1,7 +1,7 @@
 define(function (require) {
     "use strict";
 
-    require(["tests/setup/squirePlus"], function (squirePlus) {
+    require(["tests/setup/squirePlus","tests/setup//AppDependencyMocks"], function (squirePlus, AppDependencyMocks) {
 
         var squirePlus = new squirePlus();
 
@@ -27,11 +27,16 @@ define(function (require) {
             "P":"dummy"
         }};
 
+        squirePlus.mock("app",AppDependencyMocks.app);
         squirePlus.mock("mail-views/mailContentLayout", ContentLayout);
         squirePlus.mock("mail-views/mailsView", MailsView);
         squirePlus.mock("mail-views/previewView", PreviewView);
         squirePlus.mock("mail-views/composeView/composeView", ComposeView);
         squirePlus.mock("mail-views/emptyMailView", EmptyMailView);
+
+
+//        var LE = squirePlus.mock("app",environment.LEDependencyMocks.app);
+//        var LECampaigns = environment.LEDependencyMocks.module;
 
         //************************************************************************************
         // Start testing....
