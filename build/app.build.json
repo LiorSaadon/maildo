@@ -14,6 +14,7 @@
         "marionette": "vendor/backbone/backbone.marionette",
         "text": "vendor/require/require.text",
         "json": "vendor/require/require.json",
+        "coverage": "vendor/require/require.coverage",
         "mustache": "vendor/mustache/mustache",
         "mbApp": "app/setup/app",
         "tpl": "vendor/require/require.tpl",

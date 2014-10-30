@@ -17,9 +17,10 @@ define({
         "marionette": "vendor/backbone/backbone.marionette",
         "text": "vendor/require/require.text",
         "json": "vendor/require/require.json",
+        "coverage": "vendor/require/require.coverage",
         "mustache": "vendor/mustache/mustache",
         "sinon":"vendor/sinon",
-        "squire":"vendor/squire",
+        "squire":"vendor/squire/squire",
         "mbApp": "app/setup/app",
         "tpl": "vendor/require/require.tpl",
         "css": "vendor/require/require.css",
@@ -71,7 +72,9 @@ define({
         "tasks-templates":"app/modules/tasks/ui/templates",
         "tasks-controllers":"app/modules/tasks/js/controllers",
         "tasks-routers":"app/modules/tasks/js/routers",
-        "tasks-storage":"app/modules/tasks/js/storage"
+        "tasks-storage":"app/modules/tasks/js/storage",
+
+        "test-pp":"../../tests"
     },
     "shim": {
     },
