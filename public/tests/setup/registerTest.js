@@ -1,6 +1,6 @@
 define({
-    'x_Test':
+    'mail_Test':
     {
-        'path': "../tests/unit-tests/modules/mail/controllers/x_Test"
+        'path': "../tests/unit-tests/modules/mail/controllers/mail_Test"
     }
 });

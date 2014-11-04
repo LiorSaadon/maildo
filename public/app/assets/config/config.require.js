@@ -28,6 +28,10 @@ define({
         "tmpl": "vendor/require/tmpl",
         "templateCache": "vendor/require/templateCache",
 
+        "mocha": "vendor/mocha/mocha",
+        "chai"          : "vendor/chai/cjai",
+        'chai-jquery'   : 'vendor/chai/chai-jquery',
+
         "assets-ui-components":"app/assets/ui/components",
         "assets-base-collections": "app/assets/js/base-collections",
         "assets-base-models": "app/assets/js/base-models",
@@ -77,6 +81,7 @@ define({
         "test-pp":"../../tests"
     },
     "shim": {
+        'chai-jquery': ['jquery', 'chai']
     },
     tpl: {
         "templateExtension": ""

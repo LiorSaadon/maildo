@@ -5,9 +5,11 @@ require(["app/assets/config/config.require"], function (baseConfig) {
 
     require(["tests/setup/registerTest", "tests/setup/testUtils"], function (registerTest, testUtils) {
 
+        mocha.setup('bdd');
+
         var testName = testUtils.getTestName();
 
-        require([registerTest[testName].path], function (Test) {
+        require([registerTest[testName].path], function () {
 
         });
     });
