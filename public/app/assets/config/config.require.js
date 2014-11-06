@@ -19,7 +19,7 @@ define({
         "json": "vendor/require/require.json",
         "coverage": "vendor/require/require.coverage",
         "mustache": "vendor/mustache/mustache",
-        "sinon":"vendor/sinon",
+        "sinon":"vendor/sinon/sinon",
         "squire":"vendor/squire/squire",
         "mbApp": "app/setup/app",
         "tpl": "vendor/require/require.tpl",

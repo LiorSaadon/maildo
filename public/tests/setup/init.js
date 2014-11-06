@@ -5,11 +5,16 @@ require(["app/assets/config/config.require"], function (baseConfig) {
 
     require(["tests/setup/registerTest", "tests/setup/testUtils"], function (registerTest, testUtils) {
 
-        mocha.setup('bdd');
+        chai.should();
+
+        window.assert = chai.assert;
+
+        mocha.setup("bdd");
 
         var testName = testUtils.getTestName();
 
         require([registerTest[testName].path], function () {
+
 
         });
     });
