@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', "squire", "tests/setup/testUtils"], function ($, _, Squire, testUtils) {
+define(['jquery', 'underscore', "squire"], function ($, _, Squire) {
     "use strict";
 
     var SquirePlus = (function (options) {
