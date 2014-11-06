@@ -27,6 +27,27 @@ module.exports = function(grunt) {
 
         //-------------------------------------------------------
 
+        connect: {
+            server: {
+                options: {
+                    port: 8888,
+                    base: '.'
+                }
+            }
+        },
+
+        //-------------------------------------------------------
+
+        mocha: {
+            test: {
+                options: {
+                    urls: [ 'http://localhost:8888/example/test/test2.html' ]
+                }
+            }
+        },
+
+        //-------------------------------------------------------
+
         requirejs: {
             compile: {
                 options: grunt.file.readJSON('app.build.json')
@@ -102,6 +123,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-replace');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-mocha');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
 
     grunt.registerTask("quick", [
@@ -111,6 +134,8 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
         'compass',
         'jshint',
+//        'connect',
+//        'mocha',
         'requirejs',
         'clean:target',
         'replace:version',
