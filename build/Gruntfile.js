@@ -10,7 +10,7 @@ module.exports = function(grunt) {
             dist:{
                 options:{
                     basePath:'../public/app/assets/compass',
-                    config:'../public/app/assets//config/config.rb',
+                    config:'../public/app/assets/compass/config.rb',
                     environment:'production'
                 }
             }
@@ -95,8 +95,6 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-exec');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');

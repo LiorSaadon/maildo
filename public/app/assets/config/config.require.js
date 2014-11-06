@@ -81,7 +81,6 @@ define({
         "test-pp":"../../tests"
     },
     "shim": {
-        'chai-jquery': ['jquery', 'chai']
     },
     tpl: {
         "templateExtension": ""

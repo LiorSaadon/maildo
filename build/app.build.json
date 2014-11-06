@@ -16,12 +16,18 @@
         "json": "vendor/require/require.json",
         "coverage": "vendor/require/require.coverage",
         "mustache": "vendor/mustache/mustache",
+        "sinon":"vendor/sinon/sinon",
+        "squire":"vendor/squire/squire",
         "mbApp": "app/setup/app",
         "tpl": "vendor/require/require.tpl",
         "css": "vendor/require/require.css",
         "onDemandLoader": "vendor/require/require.loadOnDemand",
         "tmpl": "vendor/require/tmpl",
         "templateCache": "vendor/require/templateCache",
+
+        "mocha": "vendor/mocha/mocha",
+        "chai" : "vendor/chai/cjai",
+
 
         "assets-ui-components":"app/assets/ui/components",
         "assets-base-collections": "app/assets/js/base-collections",
@@ -67,7 +73,9 @@
         "tasks-templates":"app/modules/tasks/ui/templates",
         "tasks-controllers":"app/modules/tasks/js/controllers",
         "tasks-routers":"app/modules/tasks/js/routers",
-        "tasks-storage":"app/modules/tasks/js/storage"
+        "tasks-storage":"app/modules/tasks/js/storage",
+
+        "test-pp":"../../tests"
     },
     "shim": {
         "underscore": {
@@ -83,14 +91,6 @@
         "backbone.deepmodel": {
             "exports": "Backbone.DeepModel",
             "deps": ["backbone"]
-        },
-        "dev.mockjax": {
-            "exports": "$.mockjax",
-            "deps": ["jquery"]
-        },
-        "dev.mockjson": {
-            "exports": "$.mockjson",
-            "deps": ["jquery"]
         }
     },
     "packages": [],
