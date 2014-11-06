@@ -1,8 +1,7 @@
 define(['jquery', 'underscore', "squire", "tests/setup/testUtils"], function ($, _, Squire, testUtils) {
     "use strict";
 
-    var SquirePlus = function (options) {
-        options = options || {};
+    var SquirePlus = (function (options) {
 
         var spies = {};
         var squire = new Squire();
@@ -39,18 +38,7 @@ define(['jquery', 'underscore', "squire", "tests/setup/testUtils"], function ($,
             args[0].push("mocks");
             squire.units = args[0];
 
-            // It's important to add the coverage prefix only after setting context.units, for the dependency whitelist
-            // filter to work correctly (see reqContext.Module.prototype.fetch)
-//            if(testUtils.isCodeCoverageEnabled()) {
-//                // Load the module using the coverage plugin
-//                args[0] = _.map(args[0], function(path){
-//                    if(path === "mocks") return path;
-//                    return "coverage!" + path;
-//                });
-//            }
-
             squire.require.apply(squire, args);
-
             return this;
         };
 
@@ -58,7 +46,7 @@ define(['jquery', 'underscore', "squire", "tests/setup/testUtils"], function ($,
             mock: mock,
             require:require
         };
-    };
+    })();
 
     return SquirePlus;
 });

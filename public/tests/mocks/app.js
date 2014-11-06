@@ -5,7 +5,7 @@ define(function (require) {
     var Backbone = require("backbone");
     var Marionette = require("marionette");
 
-    var AppMock = {
+    var App = {
 
         moduleObject: {
             channel: Backbone.Wreqr.radio.channel("name")
@@ -23,5 +23,5 @@ define(function (require) {
         },
         channel: Backbone.Wreqr.radio.channel("app")
     }
-    return AppMock;
+    return App;
 });

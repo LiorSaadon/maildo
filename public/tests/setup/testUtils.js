@@ -1,8 +1,5 @@
-
-
 define(function (require) {
     "use strict";
-
 
     var TestUtils = (function () {
 
@@ -13,9 +10,13 @@ define(function (require) {
             return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         };
 
+        //----------------------------------------------------------
+
         var getTestName = function () {
             return getParameterByName("testName");
         };
+
+        //----------------------------------------------------------
 
         var isCodeCoverageEnabled = function() {
             return getParameterByName("coverage") === "true";
