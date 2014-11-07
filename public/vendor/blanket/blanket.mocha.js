@@ -24,29 +24,29 @@
     var OriginalReporter = mocha._reporter;
 
     var BlanketReporter = function(runner) {
-            runner.on('start', function() {
-                blanket.setupCoverage();
-            });
+        runner.on('start', function() {
+            blanket.setupCoverage();
+        });
 
-            runner.on('end', function() {
-                blanket.onTestsDone();
-            });
+        runner.on('end', function() {
+            blanket.onTestsDone();
+        });
 
-            runner.on('suite', function() {
-                blanket.onModuleStart();
-            });
+        runner.on('suite', function() {
+            blanket.onModuleStart();
+        });
 
-            runner.on('test', function() {
-                blanket.onTestStart();
-            });
+        runner.on('test', function() {
+            blanket.onTestStart();
+        });
 
-            runner.on('test end', function(test) {
-                blanket.onTestDone(test.parent.tests.length, test.state === 'passed');
-            });
+        runner.on('test end', function(test) {
+            blanket.onTestDone(test.parent.tests.length, test.state === 'passed');
+        });
 
-            // NOTE: this is an instance of BlanketReporter
-            new OriginalReporter(runner);
-        };
+        // NOTE: this is an instance of BlanketReporter
+        new OriginalReporter(runner);
+    };
 
     BlanketReporter.prototype = OriginalReporter.prototype;
 
@@ -56,11 +56,13 @@
         oldCallback = null;
 
     mocha.run = function (finishCallback) {
-      oldCallback = finishCallback;
-      console.log("waiting for blanket...");
+        debugger;
+        oldCallback = finishCallback;
+        console.log("waiting for blanket...");
     };
     blanket.beforeStartTestRunner({
         callback: function(){
+             debugger;
             if (!blanket.options("existingRequireJS")){
                 oldRun(oldCallback);
             }
