@@ -30,8 +30,8 @@ module.exports = function(grunt) {
         connect: {
             server: {
                 options: {
-                    port: 8888,
-                    base: '.'
+                    port:8888,
+                    base: '../public'
                 }
             }
         },
@@ -41,7 +41,10 @@ module.exports = function(grunt) {
         mocha: {
             test: {
                 options: {
-                    urls: [ 'http://localhost:8888/example/test/test2.html' ]
+                    urls: [
+                        'http://localhost:8888/tests/setup/testRunner1.html?testName=test1',
+                        'http://localhost:8888/tests/setup/testRunner1.html?testName=test2'
+                    ]
                 }
             }
         },
@@ -131,11 +134,17 @@ module.exports = function(grunt) {
         'jshint'
     ]);
 
+    grunt.registerTask("test", [
+        'jshint',
+        'connect',
+        'mocha'
+    ]);
+
     grunt.registerTask('default', [
         'compass',
         'jshint',
-//        'connect',
-//        'mocha',
+        'connect',
+        'mocha',
         'requirejs',
         'clean:target',
         'replace:version',
