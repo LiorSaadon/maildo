@@ -105,8 +105,8 @@ body { color:#444; }
 }
 
 .project-structure-box{
-    border:1px solid #CCCCCC;
-    background-color: #FDFCFF;
+    /*border:1px solid #CCCCCC;*/
+    /*background-color: #FDFCFF;*/
     width:100%;
     padding-top:10px;
     padding-bottom: 10px;
