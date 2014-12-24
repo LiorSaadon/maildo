@@ -3,11 +3,12 @@
 html { font-size:100%; }
 body { line-height:1.6; overflow-x: hidden; }
 img { max-width:100%; height:auto; }
-h1, h2, h3, h4, h5, h6 { line-height:1.5; font-weight:400; }
+h1, h2, h3, h4, h5, h6 { line-height:1.5; font-weight:500; }
 a { color: #668F23; text-decoration:none; }
 a:hover { color:#3F5F0C; }
 a:focus { outline: none; }
 h1 a { color:#333; }
+h2 {font-size:28px; color: #1B5C8C;}
 
 /* -------------------------------------------- */
 /* FONTS */
@@ -34,8 +35,17 @@ body { color:#444; }
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    /*text-align:right;*/
-    /*direction: rtl;*/
+    text-align:right;
+    direction: rtl;
+
+    /*for hebrew*/
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 1.6;
 }
 
 .site-header { padding-top:50px; padding-bottom: 50px; text-align:center; }
@@ -47,7 +57,7 @@ body { color:#444; }
 .site-sub-title{ font-size:2.1em; font-weight:400; font-family: "Coustard", Georgia, serif}
 
 .lastUpdate {
-    /*text-align:left;*/
+    text-align:left;
     padding-top:20px;
     font-size:13px;
 }
@@ -65,7 +75,7 @@ body { color:#444; }
 .main-navigation > ul > li > a:hover, .main-navigation > ul > li > a.selected { border-bottom:1px dotted #ccc; }
 
 
-.table-of-contents{padding:45px 0 30px 0;}
+.table-of-contents{padding:35px 0 0px 0;}
 .table-of-contents ul { list-style:none; padding-right:15px; margin:0; }
 .table-of-contents ul li { line-height:32px; }
 
@@ -77,9 +87,33 @@ body { color:#444; }
     margin-top:30px;
 }
 
+.notice{
+    margin-top: 30px;
+    padding: 12px;
+    padding-right:0px;
+    background-color:#FFF9D7;
+    border-top:1px solid #E2C822;
+    border-bottom:1px solid #E2C822;
+}
 
+.introduction{padding:25px 0 0px 0;}
+.libs{padding:30px 0 0px 0;}
+.libs-titles{font-family: "Comic Sans MS", cursive, sans-serif}
 
+.project-structure{
+    padding:25px 0 0px 0;
+}
 
+.project-structure-box{
+    border:1px solid #CCCCCC;
+    background-color: #FDFCFF;
+    width:100%;
+    padding-top:10px;
+    padding-bottom: 10px;
+    text-align:center;
+    margin-top:50px;
+    margin-bottom:50px;
+}
 
 
 
