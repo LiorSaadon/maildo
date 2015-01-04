@@ -9,7 +9,6 @@
     <script>
         $(document).ready(function(){
 
-            debugger;
             //Check to see if the window is top if not then display button
             $(window).scroll(function(){
                 if ($(this).scrollTop() > 100) {
@@ -21,8 +20,26 @@
 
             //Click event to scroll to top
             $('.scrollToTop').click(function(){
+                debugger;
                 $('html, body').animate({scrollTop : 0},800);
                 return false;
+            });
+
+            $(".plus" ).click(function(){
+                var $lefty = $('.plus1');
+
+//                $(document).ready(function(){
+//                    $('#slide').click(function(){
+//                        var hidden = $('.hidden');
+//                        if (hidden.hasClass('visible')){
+//                            hidden.animate({"left":"-1000px"}, "slow").removeClass('visible');
+//                        } else {
+//                            hidden.animate({"left":"0px"}, "slow").addClass('visible');
+//                        }
+//                    });
+//                });
+//
+
             });
 
         });
@@ -35,6 +52,9 @@
     <div class="page-content-wrapper">
         <div class="page-content">
             <div class="lastUpdate">Last update: 13.3.14</div>
+            <div class="me"></div>
+            <div class="plus"></div>
+            <div class="plus1"></div>
 
             <header class="site-header wrapper" role="banner">
                 <div class="row">
