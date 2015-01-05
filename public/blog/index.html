@@ -11,15 +11,16 @@
 
             $(window).scroll(function(){
 
-                if($(this).scrollTop() < 770){
+                if($(this).scrollTop() < 450){
                     $('.scrollToTop').fadeOut();
+                    $('.menuplus').fadeOut();
 
                     if($(this).scrollTop() < 100){
                       //  $('.plus').fadeOut();
                     }
                 }else{
-                    if ($(this).scrollTop() > 770) {
-                     //   $('.plus').fadeIn();
+                    if ($(this).scrollTop() > 170) {
+                        $('.menuplus').fadeIn();
                     }
 
                     if ($(this).scrollTop() > 1270) {
@@ -30,7 +31,7 @@
 
             //Click event to scroll to top
             $('.scrollToTop').click(function(){
-                $('html, body').animate({scrollTop : 700},700);
+                $('html, body').animate({scrollTop : 450},450);
                 return false;
             });
 
@@ -96,6 +97,12 @@
         dsfgsdfg sdfg sdfgsdfgsd<br>
         dsfgsdfg sdfg sdfgsdfgsd<br>
         dsfgsdfg sdfg sdfgsdfgsd<br>
+    </div>
+
+    <div class="menuplus">
+        <div class="menuplus-inner">
+            <div class="menu-logo">Mailbone</div>
+        </div>
     </div>
 
     <div class="page-content-wrapper">

@@ -1,7 +1,7 @@
 /* -------------------------------------------- */
 /* GENERIC */
 html { font-size:100%; }
-body { line-height:1.6; overflow-x: hidden; margin-top:20px;}
+body { line-height:1.6; overflow-x: hidden; margin:0px;}
 img { max-width:100%; height:auto; }
 h1, h2, h3, h4, h5, h6 { line-height:1.5; font-weight:500; }
 a { color: #668F23; text-decoration:none; }
@@ -68,6 +68,7 @@ body {
     margin-right: auto;
     text-align:right;
     direction: rtl;
+    /*position:relative;*/
 
     /*for hebrew*/
     font-family: 'Segoe UI', Arial, sans-serif;
@@ -141,14 +142,36 @@ body {
     min-width:356px;
     background-color:red;
     height:37px;
+    width:300px;
     top: 50%;
     left: 58px;
     margin-top: -16px;
     display:none;
 }
 
+.menuplus{
+    width: 100%;
+    position: fixed;
+    display:none;
+}
 
+.menuplus-inner{
 
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 980px;
+    background-color: #ffffff;
+    height: 60px;
+    border:1px solid rgba(0,0,0,0.275);
+    border-bottom:1px solid #D3D3D3;
+}
+
+.menu-logo{
+    margin:10px;
+    margin-left:30px;
+    font-size:25px;
+}
 
 /* NAVIGATION */
 .main-navigation div.selector { display:none; margin:0 auto; border:0; }
