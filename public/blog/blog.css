@@ -28,9 +28,10 @@ body {
 }
 
 .scrollToTop{
-    width:39px;
-    height:39px;
-    padding:10px;
+    width:34px;
+    height:35px;
+    padding-bottom: 7px;
+    padding-right: 10px;
     text-align:center;
     background: whiteSmoke;
     font-weight: bold;
@@ -40,10 +41,11 @@ body {
     bottom:25px;
     right:10px;
     display:none;
-    background: url('img/go-up.png') no-repeat 0px 20px;
+    background: url('img/go-up.png') no-repeat;
 }
 .scrollToTop:hover{
     text-decoration:none;
+    background: url('img/go-up-hover.png') no-repeat;
 }
 
 /* -------------------------------------------- */
@@ -94,22 +96,46 @@ body {
 .me{
     position: fixed;
     width:40px;
-    height:38px;
+    height:42px;
     top: 20px;
     right: 20px;
-    background: url('img/me.png') no-repeat;
-
+    background: url('img/me-profile.JPG') no-repeat;
+    z-index:2000;
 }
+
+.me:hover{
+    cursor: pointer;
+}
+
+.aboutMe{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #727272;
+    background-color: #fff;
+    z-index: 1032;
+    box-shadow: 0 0.15em 0.35em 0 rgba(0,0,0,0.135);
+    display:none;
+}
+
 
 .plus{
     position: fixed;
     width:56px;
-    height:37px;
+    height:41px;
     top: 50%;
-    left: 8px;
+    left: 0px;
     margin-top: -16px;
+    /*display:none;*/
     background: url('img/menu-shortcut.png') no-repeat;
 }
+
+.plus:hover{
+    cursor: pointer;
+    background: url('img/menu-shortcut-hover.png') no-repeat;
+}
+
 .plus1{
     position: fixed;
     min-width:356px;
@@ -120,6 +146,7 @@ body {
     margin-top: -16px;
     display:none;
 }
+
 
 
 
