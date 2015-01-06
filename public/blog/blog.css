@@ -182,14 +182,24 @@ body {
 
 }
 
-.menu-plus-content a{
+.logo1{
+    position:absolute;
+    left:0;
     font-family: Open Sans;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 16px;
     line-height: 25.2px;
-    font-weight: 400;
+    font-weight: 800;
     color:#404040;
+}
+
+
+.menu-plus-content a{
+
+    color:#404040;
+    padding-left:12px;
+
 }
 
 
