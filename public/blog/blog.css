@@ -54,6 +54,7 @@ body {
 .wrapper { width:100%; }
 
 .page-content-wrapper{
+    margin-top:20px;
     background-color:white;
     max-width: 980px;
     margin-left: auto;
@@ -132,27 +133,29 @@ body {
     background: url('img/menu-shortcut.png') no-repeat;
 }
 
-.plus:hover{
-    cursor: pointer;
-    background: url('img/menu-shortcut-hover.png') no-repeat;
-}
+/*.plus:hover{*/
+    /*cursor: pointer;*/
+    /*background: url('img/menu-shortcut-hover.png') no-repeat;*/
+/*}*/
 
-.plus1{
-    position: fixed;
-    min-width:356px;
-    background-color:red;
-    height:37px;
-    width:300px;
-    top: 50%;
-    left: 58px;
-    margin-top: -16px;
-    display:none;
-}
+/*.plus1{*/
+    /*position: fixed;*/
+    /*min-width:356px;*/
+    /*background-color:red;*/
+    /*height:37px;*/
+    /*width:300px;*/
+    /*top: 50%;*/
+    /*left: 58px;*/
+    /*margin-top: -16px;*/
+    /*display:none;*/
+/*}*/
 
 .menuplus{
     width: 100%;
     position: fixed;
     display:none;
+    text-align:center;
+    top:0px;
 }
 
 .menuplus-inner{
@@ -162,16 +165,33 @@ body {
     position: relative;
     width: 980px;
     background-color: #ffffff;
-    height: 60px;
-    border:1px solid rgba(0,0,0,0.275);
-    border-bottom:1px solid #D3D3D3;
+    padding-top:65px;
+    padding-bottom:65px;
+    width:700px;
 }
 
-.menu-logo{
-    margin:10px;
-    margin-left:30px;
-    font-size:25px;
+.menu-plus-content{
+
+    padding-top:8px;
+    padding-bottom:8px;
+    border-top:1px solid #C3C3C3;
+    border-bottom:1px solid #C3C3C3;
+    text-align:right;
+    direction: rtl;
+
+
 }
+
+.menu-plus-content a{
+    font-family: Open Sans;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 16px;
+    line-height: 25.2px;
+    font-weight: 400;
+    color:#404040;
+}
+
 
 /* NAVIGATION */
 .main-navigation div.selector { display:none; margin:0 auto; border:0; }
@@ -186,7 +206,7 @@ body {
 .main-navigation > ul > li > a:hover, .main-navigation > ul > li > a.selected { border-bottom:1px dotted #ccc; }
 
 
-.table-of-contents{padding:35px 0 0px 0;}
+.table-of-contents{padding:37px 0 0px 0;}
 .table-of-contents ul { list-style:none; padding-right:15px; margin:0; }
 .table-of-contents ul li { line-height:32px; }
 

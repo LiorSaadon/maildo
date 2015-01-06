@@ -11,19 +11,19 @@
 
             $(window).scroll(function(){
 
-                if($(this).scrollTop() < 450){
+                if($(this).scrollTop() < 10){
                     $('.scrollToTop').fadeOut();
-                    $('.menuplus').fadeOut();
-
-                    if($(this).scrollTop() < 100){
-                      //  $('.plus').fadeOut();
-                    }
+                    $('.menuplus').hide();
+                    $('#site-navigation').show();
+                    $(".site-title").css("margin-top","45px");
                 }else{
-                    if ($(this).scrollTop() > 170) {
-                        $('.menuplus').fadeIn();
+                    if ($(this).scrollTop() > 10) {
+                        $('.menuplus').show();
+                        $('#site-navigation').hide();
+                        $(".site-title").css("margin-top","150px");
                     }
 
-                    if ($(this).scrollTop() > 1270) {
+                    if ($(this).scrollTop() > 800) {
                         $('.scrollToTop').fadeIn();
                     }
                 }
@@ -31,7 +31,7 @@
 
             //Click event to scroll to top
             $('.scrollToTop').click(function(){
-                $('html, body').animate({scrollTop : 450},450);
+                $('html, body').animate({scrollTop : 790},790);
                 return false;
             });
 
@@ -50,24 +50,6 @@
                     container.slideUp("slow");
                 }
             });
-
-//            $(".plus" ).click(function(){
-//                var $lefty = $('.plus1');
-//
-////                $(document).ready(function(){
-////                    $('#slide').click(function(){
-////                        var hidden = $('.hidden');
-////                        if (hidden.hasClass('visible')){
-////                            hidden.animate({"left":"-1000px"}, "slow").removeClass('visible');
-////                        } else {
-////                            hidden.animate({"left":"0px"}, "slow").addClass('visible');
-////                        }
-////                    });
-////                });
-////
-//
-//            });
-
         });
     </script>
 </head>
@@ -101,16 +83,15 @@
 
     <div class="menuplus">
         <div class="menuplus-inner">
-            <div class="menu-logo">Mailbone</div>
+            <div class="menu-plus-content">
+                <a href="/aboutme">קוד</a>
+            </div>
         </div>
     </div>
 
     <div class="page-content-wrapper">
         <div class="page-content">
             <div class="lastUpdate">Last update: 13.3.14</div>
-
-            <div class="plus"></div>
-            <div class="plus1"></div>
 
             <header class="site-header wrapper" role="banner">
                 <div class="row">
