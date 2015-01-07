@@ -81,13 +81,13 @@ body {
     line-height: 1.6;
 }
 
-.site-header { padding-top:40px; padding-bottom: 70px; text-align:center; }
+.site-header { padding-top:40px; padding-bottom: 80px; text-align:center; }
 .site-header hgroup { padding: 2.5em 0 1.875em 0; }
-.site-title { font-size:6em; line-height:1.4;  margin-top:45px; }
+.site-title { font-size:5.6em; line-height:1.4;  margin-top:45px; }
 .site-title img { max-height:200px; }
 .site-title a { border-bottom:1px dotted #ccc; }
 .site-title a:hover { color:#000; }
-.site-sub-title{ font-size:2.1em; font-weight:400; font-family: "Coustard", Georgia, serif}
+.site-sub-title{ font-size:1.8em; font-weight:400; font-family: "Coustard", Georgia, serif; padding-top:5px}
 
 .lastUpdate {
     text-align:left;
@@ -119,6 +119,7 @@ body {
     z-index: 1032;
     box-shadow: 0 0.15em 0.35em 0 rgba(0,0,0,0.135);
     display:none;
+
 }
 
 
@@ -165,15 +166,14 @@ body {
     position: relative;
     width: 980px;
     background-color: #ffffff;
-    padding-top:65px;
-    padding-bottom:65px;
+    padding-top:40px;
+    padding-bottom:40px;
     width:700px;
 }
 
 .menu-plus-content{
 
     padding-top:8px;
-    padding-bottom:8px;
     border-top:1px solid #C3C3C3;
     border-bottom:1px solid #C3C3C3;
     text-align:right;
@@ -198,7 +198,7 @@ body {
 .menu-plus-content a{
 
     color:#404040;
-    padding-left:12px;
+    padding-left:8px;
 
 }
 
@@ -257,6 +257,30 @@ body {
     text-align:center;
     margin-top:50px;
     margin-bottom:50px;
+}
+
+#container {
+    display: table;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#row  {
+    display: table-row;
+    height:500px;
+}
+
+#left, #right{
+    display: table-cell;
+    width:600px;
+}
+
+#left{
+    width:300px;
+    text-align: center;
+    vertical-align: middle
 }
 
 
