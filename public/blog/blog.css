@@ -261,7 +261,7 @@ body {
 
 #container {
     display: table;
-    max-width: 980px;
+    width: 890px;
     margin-left: auto;
     margin-right: auto;
 
@@ -269,22 +269,25 @@ body {
 
 #row  {
     display: table-row;
-    height:500px;
+    height:400px;
 }
 
 #left, #right{
     display: table-cell;
-    /*border:1px solid gray;*/
+    /*border:1px solid red;*/
 }
 
 #left{
-    width:250px;
-    text-align: left;
+    padding-top:80px;
+    width:240px;
+    text-align: center;
     vertical-align: middle
 }
-
+#middle{
+    width:56px;
+}
 #right{
-    width:450px;
+    width:590px;
     text-align: right;
     direction: rtl;
     padding-top:50px;
@@ -294,6 +297,17 @@ body {
 .right-title{
     font-size:28px;
     color:red;
+    padding-bottom:35px;
+}
+
+.right-content{
+
+    padding-bottom: 20px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
 }
 
 
