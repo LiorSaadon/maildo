@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="stylesheet" href="blog.css" type="text/css">
     <title>mailbone</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" href="tiptip.css" type="text/css"  media="screen">
     <script src="jquery.tiptip.js"></script>
 
@@ -38,7 +38,7 @@
 
             //Click event to scroll to top
             $('.scrollToTop').click(function(){
-                $('html, body').animate({scrollTop : 790},790);
+                $('html, body').animate({scrollTop : 740},740);
                 return false;
             });
 
@@ -57,16 +57,48 @@
                     container.slideUp("slow");
                 }
             });
+
+            $('.intro-link').click(function(){
+                setTimeout(function(){
+                    $('html,body').animate({
+                        scrollTop:  $(document).scrollTop() - 80
+                    })
+                },40);
+            });
+
+            $('.libs-link').click(function(){
+                setTimeout(function(){
+                    $('html,body').animate({
+                        scrollTop:  $(document).scrollTop() - 50
+                    })
+                },40);
+            });
+
+            $('.project-structure-link').click(function(){
+                setTimeout(function(){
+                    $('html,body').animate({
+                        scrollTop:  $(document).scrollTop() - 70
+                    })
+                },40);
+            });
+
+            $('.project-init-link').click(function(){
+                setTimeout(function(){
+                    $('html,body').animate({
+                        scrollTop:  $(document).scrollTop() - 40
+                    })
+                },40);
+            });
         });
     </script>
 </head>
 <body>
-    <div id="page" class="site">
+<div id="page" class="site">
     <a href="#" class="scrollToTop"></a>
     <div class="me"></div>
-        <!--<div class="me .tiptip">-->
-            <!--<a href="#" class="button" title="View project on GitHub"><img src="img/me-profile.JPG"><span class="View project on GitHub"></span></a>-->
-        <!--</div>-->
+    <!--<div class="me .tiptip">-->
+    <!--<a href="#" class="button" title="View project on GitHub"><img src="img/me-profile.JPG"><span class="View project on GitHub"></span></a>-->
+    <!--</div>-->
     <div class="aboutMe">
         <div id="container">
             <div id="row">
@@ -118,18 +150,18 @@
                 <h2>תוכן העניינים</h2>
                 <div>
                     <ul>
-                        <li><a href="#intro" data-page="1">1. הקדמה</a></li>
-                        <li><a href="#libs" data-page="1">2. הספריות בהן השתמשתי</a></li>
-                        <li><a href="#part1" data-page="1">3. מבנה הפרויקט  </a> </li>
-                        <li><a href="#part1" data-page="1">4. איתחול הפרויקט  </a> </li>
-                        <li><a href="#part1" data-page="1">5. תובנות מעולם ה-MVC </a> </li>
-                        <li><a href="#part1" data-page="1">6. תוספות ל-backbone ן-marionette  </a> </li>
-                        <li><a href="#part1" data-page="1">7. עבודה עם SASS  </a> </li>
-                        <li><a href="#part1" data-page="1">8. עולם הבדיקות</a> </li>
+                        <li><a class="intro-link" href="#intro1">1. הקדמה</a></li>
+                        <li><a class="libs-link"  href="#libs1">2. הספריות בהן השתמשתי</a></li>
+                        <li><a class="project-structure-link" href="#project-structure" >3. מבנה הפרויקט  </a> </li>
+                        <li><a class="project-init-link" href="#project-init" >4. איתחול הפרויקט  </a> </li>
+                        <li><a href="#part4" >5. תובנות מעולם ה-MVC </a> </li>
+                        <li><a href="#part5" >6. תוספות ל-backbone ן-marionette  </a> </li>
+                        <li><a href="#part6" >7. עבודה עם SASS  </a> </li>
+                        <li><a href="#part7" >8. עולם הבדיקות</a> </li>
                     </ul>
                 </div>
             </div>
-            <div id="intro" class="introduction">
+            <div id="intro1" class="introduction">
                 <h2>הקדמה</h2>
                 <div>
                     <p>עולם הגאווהסקיפט עובר בשנים האחרונות מהפכה של ממש. MVC frameworks וספריות במגוון רחב של תחומים מתפרסמות חדשות לבקרים, בקצב הולך וגדל. שינוי זה הוא מבורך אבל גם מאוד תובעני ומאתגר. כדי לבחור את הספריות המתאימות ביותר לפרויקט ובכדי לדעת כיצד להשתמש בהן נכון (ביחד ולחוד) נדרשת למידה מתמשכת וניסיון מצטבר רצוף הצלחות וטעויות.</p>
@@ -141,7 +173,7 @@
                     </div>
                 </div>
             </div>
-            <div id="libs" class="libs">
+            <div id="libs1" class="libs">
                 <h2>הספריות בהן השתמשתי:</h2>
                 <div>
                     <div>ל-Mailbone סט רחב של ספריות. חלקן שייכות לעולם הפיתוח וחלקן לעולם הבדיקות. יחד הן נותנות מענה מושלם למכלול האתגרים איתם התמודדתי. הנסיון שלי עם מרבית הספריות הנבחרות הוא ממקום עבודתי ולכן הרגשתי מאוד נח להשתמש בהן גם כאן. כמובן שלכל אחת מהן חוזקות וחולשות. אנסה לתאר בקצרה את ההתרשמות הכוללת שלי עם העבודה איתן.</div>
@@ -165,14 +197,14 @@
                     <div class="libs-paragraph">לאחרונה החלטתי לתרום מנסיוני ולכתוב פרויקט שיאגד את אינספור התובנות שרכשתי. היה לי חשוב לכתוב פרויקט שיהיה קרוב במידת האפשר לחיים האמיתים. לא עוד דוגמא קטנה אלא פרוייקט שיש בו מורכבות אמיתית ואתגרים שכל מפתח נתקל בהם בחיי היום יום. חפשתי אפלקציה מוכרת, פשוטה אך מתוחכמת שתהיה לי לעזר. גמייל/יאהוו נראו לי מועמדים מושלמים ואכן התוצאה (למראית עין לפחות) היא שילוב של השניים.</div>
                 </div>
             </div>
-            <div class="project-structure">
+            <div class="project-structure" id="project-structure">
                 <h2>מבנה הפרויקט</h2>
                 <p>למיילבון שני מודיול: mail ו-tasks שהם לב הפרויקט. מדיול בראיייתי הוא יחידה שלמה וסגורה ולכן תחת כל מודיול קבצתי את ה-JS, CSS templates השייכים לו. חלוקת קבצי ה-JS בכל מודיול נעשתה בדומה למקובל בעולם ה-MVC (היינו חלוקה לפי models, collections ועוד)  את המשותף למודיולים השונים הגדרתי בתקיה נפרדת בשם assets. קוד שאינו קשור במישרין לאף מודיול ושייך לאפלקציה תוחם בתקיית core.</p>
                 <div class="project-structure-box">
                     <a target="_blank" href="/Source-Codes/Images/simpleblog_blog_look.png" title="Mailbone"><img src="img/struct-level5.png" alt="Mailbone"> </a>
                 </div>
             </div>
-            <div class="project-structure">
+            <div class="project-init" id="project-init">
                 <h2>איתחול הפרויקט</h2>
                 <p>למיילבון שני מודיול: mail ו-tasks שהם לב הפרויקט. מדיול בראיייתי הוא יחידה שלמה וסגורה ולכן תחת כל מודיול קבצתי את ה-JS, CSS templates השייכים לו. חלוקת קבצי ה-JS בכל מודיול נעשתה בדומה למקובל בעולם ה-MVC (היינו חלוקה לפי models, collections ועוד)  את המשותף למודיולים השונים הגדרתי בתקיה נפרדת בשם assets. קוד שאינו קשור במישרין לאף מודיול ושייך לאפלקציה תוחם בתקיית core.</p>
             </div>

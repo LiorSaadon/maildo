@@ -117,7 +117,7 @@ body {
     color: #727272;
     background-color: #fff;
     z-index: 1032;
-    box-shadow: 0 0.15em 0.35em 0 rgba(0,0,0,0.235);
+    box-shadow: 0 0.15em 0.35em 0 rgba(0,0,0,0.5);
     display:none;
 
 }
@@ -135,20 +135,20 @@ body {
 }
 
 /*.plus:hover{*/
-    /*cursor: pointer;*/
-    /*background: url('img/menu-shortcut-hover.png') no-repeat;*/
+/*cursor: pointer;*/
+/*background: url('img/menu-shortcut-hover.png') no-repeat;*/
 /*}*/
 
 /*.plus1{*/
-    /*position: fixed;*/
-    /*min-width:356px;*/
-    /*background-color:red;*/
-    /*height:37px;*/
-    /*width:300px;*/
-    /*top: 50%;*/
-    /*left: 58px;*/
-    /*margin-top: -16px;*/
-    /*display:none;*/
+/*position: fixed;*/
+/*min-width:356px;*/
+/*background-color:red;*/
+/*height:37px;*/
+/*width:300px;*/
+/*top: 50%;*/
+/*left: 58px;*/
+/*margin-top: -16px;*/
+/*display:none;*/
 /*}*/
 
 .menuplus{
@@ -221,8 +221,6 @@ body {
 .table-of-contents ul li { line-height:32px; }
 
 .img-wrapper{
-    width:690px;
-    border:1px solid #000000;
     padding-top: 4px;
     padding-left: 4px;
     margin-top:30px;
@@ -261,10 +259,10 @@ body {
 
 #container {
     display: table;
-    width: 890px;
+    width: 720px;
     margin-left: auto;
     margin-right: auto;
-
+    padding-bottom:35px;
 }
 
 #row  {
@@ -274,7 +272,6 @@ body {
 
 #left, #right{
     display: table-cell;
-    /*border:1px solid red;*/
 }
 
 #left{
@@ -296,7 +293,7 @@ body {
 
 .right-title{
     font-size:28px;
-    color:red;
+    color:rgb(121, 25, 25);
     padding-bottom:35px;
 }
 
