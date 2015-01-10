@@ -20,12 +20,12 @@
 
                 if($(this).scrollTop() < 10){
                     $('.scrollToTop').fadeOut();
-                    $('.menuplus').hide();
+                    $('.fixed-menu').hide();
                     $('#site-navigation').show();
                     $(".site-title").css("margin-top","45px");
                 }else{
                     if ($(this).scrollTop() > 10) {
-                        $('.menuplus').show();
+                        $('.fixed-menu').show();
                         $('#site-navigation').hide();
                         $(".site-title").css("margin-top","70px");
                     }
@@ -42,7 +42,7 @@
                 return false;
             });
 
-            $('.me').click(function () {
+            $('.btn-about-me').click(function () {
                 if ($(".aboutMe" ).is( ":hidden" ) ) {
                     $('.aboutMe').slideDown("slow");
                 } else {
@@ -95,33 +95,30 @@
 <body>
 <div id="page" class="site">
     <a href="#" class="scrollToTop"></a>
-    <div class="me"></div>
-    <!--<div class="me .tiptip">-->
-    <!--<a href="#" class="button" title="View project on GitHub"><img src="img/me-profile.JPG"><span class="View project on GitHub"></span></a>-->
-    <!--</div>-->
+
+    <div class="btn-about-me"></div>
     <div class="aboutMe">
-        <div id="container">
-            <div id="row">
-                <div id="left">
+        <div class="wrapper">
+            <div class="inner-wrapper">
+                <div class="image-area">
                     <img src="img/myPic.png" alt="fsd asdf asdf" title="213123 12341234">
                 </div>
-                <div id="middle"></div>
-                <div id="right">
-                    <div class="right-title">קצת עלי</div>
-                    <div class="right-content">ל-Mailbone סט רחב של ספריות. חלקן שייכות לעולם הפיתוח וחלקן לעולם הבדיקות. יחד הן נותנות מענה מושלם למכלול האתגרים איתם התמודדתי. הנסיון שלי עם מרבית הספריות הנבחרות הוא ממקום עבודתי ולכן הרגשתי מאוד נח להשתמש בהן גם כאן. כמובן שלכל אחת מהן חוזקות וחולשות. אנסה לתאר בקצרה את ההתרשמות הכוללת שלי עם העבודה איתן.</div>
-                    <div class="right-content">ל-Mailbone סט רחב של ספריות. חלקן שייכות לעולם הפיתוח וחלקן לעולם הבדיקות. יחד הן נותנות מענה מושלם למכלול האתגרים איתם התמודדתי. הנסיון שלי עם מרבית הספריות הנבחרות הוא ממקום עבודתי ולכן הרגשתי מאוד נח להשתמש בהן גם כאן. כמובן שלכל אחת מהן חוזקות וחולשות. אנסה לתאר בקצרה את ההתרשמות הכוללת שלי עם העבודה איתן.</div>
+                <div class="space"></div>
+                <div class="content-area">
+                    <div class="title">קצת עלי</div>
+                    <div class="content">ל-Mailbone סט רחב של ספריות. חלקן שייכות לעולם הפיתוח וחלקן לעולם הבדיקות. יחד הן נותנות מענה מושלם למכלול האתגרים איתם התמודדתי. הנסיון שלי עם מרבית הספריות הנבחרות הוא ממקום עבודתי ולכן הרגשתי מאוד נח להשתמש בהן גם כאן. כמובן שלכל אחת מהן חוזקות וחולשות. אנסה לתאר בקצרה את ההתרשמות הכוללת שלי עם העבודה איתן.</div>
+                    <div class="content">ל-Mailbone סט רחב של ספריות. חלקן שייכות לעולם הפיתוח וחלקן לעולם הבדיקות. יחד הן נותנות מענה מושלם למכלול האתגרים איתם התמודדתי. הנסיון שלי עם מרבית הספריות הנבחרות הוא ממקום עבודתי ולכן הרגשתי מאוד נח להשתמש בהן גם כאן. כמובן שלכל אחת מהן חוזקות וחולשות. אנסה לתאר בקצרה את ההתרשמות הכוללת שלי עם העבודה איתן.</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="menuplus">
-        <div class="menuplus-inner">
-
-            <div class="menu-plus-content tiptip">
+    <div class="fixed-menu">
+        <div class="inner-wrapper">
+            <div class="inner tiptip">
                 <a href="#" class="button" title="View project on GitHub"><img src="img/github-icon.png"><span class="View project on GitHub"></span></a>
                 <a href="#" class="button" title="Browse Mailbone"><img src="img/nodjitsu.png"><span class="Browse Mailbone"></span></a>
-                <span class="logo1">mailbone</span>
+                <span class="logo">mailbone</span>
             </div>
         </div>
     </div>
