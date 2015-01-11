@@ -3,107 +3,26 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Mailbone - A Full-Stack Javascript MVC Application</title>
+    <meta name="description" content="A Full-Stack Javascript MVC Application: backbone.js, marionette.js, Underscore, RequireJS, Mustache, Sass, Compass,m Mocha, Chai, Sinon, Grunt ,Bower">
     <link rel="stylesheet" href="blog.css" type="text/css">
-    <title>mailbone</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="tiptip.css" type="text/css"  media="screen">
+    <link rel="stylesheet" href="tiptip.css" type="text/css" media="screen">
     <script src="jquery.tiptip.js"></script>
-
-
-
-    <script>
-        $(document).ready(function(){
-
-            $('.tiptip a.button, .tiptip button').tipTip();
-
-            $(window).scroll(function(){
-
-                if($(this).scrollTop() < 10){
-                    $('.scrollToTop').fadeOut();
-                    $('.fixed-menu').hide();
-                    $('#site-navigation').show();
-                    $(".site-title").css("margin-top","45px");
-                }else{
-                    if ($(this).scrollTop() > 10) {
-                        $('.fixed-menu').show();
-                        $('#site-navigation').hide();
-                        $(".site-title").css("margin-top","70px");
-                    }
-
-                    if ($(this).scrollTop() > 800) {
-                        $('.scrollToTop').fadeIn();
-                    }
-                }
-            });
-
-            //Click event to scroll to top
-            $('.scrollToTop').click(function(){
-                $('html, body').animate({scrollTop : 740},740);
-                return false;
-            });
-
-            $('.btn-about-me').click(function () {
-                if ($(".aboutMe" ).is( ":hidden" ) ) {
-                    $('.aboutMe').slideDown("slow");
-                } else {
-                    $('.aboutMe').slideUp("slow");
-                }
-            });
-
-            $(document).mouseup(function (e)
-            {
-                var container = $(".aboutMe");
-                if (!container.is(e.target) && container.has(e.target).length === 0){
-                    container.slideUp("slow");
-                }
-            });
-
-            $('.intro-link').click(function(){
-                setTimeout(function(){
-                    $('html,body').animate({
-                        scrollTop:  $(document).scrollTop() - 80
-                    })
-                },40);
-            });
-
-            $('.libs-link').click(function(){
-                setTimeout(function(){
-                    $('html,body').animate({
-                        scrollTop:  $(document).scrollTop() - 50
-                    })
-                },40);
-            });
-
-            $('.project-structure-link').click(function(){
-                setTimeout(function(){
-                    $('html,body').animate({
-                        scrollTop:  $(document).scrollTop() - 70
-                    })
-                },40);
-            });
-
-            $('.project-init-link').click(function(){
-                setTimeout(function(){
-                    $('html,body').animate({
-                        scrollTop:  $(document).scrollTop() - 40
-                    })
-                },40);
-            });
-        });
-    </script>
+    <script src="blog.js"></script>
 </head>
 <body>
 <div id="page" class="site">
-    <a href="#" class="scrollToTop"></a>
+    <div class="btn-scroll-to-top"></div>
 
     <div class="btn-about-me"></div>
     <div class="aboutMe">
         <div class="wrapper">
             <div class="inner-wrapper">
                 <div class="image-area">
-                    <img src="img/myPic.png" alt="fsd asdf asdf" title="213123 12341234">
+                    <img src="img/myPic.png" alt="Shaul Mazor" title="Shaul Mazor">
                 </div>
-                <div class="space"></div>
+                <div class="spacer"></div>
                 <div class="content-area">
                     <div class="title">קצת עלי</div>
                     <div class="content">ל-Mailbone סט רחב של ספריות. חלקן שייכות לעולם הפיתוח וחלקן לעולם הבדיקות. יחד הן נותנות מענה מושלם למכלול האתגרים איתם התמודדתי. הנסיון שלי עם מרבית הספריות הנבחרות הוא ממקום עבודתי ולכן הרגשתי מאוד נח להשתמש בהן גם כאן. כמובן שלכל אחת מהן חוזקות וחולשות. אנסה לתאר בקצרה את ההתרשמות הכוללת שלי עם העבודה איתן.</div>
@@ -116,8 +35,8 @@
     <div class="fixed-menu">
         <div class="inner-wrapper">
             <div class="inner tiptip">
-                <a href="#" class="button" title="View project on GitHub"><img src="img/github-icon.png"><span class="View project on GitHub"></span></a>
-                <a href="#" class="button" title="Browse Mailbone"><img src="img/nodjitsu.png"><span class="Browse Mailbone"></span></a>
+                <a target="_blank" href="https://github.com/shaulmazor/mailbone" class="button" title="View project on GitHub"><img src="img/github-icon.png"><span class="View project on GitHub"></span></a>
+                <a target="_blank" href="http://mailbone.nodejitsu.com/index.html" class="button" title="Browse Mailbone"><img src="img/nodjitsu.png"><span class="Browse Mailbone"></span></a>
                 <span class="logo">mailbone</span>
             </div>
         </div>
@@ -125,24 +44,21 @@
 
     <div class="page-content-wrapper">
         <div class="page-content">
-            <div class="lastUpdate">Last update: 13.3.14</div>
-
-            <header class="site-header wrapper" role="banner">
-                <div class="row">
-                    <nav id="site-navigation" class="main-navigation" role="navigation"><div class="selector" style="width: 98px;"><span style="width: 73px;">MENU</span><select class="menu" style="opacity: 0; left: 2px; width: 271.840000152588px;"><option value="null">MENU</option><option value="/blog"> Home</option><option value="/downloads"> Downloads</option><option value="/aboutme"> About</option><option value="/contact"> Contact</option><option value="http://feeds.feedburner.com/prideparrot"> Subscribe</option><option value="search"> Search</option></select></div>
-                        <ul>
-                            <li class="current-menu-item"><a href="/blog">About</a></li>
-                            <li class=""><a href="/downloads">Source code</a></li>
-                            <li class=""><a href="/aboutme">App</a></li>
-                            <li class=""><a href="/contact">Tests</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="site-title">Mailbone</div>
-                <div class="site-sub-title">A Full-Stack Javascript MVC Application</div>
+            <div class="lastUpdate">Last update: 1.1.15</div>
+            <header class="header">
+                <nav class="nav">
+                    <ul>
+                        <li class=""><a href="/downloads">Source code</a></li>
+                        <li class=""><a href="/aboutme">App</a></li>
+                        <li class=""><a href="/contact">Tests</a></li>
+                    </ul>
+                </nav>
+                <div class="title">Mailbone</div>
+                <div class="sub-title">A Full-Stack Javascript MVC Application</div>
             </header>
 
-            <div><a target="_blank" href="/Source-Codes/Images/simpleblog_blog_look.png" title="Mailbone"><img src="img/screenshot.png" alt="Mailbone"> </a></div>
+            <div><a target="_blank" href="http://mailbone.nodejitsu.com/index.html" title="Mailbone"><img src="img/screenshot.png" alt="Mailbone"> </a></div>
+
             <div class="table-of-contents">
                 <h2>תוכן העניינים</h2>
                 <div>

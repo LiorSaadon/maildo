@@ -1,7 +1,3 @@
-/* -------------------------------------------- */
-/* GENERIC */
-/* -------------------------------------------- */
-
 html {
   font-size: 100%;
 }
@@ -77,7 +73,7 @@ body {
 /*  SCROLL BUTTON                           */
 /*----------------------------------------- */
 
-.scrollToTop {
+.btn-scroll-to-top {
   width: 34px;
   height: 35px;
   padding-bottom: 7px;
@@ -92,11 +88,11 @@ body {
   right: 10px;
   display: none;
   background: url('img/go-up.png') no-repeat;
-}
 
-.scrollToTop:hover {
-  text-decoration: none;
-  background: url('img/go-up-hover.png') no-repeat;
+  &:hover {
+    cursor:pointer;
+    background: url('img/go-up-hover.png') no-repeat;
+  }
 }
 
 /*----------------------------------------- */
@@ -111,10 +107,10 @@ body {
   right: 20px;
   background: url('img/me-profile.JPG') no-repeat;
   z-index: 2000;
-}
 
-.btn-about-me:hover {
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .aboutMe {
@@ -150,7 +146,7 @@ body {
         vertical-align: middle
       }
 
-      .space {
+      .spacer {
         width: 56px;
       }
 
@@ -189,57 +185,50 @@ body {
   display: none;
   text-align: center;
   top: 0px;
+
+  .inner-wrapper {
+
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 980px;
+    background-color: #ffffff;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 700px;
+
+    .inner {
+
+      padding-top: 8px;
+      border-top: 1px solid #C3C3C3;
+      border-bottom: 1px solid #C3C3C3;
+      text-align: right;
+      direction: rtl;
+
+      .logo {
+        position: absolute;
+        left: 0;
+        font-family: Open Sans;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 16px;
+        line-height: 25.2px;
+        font-weight: 800;
+        color: #404040;
+
+        a {
+
+          color: #404040;
+          padding-left: 3px;
+        }
+      }
+    }
+  }
 }
 
-.fixed-menu .inner-wrapper {
-
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  width: 980px;
-  background-color: #ffffff;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  width: 700px;
-}
-
-.fixed-menu .inner-wrapper .inner {
-
-  padding-top: 8px;
-  border-top: 1px solid #C3C3C3;
-  border-bottom: 1px solid #C3C3C3;
-  text-align: right;
-  direction: rtl;
-}
-
-.fixed-menu .inner-wrapper .inner .logo {
-  position: absolute;
-  left: 0;
-  font-family: Open Sans;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 16px;
-  line-height: 25.2px;
-  font-weight: 800;
-  color: #404040;
-}
-
-.fixed-menu .inner-wrapper .inner a {
-
-  color: #404040;
-  padding-left: 3px;
-}
-
-/* -------------------------------------------- */
-/* LAYOUT */
-.middle {
-  padding-bottom: 4em;
-  overflow: hidden;
-}
-
-.wrapper {
-  width: 100%;
-}
+/*----------------------------------------- */
+/* page-content-wrapper                     */
+/*----------------------------------------- */
 
 .page-content-wrapper {
   margin-top: 20px;
@@ -248,103 +237,78 @@ body {
   margin-left: auto;
   margin-right: auto;
   border: 1px solid rgba(0, 0, 0, 0.275);
+
+  .page-content {
+
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: right;
+    direction: rtl;
+
+    /*for hebrew*/
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 1.6;
+
+    .lastUpdate {
+      text-align: left;
+      padding-top: 40px;
+      font-size: 13px;
+    }
+
+    .header {
+      padding-top: 40px;
+      padding-bottom: 80px;
+      text-align: center;
+      width: 100%;
+
+      .title {
+        font-size: 5.6em;
+        line-height: 1.4;
+        margin-top: 45px;
+      }
+
+      .sub-title {
+        font-size: 1.8em;
+        font-weight: 400;
+        font-family: "Coustard", Georgia, serif;
+        padding-top: 5px
+      }
+
+      .nav {
+        border-style: solid;
+        border-width: 1px 0;
+        border-color: #C3C3C3;
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            position: relative;
+            display: inline-block;
+            margin: 0 1.25em;
+            padding: 10px 0px 10px 0px;
+            max-height: 1.5em;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
 }
 
-.page-content {
-
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: right;
-  direction: rtl;
-  /*position:relative;*/
-
-  /*for hebrew*/
-  font-family: 'Segoe UI', Arial, sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  font-stretch: normal;
-  line-height: 1.6;
-}
-
-.site-header {
-  padding-top: 40px;
-  padding-bottom: 80px;
-  text-align: center;
-}
-
-.site-header hgroup {
-  padding: 2.5em 0 1.875em 0;
-}
-
-.site-title {
-  font-size: 5.6em;
-  line-height: 1.4;
-  margin-top: 45px;
-}
-
-.site-title img {
-  max-height: 200px;
-}
-
-.site-title a {
-  border-bottom: 1px dotted #ccc;
-}
-
-.site-title a:hover {
-  color: #000;
-}
-
-.site-sub-title {
-  font-size: 1.8em;
-  font-weight: 400;
-  font-family: "Coustard", Georgia, serif;
-  padding-top: 5px
-}
-
-.lastUpdate {
-  text-align: left;
-  padding-top: 40px;
-  font-size: 13px;
-}
-
-/* NAVIGATION */
-.main-navigation div.selector {
-  display: none;
-  margin: 0 auto;
-  border: 0;
-}
-
-.main-navigation div.selector:before {
-  font-size: 17px;
-  content: "\f0c9";
-}
-
-.main-navigation div.selector span {
-  font-weight: bold;
-}
-
-.main-navigation {
-  border-style: solid;
-  border-width: 1px 0;
-  border-color: #C3C3C3;
-}
-
-.main-navigation ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.main-navigation ul li {
-  position: relative;
-  display: inline-block;
-  margin: 0 1.25em;
-  padding: 10px 0px 10px 0px;
-  max-height: 1.5em;
-  font-size: 16px;
+/* -------------------------------------------- */
+/* LAYOUT */
+.middle {
+  padding-bottom: 4em;
+  overflow: hidden;
 }
 
 .main-navigation ul li a {

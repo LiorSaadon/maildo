@@ -1,4 +1,4 @@
 $ cd myfolder
-$ sass --watch style.scss:style.css
+$ sass --watch blog.scss:blog.css
 
 
