@@ -90,7 +90,7 @@ body {
   background: url('img/go-up.png') no-repeat;
 
   &:hover {
-    cursor:pointer;
+    cursor: pointer;
     background: url('img/go-up-hover.png') no-repeat;
   }
 }
@@ -301,82 +301,51 @@ body {
         }
       }
     }
+
+    .table-of-contents {
+      padding: 37px 0 0px 0;
+
+      ul {
+        list-style: none;
+        padding-right: 15px;
+        margin: 0;
+        li {
+          line-height: 32px;
+        }
+      }
+    }
+
+    .introduction {
+      padding: 25px 0 0px 0;
+
+      .notice {
+        margin-top: 30px;
+        padding: 12px;
+        padding-right: 5px;
+        background-color: #FFF9D7;
+        border-top: 1px solid #E2C822;
+        border-bottom: 1px solid #E2C822;
+      }
+    }
+
+    .libs {
+      padding: 50px 0 0px 0;
+
+      .title {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        padding-top: 25px;
+        padding-bottom: 5px;
+      }
+    }
   }
 }
 
-/* -------------------------------------------- */
-/* LAYOUT */
-.middle {
-  padding-bottom: 4em;
-  overflow: hidden;
-}
-
-.main-navigation ul li a {
-  display: inline-block;
-}
-
-.main-navigation ul .current-menu-item > a {
-  color: #668F23;
-}
-
-.main-navigation ul li, .main-navigation ul li a {
-  color: #333;
-}
-
-.main-navigation > ul > li > a:hover, .main-navigation > ul > li > a.selected {
-  border-bottom: 1px dotted #ccc;
-}
-
-.table-of-contents {
-  padding: 37px 0 0px 0;
-}
-
-.table-of-contents ul {
-  list-style: none;
-  padding-right: 15px;
-  margin: 0;
-}
-
-.table-of-contents ul li {
-  line-height: 32px;
-}
-
-.img-wrapper {
-  padding-top: 4px;
-  padding-left: 4px;
-  margin-top: 30px;
-}
-
-.notice {
-  margin-top: 30px;
-  padding: 12px;
-  padding-right: 5px;
-  background-color: #FFF9D7;
-  border-top: 1px solid #E2C822;
-  border-bottom: 1px solid #E2C822;
-}
-
-.introduction {
-  padding: 25px 0 0px 0;
-}
-
-.libs {
-  padding: 50px 0 0px 0;
-}
-
-.libs-titles {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  padding-top: 25px;
-  padding-bottom: 5px;
-}
 
 .project-structure {
   padding: 25px 0 0px 0;
 }
 
 .project-structure-box {
-  /*border:1px solid #CCCCCC;*/
-  /*background-color: #FDFCFF;*/
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
