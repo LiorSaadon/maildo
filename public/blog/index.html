@@ -12,124 +12,123 @@
     <script src="blog.js"></script>
 </head>
 <body>
-<div id="page" class="site">
-    <div class="btn-scroll-to-top"></div>
+    <div id="page" class="site">
+        <div class="btn-scroll-to-top"></div>
 
-    <div class="btn-about-me"></div>
-    <div class="aboutMe">
-        <div class="wrapper">
-            <div class="inner-wrapper">
-                <div class="image-area">
-                    <img src="img/myPic.png" alt="Shaul Mazor" title="Shaul Mazor">
-                </div>
-                <div class="spacer"></div>
-                <div class="content-area">
-                    <div class="title">קצת עלי</div>
-                    <div class="content">ל-Mailbone סט רחב של ספריות. חלקן שייכות לעולם הפיתוח וחלקן לעולם הבדיקות. יחד הן נותנות מענה מושלם למכלול האתגרים איתם התמודדתי. הנסיון שלי עם מרבית הספריות הנבחרות הוא ממקום עבודתי ולכן הרגשתי מאוד נח להשתמש בהן גם כאן. כמובן שלכל אחת מהן חוזקות וחולשות. אנסה לתאר בקצרה את ההתרשמות הכוללת שלי עם העבודה איתן.</div>
-                    <div class="content">ל-Mailbone סט רחב של ספריות. חלקן שייכות לעולם הפיתוח וחלקן לעולם הבדיקות. יחד הן נותנות מענה מושלם למכלול האתגרים איתם התמודדתי. הנסיון שלי עם מרבית הספריות הנבחרות הוא ממקום עבודתי ולכן הרגשתי מאוד נח להשתמש בהן גם כאן. כמובן שלכל אחת מהן חוזקות וחולשות. אנסה לתאר בקצרה את ההתרשמות הכוללת שלי עם העבודה איתן.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="fixed-menu">
-        <div class="inner-wrapper">
-            <div class="inner tiptip">
-                <a target="_blank" href="https://github.com/shaulmazor/mailbone" class="button" title="View project on GitHub"><img src="img/github-icon.png"><span class="View project on GitHub"></span></a>
-                <a target="_blank" href="http://mailbone.nodejitsu.com/index.html" class="button" title="Browse Mailbone"><img src="img/nodjitsu.png"><span class="Browse Mailbone"></span></a>
-                <span class="logo">mailbone</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-content-wrapper">
-        <div class="page-content">
-            <div class="lastUpdate">Last update: 1.1.15</div>
-            <header class="header">
-                <nav class="nav">
-                    <ul>
-                        <li class=""><a href="/downloads">Source code</a></li>
-                        <li class=""><a href="/aboutme">App</a></li>
-                        <li class=""><a href="/contact">Tests</a></li>
-                    </ul>
-                </nav>
-                <div class="title">Mailbone</div>
-                <div class="sub-title">A Full-Stack Javascript MVC Application</div>
-            </header>
-
-            <div><a target="_blank" href="http://mailbone.nodejitsu.com/index.html" title="Mailbone"><img src="img/screenshot.png" alt="Mailbone"> </a></div>
-
-            <div class="table-of-contents">
-                <h2>תוכן העניינים</h2>
-                <div>
-                    <ul>
-                        <li><a class="intro-link" href="#intro1">1. הקדמה</a></li>
-                        <li><a class="libs-link"  href="#libs1">2. הספריות בהן השתמשתי</a></li>
-                        <li><a class="project-structure-link" href="#project-structure" >3. מבנה הפרויקט  </a> </li>
-                        <li><a class="project-init-link" href="#project-init" >4. איתחול הפרויקט  </a> </li>
-                        <li><a href="#part4" >5. תובנות מעולם ה-MVC </a> </li>
-                        <li><a href="#part5" >6. תוספות ל-backbone ן-marionette  </a> </li>
-                        <li><a href="#part6" >7. עבודה עם SASS  </a> </li>
-                        <li><a href="#part7" >8. עולם הבדיקות</a> </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="intro1" class="introduction">
-                <h2>הקדמה</h2>
-                <div>
-                    <p>עולם הגאווהסקיפט עובר בשנים האחרונות מהפכה של ממש. MVC frameworks וספריות במגוון רחב של תחומים מתפרסמות חדשות לבקרים, בקצב הולך וגדל. שינוי זה הוא מבורך אבל גם מאוד תובעני ומאתגר. כדי לבחור את הספריות המתאימות ביותר לפרויקט ובכדי לדעת כיצד להשתמש בהן נכון (ביחד ולחוד) נדרשת למידה מתמשכת וניסיון מצטבר רצוף הצלחות וטעויות.</p>
-                    <p>לא פעם איבדתי את דרכי בסבך המאמרים והדוגמאות ברשת, משווע ליד מכוונת שתעשה סדר בבלאגן. למזלי הטוב את דרך החתחתים הזאת עברתי במקום עבודתי, בחברת LIVEPERSON  עם מפתחים מעולים ומנוסים. יחד גיבשנו תפיסת עולם שלמה כיצד לפתח אפליקצית MVC גדולה וסקלאבילית וכיצד לעשות זאת נכון בעזרת הספריות החדשות.</p>
-                    <p>לאחרונה החלטתי לתרום מנסיוני ולכתוב פרויקט שיאגד את אינספור התובנות שצברתי. היה לי חשוב לכתוב פרויקט שיהיה קרוב במידת האפשר לחיים האמיתים. לא עוד דוגמא קטנה ומנותקת אלא פרוייקט שיש בו מורכבות אמיתית ואתגרים שכל מפתח נתקל בהם בחיי היום יום. חפשתי אפלקציה מוכרת, פשוטה אך מתוחכמת שתהיה לי מודל לחיקוי. גמייל/יאהוו נראו לי מועמדים מושלמים ואכן התוצאה (למראית עין לפחות) היא שילוב של השניים.</p>
-                    <div class="notice">
-                        <span><b>הבהרה:</b></span>
-                        <span>מיילבון היא פרויקט MVC שכולו לטובת קהילת המפתחים. זהו פרוייקט לימודי ומאחוריו אין שום כוונה עיסקית. הבחירה להשתמש ב-UX\UI של גמייל/יאהוו כפי שהם (למעט שינויים קלים) נעשתה עלמנת להבטיח שהאפליקציה תהיה מוכרת וברורה לכל ולא מתוך שום טעם אחר.</span>
+        <div class="btn-about-me"></div>
+        <div class="aboutMe">
+            <div class="wrapper">
+                <div class="inner-wrapper">
+                    <div class="image-area">
+                        <img src="img/myPic.png" alt="Shaul Mazor" title="Shaul Mazor">
+                    </div>
+                    <div class="spacer"></div>
+                    <div class="content-area">
+                        <div class="title">קצת עלי</div>
+                        <div class="content">ל-Mailbone סט רחב של ספריות. חלקן שייכות לעולם הפיתוח וחלקן לעולם הבדיקות. יחד הן נותנות מענה מושלם למכלול האתגרים איתם התמודדתי. הנסיון שלי עם מרבית הספריות הנבחרות הוא ממקום עבודתי ולכן הרגשתי מאוד נח להשתמש בהן גם כאן. כמובן שלכל אחת מהן חוזקות וחולשות. אנסה לתאר בקצרה את ההתרשמות הכוללת שלי עם העבודה איתן.</div>
+                        <div class="content">ל-Mailbone סט רחב של ספריות. חלקן שייכות לעולם הפיתוח וחלקן לעולם הבדיקות. יחד הן נותנות מענה מושלם למכלול האתגרים איתם התמודדתי. הנסיון שלי עם מרבית הספריות הנבחרות הוא ממקום עבודתי ולכן הרגשתי מאוד נח להשתמש בהן גם כאן. כמובן שלכל אחת מהן חוזקות וחולשות. אנסה לתאר בקצרה את ההתרשמות הכוללת שלי עם העבודה איתן.</div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div id="libs1" class="libs">
-                <h2>הספריות בהן השתמשתי:</h2>
-                <div>
-                    <div>ל-Mailbone סט רחב של ספריות. חלקן שייכות לעולם הפיתוח וחלקן לעולם הבדיקות. יחד הן נותנות מענה מושלם למכלול האתגרים איתם התמודדתי. הנסיון שלי עם מרבית הספריות הנבחרות הוא ממקום עבודתי ולכן הרגשתי מאוד נח להשתמש בהן גם כאן. כמובן שלכל אחת מהן חוזקות וחולשות. אנסה לתאר בקצרה את ההתרשמות הכוללת שלי עם העבודה איתן.</div>
-                    <div class="title"><b>Backbone</b></div>
-                    <div>העבודה עם Backbone קלה ופשוטה, כמעט אינטואיטיבית. הקוד קצר וקריא להפליא. קל מאוד לדבג ספריה זאת. קל מאוד גם להרחיבה עלידי ספריות משלימות או/ו בצורה עצמאית. שימוש נכון ב-Backbone יבטיח קוד עם מבנה *MV קריא מבלי לכפות סיגנון כתיבה מסוים. כל אלו הופכים את Backbone לדעתי לבסיס איתן (גם אם לא מושלם) עליו אפשר לכתוב פרויקט מכל סדר גודל שהוא.</div>
-                    <div class="title"><b>Marionette</b></div>
-                    <div>Marionette היא בעיני התוספת המושלמת ל-Backbone עבור Large scale project. בעזרתה Backbone הופכת מסביבת פיתוח מינימלסטית וצנועה לסביבת פיתוח מלאה ואטרקטיבית. Marionette מאפשרת עבודה מודולרית החל מרמת האפליקציה ועד רמת ה-Composite view הבודד וזה לטעמי עיקר חוזקה. בדומה ל-Backbone גם Marionette מאוד קריאה וקלה לדיבוג. (יתרון שאי אפשר להפריז בחשיבותו). </div>
-                    <div class="title"><b>Backbone.deepModel</b></div>
-                    <div>Backbone.deepModel מרחיבה את המודל של Backbone ומאפשרת עידכון, שליפה והאזנה לאלמנטים מקוננים בו (היינו מעבר לרמה הראשונה). למודל המורחב אינטראקציה טובה יותר עם ה-views השונים המפשטת במידה ניכרת את הקוד. ספריה קטנטונת זאת ממחישה לדעתי בצורה ביותר כמה קל ופשוט להרחיב/לשנות את Backbone ולהתאימה לצרכי הפרויקט.</div>
-                    <div class="title"><b>Underscore</b></div>
-                    <div>Underscore היא ספריה קטנה מבית היוצר של מפתחי Backbone. לספריה זו  סט רחב של פונקציות עזר לניהול מערכים ואובייקטים והיא מאוד נוחה לשימוש. שימוש בפונקציונליות שלUnderscore יוסיף לאיתנות הקוד ולמידת קריאותו. (ל-Underscore ספריה מקבילה בשם Lodash בעלת api זהה ויש מי שיאמרו כי ביצועה טובים יותר).</div>
-                    <div class="title"><b>RequireJS</b></div>
-                    <div>Require.js מאפשרת טעינה אסינכרונית של קבצי גאווהסקיפט ומונעת את התלויות בינהם בזמן טעינתם. ספריה זאת מעולה וללא אלטרנטיבה אמיתית (ועל כך יעידו אינספור מאמרים ברשת), אבל אם להודות על האמת היא אינה קלה לשימוש. הקינפוג שלה אינו טרווילי ודורש הבנה עמוקה. הקוד אינו קריא ויש שיאמרו גם חידתי. תאור השגיאות (במידה וישנן) הוא מנימליסטי ולרוב לא מועיל.</div>
-                    <div class="title"><b>Mustache</b></div>
-                    <div>Mustache היא ה-template engine המועדף עלי. התחביר שלה, המתבסס על תגים, פשוט וקריא ומותיר את ה-template חף מלוגיקה (כפי שצריך בעיני להיות). לספריה זאת סט מרשים של יכולות, בינהם לולאות ומשתנים, המפשטים מאוד את מורכבות הקוד הגאווהסקריפטי. האינטגרציה איתה פשוטה למדי.</div>
-                    <div class="title"><b>Sass\Compass</b></div>
-                    <div>Sass היא שפת פיתוח לבניית קבצי CSS. הכתיבה בה היא הררכית, עם משתנים ופונקציות  ומאוד אינטואטיבית למי שמורגל בפיתוח. שימוש נכון ב-Sass משפר משמעותית את קריאות הקוד ומאפשר את תחזוקתו ביתר קלות. ל-Sass אינספור קומפיילרים איכותים. בחרתי להשתמש ב-Compass שהוא עשיר ב-Mixins (פונקציות מוכנות) מעולים.</div>
-                    <div class="title"><b>Mocha\Chai\Sinon</b></div>
-                    <div>לאחרונה החלטתי לתרום מנסיוני ולכתוב פרויקט שיאגד את אינספור התובנות שרכשתי. היה לי חשוב לכתוב פרויקט שיהיה קרוב במידת האפשר לחיים האמיתים. לא עוד דוגמא קטנה אלא פרוייקט שיש בו מורכבות אמיתית ואתגרים שכל מפתח נתקל בהם בחיי היום יום. חפשתי אפלקציה מוכרת, פשוטה אך מתוחכמת שתהיה לי לעזר. גמייל/יאהוו נראו לי מועמדים מושלמים ואכן התוצאה (למראית עין לפחות) היא שילוב של השניים.</div>
-                    <div class="title"><b>Grunt</b></div>
-                    <div>לאחרונה החלטתי לתרום מנסיוני ולכתוב פרויקט שיאגד את אינספור התובנות שרכשתי. היה לי חשוב לכתוב פרויקט שיהיה קרוב במידת האפשר לחיים האמיתים. לא עוד דוגמא קטנה אלא פרוייקט שיש בו מורכבות אמיתית ואתגרים שכל מפתח נתקל בהם בחיי היום יום. חפשתי אפלקציה מוכרת, פשוטה אך מתוחכמת שתהיה לי לעזר. גמייל/יאהוו נראו לי מועמדים מושלמים ואכן התוצאה (למראית עין לפחות) היא שילוב של השניים.</div>
+        <div class="fixed-menu">
+            <div class="inner-wrapper">
+                <div class="inner tiptip">
+                    <a target="_blank" href="https://github.com/shaulmazor/mailbone" class="button" title="View project on GitHub"><img src="img/github-icon.png"><span class="View project on GitHub"></span></a>
+                    <a target="_blank" href="http://mailbone.nodejitsu.com/index.html" class="button" title="Browse Mailbone"><img src="img/nodjitsu.png"><span class="Browse Mailbone"></span></a>
+                    <span class="logo">mailbone</span>
                 </div>
             </div>
+        </div>
 
-            <div class="project-structure" id="project-structure">
-                <h2>מבנה הפרויקט</h2>
-                <p>למיילבון שני מודיול: mail ו-tasks שהם לב הפרויקט. מדיול בראיייתי הוא יחידה שלמה וסגורה ולכן תחת כל מודיול קבצתי את ה-JS, CSS templates השייכים לו. חלוקת קבצי ה-JS בכל מודיול נעשתה בדומה למקובל בעולם ה-MVC (היינו חלוקה לפי models, collections ועוד)  את המשותף למודיולים השונים הגדרתי בתקיה נפרדת בשם assets. קוד שאינו קשור במישרין לאף מודיול ושייך לאפלקציה תוחם בתקיית core.</p>
-                <div class="project-structure-box">
-                    <a target="_blank" href="/Source-Codes/Images/simpleblog_blog_look.png" title="Mailbone"><img src="img/struct-level5.png" alt="Mailbone"> </a>
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <div class="lastUpdate">Last update: 1.1.15</div>
+                <header class="header">
+                    <nav class="nav">
+                        <ul>
+                            <li class=""><a href="/downloads">Source code</a></li>
+                            <li class=""><a href="/aboutme">App</a></li>
+                            <li class=""><a href="/contact">Tests</a></li>
+                        </ul>
+                    </nav>
+                    <div class="title">Mailbone</div>
+                    <div class="sub-title">A Full-Stack Javascript MVC Application</div>
+                </header>
+
+                <div><a target="_blank" href="http://mailbone.nodejitsu.com/index.html" title="Mailbone"><img src="img/screenshot.png" alt="Mailbone"> </a></div>
+
+                <div class="table-of-contents">
+                    <h2>תוכן העניינים</h2>
+                    <div>
+                        <ul>
+                            <li><a class="intro-link" href="#intro1">1. הקדמה</a></li>
+                            <li><a class="libs-link"  href="#libs1">2. הספריות בהן השתמשתי</a></li>
+                            <li><a class="project-structure-link" href="#project-structure" >3. מבנה הפרויקט  </a> </li>
+                            <li><a class="project-init-link" href="#project-init" >4. איתחול הפרויקט  </a> </li>
+                            <li><a href="#part4" >5. תובנות מעולם ה-MVC </a> </li>
+                            <li><a href="#part5" >6. תוספות ל-backbone ן-marionette  </a> </li>
+                            <li><a href="#part6" >7. עבודה עם SASS  </a> </li>
+                            <li><a href="#part7" >8. עולם הבדיקות</a> </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="project-init" id="project-init">
-                <h2>איתחול הפרויקט</h2>
-                <p>למיילבון שני מודיול: mail ו-tasks שהם לב הפרויקט. מדיול בראיייתי הוא יחידה שלמה וסגורה ולכן תחת כל מודיול קבצתי את ה-JS, CSS templates השייכים לו. חלוקת קבצי ה-JS בכל מודיול נעשתה בדומה למקובל בעולם ה-MVC (היינו חלוקה לפי models, collections ועוד)  את המשותף למודיולים השונים הגדרתי בתקיה נפרדת בשם assets. קוד שאינו קשור במישרין לאף מודיול ושייך לאפלקציה תוחם בתקיית core.</p>
-            </div>
 
-            <div class="img-wrapper"><a target="_blank" href="/Source-Codes/Images/simpleblog_blog_look.png" title="Mailbone"><img src="img/initStage5.png" alt="Mailbone"> </a></div>
+                <div id="intro1" class="introduction">
+                    <h2>הקדמה</h2>
+                    <div>
+                        <p>עולם הגאווהסקיפט עובר בשנים האחרונות מהפכה של ממש. MVC frameworks וספריות במגוון רחב של תחומים מתפרסמות חדשות לבקרים, בקצב הולך וגדל. שינוי זה הוא מבורך אבל גם מאוד תובעני ומאתגר. כדי לבחור את הספריות המתאימות ביותר לפרויקט ובכדי לדעת כיצד להשתמש בהן נכון (ביחד ולחוד) נדרשת למידה מתמשכת וניסיון מצטבר רצוף הצלחות וטעויות.</p>
+                        <p>לא פעם איבדתי את דרכי בסבך המאמרים והדוגמאות ברשת, משווע ליד מכוונת שתעשה סדר בבלאגן. למזלי הטוב את דרך החתחתים הזאת עברתי במקום עבודתי, בחברת LIVEPERSON  עם מפתחים מעולים ומנוסים. יחד גיבשנו תפיסת עולם שלמה כיצד לפתח אפליקצית MVC גדולה וסקלאבילית וכיצד לעשות זאת נכון בעזרת הספריות החדשות.</p>
+                        <p>לאחרונה החלטתי לתרום מנסיוני ולכתוב פרויקט שיאגד את אינספור התובנות שצברתי. היה לי חשוב לכתוב פרויקט שיהיה קרוב במידת האפשר לחיים האמיתים. לא עוד דוגמא קטנה ומנותקת אלא פרוייקט שיש בו מורכבות אמיתית ואתגרים שכל מפתח נתקל בהם בחיי היום יום. חפשתי אפלקציה מוכרת, פשוטה אך מתוחכמת שתהיה לי מודל לחיקוי. גמייל/יאהוו נראו לי מועמדים מושלמים ואכן התוצאה (למראית עין לפחות) היא שילוב של השניים.</p>
+                        <div class="notice">
+                            <span><b>הבהרה:</b></span>
+                            <span>מיילבון היא פרויקט MVC שכולו לטובת קהילת המפתחים. זהו פרוייקט לימודי ומאחוריו אין שום כוונה עיסקית. הבחירה להשתמש ב-UX\UI של גמייל/יאהוו כפי שהם (למעט שינויים קלים) נעשתה עלמנת להבטיח שהאפליקציה תהיה מוכרת וברורה לכל ולא מתוך שום טעם אחר.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="libs1" class="libs">
+                    <h2>הספריות בהן השתמשתי:</h2>
+                    <div>
+                        <div>ל-Mailbone סט רחב של ספריות. חלקן שייכות לעולם הפיתוח וחלקן לעולם הבדיקות. יחד הן נותנות מענה מושלם למכלול האתגרים איתם התמודדתי. הנסיון שלי עם מרבית הספריות הנבחרות הוא ממקום עבודתי ולכן הרגשתי מאוד נח להשתמש בהן גם כאן. כמובן שלכל אחת מהן חוזקות וחולשות. אנסה לתאר בקצרה את ההתרשמות הכוללת שלי עם העבודה איתן.</div>
+                        <div class="title"><b>Backbone</b></div>
+                        <div>העבודה עם Backbone קלה ופשוטה, כמעט אינטואיטיבית. הקוד קצר וקריא להפליא. קל מאוד לדבג ספריה זאת. קל מאוד גם להרחיבה עלידי ספריות משלימות או/ו בצורה עצמאית. שימוש נכון ב-Backbone יבטיח קוד עם מבנה *MV קריא מבלי לכפות סיגנון כתיבה מסוים. כל אלו הופכים את Backbone לדעתי לבסיס איתן (גם אם לא מושלם) עליו אפשר לכתוב פרויקט מכל סדר גודל שהוא.</div>
+                        <div class="title"><b>Marionette</b></div>
+                        <div>Marionette היא בעיני התוספת המושלמת ל-Backbone עבור Large scale project. בעזרתה Backbone הופכת מסביבת פיתוח מינימלסטית וצנועה לסביבת פיתוח מלאה ואטרקטיבית. Marionette מאפשרת עבודה מודולרית החל מרמת האפליקציה ועד רמת ה-Composite view הבודד וזה לטעמי עיקר חוזקה. בדומה ל-Backbone גם Marionette מאוד קריאה וקלה לדיבוג. (יתרון שאי אפשר להפריז בחשיבותו). </div>
+                        <div class="title"><b>Backbone.deepModel</b></div>
+                        <div>Backbone.deepModel מרחיבה את המודל של Backbone ומאפשרת עידכון, שליפה והאזנה לאלמנטים מקוננים בו (היינו מעבר לרמה הראשונה). למודל המורחב אינטראקציה טובה יותר עם ה-views השונים המפשטת במידה ניכרת את הקוד. ספריה קטנטונת זאת ממחישה לדעתי בצורה ביותר כמה קל ופשוט להרחיב/לשנות את Backbone ולהתאימה לצרכי הפרויקט.</div>
+                        <div class="title"><b>Underscore</b></div>
+                        <div>Underscore היא ספריה קטנה מבית היוצר של מפתחי Backbone. לספריה זו  סט רחב של פונקציות עזר לניהול מערכים ואובייקטים והיא מאוד נוחה לשימוש. שימוש בפונקציונליות שלUnderscore יוסיף לאיתנות הקוד ולמידת קריאותו. (ל-Underscore ספריה מקבילה בשם Lodash בעלת api זהה ויש מי שיאמרו כי ביצועה טובים יותר).</div>
+                        <div class="title"><b>RequireJS</b></div>
+                        <div>Require.js מאפשרת טעינה אסינכרונית של קבצי גאווהסקיפט ומונעת את התלויות בינהם בזמן טעינתם. ספריה זאת מעולה וללא אלטרנטיבה אמיתית (ועל כך יעידו אינספור מאמרים ברשת), אבל אם להודות על האמת היא אינה קלה לשימוש. הקינפוג שלה אינו טרווילי ודורש הבנה עמוקה. הקוד אינו קריא ויש שיאמרו גם חידתי. תאור השגיאות (במידה וישנן) הוא מנימליסטי ולרוב לא מועיל.</div>
+                        <div class="title"><b>Mustache</b></div>
+                        <div>Mustache היא ה-template engine המועדף עלי. התחביר שלה, המתבסס על תגים, פשוט וקריא ומותיר את ה-template חף מלוגיקה (כפי שצריך בעיני להיות). לספריה זאת סט מרשים של יכולות, בינהם לולאות ומשתנים, המפשטים מאוד את מורכבות הקוד הגאווהסקריפטי. האינטגרציה איתה פשוטה למדי.</div>
+                        <div class="title"><b>Sass\Compass</b></div>
+                        <div>Sass היא שפת פיתוח לבניית קבצי CSS. הכתיבה בה היא הררכית, עם משתנים ופונקציות  ומאוד אינטואטיבית למי שמורגל בפיתוח. שימוש נכון ב-Sass משפר משמעותית את קריאות הקוד ומאפשר את תחזוקתו ביתר קלות. ל-Sass אינספור קומפיילרים איכותים. בחרתי להשתמש ב-Compass שהוא עשיר ב-Mixins (פונקציות מוכנות) מעולים.</div>
+                        <div class="title"><b>Mocha\Chai\Sinon</b></div>
+                        <div>לאחרונה החלטתי לתרום מנסיוני ולכתוב פרויקט שיאגד את אינספור התובנות שרכשתי. היה לי חשוב לכתוב פרויקט שיהיה קרוב במידת האפשר לחיים האמיתים. לא עוד דוגמא קטנה אלא פרוייקט שיש בו מורכבות אמיתית ואתגרים שכל מפתח נתקל בהם בחיי היום יום. חפשתי אפלקציה מוכרת, פשוטה אך מתוחכמת שתהיה לי לעזר. גמייל/יאהוו נראו לי מועמדים מושלמים ואכן התוצאה (למראית עין לפחות) היא שילוב של השניים.</div>
+                        <div class="title"><b>Grunt</b></div>
+                        <div>לאחרונה החלטתי לתרום מנסיוני ולכתוב פרויקט שיאגד את אינספור התובנות שרכשתי. היה לי חשוב לכתוב פרויקט שיהיה קרוב במידת האפשר לחיים האמיתים. לא עוד דוגמא קטנה אלא פרוייקט שיש בו מורכבות אמיתית ואתגרים שכל מפתח נתקל בהם בחיי היום יום. חפשתי אפלקציה מוכרת, פשוטה אך מתוחכמת שתהיה לי לעזר. גמייל/יאהוו נראו לי מועמדים מושלמים ואכן התוצאה (למראית עין לפחות) היא שילוב של השניים.</div>
+                    </div>
+                </div>
+
+                <div class="project-structure" id="project-structure">
+                    <h2>מבנה הפרויקט</h2>
+                    <p>למיילבון שני מודיול: mail ו-tasks שהם לב הפרויקט. מדיול בראיייתי הוא יחידה שלמה וסגורה ולכן תחת כל מודיול קבצתי את ה-JS, CSS templates השייכים לו. חלוקת קבצי ה-JS בכל מודיול נעשתה בדומה למקובל בעולם ה-MVC (היינו חלוקה לפי models, collections ועוד)  את המשותף למודיולים השונים הגדרתי בתקיה נפרדת בשם assets. קוד שאינו קשור במישרין לאף מודיול ושייך לאפלקציה תוחם בתקיית core.</p>
+                    <div class="project-structure-box">
+                        <a target="_blank" href="/Source-Codes/Images/simpleblog_blog_look.png" title="Mailbone"><img src="img/struct-level5.png" alt="Mailbone"> </a>
+                    </div>
+                </div>
+                <div class="project-init" id="project-init">
+                    <h2>איתחול הפרויקט</h2>
+                    <p>למיילבון שני מודיול: mail ו-tasks שהם לב הפרויקט. מדיול בראיייתי הוא יחידה שלמה וסגורה ולכן תחת כל מודיול קבצתי את ה-JS, CSS templates השייכים לו. חלוקת קבצי ה-JS בכל מודיול נעשתה בדומה למקובל בעולם ה-MVC (היינו חלוקה לפי models, collections ועוד)  את המשותף למודיולים השונים הגדרתי בתקיה נפרדת בשם assets. קוד שאינו קשור במישרין לאף מודיול ושייך לאפלקציה תוחם בתקיית core.</p>
+                </div>
+
+                <div class="img-wrapper"><a target="_blank" href="/Source-Codes/Images/simpleblog_blog_look.png" title="Mailbone"><img src="img/initStage5.png" alt="Mailbone"> </a></div>
+            </div>
         </div>
     </div>
-
-
 </body>
 </html>
 
