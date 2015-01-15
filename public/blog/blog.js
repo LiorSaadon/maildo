@@ -55,7 +55,7 @@ $(document).ready(function(){
     $('.libs-link').click(function(){
         setTimeout(function(){
             $('html,body').animate({
-                scrollTop:  $(document).scrollTop() - 50
+                scrollTop:  $(document).scrollTop() - 130
             })
         },40);
     });
@@ -63,7 +63,7 @@ $(document).ready(function(){
     $('.project-structure-link').click(function(){
         setTimeout(function(){
             $('html,body').animate({
-                scrollTop:  $(document).scrollTop() - 70
+                scrollTop:  $(document).scrollTop() - 140
             })
         },40);
     });
@@ -71,7 +71,7 @@ $(document).ready(function(){
     $('.project-init-link').click(function(){
         setTimeout(function(){
             $('html,body').animate({
-                scrollTop:  $(document).scrollTop() -140
+                scrollTop:  $(document).scrollTop() - 140
             })
         },40);
     });
