@@ -143,7 +143,12 @@ body {
         padding-top: 80px;
         width: 240px;
         text-align: center;
-        vertical-align: middle
+        vertical-align: middle;
+
+        .mail-address{
+           font-size:14px;
+           color:#1B5C8C;
+        }
       }
 
       .spacer {
@@ -159,7 +164,7 @@ body {
         .title {
           font-size: 28px;
           color: rgb(121, 25, 25);
-          padding-bottom: 35px;
+          padding-bottom: 32px;
         }
 
         .content {
@@ -169,6 +174,10 @@ body {
           font-style: normal;
           font-variant: normal;
           font-weight: normal;
+        }
+
+        .linkedin{
+          padding-top:15px;
         }
       }
     }
@@ -237,6 +246,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   border: 1px solid rgba(0, 0, 0, 0.275);
+  box-shadow: 0 0.15em 0.25em 0 rgba(0, 0, 0, 0.5);
 
   .page-content {
 

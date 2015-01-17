@@ -13,7 +13,7 @@ $(document).ready(function(){
             if ($(this).scrollTop() > 10) {
                 $('.fixed-menu').show();
                 $('.header .nav').hide();
-                $(".header .title").css("margin-top","75px");
+                $(".header .title").css("margin-top","85px");
             }
 
             if ($(this).scrollTop() > 800) {
