@@ -111,7 +111,7 @@ body {
       .aboutMe .wrapper .inner-wrapper .content-area, .aboutMe .wrapper .inner-wrapper .image-area {
         display: table-cell; }
       .aboutMe .wrapper .inner-wrapper .image-area {
-        padding-top: 80px;
+        padding-top: 95px;
         width: 240px;
         text-align: center;
         vertical-align: middle; }
@@ -119,7 +119,7 @@ body {
           font-size: 14px;
           color: #1B5C8C; }
       .aboutMe .wrapper .inner-wrapper .spacer {
-        width: 56px; }
+        width: 48px; }
       .aboutMe .wrapper .inner-wrapper .content-area {
         width: 590px;
         text-align: right;
