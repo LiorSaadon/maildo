@@ -58,10 +58,10 @@ body {
 /*  SCROLL BUTTON                           */
 /*----------------------------------------- */
 .btn-scroll-to-top {
-  width: 34px;
-  height: 35px;
+  width: 28px;
+  height: 26px;
   padding-bottom: 7px;
-  padding-right: 10px;
+  padding-right: 16px;
   text-align: center;
   background: whiteSmoke;
   font-weight: bold;
@@ -71,21 +71,20 @@ body {
   bottom: 25px;
   right: 10px;
   display: none;
-  background: url("img/go-up.png") no-repeat; }
+  background: url("img/arrow-up.png") no-repeat; }
   .btn-scroll-to-top:hover {
-    cursor: pointer;
-    background: url("img/go-up-hover.png") no-repeat; }
+    cursor: pointer; }
 
 /*----------------------------------------- */
 /* ABOUT ME                                 */
 /*----------------------------------------- */
 .btn-about-me {
   position: fixed;
-  width: 40px;
-  height: 42px;
+  width: 45px;
+  height: 43px;
   top: 20px;
   right: 20px;
-  background: url("img/me-profile.JPG") no-repeat;
+  background: url("img/me-profile.png") no-repeat;
   z-index: 2000; }
   .btn-about-me:hover {
     cursor: pointer; }
@@ -240,7 +239,7 @@ body {
       width: 100%;
       height: 25px;
       margin-top: 95px;
-      margin-bottom: 75px;
+      margin-bottom: 70px;
       background: url("img/seperator.gif") no-repeat center; }
     .page-content-wrapper .page-content .table-of-contents {
       padding: 37px 0 0px 0; }

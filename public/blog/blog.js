@@ -5,7 +5,6 @@ $(document).ready(function(){
     $(window).scroll(function(){
 
         if($(this).scrollTop() < 10){
-            $('.btn-scroll-to-top').fadeOut();
             $('.fixed-menu').hide();
             $('.header .nav').show();
             $(".header .title").css("margin-top","45px");
@@ -16,8 +15,10 @@ $(document).ready(function(){
                 $(".header .title").css("margin-top","85px");
             }
 
-            if ($(this).scrollTop() > 800) {
+            if ($(this).scrollTop() > 1100) {
                 $('.btn-scroll-to-top').fadeIn();
+            }else{
+                $('.btn-scroll-to-top').fadeOut();
             }
         }
     });
