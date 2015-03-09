@@ -1,5 +1,0 @@
-Why we should listen to fetch:success and not sync?\
-
-Derick Bailey:
-----------------------
-Backbone.js, as an example, handles this by allowing a parent Collection to forward all events from the Models in that collection.

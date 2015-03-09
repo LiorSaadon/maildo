@@ -1,4 +1,0 @@
-1. html+css: 15.2.13
-2  sass : 21.3.13
-3. build basic app: 17.4.13
-4. start logic 2.6.13

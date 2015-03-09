@@ -1,4 +1,0 @@
-$ cd smd\mailbone\public\blog
-$ sass --watch blog.scss:blog.css
-
-
