@@ -1,6 +1,0 @@
-
-1. create command: (only once in a project life time)
-   compass create D:\smd\mailbone\public\app\assets\compass
-
-2. watch command:  (every time project is open)
-   compass watch D:\smd\mailbone\public\app\assets\config
