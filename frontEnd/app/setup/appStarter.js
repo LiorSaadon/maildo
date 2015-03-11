@@ -12,6 +12,7 @@ define(function (require) {
     var Translator = require("assets-i18n/translator");
     var AppRouter = require("app/setup/appRouter");
     var Context = require("common-context/context");
+    var Socket = require("common/socket/socket");
     var SettingsController = require("common-settings/settingsController");
 
 
@@ -25,6 +26,7 @@ define(function (require) {
         app.context = new Context();
         app.frame = new Frame();
         app.router = new AppRouter();
+        app.socket = new Socket();
         app.settingsController = new SettingsController();
     });
 

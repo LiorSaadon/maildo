@@ -1,0 +1,12 @@
+{
+  "name": "mailbone",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node web.js"
+  },
+  "dependencies": {
+    "express": "4.9.5",
+    "shortid": "2.1.3"
+  }
+}

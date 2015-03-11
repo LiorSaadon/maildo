@@ -1,9 +1,11 @@
 module.exports = function() {
 
+    var shortId = require('shortid');
+
     var add = function (req, res, MailModel) {
 
         var mail = new MailModel({
-            "id": "_" + Math.floor((Math.random() * 10) + 1),
+            "id": "_" + shortId.generate(),
             userId:"1",
             "from": "demo@mailbone.com",
             "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
@@ -23,10 +25,9 @@ module.exports = function() {
             }
         });
 
-        console.log("before add...");
         mail.save(function (err) {
             if (err){
-                console.log('save failed..');
+                res.send({"status":"ERR"});
             }else{
                 console.dir(mail);
                 res.send(mail);

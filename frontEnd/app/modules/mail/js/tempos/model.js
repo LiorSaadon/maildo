@@ -9,7 +9,7 @@ define(function (require) {
 
     app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
-        MailModel =Backbone.Model.extend({
+        MailModel = BaseModel.extend({
 
             defaults: {
                 from: '',
@@ -24,6 +24,12 @@ define(function (require) {
             },
 
             resource: 'http://localhost:3000/addItem',
+
+            initialize: function (attrs, options) {
+
+                 options = options || {};
+                 this.socket = options.socket || mail.socket || app.socket;
+            },
 
             //--------------------------------------------------
 

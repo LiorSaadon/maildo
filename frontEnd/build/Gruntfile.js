@@ -79,7 +79,7 @@ module.exports = function(grunt) {
                 '../target/app/assets/ui/scss',
                 '../target/app/assets/compass',
                 '../target/app/assets/ui/components',
-                '../target/app/core',
+                '../target/app/common',
                 '../target/app/modules',
                 '../target/build',
                 '../target/vendor/compass',

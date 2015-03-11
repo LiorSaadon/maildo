@@ -25,7 +25,7 @@ http_images_path = "../app/assets/ui/img"
 
 additional_import_paths = ["../../modules/mail/ui/scss",
                            "../../modules/tasks/ui/scss",
-                           "../../core/frame/ui/scss",
+                           "../../frame/ui/scss",
                            "../ui/components/autoComplete/ui/scss",
                            "../ui/components/tags/ui/scss",
                            "../ui/components/dialog/ui/scss",

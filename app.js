@@ -20,6 +20,7 @@ dbManager.connect(function(Models){
     mails.setModel(Models.MailModel);
     app.get('/mails', mails.getList);
     app.post('/addItem', mails.addItem);
+    app.delete('/mails',  mails.deleteBulk);
 
     http.createServer(app).listen(app.get('port'), function () {
         console.log("Express server listening on port " + app.get('port'));

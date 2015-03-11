@@ -4,6 +4,7 @@ define(function (require) {
     var app = require("mbApp");
     var TestModel = require("app/modules/mail/js/tempos/model");
     var TestCollection = require("app/modules/mail/js/tempos/collection");
+    var data = require("json!app/modules/mail/js/tempos/data.json");
 
     var ServerActionsController = {};
 
@@ -12,80 +13,157 @@ define(function (require) {
         ServerActionsController = Marionette.Controller.extend({
 
             initialize: function () {
-                this.testCollection = new TestCollection();
+
+                this.collection = new TestCollection();
+                this.addItemResponses = 0;
+
+                this.addNewItems();
+                this.runTester();
             },
 
-            //-----------------------------------------------------------
+            //------------------------------------------------------
+            // addItems
+            //------------------------------------------------------
 
-            addItem:function(){
+            addNewItems:function(){
+                for(var i=0;i<data.length;i++){
+                    this.addItem(data[i]);
+                }
+            },
 
-                var model = new TestModel({
-                    "userId":"1",
-                    "from": "demo@mailbone.com",
-                    "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
-                    "cc": "williams@mailbone.com",
-                    "bcc": "",
-                    "subject": "Things You Can Do With JavaScript",
-                    "sentTime": "2014-04-12 15:06:51",
-                    "body": "later",
-                    "relatedBody": "mail1",
-                    "labels": {
-                        "read": true,
-                        "starred": true,
-                        "important": true
-                    },
-                    "groups": {
-                        "sent": true
-                    }
-                });
+            //--------------------------------------------------------
+
+            addItem:function(dataModel){
+
+                var model = new TestModel(dataModel);
 
                 model.save(null, {
-                    success:function (model, response){
-                        window.localStorage.setItem("lastCreateItem", model.id);
-                        debugger;
-                    },
-                    error:function (model, response) {
-                        console.log("error");
-                        debugger;
-                    }
+                    success: _.bind(function (model, response){
+                        this.addItemResponses += 1;
+                        console.log("addItem:success");
+                    },this),
+                    error: _.bind(function (model, response) {
+                        this.addItemResponses += 1;
+                        console.log("addItem:error");
+                    },this)
                 });
             },
 
-            //-----------------------------------------------------------
+            //------------------------------------------------------
+            // runTester
+            //------------------------------------------------------
 
-            getItems:function(){
-                this.testCollection.fetch({
+            runTester:function(){
+
+                if(this.addItemResponses === data.length){
+
+                    if(!this.startFetching){
+                        console.log("Data added successfully. Start fetching....");
+
+                        this.startFetching = true;
+                        this.getAll();
+                        this.filterByInbox();
+                        this.filterBySearchWord();
+                    }
+
+                    if(this.allItems && this.inboxFiltered && this.serachFiltered && !this.startDelete){
+                        console.log("Data fetched. Start deleting....");
+
+                       this.startDelete = true;
+                       this.removeItem();
+                       this.removeBulk();
+
+                        this.enoughBulshit = true;
+                    };
+
+//                    if(this.itemRemoved && this.bulkRemoved && !this.startUpdate){
+//                        this.startUpdate = true;
+//
+//                        this.updateFirst();
+//                        this.updateLast2Items();
+//
+//                        this.enoughBulshit = true;
+//                    }
+                }
+
+                 if(!this.enoughBulshit){
+                    setTimeout(_.bind(function(){
+                        this.runTester();
+                    },this),300);
+                }
+            },
+
+            //------------------------------------------------------
+
+            getAll:function(){
+                this.collection.fetch({
                     reset:true,
                     success: _.bind(function(collection, resp, options) {
-                        console.log("size: " + this.testCollection.size());
+                        this.allItems = true;
+                        console.log("collection.size: " + this.collection.size());
                     },this),
-                    error:function(collection, resp, options) {
-                        console.log("error:getItem");
-                    }
-                })
+                    error:_.bind(function(collection, resp, options) {
+                        this.allItems = true;
+                        console.log("getAll:error");
+                    },this)
+                });
+            },
+
+            //-------------------------------------------------------
+
+            filterByInbox:function(){
+
+                this.inboxFiltered = true;
+            },
+
+            //-------------------------------------------------------
+
+            filterBySearchWord:function(){
+
+                this.serachFiltered = true;
             },
 
             //-----------------------------------------------------------
 
-            deleteItem:function(){
+            removeItem:function(){
 
-                var modeId = window.localStorage.getItem("lastCreateItem");
+                var model = this.collection.models[0];
 
-                if(!_.isEmpty(modeId)){
+                if(_.isObject(model)){
+                    var id = model.id;
 
-                    var model = this.testCollection.find({id:modeId});
-
-                    if(_.isObject(model)){
-                        model.destroy({
-                            success: _.bind(function(collection, resp, options) {
-                                window.localStorage.removeItem("lastCreateItem");
-                            },this),
-                            error:function(collection, resp, options) {
-                                console.log("error:deleteItem");
+                    model.destroy({
+                        success: _.bind(function(collection, resp, options) {
+                            this.itemRemoved = true;
+                            if(_.isEmpty(this.collection.findWhere({id:id}))){
+                                console.log("remove successed");
+                            }else{
+                                console.log("remove failed");
                             }
-                        })
-                    }
+                        },this),
+                        error:_.bind(function(collection, resp, options) {
+                            this.itemRemoved = true;
+                            console.log("remove failed. (error)");
+                        },this)
+                    })
                 }
+            },
+
+            //-----------------------------------------------------------
+
+            removeBulk:function(){
+
+                this.collection.destroy({
+
+                    success: _.bind(function () {
+                        this.bulkRemoved = true;
+                        console.log("collection.size (after remove all)): " + this.collection.size());
+                    }, this),
+                    error:function(){
+                        this.bulkRemoved = true;
+                        console.log("remove bulk error");
+                    }
+                });
             }
         });
     });

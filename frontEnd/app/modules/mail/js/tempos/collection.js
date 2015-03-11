@@ -3,12 +3,13 @@ define(function (require) {
 
     var app = require("mbApp");
     var MailModel = require("mail-models/mailModel");
+    var BaseCollection = require("assets-base-collections/BaseCollection");
 
     var MailCollection = {};
 
     app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
-        MailCollection = Backbone.Collection.extend({
+        MailCollection = BaseCollection.extend({
 
             isFetched: false,
 

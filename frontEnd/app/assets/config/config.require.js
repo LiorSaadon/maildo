@@ -15,6 +15,7 @@ define({
         "backbone.localstorage": "vendor/backbone/backbone.localstorage",
         "backbone.deepmodel": "vendor/backbone/backbone.deepmodel",
         "marionette": "vendor/backbone/backbone.marionette",
+        "socketio": 'vendor/socket.io/socket.io',
         "text": "vendor/require/require.text",
         "json": "vendor/require/require.json",
         "coverage": "vendor/require/require.coverage",
@@ -46,15 +47,16 @@ define({
         "mail-module": "app/modules/mail/mail",
         "tasks-module": "app/modules/tasks/tasks",
 
-        "frame":"app/core/frame/frame",
-        "frame-views":  "app/core/frame/js/views",
-        "frame-templates":"app/core/frame/ui/templates",
-        "frame-controllers":"app/core/frame/js/controllers",
-        "frame-collections":"app/core/frame/js/collections",
-        "frame-models":"app/core/frame/js/models",
-        "frame-storage":"app/core/frame/js/storage",
-        "common-settings": "app/core/settings",
-        "common-context": "app/core/context",
+        "frame":"app/frame/frame",
+        "frame-views":  "app/frame/js/views",
+        "frame-templates":"app/frame/ui/templates",
+        "frame-controllers":"app/frame/js/controllers",
+        "frame-collections":"app/frame/js/collections",
+        "frame-models":"app/frame/js/models",
+        "frame-storage":"app/frame/js/storage",
+        "common": "app/common",
+        "common-settings": "app/common/settings",
+        "common-context": "app/common/context",
 
         "mailApp": "app/modules/mail",
         "mail-data": "app/modules/mail/data",
@@ -81,6 +83,9 @@ define({
         "test-pp":"../../tests"
     },
     "shim": {
+        'socketio': {
+            exports: 'io'
+        }
     },
     tpl: {
         "templateExtension": ""
