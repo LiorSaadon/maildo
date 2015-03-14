@@ -10,7 +10,7 @@
     "jquery":true,
     "evil":true,
     "laxcomma":true,
-    "devel":false,
+    "devel":true,
     "globals":{
         "_":true,
         "jQuery":true,

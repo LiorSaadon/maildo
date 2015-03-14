@@ -1,30 +1,34 @@
-var http = require('http');
-var path = require('path');
-var express = require('express');
-var mails = require('./backEnd/routes/mails/mails');
-var dbManager = require('./backEnd/managers/dbManager');
-
-var app = express();
+var express = require('express'),
+    path = require('path'),
+    app = express(),
+    http = require('http'),
+    server = http.createServer(app),
+    io = require('socket.io').listen(server),
+    mails = require('./backEnd/routes/mails/mails'),
+    dbManager = require('./backEnd/managers/dbManager');
 
 dbManager.connect(function(Models){
 
-    app.configure('all', function(){
-        app.set('port', process.env.PORT || 3000);
-        app.use(express.logger('dev'));
-        app.use(express.json());
-        app.use(express.urlencoded());
-        app.use(express.methodOverride());
-        app.use(express.static(path.join(__dirname, 'frontEnd')));
+    app.use(express.static(path.join(__dirname, 'frontEnd')));
+
+    server.listen(3000, function () {
+        console.log("Express server listening on port 3000");
     });
 
     mails.setModel(Models.MailModel);
-    app.get('/mails', mails.getList);
-    app.post('/addItem', mails.addItem);
-    app.delete('/mails',  mails.deleteBulk);
 
-    http.createServer(app).listen(app.get('port'), function () {
-        console.log("Express server listening on port " + app.get('port'));
+    io.sockets.on('connection', function (socket) {
+        socket.on('addItem:create', function (data) {
+            mails.addItem(io,data);
+        });
+        socket.on('mails:read', function (data) {
+            mails.getList(io,data);
+        });
+        socket.on('mails:destroy', function (data) {
+            io.sockets.emit('mails:get', {"success":true,"data":{"message":"mails:destroy - success!"}});
+        });
     });
 });
+
 
 

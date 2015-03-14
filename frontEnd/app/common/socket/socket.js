@@ -8,15 +8,14 @@ define(function (require) {
 
     var Socket = Marionette.Controller.extend({
 
-        initialize: function (options) {
-
-            var socket = io('http://localhost:3000/');
+        create:function(options){
+            var _socket = io('http://localhost:3000/');
 
             /**
              * On any event from the server, trigger it on the app event aggregator. The first
              * argument will always be the name of the event.
              */
-            socket.on('*', function(){
+            _socket.on('*', function(){
                 var args = Array.prototype.slice.call(arguments, 0);
                 app.vent.trigger(args[0], args.slice(1));
             });
@@ -25,11 +24,11 @@ define(function (require) {
              * On error, trigger the socket:error event on the global event aggregator for
              * interested listeners.
              */
-            socket.on('error', function(err){
+            _socket.on('error', function(err){
                 app.vent.trigger('socket:error', err);
             });
 
-            return socket;
+            return _socket;
         }
     });
 

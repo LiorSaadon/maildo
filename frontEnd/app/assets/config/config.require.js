@@ -12,7 +12,7 @@ define({
         "backbone": "vendor/backbone/backbone",
         "backbone.wreqr": "vendor/backbone/backbone.wreqr",
         "backbone.babysitter": "vendor/backbone/backbone.babysitter",
-        "backbone.localstorage": "vendor/backbone/backbone.localstorage",
+        "backbone.sync": "vendor/backbone/backbone.sync",
         "backbone.deepmodel": "vendor/backbone/backbone.deepmodel",
         "marionette": "vendor/backbone/backbone.marionette",
         "socketio": 'vendor/socket.io/socket.io',

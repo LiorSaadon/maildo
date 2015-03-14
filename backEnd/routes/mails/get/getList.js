@@ -1,9 +1,9 @@
 module.exports = function() {
 
-    var select = function (req, res, MailModel) {
+    var select = function (io, data, MailModel) {
 
         MailModel.find({}, function(error, mails) {
-            res.send({"collection":mails,"metadata":{}});
+            io.sockets.emit('mails:read', {"success":true,"data":{"collection":mails,"metadata":{}}});
         });
     };
 

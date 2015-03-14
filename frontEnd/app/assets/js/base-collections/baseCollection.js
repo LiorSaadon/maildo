@@ -71,29 +71,26 @@ define(function (require) {
         destroy:function(_options){
 
             var that = this,
-                itemsToDelete= [],
                 options = _options ? _.clone(_options) : {},
                 success = options.success;
 
             if(_.isArray(options.selectedItems)){
-                itemsToDelete = options.selectedItems.splice(0);
+                options.data = options.selectedItems.splice(0);
             }else{
-                itemsToDelete = this.getModelIds(); // all items
+                options.data = this.getModelIds(); // all items
             }
 
             _.each(options.data, function(item){ // remove new or not existed items
                 var model = that.get(item);
                 if(!model || model.isNew()){
-                    itemsToDelete.slice($.inArray(item, options.data),1);
+                    options.data = options.data.slice($.inArray(item, options.data),1);
                 }
             });
 
-            if(_.isEmpty(itemsToDelete)){ //no items to delete
+            if(_.isEmpty(options.data)){ //no items to delete
                 options.success();
                 return false;
             }
-
-            options.data = "DDD:435345345"; //{"items":itemsToDelete.toString()};
 
             options.success = function(resp) {
                 if (success){

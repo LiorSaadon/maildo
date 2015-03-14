@@ -15,13 +15,22 @@ define(function (require) {
 
             model: MailModel,
 
-            resource: 'http://localhost:3000/mails',
+            resource: 'mails',
+
+            initialize: function (attrs, options) {
+
+                options = options || {};
+
+                this.socket = {
+                    requestName: this.resource,
+                    io: options.socket || mail.socket || app.socket
+                };
+            },
 
             //--------------------------------------------------
 
             url: function () {
-
-                return this.resource;
+                return window.location.hostname + "/" + this.resource;
             }
         });
     });

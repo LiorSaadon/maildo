@@ -9,9 +9,10 @@
         "backbone": "vendor/backbone/backbone",
         "backbone.wreqr": "vendor/backbone/backbone.wreqr",
         "backbone.babysitter": "vendor/backbone/backbone.babysitter",
-        "backbone.localstorage": "vendor/backbone/backbone.localstorage",
+        "backbone.sync": "vendor/backbone/backbone.sync",
         "backbone.deepmodel": "vendor/backbone/backbone.deepmodel",
         "marionette": "vendor/backbone/backbone.marionette",
+        "socketio": "vendor/socket.io/socket.io",
         "text": "vendor/require/require.text",
         "json": "vendor/require/require.json",
         "coverage": "vendor/require/require.coverage",
@@ -26,8 +27,8 @@
         "templateCache": "vendor/require/templateCache",
 
         "mocha": "vendor/mocha/mocha",
-        "chai" : "vendor/chai/cjai",
-
+        "chai"          : "vendor/chai/cjai",
+        "chai-jquery"   : "vendor/chai/chai-jquery",
 
         "assets-ui-components":"app/assets/ui/components",
         "assets-base-collections": "app/assets/js/base-collections",
@@ -43,13 +44,14 @@
         "mail-module": "app/modules/mail/mail",
         "tasks-module": "app/modules/tasks/tasks",
 
-        "frame":"app/common/frame/frame",
-        "frame-views":  "app/common/frame/js/views",
-        "frame-templates":"app/common/frame/ui/templates",
-        "frame-controllers":"app/common/frame/js/controllers",
-        "frame-collections":"app/common/frame/js/collections",
-        "frame-models":"app/common/frame/js/models",
-        "frame-storage":"app/common/frame/js/storage",
+        "frame":"app/frame/frame",
+        "frame-views":  "app/frame/js/views",
+        "frame-templates":"app/frame/ui/templates",
+        "frame-controllers":"app/frame/js/controllers",
+        "frame-collections":"app/frame/js/collections",
+        "frame-models":"app/frame/js/models",
+        "frame-storage":"app/frame/js/storage",
+        "common": "app/common",
         "common-settings": "app/common/settings",
         "common-context": "app/common/context",
 
@@ -84,13 +86,12 @@
         "modernizr": {
             "exports": "Modernizr"
         },
-        "backbone.localstorage": {
-            "exports": "Backbone.LocalStorage",
+        "backbone.sync": {
+            "exports": "Backbone.sync",
             "deps": ["backbone"]
         },
-        "backbone.deepmodel": {
-            "exports": "Backbone.DeepModel",
-            "deps": ["backbone"]
+        "socketio": {
+            "exports": "io"
         }
     },
     "packages": [],

@@ -2,7 +2,7 @@ module.exports = function() {
 
     var shortId = require('shortid');
 
-    var add = function (req, res, MailModel) {
+    var add = function (io, data, MailModel) {
 
         var mail = new MailModel({
             "id": "_" + shortId.generate(),
@@ -27,10 +27,9 @@ module.exports = function() {
 
         mail.save(function (err) {
             if (err){
-                res.send({"status":"ERR"});
+                io.sockets.emit('addItem:create', {"success":false});
             }else{
-                console.dir(mail);
-                res.send(mail);
+                io.sockets.emit('addItem:create', {"success":true,"data":mail});
             }
         });
     };

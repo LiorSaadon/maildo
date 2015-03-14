@@ -3,7 +3,7 @@ define(function (require) {
 
     require("mail-module");
     require("tasks-module");
-    require("backbone.localstorage");
+    require("backbone.sync");
     require("assets-extensions/marionette/marionette.extensions");
 
     var app = require("mbApp");
@@ -26,7 +26,7 @@ define(function (require) {
         app.context = new Context();
         app.frame = new Frame();
         app.router = new AppRouter();
-        app.socket = new Socket();
+        app.socket = new Socket().create();
         app.settingsController = new SettingsController();
     });
 

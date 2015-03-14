@@ -40,11 +40,11 @@ define(function (require) {
                 model.save(null, {
                     success: _.bind(function (model, response){
                         this.addItemResponses += 1;
-                        console.log("addItem:success");
+                        console.log("great");
                     },this),
                     error: _.bind(function (model, response) {
                         this.addItemResponses += 1;
-                        console.log("addItem:error");
+                        console.log(response.error);
                     },this)
                 });
             },
@@ -64,17 +64,17 @@ define(function (require) {
                         this.getAll();
                         this.filterByInbox();
                         this.filterBySearchWord();
-                    }
-
-                    if(this.allItems && this.inboxFiltered && this.serachFiltered && !this.startDelete){
-                        console.log("Data fetched. Start deleting....");
-
-                       this.startDelete = true;
-                       this.removeItem();
-                       this.removeBulk();
 
                         this.enoughBulshit = true;
-                    };
+                    }
+
+//                    if(this.allItems && this.inboxFiltered && this.serachFiltered && !this.startDelete){
+//                        console.log("Data fetched. Start deleting....");
+//
+//                       this.startDelete = true;
+//                       this.removeItem();
+//                       this.removeBulk();
+//                    }
 
 //                    if(this.itemRemoved && this.bulkRemoved && !this.startUpdate){
 //                        this.startUpdate = true;
@@ -145,7 +145,7 @@ define(function (require) {
                             this.itemRemoved = true;
                             console.log("remove failed. (error)");
                         },this)
-                    })
+                    });
                 }
             },
 

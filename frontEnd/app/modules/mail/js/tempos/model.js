@@ -23,19 +23,21 @@ define(function (require) {
                 groups:{}
             },
 
-            resource: 'http://localhost:3000/addItem',
+            resource: 'addItem',
 
             initialize: function (attrs, options) {
 
                  options = options || {};
-                 this.socket = options.socket || mail.socket || app.socket;
+                 this.socket = {
+                     requestName: this.resource,
+                     io: options.socket || mail.socket || app.socket
+                 };
             },
 
             //--------------------------------------------------
 
             url: function () {
-
-                return this.resource;
+                return window.location.hostname + "/" + this.resource;
             }
         });
     });
