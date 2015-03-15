@@ -65,16 +65,18 @@ define(function (require) {
                         this.filterByInbox();
                         this.filterBySearchWord();
 
-                        this.enoughBulshit = true;
+
                     }
 
-//                    if(this.allItems && this.inboxFiltered && this.serachFiltered && !this.startDelete){
-//                        console.log("Data fetched. Start deleting....");
-//
-//                       this.startDelete = true;
-//                       this.removeItem();
-//                       this.removeBulk();
-//                    }
+                    if(this.allItems && this.inboxFiltered && this.serachFiltered && !this.startDelete){
+                        console.log("Data fetched. Start deleting....");
+
+                       this.startDelete = true;
+                       this.removeItem();
+                        this.removeBulk();
+
+                       this.enoughBulshit = true;
+                    }
 
 //                    if(this.itemRemoved && this.bulkRemoved && !this.startUpdate){
 //                        this.startUpdate = true;
@@ -157,7 +159,7 @@ define(function (require) {
 
                     success: _.bind(function () {
                         this.bulkRemoved = true;
-                        console.log("collection.size (after remove all)): " + this.collection.size());
+                        this.getAll();
                     }, this),
                     error:function(){
                         this.bulkRemoved = true;

@@ -22,7 +22,7 @@
             reqName,
             socket;
 
-        opts.data = opts.data || {};
+        opts.data = opts.data || model.toJSON();
 
         socket = opts.socket || model.socket;
         reqName = socket.requestName+":"+method;

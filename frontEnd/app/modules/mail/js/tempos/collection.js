@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var MailModel = require("mail-models/mailModel");
+    var MailModel = require("app/modules/mail/js/tempos/model");
     var BaseCollection = require("assets-base-collections/BaseCollection");
 
     var MailCollection = {};

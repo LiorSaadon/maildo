@@ -2,8 +2,8 @@ module.exports = function() {
 
     var getListModule = require('../mails/get/getList.js');
     var addItemModule = require('../mails/add/addItem.js');
-//    var deleteItemModule = require('../mails/delete/deleteItem.js');
-//    var deleteBulkModule = require('../mails/delete/deleteBulk.js');
+    var deleteItemModule = require('../mails/delete/deleteItem.js');
+    var deleteBulkModule = require('../mails/delete/deleteBulk.js');
 
     var MailModel = null;
 
@@ -19,17 +19,17 @@ module.exports = function() {
         addItemModule.add(io, data, MailModel);
     };
 
-//    //--------------------------------------------------
-//
-//    var deleteItem = function(req, res){
-//        deleteItemModule.deleteItem(req, res, MailModel);
-//    };
-//
-//    //--------------------------------------------------
-//
-//    var deleteBulk = function(req, res){
-//        deleteBulkModule.deleteBulk(req, res, MailModel);
-//    };
+    //--------------------------------------------------
+
+    var deleteItem = function(io, data){
+        deleteItemModule.deleteItem(io, data, MailModel);
+    };
+
+    //--------------------------------------------------
+
+    var deleteBulk = function(io, data){
+        deleteBulkModule.deleteBulk(io, data, MailModel);
+    };
 
     //--------------------------------------------------
 
@@ -40,8 +40,9 @@ module.exports = function() {
     return{
         setModel:setModel,
         addItem:addItem,
-        getList:getList
-        //deleteBulk:deleteBulk
+        getList:getList,
+        deleteItem:deleteItem,
+        deleteBulk:deleteBulk
     }
 }();
 

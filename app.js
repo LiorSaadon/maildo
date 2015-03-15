@@ -18,14 +18,17 @@ dbManager.connect(function(Models){
     mails.setModel(Models.MailModel);
 
     io.sockets.on('connection', function (socket) {
-        socket.on('addItem:create', function (data) {
+        socket.on('mail:create', function (data) {
             mails.addItem(io,data);
+        });
+        socket.on('mail:delete', function (data) {
+            mails.deleteItem(io,data);
         });
         socket.on('mails:read', function (data) {
             mails.getList(io,data);
         });
-        socket.on('mails:destroy', function (data) {
-            io.sockets.emit('mails:get', {"success":true,"data":{"message":"mails:destroy - success!"}});
+        socket.on('mails:delete', function (data) {
+            mails.deleteBulk(io,data);
         });
     });
 });

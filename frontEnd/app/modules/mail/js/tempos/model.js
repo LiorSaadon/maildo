@@ -23,7 +23,7 @@ define(function (require) {
                 groups:{}
             },
 
-            resource: 'addItem',
+            resource: 'mail',
 
             initialize: function (attrs, options) {
 
