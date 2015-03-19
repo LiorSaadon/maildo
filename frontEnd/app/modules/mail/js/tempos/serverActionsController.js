@@ -64,28 +64,24 @@ define(function (require) {
                         this.getAll();
                         this.filterByInbox();
                         this.filterBySearchWord();
-
-
                     }
 
-                    if(this.allItems && this.inboxFiltered && this.serachFiltered && !this.startDelete){
-                        console.log("Data fetched. Start deleting....");
+                    if(this.allItems && this.inboxFiltered && this.serachFiltered && !this.startUpdate){
+                        console.log("Start updating....");
 
-                       this.startDelete = true;
-                       this.removeItem();
+                        this.startUpdate = true;
+                        this.updateBulk();
+                    }
+
+                    if(this.bulkUpdated && !this.startDelete){
+                        console.log("Start deleting....");
+
+                        this.startDelete = true;
+                        this.removeItem();
                         this.removeBulk();
 
                        this.enoughBulshit = true;
                     }
-
-//                    if(this.itemRemoved && this.bulkRemoved && !this.startUpdate){
-//                        this.startUpdate = true;
-//
-//                        this.updateFirst();
-//                        this.updateLast2Items();
-//
-//                        this.enoughBulshit = true;
-//                    }
                 }
 
                  if(!this.enoughBulshit){
@@ -97,12 +93,16 @@ define(function (require) {
 
             //------------------------------------------------------
 
-            getAll:function(){
+            getAll:function(callback){
                 this.collection.fetch({
                     reset:true,
                     success: _.bind(function(collection, resp, options) {
                         this.allItems = true;
-                        console.log("collection.size: " + this.collection.size());
+                        if(_.isFunction(callback)){
+                            callback();
+                        }else{
+                            console.log("collection.size: " + this.collection.size());
+                        }
                     },this),
                     error:_.bind(function(collection, resp, options) {
                         this.allItems = true;
@@ -127,6 +127,64 @@ define(function (require) {
 
             //-----------------------------------------------------------
 
+            updateBulk:function(){
+
+                var selectedItems = [];
+
+                selectedItems.push(this.collection.models[0].id);
+                selectedItems.push(this.collection.models[1].id);
+
+                this.collection.models[0].set("labels", {
+                    "buzi": false,
+                    "bibi": true,
+                    "important": null
+                });
+
+                this.collection.models[0].set("groups",{
+                    "sent": false,
+                    "kuku":true
+                });
+
+                this.collection.models[1].set("labels",{
+                    "bibi": false,
+                    "buzi": true,
+                    "important": null
+                });
+
+                this.collection.models[0].set("groups",{
+                    "sent": false,
+                    "bubu":true
+                });
+
+                this.collection.update({
+
+                    selectedItems: selectedItems,
+                    fields: ['id', 'labels', 'groups'],
+
+                    success: _.bind(function () {
+                        this.bulkUpdated = true;
+                        this.getAll(_.bind(function(){
+                            var x1 =  this.collection.models[0].get("labels")["buzi"] === false;
+                            var x2 =  this.collection.models[0].get("groups")["kuku"] === true;
+                            var x3 =  this.collection.models[1].get("labels")["buzi"] === true;
+                            var x4 =  this.collection.models[1].get("groups")["bubu"] === true;
+
+                            if(x1 === true && x2 === true && x3 === true  && x4 === true){
+                                console.log("update bulk works great");
+                            }else{
+                                console.log("update bulk : something went wrong");
+                            }
+                        },this));
+                    }, this),
+                    error:function(){
+                        this.bulkUpdated = true;
+                        console.log("update bulk error");
+                    }
+                });
+            },
+
+            //-----------------------------------------------------------
+
             removeItem:function(){
 
                 var model = this.collection.models[0];
@@ -138,7 +196,7 @@ define(function (require) {
                         success: _.bind(function(collection, resp, options) {
                             this.itemRemoved = true;
                             if(_.isEmpty(this.collection.findWhere({id:id}))){
-                                console.log("remove successed");
+                                console.log("remove finished successfully");
                             }else{
                                 console.log("remove failed");
                             }
