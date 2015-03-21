@@ -12,11 +12,11 @@ module.exports = function() {
         MailModel.find({'id': { $in: idArr}}, function(err, mails){
             var calls = [];
 
-            _merge(mails, data);
+            _override(mails, data);
 
             mails.forEach(function(mail){
                 calls.push(function(callback) {
-                       mail.save(function (err) {
+                    mail.save(function (err) {
                         callback(null, mail);
                     });
                 });
@@ -26,7 +26,6 @@ module.exports = function() {
                 if (err){
                     io.sockets.emit('mails:update', {"success":false});
                 }else{
-                    console.log("great");
                     io.sockets.emit('mails:update', {"success":true});
                 }
             });
@@ -35,22 +34,24 @@ module.exports = function() {
 
     //---------------------------------------------------
 
-    var _merge = function(main, sub) {
+    var _override = function(main, newData) {
 
-        _.each(sub, function(subObj) {
+        _.each(newData, function(newDataObj) {
             var mainObj = _.find(main, function(mainObj) {
-                return mainObj.id === subObj.id;
+                return mainObj.id === newDataObj.id;
             });
-            _doMerge(mainObj, subObj);
+            _doOverride(mainObj, newDataObj);
         });
     };
 
     //---------------------------------------------------
 
-    function _doMerge(mainObj, subObj) {
+    var _doOverride = function(mainObj, newDataObj) {
 
-        for (var key in subObj) {
-            mainObj[key] = subObj[key];
+        if(_.isObject(mainObj)){
+            for (var key in newDataObj) {
+                mainObj[key] = newDataObj[key];
+            }
         }
     };
 

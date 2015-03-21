@@ -7,13 +7,24 @@
         "bcc": "",
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 15:06:51",
-        "body": "later",
+        "body": "TTT",
         "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
+        "labels":"read,starred,important",
+        "groups": {
+            "sent": true
+        }
+    },
+    {
+        "userId": "1",
+        "from": "demo@mailbone.com",
+        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
+        "cc": "williams@mailbone.com",
+        "bcc": "",
+        "subject": "Things You Can Do With JavaScript",
+        "sentTime": "2014-04-12 15:06:51",
+        "body": "BBB",
+        "relatedBody": "mail1",
+        "labels":"read,starred,important",
         "groups": {
             "sent": true
         }
@@ -28,11 +39,112 @@
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
         "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
+        "labels":"read,starred,important",
+        "groups": {
+            "sent": true
+        }
+    },
+    {
+        "userId":"1",
+        "from": "demo@mailbone.com",
+        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
+        "cc": "williams@mailbone.com",
+        "bcc": "",
+        "subject": "Things You Can Do With JavaScript",
+        "sentTime": "2014-04-12 15:06:51",
+        "body": "later",
+        "relatedBody": "mail1",
+        "labels":"read,starred,important",
+        "groups": {
+            "sent": true
+        }
+    },
+    {
+        "userId":"1",
+        "from": "demo@mailbone.com",
+        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
+        "cc": "williams@mailbone.com",
+        "bcc": "",
+        "subject": "Things You Can Do With JavaScript",
+        "sentTime": "2014-04-12 15:06:51",
+        "body": "later",
+        "relatedBody": "mail1",
+        "labels":"read,starred,important",
+        "groups": {
+            "sent": true
+        }
+    },
+    {
+        "userId":"1",
+        "from": "demo@mailbone.com",
+        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
+        "cc": "williams@mailbone.com",
+        "bcc": "",
+        "subject": "Things You Can Do With JavaScript",
+        "sentTime": "2014-04-12 15:06:51",
+        "body": "later",
+        "relatedBody": "mail1",
+        "labels":"read,starred,important",
+        "groups": {
+            "sent": true
+        }
+    },
+    {
+        "userId":"1",
+        "from": "demo@mailbone.com",
+        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
+        "cc": "williams@mailbone.com",
+        "bcc": "",
+        "subject": "Things You Can Do With JavaScript",
+        "sentTime": "2014-04-12 15:06:51",
+        "body": "later",
+        "relatedBody": "mail1",
+        "labels":"read,starred,important",
+        "groups": {
+            "sent": true
+        }
+    },
+    {
+        "userId":"1",
+        "from": "demo@mailbone.com",
+        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
+        "cc": "williams@mailbone.com",
+        "bcc": "",
+        "subject": "Things You Can Do With JavaScript",
+        "sentTime": "2014-04-12 15:06:51",
+        "body": "later",
+        "relatedBody": "mail1",
+        "labels":"read,starred,important",
+        "groups": {
+            "sent": true
+        }
+    },
+    {
+        "userId":"1",
+        "from": "demo@mailbone.com",
+        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
+        "cc": "williams@mailbone.com",
+        "bcc": "",
+        "subject": "Things You Can Do With JavaScript",
+        "sentTime": "2014-04-12 15:06:51",
+        "body": "later",
+        "relatedBody": "mail1",
+        "labels":"read,starred,important",
+        "groups": {
+            "sent": true
+        }
+    },
+    {
+        "userId":"1",
+        "from": "demo@mailbone.com",
+        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
+        "cc": "williams@mailbone.com",
+        "bcc": "",
+        "subject": "Things You Can Do With JavaScript",
+        "sentTime": "2014-04-12 15:06:51",
+        "body": "later",
+        "relatedBody": "mail1",
+        "labels":"read,starred,important",
         "groups": {
             "sent": true
         }
@@ -47,144 +159,7 @@
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
         "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
-        "groups": {
-            "sent": true
-        }
-    },
-    {
-        "userId":"1",
-        "from": "demo@mailbone.com",
-        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
-        "cc": "williams@mailbone.com",
-        "bcc": "",
-        "subject": "Things You Can Do With JavaScript",
-        "sentTime": "2014-04-12 15:06:51",
-        "body": "later",
-        "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
-        "groups": {
-            "sent": true
-        }
-    },
-    {
-        "userId":"1",
-        "from": "demo@mailbone.com",
-        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
-        "cc": "williams@mailbone.com",
-        "bcc": "",
-        "subject": "Things You Can Do With JavaScript",
-        "sentTime": "2014-04-12 15:06:51",
-        "body": "later",
-        "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
-        "groups": {
-            "sent": true
-        }
-    },
-    {
-        "userId":"1",
-        "from": "demo@mailbone.com",
-        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
-        "cc": "williams@mailbone.com",
-        "bcc": "",
-        "subject": "Things You Can Do With JavaScript",
-        "sentTime": "2014-04-12 15:06:51",
-        "body": "later",
-        "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
-        "groups": {
-            "sent": true
-        }
-    },
-    {
-        "userId":"1",
-        "from": "demo@mailbone.com",
-        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
-        "cc": "williams@mailbone.com",
-        "bcc": "",
-        "subject": "Things You Can Do With JavaScript",
-        "sentTime": "2014-04-12 15:06:51",
-        "body": "later",
-        "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
-        "groups": {
-            "sent": true
-        }
-    },
-    {
-        "userId":"1",
-        "from": "demo@mailbone.com",
-        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
-        "cc": "williams@mailbone.com",
-        "bcc": "",
-        "subject": "Things You Can Do With JavaScript",
-        "sentTime": "2014-04-12 15:06:51",
-        "body": "later",
-        "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
-        "groups": {
-            "sent": true
-        }
-    },
-    {
-        "userId":"1",
-        "from": "demo@mailbone.com",
-        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
-        "cc": "williams@mailbone.com",
-        "bcc": "",
-        "subject": "Things You Can Do With JavaScript",
-        "sentTime": "2014-04-12 15:06:51",
-        "body": "later",
-        "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
-        "groups": {
-            "sent": true
-        }
-    },
-    {
-        "userId":"1",
-        "from": "demo@mailbone.com",
-        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
-        "cc": "williams@mailbone.com",
-        "bcc": "",
-        "subject": "Things You Can Do With JavaScript",
-        "sentTime": "2014-04-12 15:06:51",
-        "body": "later",
-        "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
+        "labels":"read,starred,important",
         "groups": {
             "sent": true
         }
@@ -199,11 +174,7 @@
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
         "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
+        "labels":"read,starred,important",
         "groups": {
             "sent": true
         }
@@ -218,30 +189,7 @@
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
         "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
-        "groups": {
-            "sent": true
-        }
-    },
-    {
-        "userId": "1",
-        "from": "demo@mailbone.com",
-        "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
-        "cc": "williams@mailbone.com",
-        "bcc": "",
-        "subject": "Things You Can Do With JavaScript",
-        "sentTime": "2014-04-12 15:06:51",
-        "body": "later",
-        "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
+        "labels":"read,starred,important",
         "groups": {
             "sent": true
         }
@@ -256,11 +204,7 @@
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
         "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
+        "labels":"read,starred,important",
         "groups": {
             "sent": true
         }
@@ -275,11 +219,7 @@
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
         "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
+        "labels":"read,starred,important",
         "groups": {
             "sent": true
         }
@@ -294,11 +234,7 @@
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
         "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
+        "labels":"read,starred,important",
         "groups": {
             "sent": true
         }
@@ -313,11 +249,7 @@
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
         "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
+        "labels":"read,starred,important",
         "groups": {
             "sent": true
         }
@@ -332,11 +264,7 @@
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
         "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
+        "labels":"read,starred,important",
         "groups": {
             "sent": true
         }
@@ -351,11 +279,7 @@
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
         "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
+        "labels":"read,starred,important",
         "groups": {
             "sent": true
         }
@@ -370,11 +294,7 @@
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
         "relatedBody": "mail1",
-        "labels": {
-            "read": true,
-            "starred": true,
-            "important": true
-        },
+        "labels":"read,starred,important",
         "groups": {
             "sent": true
         }

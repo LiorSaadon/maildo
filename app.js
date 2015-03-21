@@ -15,28 +15,10 @@ dbManager.connect(function(Models){
         console.log("Express server listening on port 3000");
     });
 
-
-    var t = { _id: "550a72e502827210173f2b50",
-        from: 'demo@mailbone.com',
-        to: 'patricia.white@mailbone.com;michael.martin@mailbone.com;',
-        cc: 'williams@mailbone.com',
-        bcc: '',
-        subject: 'Things You Can Do With JavaScript',
-        sentTime: '2014-04-12 15:06:51',
-        body: 'later',
-        userId: '1',
-        relatedBody: 'mail1',
-        id: '_mke1QishK',
-        __v: 0,
-        groups: { sent: true },
-        labels: { read: true, starred: true, important: true } };
-
-    t.labels = {"xx":"ttt"};
-    console.log(t);
-
     mails.setModel(Models.MailModel);
 
     io.sockets.on('connection', function (socket) {
+
         socket.on('mail:create', function (data) {
             mails.addItem(io,data);
         });
