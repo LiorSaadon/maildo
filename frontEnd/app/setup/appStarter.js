@@ -38,6 +38,7 @@ define(function (require) {
 
         app.channel.vent.once("onSettingsLoaded", onSettingsLoaded);
         app.settingsController.fetch();
+        setWindowEvents();
     });
 
     //------------------------------------------
@@ -67,6 +68,13 @@ define(function (require) {
         if (Backbone.history) {
             Backbone.history.start();
         }
+    };
+
+    //-------------------------------------------
+
+    var setWindowEvents = function(){
+
+        window.addEventListener("unload", app.socket.close);
     };
 
     //-------------------------------------------

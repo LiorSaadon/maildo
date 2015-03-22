@@ -16,20 +16,20 @@ module.exports = function() {
 
     //--------------------------------------------------
 
-    var addItem = function(io, data){
-        addItemModule.add(io, data, MailModel);
+    var addItem = function(userName,data){
+        addItemModule.add(userName, data, MailModel);
     };
 
     //--------------------------------------------------
 
-    var deleteItem = function(io, data){
-        deleteItemModule.deleteItem(io, data, MailModel);
+    var deleteItem = function(userName, data){
+        deleteItemModule.deleteItem(userName, data, MailModel);
     };
 
     //--------------------------------------------------
 
-    var deleteBulk = function(io, data){
-        deleteBulkModule.deleteBulk(io, data, MailModel);
+    var deleteBulk = function(userName, data){
+        deleteBulkModule.deleteBulk(userName, data, MailModel);
     };
 
     //--------------------------------------------------
@@ -40,8 +40,8 @@ module.exports = function() {
 
     //--------------------------------------------------
 
-    var getList = function(io, data){
-        getListModule.select(io, data, MailModel);
+    var getList = function(userName, data){
+        getListModule.select(userName, data, MailModel);
     };
 
     return{

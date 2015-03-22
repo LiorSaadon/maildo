@@ -1,12 +1,14 @@
 module.exports = function() {
 
-    var deleteItem = function (io, data, MailModel) {
+    var socketManager = require('../../../managers/socketManager');
+
+    var deleteItem = function (userName, data, MailModel) {
 
         MailModel.remove({id:data.id}, function (err) {
             if (err){
-                io.sockets.emit('mail:delete', {"success":false});
+                socketManager.emit(userName, 'mail:delete', {"success":false});
             }else{
-                io.sockets.emit('mail:delete', {"success":true});
+                socketManager.emit(userName, 'mail:delete', {"success":true});
             }
         });
     };

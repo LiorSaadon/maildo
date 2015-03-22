@@ -5,7 +5,8 @@ var express = require('express'),
     server = http.createServer(app),
     io = require('socket.io').listen(server),
     mails = require('./backEnd/routes/mails/mails'),
-    dbManager = require('./backEnd/managers/dbManager');
+    dbManager = require('./backEnd/managers/dbManager'),
+    socketManager = require('./backEnd/managers/socketManager');
 
 dbManager.connect(function(Models){
 
@@ -19,20 +20,28 @@ dbManager.connect(function(Models){
 
     io.sockets.on('connection', function (socket) {
 
-        socket.on('mail:create', function (data) {
-            mails.addItem(io,data);
+        socketManager.setIO(io);
+
+        socket.on('add-user', function(userName){
+            socketManager.addUser(socket, userName);
         });
-        socket.on('mail:delete', function (data) {
-            mails.deleteItem(io,data);
+        socket.on('mail:create', function (userName, data) {
+            mails.addItem(userName, data);
         });
-        socket.on('mails:read', function (data) {
-            mails.getList(io,data);
+        socket.on('mail:delete', function (userName, data) {
+            mails.deleteItem(userName, data);
         });
-        socket.on('mails:delete', function (data) {
-            mails.deleteBulk(io,data);
+        socket.on('mails:read', function (userName, data) {
+            mails.getList(userName, data);
         });
-        socket.on('mails:update', function (data) {
-            mails.updateBulk(io,data);
+        socket.on('mails:delete', function (userName, data) {
+            mails.deleteBulk(userName, data);
+        });
+        socket.on('mails:update', function (userName, data) {
+            mails.updateBulk(userName, data);
+        });
+        socket.on('disconnect', function(userName) {
+            socketManager.removeUser(userName, socket);
         });
     });
 });
