@@ -1,14 +1,16 @@
 var express = require('express'),
     path = require('path'),
-    app = express(),
     http = require('http'),
-    server = http.createServer(app),
-    io = require('socket.io').listen(server),
     mails = require('./backEnd/routes/mails/mails'),
     dbManager = require('./backEnd/managers/dbManager'),
     socketManager = require('./backEnd/managers/socketManager');
 
+
 dbManager.connect(function(Models){
+
+    var app = express();
+    var server = http.createServer(app);
+    var io = require('socket.io').listen(server);
 
     app.use(express.static(path.join(__dirname, 'frontEnd')));
 
@@ -40,8 +42,8 @@ dbManager.connect(function(Models){
         socket.on('mails:update', function (userName, data) {
             mails.updateBulk(userName, data);
         });
-        socket.on('disconnect', function(userName) {
-            socketManager.removeUser(userName, socket);
+        socket.on('disconnect', function() {
+            socketManager.removeUser(socket);
         });
     });
 });

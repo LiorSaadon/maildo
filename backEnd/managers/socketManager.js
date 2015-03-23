@@ -3,7 +3,7 @@ module.exports = function() {
     var _ = require("underscore");
 
     var io;
-    var _sockets = {};
+    var _users = {};
 
     //-----------------------------------------------------------
 
@@ -16,8 +16,8 @@ module.exports = function() {
     var addUser = function(socket, userName){
 
         if(!_.isEmpty(userName)){
-            _sockets[userName] = _sockets[userName] || [];
-            _sockets[userName].push(socket.id);
+            _users[userName] = _users[userName] || [];
+            _users[userName].push(socket.id);
         }
     };
 
@@ -25,10 +25,10 @@ module.exports = function() {
 
     var emit = function(username, eventName, message){
 
-        var userSockets = _sockets[username];
+        var socketList = _users[username];
 
-        if(_.isArray(userSockets)){
-            _.each(userSockets, function(socketId){
+        if(_.isArray(socketList)){
+            _.each(socketList, function(socketId){
                 io.sockets.connected[socketId].emit(eventName, message);
             });
         }
@@ -36,23 +36,13 @@ module.exports = function() {
 
     //-----------------------------------------------------------
 
-    var removeUser = function(userName, socket){
+    var removeUser = function(socket){
 
-        var userSockets = _sockets[userName];
-
-        console.log("3434");
-
-//        if(_.isArray(userSockets)){
-//            console.log(userSockets);
-//            _.each(userSockets, function(socketId){
-//                console.log(socketId);
-//                if(socket.id === socketId){
-//                    userSockets = _.without(userSockets, socketId);
-//                    console.log(userSockets);
-//                }
-//            });
-//        }
-
+        _.each(_users, function(val, key){
+            if(_.indexOf(val, socket.id) >= 0){
+                _users[key] = _.without(val, socket.id);
+            }
+        });
     };
 
     return {
