@@ -5,7 +5,6 @@ var express = require('express'),
     dbManager = require('./backEnd/managers/dbManager'),
     socketManager = require('./backEnd/managers/socketManager');
 
-
 dbManager.connect(function(Models){
 
     var app = express();
