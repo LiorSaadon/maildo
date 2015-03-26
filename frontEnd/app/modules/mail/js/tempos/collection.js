@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var MailModel = require("app/modules/mail/js/tempos/model");
-    var BaseCollection = require("assets-base-collections/BaseCollection");
+    var BaseCollection = require("base-collections/BaseCollection");
 
     var MailCollection = {};
 

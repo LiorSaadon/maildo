@@ -1,8 +1,8 @@
 define(function (require) {
     "use strict";
 
-    var BaseCollection = require("assets-base-collections/BaseCollection");
-    var FilteredCollection = require("assets-base-collections/FilteredCollection");
+    var BaseCollection = require("base-collections/BaseCollection");
+    var FilteredCollection = require("base-collections/FilteredCollection");
 
     var PersistentCollection = FilteredCollection.extend({
 

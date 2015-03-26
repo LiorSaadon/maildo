@@ -5,7 +5,7 @@ define(function (require) {
     var template = require("tpl!assets-ui-components/tags/ui/templates/tagsContainer.tmpl");
     var TagsItemView = require("assets-ui-components/tags/js/views/tagsItemView");
 
-    require("assets-plugins/jquery.ba-outside-events");
+    require("plugins/jquery.ba-outside-events");
 
     var KeyCode = {
         ESC: 27,

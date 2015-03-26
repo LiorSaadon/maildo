@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var formatter = require("assets-resolvers/formatter");
+    var formatter = require("resolvers/formatter");
     var template = require("tpl!mail-templates/mailItemView.tmpl");
 
     var MailTableRowView = {};

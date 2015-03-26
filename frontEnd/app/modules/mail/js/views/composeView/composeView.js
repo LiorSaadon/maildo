@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var MailModel = require("mail-models/mailModel");
-    var formatter = require("assets-resolvers/formatter");
+    var formatter = require("resolvers/formatter");
     var template = require("tpl!mail-templates/composeView.tmpl");
     var AddressView = require("mail-views/composeView/_addressView");
 

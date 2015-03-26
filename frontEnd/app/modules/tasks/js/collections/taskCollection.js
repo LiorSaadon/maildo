@@ -4,7 +4,7 @@ define(function (require) {
     var app = require("mbApp");
     var TaskModel = require("tasks-models/taskModel");
     var TasksStorage = require("tasks-storage/tasksStorage");
-    var PersistentCollection = require("assets-base-collections/PersistentCollection");
+    var PersistentCollection = require("base-collections/PersistentCollection");
 
     var TaskCollection = {};
 

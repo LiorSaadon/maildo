@@ -8,7 +8,7 @@ define(function (require) {
     var TaskDetailsView = require("tasks-views/taskDetailsView");
     var TasksView = require("tasks-views/tasksView");
     var CategoriesView = require("tasks-views/categoriesView");
-    var eModules = require('json!assets-data/eModules.json');
+    var eModules = require('json!common-data/eModules.json');
     var TaskModel = require("tasks-models/taskModel");
 
     var MainLayoutController = {};

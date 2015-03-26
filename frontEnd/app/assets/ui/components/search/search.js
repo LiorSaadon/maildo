@@ -4,7 +4,7 @@ define(function (require) {
     var Marionette = require("marionette");
     var template = require("tpl!assets-ui-components/search/ui/templates/search.tmpl");
 
-    require("assets-plugins/jquery.ba-outside-events");
+    require("plugins/jquery.ba-outside-events");
 
     var KeyCode = {
         ESC: 27,

@@ -26,7 +26,7 @@ define(function (require) {
         },
 
         close: function(){
-            this._socket.close("shaulm")
+            this._socket.close("shaulm");
         }
     });
 

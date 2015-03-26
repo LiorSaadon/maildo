@@ -4,7 +4,7 @@ define(function (require) {
     require("mail-module");
     require("tasks-module");
     require("backbone.sync");
-    require("assets-extensions/marionette/marionette.extensions");
+    require("extensions/marionette/marionette.extensions");
 
     var app = require("mbApp");
     var Frame = require("frame");

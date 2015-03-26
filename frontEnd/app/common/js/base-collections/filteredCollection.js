@@ -2,7 +2,7 @@ define(function (require) {
     "use strict";
 
     var app = require("mbApp");
-    var BaseCollection = require("assets-base-collections/baseCollection");
+    var BaseCollection = require("base-collections/baseCollection");
 
     var FilteredCollection = BaseCollection.extend({
 

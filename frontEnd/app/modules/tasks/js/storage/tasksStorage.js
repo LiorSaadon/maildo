@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var CategoriesStorage = require("tasks-storage/categoriesStorage");
-    var ChangesDetector = require("assets-resolvers/storage/localStorageChangesDetector");
+    var ChangesDetector = require("resolvers/storage/localStorageChangesDetector");
 
     var TasksStorage = {};
 

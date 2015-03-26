@@ -3,7 +3,7 @@ define(function (require) {
 
     var app = require("mbApp");
     var CategoryModel = require("tasks-models/categoryModel");
-    var BaseCollection = require("assets-base-collections/BaseCollection");
+    var BaseCollection = require("base-collections/BaseCollection");
     var CategoriesStorage = require("tasks-storage/categoriesStorage");
 
     var CategoryCollection = {};
