@@ -3,10 +3,10 @@ define(function (require) {
 
     var app = require("mbApp");
     var _s = require("underscore.string");
-    var Tags = require("assets-ui-components/tags/tags");
+    var Tags = require("ui-components/tags/tags");
     var template = require("tpl!mail-templates/_addressView.tmpl");
     var ContactsFilterModel = require("mail-models/contactsFilterModel");
-    var AutoComplete = require("assets-ui-components/autoComplete/autoComplete");
+    var AutoComplete = require("ui-components/autoComplete/autoComplete");
 
     var AddressView ={};
 

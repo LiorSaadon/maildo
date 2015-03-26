@@ -7,7 +7,7 @@ define(function (require) {
     var TechBarView = require('frame-views/techBarView');
     var LoaderView = require('frame-views/loaderView');
     var SettingsView = require('frame-views/settingsView');
-    var Dialog = require("assets-ui-components/dialog/dialog");
+    var Dialog = require("ui-components/dialog/dialog");
 
     var FrameLayout = Marionette.LayoutView.extend({
         template:frameTemplate,

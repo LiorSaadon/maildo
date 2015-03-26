@@ -15,7 +15,7 @@ images_dir = "../ui/img"
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 line_comments = false
 
-http_images_path = "../app/assets/ui/img"
+http_images_path = "../app/common/ui/img"
 
 # If you prefer the indented syntax, you might want to regenerate this
 # project again passing --syntax sass, or you can uncomment this:

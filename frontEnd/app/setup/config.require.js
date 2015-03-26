@@ -33,15 +33,14 @@ define({
         "chai"          : "vendor/chai/cjai",
         'chai-jquery'   : 'vendor/chai/chai-jquery',
 
-        "assets-ui-components":"app/assets/ui/components",
+        "ui-components":"app/common/ui/components",
         "base-collections": "app/common/js/base-collections",
         "base-models": "app/common/js/base-models",
         "decorators": "app/common/js/decorators",
-        "assets-storage": "app/assets/js/resolvers/storage",
         "resolvers": "app/common/js/resolvers",
         "plugins": "app/common/js/plugins",
         "extensions": "app/common/js/lib-extensions",
-        "assets-i18n": "app/common/js/resolvers/i18n",
+        "i18n": "app/common/js/resolvers/i18n",
         "common-data":"app/common/data",
 
         "mail-module": "app/modules/mail/mail",

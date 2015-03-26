@@ -4,8 +4,8 @@ define(function (require) {
     var app = require("mbApp");
     var template = require("tpl!mail-templates/searchView.tmpl");
     var ContactsFilterModel = require("mail-models/contactsFilterModel");
-    var AutoComplete = require("assets-ui-components/autoComplete/autoComplete");
-    var SearchComponent = require("assets-ui-components/search/search");
+    var AutoComplete = require("ui-components/autoComplete/autoComplete");
+    var SearchComponent = require("ui-components/search/search");
 
     var SearchView = {};
 
