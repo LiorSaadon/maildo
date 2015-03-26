@@ -5,7 +5,7 @@ module.exports = function() {
     var socketManager = require('../../../managers/socketManager');
 
 
-    var updateBulk = function (userName, data, MailModel) {
+    var updateBulk = function (socket, userName, data, MailModel) {
 
         var idArr = data.map(function(item){
             return item.id;
@@ -26,9 +26,9 @@ module.exports = function() {
 
             async.parallel(calls, function(err, result) {
                 if (err){
-                    socketManager.emit(userName, 'mails:update', {"success":false});
+                    socketManager.emit(socket, 'mails:update', {"success":false});
                 }else{
-                    socketManager.emit(userName, 'mails:update', {"success":true});
+                    socketManager.emit(socket, 'mails:update', {"success":true}, userName);
                 }
             });
         });

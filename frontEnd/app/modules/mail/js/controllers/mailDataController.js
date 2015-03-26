@@ -33,6 +33,7 @@ define(function (require) {
 
                 this.listenTo(this.mailCollection, "fetch:success", this._updateSelection, this);
                 this.listenTo(app.context, "change:mail.action", this._refreshMailCollection, this);
+                this.listenTo(app.vent, "data:change", this._onDataChange, this);
             },
 
             //------------------------------------------------------
@@ -54,6 +55,11 @@ define(function (require) {
                 });
             },
 
+            //------------------------------------------------------
+
+            _onDataChange:function(message){
+               console.log("----" + message.originalEventName);
+            },
 
             //------------------------------------------------------
             // get collections

@@ -3,7 +3,7 @@ module.exports = function() {
     var async = require('async');
     var socketManager = require('../../../managers/socketManager');
 
-    var deleteBulk = function (userName, data, MailModel) {
+    var deleteBulk = function (socket, userName, data, MailModel) {
 
         var calls = [];
 
@@ -20,9 +20,9 @@ module.exports = function() {
 
         async.parallel(calls, function(err, result) {
             if (err){
-                socketManager.emit(userName, 'mails:delete', {"success":false});
+                socketManager.emit(socket, 'mails:delete', {"success":false});
             }else{
-                socketManager.emit(userName, 'mails:delete', {"success":true});
+                socketManager.emit(socket, 'mails:delete', {"success":true}, userName);
             }
         });
     };

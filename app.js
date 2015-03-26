@@ -24,25 +24,25 @@ dbManager.connect(function(Models){
         socketManager.setIO(io);
 
         socket.on('add-user', function(userName){
-            socketManager.addUser(socket, userName);
+            socketManager.addSocket(socket, userName);
         });
         socket.on('mail:create', function (userName, data) {
-            mails.addItem(userName, data);
+            mails.addItem(socket, userName, data);
         });
         socket.on('mail:delete', function (userName, data) {
-            mails.deleteItem(userName, data);
+            mails.deleteItem(socket, userName, data);
         });
         socket.on('mails:read', function (userName, data) {
-            mails.getList(userName, data);
+            mails.getList(socket, userName, data);
         });
         socket.on('mails:delete', function (userName, data) {
-            mails.deleteBulk(userName, data);
+            mails.deleteBulk(socket, userName, data);
         });
         socket.on('mails:update', function (userName, data) {
-            mails.updateBulk(userName, data);
+            mails.updateBulk(socket, userName, data);
         });
         socket.on('disconnect', function() {
-            socketManager.removeUser(socket);
+            socketManager.removeSocket(socket);
         });
     });
 });

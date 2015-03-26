@@ -16,32 +16,32 @@ module.exports = function() {
 
     //--------------------------------------------------
 
-    var addItem = function(userName,data){
-        addItemModule.add(userName, data, MailModel);
+    var addItem = function(socket, userName,data){
+        addItemModule.add(socket, userName, data, MailModel);
     };
 
     //--------------------------------------------------
 
-    var deleteItem = function(userName, data){
-        deleteItemModule.deleteItem(userName, data, MailModel);
+    var deleteItem = function(socket, userName, data){
+        deleteItemModule.deleteItem(socket, userName, data, MailModel);
     };
 
     //--------------------------------------------------
 
-    var deleteBulk = function(userName, data){
-        deleteBulkModule.deleteBulk(userName, data, MailModel);
+    var deleteBulk = function(socket, userName, data){
+        deleteBulkModule.deleteBulk(socket, userName, data, MailModel);
     };
 
     //--------------------------------------------------
 
-    var updateBulk = function(io, data){
-        updateBulkModule.updateBulk(io, data, MailModel);
+    var updateBulk = function(socket, userName,  data){
+        updateBulkModule.updateBulk(socket, userName, data, MailModel);
     };
 
     //--------------------------------------------------
 
-    var getList = function(userName, data){
-        getListModule.select(userName, data, MailModel);
+    var getList = function(socket, data){
+        getListModule.select(socket, data, MailModel);
     };
 
     return{

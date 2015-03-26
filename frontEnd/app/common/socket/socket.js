@@ -9,23 +9,16 @@ define(function (require) {
     var Socket = Marionette.Controller.extend({
 
         create:function(options){
+
             this._socket = io('http://localhost:3000/');
 
             this._socket.emit('add-user',"shaulm");
-            /**
-             * On any event from the server, trigger it on the app event aggregator. The first
-             * argument will always be the name of the event.
-             */
-            this._socket.on('*', function(){
-                var args = Array.prototype.slice.call(arguments, 0);
-                app.vent.trigger(args[0], args.slice(1));
+
+            this._socket.on('data:change', function(message){
+                app.vent.trigger("data:change", message);
             });
 
-            /**
-             * On error, trigger the socket:error event on the global event aggregator for
-             * interested listeners.
-             */
-            this._socket.on('error', function(err){
+            this._socket.on('error1', function(err){
                 app.vent.trigger('socket:error', err);
             });
 

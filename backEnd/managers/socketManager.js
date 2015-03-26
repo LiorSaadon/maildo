@@ -13,7 +13,7 @@ module.exports = function() {
 
     //-----------------------------------------------------------
 
-    var addUser = function(socket, userName){
+    var addSocket = function(socket, userName){
 
         if(!_.isEmpty(userName)){
             _users[userName] = _users[userName] || [];
@@ -23,20 +23,24 @@ module.exports = function() {
 
     //-----------------------------------------------------------
 
-    var emit = function(username, eventName, message){
+    var emit = function(socket, eventName, message, userName){
 
-        var socketList = _users[username];
+        socket.emit(eventName, message);
 
-        if(_.isArray(socketList)){
-            _.each(socketList, function(socketId){
-                io.sockets.connected[socketId].emit(eventName, message);
-            });
+        if(!_.isEmpty(userName)){
+            var socketList = _users[userName];
+
+            if(_.isArray(socketList)){
+                _.each(socketList, function(socketId){
+                    io.sockets.connected[socketId].emit("data:change", {"originalEventName":eventName});
+                });
+            }
         }
     };
 
     //-----------------------------------------------------------
 
-    var removeUser = function(socket){
+    var removeSocket = function(socket){
 
         _.each(_users, function(val, key){
             if(_.indexOf(val, socket.id) >= 0){
@@ -48,7 +52,7 @@ module.exports = function() {
     return {
         emit:emit,
         setIO:setIO,
-        addUser:addUser,
-        removeUser:removeUser
+        addSocket:addSocket,
+        removeSocket:removeSocket
     };
 }();

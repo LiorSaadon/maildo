@@ -3,7 +3,7 @@ module.exports = function() {
     var shortId = require('shortid');
     var socketManager = require('../../../managers/socketManager');
 
-    var add = function (userName, data, MailModel) {
+    var add = function (socket, userName, data, MailModel) {
 
         data.id = "_" + shortId.generate();
 
@@ -11,9 +11,9 @@ module.exports = function() {
 
         mail.save(function (err) {
             if (err){
-                socketManager.emit(userName, 'mail:create', {"success":false});
+                socketManager.emit(socket, 'mail:create', {"success":false});
             }else{
-                socketManager.emit(userName, 'mail:create', {"success":true,"data":mail});
+                socketManager.emit(socket, 'mail:create', {"success":true,"data":mail}, userName);
             }
         });
     };

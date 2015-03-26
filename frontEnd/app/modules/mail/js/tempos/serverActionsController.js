@@ -40,7 +40,7 @@ define(function (require) {
                 model.save(null, {
                     success: _.bind(function (model, response){
                         this.addItemResponses += 1;
-                        console.log("great");
+                        console.log("greatos");
                     },this),
                     error: _.bind(function (model, response) {
                         this.addItemResponses += 1;
