@@ -9,8 +9,8 @@ module.exports = function(grunt) {
         compass:{
             dist:{
                 options:{
-                    basePath:'../app/assets/compass',
-                    config:'../app/assets/compass/config.rb',
+                    basePath:'../app/common/compass',
+                    config:'../app/common/compass/config.rb',
                     environment:'production'
                 }
             }
