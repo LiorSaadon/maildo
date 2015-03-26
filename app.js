@@ -38,6 +38,9 @@ dbManager.connect(function(Models){
         socket.on('mails:delete', function (userName, data) {
             mails.deleteBulk(socket, userName, data);
         });
+        socket.on('mail:update', function (userName, data) {
+            mails.updateItem(socket, userName, data);
+        });
         socket.on('mails:update', function (userName, data) {
             mails.updateBulk(socket, userName, data);
         });

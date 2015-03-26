@@ -70,10 +70,11 @@ define(function (require) {
                         console.log("Start updating....");
 
                         this.startUpdate = true;
+                        this.updateItem();
                         this.updateBulk();
                     }
 
-                    if(this.bulkUpdated && !this.startDelete){
+                    if(this.itemUpdated && this.bulkUpdated && !this.startDelete){
                         console.log("Start deleting....");
 
                         this.startDelete = true;
@@ -106,7 +107,7 @@ define(function (require) {
                     },this),
                     error:_.bind(function(collection, resp, options) {
                         this.allItems = true;
-                        console.log("getAll:error");
+                        console.log('%c getAll:error ', 'color: #FF0511');
                     },this)
                 });
             },
@@ -125,6 +126,33 @@ define(function (require) {
                 this.serachFiltered = true;
             },
 
+            //-----------------------------------------------------------
+
+            updateItem:function(){
+
+                var item = this.collection.models[0];
+
+                item.set("subject", "subject has changed..")
+
+                item.save(null, {
+                    success: _.bind(function () {
+                        this.itemUpdated = true;
+                        this.getAll(_.bind(function(){
+                            var x = this.collection.findWhere({"id":item.id});
+
+                            if(_.isObject(x) && (x.get("subject") === "subject has changed..")){
+                                console.log("update works great");
+                            }else{
+                                console.log("update - not good");
+                            }
+                        },this));
+                    }, this),
+                    error: _.bind(function(){
+                        this.itemUpdated = true;
+                        console.log('%c Update item failed! ', 'color: #FF0511');
+                    },this)
+                });
+            },
             //-----------------------------------------------------------
 
             updateBulk:function(){
@@ -157,7 +185,7 @@ define(function (require) {
                     }, this),
                     error:function(){
                         this.bulkUpdated = true;
-                        console.log("update bulk error");
+                        console.log('%c update bulk error! ', 'color: #FF0511');
                     }
                 });
             },
@@ -182,7 +210,7 @@ define(function (require) {
                         },this),
                         error:_.bind(function(collection, resp, options) {
                             this.itemRemoved = true;
-                            console.log("remove failed. (error)");
+                            console.log('%c remove failed. (error) ', 'color: #FF0511');
                         },this)
                     });
                 }
@@ -200,7 +228,7 @@ define(function (require) {
                     }, this),
                     error:function(){
                         this.bulkRemoved = true;
-                        console.log("remove bulk error");
+                        console.log('%c remove bulk error', 'color: #FF0511');
                     }
                 });
             }

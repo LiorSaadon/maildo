@@ -5,6 +5,7 @@ module.exports = function() {
     var deleteItemModule = require('../mails/delete/deleteItem.js');
     var deleteBulkModule = require('../mails/delete/deleteBulk.js');
     var updateBulkModule = require('../mails/update/updateBulk.js');
+    var updateItemModule = require('../mails/update/updateItem.js');
 
     var MailModel = null;
 
@@ -34,6 +35,12 @@ module.exports = function() {
 
     //--------------------------------------------------
 
+    var updateItem = function(socket, userName,  data){
+        updateItemModule.updateItem(socket, userName, data, MailModel);
+    };
+
+    //--------------------------------------------------
+
     var updateBulk = function(socket, userName,  data){
         updateBulkModule.updateBulk(socket, userName, data, MailModel);
     };
@@ -50,6 +57,7 @@ module.exports = function() {
         getList:getList,
         deleteItem:deleteItem,
         deleteBulk:deleteBulk,
+        updateItem:updateItem,
         updateBulk:updateBulk
     }
 }();
