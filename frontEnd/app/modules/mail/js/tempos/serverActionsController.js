@@ -64,25 +64,27 @@ define(function (require) {
                         this.getAll();
                         this.filterByInbox();
                         this.filterBySearchWord();
+
+                        this.enoughBulshit = true;
                     }
-
-                    if(this.allItems && this.inboxFiltered && this.serachFiltered && !this.startUpdate){
-                        console.log("Start updating....");
-
-                        this.startUpdate = true;
-                        this.updateItem();
-                        this.updateBulk();
-                    }
-
-                    if(this.itemUpdated && this.bulkUpdated && !this.startDelete){
-                        console.log("Start deleting....");
-
-                        this.startDelete = true;
-                        this.removeItem();
-                        this.removeBulk();
-
-                       this.enoughBulshit = true;
-                    }
+                    //
+                    //if(this.allItems && this.inboxFiltered && this.serachFiltered && !this.startUpdate){
+                    //    console.log("Start updating....");
+                    //
+                    //    this.startUpdate = true;
+                    //    this.updateItem();
+                    //    this.updateBulk();
+                    //}
+                    //
+                    //if(this.itemUpdated && this.bulkUpdated && !this.startDelete){
+                    //    console.log("Start deleting....");
+                    //
+                    //    this.startDelete = true;
+                    //    this.removeItem();
+                    //    this.removeBulk();
+                    //
+                    //   this.enoughBulshit = true;
+                    //}
                 }
 
                  if(!this.enoughBulshit){
@@ -100,7 +102,7 @@ define(function (require) {
                     success: _.bind(function(collection, resp, options) {
                         this.allItems = true;
                         if(_.isFunction(callback)){
-                            callback();
+                            callback(collection);
                         }else{
                             console.log("collection.size: " + this.collection.size());
                         }
@@ -130,17 +132,19 @@ define(function (require) {
 
             updateItem:function(){
 
-                var item = this.collection.models[0];
+                var item = this.collection.models[3];
 
-                item.set("subject", "subject has changed..")
+                item.set("groups", ["i1", "i2"]);
+                item.set("labels.read", false);
+                item.set("labels.important", false);
 
                 item.save(null, {
                     success: _.bind(function () {
                         this.itemUpdated = true;
-                        this.getAll(_.bind(function(){
-                            var x = this.collection.findWhere({"id":item.id});
+                        this.getAll(_.bind(function(collection){
+                            var x = collection.findWhere({"id":item.id});
 
-                            if(_.isObject(x) && (x.get("subject") === "subject has changed..")){
+                            if(_.isObject(x) && _.indexOf(x.get("groups"), "i1")>=0 && x.get("labels.read") === false && item.get("labels.important") === false){
                                 console.log("update works great");
                             }else{
                                 console.log("update - not good");
@@ -157,26 +161,27 @@ define(function (require) {
 
             updateBulk:function(){
 
-                var selectedItems = [];
+                var item1 = this.collection.models[0];
+                var item2 = this.collection.models[1];
 
-                selectedItems.push(this.collection.models[0].id);
-                selectedItems.push(this.collection.models[1].id);
+                item1.set("groups", ["inbox1", "sent1"]);
+                item1.set("labels.read", false);
 
-                this.collection.models[0].set("labels", "x,y,z");
-                this.collection.models[1].set("labels", "x1,y1,z1");
+                item2.set("groups", ["inbox2", "sent2"]);
+                item2.set("labels.important", false);
 
                 this.collection.update({
 
-                    selectedItems: selectedItems,
-                    fields: ['id', 'labels'],
+                    selectedItems: [item1.id, item2.id],
+                    fields: ["labels", "groups"] ,
 
                     success: _.bind(function () {
                         this.bulkUpdated = true;
-                        this.getAll(_.bind(function(){
-                            var x = _.isObject(this.collection.findWhere({"labels":"x,y,z"}));
-                            var x1 = _.isObject(this.collection.findWhere({"labels":"x1,y1,z1"}));
+                        this.getAll(_.bind(function(collection){
+                            var x1 = collection.findWhere({"id":item1.id});
+                            var x2 = collection.findWhere({"id":item2.id});
 
-                            if(x && x1){
+                            if((_.indexOf(x1.get("groups"), "sent1")>=0) && (_.indexOf(x2.get("groups"), "sent2")>=0) && x1.get("labels.read") === false && x2.get("labels.important") === false){
                                 console.log("update bulk works great");
                             }else{
                                 console.log("update bulk - not good");
@@ -224,7 +229,9 @@ define(function (require) {
 
                     success: _.bind(function () {
                         this.bulkRemoved = true;
-                        this.getAll();
+                        this.getAll(_.bind(function(collection){
+                            console.log("romoveBulk finished successfully");
+                        }));
                     }, this),
                     error:function(){
                         this.bulkRemoved = true;

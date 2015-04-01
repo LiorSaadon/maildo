@@ -14,9 +14,7 @@
             "starred": true,
             "important": true
         },
-        "groups": {
-            "sent": true
-        },
+        "groups": ["sent"],
         "id": "_906"
     },
     {
@@ -33,9 +31,7 @@
             "starred": true,
             "important": true
         },
-        "groups": {
-            "sent": true
-        },
+      "groups": ["inbox"],
         "id": "_905"
     },
     {
@@ -52,9 +48,7 @@
             "starred": true,
             "important": true
         },
-        "groups": {
-            "sent": true
-        },
+        "groups": ["inbox"],
         "id": "_904"
     },
     {
@@ -71,9 +65,7 @@
             "starred": true,
             "important": true
         },
-        "groups": {
-            "sent": true
-        },
+        "groups": ["sent"],
         "id": "_903"
     },
     {
@@ -90,9 +82,7 @@
             "starred": true,
             "important": true
         },
-        "groups": {
-            "sent": true
-        },
+        "groups": ["sent"],
         "id": "_902"
     },
     {
@@ -109,9 +99,7 @@
             "starred": true,
             "important": true
         },
-        "groups": {
-            "sent": true
-        },
+        "groups": ["inbox"],
         "id": "_901"
     },
     {
@@ -128,9 +116,7 @@
             "starred": true,
             "important": true
         },
-        "groups": {
-            "sent": true
-        },
+        "groups": ["draft"],
         "id": "_900"
     },
 
@@ -149,9 +135,7 @@
             "unstarred": true,
             "unimportant": true
         },
-        "groups": {
-            "draft": true
-        },
+        "groups": ["trash"],
         "id": "_802"
     },
     {
@@ -168,9 +152,7 @@
             "unstarred": true,
             "unimportant": true
         },
-        "groups": {
-            "draft": true
-        },
+        "groups": ["draft"],
         "id": "_801"
     },
     {
@@ -187,9 +169,7 @@
             "unstarred": true,
             "unimportant": true
         },
-        "groups": {
-            "draft": true
-        },
+      "groups": ["inbox"],
         "id": "_800"
     },
 
@@ -208,9 +188,7 @@
             "starred": true,
             "important": true
         },
-        "groups": {
-            "inbox": true
-        },
+      "groups": ["inbox"],
         "id": "_703"
     },
     {
@@ -227,9 +205,7 @@
             "starred": true,
             "important": true
         },
-        "groups": {
-            "inbox": true
-        },
+      "groups": ["test"],
         "id": "_702"
     },
     {
@@ -246,9 +222,7 @@
             "starred": true,
             "important": true
         },
-        "groups": {
-            "inbox": true
-        },
+      "groups": ["inbox"],
         "id": "_701"
     },
     {
@@ -265,9 +239,7 @@
             "starred": true,
             "important": true
         },
-        "groups": {
-            "inbox": true
-        },
+      "groups": ["inbox"],
         "id": "_700"
     }
 

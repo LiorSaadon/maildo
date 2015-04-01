@@ -45,9 +45,7 @@ module.exports = function() {
                 "starred": Boolean,
                 "important": Boolean
             },
-            "groups": {
-                "sent": Boolean
-            }
+            "groups": []
         });
         Models.MailModel = mongoose.model('Mail', MailSchema);
     };

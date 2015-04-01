@@ -47,7 +47,8 @@ module.exports = function() {
 
     //--------------------------------------------------
 
-    var getList = function(socket, data){
+    var getList = function(socket, userName, data){
+
         getListModule.select(socket, data, MailModel);
     };
 

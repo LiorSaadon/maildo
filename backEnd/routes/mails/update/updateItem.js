@@ -14,18 +14,15 @@ module.exports = function() {
             "subject": data.subject,
             "sentTime": data.sentTime,
             "body": data.body,
-            "relatedBody": data.relatedBody
-        }
-
-        console.log(data);
+            "relatedBody": data.relatedBody,
+            "groups":data.groups,
+            "labels":data.labels
+        };
 
         MailModel.findByIdAndUpdate(data._id, {$set: newVal}, function (err, mail) {
             if (err){
-                console.log(err);
                 socketManager.emit(socket, 'mail:update', {"success":false});
             }else{
-                console.log("--------------999999999-" );
-                console.log(mail)
                 socketManager.emit(socket, 'mail:update', {"success":true,"data":mail}, userName);
             }
         });

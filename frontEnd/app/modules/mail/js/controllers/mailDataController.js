@@ -58,7 +58,7 @@ define(function (require) {
             //------------------------------------------------------
 
             _onDataChange:function(message){
-               console.log("----" + message.originalEventName);
+               console.log("Notification from server. (data has changed): " + message.originalEventName);
             },
 
             //------------------------------------------------------

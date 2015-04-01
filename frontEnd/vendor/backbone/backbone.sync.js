@@ -25,7 +25,7 @@
         opts.data = opts.data || model.toJSON(options);
 
         socket = opts.socket || model.socket;
-        reqName = socket.requestName+":"+method;
+        reqName = socket.requestName + ":" + method;
 
         socket.io.once(reqName, function(res){
             var success = (res && res.success); // Expects server json response to contain a boolean 'success' field

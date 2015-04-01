@@ -4,57 +4,47 @@ module.exports = function() {
     var _ = require("underscore");
     var socketManager = require('../../../managers/socketManager');
 
-
     var updateBulk = function (socket, userName, data, MailModel) {
+
+        var calls = [];
 
         var idArr = data.map(function(item){
             return item.id;
         });
 
-        MailModel.find({'id': { $in: idArr}}, function(err, mails){
-            var calls = [];
-
-            _override(mails, data);
-
-            mails.forEach(function(mail){
-                calls.push(function(callback) {
-                    mail.save(function (err) {
-                        callback(null, mail);
-                    });
-                });
+        _.each(idArr, function (id) {
+            calls.push(function (callback) {
+                MailModel.update({id: id}, {$set: buildQuery(data, id)}, function (err) {
+                    callback(null);
+                })
             });
+        });
 
-            async.parallel(calls, function(err, result) {
-                if (err){
-                    socketManager.emit(socket, 'mails:update', {"success":false});
-                }else{
-                    socketManager.emit(socket, 'mails:update', {"success":true}, userName);
-                }
-            });
+        async.parallel(calls, function (err, result) {
+            if (err) {
+                socketManager.emit(socket, 'mails:update', {"success": false});
+            } else {
+                socketManager.emit(socket, 'mails:update', {"success": true}, userName);
+            }
         });
     };
 
-    //---------------------------------------------------
+    //--------------------------------------------------
 
-    var _override = function(main, newData) {
+    var buildQuery = function(data, id){
 
-        _.each(newData, function(newDataObj) {
-            var mainObj = _.find(main, function(mainObj) {
-                return mainObj.id === newDataObj.id;
-            });
-            _doOverride(mainObj, newDataObj);
+        var result = {};
+
+        var newDataObj = _.find(data, function(model) {
+            return model.id == id;
         });
-    };
 
-    //---------------------------------------------------
-
-    var _doOverride = function(mainObj, newDataObj) {
-
-        if(_.isObject(mainObj)){
-            for (var key in newDataObj) {
-                mainObj[key] = newDataObj[key];
+        for (var key in newDataObj) {
+            if(key !== "id"){
+                result[key] = newDataObj[key];
             }
         }
+        return result;
     };
 
     //---------------------------------------------------

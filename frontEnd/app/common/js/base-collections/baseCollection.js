@@ -137,6 +137,7 @@ define(function (require) {
 
                 if(model){
                     if(!model.isNew() && options.fields){
+                        options.fields.push("id");
                         model = model.toJSON({fields: options.fields});
                     }else{
                         model = model.toJSON();
