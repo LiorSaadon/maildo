@@ -99,6 +99,11 @@ define(function (require) {
             getAll:function(callback){
                 this.collection.fetch({
                     reset:true,
+                    data: {
+                        "nPerPage":5,
+                        "pageNumber":1,
+                        "query": 'groups:inbox labels.read:true'
+                    },
                     success: _.bind(function(collection, resp, options) {
                         this.allItems = true;
                         if(_.isFunction(callback)){
