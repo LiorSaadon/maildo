@@ -25,6 +25,9 @@ module.exports = function() {
 
     var emit = function(socket, eventName, message, userName){
 
+        console.log(eventName);
+        console.log(message);
+
         socket.emit(eventName, message);
 
         if(!_.isEmpty(userName)){

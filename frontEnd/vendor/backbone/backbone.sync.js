@@ -29,8 +29,7 @@
 
         socket.io.once(reqName, function(res){
             var success = (res && res.success); // Expects server json response to contain a boolean 'success' field
-            if (success)
-            {
+            if (success) {
                 if (_.isFunction(options.success)) options.success(res.data);
                 defer.resolve(res);
                 return;

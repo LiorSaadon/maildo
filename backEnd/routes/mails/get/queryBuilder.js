@@ -5,7 +5,7 @@ module.exports = function () {
         var query = {}, subQueries = adjustQueryInput(data.query).split(' ');
 
         for (var i = 0; i < subQueries.length; i++) {
-            addSetQuery(query, subQueries[i]);
+            updateQueryObject(query, subQueries[i]);
         }
         return query;
     };
@@ -14,49 +14,50 @@ module.exports = function () {
 
     var adjustQueryInput = function (query) {
 
-        query = query.replace(/\s\:/g, ':').replace(/:\s/g, ':').replace("label:", "labels:").trim();  // "  x : y label : inbox  " ==> "x:y labels:inbox"
-
-        if (query.indexOf("groups:") === -1) {
-            query += ' ' + "groups:inbox";
-        }
-        return query;
+        return query.replace(/\s\:/g, ':').replace(/:\s/g, ':').replace("label:", "labels:").replace("in:", "groups:").trim();  // "  x : y label : inbox  " ==> "x:y labels:inbox"
     };
 
     //-----------------------------------------------------
 
-    var addSetQuery = function (query, subQuery) {
+    var updateQueryObject = function (query, subQuery) {
 
         var arr = subQuery.split(':');
 
         if (arr.length == 2) {
-            addReservedKey(arr[0].toLowerCase(), arr[1], query);
+            addHardKey(arr[0].toLowerCase(), arr[1], query);
         } else {
-            addKey(arr, query)
+            addOptionalKey(arr[0], query)
         }
     };
 
     //------------------------------------------------------
 
-    var addReservedKey = function (key, value, query) {
+    var addHardKey = function (key, value, query) {
 
         if (key === "groups") {
             query[key] = {$in: [value]}
         }
         if (key.indexOf("labels.") == 0) {
             query[key] = {$eq: (value === "true")}
-            console.log(query);
+        }
+        if (key === "from") {
+            query[key] = {$regex: ".*" + value + ".*"}
+        }
+        if (key === "to") {
+            query[key] = {$regex: ".*" + value + ".*"}
         }
     };
 
     //------------------------------------------------------
 
-    var addKey = function (val, query) {
+    var addOptionalKey = function (val, query) {
 
         query['$or'] = query['$or'] || [];
-        query['$or'].push({bcc: {$regex: ".*" + val + ".*"}});
         query['$or'].push({body: {$regex: ".*" + val + ".*"}});
         query['$or'].push({subject: {$regex: ".*" + val + ".*"}});
     };
+
+    //------------------------------------------------------
 
     return {
         buildQuery: buildQuery

@@ -30,8 +30,8 @@ module.exports = function() {
     var setMailSchema = function(){
 
         var MailSchema = new mongoose.Schema({
-            id: String,
-            userId:String,
+            "id": String,
+            "userId":String,
             "from": String,
             "to": String,
             "cc": String,

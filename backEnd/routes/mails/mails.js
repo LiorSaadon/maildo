@@ -17,7 +17,7 @@ module.exports = function() {
 
     //--------------------------------------------------
 
-    var addItem = function(socket, userName,data){
+    var addItem = function(socket, userName, data){
         addItemModule.add(socket, userName, data, MailModel);
     };
 
@@ -52,10 +52,17 @@ module.exports = function() {
         getListModule.select(socket, data, MailModel);
     };
 
+    //--------------------------------------------------
+
+    var getItem = function(){
+
+    };
+
     return{
         setModel:setModel,
         addItem:addItem,
         getList:getList,
+        getItem:getItem,
         deleteItem:deleteItem,
         deleteBulk:deleteBulk,
         updateItem:updateItem,
