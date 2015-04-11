@@ -14,7 +14,7 @@ module.exports = function () {
 
     var adjustQueryInput = function (query) {
 
-        return query.replace(/\s\:/g, ':').replace(/:\s/g, ':').replace("label:", "labels:").replace("in:", "groups:").trim();  // "  x : y label : inbox  " ==> "x:y labels:inbox"
+        return query.replace(/\s\:/g, ':').replace(/:\s/g, ':').replace("in:", "groups:").trim();  // "  x : y label : inbox  " ==> "x:y labels:inbox"
     };
 
     //-----------------------------------------------------
@@ -38,7 +38,7 @@ module.exports = function () {
             query[key] = {$in: [value]}
         }
         if (key.indexOf("labels.") == 0) {
-            query[key] = {$eq: (value === "true")}
+            query[key] = value
         }
         if (key === "from") {
             query[key] = {$regex: ".*" + value + ".*"}

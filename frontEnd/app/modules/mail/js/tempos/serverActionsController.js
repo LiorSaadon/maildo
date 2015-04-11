@@ -23,35 +23,53 @@ define(function (require) {
 
             createMethodList: function () {
 
+                var MAX_ITEMS = 10;
+
                 this.methods = [];
 
-                for (var i = 0; i < 20; i++) {
+                for (var i = 0; i < MAX_ITEMS; i++) {
                     this.methods.push({name: "addItem", options: data[i]});
                 }
                 this.methods.push({
                     name: "fetch",
-                    options: {collection: this.collection, data: {"nPerPage": 25, "pageNumber": 1, "query": ''}}
+                    options: {collection: this.collection, data: {"nPerPage": 25, "pageNumber": 1, "query": ''}, expectedResult:MAX_ITEMS, err:"err1"}
                 });
                 this.methods.push({
                     name: "fetch",
-                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:inbox'}}
+                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:inbox subject2'}, expectedResult:1, err:"err1.1"}
                 });
                 this.methods.push({
                     name: "fetch",
-                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:sent'}}
+                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:inbox subject5'}, expectedResult:0, err:"err1.2"}
+                });
+                this.methods.push({
+                    name: "fetch",
+                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:sent subject5'}, expectedResult:1, err:"err1.3"}
+                });
+                this.methods.push({
+                    name: "fetch",
+                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:sent subject2'}, expectedResult:0, err:"err1.4"}
                 });
                 this.methods.push({
                     name: "updateItem",
-                    options:{collection:this.collection, item:0, values:{"groups": ["i1", "i2"], "labels.read":true,"labels.important":true}}
+                    options:{collection:this.collection, item:0, values:{"groups": ["i1", "i2"], "labels.read":true,"labels.important":true}, callback:{name: "fetch", options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:i1 groups:i2 labels.read:true labels.important:true'}, expectedResult:1, successMsg:"updateItem(1) finished successfully", err:"err2"}}}
                 });
                 this.methods.push({
                     name: "updateItem",
-                    options:{collection:this.collection, item:2, values:{"groups": ["b1", "b2"], "labels.read":false, "subject":"sub3"}}
+                    options:{collection:this.collection, item:1, values:{"groups": ["b1"], "subject":"sub3"}, callback:{name: "fetch", options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:b1 sub3'}, expectedResult:1, successMsg:"updateItem(2) finished successfully", err:"err2.1"}}}
                 });
-
-                //this.methods.push("updateBulk", {});
-                //this.methods.push("removeBulk", {});
-                //this.methods.push("removeItem", {});
+                this.methods.push({
+                    name: "updateBulk",
+                    options:{collection:this.collection, items:[2,3,4], fields:["labels", "groups"], values:{"groups": ["c1"], "labels.read":true}, callback:{name: "fetch", options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:c1 labels.read:true'}, expectedResult:3, successMsg:"updateBulk finished successfully", err:"err3"}}}
+                });
+                this.methods.push({
+                    name: "removeBulk",
+                    options:{collection:this.collection, items:[1,3], callback:{name: "fetch", options: {data: {"nPerPage": 25, "pageNumber": 1, "query": ''}, expectedResult:MAX_ITEMS-2, successMsg:"removeBulk(partial) finished successfully",  err:"err4"}}}
+                });
+                this.methods.push({
+                    name: "removeBulk",
+                    options:{collection:this.collection, callback:{name: "fetch", options: {data: {"nPerPage": 25, "pageNumber": 1, "query": ''}, expectedResult:0, successMsg:"removeBulk(all) finished successfully", err:"err4.1"}}}
+                });
             },
 
             //----------------------------------------------------
@@ -92,7 +110,12 @@ define(function (require) {
                     reset: true,
                     data: _options.data,
                     success: _.bind(function (collection, resp, options) {
-                        console.log("filtered item: " + collection.size());
+                        if(collection.size() === _options.expectedResult){
+                            var msg = _.isString(_options.successMsg) ?  _options.successMsg : "fetch return result as expected"
+                            console.log(msg);
+                        }else{
+                            console.log('%c ' + _options.err, 'color: #FF0511');
+                        }
                     }, this),
                     error: _.bind(function (collection, resp, options) {
                         console.log('%c getAll:error ', 'color: #FF0511');
@@ -106,13 +129,66 @@ define(function (require) {
 
                 var model = options.collection.models[options.item];
 
-                _.each(options.values, _.bind(function(value, key, obj) {
+                _.each(options.values, function(value, key, obj) {
                     model.set(key,value);
-                },this));
+                });
 
                 model.save(null, {
                     success: _.bind(function (model, resp, _options) {
-                         console.log(model.attributes);
+                        this[options.callback.name](options.callback.options);
+                    }, this),
+                    error: _.bind(function(){
+                        console.log('%c Update item failed! ', 'color: #FF0511');
+                    },this)
+                });
+            },
+
+            //-----------------------------------------------------------
+
+            updateBulk:function(options){
+
+                if(options.items){
+
+                    var selectedItems = [];
+                    _.each(options.items, function(item){
+
+                        var model = options.collection.models[item];
+                        if(model){
+                            selectedItems.push(model.id);
+                            _.each(options.values, function(value, key) {
+                                model.set(key, value);
+                            });
+                        }
+                    });
+                }
+                options.collection.update({
+                    selectedItems: selectedItems,
+                    fields: options.fields,
+                    success: _.bind(function (model, resp, _options) {
+                        this[options.callback.name](options.callback.options);
+                    }, this),
+                    error: _.bind(function(){
+                        console.log('%c Update item failed! ', 'color: #FF0511');
+                    },this)
+                });
+            },
+
+            //-----------------------------------------------------------
+
+            removeBulk:function(options){
+
+                if(options.items) {
+
+                    var selectedItems = [];
+                    _.each(options.items, function (item) {
+                        var model = options.collection.models[item];
+                        selectedItems.push(model.id);
+                    });
+                }
+                options.collection.destroy({
+                    selectedItems: selectedItems,
+                    success: _.bind(function (model, resp, _options) {
+                        this[options.callback.name](options.callback.options);
                     }, this),
                     error: _.bind(function(){
                         console.log('%c Update item failed! ', 'color: #FF0511');
