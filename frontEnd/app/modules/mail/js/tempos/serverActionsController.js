@@ -5,8 +5,15 @@ define(function (require) {
     var TestModel = require("app/modules/mail/js/tempos/model");
     var TestCollection = require("app/modules/mail/js/tempos/collection");
     var data = require("json!app/modules/mail/js/tempos/data.json");
+    var UrlUtility = require("resolvers/UrlUtility");
 
     var ServerActionsController = {};
+
+
+    //   http://localhost:3000/                                    (guest)
+    //   http://localhost:3000/?status=player&username=shaulm      (shaulm-player)
+    //   http://localhost:3000/?status=watcher&username=shaulm     (shaulm-watcher)
+
 
     app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
@@ -15,8 +22,11 @@ define(function (require) {
             initialize: function () {
 
                 this.collection = new TestCollection();
-                this.createMethodList();
-                this.execAll();
+
+                if(UrlUtility.getParameterByName("status") === "player") {
+                    this.createMethodList();
+                    this.execAll();
+                }
             },
 
             //-------------------------------------------------
@@ -30,6 +40,7 @@ define(function (require) {
                 for (var i = 0; i < MAX_ITEMS; i++) {
                     this.methods.push({name: "addItem", options: data[i]});
                 }
+
                 this.methods.push({
                     name: "fetch",
                     options: {collection: this.collection, data: {"nPerPage": 25, "pageNumber": 1, "query": ''}, expectedResult:MAX_ITEMS, err:"err1"}

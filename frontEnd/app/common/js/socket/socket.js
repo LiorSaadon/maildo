@@ -4,6 +4,7 @@ define(function (require) {
     var app = require('mbApp');
     var _ = require('underscore');
     var Marionette = require('marionette');
+    var UrlUtility = require("resolvers/UrlUtility");
     var io = require('socketio');
 
     var Socket = Marionette.Controller.extend({
@@ -12,7 +13,10 @@ define(function (require) {
 
             this._socket = io('http://localhost:3000/');
 
-            this._socket.emit('add-user',"shaulm");
+            var userName = UrlUtility.getParameterByName("username")
+            userName = _.isEmpty(userName) ? "guest": userName;
+
+            this._socket.emit('add-user',userName);
 
             this._socket.on('data:change', function(message){
                 app.vent.trigger("data:change", message);
