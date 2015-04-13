@@ -33,7 +33,7 @@ define(function (require) {
 
             createMethodList: function () {
 
-                var MAX_ITEMS = 10;
+                var MAX_ITEMS = 20;
 
                 this.methods = [];
 
@@ -43,23 +43,35 @@ define(function (require) {
 
                 this.methods.push({
                     name: "fetch",
-                    options: {collection: this.collection, data: {"nPerPage": 25, "pageNumber": 1, "query": ''}, expectedResult:MAX_ITEMS, err:"err1"}
+                    options: {collection: this.collection, data: {"nPerPage": 25, "pageNumber": 1, "query": ''}, expectedResult:MAX_ITEMS, err:"err1"}  //empty query
                 });
                 this.methods.push({
                     name: "fetch",
-                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:inbox subject2'}, expectedResult:1, err:"err1.1"}
+                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:inbox subject2'}, expectedResult:1, err:"err1.1"}  //specific item
                 });
                 this.methods.push({
                     name: "fetch",
-                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:inbox subject5'}, expectedResult:0, err:"err1.2"}
+                    options: {data: {"nPerPage": 4, "pageNumber": 1, "query": 'groups:inbox'}, expectedResult:4, err:"err1.2"}  //test paging - page 1
                 });
                 this.methods.push({
                     name: "fetch",
-                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:sent subject5'}, expectedResult:1, err:"err1.3"}
+                    options: {data: {"nPerPage": 4, "pageNumber": 2, "query": 'groups:inbox'}, expectedResult:3, err:"err1.2"}  //test paging - page 2
                 });
                 this.methods.push({
                     name: "fetch",
-                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:sent subject2'}, expectedResult:0, err:"err1.4"}
+                    options: {data: {"nPerPage": 4, "pageNumber": 3, "query": 'groups:inbox'}, expectedResult:3, err:"err1.2.1"}  //test paging - page that not exist
+                });
+                this.methods.push({
+                    name: "fetch",
+                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:inbox subject5'}, expectedResult:0, err:"err1.3"}
+                });
+                this.methods.push({
+                    name: "fetch",
+                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:sent subject5'}, expectedResult:1, err:"err1.4"}
+                });
+                this.methods.push({
+                    name: "fetch",
+                    options: {data: {"nPerPage": 25, "pageNumber": 1, "query": 'groups:sent debka'}, expectedResult:0, err:"err1.5"}
                 });
                 this.methods.push({
                     name: "updateItem",

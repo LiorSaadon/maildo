@@ -1,11 +1,18 @@
 module.exports = function () {
 
+    var _ = require("underscore");
+
     var buildQuery = function (data) {
 
-        var query = {}, subQueries = adjustQueryInput(data.query).split(' ');
+        var query = {};
 
-        for (var i = 0; i < subQueries.length; i++) {
-            updateQueryObject(query, subQueries[i]);
+        if(!_.isEmpty(data.query)){
+
+            var subQueries = adjustQueryInput(data.query).split(' ');
+
+            for (var i = 0; i < subQueries.length; i++) {
+                updateQueryObject(query, subQueries[i]);
+            }
         }
         return query;
     };
@@ -52,9 +59,12 @@ module.exports = function () {
 
     var addOptionalKey = function (val, query) {
 
-        query['$or'] = query['$or'] || [];
-        query['$or'].push({body: {$regex: ".*" + val + ".*"}});
-        query['$or'].push({subject: {$regex: ".*" + val + ".*"}});
+        var or = [];
+
+        or.push({body: {$regex: ".*" + val + ".*"}});
+        or.push({subject: {$regex: ".*" + val + ".*"}});
+
+        query["$and"] = [{"$or" : or}];
     };
 
     //------------------------------------------------------
