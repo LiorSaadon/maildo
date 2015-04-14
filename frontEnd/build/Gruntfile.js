@@ -74,20 +74,26 @@ module.exports = function(grunt) {
                 force:true
             },
             target:[
-                '../target/app/assets/js',
-                '../target/app/assets/data',
-                '../target/app/assets/ui/scss',
-                '../target/app/assets/compass',
-                '../target/app/assets/ui/components',
-                '../target/app/common',
+                '../target/app/common/js',
+                '../target/app/common/data',
+                '../target/app/common/ui/scss',
+                '../target/app/common/compass',
+                '../target/app/common/ui/components',
                 '../target/app/modules',
+                '../target/app/frame',
                 '../target/build',
                 '../target/vendor/compass',
+                '../target/vendor/chai',
+                '../target/vendor/mocha',
+                '../target/vendor/sinon',
+                '../target/vendor/squire',
+                '../target/vendor/blanket',
+                '../target/tests',
                 '../target/debug',
                 '../target/*.txt'
             ],
             ci:[
-                '../../mailbone-ci/frontEnd'
+                '../../ci/frontEnd'
             ]
         },
 
@@ -112,9 +118,12 @@ module.exports = function(grunt) {
         copy: {
             target2ci: {
                 files: [
-                    {expand: true, cwd: '../target/', src: ['**'],dest: '../../mailbone-ci/frontEnd'},
-                    {expand: true, cwd: '../app/assets/data', src: ['*txt'],dest: '../../mailbone-ci/frontEnd/app/assets/data'}
-                ]
+                    {src: ['../../app.js'],dest: '../../ci/app.js'},
+                    {src: ['../../package.json'],dest: '../../ci/package.json'},
+                    {expand: true, cwd: '../target/', src: ['**'], dest: '../../ci/frontEnd'},
+                    {expand: true, cwd: '../app/common/data', src: ['*txt'], dest: '../../ci/frontEnd/app/common/data'},
+                    {expand: true, cwd: '../../backEnd', src: ['**'], dest: '../../ci/backEnd'}
+               ]
             }
         }
     });
@@ -143,8 +152,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
         'compass',
         'jshint',
-//        'connect',
-//        'mocha',
         'requirejs',
         'clean:target',
         'replace:version',

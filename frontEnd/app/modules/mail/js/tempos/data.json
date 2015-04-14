@@ -1,9 +1,9 @@
 [
   {
     "userId": "1",
-    "from": "demo@mailbone.com",
+    "from": "shaul@mailbone.com",
     "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
-    "cc": "williams@mailbone.com",
+    "cc": "bubu@mailbone.com",
     "bcc": "",
     "subject": "subject1",
     "sentTime": "2014-04-12 15:06:51",
@@ -44,7 +44,7 @@
     "body": "body3",
     "relatedBody": "mail1",
     "labels": {
-      "read": false,
+      "read": true,
       "starred": true,
       "important": true
     },
@@ -80,7 +80,7 @@
     "labels": {
       "read": true,
       "starred": true,
-      "important": true
+      "important": false
     },
     "groups": ["sent"]
   },
@@ -131,7 +131,7 @@
     "labels": {
       "read": true,
       "starred": true,
-      "important": true
+      "important": false
     },
     "groups": ["sent"]
   },
@@ -165,7 +165,7 @@
     "labels": {
       "read": true,
       "starred": true,
-      "important": true
+      "important": false
     },
     "groups": ["sent"]
   },
@@ -214,7 +214,7 @@
     "body": "body13",
     "relatedBody": "mail1",
     "labels": {
-      "read": true,
+      "read": false,
       "starred": true,
       "important": true
     },
@@ -233,7 +233,7 @@
     "labels": {
       "read": true,
       "starred": true,
-      "important": true
+      "important": false
     },
     "groups": ["sent"]
   },

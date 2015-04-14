@@ -11,10 +11,6 @@ define(function (require) {
         ui:{
             loader:".loader"
         },
-        initialize:function (options) {
-//            this.listenTo(app.channel.vent,"data:refresh:before",this.showLoader);
-//            this.listenTo(app.channel.vent,"data:refresh:success",this.closeLoader);
-        },
 
         showLoader: function () {
             this.$el.show();

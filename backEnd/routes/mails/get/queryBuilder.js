@@ -21,7 +21,7 @@ module.exports = function () {
 
     var adjustQueryInput = function (query) {
 
-        return query.replace(/\s\:/g, ':').replace(/:\s/g, ':').replace("in:", "groups:").trim();  // "  x : y label : inbox  " ==> "x:y labels:inbox"
+        return query.replace(/\s\:/g, ':').replace(/:\s/g, ':').replace("in:", "groups:").replace("label.", "labels.").trim();  // "  label : read in : inbox  " ==> "labels:read in:inbox"
     };
 
     //-----------------------------------------------------
@@ -33,7 +33,7 @@ module.exports = function () {
         if (arr.length == 2) {
             addHardKey(arr[0].toLowerCase(), arr[1], query);
         } else {
-            addOptionalKey(arr[0], query)
+            addOptionalKey(["body", "subject"],arr[0], query)
         }
     };
 
@@ -51,18 +51,21 @@ module.exports = function () {
             query[key] = {$regex: ".*" + value + ".*"}
         }
         if (key === "to") {
-            query[key] = {$regex: ".*" + value + ".*"}
+            addOptionalKey(["to", "cc"], value, query);
         }
     };
 
     //------------------------------------------------------
 
-    var addOptionalKey = function (val, query) {
+    var addOptionalKey = function (fields, val, query) {
 
         var or = [];
 
-        or.push({body: {$regex: ".*" + val + ".*"}});
-        or.push({subject: {$regex: ".*" + val + ".*"}});
+        _.each(fields, function(field){
+            var obj = {};
+            obj[field] = {$regex: ".*" + val + ".*"}
+            or.push(obj);
+        })
 
         query["$and"] = [{"$or" : or}];
     };

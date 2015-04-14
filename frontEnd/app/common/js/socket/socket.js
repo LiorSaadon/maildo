@@ -13,7 +13,7 @@ define(function (require) {
 
             this._socket = io('http://localhost:3000/');
 
-            var userName = UrlUtility.getParameterByName("username")
+            var userName = UrlUtility.getParameterByName("username");
             userName = _.isEmpty(userName) ? "guest": userName;
 
             this._socket.emit('add-user',userName);
