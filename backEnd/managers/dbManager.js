@@ -14,12 +14,14 @@ module.exports = function() {
         mongoose.connect(envConfig.DB_URL);
 
         mongoose.connection.once('open', function callback () {
+            console.log("Mongodb connection was successfully established");
             mongoose.connection.collection("mails").drop();
             setMailSchema();
             cb(Models);
         });
 
         mongoose.connection.on('error',function (err) {
+            console.log("Error establishing database connection");
             console.error.bind(console, 'connection error:');
         });
     };
@@ -48,7 +50,6 @@ module.exports = function() {
         });
         Models.MailModel = mongoose.model('Mail', MailSchema);
     };
-
 
     return {
         connect:connect

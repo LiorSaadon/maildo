@@ -11,7 +11,7 @@ module.exports = function() {
         MailModel.find(query, function(err, mails) {
 
             if(err){
-                console.log(err);
+                socketManager.emit(socket, 'mails:read', {"success":false});
             }else{
                 var page = pagerHandler.filterByPage(mails, data);
                 socketManager.emit(socket, 'mails:read', {"success":true,"data":{"collection":page.collection,"metadata":page.metadata}});

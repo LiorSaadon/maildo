@@ -1,21 +1,24 @@
-var express = require('express'),
-    path = require('path'),
-    http = require('http'),
-    mails = require('./backEnd/routes/mails/mails'),
-    dbManager = require('./backEnd/managers/dbManager'),
-    socketManager = require('./backEnd/managers/socketManager');
+//http://code.tutsplus.com/tutorials/authenticating-nodejs-applications-with-passport--cms-21619
+//https://github.com/tutsplus/passport-mongo/blob/master/app.js
+
+var express = require('express');
+var path = require('path');
+var http = require('http');
+var mails = require('./backEnd/routes/mails/mails');
+var dbManager = require('./backEnd/managers/dbManager');
+var socketManager = require('./backEnd/managers/socketManager');
+
+var app = express();
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
+
+app.use(express.static(path.join(__dirname, 'frontEnd')));
+
+server.listen(3000, function () {
+    console.log("Express server listening on port 3000");
+});
 
 dbManager.connect(function(Models){
-
-    var app = express();
-    var server = http.createServer(app);
-    var io = require('socket.io').listen(server);
-
-    app.use(express.static(path.join(__dirname, 'frontEnd')));
-
-    server.listen(3000, function () {
-        console.log("Express server listening on port 3000");
-    });
 
     mails.setModel(Models.MailModel);
 
@@ -49,6 +52,3 @@ dbManager.connect(function(Models){
         });
     });
 });
-
-
-
