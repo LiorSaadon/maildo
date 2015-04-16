@@ -93,7 +93,8 @@ module.exports = function(grunt) {
                 '../target/*.txt'
             ],
             ci:[
-                '../../ci/frontEnd'
+                '../../../maildo-ci/frontEnd',
+                '../../../maildo-ci/backEnd'
             ]
         },
 
@@ -107,8 +108,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files:[
-                    { src:['../target/index.html'], dest:'../target/index.html' },
-                    { src:['../target/app/setup/init.js'], dest:'../target/app/setup/init.js' }
+                    { src:['../target/index.html'], dest:'../target/index.html' }
                 ]
             }
         },
@@ -118,13 +118,19 @@ module.exports = function(grunt) {
         copy: {
             target2ci: {
                 files: [
-                    {src: ['../../app.js'],dest: '../../ci/app.js'},
-                    {src: ['../../package.json'],dest: '../../ci/package.json'},
-                    {expand: true, cwd: '../target/', src: ['**'], dest: '../../ci/frontEnd'},
-                    {expand: true, cwd: '../app/common/data', src: ['*txt'], dest: '../../ci/frontEnd/app/common/data'},
-                    {expand: true, cwd: '../../backEnd', src: ['**'], dest: '../../ci/backEnd'}
+                    {src: ['../../app.js'], dest: '../../../maildo-ci/app.js'},
+                    {src: ['../../package.json'],dest: '../../../maildo-ci/package.json'},
+                    {expand: true, cwd: '../target/', src: ['**'], dest: '../../../maildo-ci/frontEnd'},
+                    {expand: true, cwd: '../app/common/data', src: ['*txt'], dest: '../../../maildo-ci/frontEnd/app/common/data'},
+                    {expand: true, cwd: '../../backEnd', src: ['**'], dest: '../../../maildo-ci/backEnd'}
                ]
+            },
+            configs: {
+                files: [
+                    {src: ['../../../maildo-ci-conf/backend.json'], dest: '../../../maildo-ci/backend/config/env-conf.json'}
+                ]
             }
+
         }
     });
 
@@ -139,23 +145,24 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
 
 
-    grunt.registerTask("quick", [
-        'jshint'
-    ]);
-
     grunt.registerTask("test", [
+
         'jshint',
         'connect',
         'mocha'
     ]);
 
     grunt.registerTask('default', [
+
         'compass',
         'jshint',
         'requirejs',
         'clean:target',
         'replace:version',
+
+        //the task below should not be in the grunt file.
         'clean:ci',
-        'copy:target2ci'
+        'copy:target2ci',
+        'copy:configs',
     ]);
 };

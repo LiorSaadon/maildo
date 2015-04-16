@@ -11,7 +11,8 @@ define(function (require) {
 
         create:function(options){
 
-            this._socket = io('http://localhost:3000/');
+            var url = window.location.host;
+            this._socket = io(url);
 
             var userName = UrlUtility.getParameterByName("username");
             userName = _.isEmpty(userName) ? "guest": userName;

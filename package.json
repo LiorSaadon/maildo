@@ -1,9 +1,12 @@
 {
-  "name": "mailbone",
-  "version": "0.0.1",
-  "private": true,
+  "name": "maildo",
+  "version": "0.0.0",
+  "subdomain": "maildo",
+  "engines": {
+    "node": "0.12.x"
+  },
   "scripts": {
-    "start": "node web.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "express": "4.9.5",
@@ -11,6 +14,6 @@
     "socket.io": "1.3.5",
     "mongoose": "3.8.25",
     "async": "0.9.0",
-    "underscore":"1.8.2"
+    "underscore": "1.8.2"
   }
 }
