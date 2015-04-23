@@ -1,11 +1,7 @@
-.sass-cache
-*.swp
 .DS_Store
-.svn
+.project
+.settings
 node_modules
-*.pem
-ssl
-.idea
-*.iml
-target
-ci
+frontEndClear\build\node_modules
+.sass-cache
+
