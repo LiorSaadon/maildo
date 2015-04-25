@@ -2,6 +2,7 @@
 .project
 .settings
 node_modules
-frontEndClear\build\node_modules
+frontEnd\build\node_modules
+frontEnd\build\target
 .sass-cache
 

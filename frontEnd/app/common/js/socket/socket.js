@@ -11,8 +11,15 @@ define(function (require) {
 
         create:function(options){
 
-            var url = window.location.host;
-            this._socket = io(url);
+            var socketURI = window.location.hostname + ":" + "8000" + "/";
+            this._socket = io.connect(socketURI);
+
+            this._socket.on('connect', function() {
+                console.log('connection to server established.');
+            });
+            this._socket.on('error', function() {
+                console.log('sorry, we are experiencing technical difficulties.');
+            });
 
             var userName = UrlUtility.getParameterByName("username");
             userName = _.isEmpty(userName) ? "guest": userName;

@@ -1,121 +1,57 @@
-//shaul test  SXSXSXS
-
-var PORT = process.env.OPENSHIFT_INTERNAL_PORT || process.env.OPENSHIFT_NODEJS_PORT  || 9595;
+var PORT = process.env.OPENSHIFT_INTERNAL_PORT || process.env.OPENSHIFT_NODEJS_PORT  || 8000;
 var IPADDRESS = process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
-var mongoose = require('mongoose');
+console.log("PORT " + PORT);
+console.log("IPADDRESS " + IPADDRESS);
+
+var path = require('path');
 var express = require('express');
-var argv = require('optimist').argv;
+var mails = require('./backEnd/routes/mails/mails');
+var dbManager = require('./backEnd/managers/dbManager');
+var socketManager = require('./backEnd/managers/socketManager');
 
-var server;
-var io;
-var app;
+var app = express();
+app.use(express.static(path.join(__dirname, 'frontEnd')));
 
-
-var Models = {};
-
-app = express();
-app.use(express.static(__dirname + "/frontEnd"));
-
-
-server = require('http').createServer(app);
-io = require('socket.io').listen(server);
+var server = require('http').createServer(app);
 server.listen(PORT, IPADDRESS);
 
-//--------------------------------------------------------------
-// monogoDB
-//--------------------------------------------------------------
+var io = require('socket.io').listen(server);
 
+dbManager.connect(function(Models){
 
-var connection_string = '127.0.0.1:27017/mailbonedb';
-// if OPENSHIFT env variables are present, use the available connection info:
-if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-    connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-    process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-    process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-    process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-    process.env.OPENSHIFT_APP_NAME;
-}
+    mails.setModel(Models.MailModel);
 
-mongoose.connect(connection_string);
+    io.sockets.on('connection', function (socket) {
 
-mongoose.connection.once('open', function callback () {
-    console.log("------------------------- :: Mongodb connection was successfully established");
-    mongoose.connection.collection("mails").drop();
-    console.log("------------------------- :: drop successfully established");
-    kuku = "gooooooooooooooooood!!!!"
-});
+        console.log("io.sockets connection successful");
+        socketManager.setIO(io);
 
-mongoose.connection.on('error',function (err) {
-    kuku = "error!!!!"
-    console.log("Error establishing database connection");
-});
-
-
-var MailSchema = new mongoose.Schema({
-    "id": String,
-    "userId":String,
-    "from": String,
-    "to": String,
-    "cc": String,
-    "bcc":String,
-    "subject": String,
-    "sentTime": String,
-    "body": String,
-    "relatedBody": String,
-    "labels": {
-        "read": Boolean,
-        "starred": Boolean,
-        "important": Boolean
-    },
-    "groups": []
-});
-Models.MailModel = mongoose.model('Mail', MailSchema);
-
-
-//----------------------------------------------------------------
-
-
-io.sockets.on('connection', function (socket) {
-
-    socket.on('chat', function (msg) {
-
-        add(msg);
-    });
-
-    var add =  function(msg) {
-
-        msg = msg || "empty ";
-
-        var data = {
-            id: "_" + new Date().getTime(),
-            "userId": "1",
-            "from": "demo@mailbone.com",
-            "to": "patricia.white@mailbone.com;michael.martin@mailbone.com;",
-            "cc": "williams@mailbone.com",
-            "bcc": "",
-            "subject": "subject2",
-            "sentTime": "2014-04-12 15:06:51",
-            "body": "body2",
-            "relatedBody": "mail1",
-            "labels": {
-                "read": false,
-                "starred": true,
-                "important": true
-            },
-            "groups": ["inbox"]
-        }
-
-        var mail = new Models.MailModel(data);
-
-        mail.save(function (err) {
-            if (err) {
-                console.log("kuku:error");
-                socket.emit('chat', msg + " :: error!!!!!");
-            } else {
-                console.log("kuku: great");
-                socket.emit('chat', msg + " :: great!!!");
-            }
+        socket.on('add-user', function(userName){
+            console.log("add-user successful");
+            socketManager.addSocket(socket, userName);
         });
-    }
+        socket.on('mail:create', function (userName, data) {
+            console.log("mail:create successful");
+            mails.addItem(socket, userName, data);
+        });
+        socket.on('mail:delete', function (userName, data) {
+            mails.deleteItem(socket, userName, data);
+        });
+        socket.on('mails:read', function (userName, data) {
+            mails.getList(socket, userName, data);
+        });
+        socket.on('mails:delete', function (userName, data) {
+            mails.deleteBulk(socket, userName, data);
+        });
+        socket.on('mail:update', function (userName, data) {
+            mails.updateItem(socket, userName, data);
+        });
+        socket.on('mails:update', function (userName, data) {
+            mails.updateBulk(socket, userName, data);
+        });
+        socket.on('disconnect', function() {
+            socketManager.removeSocket(socket);
+        });
+    });
 });

@@ -21,6 +21,8 @@ define(function (require) {
 
             initialize: function () {
 
+                console.log("version 1.0.1");
+
                 this.collection = new TestCollection();
 
                 if(UrlUtility.getParameterByName("status") === "player") {
