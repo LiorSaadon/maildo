@@ -35,10 +35,11 @@
     @include abs-pos(30px, 0, 'NaN', 0) ;
 
     .logo {
+      //DilleniaUPC 40px  white
       width: 146px;
-      height: 40px;
+      height: 42px;
       background-image: image-url('logo.png');
-      @include abs-pos(10px, 'NaN', 'NaN', 25px);
+      @include abs-pos(8px, 'NaN', 'NaN', 19px);
     }
 
     .accountName{
