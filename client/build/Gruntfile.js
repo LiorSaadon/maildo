@@ -93,7 +93,8 @@ module.exports = function(grunt) {
                 '../target/*.txt'
             ],
             ci:[
-                '../../frontEndCI'
+                'd:/smd/maildo-openshift/client',
+                'd:/smd/maildo-openshift/server'
             ]
         },
 
@@ -117,11 +118,13 @@ module.exports = function(grunt) {
         copy: {
             target2ci: {
                 files: [
-                    {src: ['../../server.js'],   dest: 'd:/smd/maildo-openshift/server.js'},
-                    {src: ['../../package.json'],dest: 'd:/smd/maildo-openshift/package.json'},
-                    {expand: true, cwd: '../target/', src: ['**'], dest: 'd:/smd/maildo-openshift/frontEnd'},
-                    {expand: true, cwd: '../app/common/data', src: ['*txt'], dest: 'd:/smd/maildo-openshift/frontEnd/app/common/data'},
-                    {expand: true, cwd: '../../backEnd', src: ['**'], dest: 'd:/smd/maildo-openshift/backEnd'}
+                    {src: ['../../server.js'], dest: 'd:/smd/maildo-openshift/server.js'},
+                    {src: ['../../package.json'], dest: 'd:/smd/maildo-openshift/package.json'},
+                    {src: ['../../favicon.ico'], dest: 'd:/smd/maildo-openshift/favicon.ico'},
+                    {src: ['../../maildo.md'], dest: 'd:/smd/maildo-openshift/maildo.md'},
+                    {expand: true, cwd: '../target/', src: ['**'], dest: 'd:/smd/maildo-openshift/client'},
+                    {expand: true, cwd: '../app/common/data', src: ['*txt'], dest: 'd:/smd/maildo-openshift/client/app/common/data'},
+                    {expand: true, cwd: '../../server', src: ['**'], dest: 'd:/smd/maildo-openshift/server'}
                ]
             }
         }
@@ -152,8 +155,6 @@ module.exports = function(grunt) {
         'requirejs',
         'clean:target',
         'replace:version',
-
-        //the task below should not be in the grunt file.
         'clean:ci',
         'copy:target2ci'
     ]);

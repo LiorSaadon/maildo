@@ -1,8 +1,9 @@
+.idea/
 .DS_Store
 .project
 .settings
 node_modules
-frontEnd\build\node_modules
-frontEnd\build\target
+client\build\node_modules
+client\build\target
 .sass-cache
 
