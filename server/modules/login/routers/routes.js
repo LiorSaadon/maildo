@@ -8,7 +8,7 @@ module.exports = function(app, passport) {
 
 
     app.get('/login', function (req, res) {
-        res.render('login.ejs', {message: ""});
+        res.render('login.ejs', {message: req.flash('loginMessage')});
     });
 
     //----------------------------------------------------
@@ -26,7 +26,7 @@ module.exports = function(app, passport) {
 
 
     app.get('/signup', function (req, res) {
-        res.render('signup.ejs', {message: "signup"});
+        res.render('signup.ejs', {message: req.flash('signupMessage')});
     });
 
     //----------------------------------------------------
@@ -37,26 +37,22 @@ module.exports = function(app, passport) {
         failureFlash : true
     }));
 
-    //
-    ////-----------------------------------------------------
-    //// INDEX
-    ////-----------------------------------------------------
-    //
-    //app.get('*', isLoggedIn, function(req, res) {
-    //    //http://stackoverflow.com/questions/21170253/cannot-use-basic-authentication-while-serving-static-files-using-express/21170931#21170931
-    //    res.redirect('/');
-    //    //res.sendFile('index.html', { root: path.join(__dirname, '../../../../client') });
-    //});
-    //
-    ////-----------------------------------------------------
-    //
-    //
-    //function isLoggedIn(req, res, next) {
-    //
-    //    console.log("444444");
-    //    if (req.isAuthenticated()){
-    //        return next();
-    //    }
-    //    res.redirect('/login');
-    //}
+
+    //-----------------------------------------------------
+    // INDEX
+    //-----------------------------------------------------
+
+    app.get('/', isLoggedIn, function(req, res) {
+        res.sendFile('index1.html', { root: path.join(__dirname, '../../../../client') });
+    });
+
+    //-----------------------------------------------------
+
+    function isLoggedIn(req, res, next) {
+
+        if (req.isAuthenticated()){
+            return next();
+        }
+        res.redirect('/login');
+    }
 };

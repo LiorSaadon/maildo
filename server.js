@@ -1,6 +1,4 @@
 
-    //https://github.com/mjhea0/passport-local-express4/blob/master/app.js
-
     var path           = require('path');
     var express        = require('express');
     var favicon        = require('serve-favicon');
@@ -10,6 +8,7 @@
     var login          = require('./server/modules/login/login');
     var mails          = require('./server/modules/mails/mails');
     var tasks          = require('./server/modules/tasks/tasks');
+    var settings       = require('./server/modules/settings/settings');
 
     var port           = process.env.OPENSHIFT_INTERNAL_PORT || process.env.OPENSHIFT_NODEJS_PORT || 8000;
     var address        = process.env.OPENSHIFT_INTERNAL_IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
@@ -23,7 +22,7 @@
 
     app.use(morgan('dev'));
     app.set('view engine', 'ejs');
-    app.use("/", express.static(path.join(__dirname, 'client')));
+    app.use(express.static(path.join(__dirname, 'client')));
     app.use(favicon(__dirname + '/client/app/common/ui/img/favicon.ico'));
 
 
@@ -48,6 +47,7 @@
         mails.start(db);
         tasks.start(db);
         login.start(db,app);
+        settings.start(db,app);
 
         io.sockets.on('connection', function (socket) {
             socketReseller.resell(io, socket, [mails, tasks]);

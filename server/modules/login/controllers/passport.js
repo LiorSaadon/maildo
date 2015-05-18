@@ -11,17 +11,14 @@ module.exports = function(db) {
     //--------------------------------------------------------------
 
     passport.serializeUser(function (user, done) {
-        console.log("bbbbbbbbbbbbbbbbbbbb");
         done(null, user.id);
     });
 
 
     passport.deserializeUser(function (id, done) {
-        console.log("tttttttttttttttttttt");
-        done(null, {id:"rambo1"});
-        //User.findById(id, function (err, user) {
-        //    done(err, user);
-        //});
+        User.findById(id, function(err, user) {
+            done(err, user);
+        });
     });
 
 
@@ -36,12 +33,22 @@ module.exports = function(db) {
             passReqToCallback: true
         },
         function (req, email, password, done) {
-            process.nextTick(function () {
-                return done(null, {id: "rambo"});
+
+            User.findOne({ 'local.email' :  email }, function(err, user) {
+
+                if (err){
+                    return done(err);
+                }
+                if (!user){
+                    return done(null, false, req.flash('loginMessage', 'No user found.'));
+                }
+                if (!user.validPassword(password)){
+                    return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+                }
+                return done(null, user);
             });
         })
     );
-
 
     //--------------------------------------------------------------
     // local-signup
@@ -54,13 +61,30 @@ module.exports = function(db) {
             passReqToCallback: true
         },
         function (req, email, password, done) {
-            console.log("2222222222");
-            process.nextTick(function () {
-                return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+
+            User.findOne({ 'local.email' :  email }, function(err, user) {
+
+                if (err){
+                    return done(err);
+                }
+                if (user) {
+                    return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                } else {
+
+                    var newUser = new User();
+
+                    newUser.email    = email;
+                    newUser.password = newUser.generateHash(password);
+
+                    newUser.save(function(err) {
+                        if (err)
+                            throw err;
+                        return done(null, newUser);
+                    });
+                }
             });
         })
     );
-
 
     return{
         passport:passport

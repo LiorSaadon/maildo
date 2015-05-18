@@ -10,7 +10,6 @@ define(function (require) {
     var Frame = require("frame");
     var Backbone =  require("backbone");
     var Translator = require("i18n/translator");
-    var AppRouter = require("app/setup/appRouter");
     var Context = require("common-context/context");
     var Socket = require("common/socket/socket");
     var SettingsController = require("common-settings/settingsController");
@@ -25,7 +24,6 @@ define(function (require) {
         app.translator = Translator;
         app.context = new Context();
         app.frame = new Frame();
-        app.router = new AppRouter();
         app.socket = new Socket().create();
         app.settingsController = new SettingsController();
     });
@@ -43,7 +41,7 @@ define(function (require) {
 
     //------------------------------------------
 
-    var onSettingsLoaded =function(){
+    var onSettingsLoaded = function(){
 
         setLayout();
         startHistory();

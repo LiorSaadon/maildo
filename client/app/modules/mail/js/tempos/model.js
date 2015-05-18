@@ -27,8 +27,11 @@ define(function (require) {
 
             initialize: function (attrs, options) {
 
-                 options = options || {};
-                 this.socket = {
+                options = options || {};
+
+                this.userName = app.settings.get("email");
+
+                this.socket = {
                      requestName: this.resource,
                      io: options.socket || mail.socket || app.socket
                  };

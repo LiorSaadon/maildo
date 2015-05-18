@@ -38,7 +38,7 @@
             defer.reject(res);
         });
 
-        socket.io.emit(reqName, "shaulm", opts.data);
+        socket.io.emit(reqName, model.userName, opts.data);
         model.trigger('request', model, promise, opts);
 
         return promise;

@@ -1,5 +1,7 @@
 module.exports = function() {
 
+    var bcrypt = require('bcrypt-nodejs');
+
     var create = function(db){
 
         var UserSchema = new db.Schema({
@@ -7,8 +9,13 @@ module.exports = function() {
             "password":String
         });
 
+
+        UserSchema.methods.generateHash = function(password) {
+            return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+        };
+
         UserSchema.methods.validPassword = function(password) {
-            return true
+            return bcrypt.compareSync(password, this.local.password);
         };
 
         return db.model('User', UserSchema);

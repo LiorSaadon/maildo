@@ -18,8 +18,12 @@ define(function (require) {
 
             app.settings.fetch({
                 success: _.bind(function () {
-                    this._loadTheme();
-                    this._loadDictionaries();
+                    if(_.isEmpty(app.settings.get("email"))){
+                        window.location.href = '/login';
+                    }else{
+                        this._loadTheme();
+                        this._loadDictionaries();
+                    }
                 },this)
             });
         },

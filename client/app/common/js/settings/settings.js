@@ -2,21 +2,21 @@ define(function (require) {
     "use strict";
 
     var BaseModel = require("base-models/baseModel");
-    var SettingsStorage = require("common-settings/settingsStorage");
 
     var SettingsModel = BaseModel.extend({
 
         defaults : {
             lang:"en-US",
             theme:'dust',
-            accountName: 'demo@mailbone.com'
+            email: 'demo@mailbone.com'
         },
+
+        url: 'settings',
 
         //-------------------------------------------
 
         initialize:function(){
             this.set("id", _.uniqueId('_'));
-            this.localStorage = new SettingsStorage();
         }
     });
 
