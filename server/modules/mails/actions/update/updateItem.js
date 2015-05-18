@@ -2,9 +2,9 @@ module.exports = function() {
 
     var async = require('async');
     var _ = require("underscore");
-    var socketManager = require('../../../managers/socketManager');
+    var socketManager = require('../../../../common/socketManager');
 
-    var updateItem = function (socket, userName, data, MailModel) {
+    var updateItem = function (io, socket, userName, data, MailModel) {
 
         var newVal = {
             "from": data.from,
@@ -21,9 +21,9 @@ module.exports = function() {
 
         MailModel.findByIdAndUpdate(data._id, {$set: newVal}, function (err, mail) {
             if (err){
-                socketManager.emit(socket, 'mail:update', {"success":false});
+                socketManager.emit(io, socket, 'mail:update', {"success":false});
             }else{
-                socketManager.emit(socket, 'mail:update', {"success":true,"data":mail}, userName);
+                socketManager.emit(io, socket, 'mail:update', {"success":true,"data":mail}, userName);
             }
         });
     }

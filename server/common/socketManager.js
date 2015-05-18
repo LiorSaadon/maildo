@@ -2,14 +2,7 @@ module.exports = function() {
 
     var _ = require("underscore");
 
-    var io;
     var _users = {};
-
-    //-----------------------------------------------------------
-
-    var setIO = function(_io){
-        io = _io;
-    };
 
     //-----------------------------------------------------------
 
@@ -23,7 +16,18 @@ module.exports = function() {
 
     //-----------------------------------------------------------
 
-    var emit = function(socket, eventName, message, userName){
+    var removeSocket = function(socket){
+
+        _.each(_users, function(val, key){
+            if(_.indexOf(val, socket.id) >= 0){
+                _users[key] = _.without(val, socket.id);
+            }
+        });
+    };
+
+    //-----------------------------------------------------------
+
+    var emit = function(io, socket, eventName, message, userName){
 
         console.log(eventName);
 
@@ -40,20 +44,8 @@ module.exports = function() {
         }
     };
 
-    //-----------------------------------------------------------
-
-    var removeSocket = function(socket){
-
-        _.each(_users, function(val, key){
-            if(_.indexOf(val, socket.id) >= 0){
-                _users[key] = _.without(val, socket.id);
-            }
-        });
-    };
-
     return {
         emit:emit,
-        setIO:setIO,
         addSocket:addSocket,
         removeSocket:removeSocket
     };
