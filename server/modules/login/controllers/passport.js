@@ -34,7 +34,7 @@ module.exports = function(db) {
         },
         function (req, email, password, done) {
 
-            User.findOne({ 'local.email' :  email }, function(err, user) {
+            User.findOne({ 'email' :  email }, function(err, user) {
 
                 if (err){
                     return done(err);
@@ -62,7 +62,7 @@ module.exports = function(db) {
         },
         function (req, email, password, done) {
 
-            User.findOne({ 'local.email' :  email }, function(err, user) {
+            User.findOne({ 'email' :  email }, function(err, user) {
 
                 if (err){
                     return done(err);

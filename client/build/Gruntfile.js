@@ -108,7 +108,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files:[
-                    { src:['../target/index.html'], dest:'../target/index.html' }
+                    { src:['../target/index1.html'], dest:'../target/index1.html' }
                 ]
             }
         },

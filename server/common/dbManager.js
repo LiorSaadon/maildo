@@ -21,8 +21,11 @@ module.exports = function() {
         mongoose.connect(connection_string);
 
         mongoose.connection.once('open', function callback () {
-            console.log("Mongodb connection was successfully established");
             mongoose.connection.collection("mails").drop();
+            mongoose.connection.collection("users").drop();
+            mongoose.connection.collection("settings").drop();
+            console.log("Mongodb connection was successfully established");
+
             cb(mongoose);
         });
 

@@ -7,7 +7,7 @@ module.exports = function() {
         var UserSchema = new db.Schema({
             "email": String,
             "password":String
-        });
+        }, { collection: 'users' });
 
 
         UserSchema.methods.generateHash = function(password) {
@@ -15,7 +15,7 @@ module.exports = function() {
         };
 
         UserSchema.methods.validPassword = function(password) {
-            return bcrypt.compareSync(password, this.local.password);
+            return bcrypt.compareSync(password, this.password);
         };
 
         return db.model('User', UserSchema);

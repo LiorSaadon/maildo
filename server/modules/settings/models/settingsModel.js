@@ -6,7 +6,7 @@ module.exports = function() {
             "email":String,
             "theme": String,
             "lang":String
-        });
+        }, { collection: 'settings' });
 
         return db.model('Settings', SettingsSchema);
     };

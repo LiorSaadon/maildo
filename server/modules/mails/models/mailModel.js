@@ -19,7 +19,7 @@ module.exports = function() {
                 "important": Boolean
             },
             "groups": []
-        });
+        }, { collection: 'mails' });
         return db.model('Mail', MailSchema);
     };
 
