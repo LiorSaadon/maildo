@@ -2,13 +2,13 @@ module.exports = function(app, Settings) {
 
     app.get('/settings', function (req, res) {
 
-        Settings.find({email:req.user.email}, function(err, settings) {
+        Settings.findOne({userName:req.user.email}, function(err, settings) {
 
             if (err){
                 res.send({"err":err});
             }
             if (!settings){
-                res.send({});
+                res.send({ userName:req.user.email});
             }
             else{
                 res.send(settings);
@@ -18,7 +18,15 @@ module.exports = function(app, Settings) {
 
     //----------------------------------------------------
 
-    app.post('/settings', function(){
+    app.put('/settings', function(req, res){
 
+        Settings.findOneAndUpdate({userName:req.body.userName}, {userName:req.body.userName,"lang": req.body.lang,"theme":req.body.theme}, {new: true, upsert:true},
+            function(err, settings) {
+
+                if (err){
+                    res.send(err);
+                }
+                res.send({ message: 'Settings updated!' });
+            });
     });
 };

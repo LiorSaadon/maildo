@@ -17,8 +17,8 @@ define(function (require) {
         fetch:function(){
 
             app.settings.fetch({
-                success: _.bind(function () {
-                    if(_.isEmpty(app.settings.get("email"))){
+                success: _.bind(function (model, resp, options) {
+                    if(_.isEmpty(app.settings.get("userName"))){
                         window.location.href = '/login';
                     }else{
                         this._loadTheme();

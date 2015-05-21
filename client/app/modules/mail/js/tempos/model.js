@@ -29,7 +29,7 @@ define(function (require) {
 
                 options = options || {};
 
-                this.userName = app.settings.get("email");
+                this.userName = app.settings.get("userName");
 
                 this.socket = {
                      requestName: this.resource,

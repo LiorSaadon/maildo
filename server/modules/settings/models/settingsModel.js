@@ -3,7 +3,7 @@ module.exports = function() {
     var create = function(db){
 
         var SettingsSchema = new db.Schema({
-            "email":String,
+            "userName":String,
             "theme": String,
             "lang":String
         }, { collection: 'settings' });

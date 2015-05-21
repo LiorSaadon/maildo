@@ -10,6 +10,19 @@
     </style>
 </head>
 <body>
+<script>
+    function validate() {
+        debugger;
+        var reg = /^([\w-\.]+@(?!maildo.com)([\w-]+\.)+[\w-]{2,4})?$/
+        if (reg.test(email)){
+            return true;
+        }
+        else{
+            alert("email is not valid....");
+            return false;
+        }
+    }
+</script>
 <div class="container">
 
     <div class="col-sm-6 col-sm-offset-3">
@@ -32,7 +45,7 @@
                 <input type="password" class="form-control" name="password">
             </div>
 
-            <button type="submit" class="btn btn-warning btn-lg">Login</button>
+            <button type="submit" class="btn btn-warning btn-lg" onclick="return validate();"/>Login</button>
         </form>
 
         <hr>

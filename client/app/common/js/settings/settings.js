@@ -8,7 +8,7 @@ define(function (require) {
         defaults : {
             lang:"en-US",
             theme:'dust',
-            email: 'demo@mailbone.com'
+            userName: 'demo@mailbone.com'
         },
 
         url: 'settings',

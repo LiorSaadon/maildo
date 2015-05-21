@@ -31,7 +31,8 @@ define(function (require) {
 
             //----------------------------------------------------------------------
 
-            onLanguageChange:function(e){
+            onLanguageChange:function(){
+
                 var lang = this.ui.ddlLang.val();
 
                 app.settings.set("lang", lang);
