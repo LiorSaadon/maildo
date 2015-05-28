@@ -28,13 +28,13 @@ module.exports = function(db) {
 
     passport.use('local-login', new LocalStrategy({
 
-            usernameField: 'email',
+            usernameField: 'username',
             passwordField: 'password',
             passReqToCallback: true
         },
-        function (req, email, password, done) {
+        function (req, username, password, done) {
 
-            User.findOne({ 'email' :  email }, function(err, user) {
+            User.findOne({ 'username' :  username }, function(err, user) {
 
                 if (err){
                     return done(err);
@@ -56,24 +56,24 @@ module.exports = function(db) {
 
     passport.use('local-signup', new LocalStrategy({
 
-            usernameField: 'email',
+            usernameField: 'username',
             passwordField: 'password',
             passReqToCallback: true
         },
-        function (req, email, password, done) {
+        function (req, username, password, done) {
 
-            User.findOne({ 'email' :  email }, function(err, user) {
+            User.findOne({ 'username' :  username }, function(err, user) {
 
                 if (err){
                     return done(err);
                 }
                 if (user) {
-                    return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                    return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
                 } else {
 
                     var newUser = new User();
 
-                    newUser.email    = email;
+                    newUser.username = username;
                     newUser.password = newUser.generateHash(password);
 
                     newUser.save(function(err) {

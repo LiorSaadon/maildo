@@ -4,64 +4,77 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-    <style>
-        body 		{ padding-top:80px; }
-    </style>
-    <style>
-        .container1{
-            background-image: url("../app/common/ui/img/login.png");
-            position:absolute;
-            top:0px;
-            left:0px;
-            right:0px;
-            bottom:0px;
-        }
-    </style>
+    <link rel="stylesheet" href="../app/common/ui/css/login.css">
 </head>
 <body>
+<div class="header"></div>
+<a href="https://github.com/you"><img class="github" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-dusk-blue@2x.png" alt="Fork me on GitHub"></a>
+<div class="main-container">
+    <div class="logo-wrapper">
+        <div class="logo"></div>
+    </div>
+    <div class="inner-container">
+       <img class="formBackground" src="../app/common/ui/img/loginFormBackground.png"><img>
+       <div class="form-wrapper">
+           <div class="welcome">Welcome to Mail.do</div>
+           <div class="alert alert-danger <%= message.length > 0 ? '' : 'hide' %>"><%= message %></div>
+           <form action="/login" method="post">
+               <div class="form-group">
+                   <input type="text" class="form-control username-input short-input" name="username" maxlength="25" placeholder="Username">
+               </div>
+               <div class="form-group">
+                   <input type="password" class="form-control password-input" name="password" maxlength="50" placeholder="Password">
+               </div>
+               <button type="submit" class="btn btn-submit" onclick="return validate();"/>Login</button>
+               <div class="signup">Need an account? <a href="/signup">Signup</a></div>
+           </form>
+       </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="footer-links">
+        <span><a href="">Source code</a></span>
+        <span>|</span>
+        <span><a href="">Blog</a></span>
+        <span> @2015 <a class="gray-link" href="">Shaul Mazor</a></span>
+    </div>
+</div>
+
+<script src="http://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
 <script>
+
+    $( document ).ready(function() {
+        $(".username-input").focus();
+        $('body').on('click', "div", function(e){
+            if(!$(e.target).hasClass("password-input")){
+                $(".username-input").focus();
+            }
+        })
+    });
+
     function validate() {
-        debugger;
-        var reg = /^([\w-\.]+@(?!maildo.com)([\w-]+\.)+[\w-]{2,4})?$/
-        if (reg.test(email)){
-            return true;
+
+        var email = $(".username-input").val() + "@maildo.com";
+        var password = $(".password-input").val();
+        var reg = /^[a-zA-Z0-9_.+-]+@maildo.com$/
+
+        if (email.length === 0){
+            $(".alert-danger").removeClass("hide").html("Username is mandatory");
+            $(".username-input").focus();
+            return false;
         }
-        else{
-            alert("email is not valid....");
+        if (password.length == 0){
+            $(".alert-danger").removeClass("hide").html("Password is mandatory");
+            $(".password-input").focus();
+            return false;
+        }
+        if (!reg.test(email)){
+            $(".alert-danger").removeClass("hide").html("Invalid username");
+            $(".username-input").focus();
             return false;
         }
     }
 </script>
-<div class="container1">
 
-    <!--<div class="col-sm-6 col-sm-offset-3">-->
-
-        <!--<h1><span class="fa fa-sign-in"></span> Login</h1>-->
-
-        <!--&lt;!&ndash; show any messages that come back with authentication 345634563465345&ndash;&gt;-->
-        <!--<% if (message.length > 0) { %>-->
-        <!--<div class="alert alert-danger"><%= message %></div>-->
-        <!--<% } %>-->
-
-        <!--&lt;!&ndash; LOGIN FORM &ndash;&gt;-->
-        <!--<form action="/login" method="post">-->
-            <!--<div class="form-group">-->
-                <!--<label>Email</label>-->
-                <!--<input type="text" class="form-control" name="email">-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--<label>Password</label>-->
-                <!--<input type="password" class="form-control" name="password">-->
-            <!--</div>-->
-
-            <!--<button type="submit" class="btn btn-warning btn-lg" onclick="return validate();"/>Login</button>-->
-        <!--</form>-->
-
-        <!--<hr>-->
-
-        <!--<p>Need an account? <a href="/signup">Signup</a></p>-->
-    <!--</div>-->
-</div>
 </body>
 </html>

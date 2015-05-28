@@ -1,3 +1,5 @@
+//http://cssmenumaker.com/menu/jquery-accordion-menu#
+
 define(function (require) {
     "use strict";
 

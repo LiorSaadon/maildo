@@ -5,8 +5,8 @@ module.exports = function() {
     var create = function(db){
 
         var UserSchema = new db.Schema({
-            "email": String,
-            "password":String
+            "username": String,
+            "password": String
         }, { collection: 'users' });
 
 

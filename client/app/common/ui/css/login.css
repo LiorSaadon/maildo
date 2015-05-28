@@ -1,0 +1,134 @@
+body {
+    background-color:#EBEBEB;
+    min-width:600px;
+    min-height: 1000px;
+    overflow:hidden;
+}
+
+
+@media all and (max-width: 1200px) , screen and (max-height: 800px) {
+    .formBackground{
+        border:1px solid red;
+        display:none;
+    }
+}
+
+.github{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    width: 149px;
+    height: 149px;
+}
+.header{
+    position:absolute;
+    top:0px;
+    right:0px;
+    left:0px;
+    height:58px;
+    background-color:#183C60;
+    border-bottom:2px solid #B1B1B1;
+}
+
+
+.main-container{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom:0px;
+    width:1070px;
+    margin-left: -530px;
+}
+
+.inner-container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height:626px;
+    margin-top: -313px;
+    /*background-image: url("../img/loginFormBackground.png");*/
+}
+
+.logo-wrapper{
+    position: absolute;
+    left: 54px;
+    top: 0;
+    height:68px;
+    width: 190px;
+    background:#3572B0;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.logo{
+    background-image: url("../img/login-logo.png");
+    width:155px;
+    height:55px;
+}
+
+.form-wrapper{
+    position: absolute;
+    left: 435px;
+    top: 169px;
+    height:400px;
+    width: 300px;
+    background:#FBF9F9;
+    border:1px solid #BBC7D5;
+    padding:25px;
+}
+
+.welcome{
+   font-family: "Arial";
+   font-size: 24px;
+   padding-top: 10px;
+   padding-bottom: 30px;
+   color:#205081;
+}
+
+.btn-submit {
+    margin-top:25px;
+    margin-bottom:15px;
+    color: #fff;
+    background-color: #356FAC;
+    border-color: #70869B;
+    width: 250px;
+}
+
+.footer{
+    z-index:2;
+    position:absolute;
+    bottom:0px;
+    right:0px;
+    left:0px;
+    height:65px;
+    background-color:#E1E1E1;
+    text-align: center;
+}
+
+.footer-links{
+   padding-top:25px;
+}
+
+.gray-link{
+    color:#333333;
+}
+
+.gray-link:hover {
+    color: black;
+}
+
+.signup{
+    display: inline-block;
+}
+
+.short-input{
+    display:inline-block;
+}
+
+.email-postfix{
+    position:absolute;
+    top:6px;
+    right:6px;
+    color:#A3A1A1;
+}
