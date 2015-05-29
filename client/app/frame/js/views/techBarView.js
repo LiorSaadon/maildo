@@ -9,10 +9,16 @@ define(function (require) {
     var TechBarView = Marionette.ItemView.extend({
         template:template,
 
-        initialize:function (options) {
+        ui: {
+            ddsResources:".ddsResources"
         },
 
-        onRender: function () {
+        events: {
+            "click .ddsResources": "onResourcesMenuClick"
+        },
+
+        onResourcesMenuClick: function (e) {
+            e.stopPropagation();
         }
     });
 

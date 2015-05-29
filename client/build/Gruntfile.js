@@ -141,13 +141,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
 
 
-    grunt.registerTask("test", [
-
-        'jshint',
-        'connect',
-        'mocha'
-    ]);
-
     grunt.registerTask('default', [
 
         'compass',
