@@ -2,13 +2,13 @@ module.exports = function(app, Settings) {
 
     app.get('/settings', function (req, res) {
 
-        Settings.findOne({userName:req.user.email}, function(err, settings) {
+        Settings.findOne({userName:req.user.username}, function(err, settings) {
 
             if (err){
                 res.send({"err":err});
             }
             if (!settings){
-                res.send({ userName:req.user.email});
+                res.send({ userName:req.user.username});
             }
             else{
                 res.send(settings);
