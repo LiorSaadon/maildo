@@ -93,7 +93,8 @@ module.exports = function(grunt) {
                 '../target/*.txt'
             ],
             ci:[
-                'd:/smd/maildo-openshift/client',
+                'd:/smd/maildo-openshift/client/app',
+                'd:/smd/maildo-openshift/client/vendor',
                 'd:/smd/maildo-openshift/server'
             ]
         },
@@ -122,7 +123,9 @@ module.exports = function(grunt) {
                     {src: ['../../package.json'], dest: 'd:/smd/maildo-openshift/package.json'},
                     {src: ['../../favicon.ico'], dest: 'd:/smd/maildo-openshift/favicon.ico'},
                     {src: ['../../maildo.md'], dest: 'd:/smd/maildo-openshift/maildo.md'},
-                    {expand: true, cwd: '../target/', src: ['**'], dest: 'd:/smd/maildo-openshift/client'},
+                    {src: ['../target/index1.html'], dest: 'd:/smd/maildo-openshift/client/index1.html'},
+                    {expand: true, cwd: '../target/app', src: ['**'], dest: 'd:/smd/maildo-openshift/client/app'},
+                    {expand: true, cwd: '../target/vendor', src: ['**'], dest: 'd:/smd/maildo-openshift/client/vendor'},
                     {expand: true, cwd: '../app/common/data', src: ['*txt'], dest: 'd:/smd/maildo-openshift/client/app/common/data'},
                     {expand: true, cwd: '../../server', src: ['**'], dest: 'd:/smd/maildo-openshift/server'}
                ]
