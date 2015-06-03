@@ -142,9 +142,9 @@ define(function (require) {
 
             markAs: function (label) {
 
-                var opositeLabel = this._getOpositeLabel(label);
+                var oppositeLabel = this._getOpositeLabel(label);
 
-                this._removeLabel(opositeLabel);
+                this._removeLabel(oppositeLabel);
                 this._addLabel(label);
             },
 
@@ -186,14 +186,12 @@ define(function (require) {
 
                 var groups = this.get('groups');
 
-                if(!!groups.trash || !!groups.spam || dest === "trash" || dest === "spam"){
-
-                    _.each(groups, _.bind(function (value, key) {
-                        delete groups[key];
-                    },this));
+                if(_.contains(groups, "trash") || _.contains(groups, "spam") || dest === "trash" || dest === "spam"){
+                    groups = [];
                 }
 
-                this.set('groups.' + dest, true);
+                groups.push(dest);
+                this.set('groups', groups);
             }
         });
 

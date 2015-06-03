@@ -87,7 +87,7 @@ define(function (require) {
                 this.mails.update({
 
                     selectedItems: items,
-                    fields: ['id', 'labels', 'groups'],
+                    fields: ['labels', 'groups'],
 
                     success: _.bind(function () {
                         if (options.refresh) {

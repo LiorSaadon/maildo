@@ -3,7 +3,6 @@ define(function (require) {
 
     var app = require("mbApp");
     var _s = require("underscore.string");
-    var dateResolver = require("resolvers/date/dateResolver");
 
     var Formatter = {};
 
@@ -34,7 +33,7 @@ define(function (require) {
                 if(_.isFinite(ticks)){
 
                     var now = new Date();
-                    var date = new Date(parseInt(ticks));
+                    var date = new Date(parseInt(ticks,10));
                     var timeDiff = Math.abs(now.getTime() - date.getTime());
                     var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
