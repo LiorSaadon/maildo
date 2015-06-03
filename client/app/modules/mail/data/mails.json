@@ -8,7 +8,6 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
-        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -25,7 +24,6 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 18:06:51",
         "body": "later",
-        "relatedBody":"mail2",
         "labels": {
             "read": true,
             "starred": true,
@@ -42,7 +40,6 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 17:06:51",
         "body": "later",
-        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -59,7 +56,6 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
-        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -76,7 +72,6 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 18:06:51",
         "body": "later",
-        "relatedBody":"mail2",
         "labels": {
             "read": true,
             "starred": true,
@@ -93,7 +88,6 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 17:06:51",
         "body": "later",
-        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -110,7 +104,6 @@
         "subject": "Things You Can Do With JavaScript",
         "sentTime": "2014-04-12 15:06:51",
         "body": "later",
-        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -129,7 +122,6 @@
         "subject": "Draft 453",
         "sentTime": "2014-04-12 18:06:51",
         "body": "this is a draft (1)",
-        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "unstarred": true,
@@ -146,7 +138,6 @@
         "subject": "Draft 111",
         "sentTime": "2014-04-12 17:06:51",
         "body": "this is a draft (2)",
-        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "unstarred": true,
@@ -163,7 +154,6 @@
         "subject": "Draft 123",
         "sentTime": "2014-04-12 15:06:51",
         "body": "this is a draft (3)",
-        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "unstarred": true,
@@ -182,7 +172,6 @@
         "subject": "Why Should I Use Backbone.Marionette?",
         "sentTime": "2014-04-08 17:06:51",
         "body": "later",
-        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -199,7 +188,6 @@
         "subject": "What is underscore?",
         "sentTime": "2014-04-07 13:06:51",
         "body": "later",
-        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -216,7 +204,6 @@
         "subject": "How to use Mustache.js",
         "sentTime": "2014-04-06 14:06:51",
         "body": "later",
-        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,
@@ -233,7 +220,6 @@
         "subject": "How to Test your JavaScript Code",
         "sentTime": "2014-04-05 14:06:51",
         "body": "later",
-        "relatedBody":"mail1",
         "labels": {
             "read": true,
             "starred": true,

@@ -24,7 +24,6 @@ define(function (require) {
 
                 this._bindEvents();
                 this._setHandlers();
-                this._fetchAll();
             },
 
             //-----------------------------------------------------
@@ -33,6 +32,7 @@ define(function (require) {
 
                 this.listenTo(this.mailCollection, "fetch:success", this._updateSelection, this);
                 this.listenTo(app.context, "change:mail.action", this._refreshMailCollection, this);
+                this.listenTo(app.settings, "change:userName", this._setUserName, this);
                 this.listenTo(app.vent, "data:change", this._onDataChange, this);
             },
 
@@ -44,21 +44,22 @@ define(function (require) {
                 mail.channel.reqres.setHandler("contact:collection", this._getContactCollection, this);
             },
 
-            //-----------------------------------------------------
-
-            _fetchAll: function () {
-
-                this.contactCollection.fetch({
-                    success:_.bind(function(){
-                        this.mailCollection.persist();
-                    },this)
-                });
-            },
-
             //------------------------------------------------------
 
             _onDataChange:function(message){
                console.log("Notification from server. (data has changed): " + message.originalEventName);
+            },
+
+            //------------------------------------------------------
+
+            _setUserName:function(){
+
+                var userName = app.settings.get("userName");
+
+                this.mailCollection.userName = userName;
+                this.contactCollection.userName = userName;
+
+                this.contactCollection.fetch({});
             },
 
             //------------------------------------------------------
@@ -94,7 +95,7 @@ define(function (require) {
                 if (_.isFinite(params.page)) {
                     this.mailCollection.fetchBy({
                         filters: {
-                            page: params.page,
+                            pageNumber:params.page,
                             query: params.query || 'groups:' + action.type
                         }
                     });

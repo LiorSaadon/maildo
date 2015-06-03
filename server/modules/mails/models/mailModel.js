@@ -12,7 +12,6 @@ module.exports = function() {
             "subject": String,
             "sentTime": String,
             "body": String,
-            "relatedBody": String,
             "labels": {
                 "read": Boolean,
                 "starred": Boolean,

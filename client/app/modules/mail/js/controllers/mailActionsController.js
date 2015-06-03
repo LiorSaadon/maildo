@@ -123,10 +123,10 @@ define(function (require) {
 
                 if (_.isObject(mailModel)) {
 
-                    mailModel.set("groups.draft", false, {silent:true});
+                    mailModel.set("groups", [], {silent:true});
 
                     mailModel.save(null, {
-
+                        silent: true,
                         success: _.bind(function () {
                             this.handleSuccess();
                         },this),
@@ -162,7 +162,8 @@ define(function (require) {
                 mailModel.set("groups.draft", true, {silent:true});
 
                 mailModel.save(null, {
-                    saveAs: "draft"
+                    saveAs: "draft",
+                    silent: true
                 });
             },
 

@@ -30,7 +30,7 @@ define(function (require) {
 
                 reset:true,
 
-                data: {filters: this.filters},
+                data: this.filters,
 
                 success: _.bind(function(collection){
                     this.isFetched = true;

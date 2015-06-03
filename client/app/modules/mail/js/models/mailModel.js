@@ -4,7 +4,6 @@ define(function (require) {
     var app = require("mbApp");
     var _s = require("underscore.string");
     var BaseModel = require("base-models/baseModel");
-    var MailStorage = require("mail-storage/mailStorage");
 
     var MailModel = {};
 
@@ -21,14 +20,28 @@ define(function (require) {
                 sentTime: '',
                 body: '',
                 labels: {},
-                groups:{}
+                groups:[]
             },
+
+            resource: 'mail',
 
             initialize: function (attrs, options) {
 
-                this.localStorage = new MailStorage();
+                options = options || {};
+
+                this.userName = app.settings.get("userName");
+
+                this.socket = {
+                    requestName: this.resource,
+                    io: options.socket || mail.socket || app.socket
+                };
             },
 
+            //--------------------------------------------------
+
+            url: function () {
+                return window.location.hostname + "/" + this.resource;
+            },
 
             //-------------------------------------------------------------
             // get addresses

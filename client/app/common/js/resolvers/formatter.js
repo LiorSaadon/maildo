@@ -29,17 +29,21 @@ define(function (require) {
 
             //-------------------------------------------------------------
 
-            var formatShortDate = function(date){
-                if(_.isString(date)){
-                    date = dateResolver.strToDate(date);
+            var formatShortDate = function(ticks){
+
+                if(_.isFinite(ticks)){
+
+                    var now = new Date();
+                    var date = new Date(parseInt(ticks));
+                    var timeDiff = Math.abs(now.getTime() - date.getTime());
+                    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                    if(diffDays > 1){
+                        return app.translator.translate("mail:timerange.months." +date.getMonth()) + " " + date.getDay();
+                    }
+                    return date.toLocaleTimeString().replace(/:\d+ /, ' ');
                 }
-                if(_.isDate(date)){
-                    var day = date.getDate();
-                    var month = date.getMonth() + 1;
-                    var monthStr = app.translator.translate("mail:timerange.months."+month);
-                    return monthStr + ' ' + day;
-                }
-                return '';
+                return "";
             };
 
             //-------------------------------------------------------------

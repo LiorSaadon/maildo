@@ -3,28 +3,35 @@ define(function (require) {
 
     var app = require("mbApp");
     var MailModel = require("mail-models/mailModel");
-    var MailStorage = require("mail-storage/mailStorage");
-    var PersistentCollection = require("base-collections/PersistentCollection");
+    //var MailStorage = require("mail-storage/mailStorage");
+    var FilteredCollection = require("base-collections/filteredCollection");
 
     var MailCollection = {};
 
     app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
-        MailCollection = PersistentCollection.extend({
+        MailCollection = FilteredCollection.extend({
 
             isFetched: false,
 
             model: MailModel,
 
-            resource: 'https://mailbone.com/mails',
+            resource: 'mails',
 
-            localStorage: new MailStorage(),
+            initialize: function (attrs, options) {
+
+                options = options || {};
+
+                this.socket = {
+                    requestName: this.resource,
+                    io: options.socket || mail.socket || app.socket
+                };
+            },
 
             //--------------------------------------------------
 
             url: function () {
-
-                return this.resource;
+                return window.location.hostname + "/" + this.resource;
             },
 
             //--------------------------------------------------

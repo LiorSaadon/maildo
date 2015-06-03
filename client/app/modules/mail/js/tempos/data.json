@@ -8,7 +8,6 @@
     "subject": "subject1",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body1",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": false,
@@ -25,7 +24,6 @@
     "subject": "subject2",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body2",
-    "relatedBody": "mail1",
     "labels": {
       "read": false,
       "starred": true,
@@ -42,7 +40,6 @@
     "subject": "subject3",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body3",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,
@@ -59,7 +56,6 @@
     "subject": "subject4",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body4",
-    "relatedBody": "mail1",
     "labels": {
       "read": false,
       "starred": true,
@@ -76,7 +72,6 @@
     "subject": "subject5",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body5",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,
@@ -93,7 +88,6 @@
     "subject": "subject6",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body6",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,
@@ -110,7 +104,6 @@
     "subject": "subject7",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body7",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,
@@ -127,7 +120,6 @@
     "subject": "subject8",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body8",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,
@@ -144,7 +136,6 @@
     "subject": "subject9",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body9",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,
@@ -161,7 +152,6 @@
     "subject": "subject10",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body10",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,
@@ -178,7 +168,6 @@
     "subject": "subject11",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body11",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,
@@ -195,7 +184,6 @@
     "subject": "subject12",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body12",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,
@@ -212,7 +200,6 @@
     "subject": "subject13",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body13",
-    "relatedBody": "mail1",
     "labels": {
       "read": false,
       "starred": true,
@@ -229,7 +216,6 @@
     "subject": "subject14",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body14",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,
@@ -246,7 +232,6 @@
     "subject": "subject15",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body15",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,
@@ -263,7 +248,6 @@
     "subject": "subject16",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body16",
-    "relatedBody": "mail1",
     "labels": {
       "read": false,
       "starred": true,
@@ -280,7 +264,6 @@
     "subject": "subject17",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body17",
-    "relatedBody": "mail1",
     "labels": {
       "read": false,
       "starred": true,
@@ -297,7 +280,6 @@
     "subject": "subject18",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body18",
-    "relatedBody": "mail1",
     "labels": {
       "read": false,
       "starred": true,
@@ -314,7 +296,6 @@
     "subject": "subject19",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body19",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,
@@ -331,7 +312,6 @@
     "subject": "subject20",
     "sentTime": "2014-04-12 15:06:51",
     "body": "body20",
-    "relatedBody": "mail1",
     "labels": {
       "read": true,
       "starred": true,

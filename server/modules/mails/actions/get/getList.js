@@ -9,7 +9,6 @@ module.exports = function() {
         var query = queryBuilder.buildQuery(data);
 
         MailModel.find(query, function(err, mails) {
-
             if(err){
                 socketManager.emit(null, socket, 'mails:read', {"success":false});
             }else{

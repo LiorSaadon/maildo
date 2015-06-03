@@ -12,7 +12,6 @@ define(function (require) {
         var ActionsController = require("mail-controllers/mailActionsController");
         var Router = require("mail-routers/mailRouter");
         var RouterController = require("mail-controllers/mailRouterController");
-        var ServerActionsController = require("app/modules/mail/js/tempos/serverActionsController"); // temp need to remove!!!!!!!!!!!
 
         //------------------------------------------
         // init
@@ -24,7 +23,6 @@ define(function (require) {
             this.dataController = new DataController();
             this.actionsController = new ActionsController();
             this.mainLayoutController = new MainLayoutController(options);
-            this.serverActionsController = new ServerActionsController();  // temp need to remove!!!!!!!!!!!
             this.router = new Router({ controller: new RouterController() });
         });
 

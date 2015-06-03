@@ -28,7 +28,7 @@ define(function (require) {
             events: {
                 "click  @ui.closeBtn": "onCloseBtnClick",
                 "click  @ui.sendBtn": "onSendClick",
-                "change @ui.inputSubject": "onSubjectChange",
+                "blur   @ui.inputSubject": "onSubjectBlur",
                 "blur   @ui.inputEditor": "onEditorBlur",
                 "click  @ui.toInputWrapper": "onToInputWrapperClick",
                 "click  @ui.ccInputWrapper": "onCcInputWrapperClick"
@@ -84,10 +84,8 @@ define(function (require) {
             // events handlers
             //-------------------------------------------------------
 
-            onSubjectChange: function(){
-
-                var val = this.ui.inputSubject.val();
-                this.model.set('subject', val);
+            onSubjectBlur: function(){
+                this.model.set('subject', this.ui.inputSubject.val());
             },
 
             //-------------------------------------------------------
