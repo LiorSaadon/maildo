@@ -11,7 +11,7 @@ define(function (require) {
     var Backbone =  require("backbone");
     var Translator = require("i18n/translator");
     var Context = require("common-context/context");
-    var Socket = require("common/socket/socket");
+    var SocketController = require("common/socket/socketController");
     var SettingsController = require("common-settings/settingsController");
 
 
@@ -24,7 +24,7 @@ define(function (require) {
         app.translator = Translator;
         app.context = new Context();
         app.frame = new Frame();
-        app.socket = new Socket().create();
+        app.socketController = new SocketController();
         app.settingsController = new SettingsController();
     });
 
@@ -36,16 +36,22 @@ define(function (require) {
 
         app.channel.vent.once("onSettingsLoaded", onSettingsLoaded);
         app.settingsController.fetch();
-        setWindowEvents();
     });
 
     //------------------------------------------
 
     var onSettingsLoaded = function(){
 
+        registerUser();
         setLayout();
         startHistory();
         removeSplashScreen();
+    };
+
+    //------------------------------------------
+
+    var registerUser = function () {
+        app.socketController.registerUser(app.settings.get("userName"));
     };
 
     //------------------------------------------
@@ -55,24 +61,13 @@ define(function (require) {
         app.addRegions({
             mainRegion: '.mb'
         });
-
         app.frame.setLayout(app.mainRegion);
     };
 
     //------------------------------------------
 
     var startHistory = function () {
-
-        if (Backbone.history) {
-            Backbone.history.start();
-        }
-    };
-
-    //-------------------------------------------
-
-    var setWindowEvents = function(){
-
-        window.addEventListener("unload", app.socket.close);
+        Backbone.history.start();
     };
 
     //-------------------------------------------

@@ -7,9 +7,9 @@ define(function (require) {
     var UrlUtility = require("resolvers/UrlUtility");
     var io = require('socketio');
 
-    var Socket = Marionette.Controller.extend({
+    var SocketController = Marionette.Controller.extend({
 
-        create:function(options){
+        initialize:function(){
 
             var socketURI = window.location.hostname + ":" + "8000" + "/";
             this._socket = io.connect(socketURI);
@@ -20,27 +20,28 @@ define(function (require) {
             this._socket.on('error', function() {
                 console.log('sorry, we are experiencing technical difficulties.');
             });
-
-            var userName = UrlUtility.getParameterByName("username");
-            userName = _.isEmpty(userName) ? "guest": userName;
-
-            this._socket.emit('add-user',userName);
-
             this._socket.on('data:change', function(message){
                 app.vent.trigger("data:change", message);
             });
-
             this._socket.on('error1', function(err){
                 app.vent.trigger('socket:error', err);
             });
 
+            window.addEventListener("unload", this._socket.close);
+        },
+
+        //------------------------------------------------------------
+
+        getSocket:function(){
             return this._socket;
         },
 
-        close: function(){
-            this._socket.close("shaulm");
+        //------------------------------------------------------------
+
+        registerUser:function(userName){
+            this._socket.emit('add-user',userName);
         }
     });
 
-    return Socket;
+    return SocketController;
 });

@@ -20,11 +20,9 @@ define(function (require) {
 
             initialize: function (attrs, options) {
 
-                options = options || {};
-
                 this.socket = {
                     requestName: this.resource,
-                    io: options.socket || mail.socket || app.socket
+                    io: app.socketController.getSocket()
                 };
             },
 

@@ -46,8 +46,8 @@ define(function (require) {
 
             //------------------------------------------------------
 
-            _onDataChange:function(message){
-               console.log("Notification from server. (data has changed): " + message.originalEventName);
+            _onDataChange:function(){
+               this._refreshMailCollection();
             },
 
             //------------------------------------------------------
