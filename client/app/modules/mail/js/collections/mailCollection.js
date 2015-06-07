@@ -3,7 +3,6 @@ define(function (require) {
 
     var app = require("mbApp");
     var MailModel = require("mail-models/mailModel");
-    //var MailStorage = require("mail-storage/mailStorage");
     var FilteredCollection = require("base-collections/filteredCollection");
 
     var MailCollection = {};

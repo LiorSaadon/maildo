@@ -26,6 +26,7 @@ define(function (require) {
 
                 this.listenTo(this.mails, "change:items", this.closePreview);
                 this.listenTo(this.mails, "change:selection", this.togglePreview);
+                this.listenTo(app.context, 'change:mail.action', this.closePreview);
                 this.listenTo(mail.channel.vent, "mailTable:ItemClicked", this.showPreview);
             },
 
@@ -44,8 +45,6 @@ define(function (require) {
             //----------------------------------------------------
 
             onLayoutRender: function () {
-
-                var action = app.context.get("mail.action");
 
                 var emptyMailView = new EmptyMailView();
                 this.contentLayout.previewRegion.add(emptyMailView);
@@ -85,13 +84,8 @@ define(function (require) {
 
             closePreview:function(){
 
-                if (this.preview && this.preview.model) {
-
-                    var isModelExist = _.isObject(this.mails.get(this.preview.model.id));
-
-                    if(!isModelExist){
-                        this.contentLayout.previewRegion.clean();
-                    }
+                if (this.preview) {
+                    this.contentLayout.previewRegion.clean();
                 }
             }
         });

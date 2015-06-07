@@ -50,7 +50,7 @@ define({
         "actions.deleteForever":"Delete forever",
         "actions.notSpam":"Not spam",
         "actions.discardDraft":"discard draft",
-        "actions.delete":"delete",
+        "actions.delete":"Delete",
         "search.caption":"Search Mail",
         "emptyMail.selectitem": "Select a message",
         "timerange.months.1" : "Jan",

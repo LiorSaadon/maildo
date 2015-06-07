@@ -39,13 +39,7 @@ define(function (require) {
 
             onRender:function(){
 
-                //if(this.model.has("relatedBody")){
-                //    require(["onDemandLoader!text!app/assets/data/" + this.model.get("relatedBody") + ".txt"], _.bind(function (text) {
-                //       this.ui.body.html(text);
-                //    },this));
-                //}else{
-                //    this.ui.body.html(this.model.get("body"));
-                //}
+                this.ui.body.html(this.model.get("body"));
             }
         });
     });

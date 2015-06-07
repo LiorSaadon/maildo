@@ -73,8 +73,6 @@ define(function (require) {
 
             beforeRoute:function(){
 
-                var action = app.context.get("mail.action");
-
                 app.context.set("module",eModules.MAIL);
                 app.context.set("mail.action",null, {silent:true});
             }
