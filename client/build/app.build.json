@@ -96,7 +96,7 @@
     "packages": [],
     "keepBuildDir": false,
     "locale": "en-US",
-    "optimize": "uglify2",
+    "optimize": "none",
     "skipDirOptimize": false,
     "generateSourceMaps": false,
     "normalizeDirDefines": "skip",

@@ -2,9 +2,9 @@ define(function (require) {
     "use strict";
 
     var Marionette = require("marionette");
-    var FilterCollectionDecorator = require("decorators/FilterCollectionDecorator");
+    var FilterCollectionDecorator = require("decorators/filterCollectionDecorator");
     var AutoCompleteModel = require("ui-components/autoComplete/js/models/autoCompleteModel");
-    var AutoCompleteItemView = require("ui-components/autoComplete/js/views/AutoCompleteItemView");
+    var AutoCompleteItemView = require("ui-components/autoComplete/js/views/autoCompleteItemView");
     var AutoCompleteCompositeView = require("ui-components/autoComplete/js/views/autoCompleteCompositeView");
     var AutoCompleteCollection = require("ui-components/autoComplete/js/collections/autoCompleteCollection");
 

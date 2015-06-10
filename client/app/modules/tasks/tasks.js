@@ -7,7 +7,7 @@ define(function (require) {
 
         require("tasks-storage/tasksStorageInitializer");
 
-        var LayoutController = require("tasks-controllers/tasksLayoutController");
+        var LayoutController = require("es6!tasks-controllers/tasksLayoutController");
         var RouterController = require("tasks-controllers/tasksRouterController");
         var DataController = require("tasks-controllers/tasksDataController");
         var ActionsController = require("tasks-controllers/tasksActionsController");

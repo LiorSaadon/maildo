@@ -23,6 +23,27 @@ define(function (require) {
                 this.categories = tasks.channel.reqres.request("category:collection");
 
                 this._bindEvents();
+
+                class A
+                {
+                    constructor(a)
+                    {
+                        console.log('Hello ' + a);
+                    }
+                }
+
+                var Kuku = Marionette.Controller.extend({
+
+                    initialize: function () {
+
+                        let a = 'I am declared inside an anonymous block';
+                        console.log(a);
+
+                        new A('world!');
+                    }
+                });
+
+                new Kuku();
             },
 
             //-----------------------------------------------------

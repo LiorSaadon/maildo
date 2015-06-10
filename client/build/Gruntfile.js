@@ -56,16 +56,6 @@ module.exports = function(grunt) {
                 options: grunt.file.readJSON('app.build.json')
             }
         },
-        //-------------------------------------------------------
-
-        uglify: {
-            i18n: {
-                files: {
-                    '../target/app/assets/ui/i18n/en-US.js' : '../target/app/assets/ui/i18n/en-US.js',
-                    '../target/app/assets/ui/i18n/es-ES.js' : '../target/app/assets/ui/i18n/es-ES.js'
-                }
-            }
-        },
 
         //-------------------------------------------------------
 
@@ -74,27 +64,27 @@ module.exports = function(grunt) {
                 force:true
             },
             target:[
-                '../target/app/common/js',
-                '../target/app/common/data',
-                '../target/app/common/ui/scss',
-                '../target/app/common/compass',
-                '../target/app/common/ui/components',
-                '../target/app/modules',
-                '../target/app/frame',
-                '../target/build',
-                '../target/vendor/compass',
-                '../target/vendor/chai',
-                '../target/vendor/mocha',
-                '../target/vendor/sinon',
-                '../target/vendor/squire',
-                '../target/vendor/blanket',
-                '../target/tests',
-                '../target/debug',
-                '../target/*.txt'
+                '../target',
+                //'../target/app/common/data',
+                //'../target/app/common/ui/scss',
+                //'../target/app/common/compass',
+                //'../target/app/common/ui/components',
+                //'../target/app/modules',
+                //'../target/app/frame',
+                //'../target/build',
+                //'../target/vendor/compass',
+                //'../target/vendor/chai',
+                //'../target/vendor/mocha',
+                //'../target/vendor/sinon',
+                //'../target/vendor/squire',
+                //'../target/vendor/blanket',
+                //'../target/tests',
+                //'../target/debug',
+                //'../target/*.txt'
             ],
             ci:[
                 'd:/smd/maildo-openshift/client/app',
-                'd:/smd/maildo-openshift/client/vendor',
+                //'d:/smd/maildo-openshift/client/vendor',
                 'd:/smd/maildo-openshift/server'
             ]
         },
@@ -109,7 +99,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files:[
-                    { src:['../target/index1.html'], dest:'../target/index1.html' }
+                    { src:['../index1.html'], dest:'../index1.html' }
                 ]
             }
         },
@@ -123,10 +113,10 @@ module.exports = function(grunt) {
                     {src: ['../../package.json'], dest: 'd:/smd/maildo-openshift/package.json'},
                     {src: ['../../favicon.ico'], dest: 'd:/smd/maildo-openshift/favicon.ico'},
                     {src: ['../../maildo.md'], dest: 'd:/smd/maildo-openshift/maildo.md'},
-                    {src: ['../target/index1.html'], dest: 'd:/smd/maildo-openshift/client/index1.html'},
-                    {expand: true, cwd: '../target/app', src: ['**'], dest: 'd:/smd/maildo-openshift/client/app'},
-                    {expand: true, cwd: '../target/vendor', src: ['**'], dest: 'd:/smd/maildo-openshift/client/vendor'},
-                    {expand: true, cwd: '../app/common/data', src: ['*txt'], dest: 'd:/smd/maildo-openshift/client/app/common/data'},
+                    {src: ['../index1.html'], dest: 'd:/smd/maildo-openshift/client/index1.html'},
+                    {expand: true, cwd: '../app', src: ['**'], dest: 'd:/smd/maildo-openshift/client/app'},
+                    //{expand: true, cwd: '../vendor', src: ['**'], dest: 'd:/smd/maildo-openshift/client/vendor'},
+                    //{expand: true, cwd: '../app/common/data', src: ['*txt'], dest: 'd:/smd/maildo-openshift/client/app/common/data'},
                     {expand: true, cwd: '../../server', src: ['**'], dest: 'd:/smd/maildo-openshift/server'}
                ]
             }
@@ -148,7 +138,7 @@ module.exports = function(grunt) {
 
         'compass',
         'jshint',
-        'requirejs',
+        //'requirejs',
         'clean:target',
         'replace:version',
         'clean:ci',
