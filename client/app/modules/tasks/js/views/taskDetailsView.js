@@ -21,6 +21,12 @@ define(function (require) {
                 "click @ui.save" : "onSave"
             },
 
+            initialize: function () {
+
+                let a = '---- level 2 ----';
+                console.log(a);
+            },
+
             //------------------------------------------------------
 
             onRender:function(){

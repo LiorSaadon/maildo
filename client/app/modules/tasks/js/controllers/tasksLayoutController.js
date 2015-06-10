@@ -5,7 +5,7 @@ define(function (require) {
     var MainLayout = require("tasks-views/tasksLayout");
     var SearchView = require("tasks-views/searchView");
     var ActionView = require("tasks-views/actionView");
-    var TaskDetailsView = require("tasks-views/taskDetailsView");
+    var TaskDetailsView = require("es6!tasks-views/taskDetailsView");
     var TasksView = require("tasks-views/tasksView");
     var CategoriesView = require("tasks-views/categoriesView");
     var eModules = require('json!common-data/eModules.json');
