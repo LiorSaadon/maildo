@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>maildo</title>
-        <style>
-            .spinner{
-                position:absolute;
-                top:0;
-                left:0;
-                bottom:0;
-                right:0;
-                z-index:100;
-                background: url('app/common/ui/img/spinner.gif') 50% 50% no-repeat white;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="spinner"></div>
-        <div class="mb"></div>
-        <script type="text/javascript">
-            var require = { baseUrl: "/" };
-        </script>
-        <!-- data-main is the entry point to the app -->
-        <script type="text/javascript" data-main="app/setup/init.js?bust=1433851038323" src="vendor/require/require.js?bust=1433851038323"></script>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>maildo</title>
+    <style>
+        .spinner{
+            position:absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            z-index:100;
+            background: url('dist/img/spinner.gif') 50% 50% no-repeat white;
+        }
+    </style>
+</head>
+<body>
+    <div class="spinner"></div>
+    <div class="mb"></div>
+    <script src="dist/vendors.js"></script>
+    <script src="dist/init.js"></script>
+</body>
 </html>

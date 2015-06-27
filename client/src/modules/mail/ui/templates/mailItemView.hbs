@@ -1,0 +1,25 @@
+<td class="selector"><input type="checkbox" class="chkBox"></td>
+<td class="star"><div class="star-icon"></div></td>
+<td class="importance"><div class="importance-icon"></div></td>
+<td class="address">
+    {{#if isInbox}}
+        <div class="inbox">{{from}}<div>
+    {{/if}}
+    {{#if isSent}}
+        <div class="sent"><span class="sent-to">{{_i18n "mail:to"}}:</span><span class="sent-address">{{to}}</span></div>
+    {{/if}}
+    {{#if isDraft}}
+        <div class="draft">{{_i18n "mail:draft"}}</div>
+    {{/if}}
+    {{#if isTrash}}
+        <div class="trash-icon-wrapper"><div class="trash-icon"></div></div><div class="trash-address"><div>{{from}}</div></div>
+    {{/if}}
+    {{#if isSpam}}
+        <div class="spam">{{from}}</div>
+    {{/if}}
+    {{#if isSearch}}
+        <div class="inbox">{{from}}<div>
+    {{/if}}
+</td>
+<td><div class="content"><span class="subject">{{subject}}</span><span class="separator">-</span><span class="body">{{body}}</span></div></td>
+<td><div class="sentTime">{{sentTime}}</div></td>

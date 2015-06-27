@@ -1,0 +1,30 @@
+@import "vars";
+
+.mb{
+
+  .search-placeholder{
+    display:inline-block;
+
+    .search-input {
+      width: 445px;
+      height: 30px;
+      float: left;
+      margin-right: 15px;
+      background-color: white;
+    }
+
+    .btnSearch{
+      color:white;
+      background-color: $_bgClr3;
+      border: 1px solid $_boClr12;
+
+      .searchIcon {
+        @include set-icon(17px, 17px, 'main.png', -3px, -110px);
+      }
+      &:hover{
+        border-color: $_boClr13;
+        background-color: $_bgClr14;
+      }
+    }
+  }
+}

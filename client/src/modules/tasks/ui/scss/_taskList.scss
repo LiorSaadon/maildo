@@ -1,0 +1,57 @@
+.mb {
+
+  .tasks-list {
+    ul {
+      white-space: nowrap;
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+      border: none;
+
+      li {
+        border-bottom: 1px solid $_boClr54;
+        min-height: 58px;
+        cursor: pointer;
+
+        .task-info{
+          width: 205px;
+          display:inline-block;
+          padding: 10px 0 10px 10px;
+
+          .title {
+            padding-bottom: 6px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .content {
+            padding-bottom: 2px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+
+        .delete-wrapper{
+          padding: 0 5px 10px 5px;
+          display:none;
+
+          .delete-icon{
+            width: 12px;
+            height: 14px;
+            background: image-url('main.png') -81px 0px no-repeat;
+          }
+        }
+
+        &:hover {
+          background-color: $_bgClr57;
+
+          .delete-wrapper{
+            display:inline-block;
+          }
+        }
+        &.select{
+          background-color:$_bgClr58;
+        }
+      }
+    }
+  }
+}

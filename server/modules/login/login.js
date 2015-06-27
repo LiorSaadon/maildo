@@ -14,20 +14,20 @@ module.exports = function() {
 
     var start = function(db, app){
 
-        setPassport(db);
-        setApp(app);
+        createPassport(db, app);
+        extendApp(app);
         setRouters(app);
     };
 
     //-------------------------------------------------------------
 
-    var setPassport = function(db){
-        passport = require('./controllers/passport')(db).passport;
+    var createPassport = function(db, app){
+        passport = require('./controllers/passport')(db, app).passport;
     };
 
     //-------------------------------------------------------------
 
-    var setApp = function(app){
+    var extendApp = function(app){
 
         app.set('views', path.join(__dirname, '/views'));
 
@@ -47,9 +47,8 @@ module.exports = function() {
         require('./routers/routes.js')(app, passport);
     };
 
-
     return{
         start:start
-    }
+    };
 }();
 

@@ -14,45 +14,49 @@ module.exports = function() {
     // start
     //--------------------------------------------------------
 
-    var start = function(db){
+    var start = function(db, app){
 
          MailModel = model.create(db);
+
+        app.get("emitter").on('new-user',function(user){
+            console.log("Emit works....\n\n");
+        });
     };
 
     //--------------------------------------------------------
     // addListeners
     //--------------------------------------------------------
 
-    var addListeners = function(io, socket){
+    var addListeners = function(ioManager, socket){
 
         socket.on('mail:create', function (userName, data) {
-            addItem.add(io, socket, userName, data, MailModel);
+            addItem.add(ioManager, socket, userName, data, MailModel);
         });
 
         socket.on('mail:delete', function (userName, data) {
-            deleteItem.deleteItem(io, socket, userName, data, MailModel);
+            deleteItem.deleteItem(ioManager, socket, userName, data, MailModel);
         });
 
         socket.on('mails:read', function (userName, data) {
-            getList.select(socket, data, MailModel);
+            getList.select(ioManager, socket, data, MailModel);
         });
 
         socket.on('mails:delete', function (userName, data) {
-            deleteBulk.deleteBulk(io, socket, userName, data, MailModel);
+            deleteBulk.deleteBulk(ioManager, socket, userName, data, MailModel);
         });
 
         socket.on('mail:update', function (userName, data) {
-            updateItem.updateItem(io, socket, userName, data, MailModel);
+            updateItem.updateItem(ioManager, socket, userName, data, MailModel);
         });
 
         socket.on('mails:update', function (userName, data) {
-            updateBulk.updateBulk(io, socket, userName, data, MailModel);
+            updateBulk.updateBulk(ioManager, socket, userName, data, MailModel);
         });
     };
 
     return{
         start:start,
         addListeners:addListeners
-    }
+    };
 }();
 

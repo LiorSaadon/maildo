@@ -3,7 +3,6 @@
 .project
 .settings
 node_modules
-client\build\node_modules
-client\build\target
 .sass-cache
+
 

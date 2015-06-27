@@ -1,6 +1,6 @@
-module.exports = function(db) {
+module.exports = function() {
 
-    var start = function(){
+    var start = function(db,app){
     };
 
     var addListeners = function(socket){
@@ -10,6 +10,6 @@ module.exports = function(db) {
     return{
         start:start,
         addListeners:addListeners
-    }
+    };
 }();
 

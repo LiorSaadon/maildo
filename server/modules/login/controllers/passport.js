@@ -1,4 +1,4 @@
-module.exports = function(db) {
+module.exports = function(db, app) {
 
     var passport      = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
@@ -77,8 +77,10 @@ module.exports = function(db) {
                     newUser.password = newUser.generateHash(password);
 
                     newUser.save(function(err) {
-                        if (err)
+                        if (err){
                             throw err;
+                        }
+                        app.get("emitter").emit("new-user",newUser);
                         return done(null, newUser);
                     });
                 }
@@ -88,5 +90,5 @@ module.exports = function(db) {
 
     return{
         passport:passport
-    }
+    };
 };

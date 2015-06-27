@@ -1,0 +1,19 @@
+<div class="composeView">
+    <div class="compose-header">
+        <div class="field">
+            <div class="label">{{_i18n "mail:to"}}</div>
+            <div class="inputbox"><div class="toInputWrapper"></div></div>
+        </div>
+        <div class="field ccLine">
+            <div class="label">{{_i18n "mail:cc"}}</div>
+            <div class="inputbox"><div class="ccInputWrapper"></div></div>
+        </div>
+        <div class=field>
+            <div class="label">{{_i18n "mail:subject"}}</div>
+            <div class="inputbox inputbox1"><input type="text" class="subject" value="{{subject}}"></input></div>
+        </div>
+    </div>
+    <div class="compose-editor browser-scroll" contenteditable="true"></div>
+    <a href="javascript:void(0)" class="button sendBtn">{{_i18n "mail:composeview.send"}}</span></a>
+    <a class="closeBtn"></a>
+</div>

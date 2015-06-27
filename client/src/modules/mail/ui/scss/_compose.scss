@@ -1,0 +1,89 @@
+.mb{
+  .composeView {
+    @include abs-pos(0, 0, 0, 0);
+    background-color: $_bgClr1;
+    z-index:200;
+    min-height: 350px;
+    color: $_clr1;
+
+    .compose-header {
+      @include abs-pos(30px, 95px, 'NaN', 30px);
+
+      .tagsPlaceholder {
+        height: 32px;
+        display: table;
+        width: 100%;
+      }
+
+      .field {
+        padding-bottom: 4px;
+      }
+
+      .label {
+        float: left;
+        min-width: 70px;
+        color: gray;
+        font-weight: bold;
+      }
+
+      .inputbox {
+        padding: 0 5px 0 0;
+        overflow: hidden;
+
+        .error{
+          border:1px solid $_bgClr2;
+        }
+      }
+
+      .inputbox input {
+        width: 100%;
+        height: 32px;
+      }
+    }
+
+    //--------------------------------------------
+
+    .compose-editor {
+      @include abs-pos(140px, 100px, 85px, 100px);
+      background-color: $_clr2;
+      border: 1px solid $_boClr16;
+      padding: 10px;
+      overflow: auto;
+
+      &:active,&:focus {
+        outline: none;
+        border-color: $_boClr16;
+        @include box-shadow(rgba(81, 82, 84, 0.25) 0px 0px 1px);
+      }
+
+      &:hover {
+        border-color: $_boClr8;
+      }
+    }
+
+    //------------------------------------------------
+
+    .sendBtn {
+      @include abs-pos('NaN', 'NaN', 25px, 100px);
+      background-color: $_bgClr3;
+      border: 1px solid $_boClr1;
+      color: $_clr2;
+
+      &:hover {
+        color: $_clr2;
+        background-color: $_bgClr3;
+      }
+    }
+
+    //------------------------------------------------
+
+    .closeBtn {
+      @include abs-pos(12px, 12px, 'NaN', 'NaN');
+      width: 12px;
+      height: 12px;
+      background: image-url('main.png') -10px -51px  no-repeat;
+      cursor: pointer;
+    }
+  }
+}
+

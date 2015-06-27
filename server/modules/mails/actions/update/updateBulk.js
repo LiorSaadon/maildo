@@ -4,7 +4,7 @@ module.exports = function() {
     var _ = require("underscore");
     var socketManager = require('../../../../common/socketManager');
 
-    var updateBulk = function (io, socket, userName, data, MailModel) {
+    var updateBulk = function (ioManager, socket, userName, data, MailModel) {
 
         var calls = [];
 
@@ -16,15 +16,15 @@ module.exports = function() {
             calls.push(function (callback) {
                 MailModel.update({id: id}, {$set: buildQuery(data, id)}, function (err) {
                     callback(null);
-                })
+                });
             });
         });
 
         async.parallel(calls, function (err, result) {
             if (err) {
-                socketManager.emit(io, socket, 'mails:update', {"success": false});
+                ioManager.emit(socket, 'mails:update', {"success": false});
             } else {
-                socketManager.emit(io, socket, 'mails:update', {"success": true}, userName);
+                ioManager.emit(socket, 'mails:update', {"success": true}, userName);
             }
         });
     };

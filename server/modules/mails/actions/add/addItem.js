@@ -1,10 +1,9 @@
-module.exports = function() {
+module.exports = function(app) {
 
     var _ = require("underscore");
     var shortId = require('shortid');
-    var socketManager = require('../../../../common/socketManager');
 
-    var add = function (io, socket, userName, data, MailModel) {
+    var add = function (ioManager, socket, userName, data, MailModel) {
 
         setData(data,userName);
 
@@ -12,9 +11,9 @@ module.exports = function() {
 
         mail.save(function (err) {
             if (err){
-                socketManager.emit(io, socket, 'mail:create', {"success":false});
+                ioManager.emit(socket, 'mail:create', {"success":false});
             }else{
-                socketManager.emit(io, socket, 'mail:create', {"success":true,"data":mail}, userName);
+                ioManager.emit(socket, 'mail:create', {"success":true,"data":mail}, userName);
             }
         });
     };
@@ -33,6 +32,6 @@ module.exports = function() {
 
     return{
         add:add
-    }
+    };
 }();
 

@@ -1,12 +1,37 @@
-module.exports = function() {
+var SocketManager = (function() {
 
-    var _ = require("underscore");
+    var _  = require("underscore");
 
+    var io;
     var _users = {};
 
     //-----------------------------------------------------------
 
-    var addSocket = function(socket, userName){
+    var set = function(server, modules, callback){
+
+        io = require('socket.io').listen(server);
+
+        io.sockets.on('connection', function (socket) {
+
+            socket.on('add-user', function (userName) {
+                addUser(socket, userName);
+            });
+
+            socket.on('disconnect', function () {
+                removeUser(socket);
+            });
+
+            _.each(modules, function (module) {
+                module.addListeners(SocketManager, socket);
+            });
+        });
+
+        callback();
+    };
+
+    //-----------------------------------------------------------
+
+    var addUser = function(socket, userName){
 
         if(!_.isEmpty(userName)){
             _users[userName] = _users[userName] || [];
@@ -16,7 +41,7 @@ module.exports = function() {
 
     //-----------------------------------------------------------
 
-    var removeSocket = function(socket){
+    var removeUser = function(socket){
 
         _.each(_users, function(val, key){
             if(_.indexOf(val, socket.id) >= 0){
@@ -27,7 +52,7 @@ module.exports = function() {
 
     //-----------------------------------------------------------
 
-    var emit = function(io, socket, eventName, message, userName){
+    var emit = function(socket, eventName, message, userName){
 
         socket.emit(eventName, message);
 
@@ -43,8 +68,9 @@ module.exports = function() {
     };
 
     return {
-        emit:emit,
-        addSocket:addSocket,
-        removeSocket:removeSocket
+        set:set,
+        emit:emit
     };
-}();
+})();
+
+module.exports = SocketManager;

@@ -1,0 +1,31 @@
+module.exports = {
+    aliases: {
+        "app": "./client/src/setup/app.js",
+        "base-model":"./client/src/common/js/base-models/baseModel.js",
+        "base-collections":"./client/src/common/js/base-collections",
+        "ui-components":"./client/src/common/ui/components",
+        "dialog":"./client/src/common/ui/components/dialog/dialog.js",
+        "autoComplete":"./client/src/common/ui/components/autoComplete/autoComplete.js",
+        "tags":"./client/src/common/ui/components/tags/tags.js",
+        "search":"./client/src/common/ui/components/search/search.js",
+        "decorators": "./client/src/common/js/decorators",
+        "resolvers": "./client/src/common/js/resolvers",
+        "plugins": "./client/src/common/js/plugins",
+        "extensions": "./client/src/common/js/lib-extensions",
+        "context":"./client/src/common/js/context/context",
+        "socket-controller":"./client/src/common/js/socket/socketController.js",
+        "settings-controller":"./client/src/common/js/settings/settingsController.js",
+        "frame":"./client/src/frame/frame",
+        "frame-views":"./client/src/frame/js/views",
+        "frame-templates":"./client/src/frame/ui/templates",
+        "mail-routers":"./client/src/modules/mail/js/routers",
+        "mail-module": "./client/src/modules/mail/mail",
+        "mail-collections":"./client/src/modules/mail/js/collections",
+        "mail-controllers":"./client/src/modules/mail/js/controllers",
+        "mail-models":"./client/src/modules/mail/js/models",
+        "mail-storage":"./client/src/modules/mail/js/storage",
+        "mail-views":"./client/src/modules/mail/js/views",
+        "mail-templates":"./client/src/modules/mail/ui/templates"
+    },
+    verbose: false
+};
