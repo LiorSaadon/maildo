@@ -42,11 +42,8 @@
     // launch database, socketManager and modules
     //-----------------------------------------------------
 
-
     dbManager.connect(function(db){
-
         socketManager.set(server, [mails, tasks], function(){
-
             mails.start(db,app);
             tasks.start(db,app);
             login.start(db,app);

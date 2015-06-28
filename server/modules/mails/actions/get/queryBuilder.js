@@ -30,10 +30,10 @@ module.exports = function () {
 
         var arr = subQuery.split(':');
 
-        if (arr.length == 2) {
+        if (arr.length === 2) {
             addHardKey(arr[0].toLowerCase(), arr[1], query);
         } else {
-            addOptionalKey(["body", "subject"],arr[0], query)
+            addOptionalKey(["body", "subject"],arr[0], query);
         }
     };
 
@@ -42,13 +42,13 @@ module.exports = function () {
     var addHardKey = function (key, value, query) {
 
         if (key === "groups") {
-            query[key] = {$in: [value]}
+            query[key] = {$in: [value]};
         }
-        if (key.indexOf("labels.") == 0) {
-            query[key] = value
+        if (key.indexOf("labels.") === 0) {
+            query[key] = value;
         }
         if (key === "from") {
-            query[key] = {$regex: ".*" + value + ".*"}
+            query[key] = {$regex: ".*" + value + ".*"};
         }
         if (key === "to") {
             addOptionalKey(["to", "cc"], value, query);
@@ -74,7 +74,7 @@ module.exports = function () {
 
     return {
         buildQuery: buildQuery
-    }
+    };
 }();
 
 

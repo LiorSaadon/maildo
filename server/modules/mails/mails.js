@@ -6,6 +6,7 @@ module.exports = function() {
     var deleteBulk = require('./actions/delete/deleteBulk.js');
     var updateBulk = require('./actions/update/updateBulk.js');
     var updateItem = require('./actions/update/updateItem.js');
+    var welcome    = require('./actions/welcome/welcome.js');
     var model      = require('./models/mailModel.js');
 
     var MailModel;
@@ -19,7 +20,7 @@ module.exports = function() {
          MailModel = model.create(db);
 
         app.get("emitter").on('new-user',function(user){
-            console.log("Emit works....\n\n");
+            welcome.addItems(user, MailModel);
         });
     };
 
