@@ -1,3 +1,5 @@
+"use strict";
+
 var BaseModel = require("base-model");
 
 var SettingsModel = BaseModel.extend({
@@ -8,9 +10,9 @@ var SettingsModel = BaseModel.extend({
         userName: 'demo@mailbone.com'
     },
 
-    url: 'settings',
-
-    //-------------------------------------------
+    url:function(){
+        return 'settings';
+    },
 
     initialize: function () {
         this.set("id", _.uniqueId('_'));

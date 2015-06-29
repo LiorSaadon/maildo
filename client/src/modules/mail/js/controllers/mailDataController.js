@@ -30,7 +30,6 @@ app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
             this.listenTo(this.mailCollection, "fetch:success", this._updateSelection, this);
             this.listenTo(app.context, "change:mail.action", this._refreshMailCollection, this);
-            this.listenTo(app.settings, "change:userName", this._setUserName, this);
             this.listenTo(app.vent, "data:change", this._onDataChange, this);
         },
 
@@ -64,18 +63,6 @@ app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
         _onDataChange: function () {
             this._refreshMailCollection();
-        },
-
-        //------------------------------------------------------
-
-        _setUserName: function () {
-
-            var userName = app.settings.get("userName");
-
-            this.mailCollection.userName = userName;
-            this.contactCollection.userName = userName;
-
-            this.contactCollection.fetch({});
         },
 
         //------------------------------------------------------

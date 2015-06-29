@@ -48,7 +48,7 @@ var SettingsView = Marionette.ItemView.extend({
         app.settings.set("theme", theme);
         app.settings.save(null, {
             success: function () {
-                app.settingsController._loadTheme();
+                app.settingsController.loadTheme();
             }
         });
     }
