@@ -2,6 +2,30 @@
 
     var app = require("app");
 
+    //-------------------------------------------------------
+    // onInvalid
+    //-------------------------------------------------------
+
+    var delegateEvents = Marionette.View.prototype.delegateEvents;
+
+    Marionette.View.prototype.delegateEvents = function () {
+
+        delegateEvents.apply(this, [].slice.apply(arguments));
+
+        var view = this;
+        var viewModel = view.model;
+
+        if (!_.isUndefined(viewModel)) {
+
+            view.listenTo(viewModel, "invalid", function (model, errorObject) {
+
+                if (_.isFunction(view.onInvalid)) {
+                    view.onInvalid(model, errorObject);
+                }
+            });
+        }
+    };
+
     //-------------------------------------------------------------
     // add - an alternative to region.show(), doesn't not remove permanent views
     //-------------------------------------------------------------

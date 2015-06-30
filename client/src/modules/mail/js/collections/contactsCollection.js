@@ -17,7 +17,7 @@ app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
         //----------------------------------------------------
 
-        initialize: function (attrs, options) {
+        initialize: function () {
 
             var contactList = this._createContactList();
             this.set({collection:contactList});
@@ -35,6 +35,7 @@ app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
                     address:contact.replace(",", ".").toLowerCase() + "@maildo.com"
                 });
             });
+
             return contactList;
         },
 
@@ -53,6 +54,16 @@ app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
             },this));
 
             return res;
+        },
+
+        //------------------------------------------------------
+
+        addContact:function(contactInfo){
+
+            //this.set({collection:[{
+            //    title:contactInfo,
+            //    address:contactInfo + "@maildo.com"
+            //}]});
         }
     });
 });

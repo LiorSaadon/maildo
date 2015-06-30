@@ -28,12 +28,12 @@ app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
         _bindEvents: function () {
 
-            this.listenTo(this.mails, "change:items update:success delete:success", this.checkIfEmpty, this);
+            this.listenTo(this.mails, "change:items update:success delete:success fetch:success", this._checkIfEmpty, this);
         },
 
         //--------------------------------------------------
 
-        checkIfEmpty: function () {
+        _checkIfEmpty: function () {
 
             var isEmpty = this.mails.isEmpty();
 

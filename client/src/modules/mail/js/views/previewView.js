@@ -28,7 +28,7 @@ app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
         templateHelpers: function () {
 
             return {
-                subject: formatter.formatSubject(this.model.get("subject")),
+                subject: formatter.formatSubject(this.model.get("subject"), app.translator),
                 to: formatter.formatAddresses(this.contacts.getTitles(this.model.getOutgoingAddresses())),
                 from: formatter.formatAddresses(this.contacts.getTitles(this.model.getIngoingAddresses()))
             };

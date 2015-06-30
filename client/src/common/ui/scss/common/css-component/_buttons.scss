@@ -37,6 +37,7 @@ $button-primeIcon-width:60px;
   background: $button-background-color;
   border: solid 1px $button-border-color;
   text-align: center;
+  cursor: pointer;
   @include border-radius(2px);
 
    .caption{

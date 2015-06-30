@@ -158,7 +158,7 @@ app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
         saveAsDraft: function (mailModel) {
 
-            mailModel.set("groups.draft", true, {silent: true});
+            mailModel.set("groups", ["draft"], {silent: true});
 
             mailModel.save(null, {
                 saveAs: "draft",

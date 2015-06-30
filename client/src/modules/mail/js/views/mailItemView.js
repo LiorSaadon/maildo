@@ -116,7 +116,7 @@ app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
         _onSubjectChanged: function () {
 
-            this.ui.subject.text(formatter.formatSubject(this.model.get("subject")));
+            this.ui.subject.text(formatter.formatSubject(this.model.get("subject")),app.translator);
         },
 
         //-------------------------------------------------------------
