@@ -20,7 +20,7 @@ app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
         initialize: function () {
 
             var contactList = this._createContactList();
-            this.set({collection:contactList});
+            this.set(contactList);
         },
 
         //----------------------------------------------------
@@ -60,10 +60,11 @@ app.module('mail', function (mail, app, Backbone, Marionette, $, _) {
 
         addContact:function(contactInfo){
 
-            //this.set({collection:[{
-            //    title:contactInfo,
-            //    address:contactInfo + "@maildo.com"
-            //}]});
+            var contactModel = new ContactModel({
+                title:contactInfo,
+                address:contactInfo + "@maildo.com"
+            });
+            this.add(contactModel, {silent:true});
         }
     });
 });

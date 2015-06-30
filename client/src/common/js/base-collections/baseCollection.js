@@ -42,11 +42,11 @@ var BaseCollection = Backbone.Collection.extend({
 
         response = _.isObject(response) ? response : {};
 
-        if (_.isObject(response.collection)) {
+        if (_.isObject(response.collection) && _.isObject(response.metadata)) {
             Backbone.Collection.prototype.set.call(this, response.collection, options);
-        }
-        if (_.isObject(response.metadata)) {
             this.updateMetadata(response.metadata);
+        }else{
+            Backbone.Collection.prototype.set.call(this, response, options);
         }
     },
 
