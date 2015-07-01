@@ -43,7 +43,15 @@ module.exports = function (grunt) {
                 files: [
                     {expand: true, cwd: './client/src/common/ui/img', src: ['**'], dest: './client/dist/img'},
                     {expand: true, cwd: './client/src/common/ui/i18n', src: ['**'], dest: './client/dist/i18n'},
-                    {src: ['./client/src/common/ui/css/login.css'], dest: './client/dist/css/login.css'},
+                    {src: ['./client/src/common/ui/css/login.css'], dest: './client/dist/css/login.css'}
+                ]
+            },
+            ci: {
+                files: [
+                    {expand: true, cwd: './client/dist', src: ['**'], dest: '../maildo-openshift/client/dist'},
+                    {expand: true, cwd: './server', src: ['**'], dest: '../maildo-openshift/server'},
+                    {src: ['./client/index1.html'], dest: '../maildo-openshift/client/index1.html'},
+                    {src: ['./start.js'], dest: '../maildo-openshift/start.js'},
                 ]
             }
         },
@@ -92,14 +100,23 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
 
     grunt.registerTask('default', [
-
         'jshint',
         'clean:dist',
         'copy:ui',
         'compass',
         'browserify:app',
         'browserify:vendors',
-        //'uglify:bundle',
         'watch'
+    ]);
+
+    grunt.registerTask('prod', [
+        'jshint',
+        'clean:dist',
+        'copy:ui',
+        'compass',
+        'browserify:app',
+        'browserify:vendors',
+        'uglify:bundle',
+        'copy:ci'
     ]);
 };
